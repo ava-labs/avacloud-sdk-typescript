@@ -1,0 +1,10 @@
+# EVMInput
+
+
+## Fields
+
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              | Example                                                                  |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `fromAddress`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | EVM address from which the asset is exported in ExportTx.                | 0xD0f2898e49d941D6d479B381d3C8F0bd8d983b4c                               |
+| `asset`                                                                  | [components.AssetAmount](../../models/components/assetamount.md)         | :heavy_check_mark:                                                       | AssetAmount details for the asset being transferred.                     |                                                                          |
+| `credentials`                                                            | [components.UtxoCredential](../../models/components/utxocredential.md)[] | :heavy_check_mark:                                                       | Credentials that signed this transaction.                                |                                                                          |

@@ -1,0 +1,27 @@
+speakeasyVersion: 1.354.1
+sources:
+    GlacierSDK-OAS:
+        sourceNamespace: glacier-sdk-oas
+        sourceRevisionDigest: sha256:adc36617a3aa27f2c71d73490939dcd5ad4162827efdb1c4da5b45f29627d019
+        sourceBlobDigest: sha256:d80b68865541960010e06528b1db43dbcaee8138d7acc41185f339497f2359c3
+        tags:
+            - latest
+targets:
+    glacier-sdk:
+        source: GlacierSDK-OAS
+        sourceNamespace: glacier-sdk-oas
+        sourceRevisionDigest: sha256:adc36617a3aa27f2c71d73490939dcd5ad4162827efdb1c4da5b45f29627d019
+        sourceBlobDigest: sha256:d80b68865541960010e06528b1db43dbcaee8138d7acc41185f339497f2359c3
+        outLocation: /Users/sayan.kar/avalabs/glacier-sdk-typescript
+workflow:
+    workflowVersion: 1.0.0
+    sources:
+        GlacierSDK-OAS:
+            inputs:
+                - location: https://ad39-2405-201-3027-2887-d9b-fc28-c7ec-5133.ngrok-free.app/api-json
+            registry:
+                location: registry.speakeasyapi.dev/avalabs/avalabs/glacier-sdk-oas
+    targets:
+        glacier-sdk:
+            target: typescript
+            source: GlacierSDK-OAS

@@ -1,0 +1,12 @@
+# Erc20TransferDetails
+
+
+## Fields
+
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      | Example                                                          |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `from`                                                           | [components.RichAddress](../../models/components/richaddress.md) | :heavy_check_mark:                                               | N/A                                                              |                                                                  |
+| `to`                                                             | [components.RichAddress](../../models/components/richaddress.md) | :heavy_check_mark:                                               | N/A                                                              |                                                                  |
+| `logIndex`                                                       | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |                                                                  |
+| `value`                                                          | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              | 10000000000000000000                                             |
+| `erc20Token`                                                     | [components.Erc20Token](../../models/components/erc20token.md)   | :heavy_check_mark:                                               | N/A                                                              |                                                                  |

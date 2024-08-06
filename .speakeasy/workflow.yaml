@@ -1,0 +1,11 @@
+workflowVersion: 1.0.0
+sources:
+    GlacierSDK-OAS:
+        inputs:
+            - location: https://ad39-2405-201-3027-2887-d9b-fc28-c7ec-5133.ngrok-free.app/api-json
+        registry:
+            location: registry.speakeasyapi.dev/avalabs/avalabs/glacier-sdk-oas
+targets:
+    glacier-sdk:
+        target: typescript
+        source: GlacierSDK-OAS
