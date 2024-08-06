@@ -9,3 +9,6 @@ targets:
     glacier-sdk:
         target: typescript
         source: GlacierSDK-OAS
+        publish:
+            npm:
+                token: $npm_token
