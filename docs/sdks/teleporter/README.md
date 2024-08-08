@@ -17,12 +17,12 @@ Gets a teleporter message by message ID.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.teleporter.getTeleporterMessage({
+  const result = await avalancheSDK.teleporter.getTeleporterMessage({
     messageId: "acf1c8b06f9aec48e9fcbefbbe576ae8a7ca3b327fcae111396e7cc99956674d",
   });
 
@@ -59,12 +59,12 @@ Lists teleporter messages. Ordered by timestamp in descending order.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.teleporter.listTeleporterMessages({
+  const result = await avalancheSDK.teleporter.listTeleporterMessages({
     pageSize: 10,
     sourceBlockchainId: "2D8RG4UpSXbPbvPCAWppNJyqTG2i2CAXSkTgmTBBvs7GKNZjsY",
     destinationBlockchainId: "yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp",
@@ -73,8 +73,9 @@ async function run() {
     network: "mainnet",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -92,7 +93,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListTeleporterMessagesResponse](../../models/components/listteleportermessagesresponse.md)\>**
+**Promise\<[operations.ListTeleporterMessagesResponse](../../models/operations/listteleportermessagesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

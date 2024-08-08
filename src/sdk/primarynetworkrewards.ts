@@ -5,9 +5,8 @@
 import { primaryNetworkRewardsListHistoricalPrimaryNetworkRewards } from "../funcs/primaryNetworkRewardsListHistoricalPrimaryNetworkRewards.js";
 import { primaryNetworkRewardsListPendingPrimaryNetworkRewards } from "../funcs/primaryNetworkRewardsListPendingPrimaryNetworkRewards.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
-import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PrimaryNetworkRewards extends ClientSDK {
     /**
@@ -19,8 +18,8 @@ export class PrimaryNetworkRewards extends ClientSDK {
     async listPendingPrimaryNetworkRewards(
         request: operations.ListPendingPrimaryNetworkRewardsRequest,
         options?: RequestOptions
-    ): Promise<components.ListPendingRewardsResponse> {
-        return unwrapAsync(
+    ): Promise<PageIterator<operations.ListPendingPrimaryNetworkRewardsResponse>> {
+        return unwrapResultIterator(
             primaryNetworkRewardsListPendingPrimaryNetworkRewards(this, request, options)
         );
     }
@@ -34,8 +33,8 @@ export class PrimaryNetworkRewards extends ClientSDK {
     async listHistoricalPrimaryNetworkRewards(
         request: operations.ListHistoricalPrimaryNetworkRewardsRequest,
         options?: RequestOptions
-    ): Promise<components.ListHistoricalRewardsResponse> {
-        return unwrapAsync(
+    ): Promise<PageIterator<operations.ListHistoricalPrimaryNetworkRewardsResponse>> {
+        return unwrapResultIterator(
             primaryNetworkRewardsListHistoricalPrimaryNetworkRewards(this, request, options)
         );
     }

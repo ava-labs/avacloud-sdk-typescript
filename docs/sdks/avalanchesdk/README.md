@@ -1,4 +1,4 @@
-# GlacierSDK
+# AvalancheSDK
 
 
 ## Overview
@@ -14,12 +14,12 @@ Glacier API: The Glacier API provides web3 application developers with multi-cha
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  await glacierSDK.mediaControllerUploadImage();
+  await avalancheSDK.mediaControllerUploadImage();
 
   
 }

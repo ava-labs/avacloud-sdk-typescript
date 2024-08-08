@@ -12,12 +12,12 @@ Get the health of the service
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.healthCheck.healthCheck();
+  const result = await avalancheSDK.healthCheck.healthCheck();
 
   // Handle the result
   console.log(result)

@@ -11,6 +11,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class EVMBalances extends ClientSDK {
     /**
@@ -41,8 +42,8 @@ export class EVMBalances extends ClientSDK {
     async listErc20Balances(
         request: operations.ListErc20BalancesRequest,
         options?: RequestOptions
-    ): Promise<components.ListErc20BalancesResponse> {
-        return unwrapAsync(evmBalancesListErc20Balances(this, request, options));
+    ): Promise<PageIterator<operations.ListErc20BalancesResponse>> {
+        return unwrapResultIterator(evmBalancesListErc20Balances(this, request, options));
     }
 
     /**
@@ -56,8 +57,8 @@ export class EVMBalances extends ClientSDK {
     async listErc721Balances(
         request: operations.ListErc721BalancesRequest,
         options?: RequestOptions
-    ): Promise<components.ListErc721BalancesResponse> {
-        return unwrapAsync(evmBalancesListErc721Balances(this, request, options));
+    ): Promise<PageIterator<operations.ListErc721BalancesResponse>> {
+        return unwrapResultIterator(evmBalancesListErc721Balances(this, request, options));
     }
 
     /**
@@ -73,8 +74,8 @@ export class EVMBalances extends ClientSDK {
     async listErc1155Balances(
         request: operations.ListErc1155BalancesRequest,
         options?: RequestOptions
-    ): Promise<components.ListErc1155BalancesResponse> {
-        return unwrapAsync(evmBalancesListErc1155Balances(this, request, options));
+    ): Promise<PageIterator<operations.ListErc1155BalancesResponse>> {
+        return unwrapResultIterator(evmBalancesListErc1155Balances(this, request, options));
     }
 
     /**
@@ -88,7 +89,7 @@ export class EVMBalances extends ClientSDK {
     async listCollectibleBalances(
         request: operations.ListCollectibleBalancesRequest,
         options?: RequestOptions
-    ): Promise<components.ListCollectibleBalancesResponse> {
-        return unwrapAsync(evmBalancesListCollectibleBalances(this, request, options));
+    ): Promise<PageIterator<operations.ListCollectibleBalancesResponse>> {
+        return unwrapResultIterator(evmBalancesListCollectibleBalances(this, request, options));
     }
 }

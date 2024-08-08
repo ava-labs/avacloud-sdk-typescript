@@ -9,6 +9,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PrimaryNetworkVertices extends ClientSDK {
     /**
@@ -20,8 +21,10 @@ export class PrimaryNetworkVertices extends ClientSDK {
     async listLatestXChainVertices(
         request: operations.ListLatestXChainVerticesRequest,
         options?: RequestOptions
-    ): Promise<components.ListXChainVerticesResponse> {
-        return unwrapAsync(primaryNetworkVerticesListLatestXChainVertices(this, request, options));
+    ): Promise<PageIterator<operations.ListLatestXChainVerticesResponse>> {
+        return unwrapResultIterator(
+            primaryNetworkVerticesListLatestXChainVertices(this, request, options)
+        );
     }
 
     /**
@@ -46,7 +49,9 @@ export class PrimaryNetworkVertices extends ClientSDK {
     async getVertexByHeight(
         request: operations.GetVertexByHeightRequest,
         options?: RequestOptions
-    ): Promise<components.ListXChainVerticesResponse> {
-        return unwrapAsync(primaryNetworkVerticesGetVertexByHeight(this, request, options));
+    ): Promise<PageIterator<operations.GetVertexByHeightResponse>> {
+        return unwrapResultIterator(
+            primaryNetworkVerticesGetVertexByHeight(this, request, options)
+        );
     }
 }

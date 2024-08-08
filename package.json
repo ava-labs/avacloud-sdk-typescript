@@ -1,9 +1,13 @@
 {
-  "name": "@avalabs/glacier-sdk",
-  "version": "0.0.1",
+  "name": "@avalabs/avalanche-sdk",
+  "version": "0.1.0",
   "author": "Speakeasy",
   "main": "./index.js",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ava-labs/glacier-sdk-typescript.git"
+  },
   "scripts": {
     "lint": "eslint --max-warnings=0 src",
     "build": "tsc",

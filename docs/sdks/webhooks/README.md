@@ -25,18 +25,19 @@ Lists webhooks for the user.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.webhooks.listWebhooks({
+  const result = await avalancheSDK.webhooks.listWebhooks({
     pageSize: 10,
     status: "active",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -54,7 +55,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListWebhooksResponse](../../models/components/listwebhooksresponse.md)\>**
+**Promise\<[operations.ListWebhooksResponse](../../models/operations/listwebhooksresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -68,12 +69,12 @@ Create a new webhook.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.webhooks.createWebhook({
+  const result = await avalancheSDK.webhooks.createWebhook({
     url: "https://unrealistic-well-being.name",
     chainId: "<value>",
     eventType: "address_activity",
@@ -120,12 +121,12 @@ Retrieves a webhook by ID.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.webhooks.getWebhook({
+  const result = await avalancheSDK.webhooks.getWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 
@@ -162,12 +163,12 @@ Deactivates a webhook by ID.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.webhooks.deactivateWebhook({
+  const result = await avalancheSDK.webhooks.deactivateWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 
@@ -204,12 +205,12 @@ Updates an existing webhook.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.webhooks.updateWebhook({
+  const result = await avalancheSDK.webhooks.updateWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     updateWebhookRequest: {},
   });
@@ -247,12 +248,12 @@ Generates a new shared secret.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.webhooks.generateSharedSecret();
+  const result = await avalancheSDK.webhooks.generateSharedSecret();
 
   // Handle the result
   console.log(result)
@@ -286,12 +287,12 @@ Get a previously generated shared secret.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.webhooks.getSharedSecret();
+  const result = await avalancheSDK.webhooks.getSharedSecret();
 
   // Handle the result
   console.log(result)
@@ -325,18 +326,19 @@ List adresses by webhook.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.webhooks.getAddressesFromWebhook({
+  const result = await avalancheSDK.webhooks.getAddressesFromWebhook({
     pageSize: 10,
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -354,7 +356,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListWebhookAddressesResponse](../../models/components/listwebhookaddressesresponse.md)\>**
+**Promise\<[operations.GetAddressesFromWebhookResponse](../../models/operations/getaddressesfromwebhookresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -368,12 +370,12 @@ Remove addresses from webhook.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.webhooks.removeAddressesFromWebhook({
+  const result = await avalancheSDK.webhooks.removeAddressesFromWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     addressesChangeRequest: {
       addresses: [
@@ -415,12 +417,12 @@ Add addresses to webhook.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.webhooks.addAddressesToWebhook({
+  const result = await avalancheSDK.webhooks.addAddressesToWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     addressesChangeRequest: {
       addresses: [

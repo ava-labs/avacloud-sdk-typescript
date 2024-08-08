@@ -19,12 +19,12 @@ Gets asset details corresponding to the given asset id on the X-Chain.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetwork.getAssetDetails({
+  const result = await avalancheSDK.primaryNetwork.getAssetDetails({
     blockchainId: "x-chain",
     network: "mainnet",
     assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
@@ -63,12 +63,12 @@ Returns Primary Network chains that each address has touched in the form of an a
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetwork.getChainIdsForAddresses({
+  const result = await avalancheSDK.primaryNetwork.getChainIdsForAddresses({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     network: "mainnet",
   });
@@ -106,12 +106,12 @@ Gets network details such as validator and delegator stats.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetwork.getNetworkDetails({
+  const result = await avalancheSDK.primaryNetwork.getNetworkDetails({
     network: "mainnet",
   });
 
@@ -148,19 +148,20 @@ Lists all blockchains registered on the network.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetwork.listBlockchains({
+  const result = await avalancheSDK.primaryNetwork.listBlockchains({
     pageSize: 10,
     network: "mainnet",
     sortOrder: "asc",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -178,7 +179,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListBlockchainsResponse](../../models/components/listblockchainsresponse.md)\>**
+**Promise\<[operations.ListBlockchainsResponse](../../models/operations/listblockchainsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -192,19 +193,20 @@ Lists all subnets registered on the network.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetwork.listSubnets({
+  const result = await avalancheSDK.primaryNetwork.listSubnets({
     pageSize: 10,
     network: "mainnet",
     sortOrder: "asc",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -222,7 +224,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListSubnetsResponse](../../models/components/listsubnetsresponse.md)\>**
+**Promise\<[operations.ListSubnetsResponse](../../models/operations/listsubnetsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -236,12 +238,12 @@ Lists details for validators. By default, returns details for all validators. Fi
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetwork.listValidators({
+  const result = await avalancheSDK.primaryNetwork.listValidators({
     pageSize: 10,
     network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
@@ -258,8 +260,9 @@ async function run() {
     subnetId: "11111111111111111111111111111111LpoYY",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -277,7 +280,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListValidatorDetailsResponse](../../models/components/listvalidatordetailsresponse.md)\>**
+**Promise\<[operations.ListValidatorsResponse](../../models/operations/listvalidatorsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -291,12 +294,12 @@ List validator details for a single validator.  Filterable by validation status.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetwork.getSingleValidatorDetails({
+  const result = await avalancheSDK.primaryNetwork.getSingleValidatorDetails({
     pageSize: 10,
     network: "mainnet",
     nodeId: "NodeID-111111111111111111116DBWJs",
@@ -304,8 +307,9 @@ async function run() {
     sortOrder: "asc",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -323,7 +327,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListValidatorDetailsResponse](../../models/components/listvalidatordetailsresponse.md)\>**
+**Promise\<[operations.GetSingleValidatorDetailsResponse](../../models/operations/getsinglevalidatordetailsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -337,12 +341,12 @@ Lists details for delegators.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetwork.listDelegators({
+  const result = await avalancheSDK.primaryNetwork.listDelegators({
     pageSize: 10,
     rewardAddresses: "P-avax1679zrp3z9mf7z4an42ddq47qzj36zv6ga20vwl,P-avax1s7kd0kfndlz6mh3l0etrrcmkg5y366k8e0s6cc",
     network: "mainnet",
@@ -351,8 +355,9 @@ async function run() {
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -370,7 +375,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListDelegatorDetailsResponse](../../models/components/listdelegatordetailsresponse.md)\>**
+**Promise\<[operations.ListDelegatorsResponse](../../models/operations/listdelegatorsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

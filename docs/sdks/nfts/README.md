@@ -14,12 +14,12 @@ Triggers reindexing of token metadata for an NFT token. Reindexing can only be c
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  await glacierSDK.nfTs.reindexNft({
+  await avalancheSDK.nfTs.reindexNft({
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
@@ -57,19 +57,20 @@ Lists tokens for an NFT contract.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.nfTs.listTokens({
+  const result = await avalancheSDK.nfTs.listTokens({
     pageSize: 10,
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -87,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListNftTokens](../../models/components/listnfttokens.md)\>**
+**Promise\<[operations.ListTokensResponse](../../models/operations/listtokensresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -101,12 +102,12 @@ Gets token details for a specific token of an NFT contract.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.nfTs.getTokenDetails({
+  const result = await avalancheSDK.nfTs.getTokenDetails({
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",

@@ -17,18 +17,19 @@ Lists the latest indexed blocks on the EVM-compatible chain sorted in descending
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmBlocks.getLatestBlocks({
+  const result = await avalancheSDK.evmBlocks.getLatestBlocks({
     pageSize: 10,
     chainId: "43114",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -46,7 +47,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListEvmBlocksResponse](../../models/components/listevmblocksresponse.md)\>**
+**Promise\<[operations.GetLatestBlocksResponse](../../models/operations/getlatestblocksresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,12 +61,12 @@ Gets the details of an individual block on the EVM-compatible chain.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmBlocks.getBlock({
+  const result = await avalancheSDK.evmBlocks.getBlock({
     chainId: "43114",
     blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });

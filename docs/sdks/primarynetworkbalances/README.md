@@ -18,12 +18,12 @@ C-Chain balances returned are only the shared atomic memory balance. For EVM bal
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetworkBalances.getBalancesByAddresses({
+  const result = await avalancheSDK.primaryNetworkBalances.getBalancesByAddresses({
     blockTimestamp: 1599696000,
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     blockchainId: "p-chain",

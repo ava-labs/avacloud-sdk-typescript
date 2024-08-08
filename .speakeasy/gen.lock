@@ -1,18 +1,21 @@
 lockVersion: 2.0.0
 id: aa62edb7-4270-4c7b-a00f-96026070d05e
 management:
-  docChecksum: 5cb5320d5e3815d61d9e5c830a2ad871
+  docChecksum: c2f99310f042531947ce82234353e0d5
   docVersion: Beta
-  speakeasyVersion: 1.354.1
-  generationVersion: 2.386.2
-  releaseVersion: 0.0.1
-  configChecksum: 35609a3171a683efb67538176b867e91
+  speakeasyVersion: 1.358.0
+  generationVersion: 2.390.6
+  releaseVersion: 0.1.0
+  configChecksum: fa918a4693c753288feeda73cb28ecd6
+  repoURL: https://github.com/ava-labs/glacier-sdk-typescript.git
+  installationURL: https://github.com/ava-labs/glacier-sdk-typescript
+  published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.6
-    core: 3.12.1
+    core: 3.12.3
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -20,6 +23,7 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.4
     nullables: 0.1.0
+    pagination: 2.82.6
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
@@ -398,6 +402,7 @@ generatedFiles:
   - docs/models/operations/healthcheckresponsebody.md
   - docs/models/operations/reindexnftrequest.md
   - docs/models/operations/listtokensrequest.md
+  - docs/models/operations/listtokensresponse.md
   - docs/models/operations/gettokendetailsrequest.md
   - docs/models/operations/gettokendetailsresponsebody.md
   - docs/models/operations/getoperationresultrequest.md
@@ -406,57 +411,89 @@ generatedFiles:
   - docs/models/operations/gettxbyhashresponsebody.md
   - docs/models/operations/listlatestprimarynetworktransactionsrequest.md
   - docs/models/operations/listlatestprimarynetworktransactionsresponsebody.md
+  - docs/models/operations/listlatestprimarynetworktransactionsresponse.md
   - docs/models/operations/listactiveprimarynetworkstakingtransactionsrequest.md
+  - docs/models/operations/listactiveprimarynetworkstakingtransactionsresponse.md
   - docs/models/operations/listassettransactionsrequest.md
+  - docs/models/operations/listassettransactionsresponse.md
   - docs/models/operations/listpendingprimarynetworkrewardsrequest.md
+  - docs/models/operations/listpendingprimarynetworkrewardsresponse.md
   - docs/models/operations/listhistoricalprimarynetworkrewardsrequest.md
+  - docs/models/operations/listhistoricalprimarynetworkrewardsresponse.md
   - docs/models/operations/getutxosbyaddressesrequest.md
   - docs/models/operations/getutxosbyaddressesresponsebody.md
+  - docs/models/operations/getutxosbyaddressesresponse.md
   - docs/models/operations/getbalancesbyaddressesrequest.md
   - docs/models/operations/getbalancesbyaddressesresponsebody.md
   - docs/models/operations/getblockbyidrequest.md
   - docs/models/operations/listprimarynetworkblocksbynodeidrequest.md
+  - docs/models/operations/listprimarynetworkblocksbynodeidresponse.md
   - docs/models/operations/listlatestprimarynetworkblocksrequest.md
+  - docs/models/operations/listlatestprimarynetworkblocksresponse.md
   - docs/models/operations/listlatestxchainverticesrequest.md
+  - docs/models/operations/listlatestxchainverticesresponse.md
   - docs/models/operations/getvertexbyhashrequest.md
   - docs/models/operations/getvertexbyheightrequest.md
+  - docs/models/operations/getvertexbyheightresponse.md
   - docs/models/operations/getassetdetailsrequest.md
   - docs/models/operations/getchainidsforaddressesrequest.md
   - docs/models/operations/getnetworkdetailsrequest.md
   - docs/models/operations/listblockchainsrequest.md
+  - docs/models/operations/listblockchainsresponse.md
   - docs/models/operations/listsubnetsrequest.md
+  - docs/models/operations/listsubnetsresponse.md
   - docs/models/operations/listvalidatorsrequest.md
+  - docs/models/operations/listvalidatorsresponse.md
   - docs/models/operations/getsinglevalidatordetailsrequest.md
+  - docs/models/operations/getsinglevalidatordetailsresponse.md
   - docs/models/operations/listdelegatorsrequest.md
+  - docs/models/operations/listdelegatorsresponse.md
   - docs/models/operations/listwebhooksrequest.md
+  - docs/models/operations/listwebhooksresponse.md
   - docs/models/operations/getwebhookrequest.md
   - docs/models/operations/deactivatewebhookrequest.md
   - docs/models/operations/updatewebhookrequest.md
   - docs/models/operations/getaddressesfromwebhookrequest.md
+  - docs/models/operations/getaddressesfromwebhookresponse.md
   - docs/models/operations/removeaddressesfromwebhookrequest.md
   - docs/models/operations/addaddressestowebhookrequest.md
   - docs/models/operations/getteleportermessagerequest.md
   - docs/models/operations/getteleportermessageresponsebody.md
   - docs/models/operations/listteleportermessagesrequest.md
+  - docs/models/operations/listteleportermessagesresponse.md
   - docs/models/operations/getnativebalancerequest.md
   - docs/models/operations/listerc20balancesrequest.md
+  - docs/models/operations/listerc20balancesresponse.md
   - docs/models/operations/listerc721balancesrequest.md
+  - docs/models/operations/listerc721balancesresponse.md
   - docs/models/operations/listerc1155balancesrequest.md
+  - docs/models/operations/listerc1155balancesresponse.md
   - docs/models/operations/listcollectiblebalancesrequest.md
+  - docs/models/operations/listcollectiblebalancesresponse.md
   - docs/models/operations/getlatestblocksrequest.md
+  - docs/models/operations/getlatestblocksresponse.md
   - docs/models/operations/getblockrequest.md
   - docs/models/operations/getdeploymenttransactionrequest.md
   - docs/models/operations/listcontractdeploymentsrequest.md
+  - docs/models/operations/listcontractdeploymentsresponse.md
   - docs/models/operations/listtransfersrequest.md
+  - docs/models/operations/listtransfersresponse.md
   - docs/models/operations/listtransactionsrequest.md
+  - docs/models/operations/listtransactionsresponse.md
   - docs/models/operations/listnativetransactionsrequest.md
+  - docs/models/operations/listnativetransactionsresponse.md
   - docs/models/operations/listerc20transactionsrequest.md
+  - docs/models/operations/listerc20transactionsresponse.md
   - docs/models/operations/listerc721transactionsrequest.md
+  - docs/models/operations/listerc721transactionsresponse.md
   - docs/models/operations/listerc1155transactionsrequest.md
+  - docs/models/operations/listerc1155transactionsresponse.md
   - docs/models/operations/listinternaltransactionsrequest.md
+  - docs/models/operations/listinternaltransactionsresponse.md
   - docs/models/operations/gettransactionrequest.md
   - docs/models/operations/gettransactionsforblockrequest.md
   - docs/models/operations/listlatesttransactionsrequest.md
+  - docs/models/operations/listlatesttransactionsresponse.md
   - docs/models/operations/getcontractmetadatarequest.md
   - docs/models/operations/getcontractmetadataresponsebody.md
   - docs/models/operations/updatecontractinforequest.md
@@ -711,7 +748,7 @@ generatedFiles:
   - docs/models/components/id.md
   - docs/models/components/rpcrequestbodydto.md
   - docs/lib/utils/retryconfig.md
-  - docs/sdks/glaciersdk/README.md
+  - docs/sdks/avalanchesdk/README.md
   - docs/sdks/healthcheck/README.md
   - docs/sdks/nfts/README.md
   - docs/sdks/operations/README.md

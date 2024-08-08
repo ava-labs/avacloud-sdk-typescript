@@ -27,12 +27,12 @@ If the address is a smart contract, returns the transaction in which it was depl
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmTransactions.getDeploymentTransaction({
+  const result = await avalancheSDK.evmTransactions.getDeploymentTransaction({
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     currency: "usd",
@@ -71,19 +71,20 @@ Lists all contracts deployed by the given address.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmTransactions.listContractDeployments({
+  const result = await avalancheSDK.evmTransactions.listContractDeployments({
     pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -101,7 +102,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListContractsResponse](../../models/components/listcontractsresponse.md)\>**
+**Promise\<[operations.ListContractDeploymentsResponse](../../models/operations/listcontractdeploymentsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -115,12 +116,12 @@ Lists ERC transfers for an ERC-20, ERC-721, or ERC-1155 contract address.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmTransactions.listTransfers({
+  const result = await avalancheSDK.evmTransactions.listTransfers({
     startBlock: 6479329,
     endBlock: 6479330,
     pageSize: 10,
@@ -128,8 +129,9 @@ async function run() {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -147,7 +149,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListTransfersResponse](../../models/components/listtransfersresponse.md)\>**
+**Promise\<[operations.ListTransfersResponse](../../models/operations/listtransfersresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -163,12 +165,12 @@ Filterable by block ranges.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmTransactions.listTransactions({
+  const result = await avalancheSDK.evmTransactions.listTransactions({
     pageSize: 10,
     startBlock: 6479329,
     endBlock: 6479330,
@@ -177,8 +179,9 @@ async function run() {
     sortOrder: "asc",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -196,7 +199,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListTransactionDetailsResponse](../../models/components/listtransactiondetailsresponse.md)\>**
+**Promise\<[operations.ListTransactionsResponse](../../models/operations/listtransactionsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -210,12 +213,12 @@ Lists native transactions for an address. Filterable by block range.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmTransactions.listNativeTransactions({
+  const result = await avalancheSDK.evmTransactions.listNativeTransactions({
     startBlock: 6479329,
     endBlock: 6479330,
     pageSize: 10,
@@ -223,8 +226,9 @@ async function run() {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -242,7 +246,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListNativeTransactionsResponse](../../models/components/listnativetransactionsresponse.md)\>**
+**Promise\<[operations.ListNativeTransactionsResponse](../../models/operations/listnativetransactionsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -256,12 +260,12 @@ Lists ERC-20 transfers for an address. Filterable by block range.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmTransactions.listErc20Transactions({
+  const result = await avalancheSDK.evmTransactions.listErc20Transactions({
     startBlock: 6479329,
     endBlock: 6479330,
     pageSize: 10,
@@ -269,8 +273,9 @@ async function run() {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -288,7 +293,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListErc20TransactionsResponse](../../models/components/listerc20transactionsresponse.md)\>**
+**Promise\<[operations.ListErc20TransactionsResponse](../../models/operations/listerc20transactionsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -302,12 +307,12 @@ Lists ERC-721 transfers for an address. Filterable by block range.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmTransactions.listErc721Transactions({
+  const result = await avalancheSDK.evmTransactions.listErc721Transactions({
     startBlock: 6479329,
     endBlock: 6479330,
     pageSize: 10,
@@ -315,8 +320,9 @@ async function run() {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -334,7 +340,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListErc721TransactionsResponse](../../models/components/listerc721transactionsresponse.md)\>**
+**Promise\<[operations.ListErc721TransactionsResponse](../../models/operations/listerc721transactionsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -348,12 +354,12 @@ Lists ERC-1155 transfers for an address. Filterable by block range.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmTransactions.listErc1155Transactions({
+  const result = await avalancheSDK.evmTransactions.listErc1155Transactions({
     startBlock: 6479329,
     endBlock: 6479330,
     pageSize: 10,
@@ -361,8 +367,9 @@ async function run() {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -380,7 +387,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListErc1155TransactionsResponse](../../models/components/listerc1155transactionsresponse.md)\>**
+**Promise\<[operations.ListErc1155TransactionsResponse](../../models/operations/listerc1155transactionsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -396,12 +403,12 @@ Note that the internal transactions list only contains `CALL` or `CALLCODE` tran
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmTransactions.listInternalTransactions({
+  const result = await avalancheSDK.evmTransactions.listInternalTransactions({
     startBlock: 6479329,
     endBlock: 6479330,
     pageSize: 10,
@@ -409,8 +416,9 @@ async function run() {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -428,7 +436,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListInternalTransactionsResponse](../../models/components/listinternaltransactionsresponse.md)\>**
+**Promise\<[operations.ListInternalTransactionsResponse](../../models/operations/listinternaltransactionsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -442,12 +450,12 @@ Gets the details of a single transaction.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmTransactions.getTransaction({
+  const result = await avalancheSDK.evmTransactions.getTransaction({
     chainId: "43114",
     txHash: "0x8bf584d7b14b92a32a339872a66b134a70ba3ba7c305823f348db6f860253f45",
   });
@@ -485,12 +493,12 @@ Lists the transactions that occured in a given block.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmTransactions.getTransactionsForBlock({
+  const result = await avalancheSDK.evmTransactions.getTransactionsForBlock({
     chainId: "43114",
     blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });
@@ -528,18 +536,19 @@ Lists the latest transactions. Filterable by status.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmTransactions.listLatestTransactions({
+  const result = await avalancheSDK.evmTransactions.listLatestTransactions({
     pageSize: 10,
     chainId: "43114",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -557,7 +566,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListNativeTransactionsResponse](../../models/components/listnativetransactionsresponse.md)\>**
+**Promise\<[operations.ListLatestTransactionsResponse](../../models/operations/listlatesttransactionsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

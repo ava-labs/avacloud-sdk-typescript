@@ -16,12 +16,12 @@ Lists UTXOs on one of the Primary Network chains for the supplied addresses.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetworkUTXOs.getUtxosByAddresses({
+  const result = await avalancheSDK.primaryNetworkUTXOs.getUtxosByAddresses({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     pageSize: 10,
     blockchainId: "p-chain",
@@ -29,8 +29,9 @@ async function run() {
     sortOrder: "asc",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -48,7 +49,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetUtxosByAddressesResponseBody](../../models/operations/getutxosbyaddressesresponsebody.md)\>**
+**Promise\<[operations.GetUtxosByAddressesResponse](../../models/operations/getutxosbyaddressesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
