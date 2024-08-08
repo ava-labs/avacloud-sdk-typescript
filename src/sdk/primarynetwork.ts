@@ -14,6 +14,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PrimaryNetwork extends ClientSDK {
     /**
@@ -64,8 +65,8 @@ export class PrimaryNetwork extends ClientSDK {
     async listBlockchains(
         request: operations.ListBlockchainsRequest,
         options?: RequestOptions
-    ): Promise<components.ListBlockchainsResponse> {
-        return unwrapAsync(primaryNetworkListBlockchains(this, request, options));
+    ): Promise<PageIterator<operations.ListBlockchainsResponse>> {
+        return unwrapResultIterator(primaryNetworkListBlockchains(this, request, options));
     }
 
     /**
@@ -77,8 +78,8 @@ export class PrimaryNetwork extends ClientSDK {
     async listSubnets(
         request: operations.ListSubnetsRequest,
         options?: RequestOptions
-    ): Promise<components.ListSubnetsResponse> {
-        return unwrapAsync(primaryNetworkListSubnets(this, request, options));
+    ): Promise<PageIterator<operations.ListSubnetsResponse>> {
+        return unwrapResultIterator(primaryNetworkListSubnets(this, request, options));
     }
 
     /**
@@ -90,8 +91,8 @@ export class PrimaryNetwork extends ClientSDK {
     async listValidators(
         request: operations.ListValidatorsRequest,
         options?: RequestOptions
-    ): Promise<components.ListValidatorDetailsResponse> {
-        return unwrapAsync(primaryNetworkListValidators(this, request, options));
+    ): Promise<PageIterator<operations.ListValidatorsResponse>> {
+        return unwrapResultIterator(primaryNetworkListValidators(this, request, options));
     }
 
     /**
@@ -103,8 +104,10 @@ export class PrimaryNetwork extends ClientSDK {
     async getSingleValidatorDetails(
         request: operations.GetSingleValidatorDetailsRequest,
         options?: RequestOptions
-    ): Promise<components.ListValidatorDetailsResponse> {
-        return unwrapAsync(primaryNetworkGetSingleValidatorDetails(this, request, options));
+    ): Promise<PageIterator<operations.GetSingleValidatorDetailsResponse>> {
+        return unwrapResultIterator(
+            primaryNetworkGetSingleValidatorDetails(this, request, options)
+        );
     }
 
     /**
@@ -116,7 +119,7 @@ export class PrimaryNetwork extends ClientSDK {
     async listDelegators(
         request: operations.ListDelegatorsRequest,
         options?: RequestOptions
-    ): Promise<components.ListDelegatorDetailsResponse> {
-        return unwrapAsync(primaryNetworkListDelegators(this, request, options));
+    ): Promise<PageIterator<operations.ListDelegatorsResponse>> {
+        return unwrapResultIterator(primaryNetworkListDelegators(this, request, options));
     }
 }

@@ -19,12 +19,12 @@ Gets the details of a single transaction on one of the Primary Network chains.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetworkTransactions.getTxByHash({
+  const result = await avalancheSDK.primaryNetworkTransactions.getTxByHash({
     blockchainId: "p-chain",
     network: "mainnet",
     txHash: "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP",
@@ -67,12 +67,12 @@ Given that each transaction may return a large number of UTXO objects, bounded o
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetworkTransactions.listLatestPrimaryNetworkTransactions({
+  const result = await avalancheSDK.primaryNetworkTransactions.listLatestPrimaryNetworkTransactions({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     txTypes: [
       "AddValidatorTx",
@@ -85,8 +85,9 @@ async function run() {
     sortOrder: "asc",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -104,7 +105,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListLatestPrimaryNetworkTransactionsResponseBody](../../models/operations/listlatestprimarynetworktransactionsresponsebody.md)\>**
+**Promise\<[operations.ListLatestPrimaryNetworkTransactionsResponse](../../models/operations/listlatestprimarynetworktransactionsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -118,12 +119,12 @@ Lists active staking transactions on the P-Chain for the supplied addresses.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetworkTransactions.listActivePrimaryNetworkStakingTransactions({
+  const result = await avalancheSDK.primaryNetworkTransactions.listActivePrimaryNetworkStakingTransactions({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     txTypes: [
       "AddValidatorTx",
@@ -136,8 +137,9 @@ async function run() {
     sortOrder: "asc",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -155,7 +157,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListPChainTransactionsResponse](../../models/components/listpchaintransactionsresponse.md)\>**
+**Promise\<[operations.ListActivePrimaryNetworkStakingTransactionsResponse](../../models/operations/listactiveprimarynetworkstakingtransactionsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -169,12 +171,12 @@ Lists asset transactions corresponding to the given asset id on the X-Chain.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetworkTransactions.listAssetTransactions({
+  const result = await avalancheSDK.primaryNetworkTransactions.listAssetTransactions({
     txTypes: [
       "AddValidatorTx",
     ],
@@ -186,8 +188,9 @@ async function run() {
     assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -205,7 +208,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListXChainTransactionsResponse](../../models/components/listxchaintransactionsresponse.md)\>**
+**Promise\<[operations.ListAssetTransactionsResponse](../../models/operations/listassettransactionsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

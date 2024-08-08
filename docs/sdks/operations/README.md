@@ -13,12 +13,12 @@ Gets operation details for the given operation id.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.operations.getOperationResult({
+  const result = await avalancheSDK.operations.getOperationResult({
     operationId: "aa22054a-cb7c-4a4e-9b83-59f2ede74138",
   });
 
@@ -57,12 +57,12 @@ The transaction export operation runs asynchronously in the background. The stat
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.operations.postTransactionExportJob({
+  const result = await avalancheSDK.operations.postTransactionExportJob({
       type: "TRANSACTION_EXPORT_PRIMARY_NETWORK_STAKING",
       firstDate: "2023-05-01",
       lastDate: "2023-05-02",

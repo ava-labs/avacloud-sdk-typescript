@@ -6,9 +6,9 @@ import { nfTsGetTokenDetails } from "../funcs/nfTsGetTokenDetails.js";
 import { nfTsListTokens } from "../funcs/nfTsListTokens.js";
 import { nfTsReindexNft } from "../funcs/nfTsReindexNft.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class NFTs extends ClientSDK {
     /**
@@ -33,8 +33,8 @@ export class NFTs extends ClientSDK {
     async listTokens(
         request: operations.ListTokensRequest,
         options?: RequestOptions
-    ): Promise<components.ListNftTokens> {
-        return unwrapAsync(nfTsListTokens(this, request, options));
+    ): Promise<PageIterator<operations.ListTokensResponse>> {
+        return unwrapResultIterator(nfTsListTokens(this, request, options));
     }
 
     /**

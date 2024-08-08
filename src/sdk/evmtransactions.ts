@@ -18,6 +18,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class EVMTransactions extends ClientSDK {
     /**
@@ -42,8 +43,8 @@ export class EVMTransactions extends ClientSDK {
     async listContractDeployments(
         request: operations.ListContractDeploymentsRequest,
         options?: RequestOptions
-    ): Promise<components.ListContractsResponse> {
-        return unwrapAsync(evmTransactionsListContractDeployments(this, request, options));
+    ): Promise<PageIterator<operations.ListContractDeploymentsResponse>> {
+        return unwrapResultIterator(evmTransactionsListContractDeployments(this, request, options));
     }
 
     /**
@@ -55,8 +56,8 @@ export class EVMTransactions extends ClientSDK {
     async listTransfers(
         request: operations.ListTransfersRequest,
         options?: RequestOptions
-    ): Promise<components.ListTransfersResponse> {
-        return unwrapAsync(evmTransactionsListTransfers(this, request, options));
+    ): Promise<PageIterator<operations.ListTransfersResponse>> {
+        return unwrapResultIterator(evmTransactionsListTransfers(this, request, options));
     }
 
     /**
@@ -70,8 +71,8 @@ export class EVMTransactions extends ClientSDK {
     async listTransactions(
         request: operations.ListTransactionsRequest,
         options?: RequestOptions
-    ): Promise<components.ListTransactionDetailsResponse> {
-        return unwrapAsync(evmTransactionsListTransactions(this, request, options));
+    ): Promise<PageIterator<operations.ListTransactionsResponse>> {
+        return unwrapResultIterator(evmTransactionsListTransactions(this, request, options));
     }
 
     /**
@@ -83,8 +84,8 @@ export class EVMTransactions extends ClientSDK {
     async listNativeTransactions(
         request: operations.ListNativeTransactionsRequest,
         options?: RequestOptions
-    ): Promise<components.ListNativeTransactionsResponse> {
-        return unwrapAsync(evmTransactionsListNativeTransactions(this, request, options));
+    ): Promise<PageIterator<operations.ListNativeTransactionsResponse>> {
+        return unwrapResultIterator(evmTransactionsListNativeTransactions(this, request, options));
     }
 
     /**
@@ -96,8 +97,8 @@ export class EVMTransactions extends ClientSDK {
     async listErc20Transactions(
         request: operations.ListErc20TransactionsRequest,
         options?: RequestOptions
-    ): Promise<components.ListErc20TransactionsResponse> {
-        return unwrapAsync(evmTransactionsListErc20Transactions(this, request, options));
+    ): Promise<PageIterator<operations.ListErc20TransactionsResponse>> {
+        return unwrapResultIterator(evmTransactionsListErc20Transactions(this, request, options));
     }
 
     /**
@@ -109,8 +110,8 @@ export class EVMTransactions extends ClientSDK {
     async listErc721Transactions(
         request: operations.ListErc721TransactionsRequest,
         options?: RequestOptions
-    ): Promise<components.ListErc721TransactionsResponse> {
-        return unwrapAsync(evmTransactionsListErc721Transactions(this, request, options));
+    ): Promise<PageIterator<operations.ListErc721TransactionsResponse>> {
+        return unwrapResultIterator(evmTransactionsListErc721Transactions(this, request, options));
     }
 
     /**
@@ -122,8 +123,8 @@ export class EVMTransactions extends ClientSDK {
     async listErc1155Transactions(
         request: operations.ListErc1155TransactionsRequest,
         options?: RequestOptions
-    ): Promise<components.ListErc1155TransactionsResponse> {
-        return unwrapAsync(evmTransactionsListErc1155Transactions(this, request, options));
+    ): Promise<PageIterator<operations.ListErc1155TransactionsResponse>> {
+        return unwrapResultIterator(evmTransactionsListErc1155Transactions(this, request, options));
     }
 
     /**
@@ -137,8 +138,10 @@ export class EVMTransactions extends ClientSDK {
     async listInternalTransactions(
         request: operations.ListInternalTransactionsRequest,
         options?: RequestOptions
-    ): Promise<components.ListInternalTransactionsResponse> {
-        return unwrapAsync(evmTransactionsListInternalTransactions(this, request, options));
+    ): Promise<PageIterator<operations.ListInternalTransactionsResponse>> {
+        return unwrapResultIterator(
+            evmTransactionsListInternalTransactions(this, request, options)
+        );
     }
 
     /**
@@ -176,7 +179,7 @@ export class EVMTransactions extends ClientSDK {
     async listLatestTransactions(
         request: operations.ListLatestTransactionsRequest,
         options?: RequestOptions
-    ): Promise<components.ListNativeTransactionsResponse> {
-        return unwrapAsync(evmTransactionsListLatestTransactions(this, request, options));
+    ): Promise<PageIterator<operations.ListLatestTransactionsResponse>> {
+        return unwrapResultIterator(evmTransactionsListLatestTransactions(this, request, options));
     }
 }

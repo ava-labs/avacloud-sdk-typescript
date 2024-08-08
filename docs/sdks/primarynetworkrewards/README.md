@@ -17,12 +17,12 @@ Lists pending rewards on the Primary Network for the supplied addresses.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetworkRewards.listPendingPrimaryNetworkRewards({
+  const result = await avalancheSDK.primaryNetworkRewards.listPendingPrimaryNetworkRewards({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     pageSize: 10,
     network: "mainnet",
@@ -30,8 +30,9 @@ async function run() {
     sortOrder: "asc",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -49,7 +50,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListPendingRewardsResponse](../../models/components/listpendingrewardsresponse.md)\>**
+**Promise\<[operations.ListPendingPrimaryNetworkRewardsResponse](../../models/operations/listpendingprimarynetworkrewardsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -63,12 +64,12 @@ Lists historical rewards on the Primary Network for the supplied addresses.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetworkRewards.listHistoricalPrimaryNetworkRewards({
+  const result = await avalancheSDK.primaryNetworkRewards.listHistoricalPrimaryNetworkRewards({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     pageSize: 10,
     network: "mainnet",
@@ -77,8 +78,9 @@ async function run() {
     currency: "usd",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -96,7 +98,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListHistoricalRewardsResponse](../../models/components/listhistoricalrewardsresponse.md)\>**
+**Promise\<[operations.ListHistoricalPrimaryNetworkRewardsResponse](../../models/operations/listhistoricalprimarynetworkrewardsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

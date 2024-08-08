@@ -17,12 +17,12 @@ Lists the supported EVM-compatible chains. Filterable by network.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmChains.supportedChains({
+  const result = await avalancheSDK.evmChains.supportedChains({
     network: "mainnet",
     feature: "nftIndexing",
   });
@@ -60,12 +60,12 @@ Gets chain information for the EVM-compatible chain if supported by the api.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmChains.getChainInfo({
+  const result = await avalancheSDK.evmChains.getChainInfo({
     chainId: "43114",
   });
 

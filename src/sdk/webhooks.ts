@@ -16,6 +16,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Webhooks extends ClientSDK {
     /**
@@ -27,8 +28,8 @@ export class Webhooks extends ClientSDK {
     async listWebhooks(
         request: operations.ListWebhooksRequest,
         options?: RequestOptions
-    ): Promise<components.ListWebhooksResponse> {
-        return unwrapAsync(webhooksListWebhooks(this, request, options));
+    ): Promise<PageIterator<operations.ListWebhooksResponse>> {
+        return unwrapResultIterator(webhooksListWebhooks(this, request, options));
     }
 
     /**
@@ -114,8 +115,8 @@ export class Webhooks extends ClientSDK {
     async getAddressesFromWebhook(
         request: operations.GetAddressesFromWebhookRequest,
         options?: RequestOptions
-    ): Promise<components.ListWebhookAddressesResponse> {
-        return unwrapAsync(webhooksGetAddressesFromWebhook(this, request, options));
+    ): Promise<PageIterator<operations.GetAddressesFromWebhookResponse>> {
+        return unwrapResultIterator(webhooksGetAddressesFromWebhook(this, request, options));
     }
 
     /**

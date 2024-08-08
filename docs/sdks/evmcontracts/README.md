@@ -17,12 +17,12 @@ Gets metadata about the contract at the given address.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmContracts.getContractMetadata({
+  const result = await avalancheSDK.evmContracts.getContractMetadata({
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
@@ -60,12 +60,12 @@ Update contract information. Updates will be reviewed by the Ava Labs team befor
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmContracts.updateContractInfo({
+  const result = await avalancheSDK.evmContracts.updateContractInfo({
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     contractSubmissionBody: {

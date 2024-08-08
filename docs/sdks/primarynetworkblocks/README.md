@@ -18,12 +18,12 @@ Gets a block by block height or block hash on one of the Primary Network chains.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetworkBlocks.getBlockById({
+  const result = await avalancheSDK.primaryNetworkBlocks.getBlockById({
     blockchainId: "p-chain",
     network: "mainnet",
     blockId: "5615di9ytxujackzaXNrVuWQy5y8Yrt8chPCscMr5Ku9YxJ1S",
@@ -62,20 +62,21 @@ Lists the latest blocks proposed by a given NodeID on one of the Primary Network
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetworkBlocks.listPrimaryNetworkBlocksByNodeId({
+  const result = await avalancheSDK.primaryNetworkBlocks.listPrimaryNetworkBlocksByNodeId({
     pageSize: 10,
     blockchainId: "p-chain",
     network: "mainnet",
     nodeId: "NodeID-111111111111111111116DBWJs",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -93,7 +94,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListPrimaryNetworkBlocksResponse](../../models/components/listprimarynetworkblocksresponse.md)\>**
+**Promise\<[operations.ListPrimaryNetworkBlocksByNodeIdResponse](../../models/operations/listprimarynetworkblocksbynodeidresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -107,19 +108,20 @@ Lists latest blocks on one of the Primary Network chains.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetworkBlocks.listLatestPrimaryNetworkBlocks({
+  const result = await avalancheSDK.primaryNetworkBlocks.listLatestPrimaryNetworkBlocks({
     pageSize: 10,
     blockchainId: "p-chain",
     network: "mainnet",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -137,7 +139,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListPrimaryNetworkBlocksResponse](../../models/components/listprimarynetworkblocksresponse.md)\>**
+**Promise\<[operations.ListLatestPrimaryNetworkBlocksResponse](../../models/operations/listlatestprimarynetworkblocksresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

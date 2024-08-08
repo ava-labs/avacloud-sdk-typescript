@@ -22,25 +22,25 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 ### NPM
 
 ```bash
-npm add <UNSET>
+npm add @avalabs/avalanche-sdk
 ```
 
 ### PNPM
 
 ```bash
-pnpm add <UNSET>
+pnpm add @avalabs/avalanche-sdk
 ```
 
 ### Bun
 
 ```bash
-bun add <UNSET>
+bun add @avalabs/avalanche-sdk
 ```
 
 ### Yarn
 
 ```bash
-yarn add <UNSET> zod
+yarn add @avalabs/avalanche-sdk zod
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
@@ -59,12 +59,12 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 ### Example
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-    await glacierSDK.mediaControllerUploadImage();
+    await avalancheSDK.mediaControllerUploadImage();
 }
 
 run();
@@ -75,9 +75,9 @@ run();
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [GlacierSDK](docs/sdks/glaciersdk/README.md)
+### [AvalancheSDK](docs/sdks/avalanchesdk/README.md)
 
-* [mediaControllerUploadImage](docs/sdks/glaciersdk/README.md#mediacontrolleruploadimage)
+* [mediaControllerUploadImage](docs/sdks/avalanchesdk/README.md#mediacontrolleruploadimage)
 
 ### [healthCheck](docs/sdks/healthcheck/README.md)
 
@@ -205,12 +205,12 @@ Some of the endpoints in this SDK support retries.  If you use the SDK without a
 
 To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-    await glacierSDK.mediaControllerUploadImage({
+    await avalancheSDK.mediaControllerUploadImage({
         retries: {
             strategy: "backoff",
             backoff: {
@@ -230,9 +230,9 @@ run();
 
 If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK({
+const avalancheSDK = new AvalancheSDK({
     retryConfig: {
         strategy: "backoff",
         backoff: {
@@ -246,7 +246,7 @@ const glacierSDK = new GlacierSDK({
 });
 
 async function run() {
-    await glacierSDK.mediaControllerUploadImage();
+    await avalancheSDK.mediaControllerUploadImage();
 }
 
 run();
@@ -268,15 +268,15 @@ Validation errors can also occur when either method arguments or data returned f
 
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
-import { SDKValidationError } from "@avalabs/glacier-sdk/models/errors";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
+import { SDKValidationError } from "@avalabs/avalanche-sdk/models/errors";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
     let result;
     try {
-        result = await glacierSDK.healthCheck.healthCheck();
+        result = await avalancheSDK.healthCheck.healthCheck();
     } catch (err) {
         switch (true) {
             case err instanceof SDKValidationError: {
@@ -317,14 +317,14 @@ You can override the default server globally by passing a server index to the `s
 | 0 | `http://localhost:3000` | None |
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK({
+const avalancheSDK = new AvalancheSDK({
     serverIdx: 0,
 });
 
 async function run() {
-    await glacierSDK.mediaControllerUploadImage();
+    await avalancheSDK.mediaControllerUploadImage();
 }
 
 run();
@@ -337,14 +337,14 @@ run();
 The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK({
+const avalancheSDK = new AvalancheSDK({
     serverURL: "http://localhost:3000",
 });
 
 async function run() {
-    await glacierSDK.mediaControllerUploadImage();
+    await avalancheSDK.mediaControllerUploadImage();
 }
 
 run();
@@ -370,8 +370,8 @@ custom header and a timeout to requests and how to use the `"requestError"` hook
 to log errors:
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
-import { HTTPClient } from "@avalabs/glacier-sdk/lib/http";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
+import { HTTPClient } from "@avalabs/avalanche-sdk/lib/http";
 
 const httpClient = new HTTPClient({
   // fetcher takes a function that has the same signature as native `fetch`.
@@ -397,9 +397,43 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new GlacierSDK({ httpClient });
+const sdk = new AvalancheSDK({ httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
+
+<!-- Start Pagination [pagination] -->
+## Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you
+make your SDK calls as usual, but the returned response object will also be an
+async iterable that can be consumed using the [`for await...of`][for-await-of]
+syntax.
+
+[for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+
+Here's an example of one such pagination call:
+
+```typescript
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
+
+const avalancheSDK = new AvalancheSDK();
+
+async function run() {
+    const result = await avalancheSDK.nfTs.listTokens({
+        pageSize: 10,
+        chainId: "43114",
+        address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+    });
+
+    for await (const page of result) {
+        // handle page
+    }
+}
+
+run();
+
+```
+<!-- End Pagination [pagination] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

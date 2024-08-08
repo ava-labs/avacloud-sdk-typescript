@@ -16,12 +16,12 @@ Calls JSON-RPC method.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.rpc.rpc({
+  const result = await avalancheSDK.rpc.rpc({
     chainId: "43114",
   requestBody:     [
         {

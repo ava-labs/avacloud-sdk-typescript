@@ -9,6 +9,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PrimaryNetworkBlocks extends ClientSDK {
     /**
@@ -33,8 +34,8 @@ export class PrimaryNetworkBlocks extends ClientSDK {
     async listPrimaryNetworkBlocksByNodeId(
         request: operations.ListPrimaryNetworkBlocksByNodeIdRequest,
         options?: RequestOptions
-    ): Promise<components.ListPrimaryNetworkBlocksResponse> {
-        return unwrapAsync(
+    ): Promise<PageIterator<operations.ListPrimaryNetworkBlocksByNodeIdResponse>> {
+        return unwrapResultIterator(
             primaryNetworkBlocksListPrimaryNetworkBlocksByNodeId(this, request, options)
         );
     }
@@ -48,8 +49,8 @@ export class PrimaryNetworkBlocks extends ClientSDK {
     async listLatestPrimaryNetworkBlocks(
         request: operations.ListLatestPrimaryNetworkBlocksRequest,
         options?: RequestOptions
-    ): Promise<components.ListPrimaryNetworkBlocksResponse> {
-        return unwrapAsync(
+    ): Promise<PageIterator<operations.ListLatestPrimaryNetworkBlocksResponse>> {
+        return unwrapResultIterator(
             primaryNetworkBlocksListLatestPrimaryNetworkBlocks(this, request, options)
         );
     }

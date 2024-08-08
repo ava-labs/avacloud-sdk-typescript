@@ -5,9 +5,9 @@
 import { teleporterGetTeleporterMessage } from "../funcs/teleporterGetTeleporterMessage.js";
 import { teleporterListTeleporterMessages } from "../funcs/teleporterListTeleporterMessages.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Teleporter extends ClientSDK {
     /**
@@ -32,7 +32,7 @@ export class Teleporter extends ClientSDK {
     async listTeleporterMessages(
         request: operations.ListTeleporterMessagesRequest,
         options?: RequestOptions
-    ): Promise<components.ListTeleporterMessagesResponse> {
-        return unwrapAsync(teleporterListTeleporterMessages(this, request, options));
+    ): Promise<PageIterator<operations.ListTeleporterMessagesResponse>> {
+        return unwrapResultIterator(teleporterListTeleporterMessages(this, request, options));
     }
 }

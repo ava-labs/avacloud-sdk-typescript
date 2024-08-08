@@ -24,7 +24,7 @@ import { Rpc } from "./rpc.js";
 import { Teleporter } from "./teleporter.js";
 import { Webhooks } from "./webhooks.js";
 
-export class GlacierSDK extends ClientSDK {
+export class AvalancheSDK extends ClientSDK {
     private _healthCheck?: HealthCheck;
     get healthCheck(): HealthCheck {
         return (this._healthCheck ??= new HealthCheck(this.options$));

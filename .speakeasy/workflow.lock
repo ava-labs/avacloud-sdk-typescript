@@ -1,20 +1,22 @@
-speakeasyVersion: 1.354.1
+speakeasyVersion: 1.358.0
 sources:
     GlacierSDK-OAS:
         sourceNamespace: glacier-sdk-oas
-        sourceRevisionDigest: sha256:adc36617a3aa27f2c71d73490939dcd5ad4162827efdb1c4da5b45f29627d019
-        sourceBlobDigest: sha256:d80b68865541960010e06528b1db43dbcaee8138d7acc41185f339497f2359c3
+        sourceRevisionDigest: sha256:653dd3a958092afcc52228f4d3bfb5551068376599560bc267e13fc92f90b47c
+        sourceBlobDigest: sha256:8ad1861d87a2c7ea86d32e1e6bee87a1a12aafc25fa59c0a4e2963457973d353
         tags:
             - latest
+            - main
 targets:
     glacier-sdk:
         source: GlacierSDK-OAS
         sourceNamespace: glacier-sdk-oas
-        sourceRevisionDigest: sha256:adc36617a3aa27f2c71d73490939dcd5ad4162827efdb1c4da5b45f29627d019
-        sourceBlobDigest: sha256:d80b68865541960010e06528b1db43dbcaee8138d7acc41185f339497f2359c3
-        outLocation: /Users/sayan.kar/avalabs/glacier-sdk-typescript
+        sourceRevisionDigest: sha256:653dd3a958092afcc52228f4d3bfb5551068376599560bc267e13fc92f90b47c
+        sourceBlobDigest: sha256:8ad1861d87a2c7ea86d32e1e6bee87a1a12aafc25fa59c0a4e2963457973d353
+        outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
+    speakeasyVersion: latest
     sources:
         GlacierSDK-OAS:
             inputs:
@@ -25,3 +27,6 @@ workflow:
         glacier-sdk:
             target: typescript
             source: GlacierSDK-OAS
+            publish:
+                npm:
+                    token: $npm_token

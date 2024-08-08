@@ -18,19 +18,20 @@ Lists latest vertices on the X-Chain.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetworkVertices.listLatestXChainVertices({
+  const result = await avalancheSDK.primaryNetworkVertices.listLatestXChainVertices({
     pageSize: 10,
     blockchainId: "x-chain",
     network: "mainnet",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -48,7 +49,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListXChainVerticesResponse](../../models/components/listxchainverticesresponse.md)\>**
+**Promise\<[operations.ListLatestXChainVerticesResponse](../../models/operations/listlatestxchainverticesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -62,12 +63,12 @@ Gets a single vertex on the X-Chain.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetworkVertices.getVertexByHash({
+  const result = await avalancheSDK.primaryNetworkVertices.getVertexByHash({
     vertexHash: "haP1CW56cspZY7aEuqHNrtpvhqCaMTxQaYe6j5u2Mbn4L2Gqr",
     blockchainId: "x-chain",
     network: "mainnet",
@@ -106,12 +107,12 @@ Lists vertices at the given vertex height on the X-Chain.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.primaryNetworkVertices.getVertexByHeight({
+  const result = await avalancheSDK.primaryNetworkVertices.getVertexByHeight({
     vertexHeight: 123,
     pageSize: 10,
     blockchainId: "x-chain",
@@ -119,8 +120,9 @@ async function run() {
     sortOrder: "asc",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -138,7 +140,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListXChainVerticesResponse](../../models/components/listxchainverticesresponse.md)\>**
+**Promise\<[operations.GetVertexByHeightResponse](../../models/operations/getvertexbyheightresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

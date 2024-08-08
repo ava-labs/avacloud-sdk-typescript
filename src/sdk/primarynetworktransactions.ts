@@ -7,9 +7,9 @@ import { primaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions }
 import { primaryNetworkTransactionsListAssetTransactions } from "../funcs/primaryNetworkTransactionsListAssetTransactions.js";
 import { primaryNetworkTransactionsListLatestPrimaryNetworkTransactions } from "../funcs/primaryNetworkTransactionsListLatestPrimaryNetworkTransactions.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PrimaryNetworkTransactions extends ClientSDK {
     /**
@@ -38,8 +38,8 @@ export class PrimaryNetworkTransactions extends ClientSDK {
     async listLatestPrimaryNetworkTransactions(
         request: operations.ListLatestPrimaryNetworkTransactionsRequest,
         options?: RequestOptions
-    ): Promise<operations.ListLatestPrimaryNetworkTransactionsResponseBody> {
-        return unwrapAsync(
+    ): Promise<PageIterator<operations.ListLatestPrimaryNetworkTransactionsResponse>> {
+        return unwrapResultIterator(
             primaryNetworkTransactionsListLatestPrimaryNetworkTransactions(this, request, options)
         );
     }
@@ -53,8 +53,8 @@ export class PrimaryNetworkTransactions extends ClientSDK {
     async listActivePrimaryNetworkStakingTransactions(
         request: operations.ListActivePrimaryNetworkStakingTransactionsRequest,
         options?: RequestOptions
-    ): Promise<components.ListPChainTransactionsResponse> {
-        return unwrapAsync(
+    ): Promise<PageIterator<operations.ListActivePrimaryNetworkStakingTransactionsResponse>> {
+        return unwrapResultIterator(
             primaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions(
                 this,
                 request,
@@ -72,7 +72,9 @@ export class PrimaryNetworkTransactions extends ClientSDK {
     async listAssetTransactions(
         request: operations.ListAssetTransactionsRequest,
         options?: RequestOptions
-    ): Promise<components.ListXChainTransactionsResponse> {
-        return unwrapAsync(primaryNetworkTransactionsListAssetTransactions(this, request, options));
+    ): Promise<PageIterator<operations.ListAssetTransactionsResponse>> {
+        return unwrapResultIterator(
+            primaryNetworkTransactionsListAssetTransactions(this, request, options)
+        );
     }
 }

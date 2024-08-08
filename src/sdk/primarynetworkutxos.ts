@@ -5,7 +5,7 @@
 import { primaryNetworkUTXOsGetUtxosByAddresses } from "../funcs/primaryNetworkUTXOsGetUtxosByAddresses.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
-import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PrimaryNetworkUTXOs extends ClientSDK {
     /**
@@ -17,7 +17,7 @@ export class PrimaryNetworkUTXOs extends ClientSDK {
     async getUtxosByAddresses(
         request: operations.GetUtxosByAddressesRequest,
         options?: RequestOptions
-    ): Promise<operations.GetUtxosByAddressesResponseBody> {
-        return unwrapAsync(primaryNetworkUTXOsGetUtxosByAddresses(this, request, options));
+    ): Promise<PageIterator<operations.GetUtxosByAddressesResponse>> {
+        return unwrapResultIterator(primaryNetworkUTXOsGetUtxosByAddresses(this, request, options));
     }
 }

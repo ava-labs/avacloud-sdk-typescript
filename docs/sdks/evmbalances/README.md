@@ -22,12 +22,12 @@ Balance at a given block can be retrieved with the `blockNumber` parameter.
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmBalances.getNativeBalance({
+  const result = await avalancheSDK.evmBalances.getNativeBalance({
     blockNumber: "6479329",
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
@@ -71,12 +71,12 @@ Balance for specific contracts can be retrieved with the `contractAddresses` par
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmBalances.listErc20Balances({
+  const result = await avalancheSDK.evmBalances.listErc20Balances({
     blockNumber: "6479329",
     pageSize: 10,
     chainId: "43114",
@@ -85,8 +85,9 @@ async function run() {
     currency: "usd",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -104,7 +105,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListErc20BalancesResponse](../../models/components/listerc20balancesresponse.md)\>**
+**Promise\<[operations.ListErc20BalancesResponse](../../models/operations/listerc20balancesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -120,20 +121,21 @@ Balance for a specific contract can be retrieved with the `contractAddress` para
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmBalances.listErc721Balances({
+  const result = await avalancheSDK.evmBalances.listErc721Balances({
     pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -151,7 +153,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListErc721BalancesResponse](../../models/components/listerc721balancesresponse.md)\>**
+**Promise\<[operations.ListErc721BalancesResponse](../../models/operations/listerc721balancesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -169,12 +171,12 @@ Balance for a specific contract can be retrieved with the `contractAddress` para
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmBalances.listErc1155Balances({
+  const result = await avalancheSDK.evmBalances.listErc1155Balances({
     blockNumber: "6479329",
     pageSize: 10,
     chainId: "43114",
@@ -182,8 +184,9 @@ async function run() {
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -201,7 +204,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListErc1155BalancesResponse](../../models/components/listerc1155balancesresponse.md)\>**
+**Promise\<[operations.ListErc1155BalancesResponse](../../models/operations/listerc1155balancesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -217,20 +220,21 @@ Balance for a specific contract can be retrieved with the `contractAddress` para
 ### Example Usage
 
 ```typescript
-import { GlacierSDK } from "@avalabs/glacier-sdk";
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const glacierSDK = new GlacierSDK();
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await glacierSDK.evmBalances.listCollectibleBalances({
+  const result = await avalancheSDK.evmBalances.listCollectibleBalances({
     pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -248,7 +252,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListCollectibleBalancesResponse](../../models/components/listcollectiblebalancesresponse.md)\>**
+**Promise\<[operations.ListCollectibleBalancesResponse](../../models/operations/listcollectiblebalancesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
