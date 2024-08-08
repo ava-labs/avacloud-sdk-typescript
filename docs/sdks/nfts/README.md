@@ -1,5 +1,5 @@
-# NFTs
-(*nfTs*)
+# Nfts
+(*glacier.nfts*)
 
 ### Available Operations
 
@@ -19,7 +19,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  await avalancheSDK.nfTs.reindexNft({
+  await avalancheSDK.glacier.nfts.reindexNft({
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
@@ -62,7 +62,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.nfTs.listTokens({
+  const result = await avalancheSDK.glacier.nfts.listTokens({
     pageSize: 10,
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
@@ -107,7 +107,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.nfTs.getTokenDetails({
+  const result = await avalancheSDK.glacier.nfts.getTokenDetails({
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",

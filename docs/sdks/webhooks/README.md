@@ -1,9 +1,5 @@
 # Webhooks
-(*webhooks*)
-
-## Overview
-
-Manage webhooks and get notified for various onchain activities.
+(*glacier.webhooks*)
 
 ### Available Operations
 
@@ -30,7 +26,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.webhooks.listWebhooks({
+  const result = await avalancheSDK.glacier.webhooks.listWebhooks({
     pageSize: 10,
     status: "active",
   });
@@ -74,7 +70,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.webhooks.createWebhook({
+  const result = await avalancheSDK.glacier.webhooks.createWebhook({
     url: "https://unrealistic-well-being.name",
     chainId: "<value>",
     eventType: "address_activity",
@@ -126,7 +122,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.webhooks.getWebhook({
+  const result = await avalancheSDK.glacier.webhooks.getWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 
@@ -168,7 +164,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.webhooks.deactivateWebhook({
+  const result = await avalancheSDK.glacier.webhooks.deactivateWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 
@@ -210,7 +206,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.webhooks.updateWebhook({
+  const result = await avalancheSDK.glacier.webhooks.updateWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     updateWebhookRequest: {},
   });
@@ -253,7 +249,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.webhooks.generateSharedSecret();
+  const result = await avalancheSDK.glacier.webhooks.generateSharedSecret();
 
   // Handle the result
   console.log(result)
@@ -292,7 +288,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.webhooks.getSharedSecret();
+  const result = await avalancheSDK.glacier.webhooks.getSharedSecret();
 
   // Handle the result
   console.log(result)
@@ -331,7 +327,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.webhooks.getAddressesFromWebhook({
+  const result = await avalancheSDK.glacier.webhooks.getAddressesFromWebhook({
     pageSize: 10,
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
@@ -375,7 +371,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.webhooks.removeAddressesFromWebhook({
+  const result = await avalancheSDK.glacier.webhooks.removeAddressesFromWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     addressesChangeRequest: {
       addresses: [
@@ -422,7 +418,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.webhooks.addAddressesToWebhook({
+  const result = await avalancheSDK.glacier.webhooks.addAddressesToWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     addressesChangeRequest: {
       addresses: [
