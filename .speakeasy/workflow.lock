@@ -1,5 +1,11 @@
 speakeasyVersion: 1.358.0
 sources:
+    AvalancheSDK-OAS:
+        sourceNamespace: avalanche-sdk-oas
+        sourceRevisionDigest: sha256:a4a2dbf1155f49a15f0a6964ead0a533d5c51087813f59c4b245d53c608d14b4
+        sourceBlobDigest: sha256:dbdbdae25b943a36d0e6224f564a6a5e2ab04862d04ee8767b1f93c94a551907
+        tags:
+            - latest
     GlacierSDK-OAS:
         sourceNamespace: glacier-sdk-oas
         sourceRevisionDigest: sha256:846a707faeaf9a90b0a00eb7725ea33f5d69cd7a6df7c961f9ee43f16f810f47
@@ -8,6 +14,12 @@ sources:
             - latest
             - main
 targets:
+    avalanche-sdk:
+        source: AvalancheSDK-OAS
+        sourceNamespace: avalanche-sdk-oas
+        sourceRevisionDigest: sha256:a4a2dbf1155f49a15f0a6964ead0a533d5c51087813f59c4b245d53c608d14b4
+        sourceBlobDigest: sha256:dbdbdae25b943a36d0e6224f564a6a5e2ab04862d04ee8767b1f93c94a551907
+        outLocation: /Users/sayan.kar/avalabs/avalanche-sdk-typescript
     glacier-sdk:
         source: GlacierSDK-OAS
         sourceNamespace: glacier-sdk-oas
@@ -18,15 +30,15 @@ workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
-        GlacierSDK-OAS:
+        AvalancheSDK-OAS:
             inputs:
                 - location: https://ad39-2405-201-3027-2887-d9b-fc28-c7ec-5133.ngrok-free.app/api-json
             registry:
-                location: registry.speakeasyapi.dev/avalabs/avalabs/glacier-sdk-oas
+                location: registry.speakeasyapi.dev/avalabs/avalabs/avalanche-sdk-oas
     targets:
-        glacier-sdk:
+        avalanche-sdk:
             target: typescript
-            source: GlacierSDK-OAS
+            source: AvalancheSDK-OAS
             publish:
                 npm:
                     token: $npm_token
