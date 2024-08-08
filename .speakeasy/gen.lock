@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: aa62edb7-4270-4c7b-a00f-96026070d05e
 management:
-  docChecksum: 2b509473d252fd855d3b2a0f334b95fa
+  docChecksum: 74e226279e52c4f6e0b8483a3e4f1765
   docVersion: Beta
   speakeasyVersion: 1.358.0
   generationVersion: 2.390.6
-  releaseVersion: 0.2.0
-  configChecksum: 28a2f4d644a02067e367ac56dcb428dd
+  releaseVersion: 0.3.0
+  configChecksum: aa3cf6704ab5abdfc7d182cc8477ea10
   repoURL: https://github.com/ava-labs/avalanche-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avalanche-sdk-typescript
   published: true
@@ -22,6 +22,7 @@ features:
     envVarSecurityUsage: 0.1.1
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.4
+    groups: 2.81.2
     ignores: 2.81.1
     nullables: 0.1.0
     pagination: 2.82.6
@@ -30,85 +31,87 @@ features:
     sdkHooks: 0.1.0
     unions: 2.85.6
 generatedFiles:
-  - src/funcs/healthCheckHealthCheck.ts
-  - src/funcs/nfTsReindexNft.ts
-  - src/funcs/nfTsListTokens.ts
-  - src/funcs/nfTsGetTokenDetails.ts
-  - src/funcs/operationsGetOperationResult.ts
-  - src/funcs/operationsPostTransactionExportJob.ts
-  - src/funcs/primaryNetworkTransactionsGetTxByHash.ts
-  - src/funcs/primaryNetworkTransactionsListLatestPrimaryNetworkTransactions.ts
-  - src/funcs/primaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions.ts
-  - src/funcs/primaryNetworkTransactionsListAssetTransactions.ts
-  - src/funcs/primaryNetworkRewardsListPendingPrimaryNetworkRewards.ts
-  - src/funcs/primaryNetworkRewardsListHistoricalPrimaryNetworkRewards.ts
-  - src/funcs/primaryNetworkUTXOsGetUtxosByAddresses.ts
-  - src/funcs/primaryNetworkBalancesGetBalancesByAddresses.ts
-  - src/funcs/primaryNetworkBlocksGetBlockById.ts
-  - src/funcs/primaryNetworkBlocksListPrimaryNetworkBlocksByNodeId.ts
-  - src/funcs/primaryNetworkBlocksListLatestPrimaryNetworkBlocks.ts
-  - src/funcs/primaryNetworkVerticesListLatestXChainVertices.ts
-  - src/funcs/primaryNetworkVerticesGetVertexByHash.ts
-  - src/funcs/primaryNetworkVerticesGetVertexByHeight.ts
-  - src/funcs/primaryNetworkGetAssetDetails.ts
-  - src/funcs/primaryNetworkGetChainIdsForAddresses.ts
-  - src/funcs/primaryNetworkGetNetworkDetails.ts
-  - src/funcs/primaryNetworkListBlockchains.ts
-  - src/funcs/primaryNetworkListSubnets.ts
-  - src/funcs/primaryNetworkListValidators.ts
-  - src/funcs/primaryNetworkGetSingleValidatorDetails.ts
-  - src/funcs/primaryNetworkListDelegators.ts
-  - src/funcs/webhooksListWebhooks.ts
-  - src/funcs/webhooksCreateWebhook.ts
-  - src/funcs/webhooksGetWebhook.ts
-  - src/funcs/webhooksDeactivateWebhook.ts
-  - src/funcs/webhooksUpdateWebhook.ts
-  - src/funcs/webhooksGenerateSharedSecret.ts
-  - src/funcs/webhooksGetSharedSecret.ts
-  - src/funcs/webhooksGetAddressesFromWebhook.ts
-  - src/funcs/webhooksRemoveAddressesFromWebhook.ts
-  - src/funcs/webhooksAddAddressesToWebhook.ts
-  - src/funcs/teleporterGetTeleporterMessage.ts
-  - src/funcs/teleporterListTeleporterMessages.ts
-  - src/funcs/evmBalancesGetNativeBalance.ts
-  - src/funcs/evmBalancesListErc20Balances.ts
-  - src/funcs/evmBalancesListErc721Balances.ts
-  - src/funcs/evmBalancesListErc1155Balances.ts
-  - src/funcs/evmBalancesListCollectibleBalances.ts
-  - src/funcs/evmBlocksGetLatestBlocks.ts
-  - src/funcs/evmBlocksGetBlock.ts
-  - src/funcs/evmTransactionsGetDeploymentTransaction.ts
-  - src/funcs/evmTransactionsListContractDeployments.ts
-  - src/funcs/evmTransactionsListTransfers.ts
-  - src/funcs/evmTransactionsListTransactions.ts
-  - src/funcs/evmTransactionsListNativeTransactions.ts
-  - src/funcs/evmTransactionsListErc20Transactions.ts
-  - src/funcs/evmTransactionsListErc721Transactions.ts
-  - src/funcs/evmTransactionsListErc1155Transactions.ts
-  - src/funcs/evmTransactionsListInternalTransactions.ts
-  - src/funcs/evmTransactionsGetTransaction.ts
-  - src/funcs/evmTransactionsGetTransactionsForBlock.ts
-  - src/funcs/evmTransactionsListLatestTransactions.ts
-  - src/funcs/evmContractsGetContractMetadata.ts
-  - src/funcs/evmChainsSupportedChains.ts
-  - src/funcs/evmChainsGetChainInfo.ts
+  - src/funcs/glacierHealthCheckHealthCheck.ts
+  - src/funcs/glacierNftsReindexNft.ts
+  - src/funcs/glacierNftsListTokens.ts
+  - src/funcs/glacierNftsGetTokenDetails.ts
+  - src/funcs/glacierOperationsGetOperationResult.ts
+  - src/funcs/glacierOperationsPostTransactionExportJob.ts
+  - src/funcs/glacierPrimaryNetworkGetAssetDetails.ts
+  - src/funcs/glacierPrimaryNetworkGetChainIdsForAddresses.ts
+  - src/funcs/glacierPrimaryNetworkGetNetworkDetails.ts
+  - src/funcs/glacierPrimaryNetworkListBlockchains.ts
+  - src/funcs/glacierPrimaryNetworkListSubnets.ts
+  - src/funcs/glacierPrimaryNetworkListValidators.ts
+  - src/funcs/glacierPrimaryNetworkGetSingleValidatorDetails.ts
+  - src/funcs/glacierPrimaryNetworkListDelegators.ts
+  - src/funcs/glacierWebhooksListWebhooks.ts
+  - src/funcs/glacierWebhooksCreateWebhook.ts
+  - src/funcs/glacierWebhooksGetWebhook.ts
+  - src/funcs/glacierWebhooksDeactivateWebhook.ts
+  - src/funcs/glacierWebhooksUpdateWebhook.ts
+  - src/funcs/glacierWebhooksGenerateSharedSecret.ts
+  - src/funcs/glacierWebhooksGetSharedSecret.ts
+  - src/funcs/glacierWebhooksGetAddressesFromWebhook.ts
+  - src/funcs/glacierWebhooksRemoveAddressesFromWebhook.ts
+  - src/funcs/glacierWebhooksAddAddressesToWebhook.ts
+  - src/funcs/glacierTeleporterGetTeleporterMessage.ts
+  - src/funcs/glacierTeleporterListTeleporterMessages.ts
+  - src/funcs/glacierPrimaryNetworkTransactionsGetTxByHash.ts
+  - src/funcs/glacierPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions.ts
+  - src/funcs/glacierPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions.ts
+  - src/funcs/glacierPrimaryNetworkTransactionsListAssetTransactions.ts
+  - src/funcs/glacierPrimaryNetworkRewardsListPendingPrimaryNetworkRewards.ts
+  - src/funcs/glacierPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards.ts
+  - src/funcs/glacierPrimaryNetworkUtxosGetUtxosByAddresses.ts
+  - src/funcs/glacierPrimaryNetworkBalancesGetBalancesByAddresses.ts
+  - src/funcs/glacierPrimaryNetworkBlocksGetBlockById.ts
+  - src/funcs/glacierPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId.ts
+  - src/funcs/glacierPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks.ts
+  - src/funcs/glacierPrimaryNetworkVerticesListLatestXChainVertices.ts
+  - src/funcs/glacierPrimaryNetworkVerticesGetVertexByHash.ts
+  - src/funcs/glacierPrimaryNetworkVerticesGetVertexByHeight.ts
+  - src/funcs/glacierEvmBalancesGetNativeBalance.ts
+  - src/funcs/glacierEvmBalancesListErc20Balances.ts
+  - src/funcs/glacierEvmBalancesListErc721Balances.ts
+  - src/funcs/glacierEvmBalancesListErc1155Balances.ts
+  - src/funcs/glacierEvmBalancesListCollectibleBalances.ts
+  - src/funcs/glacierEvmBlocksGetLatestBlocks.ts
+  - src/funcs/glacierEvmBlocksGetBlock.ts
+  - src/funcs/glacierEvmTransactionsGetDeploymentTransaction.ts
+  - src/funcs/glacierEvmTransactionsListContractDeployments.ts
+  - src/funcs/glacierEvmTransactionsListTransfers.ts
+  - src/funcs/glacierEvmTransactionsListTransactions.ts
+  - src/funcs/glacierEvmTransactionsListNativeTransactions.ts
+  - src/funcs/glacierEvmTransactionsListErc20Transactions.ts
+  - src/funcs/glacierEvmTransactionsListErc721Transactions.ts
+  - src/funcs/glacierEvmTransactionsListErc1155Transactions.ts
+  - src/funcs/glacierEvmTransactionsListInternalTransactions.ts
+  - src/funcs/glacierEvmTransactionsGetTransaction.ts
+  - src/funcs/glacierEvmTransactionsGetTransactionsForBlock.ts
+  - src/funcs/glacierEvmTransactionsListLatestTransactions.ts
+  - src/funcs/glacierEvmContractsGetContractMetadata.ts
+  - src/funcs/glacierEvmChainsSupportedChains.ts
+  - src/funcs/glacierEvmChainsGetChainInfo.ts
   - src/sdk/healthcheck.ts
   - src/sdk/nfts.ts
   - src/sdk/operations.ts
-  - src/sdk/primarynetworktransactions.ts
-  - src/sdk/primarynetworkrewards.ts
-  - src/sdk/primarynetworkutxos.ts
-  - src/sdk/primarynetworkbalances.ts
-  - src/sdk/primarynetworkblocks.ts
-  - src/sdk/primarynetworkvertices.ts
+  - src/sdk/transactions.ts
+  - src/sdk/rewards.ts
+  - src/sdk/utxos.ts
+  - src/sdk/balances.ts
+  - src/sdk/blocks.ts
+  - src/sdk/vertices.ts
   - src/sdk/primarynetwork.ts
   - src/sdk/webhooks.ts
   - src/sdk/teleporter.ts
-  - src/sdk/evmbalances.ts
-  - src/sdk/evmblocks.ts
-  - src/sdk/evmtransactions.ts
-  - src/sdk/evmcontracts.ts
-  - src/sdk/evmchains.ts
+  - src/sdk/avalanchesdkbalances.ts
+  - src/sdk/avalanchesdkblocks.ts
+  - src/sdk/avalanchesdktransactions.ts
+  - src/sdk/contracts.ts
+  - src/sdk/chains.ts
+  - src/sdk/evm.ts
+  - src/sdk/glacier.ts
   - src/sdk/sdk.ts
   - .eslintrc.cjs
   - .npmignore
@@ -147,6 +150,14 @@ generatedFiles:
   - src/models/operations/gettokendetails.ts
   - src/models/operations/getoperationresult.ts
   - src/models/operations/posttransactionexportjob.ts
+  - src/models/operations/getassetdetails.ts
+  - src/models/operations/getchainidsforaddresses.ts
+  - src/models/operations/getnetworkdetails.ts
+  - src/models/operations/listblockchains.ts
+  - src/models/operations/listsubnets.ts
+  - src/models/operations/listvalidators.ts
+  - src/models/operations/getsinglevalidatordetails.ts
+  - src/models/operations/listdelegators.ts
   - src/models/operations/gettxbyhash.ts
   - src/models/operations/listlatestprimarynetworktransactions.ts
   - src/models/operations/listactiveprimarynetworkstakingtransactions.ts
@@ -161,14 +172,6 @@ generatedFiles:
   - src/models/operations/listlatestxchainvertices.ts
   - src/models/operations/getvertexbyhash.ts
   - src/models/operations/getvertexbyheight.ts
-  - src/models/operations/getassetdetails.ts
-  - src/models/operations/getchainidsforaddresses.ts
-  - src/models/operations/getnetworkdetails.ts
-  - src/models/operations/listblockchains.ts
-  - src/models/operations/listsubnets.ts
-  - src/models/operations/listvalidators.ts
-  - src/models/operations/getsinglevalidatordetails.ts
-  - src/models/operations/listdelegators.ts
   - src/models/operations/listwebhooks.ts
   - src/models/operations/getwebhook.ts
   - src/models/operations/deactivatewebhook.ts
@@ -218,19 +221,48 @@ generatedFiles:
   - src/models/components/createprimarynetworktransactionexportrequest.ts
   - src/models/components/primarynetworkoptions.ts
   - src/models/components/primarynetworkoperationtype.ts
-  - src/models/components/pchaintransaction.ts
-  - src/models/components/blscredentials.ts
-  - src/models/components/subnetownershipinfo.ts
-  - src/models/components/assetamount.ts
+  - src/models/components/xchainassetdetails.ts
+  - src/models/components/primarynetworkassetcap.ts
   - src/models/components/primarynetworkassettype.ts
+  - src/models/components/network.ts
+  - src/models/components/xchainid.ts
+  - src/models/components/chainaddresschainidmaplistresponse.ts
+  - src/models/components/chainaddresschainidmap.ts
+  - src/models/components/blockchainids.ts
+  - src/models/components/getnetworkdetailsresponse.ts
+  - src/models/components/delegatorsdetails.ts
+  - src/models/components/validatorsdetails.ts
+  - src/models/components/stakingdistribution.ts
+  - src/models/components/listblockchainsresponse.ts
+  - src/models/components/blockchain.ts
+  - src/models/components/sortorder.ts
+  - src/models/components/listsubnetsresponse.ts
+  - src/models/components/subnet.ts
+  - src/models/components/blockchaininfo.ts
+  - src/models/components/subnetownershipinfo.ts
+  - src/models/components/listvalidatordetailsresponse.ts
+  - src/models/components/completedvalidatordetails.ts
+  - src/models/components/rewards.ts
+  - src/models/components/blscredentials.ts
+  - src/models/components/activevalidatordetails.ts
+  - src/models/components/validatorhealthdetails.ts
+  - src/models/components/pendingvalidatordetails.ts
+  - src/models/components/removedvalidatordetails.ts
+  - src/models/components/validationstatustype.ts
+  - src/models/components/sortbyoption.ts
+  - src/models/components/listdelegatordetailsresponse.ts
+  - src/models/components/completeddelegatordetails.ts
+  - src/models/components/activedelegatordetails.ts
+  - src/models/components/pendingdelegatordetails.ts
+  - src/models/components/delegationstatustype.ts
+  - src/models/components/pchaintransaction.ts
+  - src/models/components/assetamount.ts
   - src/models/components/pchainutxo.ts
   - src/models/components/utxotype.ts
   - src/models/components/rewardtype.ts
   - src/models/components/pchaintransactiontype.ts
   - src/models/components/xchainnonlineartransaction.ts
   - src/models/components/transactionvertexdetail.ts
-  - src/models/components/xchainassetdetails.ts
-  - src/models/components/primarynetworkassetcap.ts
   - src/models/components/utxo.ts
   - src/models/components/utxocredential.ts
   - src/models/components/xchaintransactiontype.ts
@@ -239,7 +271,6 @@ generatedFiles:
   - src/models/components/evminput.ts
   - src/models/components/cchainimporttransaction.ts
   - src/models/components/evmoutput.ts
-  - src/models/components/network.ts
   - src/models/components/blockchainid.ts
   - src/models/components/listpchaintransactionsresponse.ts
   - src/models/components/primarynetworkchaininfo.ts
@@ -247,10 +278,8 @@ generatedFiles:
   - src/models/components/primarynetworkchainname.ts
   - src/models/components/listxchaintransactionsresponse.ts
   - src/models/components/listcchainatomictransactionsresponse.ts
-  - src/models/components/sortorder.ts
   - src/models/components/primarynetworktxtype.ts
   - src/models/components/pchainid.ts
-  - src/models/components/xchainid.ts
   - src/models/components/listpendingrewardsresponse.ts
   - src/models/components/pendingreward.ts
   - src/models/components/listhistoricalrewardsresponse.ts
@@ -276,32 +305,6 @@ generatedFiles:
   - src/models/components/primarynetworkblock.ts
   - src/models/components/listxchainverticesresponse.ts
   - src/models/components/xchainvertex.ts
-  - src/models/components/chainaddresschainidmaplistresponse.ts
-  - src/models/components/chainaddresschainidmap.ts
-  - src/models/components/blockchainids.ts
-  - src/models/components/getnetworkdetailsresponse.ts
-  - src/models/components/delegatorsdetails.ts
-  - src/models/components/validatorsdetails.ts
-  - src/models/components/stakingdistribution.ts
-  - src/models/components/listblockchainsresponse.ts
-  - src/models/components/blockchain.ts
-  - src/models/components/listsubnetsresponse.ts
-  - src/models/components/subnet.ts
-  - src/models/components/blockchaininfo.ts
-  - src/models/components/listvalidatordetailsresponse.ts
-  - src/models/components/completedvalidatordetails.ts
-  - src/models/components/rewards.ts
-  - src/models/components/activevalidatordetails.ts
-  - src/models/components/validatorhealthdetails.ts
-  - src/models/components/pendingvalidatordetails.ts
-  - src/models/components/removedvalidatordetails.ts
-  - src/models/components/validationstatustype.ts
-  - src/models/components/sortbyoption.ts
-  - src/models/components/listdelegatordetailsresponse.ts
-  - src/models/components/completeddelegatordetails.ts
-  - src/models/components/activedelegatordetails.ts
-  - src/models/components/pendingdelegatordetails.ts
-  - src/models/components/delegationstatustype.ts
   - src/models/components/listwebhooksresponse.ts
   - src/models/components/webhookresponse.ts
   - src/models/components/webhookstatustype.ts
@@ -392,6 +395,19 @@ generatedFiles:
   - docs/models/operations/gettokendetailsresponsebody.md
   - docs/models/operations/getoperationresultrequest.md
   - docs/models/operations/posttransactionexportjobrequestbody.md
+  - docs/models/operations/getassetdetailsrequest.md
+  - docs/models/operations/getchainidsforaddressesrequest.md
+  - docs/models/operations/getnetworkdetailsrequest.md
+  - docs/models/operations/listblockchainsrequest.md
+  - docs/models/operations/listblockchainsresponse.md
+  - docs/models/operations/listsubnetsrequest.md
+  - docs/models/operations/listsubnetsresponse.md
+  - docs/models/operations/listvalidatorsrequest.md
+  - docs/models/operations/listvalidatorsresponse.md
+  - docs/models/operations/getsinglevalidatordetailsrequest.md
+  - docs/models/operations/getsinglevalidatordetailsresponse.md
+  - docs/models/operations/listdelegatorsrequest.md
+  - docs/models/operations/listdelegatorsresponse.md
   - docs/models/operations/gettxbyhashrequest.md
   - docs/models/operations/gettxbyhashresponsebody.md
   - docs/models/operations/listlatestprimarynetworktransactionsrequest.md
@@ -420,19 +436,6 @@ generatedFiles:
   - docs/models/operations/getvertexbyhashrequest.md
   - docs/models/operations/getvertexbyheightrequest.md
   - docs/models/operations/getvertexbyheightresponse.md
-  - docs/models/operations/getassetdetailsrequest.md
-  - docs/models/operations/getchainidsforaddressesrequest.md
-  - docs/models/operations/getnetworkdetailsrequest.md
-  - docs/models/operations/listblockchainsrequest.md
-  - docs/models/operations/listblockchainsresponse.md
-  - docs/models/operations/listsubnetsrequest.md
-  - docs/models/operations/listsubnetsresponse.md
-  - docs/models/operations/listvalidatorsrequest.md
-  - docs/models/operations/listvalidatorsresponse.md
-  - docs/models/operations/getsinglevalidatordetailsrequest.md
-  - docs/models/operations/getsinglevalidatordetailsresponse.md
-  - docs/models/operations/listdelegatorsrequest.md
-  - docs/models/operations/listdelegatorsresponse.md
   - docs/models/operations/listwebhooksrequest.md
   - docs/models/operations/listwebhooksresponse.md
   - docs/models/operations/getwebhookrequest.md
@@ -509,11 +512,51 @@ generatedFiles:
   - docs/models/components/includechains.md
   - docs/models/components/primarynetworkoptions.md
   - docs/models/components/primarynetworkoperationtype.md
-  - docs/models/components/pchaintransaction.md
-  - docs/models/components/blscredentials.md
-  - docs/models/components/subnetownershipinfo.md
-  - docs/models/components/assetamount.md
+  - docs/models/components/xchainassetdetails.md
+  - docs/models/components/primarynetworkassetcap.md
   - docs/models/components/primarynetworkassettype.md
+  - docs/models/components/network.md
+  - docs/models/components/xchainid.md
+  - docs/models/components/chainaddresschainidmaplistresponse.md
+  - docs/models/components/chainaddresschainidmap.md
+  - docs/models/components/blockchainids.md
+  - docs/models/components/getnetworkdetailsresponse.md
+  - docs/models/components/delegatorsdetails.md
+  - docs/models/components/validatorsdetails.md
+  - docs/models/components/stakingdistribution.md
+  - docs/models/components/listblockchainsresponse.md
+  - docs/models/components/blockchain.md
+  - docs/models/components/sortorder.md
+  - docs/models/components/listsubnetsresponse.md
+  - docs/models/components/subnet.md
+  - docs/models/components/blockchaininfo.md
+  - docs/models/components/subnetownershipinfo.md
+  - docs/models/components/validators.md
+  - docs/models/components/listvalidatordetailsresponse.md
+  - docs/models/components/validationstatus.md
+  - docs/models/components/completedvalidatordetails.md
+  - docs/models/components/rewards.md
+  - docs/models/components/blscredentials.md
+  - docs/models/components/activevalidatordetailsvalidationstatus.md
+  - docs/models/components/activevalidatordetails.md
+  - docs/models/components/validatorhealthdetails.md
+  - docs/models/components/pendingvalidatordetailsvalidationstatus.md
+  - docs/models/components/pendingvalidatordetails.md
+  - docs/models/components/removedvalidatordetailsvalidationstatus.md
+  - docs/models/components/removedvalidatordetails.md
+  - docs/models/components/validationstatustype.md
+  - docs/models/components/sortbyoption.md
+  - docs/models/components/delegators.md
+  - docs/models/components/listdelegatordetailsresponse.md
+  - docs/models/components/delegationstatus.md
+  - docs/models/components/completeddelegatordetails.md
+  - docs/models/components/activedelegatordetailsdelegationstatus.md
+  - docs/models/components/activedelegatordetails.md
+  - docs/models/components/pendingdelegatordetailsdelegationstatus.md
+  - docs/models/components/pendingdelegatordetails.md
+  - docs/models/components/delegationstatustype.md
+  - docs/models/components/pchaintransaction.md
+  - docs/models/components/assetamount.md
   - docs/models/components/pchainutxo.md
   - docs/models/components/utxotype.md
   - docs/models/components/rewardtype.md
@@ -521,8 +564,6 @@ generatedFiles:
   - docs/models/components/chainformat.md
   - docs/models/components/xchainnonlineartransaction.md
   - docs/models/components/transactionvertexdetail.md
-  - docs/models/components/xchainassetdetails.md
-  - docs/models/components/primarynetworkassetcap.md
   - docs/models/components/utxo.md
   - docs/models/components/utxocredential.md
   - docs/models/components/xchaintransactiontype.md
@@ -534,7 +575,6 @@ generatedFiles:
   - docs/models/components/cchainimporttransactiontxtype.md
   - docs/models/components/cchainimporttransaction.md
   - docs/models/components/evmoutput.md
-  - docs/models/components/network.md
   - docs/models/components/blockchainid.md
   - docs/models/components/listpchaintransactionsresponse.md
   - docs/models/components/primarynetworkchaininfo.md
@@ -544,10 +584,8 @@ generatedFiles:
   - docs/models/components/listxchaintransactionsresponse.md
   - docs/models/components/listcchainatomictransactionsresponsetransactions.md
   - docs/models/components/listcchainatomictransactionsresponse.md
-  - docs/models/components/sortorder.md
   - docs/models/components/primarynetworktxtype.md
   - docs/models/components/pchainid.md
-  - docs/models/components/xchainid.md
   - docs/models/components/listpendingrewardsresponse.md
   - docs/models/components/pendingreward.md
   - docs/models/components/listhistoricalrewardsresponse.md
@@ -573,41 +611,6 @@ generatedFiles:
   - docs/models/components/primarynetworkblock.md
   - docs/models/components/listxchainverticesresponse.md
   - docs/models/components/xchainvertex.md
-  - docs/models/components/chainaddresschainidmaplistresponse.md
-  - docs/models/components/chainaddresschainidmap.md
-  - docs/models/components/blockchainids.md
-  - docs/models/components/getnetworkdetailsresponse.md
-  - docs/models/components/delegatorsdetails.md
-  - docs/models/components/validatorsdetails.md
-  - docs/models/components/stakingdistribution.md
-  - docs/models/components/listblockchainsresponse.md
-  - docs/models/components/blockchain.md
-  - docs/models/components/listsubnetsresponse.md
-  - docs/models/components/subnet.md
-  - docs/models/components/blockchaininfo.md
-  - docs/models/components/validators.md
-  - docs/models/components/listvalidatordetailsresponse.md
-  - docs/models/components/validationstatus.md
-  - docs/models/components/completedvalidatordetails.md
-  - docs/models/components/rewards.md
-  - docs/models/components/activevalidatordetailsvalidationstatus.md
-  - docs/models/components/activevalidatordetails.md
-  - docs/models/components/validatorhealthdetails.md
-  - docs/models/components/pendingvalidatordetailsvalidationstatus.md
-  - docs/models/components/pendingvalidatordetails.md
-  - docs/models/components/removedvalidatordetailsvalidationstatus.md
-  - docs/models/components/removedvalidatordetails.md
-  - docs/models/components/validationstatustype.md
-  - docs/models/components/sortbyoption.md
-  - docs/models/components/delegators.md
-  - docs/models/components/listdelegatordetailsresponse.md
-  - docs/models/components/delegationstatus.md
-  - docs/models/components/completeddelegatordetails.md
-  - docs/models/components/activedelegatordetailsdelegationstatus.md
-  - docs/models/components/activedelegatordetails.md
-  - docs/models/components/pendingdelegatordetailsdelegationstatus.md
-  - docs/models/components/pendingdelegatordetails.md
-  - docs/models/components/delegationstatustype.md
   - docs/models/components/listwebhooksresponse.md
   - docs/models/components/webhookresponsemetadata.md
   - docs/models/components/webhookresponse.md
@@ -705,24 +708,26 @@ generatedFiles:
   - docs/models/components/getchainresponseenabledfeatures.md
   - docs/models/components/getchainresponse.md
   - docs/sdks/avalanchesdk/README.md
+  - docs/sdks/glacier/README.md
   - docs/lib/utils/retryconfig.md
   - docs/sdks/healthcheck/README.md
   - docs/sdks/nfts/README.md
   - docs/sdks/operations/README.md
-  - docs/sdks/primarynetworktransactions/README.md
-  - docs/sdks/primarynetworkrewards/README.md
-  - docs/sdks/primarynetworkutxos/README.md
-  - docs/sdks/primarynetworkbalances/README.md
-  - docs/sdks/primarynetworkblocks/README.md
-  - docs/sdks/primarynetworkvertices/README.md
   - docs/sdks/primarynetwork/README.md
+  - docs/sdks/transactions/README.md
+  - docs/sdks/rewards/README.md
+  - docs/sdks/utxos/README.md
+  - docs/sdks/balances/README.md
+  - docs/sdks/blocks/README.md
+  - docs/sdks/vertices/README.md
   - docs/sdks/webhooks/README.md
   - docs/sdks/teleporter/README.md
-  - docs/sdks/evmbalances/README.md
-  - docs/sdks/evmblocks/README.md
-  - docs/sdks/evmtransactions/README.md
-  - docs/sdks/evmcontracts/README.md
-  - docs/sdks/evmchains/README.md
+  - docs/sdks/evm/README.md
+  - docs/sdks/avalanchesdkbalances/README.md
+  - docs/sdks/avalanchesdkblocks/README.md
+  - docs/sdks/avalanchesdktransactions/README.md
+  - docs/sdks/contracts/README.md
+  - docs/sdks/chains/README.md
   - USAGE.md
   - .gitattributes
   - .devcontainer/README.md

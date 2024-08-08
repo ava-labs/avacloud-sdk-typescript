@@ -1,5 +1,5 @@
 # PrimaryNetwork
-(*primaryNetwork*)
+(*glacier.primaryNetwork*)
 
 ### Available Operations
 
@@ -24,7 +24,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.primaryNetwork.getAssetDetails({
+  const result = await avalancheSDK.glacier.primaryNetwork.getAssetDetails({
     blockchainId: "x-chain",
     network: "mainnet",
     assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
@@ -68,7 +68,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.primaryNetwork.getChainIdsForAddresses({
+  const result = await avalancheSDK.glacier.primaryNetwork.getChainIdsForAddresses({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     network: "mainnet",
   });
@@ -111,7 +111,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.primaryNetwork.getNetworkDetails({
+  const result = await avalancheSDK.glacier.primaryNetwork.getNetworkDetails({
     network: "mainnet",
   });
 
@@ -153,7 +153,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.primaryNetwork.listBlockchains({
+  const result = await avalancheSDK.glacier.primaryNetwork.listBlockchains({
     pageSize: 10,
     network: "mainnet",
     sortOrder: "asc",
@@ -198,7 +198,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.primaryNetwork.listSubnets({
+  const result = await avalancheSDK.glacier.primaryNetwork.listSubnets({
     pageSize: 10,
     network: "mainnet",
     sortOrder: "asc",
@@ -243,7 +243,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.primaryNetwork.listValidators({
+  const result = await avalancheSDK.glacier.primaryNetwork.listValidators({
     pageSize: 10,
     network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
@@ -299,7 +299,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.primaryNetwork.getSingleValidatorDetails({
+  const result = await avalancheSDK.glacier.primaryNetwork.getSingleValidatorDetails({
     pageSize: 10,
     network: "mainnet",
     nodeId: "NodeID-111111111111111111116DBWJs",
@@ -346,7 +346,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.primaryNetwork.listDelegators({
+  const result = await avalancheSDK.glacier.primaryNetwork.listDelegators({
     pageSize: 10,
     rewardAddresses: "P-avax1679zrp3z9mf7z4an42ddq47qzj36zv6ga20vwl,P-avax1s7kd0kfndlz6mh3l0etrrcmkg5y366k8e0s6cc",
     network: "mainnet",

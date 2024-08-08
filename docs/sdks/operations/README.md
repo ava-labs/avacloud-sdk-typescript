@@ -1,5 +1,5 @@
 # Operations
-(*operations*)
+(*glacier.operations*)
 
 ### Available Operations
 
@@ -18,7 +18,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.operations.getOperationResult({
+  const result = await avalancheSDK.glacier.operations.getOperationResult({
     operationId: "aa22054a-cb7c-4a4e-9b83-59f2ede74138",
   });
 
@@ -62,7 +62,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.operations.postTransactionExportJob({
+  const result = await avalancheSDK.glacier.operations.postTransactionExportJob({
       type: "TRANSACTION_EXPORT_PRIMARY_NETWORK_STAKING",
       firstDate: "2023-05-01",
       lastDate: "2023-05-02",

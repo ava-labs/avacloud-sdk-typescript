@@ -1,9 +1,5 @@
 # Teleporter
-(*teleporter*)
-
-## Overview
-
-Find information about Teleporter transactions.
+(*glacier.teleporter*)
 
 ### Available Operations
 
@@ -22,7 +18,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.teleporter.getTeleporterMessage({
+  const result = await avalancheSDK.glacier.teleporter.getTeleporterMessage({
     messageId: "acf1c8b06f9aec48e9fcbefbbe576ae8a7ca3b327fcae111396e7cc99956674d",
   });
 
@@ -64,7 +60,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.teleporter.listTeleporterMessages({
+  const result = await avalancheSDK.glacier.teleporter.listTeleporterMessages({
     pageSize: 10,
     sourceBlockchainId: "2D8RG4UpSXbPbvPCAWppNJyqTG2i2CAXSkTgmTBBvs7GKNZjsY",
     destinationBlockchainId: "yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp",

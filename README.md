@@ -64,7 +64,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-    const result = await avalancheSDK.healthCheck.healthCheck();
+    const result = await avalancheSDK.glacier.healthCheck.healthCheck();
 
     // Handle the result
     console.log(result);
@@ -78,54 +78,22 @@ run();
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [healthCheck](docs/sdks/healthcheck/README.md)
+### [glacier.healthCheck](docs/sdks/healthcheck/README.md)
 
 * [healthCheck](docs/sdks/healthcheck/README.md#healthcheck) - Get the health of the service
 
-### [nfTs](docs/sdks/nfts/README.md)
+### [glacier.nfts](docs/sdks/nfts/README.md)
 
 * [reindexNft](docs/sdks/nfts/README.md#reindexnft) - Reindex NFT metadata
 * [listTokens](docs/sdks/nfts/README.md#listtokens) - List tokens
 * [getTokenDetails](docs/sdks/nfts/README.md#gettokendetails) - Get token details
 
-### [operations](docs/sdks/operations/README.md)
+### [glacier.operations](docs/sdks/operations/README.md)
 
 * [getOperationResult](docs/sdks/operations/README.md#getoperationresult) - Get operation
 * [postTransactionExportJob](docs/sdks/operations/README.md#posttransactionexportjob) - Create transaction export operation
 
-### [primaryNetworkTransactions](docs/sdks/primarynetworktransactions/README.md)
-
-* [getTxByHash](docs/sdks/primarynetworktransactions/README.md#gettxbyhash) - Get transaction
-* [listLatestPrimaryNetworkTransactions](docs/sdks/primarynetworktransactions/README.md#listlatestprimarynetworktransactions) - List latest transactions
-* [listActivePrimaryNetworkStakingTransactions](docs/sdks/primarynetworktransactions/README.md#listactiveprimarynetworkstakingtransactions) - List staking transactions
-* [listAssetTransactions](docs/sdks/primarynetworktransactions/README.md#listassettransactions) - List asset transactions
-
-### [primaryNetworkRewards](docs/sdks/primarynetworkrewards/README.md)
-
-* [listPendingPrimaryNetworkRewards](docs/sdks/primarynetworkrewards/README.md#listpendingprimarynetworkrewards) - List pending rewards
-* [listHistoricalPrimaryNetworkRewards](docs/sdks/primarynetworkrewards/README.md#listhistoricalprimarynetworkrewards) - List historical rewards
-
-### [primaryNetworkUTXOs](docs/sdks/primarynetworkutxos/README.md)
-
-* [getUtxosByAddresses](docs/sdks/primarynetworkutxos/README.md#getutxosbyaddresses) - List UTXOs
-
-### [primaryNetworkBalances](docs/sdks/primarynetworkbalances/README.md)
-
-* [getBalancesByAddresses](docs/sdks/primarynetworkbalances/README.md#getbalancesbyaddresses) - Get balances
-
-### [primaryNetworkBlocks](docs/sdks/primarynetworkblocks/README.md)
-
-* [getBlockById](docs/sdks/primarynetworkblocks/README.md#getblockbyid) - Get block
-* [listPrimaryNetworkBlocksByNodeId](docs/sdks/primarynetworkblocks/README.md#listprimarynetworkblocksbynodeid) - List blocks proposed by node
-* [listLatestPrimaryNetworkBlocks](docs/sdks/primarynetworkblocks/README.md#listlatestprimarynetworkblocks) - List latest blocks
-
-### [primaryNetworkVertices](docs/sdks/primarynetworkvertices/README.md)
-
-* [listLatestXChainVertices](docs/sdks/primarynetworkvertices/README.md#listlatestxchainvertices) - List vertices
-* [getVertexByHash](docs/sdks/primarynetworkvertices/README.md#getvertexbyhash) - Get vertex
-* [getVertexByHeight](docs/sdks/primarynetworkvertices/README.md#getvertexbyheight) - List vertices by height
-
-### [primaryNetwork](docs/sdks/primarynetwork/README.md)
+### [glacier.primaryNetwork](docs/sdks/primarynetwork/README.md)
 
 * [getAssetDetails](docs/sdks/primarynetwork/README.md#getassetdetails) - Get asset details
 * [getChainIdsForAddresses](docs/sdks/primarynetwork/README.md#getchainidsforaddresses) - Get chain interactions for addresses
@@ -136,7 +104,39 @@ run();
 * [getSingleValidatorDetails](docs/sdks/primarynetwork/README.md#getsinglevalidatordetails) - Get single validator details
 * [listDelegators](docs/sdks/primarynetwork/README.md#listdelegators) - List delegators
 
-### [webhooks](docs/sdks/webhooks/README.md)
+### [glacier.primaryNetwork.transactions](docs/sdks/transactions/README.md)
+
+* [getTxByHash](docs/sdks/transactions/README.md#gettxbyhash) - Get transaction
+* [listLatestPrimaryNetworkTransactions](docs/sdks/transactions/README.md#listlatestprimarynetworktransactions) - List latest transactions
+* [listActivePrimaryNetworkStakingTransactions](docs/sdks/transactions/README.md#listactiveprimarynetworkstakingtransactions) - List staking transactions
+* [listAssetTransactions](docs/sdks/transactions/README.md#listassettransactions) - List asset transactions
+
+### [glacier.primaryNetwork.rewards](docs/sdks/rewards/README.md)
+
+* [listPendingPrimaryNetworkRewards](docs/sdks/rewards/README.md#listpendingprimarynetworkrewards) - List pending rewards
+* [listHistoricalPrimaryNetworkRewards](docs/sdks/rewards/README.md#listhistoricalprimarynetworkrewards) - List historical rewards
+
+### [glacier.primaryNetwork.utxos](docs/sdks/utxos/README.md)
+
+* [getUtxosByAddresses](docs/sdks/utxos/README.md#getutxosbyaddresses) - List UTXOs
+
+### [glacier.primaryNetwork.balances](docs/sdks/balances/README.md)
+
+* [getBalancesByAddresses](docs/sdks/balances/README.md#getbalancesbyaddresses) - Get balances
+
+### [glacier.primaryNetwork.blocks](docs/sdks/blocks/README.md)
+
+* [getBlockById](docs/sdks/blocks/README.md#getblockbyid) - Get block
+* [listPrimaryNetworkBlocksByNodeId](docs/sdks/blocks/README.md#listprimarynetworkblocksbynodeid) - List blocks proposed by node
+* [listLatestPrimaryNetworkBlocks](docs/sdks/blocks/README.md#listlatestprimarynetworkblocks) - List latest blocks
+
+### [glacier.primaryNetwork.vertices](docs/sdks/vertices/README.md)
+
+* [listLatestXChainVertices](docs/sdks/vertices/README.md#listlatestxchainvertices) - List vertices
+* [getVertexByHash](docs/sdks/vertices/README.md#getvertexbyhash) - Get vertex
+* [getVertexByHeight](docs/sdks/vertices/README.md#getvertexbyheight) - List vertices by height
+
+### [glacier.webhooks](docs/sdks/webhooks/README.md)
 
 * [listWebhooks](docs/sdks/webhooks/README.md#listwebhooks) - List webhooks
 * [createWebhook](docs/sdks/webhooks/README.md#createwebhook) - Create a webhook
@@ -149,47 +149,48 @@ run();
 * [removeAddressesFromWebhook](docs/sdks/webhooks/README.md#removeaddressesfromwebhook) - Remove addresses from webhook
 * [addAddressesToWebhook](docs/sdks/webhooks/README.md#addaddressestowebhook) - Add addresses to webhook
 
-### [teleporter](docs/sdks/teleporter/README.md)
+### [glacier.teleporter](docs/sdks/teleporter/README.md)
 
 * [getTeleporterMessage](docs/sdks/teleporter/README.md#getteleportermessage) - Get a teleporter message
 * [listTeleporterMessages](docs/sdks/teleporter/README.md#listteleportermessages) - List teleporter messages
 
-### [evmBalances](docs/sdks/evmbalances/README.md)
 
-* [getNativeBalance](docs/sdks/evmbalances/README.md#getnativebalance) - Get native token balance
-* [listErc20Balances](docs/sdks/evmbalances/README.md#listerc20balances) - List ERC-20 balances
-* [listErc721Balances](docs/sdks/evmbalances/README.md#listerc721balances) - List ERC-721 balances
-* [listErc1155Balances](docs/sdks/evmbalances/README.md#listerc1155balances) - List ERC-1155 balances
-* [listCollectibleBalances](docs/sdks/evmbalances/README.md#listcollectiblebalances) - List collectible (ERC-721/ERC-1155) balances
+### [glacier.evm.balances](docs/sdks/avalanchesdkbalances/README.md)
 
-### [evmBlocks](docs/sdks/evmblocks/README.md)
+* [getNativeBalance](docs/sdks/avalanchesdkbalances/README.md#getnativebalance) - Get native token balance
+* [listErc20Balances](docs/sdks/avalanchesdkbalances/README.md#listerc20balances) - List ERC-20 balances
+* [listErc721Balances](docs/sdks/avalanchesdkbalances/README.md#listerc721balances) - List ERC-721 balances
+* [listErc1155Balances](docs/sdks/avalanchesdkbalances/README.md#listerc1155balances) - List ERC-1155 balances
+* [listCollectibleBalances](docs/sdks/avalanchesdkbalances/README.md#listcollectiblebalances) - List collectible (ERC-721/ERC-1155) balances
 
-* [getLatestBlocks](docs/sdks/evmblocks/README.md#getlatestblocks) - List latest blocks
-* [getBlock](docs/sdks/evmblocks/README.md#getblock) - Get block
+### [glacier.evm.blocks](docs/sdks/avalanchesdkblocks/README.md)
 
-### [evmTransactions](docs/sdks/evmtransactions/README.md)
+* [getLatestBlocks](docs/sdks/avalanchesdkblocks/README.md#getlatestblocks) - List latest blocks
+* [getBlock](docs/sdks/avalanchesdkblocks/README.md#getblock) - Get block
 
-* [getDeploymentTransaction](docs/sdks/evmtransactions/README.md#getdeploymenttransaction) - Get deployment transaction
-* [listContractDeployments](docs/sdks/evmtransactions/README.md#listcontractdeployments) - List deployed contracts
-* [listTransfers](docs/sdks/evmtransactions/README.md#listtransfers) - List ERC transfers
-* [listTransactions](docs/sdks/evmtransactions/README.md#listtransactions) - List transactions
-* [listNativeTransactions](docs/sdks/evmtransactions/README.md#listnativetransactions) - List native transactions
-* [listErc20Transactions](docs/sdks/evmtransactions/README.md#listerc20transactions) - List ERC-20 transfers
-* [listErc721Transactions](docs/sdks/evmtransactions/README.md#listerc721transactions) - List ERC-721 transfers
-* [listErc1155Transactions](docs/sdks/evmtransactions/README.md#listerc1155transactions) - List ERC-1155 transfers
-* [listInternalTransactions](docs/sdks/evmtransactions/README.md#listinternaltransactions) - List internal transactions
-* [getTransaction](docs/sdks/evmtransactions/README.md#gettransaction) - Get transaction
-* [getTransactionsForBlock](docs/sdks/evmtransactions/README.md#gettransactionsforblock) - List transactions for a block
-* [listLatestTransactions](docs/sdks/evmtransactions/README.md#listlatesttransactions) - List latest transactions
+### [glacier.evm.transactions](docs/sdks/avalanchesdktransactions/README.md)
 
-### [evmContracts](docs/sdks/evmcontracts/README.md)
+* [getDeploymentTransaction](docs/sdks/avalanchesdktransactions/README.md#getdeploymenttransaction) - Get deployment transaction
+* [listContractDeployments](docs/sdks/avalanchesdktransactions/README.md#listcontractdeployments) - List deployed contracts
+* [listTransfers](docs/sdks/avalanchesdktransactions/README.md#listtransfers) - List ERC transfers
+* [listTransactions](docs/sdks/avalanchesdktransactions/README.md#listtransactions) - List transactions
+* [listNativeTransactions](docs/sdks/avalanchesdktransactions/README.md#listnativetransactions) - List native transactions
+* [listErc20Transactions](docs/sdks/avalanchesdktransactions/README.md#listerc20transactions) - List ERC-20 transfers
+* [listErc721Transactions](docs/sdks/avalanchesdktransactions/README.md#listerc721transactions) - List ERC-721 transfers
+* [listErc1155Transactions](docs/sdks/avalanchesdktransactions/README.md#listerc1155transactions) - List ERC-1155 transfers
+* [listInternalTransactions](docs/sdks/avalanchesdktransactions/README.md#listinternaltransactions) - List internal transactions
+* [getTransaction](docs/sdks/avalanchesdktransactions/README.md#gettransaction) - Get transaction
+* [getTransactionsForBlock](docs/sdks/avalanchesdktransactions/README.md#gettransactionsforblock) - List transactions for a block
+* [listLatestTransactions](docs/sdks/avalanchesdktransactions/README.md#listlatesttransactions) - List latest transactions
 
-* [getContractMetadata](docs/sdks/evmcontracts/README.md#getcontractmetadata) - Get contract metadata
+### [glacier.evm.contracts](docs/sdks/contracts/README.md)
 
-### [evmChains](docs/sdks/evmchains/README.md)
+* [getContractMetadata](docs/sdks/contracts/README.md#getcontractmetadata) - Get contract metadata
 
-* [supportedChains](docs/sdks/evmchains/README.md#supportedchains) - List chains
-* [getChainInfo](docs/sdks/evmchains/README.md#getchaininfo) - Get chain information
+### [glacier.evm.chains](docs/sdks/chains/README.md)
+
+* [supportedChains](docs/sdks/chains/README.md#supportedchains) - List chains
+* [getChainInfo](docs/sdks/chains/README.md#getchaininfo) - Get chain information
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Retries [retries] -->
@@ -204,7 +205,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-    const result = await avalancheSDK.healthCheck.healthCheck({
+    const result = await avalancheSDK.glacier.healthCheck.healthCheck({
         retries: {
             strategy: "backoff",
             backoff: {
@@ -243,7 +244,7 @@ const avalancheSDK = new AvalancheSDK({
 });
 
 async function run() {
-    const result = await avalancheSDK.healthCheck.healthCheck();
+    const result = await avalancheSDK.glacier.healthCheck.healthCheck();
 
     // Handle the result
     console.log(result);
@@ -276,7 +277,7 @@ const avalancheSDK = new AvalancheSDK();
 async function run() {
     let result;
     try {
-        result = await avalancheSDK.healthCheck.healthCheck();
+        result = await avalancheSDK.glacier.healthCheck.healthCheck();
     } catch (err) {
         switch (true) {
             case err instanceof SDKValidationError: {
@@ -324,7 +325,7 @@ const avalancheSDK = new AvalancheSDK({
 });
 
 async function run() {
-    const result = await avalancheSDK.healthCheck.healthCheck();
+    const result = await avalancheSDK.glacier.healthCheck.healthCheck();
 
     // Handle the result
     console.log(result);
@@ -347,7 +348,7 @@ const avalancheSDK = new AvalancheSDK({
 });
 
 async function run() {
-    const result = await avalancheSDK.healthCheck.healthCheck();
+    const result = await avalancheSDK.glacier.healthCheck.healthCheck();
 
     // Handle the result
     console.log(result);
@@ -425,7 +426,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-    const result = await avalancheSDK.nfTs.listTokens({
+    const result = await avalancheSDK.glacier.nfts.listTokens({
         pageSize: 10,
         chainId: "43114",
         address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
