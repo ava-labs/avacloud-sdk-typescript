@@ -3,7 +3,7 @@ generation:
   devContainers:
     enabled: true
     schemaPath: https://ad39-2405-201-3027-2887-d9b-fc28-c7ec-5133.ngrok-free.app/api-json
-  sdkClassName: GlacierSdk
+  sdkClassName: AvalancheSdk
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
@@ -38,7 +38,7 @@ typescript:
   methodArguments: require-security-and-request
   moduleFormat: commonjs
   outputModelSuffix: output
-  packageName: '@avalabs/glacier-sdk'
+  packageName: '@avalabs/avalanche-sdk'
   responseFormat: flat
   templateVersion: v2
   useIndexModules: true
