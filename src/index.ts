@@ -4,3 +4,4 @@
 
 export * from "./sdk/sdk.js";
 export * from "./lib/config.js";
+export * from "./utils/isValidSignature.js";
