@@ -5,7 +5,10 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-    await avalancheSDK.mediaControllerUploadImage();
+    const result = await avalancheSDK.healthCheck.healthCheck();
+
+    // Handle the result
+    console.log(result);
 }
 
 run();

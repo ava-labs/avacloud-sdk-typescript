@@ -17,7 +17,6 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 - [ ] ✨ When ready to productionize, delete this section from the README
 
 <!-- Start SDK Installation [installation] -->
-
 ## SDK Installation
 
 ### NPM
@@ -46,19 +45,15 @@ yarn add @avalabs/avalanche-sdk zod
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
 ```
-
 <!-- End SDK Installation [installation] -->
 
 <!-- Start Requirements [requirements] -->
-
 ## Requirements
 
 For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
-
 <!-- End Requirements [requirements] -->
 
 <!-- Start SDK Example Usage [usage] -->
-
 ## SDK Example Usage
 
 ### Example
@@ -69,22 +64,19 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-    await avalancheSDK.mediaControllerUploadImage();
+    const result = await avalancheSDK.healthCheck.healthCheck();
+
+    // Handle the result
+    console.log(result);
 }
 
 run();
 
 ```
-
 <!-- End SDK Example Usage [usage] -->
 
 <!-- Start Available Resources and Operations [operations] -->
-
 ## Available Resources and Operations
-
-### [AvalancheSDK](docs/sdks/avalanchesdk/README.md)
-
-* [mediaControllerUploadImage](docs/sdks/avalanchesdk/README.md#mediacontrolleruploadimage)
 
 ### [healthCheck](docs/sdks/healthcheck/README.md)
 
@@ -193,34 +185,26 @@ run();
 ### [evmContracts](docs/sdks/evmcontracts/README.md)
 
 * [getContractMetadata](docs/sdks/evmcontracts/README.md#getcontractmetadata) - Get contract metadata
-* [updateContractInfo](docs/sdks/evmcontracts/README.md#updatecontractinfo) - Update contract information
 
 ### [evmChains](docs/sdks/evmchains/README.md)
 
 * [supportedChains](docs/sdks/evmchains/README.md#supportedchains) - List chains
 * [getChainInfo](docs/sdks/evmchains/README.md#getchaininfo) - Get chain information
-
-### [rpc](docs/sdks/rpc/README.md)
-
-* [rpc](docs/sdks/rpc/README.md#rpc) - Calls JSON-RPC method
-
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Retries [retries] -->
-
 ## Retries
 
 Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
 To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
-
 ```typescript
 import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-    await avalancheSDK.mediaControllerUploadImage({
+    const result = await avalancheSDK.healthCheck.healthCheck({
         retries: {
             strategy: "backoff",
             backoff: {
@@ -232,6 +216,9 @@ async function run() {
             retryConnectionErrors: false,
         },
     });
+
+    // Handle the result
+    console.log(result);
 }
 
 run();
@@ -239,7 +226,6 @@ run();
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
-
 ```typescript
 import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
@@ -257,27 +243,29 @@ const avalancheSDK = new AvalancheSDK({
 });
 
 async function run() {
-    await avalancheSDK.mediaControllerUploadImage();
+    const result = await avalancheSDK.healthCheck.healthCheck();
+
+    // Handle the result
+    console.log(result);
 }
 
 run();
 
 ```
-
 <!-- End Retries [retries] -->
 
 <!-- Start Error Handling [errors] -->
-
 ## Error Handling
 
 All SDK methods return a response object or throw an error. If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
-| Error Object                   | Status Code | Content Type     |
-| ------------------------------ | ----------- | ---------------- |
-| errors.HealthCheckResponseBody | 503         | application/json |
-| errors.SDKError                | 4xx-5xx     | */*            |
+| Error Object                   | Status Code                    | Content Type                   |
+| ------------------------------ | ------------------------------ | ------------------------------ |
+| errors.HealthCheckResponseBody | 503                            | application/json               |
+| errors.SDKError                | 4xx-5xx                        | */*                            |
 
-Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging.
+Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
+
 
 ```typescript
 import { AvalancheSDK } from "@avalabs/avalanche-sdk";
@@ -315,20 +303,18 @@ async function run() {
 run();
 
 ```
-
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
-
 ## Server Selection
 
 ### Select Server by Index
 
 You can override the default server globally by passing a server index to the `serverIdx` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| # | Server                    | Variables |
-| - | ------------------------- | --------- |
-| 0 | `http://localhost:3000` | None      |
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `http://localhost:3000` | None |
 
 ```typescript
 import { AvalancheSDK } from "@avalabs/avalanche-sdk";
@@ -338,12 +324,16 @@ const avalancheSDK = new AvalancheSDK({
 });
 
 async function run() {
-    await avalancheSDK.mediaControllerUploadImage();
+    const result = await avalancheSDK.healthCheck.healthCheck();
+
+    // Handle the result
+    console.log(result);
 }
 
 run();
 
 ```
+
 
 ### Override Server URL Per-Client
 
@@ -357,17 +347,18 @@ const avalancheSDK = new AvalancheSDK({
 });
 
 async function run() {
-    await avalancheSDK.mediaControllerUploadImage();
+    const result = await avalancheSDK.healthCheck.healthCheck();
+
+    // Handle the result
+    console.log(result);
 }
 
 run();
 
 ```
-
 <!-- End Server Selection [server] -->
 
 <!-- Start Custom HTTP Client [http-client] -->
-
 ## Custom HTTP Client
 
 The TypeScript SDK makes API calls using an `HTTPClient` that wraps the native
@@ -414,17 +405,17 @@ httpClient.addHook("requestError", (error, request) => {
 
 const sdk = new AvalancheSDK({ httpClient });
 ```
-
 <!-- End Custom HTTP Client [http-client] -->
 
 <!-- Start Pagination [pagination] -->
-
 ## Pagination
 
 Some of the endpoints in this SDK support pagination. To use pagination, you
 make your SDK calls as usual, but the returned response object will also be an
-async iterable that can be consumed using the 
+async iterable that can be consumed using the [`for await...of`][for-await-of]
 syntax.
+
+[for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
 
 Here's an example of one such pagination call:
 
@@ -448,7 +439,6 @@ async function run() {
 run();
 
 ```
-
 <!-- End Pagination [pagination] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

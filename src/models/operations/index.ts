@@ -59,7 +59,5 @@ export * from "./listwebhooks.js";
 export * from "./posttransactionexportjob.js";
 export * from "./reindexnft.js";
 export * from "./removeaddressesfromwebhook.js";
-export * from "./rpc.js";
 export * from "./supportedchains.js";
-export * from "./updatecontractinfo.js";
 export * from "./updatewebhook.js";
