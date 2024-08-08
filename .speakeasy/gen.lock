@@ -1,14 +1,14 @@
 lockVersion: 2.0.0
 id: aa62edb7-4270-4c7b-a00f-96026070d05e
 management:
-  docChecksum: c2f99310f042531947ce82234353e0d5
+  docChecksum: 2b509473d252fd855d3b2a0f334b95fa
   docVersion: Beta
   speakeasyVersion: 1.358.0
   generationVersion: 2.390.6
-  releaseVersion: 0.1.0
-  configChecksum: fa918a4693c753288feeda73cb28ecd6
-  repoURL: https://github.com/ava-labs/glacier-sdk-typescript.git
-  installationURL: https://github.com/ava-labs/glacier-sdk-typescript
+  releaseVersion: 0.2.0
+  configChecksum: 28a2f4d644a02067e367ac56dcb428dd
+  repoURL: https://github.com/ava-labs/avalanche-sdk-typescript.git
+  installationURL: https://github.com/ava-labs/avalanche-sdk-typescript
   published: true
 features:
   typescript:
@@ -22,6 +22,7 @@ features:
     envVarSecurityUsage: 0.1.1
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.4
+    ignores: 2.81.1
     nullables: 0.1.0
     pagination: 2.82.6
     responseFormat: 0.2.3
@@ -29,7 +30,6 @@ features:
     sdkHooks: 0.1.0
     unions: 2.85.6
 generatedFiles:
-  - src/funcs/mediaControllerUploadImage.ts
   - src/funcs/healthCheckHealthCheck.ts
   - src/funcs/nfTsReindexNft.ts
   - src/funcs/nfTsListTokens.ts
@@ -90,10 +90,8 @@ generatedFiles:
   - src/funcs/evmTransactionsGetTransactionsForBlock.ts
   - src/funcs/evmTransactionsListLatestTransactions.ts
   - src/funcs/evmContractsGetContractMetadata.ts
-  - src/funcs/evmContractsUpdateContractInfo.ts
   - src/funcs/evmChainsSupportedChains.ts
   - src/funcs/evmChainsGetChainInfo.ts
-  - src/funcs/rpcRPC.ts
   - src/sdk/healthcheck.ts
   - src/sdk/nfts.ts
   - src/sdk/operations.ts
@@ -111,7 +109,6 @@ generatedFiles:
   - src/sdk/evmtransactions.ts
   - src/sdk/evmcontracts.ts
   - src/sdk/evmchains.ts
-  - src/sdk/rpc.ts
   - src/sdk/sdk.ts
   - .eslintrc.cjs
   - .npmignore
@@ -201,10 +198,8 @@ generatedFiles:
   - src/models/operations/gettransactionsforblock.ts
   - src/models/operations/listlatesttransactions.ts
   - src/models/operations/getcontractmetadata.ts
-  - src/models/operations/updatecontractinfo.ts
   - src/models/operations/supportedchains.ts
   - src/models/operations/getchaininfo.ts
-  - src/models/operations/rpc.ts
   - src/models/errors/healthcheck.ts
   - src/models/components/listnfttokens.ts
   - src/models/components/erc721token.ts
@@ -376,12 +371,6 @@ generatedFiles:
   - src/models/components/listinternaltransactionsresponse.ts
   - src/models/components/internaltransaction.ts
   - src/models/components/transactionstatus.ts
-  - src/models/components/updatecontractresponse.ts
-  - src/models/components/contractsubmissionbody.ts
-  - src/models/components/contractsubmissionerc1155.ts
-  - src/models/components/contractsubmissionerc20.ts
-  - src/models/components/contractsubmissionerc721.ts
-  - src/models/components/contractsubmissionunknown.ts
   - src/models/components/listchainsresponse.ts
   - src/models/components/chaininfo.ts
   - src/models/components/utilityaddresses.ts
@@ -389,10 +378,6 @@ generatedFiles:
   - src/models/components/chainstatus.ts
   - src/models/components/glacierapifeature.ts
   - src/models/components/getchainresponse.ts
-  - src/models/components/rpcsuccessresponsedto.ts
-  - src/models/components/rpcerrorresponsedto.ts
-  - src/models/components/rpcerrordto.ts
-  - src/models/components/rpcrequestbodydto.ts
   - src/models/errors/index.ts
   - src/models/operations/index.ts
   - src/models/components/index.ts
@@ -496,13 +481,8 @@ generatedFiles:
   - docs/models/operations/listlatesttransactionsresponse.md
   - docs/models/operations/getcontractmetadatarequest.md
   - docs/models/operations/getcontractmetadataresponsebody.md
-  - docs/models/operations/updatecontractinforequest.md
   - docs/models/operations/supportedchainsrequest.md
   - docs/models/operations/getchaininforequest.md
-  - docs/models/operations/rpcrequestbody.md
-  - docs/models/operations/rpcrequest.md
-  - docs/models/operations/three.md
-  - docs/models/operations/rpcresponsebody.md
   - docs/models/errors/info.md
   - docs/models/errors/errort.md
   - docs/models/errors/details.md
@@ -715,18 +695,6 @@ generatedFiles:
   - docs/models/components/listinternaltransactionsresponse.md
   - docs/models/components/internaltransaction.md
   - docs/models/components/transactionstatus.md
-  - docs/models/components/updatecontractresponsecontract.md
-  - docs/models/components/updatecontractresponse.md
-  - docs/models/components/contract.md
-  - docs/models/components/contractsubmissionbody.md
-  - docs/models/components/contractsubmissionerc1155erctype.md
-  - docs/models/components/contractsubmissionerc1155.md
-  - docs/models/components/contractsubmissionerc20erctype.md
-  - docs/models/components/contractsubmissionerc20.md
-  - docs/models/components/contractsubmissionerc721erctype.md
-  - docs/models/components/contractsubmissionerc721.md
-  - docs/models/components/contractsubmissionunknownerctype.md
-  - docs/models/components/contractsubmissionunknown.md
   - docs/models/components/listchainsresponse.md
   - docs/models/components/enabledfeatures.md
   - docs/models/components/chaininfo.md
@@ -736,19 +704,8 @@ generatedFiles:
   - docs/models/components/glacierapifeature.md
   - docs/models/components/getchainresponseenabledfeatures.md
   - docs/models/components/getchainresponse.md
-  - docs/models/components/rpcsuccessresponsedtoid.md
-  - docs/models/components/result.md
-  - docs/models/components/rpcsuccessresponsedto.md
-  - docs/models/components/rpcerrorresponsedtoid.md
-  - docs/models/components/rpcerrorresponsedto.md
-  - docs/models/components/data.md
-  - docs/models/components/rpcerrordto.md
-  - docs/models/components/one.md
-  - docs/models/components/params.md
-  - docs/models/components/id.md
-  - docs/models/components/rpcrequestbodydto.md
-  - docs/lib/utils/retryconfig.md
   - docs/sdks/avalanchesdk/README.md
+  - docs/lib/utils/retryconfig.md
   - docs/sdks/healthcheck/README.md
   - docs/sdks/nfts/README.md
   - docs/sdks/operations/README.md
@@ -766,7 +723,6 @@ generatedFiles:
   - docs/sdks/evmtransactions/README.md
   - docs/sdks/evmcontracts/README.md
   - docs/sdks/evmchains/README.md
-  - docs/sdks/rpc/README.md
   - USAGE.md
   - .gitattributes
   - .devcontainer/README.md

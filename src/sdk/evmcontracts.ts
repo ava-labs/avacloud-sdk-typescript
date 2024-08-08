@@ -3,9 +3,7 @@
  */
 
 import { evmContractsGetContractMetadata } from "../funcs/evmContractsGetContractMetadata.js";
-import { evmContractsUpdateContractInfo } from "../funcs/evmContractsUpdateContractInfo.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
@@ -21,18 +19,5 @@ export class EVMContracts extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.GetContractMetadataResponseBody> {
         return unwrapAsync(evmContractsGetContractMetadata(this, request, options));
-    }
-
-    /**
-     * Update contract information
-     *
-     * @remarks
-     * Update contract information. Updates will be reviewed by the Ava Labs team before they are published.
-     */
-    async updateContractInfo(
-        request: operations.UpdateContractInfoRequest,
-        options?: RequestOptions
-    ): Promise<components.UpdateContractResponse> {
-        return unwrapAsync(evmContractsUpdateContractInfo(this, request, options));
     }
 }

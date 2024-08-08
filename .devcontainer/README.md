@@ -1,6 +1,6 @@
 
 <div align="center">
-    <a href="https://codespaces.new/ava-labs/glacier-sdk-typescript.git/tree/main"><img src="https://github.com/codespaces/badge.svg" /></a>
+    <a href="https://codespaces.new/ava-labs/avalanche-sdk-typescript.git/tree/main"><img src="https://github.com/codespaces/badge.svg" /></a>
 </div>
 <br>
 

@@ -2,8 +2,8 @@ speakeasyVersion: 1.358.0
 sources:
     GlacierSDK-OAS:
         sourceNamespace: glacier-sdk-oas
-        sourceRevisionDigest: sha256:653dd3a958092afcc52228f4d3bfb5551068376599560bc267e13fc92f90b47c
-        sourceBlobDigest: sha256:8ad1861d87a2c7ea86d32e1e6bee87a1a12aafc25fa59c0a4e2963457973d353
+        sourceRevisionDigest: sha256:ce25de1bb4017307bd2597f5f52bc36b85d28e644be1b4c59d5853ec9d795fdf
+        sourceBlobDigest: sha256:5616551dd3efa0fc41f504c9027ab92fb6e40c3d754b77bc77b039504797ddb0
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     glacier-sdk:
         source: GlacierSDK-OAS
         sourceNamespace: glacier-sdk-oas
-        sourceRevisionDigest: sha256:653dd3a958092afcc52228f4d3bfb5551068376599560bc267e13fc92f90b47c
-        sourceBlobDigest: sha256:8ad1861d87a2c7ea86d32e1e6bee87a1a12aafc25fa59c0a4e2963457973d353
+        sourceRevisionDigest: sha256:ce25de1bb4017307bd2597f5f52bc36b85d28e644be1b4c59d5853ec9d795fdf
+        sourceBlobDigest: sha256:5616551dd3efa0fc41f504c9027ab92fb6e40c3d754b77bc77b039504797ddb0
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
