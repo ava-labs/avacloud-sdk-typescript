@@ -1,10 +1,10 @@
 lockVersion: 2.0.0
-id: 671958ae-d9d0-4313-b04e-12cd25c2f3f7
+id: 87cc6b1a-13e6-4501-a0d7-2da24669a204
 management:
   docChecksum: b75e10095fdc361347c81b7ef2b19cee
   docVersion: Beta
-  speakeasyVersion: 1.358.0
-  generationVersion: 2.390.6
+  speakeasyVersion: 1.354.1
+  generationVersion: 2.386.2
   releaseVersion: 0.0.1
   configChecksum: 9e9fa2804a530e994b6e73e51af0cf1c
 features:
@@ -12,7 +12,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.6
-    core: 3.12.3
+    core: 3.12.1
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
