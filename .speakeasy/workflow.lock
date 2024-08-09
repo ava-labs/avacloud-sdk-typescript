@@ -2,30 +2,17 @@ speakeasyVersion: 1.358.0
 sources:
     AvalancheSDK-OAS:
         sourceNamespace: avalanche-sdk-oas
-        sourceRevisionDigest: sha256:a4a2dbf1155f49a15f0a6964ead0a533d5c51087813f59c4b245d53c608d14b4
-        sourceBlobDigest: sha256:dbdbdae25b943a36d0e6224f564a6a5e2ab04862d04ee8767b1f93c94a551907
+        sourceRevisionDigest: sha256:bcffcd0512982c262b4b9b127ce09cc3e7bd0893319f37620c58ed1e59007835
+        sourceBlobDigest: sha256:cec685c50486e0b64020324915bf120c8b5a4bd21214d7d2648fa32538d48e2f
         tags:
             - latest
-    GlacierSDK-OAS:
-        sourceNamespace: glacier-sdk-oas
-        sourceRevisionDigest: sha256:846a707faeaf9a90b0a00eb7725ea33f5d69cd7a6df7c961f9ee43f16f810f47
-        sourceBlobDigest: sha256:4e92d67c84f701e5ba23082ddbad7c1775062f2d4548b349793d92044fb6958a
-        tags:
-            - latest
-            - main
 targets:
     avalanche-sdk:
         source: AvalancheSDK-OAS
         sourceNamespace: avalanche-sdk-oas
-        sourceRevisionDigest: sha256:a4a2dbf1155f49a15f0a6964ead0a533d5c51087813f59c4b245d53c608d14b4
-        sourceBlobDigest: sha256:dbdbdae25b943a36d0e6224f564a6a5e2ab04862d04ee8767b1f93c94a551907
+        sourceRevisionDigest: sha256:bcffcd0512982c262b4b9b127ce09cc3e7bd0893319f37620c58ed1e59007835
+        sourceBlobDigest: sha256:cec685c50486e0b64020324915bf120c8b5a4bd21214d7d2648fa32538d48e2f
         outLocation: /Users/sayan.kar/avalabs/avalanche-sdk-typescript
-    glacier-sdk:
-        source: GlacierSDK-OAS
-        sourceNamespace: glacier-sdk-oas
-        sourceRevisionDigest: sha256:846a707faeaf9a90b0a00eb7725ea33f5d69cd7a6df7c961f9ee43f16f810f47
-        sourceBlobDigest: sha256:4e92d67c84f701e5ba23082ddbad7c1775062f2d4548b349793d92044fb6958a
-        outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -39,6 +26,3 @@ workflow:
         avalanche-sdk:
             target: typescript
             source: AvalancheSDK-OAS
-            publish:
-                npm:
-                    token: $npm_token

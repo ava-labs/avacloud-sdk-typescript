@@ -4,11 +4,15 @@
 
 import * as z from "zod";
 
+export type ReindexNftGlobals = {
+    chainId?: string | undefined;
+};
+
 export type ReindexNftRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
     /**
      * Contract address on the relevant chain.
      */
@@ -20,16 +24,49 @@ export type ReindexNftRequest = {
 };
 
 /** @internal */
+export const ReindexNftGlobals$inboundSchema: z.ZodType<ReindexNftGlobals, z.ZodTypeDef, unknown> =
+    z.object({
+        chainId: z.string().optional(),
+    });
+
+/** @internal */
+export type ReindexNftGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const ReindexNftGlobals$outboundSchema: z.ZodType<
+    ReindexNftGlobals$Outbound,
+    z.ZodTypeDef,
+    ReindexNftGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ReindexNftGlobals$ {
+    /** @deprecated use `ReindexNftGlobals$inboundSchema` instead. */
+    export const inboundSchema = ReindexNftGlobals$inboundSchema;
+    /** @deprecated use `ReindexNftGlobals$outboundSchema` instead. */
+    export const outboundSchema = ReindexNftGlobals$outboundSchema;
+    /** @deprecated use `ReindexNftGlobals$Outbound` instead. */
+    export type Outbound = ReindexNftGlobals$Outbound;
+}
+
+/** @internal */
 export const ReindexNftRequest$inboundSchema: z.ZodType<ReindexNftRequest, z.ZodTypeDef, unknown> =
     z.object({
-        chainId: z.string(),
+        chainId: z.string().optional(),
         address: z.string(),
         tokenId: z.string(),
     });
 
 /** @internal */
 export type ReindexNftRequest$Outbound = {
-    chainId: string;
+    chainId?: string | undefined;
     address: string;
     tokenId: string;
 };
@@ -40,7 +77,7 @@ export const ReindexNftRequest$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     ReindexNftRequest
 > = z.object({
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
     tokenId: z.string(),
 });

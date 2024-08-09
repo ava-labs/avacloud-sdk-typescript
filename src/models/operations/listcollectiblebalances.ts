@@ -6,6 +6,10 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListCollectibleBalancesGlobals = {
+    chainId?: string | undefined;
+};
+
 export type ListCollectibleBalancesRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
@@ -18,7 +22,7 @@ export type ListCollectibleBalancesRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
     /**
      * A wallet address.
      */
@@ -34,6 +38,42 @@ export type ListCollectibleBalancesResponse = {
 };
 
 /** @internal */
+export const ListCollectibleBalancesGlobals$inboundSchema: z.ZodType<
+    ListCollectibleBalancesGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/** @internal */
+export type ListCollectibleBalancesGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const ListCollectibleBalancesGlobals$outboundSchema: z.ZodType<
+    ListCollectibleBalancesGlobals$Outbound,
+    z.ZodTypeDef,
+    ListCollectibleBalancesGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListCollectibleBalancesGlobals$ {
+    /** @deprecated use `ListCollectibleBalancesGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListCollectibleBalancesGlobals$inboundSchema;
+    /** @deprecated use `ListCollectibleBalancesGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListCollectibleBalancesGlobals$outboundSchema;
+    /** @deprecated use `ListCollectibleBalancesGlobals$Outbound` instead. */
+    export type Outbound = ListCollectibleBalancesGlobals$Outbound;
+}
+
+/** @internal */
 export const ListCollectibleBalancesRequest$inboundSchema: z.ZodType<
     ListCollectibleBalancesRequest,
     z.ZodTypeDef,
@@ -41,7 +81,7 @@ export const ListCollectibleBalancesRequest$inboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
     contractAddress: z.string().optional(),
 });
@@ -50,7 +90,7 @@ export const ListCollectibleBalancesRequest$inboundSchema: z.ZodType<
 export type ListCollectibleBalancesRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
-    chainId: string;
+    chainId?: string | undefined;
     address: string;
     contractAddress?: string | undefined;
 };
@@ -63,7 +103,7 @@ export const ListCollectibleBalancesRequest$outboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
     contractAddress: z.string().optional(),
 });

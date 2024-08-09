@@ -4,12 +4,52 @@
 
 import * as z from "zod";
 
+export type GetChainInfoGlobals = {
+    chainId?: string | undefined;
+};
+
 export type GetChainInfoRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
 };
+
+/** @internal */
+export const GetChainInfoGlobals$inboundSchema: z.ZodType<
+    GetChainInfoGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/** @internal */
+export type GetChainInfoGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const GetChainInfoGlobals$outboundSchema: z.ZodType<
+    GetChainInfoGlobals$Outbound,
+    z.ZodTypeDef,
+    GetChainInfoGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetChainInfoGlobals$ {
+    /** @deprecated use `GetChainInfoGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetChainInfoGlobals$inboundSchema;
+    /** @deprecated use `GetChainInfoGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetChainInfoGlobals$outboundSchema;
+    /** @deprecated use `GetChainInfoGlobals$Outbound` instead. */
+    export type Outbound = GetChainInfoGlobals$Outbound;
+}
 
 /** @internal */
 export const GetChainInfoRequest$inboundSchema: z.ZodType<
@@ -17,12 +57,12 @@ export const GetChainInfoRequest$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    chainId: z.string(),
+    chainId: z.string().optional(),
 });
 
 /** @internal */
 export type GetChainInfoRequest$Outbound = {
-    chainId: string;
+    chainId?: string | undefined;
 };
 
 /** @internal */
@@ -31,7 +71,7 @@ export const GetChainInfoRequest$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetChainInfoRequest
 > = z.object({
-    chainId: z.string(),
+    chainId: z.string().optional(),
 });
 
 /**

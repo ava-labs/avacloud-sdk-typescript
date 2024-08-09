@@ -12,6 +12,16 @@ import { Params, pathToFunc } from "./url.js";
 export const ServerList = ["http://localhost:3000"] as const;
 
 export type SDKOptions = {
+    /**
+     * Allows setting the chainId parameter for all supported operations
+     */
+    chainId?: string | undefined;
+
+    /**
+     * Allows setting the network parameter for all supported operations
+     */
+    network?: string | undefined;
+
     httpClient?: HTTPClient;
     /**
      * Allows overriding the default server used by the SDK
@@ -48,7 +58,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
     language: "typescript",
     openapiDocVersion: "Beta",
-    sdkVersion: "0.3.0",
+    sdkVersion: "0.0.1",
     genVersion: "2.390.6",
-    userAgent: "speakeasy-sdk/typescript 0.3.0 2.390.6 Beta @avalabs/avalanche-sdk",
+    userAgent: "speakeasy-sdk/typescript 0.0.1 2.390.6 Beta @avalabs/avalanche-sdk",
 } as const;

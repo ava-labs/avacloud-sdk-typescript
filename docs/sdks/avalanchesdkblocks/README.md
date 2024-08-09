@@ -20,7 +20,6 @@ const avalancheSDK = new AvalancheSDK();
 async function run() {
   const result = await avalancheSDK.glacier.evm.blocks.getLatestBlocks({
     pageSize: 10,
-    chainId: "43114",
   });
 
   for await (const page of result) {
@@ -63,7 +62,6 @@ const avalancheSDK = new AvalancheSDK();
 
 async function run() {
   const result = await avalancheSDK.glacier.evm.blocks.getBlock({
-    chainId: "43114",
     blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });
 

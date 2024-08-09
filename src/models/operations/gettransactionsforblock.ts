@@ -4,11 +4,15 @@
 
 import * as z from "zod";
 
+export type GetTransactionsForBlockGlobals = {
+    chainId?: string | undefined;
+};
+
 export type GetTransactionsForBlockRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
     /**
      * A block identifier which is either a block number or the block hash.
      */
@@ -16,18 +20,54 @@ export type GetTransactionsForBlockRequest = {
 };
 
 /** @internal */
+export const GetTransactionsForBlockGlobals$inboundSchema: z.ZodType<
+    GetTransactionsForBlockGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/** @internal */
+export type GetTransactionsForBlockGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const GetTransactionsForBlockGlobals$outboundSchema: z.ZodType<
+    GetTransactionsForBlockGlobals$Outbound,
+    z.ZodTypeDef,
+    GetTransactionsForBlockGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetTransactionsForBlockGlobals$ {
+    /** @deprecated use `GetTransactionsForBlockGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetTransactionsForBlockGlobals$inboundSchema;
+    /** @deprecated use `GetTransactionsForBlockGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetTransactionsForBlockGlobals$outboundSchema;
+    /** @deprecated use `GetTransactionsForBlockGlobals$Outbound` instead. */
+    export type Outbound = GetTransactionsForBlockGlobals$Outbound;
+}
+
+/** @internal */
 export const GetTransactionsForBlockRequest$inboundSchema: z.ZodType<
     GetTransactionsForBlockRequest,
     z.ZodTypeDef,
     unknown
 > = z.object({
-    chainId: z.string(),
+    chainId: z.string().optional(),
     blockId: z.string(),
 });
 
 /** @internal */
 export type GetTransactionsForBlockRequest$Outbound = {
-    chainId: string;
+    chainId?: string | undefined;
     blockId: string;
 };
 
@@ -37,7 +77,7 @@ export const GetTransactionsForBlockRequest$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetTransactionsForBlockRequest
 > = z.object({
-    chainId: z.string(),
+    chainId: z.string().optional(),
     blockId: z.string(),
 });
 

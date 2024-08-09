@@ -6,6 +6,10 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListTokensGlobals = {
+    chainId?: string | undefined;
+};
+
 export type ListTokensRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
@@ -18,7 +22,7 @@ export type ListTokensRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
     /**
      * Contract address on the relevant chain.
      */
@@ -30,11 +34,44 @@ export type ListTokensResponse = {
 };
 
 /** @internal */
+export const ListTokensGlobals$inboundSchema: z.ZodType<ListTokensGlobals, z.ZodTypeDef, unknown> =
+    z.object({
+        chainId: z.string().optional(),
+    });
+
+/** @internal */
+export type ListTokensGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const ListTokensGlobals$outboundSchema: z.ZodType<
+    ListTokensGlobals$Outbound,
+    z.ZodTypeDef,
+    ListTokensGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListTokensGlobals$ {
+    /** @deprecated use `ListTokensGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListTokensGlobals$inboundSchema;
+    /** @deprecated use `ListTokensGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListTokensGlobals$outboundSchema;
+    /** @deprecated use `ListTokensGlobals$Outbound` instead. */
+    export type Outbound = ListTokensGlobals$Outbound;
+}
+
+/** @internal */
 export const ListTokensRequest$inboundSchema: z.ZodType<ListTokensRequest, z.ZodTypeDef, unknown> =
     z.object({
         pageToken: z.string().optional(),
         pageSize: z.number().int().default(10),
-        chainId: z.string(),
+        chainId: z.string().optional(),
         address: z.string(),
     });
 
@@ -42,7 +79,7 @@ export const ListTokensRequest$inboundSchema: z.ZodType<ListTokensRequest, z.Zod
 export type ListTokensRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
-    chainId: string;
+    chainId?: string | undefined;
     address: string;
 };
 
@@ -54,7 +91,7 @@ export const ListTokensRequest$outboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
 });
 

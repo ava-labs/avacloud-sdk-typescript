@@ -1,15 +1,15 @@
 workflowVersion: 1.0.0
 speakeasyVersion: latest
 sources:
-    GlacierSDK-OAS:
+    AvalancheSDK-OAS:
         inputs:
             - location: https://ad39-2405-201-3027-2887-d9b-fc28-c7ec-5133.ngrok-free.app/api-json
         registry:
-            location: registry.speakeasyapi.dev/avalabs/avalabs/glacier-sdk-oas
+            location: registry.speakeasyapi.dev/avalabs/avalabs/avalanche-sdk-oas
 targets:
-    glacier-sdk:
+    avalanche-sdk:
         target: typescript
-        source: GlacierSDK-OAS
+        source: AvalancheSDK-OAS
         publish:
             npm:
                 token: $npm_token

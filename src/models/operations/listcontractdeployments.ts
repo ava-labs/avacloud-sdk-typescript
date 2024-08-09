@@ -6,6 +6,10 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListContractDeploymentsGlobals = {
+    chainId?: string | undefined;
+};
+
 export type ListContractDeploymentsRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
@@ -18,7 +22,7 @@ export type ListContractDeploymentsRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
     /**
      * A wallet address.
      */
@@ -30,6 +34,42 @@ export type ListContractDeploymentsResponse = {
 };
 
 /** @internal */
+export const ListContractDeploymentsGlobals$inboundSchema: z.ZodType<
+    ListContractDeploymentsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/** @internal */
+export type ListContractDeploymentsGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const ListContractDeploymentsGlobals$outboundSchema: z.ZodType<
+    ListContractDeploymentsGlobals$Outbound,
+    z.ZodTypeDef,
+    ListContractDeploymentsGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListContractDeploymentsGlobals$ {
+    /** @deprecated use `ListContractDeploymentsGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListContractDeploymentsGlobals$inboundSchema;
+    /** @deprecated use `ListContractDeploymentsGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListContractDeploymentsGlobals$outboundSchema;
+    /** @deprecated use `ListContractDeploymentsGlobals$Outbound` instead. */
+    export type Outbound = ListContractDeploymentsGlobals$Outbound;
+}
+
+/** @internal */
 export const ListContractDeploymentsRequest$inboundSchema: z.ZodType<
     ListContractDeploymentsRequest,
     z.ZodTypeDef,
@@ -37,7 +77,7 @@ export const ListContractDeploymentsRequest$inboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
 });
 
@@ -45,7 +85,7 @@ export const ListContractDeploymentsRequest$inboundSchema: z.ZodType<
 export type ListContractDeploymentsRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
-    chainId: string;
+    chainId?: string | undefined;
     address: string;
 };
 
@@ -57,7 +97,7 @@ export const ListContractDeploymentsRequest$outboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
 });
 

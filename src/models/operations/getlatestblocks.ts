@@ -6,6 +6,10 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetLatestBlocksGlobals = {
+    chainId?: string | undefined;
+};
+
 export type GetLatestBlocksRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
@@ -18,12 +22,48 @@ export type GetLatestBlocksRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
 };
 
 export type GetLatestBlocksResponse = {
     result: components.ListEvmBlocksResponse;
 };
+
+/** @internal */
+export const GetLatestBlocksGlobals$inboundSchema: z.ZodType<
+    GetLatestBlocksGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/** @internal */
+export type GetLatestBlocksGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const GetLatestBlocksGlobals$outboundSchema: z.ZodType<
+    GetLatestBlocksGlobals$Outbound,
+    z.ZodTypeDef,
+    GetLatestBlocksGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetLatestBlocksGlobals$ {
+    /** @deprecated use `GetLatestBlocksGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetLatestBlocksGlobals$inboundSchema;
+    /** @deprecated use `GetLatestBlocksGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetLatestBlocksGlobals$outboundSchema;
+    /** @deprecated use `GetLatestBlocksGlobals$Outbound` instead. */
+    export type Outbound = GetLatestBlocksGlobals$Outbound;
+}
 
 /** @internal */
 export const GetLatestBlocksRequest$inboundSchema: z.ZodType<
@@ -33,14 +73,14 @@ export const GetLatestBlocksRequest$inboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
 });
 
 /** @internal */
 export type GetLatestBlocksRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
-    chainId: string;
+    chainId?: string | undefined;
 };
 
 /** @internal */
@@ -51,7 +91,7 @@ export const GetLatestBlocksRequest$outboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
 });
 
 /**

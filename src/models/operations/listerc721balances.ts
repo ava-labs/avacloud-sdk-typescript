@@ -6,6 +6,10 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListErc721BalancesGlobals = {
+    chainId?: string | undefined;
+};
+
 export type ListErc721BalancesRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
@@ -18,7 +22,7 @@ export type ListErc721BalancesRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
     /**
      * A wallet address.
      */
@@ -34,6 +38,42 @@ export type ListErc721BalancesResponse = {
 };
 
 /** @internal */
+export const ListErc721BalancesGlobals$inboundSchema: z.ZodType<
+    ListErc721BalancesGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/** @internal */
+export type ListErc721BalancesGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const ListErc721BalancesGlobals$outboundSchema: z.ZodType<
+    ListErc721BalancesGlobals$Outbound,
+    z.ZodTypeDef,
+    ListErc721BalancesGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListErc721BalancesGlobals$ {
+    /** @deprecated use `ListErc721BalancesGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListErc721BalancesGlobals$inboundSchema;
+    /** @deprecated use `ListErc721BalancesGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListErc721BalancesGlobals$outboundSchema;
+    /** @deprecated use `ListErc721BalancesGlobals$Outbound` instead. */
+    export type Outbound = ListErc721BalancesGlobals$Outbound;
+}
+
+/** @internal */
 export const ListErc721BalancesRequest$inboundSchema: z.ZodType<
     ListErc721BalancesRequest,
     z.ZodTypeDef,
@@ -41,7 +81,7 @@ export const ListErc721BalancesRequest$inboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
     contractAddress: z.string().optional(),
 });
@@ -50,7 +90,7 @@ export const ListErc721BalancesRequest$inboundSchema: z.ZodType<
 export type ListErc721BalancesRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
-    chainId: string;
+    chainId?: string | undefined;
     address: string;
     contractAddress?: string | undefined;
 };
@@ -63,7 +103,7 @@ export const ListErc721BalancesRequest$outboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
     contractAddress: z.string().optional(),
 });

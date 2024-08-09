@@ -6,6 +6,10 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListNativeTransactionsGlobals = {
+    chainId?: string | undefined;
+};
+
 export type ListNativeTransactionsRequest = {
     /**
      * The block range start number, inclusive. If endBlock is not defined when startBlock is defined, the end of the range will be the most recent block.
@@ -26,7 +30,7 @@ export type ListNativeTransactionsRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
     /**
      * A wallet address.
      */
@@ -38,6 +42,42 @@ export type ListNativeTransactionsResponse = {
 };
 
 /** @internal */
+export const ListNativeTransactionsGlobals$inboundSchema: z.ZodType<
+    ListNativeTransactionsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/** @internal */
+export type ListNativeTransactionsGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const ListNativeTransactionsGlobals$outboundSchema: z.ZodType<
+    ListNativeTransactionsGlobals$Outbound,
+    z.ZodTypeDef,
+    ListNativeTransactionsGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListNativeTransactionsGlobals$ {
+    /** @deprecated use `ListNativeTransactionsGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListNativeTransactionsGlobals$inboundSchema;
+    /** @deprecated use `ListNativeTransactionsGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListNativeTransactionsGlobals$outboundSchema;
+    /** @deprecated use `ListNativeTransactionsGlobals$Outbound` instead. */
+    export type Outbound = ListNativeTransactionsGlobals$Outbound;
+}
+
+/** @internal */
 export const ListNativeTransactionsRequest$inboundSchema: z.ZodType<
     ListNativeTransactionsRequest,
     z.ZodTypeDef,
@@ -47,7 +87,7 @@ export const ListNativeTransactionsRequest$inboundSchema: z.ZodType<
     endBlock: z.number().optional(),
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
 });
 
@@ -57,7 +97,7 @@ export type ListNativeTransactionsRequest$Outbound = {
     endBlock?: number | undefined;
     pageToken?: string | undefined;
     pageSize: number;
-    chainId: string;
+    chainId?: string | undefined;
     address: string;
 };
 
@@ -71,7 +111,7 @@ export const ListNativeTransactionsRequest$outboundSchema: z.ZodType<
     endBlock: z.number().optional(),
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
 });
 

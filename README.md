@@ -7,10 +7,10 @@
     </a>
 </div>
 
+
 ## 🏗 **Welcome to your new SDK!** 🏗
 
 It has been generated successfully based on your OpenAPI spec. However, it is not yet ready for production use. Here are some next steps:
-
 - [ ] 🛠 Make your SDK feel handcrafted by [customizing it](https://www.speakeasy.com/docs/customize-sdks)
 - [ ] ♻️ Refine your SDK quickly by iterating locally with the [Speakeasy CLI](https://github.com/speakeasy-api/speakeasy)
 - [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasy.com/docs/advanced-setup/publish-sdks)
@@ -22,25 +22,25 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 ### NPM
 
 ```bash
-npm add @avalabs/avalanche-sdk
+npm add <UNSET>
 ```
 
 ### PNPM
 
 ```bash
-pnpm add @avalabs/avalanche-sdk
+pnpm add <UNSET>
 ```
 
 ### Bun
 
 ```bash
-bun add @avalabs/avalanche-sdk
+bun add <UNSET>
 ```
 
 ### Yarn
 
 ```bash
-yarn add @avalabs/avalanche-sdk zod
+yarn add <UNSET> zod
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
@@ -192,6 +192,76 @@ run();
 * [supportedChains](docs/sdks/chains/README.md#supportedchains) - List chains
 * [getChainInfo](docs/sdks/chains/README.md#getchaininfo) - Get chain information
 <!-- End Available Resources and Operations [operations] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `chainId` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `reindexNft`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameters are available.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| chainId | string |  | The chainId parameter. |
+| network | string |  | The network parameter. |
+
+
+### Example
+
+```typescript
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
+
+const avalancheSDK = new AvalancheSDK();
+
+async function run() {
+    await avalancheSDK.glacier.nfts.reindexNft({
+        address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+        tokenId: "145",
+    });
+}
+
+run();
+
+```
+<!-- End Global Parameters [global-parameters] -->
+
+<!-- Start Pagination [pagination] -->
+## Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you
+make your SDK calls as usual, but the returned response object will also be an
+async iterable that can be consumed using the [`for await...of`][for-await-of]
+syntax.
+
+[for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+
+Here's an example of one such pagination call:
+
+```typescript
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
+
+const avalancheSDK = new AvalancheSDK();
+
+async function run() {
+    const result = await avalancheSDK.glacier.nfts.listTokens({
+        pageSize: 10,
+        address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+    });
+
+    for await (const page of result) {
+        // handle page
+    }
+}
+
+run();
+
+```
+<!-- End Pagination [pagination] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -408,40 +478,6 @@ const sdk = new AvalancheSDK({ httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
-<!-- Start Pagination [pagination] -->
-## Pagination
-
-Some of the endpoints in this SDK support pagination. To use pagination, you
-make your SDK calls as usual, but the returned response object will also be an
-async iterable that can be consumed using the [`for await...of`][for-await-of]
-syntax.
-
-[for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
-
-Here's an example of one such pagination call:
-
-```typescript
-import { AvalancheSDK } from "@avalabs/avalanche-sdk";
-
-const avalancheSDK = new AvalancheSDK();
-
-async function run() {
-    const result = await avalancheSDK.glacier.nfts.listTokens({
-        pageSize: 10,
-        chainId: "43114",
-        address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
-    });
-
-    for await (const page of result) {
-        // handle page
-    }
-}
-
-run();
-
-```
-<!-- End Pagination [pagination] -->
-
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 # Development
@@ -454,9 +490,7 @@ looking for the latest version.
 
 ## Contributions
 
-While we value open-source contributions to this SDK, this library is generated programmatically. Any manual changes added to internal files will be overwritten on the next generation.
-We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release.
+While we value open-source contributions to this SDK, this library is generated programmatically. Any manual changes added to internal files will be overwritten on the next generation. 
+We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release. 
 
-### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=`<no value>`&utm_campaign=typescript)
-
-[for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=<no value>&utm_campaign=typescript)

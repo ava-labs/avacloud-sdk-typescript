@@ -5,11 +5,15 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetContractMetadataGlobals = {
+    chainId?: string | undefined;
+};
+
 export type GetContractMetadataRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
     /**
      * Contract address on the relevant chain.
      */
@@ -23,18 +27,54 @@ export type GetContractMetadataResponseBody =
     | (components.Erc20Contract & { ercType: "ERC-20" });
 
 /** @internal */
+export const GetContractMetadataGlobals$inboundSchema: z.ZodType<
+    GetContractMetadataGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/** @internal */
+export type GetContractMetadataGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const GetContractMetadataGlobals$outboundSchema: z.ZodType<
+    GetContractMetadataGlobals$Outbound,
+    z.ZodTypeDef,
+    GetContractMetadataGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetContractMetadataGlobals$ {
+    /** @deprecated use `GetContractMetadataGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetContractMetadataGlobals$inboundSchema;
+    /** @deprecated use `GetContractMetadataGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetContractMetadataGlobals$outboundSchema;
+    /** @deprecated use `GetContractMetadataGlobals$Outbound` instead. */
+    export type Outbound = GetContractMetadataGlobals$Outbound;
+}
+
+/** @internal */
 export const GetContractMetadataRequest$inboundSchema: z.ZodType<
     GetContractMetadataRequest,
     z.ZodTypeDef,
     unknown
 > = z.object({
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
 });
 
 /** @internal */
 export type GetContractMetadataRequest$Outbound = {
-    chainId: string;
+    chainId?: string | undefined;
     address: string;
 };
 
@@ -44,7 +84,7 @@ export const GetContractMetadataRequest$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetContractMetadataRequest
 > = z.object({
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
 });
 

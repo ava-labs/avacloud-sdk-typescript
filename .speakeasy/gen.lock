@@ -1,15 +1,12 @@
 lockVersion: 2.0.0
-id: aa62edb7-4270-4c7b-a00f-96026070d05e
+id: 671958ae-d9d0-4313-b04e-12cd25c2f3f7
 management:
-  docChecksum: 74e226279e52c4f6e0b8483a3e4f1765
+  docChecksum: b75e10095fdc361347c81b7ef2b19cee
   docVersion: Beta
   speakeasyVersion: 1.358.0
   generationVersion: 2.390.6
-  releaseVersion: 0.3.0
-  configChecksum: aa3cf6704ab5abdfc7d182cc8477ea10
-  repoURL: https://github.com/ava-labs/avalanche-sdk-typescript.git
-  installationURL: https://github.com/ava-labs/avalanche-sdk-typescript
-  published: true
+  releaseVersion: 0.0.1
+  configChecksum: 9e9fa2804a530e994b6e73e51af0cf1c
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -22,6 +19,7 @@ features:
     envVarSecurityUsage: 0.1.1
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.4
+    globals: 2.82.1
     groups: 2.81.2
     ignores: 2.81.1
     nullables: 0.1.0
@@ -388,9 +386,12 @@ generatedFiles:
   - docs/models/operations/errort.md
   - docs/models/operations/details.md
   - docs/models/operations/healthcheckresponsebody.md
+  - docs/models/operations/reindexnftglobals.md
   - docs/models/operations/reindexnftrequest.md
+  - docs/models/operations/listtokensglobals.md
   - docs/models/operations/listtokensrequest.md
   - docs/models/operations/listtokensresponse.md
+  - docs/models/operations/gettokendetailsglobals.md
   - docs/models/operations/gettokendetailsrequest.md
   - docs/models/operations/gettokendetailsresponsebody.md
   - docs/models/operations/getoperationresultrequest.md
@@ -449,42 +450,63 @@ generatedFiles:
   - docs/models/operations/getteleportermessageresponsebody.md
   - docs/models/operations/listteleportermessagesrequest.md
   - docs/models/operations/listteleportermessagesresponse.md
+  - docs/models/operations/getnativebalanceglobals.md
   - docs/models/operations/getnativebalancerequest.md
+  - docs/models/operations/listerc20balancesglobals.md
   - docs/models/operations/listerc20balancesrequest.md
   - docs/models/operations/listerc20balancesresponse.md
+  - docs/models/operations/listerc721balancesglobals.md
   - docs/models/operations/listerc721balancesrequest.md
   - docs/models/operations/listerc721balancesresponse.md
+  - docs/models/operations/listerc1155balancesglobals.md
   - docs/models/operations/listerc1155balancesrequest.md
   - docs/models/operations/listerc1155balancesresponse.md
+  - docs/models/operations/listcollectiblebalancesglobals.md
   - docs/models/operations/listcollectiblebalancesrequest.md
   - docs/models/operations/listcollectiblebalancesresponse.md
+  - docs/models/operations/getlatestblocksglobals.md
   - docs/models/operations/getlatestblocksrequest.md
   - docs/models/operations/getlatestblocksresponse.md
+  - docs/models/operations/getblockglobals.md
   - docs/models/operations/getblockrequest.md
+  - docs/models/operations/getdeploymenttransactionglobals.md
   - docs/models/operations/getdeploymenttransactionrequest.md
+  - docs/models/operations/listcontractdeploymentsglobals.md
   - docs/models/operations/listcontractdeploymentsrequest.md
   - docs/models/operations/listcontractdeploymentsresponse.md
+  - docs/models/operations/listtransfersglobals.md
   - docs/models/operations/listtransfersrequest.md
   - docs/models/operations/listtransfersresponse.md
+  - docs/models/operations/listtransactionsglobals.md
   - docs/models/operations/listtransactionsrequest.md
   - docs/models/operations/listtransactionsresponse.md
+  - docs/models/operations/listnativetransactionsglobals.md
   - docs/models/operations/listnativetransactionsrequest.md
   - docs/models/operations/listnativetransactionsresponse.md
+  - docs/models/operations/listerc20transactionsglobals.md
   - docs/models/operations/listerc20transactionsrequest.md
   - docs/models/operations/listerc20transactionsresponse.md
+  - docs/models/operations/listerc721transactionsglobals.md
   - docs/models/operations/listerc721transactionsrequest.md
   - docs/models/operations/listerc721transactionsresponse.md
+  - docs/models/operations/listerc1155transactionsglobals.md
   - docs/models/operations/listerc1155transactionsrequest.md
   - docs/models/operations/listerc1155transactionsresponse.md
+  - docs/models/operations/listinternaltransactionsglobals.md
   - docs/models/operations/listinternaltransactionsrequest.md
   - docs/models/operations/listinternaltransactionsresponse.md
+  - docs/models/operations/gettransactionglobals.md
   - docs/models/operations/gettransactionrequest.md
+  - docs/models/operations/gettransactionsforblockglobals.md
   - docs/models/operations/gettransactionsforblockrequest.md
+  - docs/models/operations/listlatesttransactionsglobals.md
   - docs/models/operations/listlatesttransactionsrequest.md
   - docs/models/operations/listlatesttransactionsresponse.md
+  - docs/models/operations/getcontractmetadataglobals.md
   - docs/models/operations/getcontractmetadatarequest.md
   - docs/models/operations/getcontractmetadataresponsebody.md
   - docs/models/operations/supportedchainsrequest.md
+  - docs/models/operations/getchaininfoglobals.md
   - docs/models/operations/getchaininforequest.md
   - docs/models/errors/info.md
   - docs/models/errors/errort.md

@@ -5,6 +5,10 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetNativeBalanceGlobals = {
+    chainId?: string | undefined;
+};
+
 export type GetNativeBalanceRequest = {
     /**
      * The block number, if not defined the block number will be the latest block.
@@ -13,7 +17,7 @@ export type GetNativeBalanceRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
     /**
      * A wallet address.
      */
@@ -25,13 +29,49 @@ export type GetNativeBalanceRequest = {
 };
 
 /** @internal */
+export const GetNativeBalanceGlobals$inboundSchema: z.ZodType<
+    GetNativeBalanceGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/** @internal */
+export type GetNativeBalanceGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const GetNativeBalanceGlobals$outboundSchema: z.ZodType<
+    GetNativeBalanceGlobals$Outbound,
+    z.ZodTypeDef,
+    GetNativeBalanceGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetNativeBalanceGlobals$ {
+    /** @deprecated use `GetNativeBalanceGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetNativeBalanceGlobals$inboundSchema;
+    /** @deprecated use `GetNativeBalanceGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetNativeBalanceGlobals$outboundSchema;
+    /** @deprecated use `GetNativeBalanceGlobals$Outbound` instead. */
+    export type Outbound = GetNativeBalanceGlobals$Outbound;
+}
+
+/** @internal */
 export const GetNativeBalanceRequest$inboundSchema: z.ZodType<
     GetNativeBalanceRequest,
     z.ZodTypeDef,
     unknown
 > = z.object({
     blockNumber: z.string().optional(),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
     currency: components.CurrencyCode$inboundSchema.optional(),
 });
@@ -39,7 +79,7 @@ export const GetNativeBalanceRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type GetNativeBalanceRequest$Outbound = {
     blockNumber?: string | undefined;
-    chainId: string;
+    chainId?: string | undefined;
     address: string;
     currency?: string | undefined;
 };
@@ -51,7 +91,7 @@ export const GetNativeBalanceRequest$outboundSchema: z.ZodType<
     GetNativeBalanceRequest
 > = z.object({
     blockNumber: z.string().optional(),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
     currency: components.CurrencyCode$outboundSchema.optional(),
 });

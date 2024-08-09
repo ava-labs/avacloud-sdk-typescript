@@ -49,7 +49,7 @@ export async function glacierEvmTransactionsListLatestTransactions(
         >
     >
 > {
-    const input$ = request;
+    const input$ = typeof request === "undefined" ? {} : request;
 
     const parsed$ = schemas$.safeParse(
         input$,
@@ -63,7 +63,7 @@ export async function glacierEvmTransactionsListLatestTransactions(
     const body$ = null;
 
     const pathParams$ = {
-        chainId: encodeSimple$("chainId", payload$.chainId, {
+        chainId: encodeSimple$("chainId", payload$.chainId ?? client$.options$.chainId, {
             explode: false,
             charEncoding: "percent",
         }),
@@ -107,8 +107,18 @@ export async function glacierEvmTransactionsListLatestTransactions(
     const doResult = await client$.do$(request$, {
         context,
         errorCodes: ["4XX", "5XX"],
-        retryConfig: options?.retries || client$.options$.retryConfig,
-        retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        retryConfig: options?.retries ||
+            client$.options$.retryConfig || {
+                strategy: "backoff",
+                backoff: {
+                    initialInterval: 500,
+                    maxInterval: 60000,
+                    exponent: 1.5,
+                    maxElapsedTime: 3600000,
+                },
+                retryConnectionErrors: true,
+            },
+        retryCodes: options?.retryCodes || ["5XX"],
     });
     if (!doResult.ok) {
         return haltIterator(doResult);

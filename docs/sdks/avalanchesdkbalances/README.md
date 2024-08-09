@@ -25,7 +25,6 @@ const avalancheSDK = new AvalancheSDK();
 async function run() {
   const result = await avalancheSDK.glacier.evm.balances.getNativeBalance({
     blockNumber: "6479329",
-    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     currency: "usd",
   });
@@ -75,7 +74,6 @@ async function run() {
   const result = await avalancheSDK.glacier.evm.balances.listErc20Balances({
     blockNumber: "6479329",
     pageSize: 10,
-    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddresses: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7, 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
     currency: "usd",
@@ -124,7 +122,6 @@ const avalancheSDK = new AvalancheSDK();
 async function run() {
   const result = await avalancheSDK.glacier.evm.balances.listErc721Balances({
     pageSize: 10,
-    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });
@@ -175,7 +172,6 @@ async function run() {
   const result = await avalancheSDK.glacier.evm.balances.listErc1155Balances({
     blockNumber: "6479329",
     pageSize: 10,
-    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });
@@ -223,7 +219,6 @@ const avalancheSDK = new AvalancheSDK();
 async function run() {
   const result = await avalancheSDK.glacier.evm.balances.listCollectibleBalances({
     pageSize: 10,
-    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });

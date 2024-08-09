@@ -88,8 +88,18 @@ export async function glacierWebhooksUpdateWebhook(
     const doResult = await client$.do$(request$, {
         context,
         errorCodes: ["4XX", "5XX"],
-        retryConfig: options?.retries || client$.options$.retryConfig,
-        retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        retryConfig: options?.retries ||
+            client$.options$.retryConfig || {
+                strategy: "backoff",
+                backoff: {
+                    initialInterval: 500,
+                    maxInterval: 60000,
+                    exponent: 1.5,
+                    maxElapsedTime: 3600000,
+                },
+                retryConnectionErrors: true,
+            },
+        retryCodes: options?.retryCodes || ["5XX"],
     });
     if (!doResult.ok) {
         return doResult;

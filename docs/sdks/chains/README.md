@@ -61,9 +61,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-  const result = await avalancheSDK.glacier.evm.chains.getChainInfo({
-    chainId: "43114",
-  });
+  const result = await avalancheSDK.glacier.evm.chains.getChainInfo({});
 
   // Handle the result
   console.log(result)

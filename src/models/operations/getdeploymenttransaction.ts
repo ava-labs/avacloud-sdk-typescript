@@ -5,11 +5,15 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetDeploymentTransactionGlobals = {
+    chainId?: string | undefined;
+};
+
 export type GetDeploymentTransactionRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
     /**
      * Contract address on the relevant chain.
      */
@@ -21,19 +25,55 @@ export type GetDeploymentTransactionRequest = {
 };
 
 /** @internal */
+export const GetDeploymentTransactionGlobals$inboundSchema: z.ZodType<
+    GetDeploymentTransactionGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/** @internal */
+export type GetDeploymentTransactionGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const GetDeploymentTransactionGlobals$outboundSchema: z.ZodType<
+    GetDeploymentTransactionGlobals$Outbound,
+    z.ZodTypeDef,
+    GetDeploymentTransactionGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentTransactionGlobals$ {
+    /** @deprecated use `GetDeploymentTransactionGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetDeploymentTransactionGlobals$inboundSchema;
+    /** @deprecated use `GetDeploymentTransactionGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetDeploymentTransactionGlobals$outboundSchema;
+    /** @deprecated use `GetDeploymentTransactionGlobals$Outbound` instead. */
+    export type Outbound = GetDeploymentTransactionGlobals$Outbound;
+}
+
+/** @internal */
 export const GetDeploymentTransactionRequest$inboundSchema: z.ZodType<
     GetDeploymentTransactionRequest,
     z.ZodTypeDef,
     unknown
 > = z.object({
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
     currency: components.CurrencyCode$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetDeploymentTransactionRequest$Outbound = {
-    chainId: string;
+    chainId?: string | undefined;
     address: string;
     currency?: string | undefined;
 };
@@ -44,7 +84,7 @@ export const GetDeploymentTransactionRequest$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetDeploymentTransactionRequest
 > = z.object({
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
     currency: components.CurrencyCode$outboundSchema.optional(),
 });

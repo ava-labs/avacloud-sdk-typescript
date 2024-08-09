@@ -5,11 +5,15 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetTokenDetailsGlobals = {
+    chainId?: string | undefined;
+};
+
 export type GetTokenDetailsRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
     /**
      * Contract address on the relevant chain.
      */
@@ -25,19 +29,55 @@ export type GetTokenDetailsResponseBody =
     | (components.Erc721Token & { ercType: "ERC-721" });
 
 /** @internal */
+export const GetTokenDetailsGlobals$inboundSchema: z.ZodType<
+    GetTokenDetailsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/** @internal */
+export type GetTokenDetailsGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const GetTokenDetailsGlobals$outboundSchema: z.ZodType<
+    GetTokenDetailsGlobals$Outbound,
+    z.ZodTypeDef,
+    GetTokenDetailsGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetTokenDetailsGlobals$ {
+    /** @deprecated use `GetTokenDetailsGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetTokenDetailsGlobals$inboundSchema;
+    /** @deprecated use `GetTokenDetailsGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetTokenDetailsGlobals$outboundSchema;
+    /** @deprecated use `GetTokenDetailsGlobals$Outbound` instead. */
+    export type Outbound = GetTokenDetailsGlobals$Outbound;
+}
+
+/** @internal */
 export const GetTokenDetailsRequest$inboundSchema: z.ZodType<
     GetTokenDetailsRequest,
     z.ZodTypeDef,
     unknown
 > = z.object({
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
     tokenId: z.string(),
 });
 
 /** @internal */
 export type GetTokenDetailsRequest$Outbound = {
-    chainId: string;
+    chainId?: string | undefined;
     address: string;
     tokenId: string;
 };
@@ -48,7 +88,7 @@ export const GetTokenDetailsRequest$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetTokenDetailsRequest
 > = z.object({
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
     tokenId: z.string(),
 });

@@ -6,6 +6,10 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListTransactionsGlobals = {
+    chainId?: string | undefined;
+};
+
 export type ListTransactionsRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
@@ -26,7 +30,7 @@ export type ListTransactionsRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
     /**
      * A wallet address.
      */
@@ -42,6 +46,42 @@ export type ListTransactionsResponse = {
 };
 
 /** @internal */
+export const ListTransactionsGlobals$inboundSchema: z.ZodType<
+    ListTransactionsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/** @internal */
+export type ListTransactionsGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const ListTransactionsGlobals$outboundSchema: z.ZodType<
+    ListTransactionsGlobals$Outbound,
+    z.ZodTypeDef,
+    ListTransactionsGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListTransactionsGlobals$ {
+    /** @deprecated use `ListTransactionsGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListTransactionsGlobals$inboundSchema;
+    /** @deprecated use `ListTransactionsGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListTransactionsGlobals$outboundSchema;
+    /** @deprecated use `ListTransactionsGlobals$Outbound` instead. */
+    export type Outbound = ListTransactionsGlobals$Outbound;
+}
+
+/** @internal */
 export const ListTransactionsRequest$inboundSchema: z.ZodType<
     ListTransactionsRequest,
     z.ZodTypeDef,
@@ -51,7 +91,7 @@ export const ListTransactionsRequest$inboundSchema: z.ZodType<
     pageSize: z.number().int().default(10),
     startBlock: z.number().optional(),
     endBlock: z.number().optional(),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
 });
@@ -62,7 +102,7 @@ export type ListTransactionsRequest$Outbound = {
     pageSize: number;
     startBlock?: number | undefined;
     endBlock?: number | undefined;
-    chainId: string;
+    chainId?: string | undefined;
     address: string;
     sortOrder?: string | undefined;
 };
@@ -77,7 +117,7 @@ export const ListTransactionsRequest$outboundSchema: z.ZodType<
     pageSize: z.number().int().default(10),
     startBlock: z.number().optional(),
     endBlock: z.number().optional(),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
     sortOrder: components.SortOrder$outboundSchema.optional(),
 });

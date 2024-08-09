@@ -6,6 +6,10 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListErc721TransactionsGlobals = {
+    chainId?: string | undefined;
+};
+
 export type ListErc721TransactionsRequest = {
     /**
      * The block range start number, inclusive. If endBlock is not defined when startBlock is defined, the end of the range will be the most recent block.
@@ -26,7 +30,7 @@ export type ListErc721TransactionsRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
     /**
      * A wallet address.
      */
@@ -38,6 +42,42 @@ export type ListErc721TransactionsResponse = {
 };
 
 /** @internal */
+export const ListErc721TransactionsGlobals$inboundSchema: z.ZodType<
+    ListErc721TransactionsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/** @internal */
+export type ListErc721TransactionsGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const ListErc721TransactionsGlobals$outboundSchema: z.ZodType<
+    ListErc721TransactionsGlobals$Outbound,
+    z.ZodTypeDef,
+    ListErc721TransactionsGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListErc721TransactionsGlobals$ {
+    /** @deprecated use `ListErc721TransactionsGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListErc721TransactionsGlobals$inboundSchema;
+    /** @deprecated use `ListErc721TransactionsGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListErc721TransactionsGlobals$outboundSchema;
+    /** @deprecated use `ListErc721TransactionsGlobals$Outbound` instead. */
+    export type Outbound = ListErc721TransactionsGlobals$Outbound;
+}
+
+/** @internal */
 export const ListErc721TransactionsRequest$inboundSchema: z.ZodType<
     ListErc721TransactionsRequest,
     z.ZodTypeDef,
@@ -47,7 +87,7 @@ export const ListErc721TransactionsRequest$inboundSchema: z.ZodType<
     endBlock: z.number().optional(),
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
 });
 
@@ -57,7 +97,7 @@ export type ListErc721TransactionsRequest$Outbound = {
     endBlock?: number | undefined;
     pageToken?: string | undefined;
     pageSize: number;
-    chainId: string;
+    chainId?: string | undefined;
     address: string;
 };
 
@@ -71,7 +111,7 @@ export const ListErc721TransactionsRequest$outboundSchema: z.ZodType<
     endBlock: z.number().optional(),
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     address: z.string(),
 });
 

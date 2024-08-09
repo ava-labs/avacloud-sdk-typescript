@@ -6,6 +6,10 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListLatestTransactionsGlobals = {
+    chainId?: string | undefined;
+};
+
 export type ListLatestTransactionsRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
@@ -18,7 +22,7 @@ export type ListLatestTransactionsRequest = {
     /**
      * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
      */
-    chainId: string;
+    chainId?: string | undefined;
     /**
      * A status filter for listed transactions.
      */
@@ -30,6 +34,42 @@ export type ListLatestTransactionsResponse = {
 };
 
 /** @internal */
+export const ListLatestTransactionsGlobals$inboundSchema: z.ZodType<
+    ListLatestTransactionsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/** @internal */
+export type ListLatestTransactionsGlobals$Outbound = {
+    chainId?: string | undefined;
+};
+
+/** @internal */
+export const ListLatestTransactionsGlobals$outboundSchema: z.ZodType<
+    ListLatestTransactionsGlobals$Outbound,
+    z.ZodTypeDef,
+    ListLatestTransactionsGlobals
+> = z.object({
+    chainId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListLatestTransactionsGlobals$ {
+    /** @deprecated use `ListLatestTransactionsGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListLatestTransactionsGlobals$inboundSchema;
+    /** @deprecated use `ListLatestTransactionsGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListLatestTransactionsGlobals$outboundSchema;
+    /** @deprecated use `ListLatestTransactionsGlobals$Outbound` instead. */
+    export type Outbound = ListLatestTransactionsGlobals$Outbound;
+}
+
+/** @internal */
 export const ListLatestTransactionsRequest$inboundSchema: z.ZodType<
     ListLatestTransactionsRequest,
     z.ZodTypeDef,
@@ -37,7 +77,7 @@ export const ListLatestTransactionsRequest$inboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     status: components.TransactionStatus$inboundSchema.optional(),
 });
 
@@ -45,7 +85,7 @@ export const ListLatestTransactionsRequest$inboundSchema: z.ZodType<
 export type ListLatestTransactionsRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
-    chainId: string;
+    chainId?: string | undefined;
     status?: string | undefined;
 };
 
@@ -57,7 +97,7 @@ export const ListLatestTransactionsRequest$outboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    chainId: z.string(),
+    chainId: z.string().optional(),
     status: components.TransactionStatus$outboundSchema.optional(),
 });
 
