@@ -2,7 +2,7 @@ configVersion: 2.0.0
 generation:
   devContainers:
     enabled: true
-    schemaPath: https://ad39-2405-201-3027-2887-d9b-fc28-c7ec-5133.ngrok-free.app/api-json
+    schemaPath: https://1573-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json
   sdkClassName: AvalancheSdk
   maintainOpenAPIOrder: true
   usageSnippets:
@@ -15,7 +15,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 0.5.0
+  version: 0.1.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}

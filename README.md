@@ -22,25 +22,25 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 ### NPM
 
 ```bash
-npm add @avalabs/avalanche-sdk
+npm add <UNSET>
 ```
 
 ### PNPM
 
 ```bash
-pnpm add @avalabs/avalanche-sdk
+pnpm add <UNSET>
 ```
 
 ### Bun
 
 ```bash
-bun add @avalabs/avalanche-sdk
+bun add <UNSET>
 ```
 
 ### Yarn
 
 ```bash
-yarn add @avalabs/avalanche-sdk zod
+yarn add <UNSET> zod
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
@@ -238,6 +238,46 @@ run();
 * [supportedChains](docs/sdks/chains/README.md#supportedchains) - List chains
 * [getChainInfo](docs/sdks/chains/README.md#getchaininfo) - Get chain information
 <!-- End Available Resources and Operations [operations] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `chainId` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `listChains`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameters are available.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| chainId | string |  | The chainId parameter. |
+| network | string |  | The network parameter. |
+
+
+### Example
+
+```typescript
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
+
+const avalancheSDK = new AvalancheSDK();
+
+async function run() {
+    const result = await avalancheSDK.metrics.evm.chains.listChains({
+        network: "mainnet",
+    });
+
+    for await (const page of result) {
+        // handle page
+    }
+}
+
+run();
+
+```
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Start Pagination [pagination] -->
 ## Pagination
@@ -480,61 +520,6 @@ const sdk = new AvalancheSDK({ httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
-<!-- Start Debugging [debug] -->
-## Debugging
-
-To log HTTP requests and responses, you can pass a logger that matches `console`'s interface as an SDK option.
-
-> [!WARNING]
-> Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
-
-```typescript
-import { AvalancheSDK } from "@avalabs/avalanche-sdk";
-
-const sdk = new AvalancheSDK({ debugLogger: console });
-```
-<!-- End Debugging [debug] -->
-
-<!-- Start Global Parameters [global-parameters] -->
-## Global Parameters
-
-Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
-
-For example, you can set `chainId` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `listChains`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
-
-
-### Available Globals
-
-The following global parameters are available.
-
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| chainId | string |  | The chainId parameter. |
-| network | string |  | The network parameter. |
-
-
-### Example
-
-```typescript
-import { AvalancheSDK } from "@avalabs/avalanche-sdk";
-
-const avalancheSDK = new AvalancheSDK();
-
-async function run() {
-    const result = await avalancheSDK.metrics.evm.chains.listChains({
-        network: "mainnet",
-    });
-
-    for await (const page of result) {
-        // handle page
-    }
-}
-
-run();
-
-```
-<!-- End Global Parameters [global-parameters] -->
-
 <!-- Start Standalone functions [standalone-funcs] -->
 ## Standalone functions
 
@@ -644,6 +629,21 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
+
+<!-- Start Debugging [debug] -->
+## Debugging
+
+To log HTTP requests and responses, you can pass a logger that matches `console`'s interface as an SDK option.
+
+> [!WARNING]
+> Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
+
+```typescript
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
+
+const sdk = new AvalancheSDK({ debugLogger: console });
+```
+<!-- End Debugging [debug] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

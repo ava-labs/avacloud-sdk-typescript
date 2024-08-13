@@ -1,15 +1,12 @@
 lockVersion: 2.0.0
-id: 87cc6b1a-13e6-4501-a0d7-2da24669a204
+id: d92d2248-44a7-4f20-939b-4f5a23e38b07
 management:
-  docChecksum: 216841ffd9a1defdd89e16a73e33178f
+  docChecksum: 220c1ffbe0b2bf1cd15b2d1575d4672f
   docVersion: Beta
   speakeasyVersion: 1.363.1
   generationVersion: 2.396.0
-  releaseVersion: 0.5.0
-  configChecksum: 28bc2c234c5dadf029b3d2fe8a97e020
-  repoURL: https://github.com/ava-labs/avalanche-sdk-typescript.git
-  installationURL: https://github.com/ava-labs/avalanche-sdk-typescript
-  published: true
+  releaseVersion: 0.1.0
+  configChecksum: c0c67af710ca750216d343337f758691
 features:
   typescript:
     additionalDependencies: 0.1.0

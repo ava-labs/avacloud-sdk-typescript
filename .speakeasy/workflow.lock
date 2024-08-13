@@ -1,17 +1,17 @@
-speakeasyVersion: 1.361.1
+speakeasyVersion: 1.354.1
 sources:
     AvalancheSDK-OAS:
         sourceNamespace: avalanche-sdk-oas
-        sourceRevisionDigest: sha256:df5ede97c87fa9ae15088257f01d3ea7f03a491aa924f3c0476150ad78da77bc
-        sourceBlobDigest: sha256:19288be87bfa93e83d436d3165f4d3599a0053d7b114aba0b38a35775c43df5f
+        sourceRevisionDigest: sha256:19c414a56967df33cbf409cce182bde24b3dc711adc130dc5b8c66a0dc340dd0
+        sourceBlobDigest: sha256:678f76fcf9d681c0c1940d0f09d8d9d77a5d9c44eca1d37c7bf9528bedb70d29
         tags:
             - latest
 targets:
     avalanche-sdk:
         source: AvalancheSDK-OAS
         sourceNamespace: avalanche-sdk-oas
-        sourceRevisionDigest: sha256:df5ede97c87fa9ae15088257f01d3ea7f03a491aa924f3c0476150ad78da77bc
-        sourceBlobDigest: sha256:19288be87bfa93e83d436d3165f4d3599a0053d7b114aba0b38a35775c43df5f
+        sourceRevisionDigest: sha256:19c414a56967df33cbf409cce182bde24b3dc711adc130dc5b8c66a0dc340dd0
+        sourceBlobDigest: sha256:678f76fcf9d681c0c1940d0f09d8d9d77a5d9c44eca1d37c7bf9528bedb70d29
         outLocation: /Users/sayan.kar/avalabs/avalanche-sdk-typescript
 workflow:
     workflowVersion: 1.0.0
@@ -27,6 +27,3 @@ workflow:
         avalanche-sdk:
             target: typescript
             source: AvalancheSDK-OAS
-            publish:
-                npm:
-                    token: $npm_token
