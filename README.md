@@ -384,46 +384,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
 
-<!-- Start Global Parameters [global-parameters] -->
-## Global Parameters
-
-Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
-
-For example, you can set `chainId` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `listChains`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
-
-
-### Available Globals
-
-The following global parameters are available.
-
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| chainId | string |  | The chainId parameter. |
-| network | string |  | The network parameter. |
-
-
-### Example
-
-```typescript
-import { AvalancheSDK } from "@avalabs/avalanche-sdk";
-
-const avalancheSDK = new AvalancheSDK();
-
-async function run() {
-    const result = await avalancheSDK.metrics.evm.chains.listChains({
-        network: "mainnet",
-    });
-
-    for await (const page of result) {
-        // handle page
-    }
-}
-
-run();
-
-```
-<!-- End Global Parameters [global-parameters] -->
-
 <!-- Start Pagination [pagination] -->
 ## Pagination
 
@@ -679,6 +639,46 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const sdk = new AvalancheSDK({ debugLogger: console });
 ```
 <!-- End Debugging [debug] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `chainId` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `listChains`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameters are available.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| chainId | string |  | The chainId parameter. |
+| network | string |  | The network parameter. |
+
+
+### Example
+
+```typescript
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
+
+const avalancheSDK = new AvalancheSDK();
+
+async function run() {
+    const result = await avalancheSDK.metrics.evm.chains.listChains({
+        network: "mainnet",
+    });
+
+    for await (const page of result) {
+        // handle page
+    }
+}
+
+run();
+
+```
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
