@@ -1,4 +1,4 @@
-# ListChainsResponse
+# PopsicleListChainsResponse
 
 
 ## Fields

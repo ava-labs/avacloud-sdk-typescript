@@ -20,7 +20,7 @@ export type ListChainsRequest = {
 };
 
 export type ListChainsResponse = {
-    result: components.ListChainsResponse;
+    result: components.PopsicleListChainsResponse;
 };
 
 /** @internal */
@@ -66,7 +66,7 @@ export const ListChainsResponse$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        Result: components.ListChainsResponse$inboundSchema,
+        Result: components.PopsicleListChainsResponse$inboundSchema,
     })
     .transform((v) => {
         return remap$(v, {
@@ -76,7 +76,7 @@ export const ListChainsResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListChainsResponse$Outbound = {
-    Result: components.ListChainsResponse$Outbound;
+    Result: components.PopsicleListChainsResponse$Outbound;
 };
 
 /** @internal */
@@ -86,7 +86,7 @@ export const ListChainsResponse$outboundSchema: z.ZodType<
     ListChainsResponse
 > = z
     .object({
-        result: components.ListChainsResponse$outboundSchema,
+        result: components.PopsicleListChainsResponse$outboundSchema,
     })
     .transform((v) => {
         return remap$(v, {

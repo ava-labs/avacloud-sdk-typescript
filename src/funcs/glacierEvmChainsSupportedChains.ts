@@ -34,7 +34,7 @@ export async function glacierEvmChainsSupportedChains(
     options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
-        components.ListChainsResponse,
+        components.GlacierListChainsResponse,
         | SDKError
         | SDKValidationError
         | UnexpectedClientError
@@ -114,7 +114,7 @@ export async function glacierEvmChainsSupportedChains(
     const response = doResult.value;
 
     const [result$] = await m$.match<
-        components.ListChainsResponse,
+        components.GlacierListChainsResponse,
         | SDKError
         | SDKValidationError
         | UnexpectedClientError
@@ -123,7 +123,7 @@ export async function glacierEvmChainsSupportedChains(
         | RequestTimeoutError
         | ConnectionError
     >(
-        m$.json(200, components.ListChainsResponse$inboundSchema),
+        m$.json(200, components.GlacierListChainsResponse$inboundSchema),
         m$.fail(["4XX", "5XX"])
     )(response);
     if (!result$.ok) {

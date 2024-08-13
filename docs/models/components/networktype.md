@@ -1,7 +1,5 @@
 # NetworkType
 
-Network on which this blockchain or subnet is created on.
-
 
 ## Values
 

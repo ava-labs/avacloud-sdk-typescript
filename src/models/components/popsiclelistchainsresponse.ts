@@ -5,7 +5,7 @@
 import { Chain, Chain$inboundSchema, Chain$Outbound, Chain$outboundSchema } from "./chain.js";
 import * as z from "zod";
 
-export type ListChainsResponse = {
+export type PopsicleListChainsResponse = {
     /**
      * A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
      */
@@ -17,8 +17,8 @@ export type ListChainsResponse = {
 };
 
 /** @internal */
-export const ListChainsResponse$inboundSchema: z.ZodType<
-    ListChainsResponse,
+export const PopsicleListChainsResponse$inboundSchema: z.ZodType<
+    PopsicleListChainsResponse,
     z.ZodTypeDef,
     unknown
 > = z.object({
@@ -27,16 +27,16 @@ export const ListChainsResponse$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ListChainsResponse$Outbound = {
+export type PopsicleListChainsResponse$Outbound = {
     nextPageToken?: string | undefined;
     chains: Array<Chain$Outbound>;
 };
 
 /** @internal */
-export const ListChainsResponse$outboundSchema: z.ZodType<
-    ListChainsResponse$Outbound,
+export const PopsicleListChainsResponse$outboundSchema: z.ZodType<
+    PopsicleListChainsResponse$Outbound,
     z.ZodTypeDef,
-    ListChainsResponse
+    PopsicleListChainsResponse
 > = z.object({
     nextPageToken: z.string().optional(),
     chains: z.array(Chain$outboundSchema),
@@ -46,11 +46,11 @@ export const ListChainsResponse$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListChainsResponse$ {
-    /** @deprecated use `ListChainsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListChainsResponse$inboundSchema;
-    /** @deprecated use `ListChainsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListChainsResponse$outboundSchema;
-    /** @deprecated use `ListChainsResponse$Outbound` instead. */
-    export type Outbound = ListChainsResponse$Outbound;
+export namespace PopsicleListChainsResponse$ {
+    /** @deprecated use `PopsicleListChainsResponse$inboundSchema` instead. */
+    export const inboundSchema = PopsicleListChainsResponse$inboundSchema;
+    /** @deprecated use `PopsicleListChainsResponse$outboundSchema` instead. */
+    export const outboundSchema = PopsicleListChainsResponse$outboundSchema;
+    /** @deprecated use `PopsicleListChainsResponse$Outbound` instead. */
+    export type Outbound = PopsicleListChainsResponse$Outbound;
 }

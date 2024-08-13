@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
-id: cfba1770-06ee-47db-971e-3f0b24368f16
+id: c8ca3adf-972f-439f-abfb-ec4117c32ef1
 management:
-  docChecksum: a885f0a0002e6f5ae1fa9752c4dcc202
+  docChecksum: 69cff229c0707761c5cc32be6f01d486
   docVersion: Beta
-  speakeasyVersion: 1.363.1
+  speakeasyVersion: 1.365.0
   generationVersion: 2.396.0
-  releaseVersion: 0.1.1
-  configChecksum: 4ee50a5d3a697819bb8f8d038bd73b9f
+  releaseVersion: 0.0.1
+  configChecksum: 3ccc7b4e51fa9701b57ff8102d8fc90a
   published: true
 features:
   typescript:
@@ -307,7 +307,7 @@ generatedFiles:
   - src/models/operations/getsharedsecret.ts
   - src/models/errors/healthcheckv1.ts
   - src/models/errors/healthcheckv2.ts
-  - src/models/components/listchainsresponse.ts
+  - src/models/components/popsiclelistchainsresponse.ts
   - src/models/components/chain.ts
   - src/models/components/networktype.ts
   - src/models/components/subnetmappingsresponse.ts
@@ -526,11 +526,13 @@ generatedFiles:
   - src/models/components/listinternaltransactionsresponse.ts
   - src/models/components/internaltransaction.ts
   - src/models/components/transactionstatus.ts
-  - src/models/components/glacierapifeature.ts
-  - src/models/components/getchainresponse.ts
+  - src/models/components/glacierlistchainsresponse.ts
+  - src/models/components/chaininfo.ts
   - src/models/components/utilityaddresses.ts
   - src/models/components/vmname.ts
   - src/models/components/chainstatus.ts
+  - src/models/components/glacierapifeature.ts
+  - src/models/components/getchainresponse.ts
   - src/models/errors/index.ts
   - src/models/operations/index.ts
   - src/models/components/index.ts
@@ -743,7 +745,7 @@ generatedFiles:
   - docs/models/errors/healthcheckv2error.md
   - docs/models/errors/healthcheckv2details.md
   - docs/models/errors/healthcheckv2responsebody.md
-  - docs/models/components/listchainsresponse.md
+  - docs/models/components/popsiclelistchainsresponse.md
   - docs/models/components/chain.md
   - docs/models/components/networktype.md
   - docs/models/components/subnetmappingsresponse.md
@@ -1016,12 +1018,15 @@ generatedFiles:
   - docs/models/components/listinternaltransactionsresponse.md
   - docs/models/components/internaltransaction.md
   - docs/models/components/transactionstatus.md
-  - docs/models/components/glacierapifeature.md
+  - docs/models/components/glacierlistchainsresponse.md
   - docs/models/components/enabledfeatures.md
-  - docs/models/components/getchainresponse.md
+  - docs/models/components/chaininfo.md
   - docs/models/components/utilityaddresses.md
   - docs/models/components/vmname.md
   - docs/models/components/chainstatus.md
+  - docs/models/components/glacierapifeature.md
+  - docs/models/components/getchainresponseenabledfeatures.md
+  - docs/models/components/getchainresponse.md
   - docs/sdks/avalanchesdk/README.md
   - docs/sdks/metrics/README.md
   - docs/lib/utils/retryconfig.md

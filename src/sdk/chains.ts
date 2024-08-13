@@ -19,7 +19,7 @@ export class Chains extends ClientSDK {
     async supportedChains(
         request: operations.SupportedChainsRequest,
         options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.ListChainsResponse> {
+    ): Promise<components.GlacierListChainsResponse> {
         return unwrapAsync(glacierEvmChainsSupportedChains(this, request, options));
     }
 

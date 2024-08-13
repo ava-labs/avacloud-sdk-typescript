@@ -75,7 +75,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListChainsResponse](../../models/components/listchainsresponse.md)\>**
+**Promise\<[components.GlacierListChainsResponse](../../models/components/glacierlistchainsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
