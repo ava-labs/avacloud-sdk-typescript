@@ -1,8 +1,7 @@
 # ListChainsResponse
 
-
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `result`                                                                       | [components.ListChainsResponse](../../models/components/listchainsresponse.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field      | Type                                                                        | Required | Description |
+| ---------- | --------------------------------------------------------------------------- | -------- | ----------- |
+| `result` | [components.ListChainsResponse](../../models/components/listchainsresponse.md) | ✔️     | N/A         |
