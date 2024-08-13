@@ -27,4 +27,4 @@ EOL
 echo "$TS_CONFIG_CONTENT" > samples/tsconfig.json
 
 # Generate starter usage sample with speakeasy
-speakeasy generate usage -s https://1573-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json -l typescript -o samples/root.ts
+speakeasy generate usage -s https://fe65-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json -l typescript -o samples/root.ts

@@ -2,26 +2,31 @@ speakeasyVersion: 1.363.1
 sources:
     AvalancheSDK-OAS:
         sourceNamespace: avalanche-sdk-oas
-        sourceRevisionDigest: sha256:cb4f3875d0b8aa2547522ceb38fd9a97af95027c7343364e343a851f13748751
-        sourceBlobDigest: sha256:8ad347db67d925453d356fba885f13f0b3f98a5f31298d1103cdc35afa00ed14
+        sourceRevisionDigest: sha256:dcdce52ae9eaa051dbafec9d154ee11ce142c0eb952669b891dfb53b329e8386
+        sourceBlobDigest: sha256:1a2e69df3d17fa8d21ef8520abb7bee6a1958bbbc5e51e4de0fa624e70948534
         tags:
             - latest
 targets:
     avalanche-sdk:
         source: AvalancheSDK-OAS
         sourceNamespace: avalanche-sdk-oas
-        sourceRevisionDigest: sha256:cb4f3875d0b8aa2547522ceb38fd9a97af95027c7343364e343a851f13748751
-        sourceBlobDigest: sha256:8ad347db67d925453d356fba885f13f0b3f98a5f31298d1103cdc35afa00ed14
+        sourceRevisionDigest: sha256:dcdce52ae9eaa051dbafec9d154ee11ce142c0eb952669b891dfb53b329e8386
+        sourceBlobDigest: sha256:1a2e69df3d17fa8d21ef8520abb7bee6a1958bbbc5e51e4de0fa624e70948534
         outLocation: /Users/sayan.kar/avalabs/avalanche-sdk-typescript
 workflow:
     workflowVersion: 1.0.0
+    speakeasyVersion: latest
     sources:
         AvalancheSDK-OAS:
             inputs:
-                - location: https://1573-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json
+                - location: https://fe65-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json
+                - location: https://cad6-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json
             registry:
                 location: registry.speakeasyapi.dev/avalabs/avalabs/avalanche-sdk-oas
     targets:
         avalanche-sdk:
             target: typescript
             source: AvalancheSDK-OAS
+            publish:
+                npm:
+                    token: $npm_token

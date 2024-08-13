@@ -20,11 +20,11 @@ The speakeasy CLI allows you to generate more usage snippets. Here's how:
 - To generate a sample for a specific operation by providing an operation ID, use:
 
 ```
-speakeasy generate usage -s https://1573-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json -l typescript -i {INPUT_OPERATION_ID} -o ./samples
+speakeasy generate usage -s https://fe65-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json -l typescript -i {INPUT_OPERATION_ID} -o ./samples
 ```
 
 - To generate samples for an entire namespace (like a tag or group name), use:
 
 ```
-speakeasy generate usage -s https://1573-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json -l typescript -n {INPUT_TAG_NAME} -o ./samples
+speakeasy generate usage -s https://fe65-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json -l typescript -n {INPUT_TAG_NAME} -o ./samples
 ```
