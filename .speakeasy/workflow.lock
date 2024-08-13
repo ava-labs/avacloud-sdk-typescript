@@ -2,20 +2,20 @@ speakeasyVersion: 1.365.0
 sources:
     AvalancheSDK-OAS:
         sourceNamespace: avalanche-sdk-oas
-        sourceRevisionDigest: sha256:06d9e53ac316fa5262b13bba99c0938a7d7d8bed6a2acab5b28fcb25f2b9f449
-        sourceBlobDigest: sha256:b74f31611175f38bb6ed5b40866a4a3055bd7c0c67142c88a07840ef27bb43d0
+        sourceRevisionDigest: sha256:8342a89b162b67426cb4a68bcf93d7458dfa0d6073c6b30b8b79b069bdee04c8
+        sourceBlobDigest: sha256:23eac418bb36441199f41b31f064ed3da0e730cb70433b1808b254264ec3bc26
         tags:
             - latest
 targets:
     avalanche-sdk:
         source: AvalancheSDK-OAS
         sourceNamespace: avalanche-sdk-oas
-        sourceRevisionDigest: sha256:06d9e53ac316fa5262b13bba99c0938a7d7d8bed6a2acab5b28fcb25f2b9f449
-        sourceBlobDigest: sha256:b74f31611175f38bb6ed5b40866a4a3055bd7c0c67142c88a07840ef27bb43d0
+        sourceRevisionDigest: sha256:8342a89b162b67426cb4a68bcf93d7458dfa0d6073c6b30b8b79b069bdee04c8
+        sourceBlobDigest: sha256:23eac418bb36441199f41b31f064ed3da0e730cb70433b1808b254264ec3bc26
         outLocation: /Users/sayan.kar/avalabs/avalanche-sdk-typescript
 workflow:
     workflowVersion: 1.0.0
-    speakeasyVersion: latest
+    speakeasyVersion: 1.365.0
     sources:
         AvalancheSDK-OAS:
             inputs:
