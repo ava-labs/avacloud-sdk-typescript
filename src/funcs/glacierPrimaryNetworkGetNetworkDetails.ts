@@ -18,6 +18,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetNetworkDetailsServerList } from "../models/operations/getnetworkdetails.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
@@ -30,7 +31,7 @@ import { Result } from "../types/fp.js";
 export async function glacierPrimaryNetworkGetNetworkDetails(
     client$: AvalancheSDKCore,
     request: operations.GetNetworkDetailsRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.GetNetworkDetailsResponse,
@@ -56,6 +57,10 @@ export async function glacierPrimaryNetworkGetNetworkDetails(
     const payload$ = parsed$.value;
     const body$ = null;
 
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(GetNetworkDetailsServerList[0], { charEncoding: "percent" })();
+
     const pathParams$ = {
         network: encodeSimple$("network", payload$.network, {
             explode: false,
@@ -75,6 +80,7 @@ export async function glacierPrimaryNetworkGetNetworkDetails(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

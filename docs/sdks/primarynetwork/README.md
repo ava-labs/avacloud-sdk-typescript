@@ -37,6 +37,39 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AvalancheSDKCore } from "@avalabs/avalanche-sdk/core.js";
+import { glacierPrimaryNetworkGetAssetDetails } from "@avalabs/avalanche-sdk/funcs/glacierPrimaryNetworkGetAssetDetails.js";
+
+// Use `AvalancheSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const avalancheSDK = new AvalancheSDKCore();
+
+async function run() {
+  const res = await glacierPrimaryNetworkGetAssetDetails(avalancheSDK, {
+    blockchainId: "x-chain",
+    network: "mainnet",
+    assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -45,6 +78,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 
 ### Response
@@ -80,6 +114,38 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AvalancheSDKCore } from "@avalabs/avalanche-sdk/core.js";
+import { glacierPrimaryNetworkGetChainIdsForAddresses } from "@avalabs/avalanche-sdk/funcs/glacierPrimaryNetworkGetChainIdsForAddresses.js";
+
+// Use `AvalancheSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const avalancheSDK = new AvalancheSDKCore();
+
+async function run() {
+  const res = await glacierPrimaryNetworkGetChainIdsForAddresses(avalancheSDK, {
+    addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
+    network: "mainnet",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -88,6 +154,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 
 ### Response
@@ -122,6 +189,37 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AvalancheSDKCore } from "@avalabs/avalanche-sdk/core.js";
+import { glacierPrimaryNetworkGetNetworkDetails } from "@avalabs/avalanche-sdk/funcs/glacierPrimaryNetworkGetNetworkDetails.js";
+
+// Use `AvalancheSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const avalancheSDK = new AvalancheSDKCore();
+
+async function run() {
+  const res = await glacierPrimaryNetworkGetNetworkDetails(avalancheSDK, {
+    network: "mainnet",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -130,6 +228,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 
 ### Response
@@ -167,6 +266,40 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AvalancheSDKCore } from "@avalabs/avalanche-sdk/core.js";
+import { glacierPrimaryNetworkListBlockchains } from "@avalabs/avalanche-sdk/funcs/glacierPrimaryNetworkListBlockchains.js";
+
+// Use `AvalancheSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const avalancheSDK = new AvalancheSDKCore();
+
+async function run() {
+  const res = await glacierPrimaryNetworkListBlockchains(avalancheSDK, {
+    pageSize: 10,
+    network: "mainnet",
+    sortOrder: "asc",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -175,6 +308,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 
 ### Response
@@ -212,6 +346,40 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AvalancheSDKCore } from "@avalabs/avalanche-sdk/core.js";
+import { glacierPrimaryNetworkListSubnets } from "@avalabs/avalanche-sdk/funcs/glacierPrimaryNetworkListSubnets.js";
+
+// Use `AvalancheSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const avalancheSDK = new AvalancheSDKCore();
+
+async function run() {
+  const res = await glacierPrimaryNetworkListSubnets(avalancheSDK, {
+    pageSize: 10,
+    network: "mainnet",
+    sortOrder: "asc",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -220,6 +388,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 
 ### Response
@@ -268,6 +437,51 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AvalancheSDKCore } from "@avalabs/avalanche-sdk/core.js";
+import { glacierPrimaryNetworkListValidators } from "@avalabs/avalanche-sdk/funcs/glacierPrimaryNetworkListValidators.js";
+
+// Use `AvalancheSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const avalancheSDK = new AvalancheSDKCore();
+
+async function run() {
+  const res = await glacierPrimaryNetworkListValidators(avalancheSDK, {
+    pageSize: 10,
+    network: "mainnet",
+    nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
+    sortOrder: "asc",
+    validationStatus: "completed",
+    minDelegationCapacity: "0",
+    maxDelegationCapacity: "720000000000000000",
+    minTimeRemaining: 0,
+    maxTimeRemaining: 2147483647,
+    minFeePercentage: 2,
+    maxFeePercentage: 100,
+    minUptimePerformance: 90,
+    maxUptimePerformance: 100,
+    subnetId: "11111111111111111111111111111111LpoYY",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -276,6 +490,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 
 ### Response
@@ -315,6 +530,42 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AvalancheSDKCore } from "@avalabs/avalanche-sdk/core.js";
+import { glacierPrimaryNetworkGetSingleValidatorDetails } from "@avalabs/avalanche-sdk/funcs/glacierPrimaryNetworkGetSingleValidatorDetails.js";
+
+// Use `AvalancheSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const avalancheSDK = new AvalancheSDKCore();
+
+async function run() {
+  const res = await glacierPrimaryNetworkGetSingleValidatorDetails(avalancheSDK, {
+    pageSize: 10,
+    network: "mainnet",
+    nodeId: "NodeID-111111111111111111116DBWJs",
+    validationStatus: "completed",
+    sortOrder: "asc",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -323,6 +574,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 
 ### Response
@@ -363,6 +615,43 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AvalancheSDKCore } from "@avalabs/avalanche-sdk/core.js";
+import { glacierPrimaryNetworkListDelegators } from "@avalabs/avalanche-sdk/funcs/glacierPrimaryNetworkListDelegators.js";
+
+// Use `AvalancheSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const avalancheSDK = new AvalancheSDKCore();
+
+async function run() {
+  const res = await glacierPrimaryNetworkListDelegators(avalancheSDK, {
+    pageSize: 10,
+    rewardAddresses: "P-avax1679zrp3z9mf7z4an42ddq47qzj36zv6ga20vwl,P-avax1s7kd0kfndlz6mh3l0etrrcmkg5y366k8e0s6cc",
+    network: "mainnet",
+    sortOrder: "asc",
+    delegationStatus: "completed",
+    nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -371,6 +660,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 
 ### Response

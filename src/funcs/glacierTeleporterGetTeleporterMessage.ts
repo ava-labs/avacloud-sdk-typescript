@@ -17,6 +17,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetTeleporterMessageServerList } from "../models/operations/getteleportermessage.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
@@ -29,7 +30,7 @@ import { Result } from "../types/fp.js";
 export async function glacierTeleporterGetTeleporterMessage(
     client$: AvalancheSDKCore,
     request: operations.GetTeleporterMessageRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         operations.GetTeleporterMessageResponseBody,
@@ -55,6 +56,10 @@ export async function glacierTeleporterGetTeleporterMessage(
     const payload$ = parsed$.value;
     const body$ = null;
 
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(GetTeleporterMessageServerList[0], { charEncoding: "percent" })();
+
     const pathParams$ = {
         messageId: encodeSimple$("messageId", payload$.messageId, {
             explode: false,
@@ -74,6 +79,7 @@ export async function glacierTeleporterGetTeleporterMessage(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

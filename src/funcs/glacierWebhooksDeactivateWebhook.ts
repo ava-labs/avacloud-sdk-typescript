@@ -18,6 +18,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { DeactivateWebhookServerList } from "../models/operations/deactivatewebhook.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
@@ -30,7 +31,7 @@ import { Result } from "../types/fp.js";
 export async function glacierWebhooksDeactivateWebhook(
     client$: AvalancheSDKCore,
     request: operations.DeactivateWebhookRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.WebhookResponse,
@@ -56,6 +57,10 @@ export async function glacierWebhooksDeactivateWebhook(
     const payload$ = parsed$.value;
     const body$ = null;
 
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(DeactivateWebhookServerList[0], { charEncoding: "percent" })();
+
     const pathParams$ = {
         id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
     };
@@ -72,6 +77,7 @@ export async function glacierWebhooksDeactivateWebhook(
         context,
         {
             method: "DELETE",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

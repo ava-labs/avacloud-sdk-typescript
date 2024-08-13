@@ -22,6 +22,7 @@ import {
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { ListErc1155BalancesServerList } from "../models/operations/listerc1155balances.js";
 import { Result } from "../types/fp.js";
 import { createPageIterator, haltIterator, PageIterator, Paginator } from "../types/operations.js";
 
@@ -38,7 +39,7 @@ import { createPageIterator, haltIterator, PageIterator, Paginator } from "../ty
 export async function glacierEvmBalancesListErc1155Balances(
     client$: AvalancheSDKCore,
     request: operations.ListErc1155BalancesRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     PageIterator<
         Result<
@@ -65,6 +66,10 @@ export async function glacierEvmBalancesListErc1155Balances(
     }
     const payload$ = parsed$.value;
     const body$ = null;
+
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(ListErc1155BalancesServerList[0], { charEncoding: "percent" })();
 
     const pathParams$ = {
         address: encodeSimple$("address", payload$.address, {
@@ -98,6 +103,7 @@ export async function glacierEvmBalancesListErc1155Balances(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             query: query$,

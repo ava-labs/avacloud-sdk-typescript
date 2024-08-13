@@ -6,6 +6,8 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export const ListAssetTransactionsServerList = ["http://localhost:3000"] as const;
+
 export type ListAssetTransactionsRequest = {
     /**
      * Query param for filtering items based on transaction types.

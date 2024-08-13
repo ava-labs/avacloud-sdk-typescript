@@ -21,6 +21,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetNativeBalanceServerList } from "../models/operations/getnativebalance.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
@@ -35,7 +36,7 @@ import { Result } from "../types/fp.js";
 export async function glacierEvmBalancesGetNativeBalance(
     client$: AvalancheSDKCore,
     request: operations.GetNativeBalanceRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.GetNativeBalanceResponse,
@@ -60,6 +61,10 @@ export async function glacierEvmBalancesGetNativeBalance(
     }
     const payload$ = parsed$.value;
     const body$ = null;
+
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(GetNativeBalanceServerList[0], { charEncoding: "percent" })();
 
     const pathParams$ = {
         address: encodeSimple$("address", payload$.address, {
@@ -91,6 +96,7 @@ export async function glacierEvmBalancesGetNativeBalance(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             query: query$,

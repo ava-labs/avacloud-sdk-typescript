@@ -23,11 +23,11 @@ import {
 import { VmName, VmName$inboundSchema, VmName$outboundSchema } from "./vmname.js";
 import * as z from "zod";
 
-export const GetChainResponseEnabledFeatures = {
+export const EnabledFeatures = {
     NftIndexing: "nftIndexing",
     Webhooks: "webhooks",
 } as const;
-export type GetChainResponseEnabledFeatures = ClosedEnum<typeof GetChainResponseEnabledFeatures>;
+export type EnabledFeatures = ClosedEnum<typeof EnabledFeatures>;
 
 export type GetChainResponse = {
     chainId: string;
@@ -49,28 +49,26 @@ export type GetChainResponse = {
     networkToken: NetworkToken;
     chainLogoUri?: string | undefined;
     private?: boolean | undefined;
-    enabledFeatures?: Array<GetChainResponseEnabledFeatures> | undefined;
+    enabledFeatures?: Array<EnabledFeatures> | undefined;
 };
 
 /** @internal */
-export const GetChainResponseEnabledFeatures$inboundSchema: z.ZodNativeEnum<
-    typeof GetChainResponseEnabledFeatures
-> = z.nativeEnum(GetChainResponseEnabledFeatures);
+export const EnabledFeatures$inboundSchema: z.ZodNativeEnum<typeof EnabledFeatures> =
+    z.nativeEnum(EnabledFeatures);
 
 /** @internal */
-export const GetChainResponseEnabledFeatures$outboundSchema: z.ZodNativeEnum<
-    typeof GetChainResponseEnabledFeatures
-> = GetChainResponseEnabledFeatures$inboundSchema;
+export const EnabledFeatures$outboundSchema: z.ZodNativeEnum<typeof EnabledFeatures> =
+    EnabledFeatures$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetChainResponseEnabledFeatures$ {
-    /** @deprecated use `GetChainResponseEnabledFeatures$inboundSchema` instead. */
-    export const inboundSchema = GetChainResponseEnabledFeatures$inboundSchema;
-    /** @deprecated use `GetChainResponseEnabledFeatures$outboundSchema` instead. */
-    export const outboundSchema = GetChainResponseEnabledFeatures$outboundSchema;
+export namespace EnabledFeatures$ {
+    /** @deprecated use `EnabledFeatures$inboundSchema` instead. */
+    export const inboundSchema = EnabledFeatures$inboundSchema;
+    /** @deprecated use `EnabledFeatures$outboundSchema` instead. */
+    export const outboundSchema = EnabledFeatures$outboundSchema;
 }
 
 /** @internal */
@@ -92,7 +90,7 @@ export const GetChainResponse$inboundSchema: z.ZodType<GetChainResponse, z.ZodTy
         networkToken: NetworkToken$inboundSchema,
         chainLogoUri: z.string().optional(),
         private: z.boolean().optional(),
-        enabledFeatures: z.array(GetChainResponseEnabledFeatures$inboundSchema).optional(),
+        enabledFeatures: z.array(EnabledFeatures$inboundSchema).optional(),
     });
 
 /** @internal */
@@ -138,7 +136,7 @@ export const GetChainResponse$outboundSchema: z.ZodType<
     networkToken: NetworkToken$outboundSchema,
     chainLogoUri: z.string().optional(),
     private: z.boolean().optional(),
-    enabledFeatures: z.array(GetChainResponseEnabledFeatures$outboundSchema).optional(),
+    enabledFeatures: z.array(EnabledFeatures$outboundSchema).optional(),
 });
 
 /**

@@ -18,7 +18,7 @@ export class Chains extends ClientSDK {
      */
     async supportedChains(
         request: operations.SupportedChainsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.ListChainsResponse> {
         return unwrapAsync(glacierEvmChainsSupportedChains(this, request, options));
     }
@@ -31,7 +31,7 @@ export class Chains extends ClientSDK {
      */
     async getChainInfo(
         request: operations.GetChainInfoRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.GetChainResponse> {
         return unwrapAsync(glacierEvmChainsGetChainInfo(this, request, options));
     }

@@ -19,7 +19,7 @@ export class Nfts extends ClientSDK {
      */
     async reindexNft(
         request: operations.ReindexNftRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<void> {
         return unwrapAsync(glacierNftsReindexNft(this, request, options));
     }
@@ -32,7 +32,7 @@ export class Nfts extends ClientSDK {
      */
     async listTokens(
         request: operations.ListTokensRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListTokensResponse>> {
         return unwrapResultIterator(glacierNftsListTokens(this, request, options));
     }
@@ -45,7 +45,7 @@ export class Nfts extends ClientSDK {
      */
     async getTokenDetails(
         request: operations.GetTokenDetailsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<operations.GetTokenDetailsResponseBody> {
         return unwrapAsync(glacierNftsGetTokenDetails(this, request, options));
     }

@@ -22,6 +22,7 @@ import {
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { ListTransfersServerList } from "../models/operations/listtransfers.js";
 import { Result } from "../types/fp.js";
 import { createPageIterator, haltIterator, PageIterator, Paginator } from "../types/operations.js";
 
@@ -34,7 +35,7 @@ import { createPageIterator, haltIterator, PageIterator, Paginator } from "../ty
 export async function glacierEvmTransactionsListTransfers(
     client$: AvalancheSDKCore,
     request: operations.ListTransfersRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     PageIterator<
         Result<
@@ -61,6 +62,9 @@ export async function glacierEvmTransactionsListTransfers(
     }
     const payload$ = parsed$.value;
     const body$ = null;
+
+    const baseURL$ =
+        options?.serverURL || pathToFunc(ListTransfersServerList[0], { charEncoding: "percent" })();
 
     const pathParams$ = {
         address: encodeSimple$("address", payload$.address, {
@@ -92,6 +96,7 @@ export async function glacierEvmTransactionsListTransfers(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             query: query$,

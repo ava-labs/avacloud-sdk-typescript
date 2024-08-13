@@ -19,6 +19,7 @@ import {
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { UpdateWebhookServerList } from "../models/operations/updatewebhook.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -30,7 +31,7 @@ import { Result } from "../types/fp.js";
 export async function glacierWebhooksUpdateWebhook(
     client$: AvalancheSDKCore,
     request: operations.UpdateWebhookRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.WebhookResponse,
@@ -56,6 +57,9 @@ export async function glacierWebhooksUpdateWebhook(
     const payload$ = parsed$.value;
     const body$ = encodeJSON$("body", payload$.UpdateWebhookRequest, { explode: true });
 
+    const baseURL$ =
+        options?.serverURL || pathToFunc(UpdateWebhookServerList[0], { charEncoding: "percent" })();
+
     const pathParams$ = {
         id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
     };
@@ -73,6 +77,7 @@ export async function glacierWebhooksUpdateWebhook(
         context,
         {
             method: "PATCH",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

@@ -21,6 +21,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetAddressesFromWebhookServerList } from "../models/operations/getaddressesfromwebhook.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 import { createPageIterator, haltIterator, PageIterator, Paginator } from "../types/operations.js";
@@ -34,7 +35,7 @@ import { createPageIterator, haltIterator, PageIterator, Paginator } from "../ty
 export async function glacierWebhooksGetAddressesFromWebhook(
     client$: AvalancheSDKCore,
     request: operations.GetAddressesFromWebhookRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     PageIterator<
         Result<
@@ -62,6 +63,10 @@ export async function glacierWebhooksGetAddressesFromWebhook(
     const payload$ = parsed$.value;
     const body$ = null;
 
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(GetAddressesFromWebhookServerList[0], { charEncoding: "percent" })();
+
     const pathParams$ = {
         id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
     };
@@ -87,6 +92,7 @@ export async function glacierWebhooksGetAddressesFromWebhook(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             query: query$,

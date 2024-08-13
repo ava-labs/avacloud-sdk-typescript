@@ -4,6 +4,8 @@
 
 import * as z from "zod";
 
+export const GetOperationResultServerList = ["http://localhost:3000"] as const;
+
 export type GetOperationResultRequest = {
     /**
      * UUID of given operation

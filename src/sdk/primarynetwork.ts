@@ -61,7 +61,7 @@ export class PrimaryNetwork extends ClientSDK {
      */
     async getAssetDetails(
         request: operations.GetAssetDetailsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.XChainAssetDetails> {
         return unwrapAsync(glacierPrimaryNetworkGetAssetDetails(this, request, options));
     }
@@ -74,7 +74,7 @@ export class PrimaryNetwork extends ClientSDK {
      */
     async getChainIdsForAddresses(
         request: operations.GetChainIdsForAddressesRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.ChainAddressChainIdMapListResponse> {
         return unwrapAsync(glacierPrimaryNetworkGetChainIdsForAddresses(this, request, options));
     }
@@ -87,7 +87,7 @@ export class PrimaryNetwork extends ClientSDK {
      */
     async getNetworkDetails(
         request: operations.GetNetworkDetailsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.GetNetworkDetailsResponse> {
         return unwrapAsync(glacierPrimaryNetworkGetNetworkDetails(this, request, options));
     }
@@ -100,7 +100,7 @@ export class PrimaryNetwork extends ClientSDK {
      */
     async listBlockchains(
         request: operations.ListBlockchainsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListBlockchainsResponse>> {
         return unwrapResultIterator(glacierPrimaryNetworkListBlockchains(this, request, options));
     }
@@ -113,7 +113,7 @@ export class PrimaryNetwork extends ClientSDK {
      */
     async listSubnets(
         request: operations.ListSubnetsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListSubnetsResponse>> {
         return unwrapResultIterator(glacierPrimaryNetworkListSubnets(this, request, options));
     }
@@ -126,7 +126,7 @@ export class PrimaryNetwork extends ClientSDK {
      */
     async listValidators(
         request: operations.ListValidatorsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListValidatorsResponse>> {
         return unwrapResultIterator(glacierPrimaryNetworkListValidators(this, request, options));
     }
@@ -139,7 +139,7 @@ export class PrimaryNetwork extends ClientSDK {
      */
     async getSingleValidatorDetails(
         request: operations.GetSingleValidatorDetailsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.GetSingleValidatorDetailsResponse>> {
         return unwrapResultIterator(
             glacierPrimaryNetworkGetSingleValidatorDetails(this, request, options)
@@ -154,7 +154,7 @@ export class PrimaryNetwork extends ClientSDK {
      */
     async listDelegators(
         request: operations.ListDelegatorsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListDelegatorsResponse>> {
         return unwrapResultIterator(glacierPrimaryNetworkListDelegators(this, request, options));
     }

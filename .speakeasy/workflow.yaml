@@ -3,7 +3,8 @@ speakeasyVersion: latest
 sources:
     AvalancheSDK-OAS:
         inputs:
-            - location: https://ad39-2405-201-3027-2887-d9b-fc28-c7ec-5133.ngrok-free.app/api-json
+            - location: https://1573-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json
+            - location: https://515a-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json
         registry:
             location: registry.speakeasyapi.dev/avalabs/avalabs/avalanche-sdk-oas
 targets:

@@ -21,6 +21,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetSingleValidatorDetailsServerList } from "../models/operations/getsinglevalidatordetails.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 import { createPageIterator, haltIterator, PageIterator, Paginator } from "../types/operations.js";
@@ -34,7 +35,7 @@ import { createPageIterator, haltIterator, PageIterator, Paginator } from "../ty
 export async function glacierPrimaryNetworkGetSingleValidatorDetails(
     client$: AvalancheSDKCore,
     request: operations.GetSingleValidatorDetailsRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     PageIterator<
         Result<
@@ -61,6 +62,10 @@ export async function glacierPrimaryNetworkGetSingleValidatorDetails(
     }
     const payload$ = parsed$.value;
     const body$ = null;
+
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(GetSingleValidatorDetailsServerList[0], { charEncoding: "percent" })();
 
     const pathParams$ = {
         network: encodeSimple$("network", payload$.network, {
@@ -96,6 +101,7 @@ export async function glacierPrimaryNetworkGetSingleValidatorDetails(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             query: query$,

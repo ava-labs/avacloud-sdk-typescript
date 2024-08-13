@@ -18,6 +18,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetOperationResultServerList } from "../models/operations/getoperationresult.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
@@ -30,7 +31,7 @@ import { Result } from "../types/fp.js";
 export async function glacierOperationsGetOperationResult(
     client$: AvalancheSDKCore,
     request: operations.GetOperationResultRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.OperationStatusResponse,
@@ -56,6 +57,10 @@ export async function glacierOperationsGetOperationResult(
     const payload$ = parsed$.value;
     const body$ = null;
 
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(GetOperationResultServerList[0], { charEncoding: "percent" })();
+
     const pathParams$ = {
         operationId: encodeSimple$("operationId", payload$.operationId, {
             explode: false,
@@ -75,6 +80,7 @@ export async function glacierOperationsGetOperationResult(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

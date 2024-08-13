@@ -21,6 +21,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetLatestBlocksServerList } from "../models/operations/getlatestblocks.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 import { createPageIterator, haltIterator, PageIterator, Paginator } from "../types/operations.js";
@@ -34,7 +35,7 @@ import { createPageIterator, haltIterator, PageIterator, Paginator } from "../ty
 export async function glacierEvmBlocksGetLatestBlocks(
     client$: AvalancheSDKCore,
     request: operations.GetLatestBlocksRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     PageIterator<
         Result<
@@ -62,6 +63,10 @@ export async function glacierEvmBlocksGetLatestBlocks(
     const payload$ = parsed$.value;
     const body$ = null;
 
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(GetLatestBlocksServerList[0], { charEncoding: "percent" })();
+
     const pathParams$ = {
         chainId: encodeSimple$("chainId", payload$.chainId ?? client$.options$.chainId, {
             explode: false,
@@ -86,6 +91,7 @@ export async function glacierEvmBlocksGetLatestBlocks(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             query: query$,

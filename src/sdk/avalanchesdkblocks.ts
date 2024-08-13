@@ -19,7 +19,7 @@ export class AvalancheSDKBlocks extends ClientSDK {
      */
     async getLatestBlocks(
         request: operations.GetLatestBlocksRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.GetLatestBlocksResponse>> {
         return unwrapResultIterator(glacierEvmBlocksGetLatestBlocks(this, request, options));
     }
@@ -32,7 +32,7 @@ export class AvalancheSDKBlocks extends ClientSDK {
      */
     async getBlock(
         request: operations.GetBlockRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.GetEvmBlockResponse> {
         return unwrapAsync(glacierEvmBlocksGetBlock(this, request, options));
     }

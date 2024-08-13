@@ -16,7 +16,7 @@ export class Contracts extends ClientSDK {
      */
     async getContractMetadata(
         request: operations.GetContractMetadataRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<operations.GetContractMetadataResponseBody> {
         return unwrapAsync(glacierEvmContractsGetContractMetadata(this, request, options));
     }

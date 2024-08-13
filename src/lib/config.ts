@@ -3,13 +3,9 @@
  */
 
 import { HTTPClient } from "./http.js";
+import { Logger } from "./logger.js";
 import { RetryConfig } from "./retries.js";
 import { Params, pathToFunc } from "./url.js";
-
-/**
- * Contains the list of servers available to the SDK
- */
-export const ServerList = ["http://localhost:3000"] as const;
 
 export type SDKOptions = {
     /**
@@ -24,10 +20,6 @@ export type SDKOptions = {
 
     httpClient?: HTTPClient;
     /**
-     * Allows overriding the default server used by the SDK
-     */
-    serverIdx?: number;
-    /**
      * Allows overriding the default server URL used by the SDK
      */
     serverURL?: string;
@@ -36,20 +28,17 @@ export type SDKOptions = {
      */
     retryConfig?: RetryConfig;
     timeoutMs?: number;
+    debugLogger?: Logger;
 };
 
 export function serverURLFromOptions(options: SDKOptions): URL | null {
-    let serverURL = options.serverURL;
-
-    const params: Params = {};
+    const serverURL = options.serverURL;
 
     if (!serverURL) {
-        const serverIdx = options.serverIdx ?? 0;
-        if (serverIdx < 0 || serverIdx >= ServerList.length) {
-            throw new Error(`Invalid server index ${serverIdx}`);
-        }
-        serverURL = ServerList[serverIdx] || "";
+        return null;
     }
+
+    const params: Record<string, string | undefined> = {};
 
     const u = pathToFunc(serverURL)(params);
     return new URL(u);
@@ -58,7 +47,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
     language: "typescript",
     openapiDocVersion: "Beta",
-    sdkVersion: "0.0.2",
-    genVersion: "2.390.6",
-    userAgent: "speakeasy-sdk/typescript 0.0.2 2.390.6 Beta @avalabs/avalanche-sdk",
+    sdkVersion: "0.5.0",
+    genVersion: "2.396.0",
+    userAgent: "speakeasy-sdk/typescript 0.5.0 2.396.0 Beta @avalabs/avalanche-sdk",
 } as const;

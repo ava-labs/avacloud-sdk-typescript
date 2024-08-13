@@ -17,7 +17,7 @@ export class Rewards extends ClientSDK {
      */
     async listPendingPrimaryNetworkRewards(
         request: operations.ListPendingPrimaryNetworkRewardsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListPendingPrimaryNetworkRewardsResponse>> {
         return unwrapResultIterator(
             glacierPrimaryNetworkRewardsListPendingPrimaryNetworkRewards(this, request, options)
@@ -32,7 +32,7 @@ export class Rewards extends ClientSDK {
      */
     async listHistoricalPrimaryNetworkRewards(
         request: operations.ListHistoricalPrimaryNetworkRewardsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListHistoricalPrimaryNetworkRewardsResponse>> {
         return unwrapResultIterator(
             glacierPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards(this, request, options)

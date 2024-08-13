@@ -22,6 +22,7 @@ import {
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { ListLatestPrimaryNetworkTransactionsServerList } from "../models/operations/listlatestprimarynetworktransactions.js";
 import { Result } from "../types/fp.js";
 import { createPageIterator, haltIterator, PageIterator, Paginator } from "../types/operations.js";
 
@@ -38,7 +39,7 @@ import { createPageIterator, haltIterator, PageIterator, Paginator } from "../ty
 export async function glacierPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions(
     client$: AvalancheSDKCore,
     request: operations.ListLatestPrimaryNetworkTransactionsRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     PageIterator<
         Result<
@@ -66,6 +67,12 @@ export async function glacierPrimaryNetworkTransactionsListLatestPrimaryNetworkT
     }
     const payload$ = parsed$.value;
     const body$ = null;
+
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(ListLatestPrimaryNetworkTransactionsServerList[0], {
+            charEncoding: "percent",
+        })();
 
     const pathParams$ = {
         blockchainId: encodeSimple$("blockchainId", payload$.blockchainId, {
@@ -106,6 +113,7 @@ export async function glacierPrimaryNetworkTransactionsListLatestPrimaryNetworkT
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             query: query$,

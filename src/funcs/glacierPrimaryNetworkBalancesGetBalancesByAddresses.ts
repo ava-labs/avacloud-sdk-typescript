@@ -20,6 +20,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetBalancesByAddressesServerList } from "../models/operations/getbalancesbyaddresses.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
@@ -34,7 +35,7 @@ import { Result } from "../types/fp.js";
 export async function glacierPrimaryNetworkBalancesGetBalancesByAddresses(
     client$: AvalancheSDKCore,
     request: operations.GetBalancesByAddressesRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         operations.GetBalancesByAddressesResponseBody,
@@ -59,6 +60,10 @@ export async function glacierPrimaryNetworkBalancesGetBalancesByAddresses(
     }
     const payload$ = parsed$.value;
     const body$ = null;
+
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(GetBalancesByAddressesServerList[0], { charEncoding: "percent" })();
 
     const pathParams$ = {
         blockchainId: encodeSimple$("blockchainId", payload$.blockchainId, {
@@ -94,6 +99,7 @@ export async function glacierPrimaryNetworkBalancesGetBalancesByAddresses(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             query: query$,

@@ -18,7 +18,7 @@ export class Balances extends ClientSDK {
      */
     async getBalancesByAddresses(
         request: operations.GetBalancesByAddressesRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<operations.GetBalancesByAddressesResponseBody> {
         return unwrapAsync(
             glacierPrimaryNetworkBalancesGetBalancesByAddresses(this, request, options)

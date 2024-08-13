@@ -19,6 +19,7 @@ import {
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { ListTeleporterMessagesServerList } from "../models/operations/listteleportermessages.js";
 import { Result } from "../types/fp.js";
 import { createPageIterator, haltIterator, PageIterator, Paginator } from "../types/operations.js";
 
@@ -31,7 +32,7 @@ import { createPageIterator, haltIterator, PageIterator, Paginator } from "../ty
 export async function glacierTeleporterListTeleporterMessages(
     client$: AvalancheSDKCore,
     request: operations.ListTeleporterMessagesRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     PageIterator<
         Result<
@@ -59,6 +60,10 @@ export async function glacierTeleporterListTeleporterMessages(
     const payload$ = parsed$.value;
     const body$ = null;
 
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(ListTeleporterMessagesServerList[0], { charEncoding: "percent" })();
+
     const path$ = pathToFunc("/v1/teleporter/messages")();
 
     const query$ = encodeFormQuery$({
@@ -85,6 +90,7 @@ export async function glacierTeleporterListTeleporterMessages(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             query: query$,

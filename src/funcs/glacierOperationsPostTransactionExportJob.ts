@@ -19,6 +19,7 @@ import {
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { PostTransactionExportJobServerList } from "../models/operations/posttransactionexportjob.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -32,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function glacierOperationsPostTransactionExportJob(
     client$: AvalancheSDKCore,
     request: operations.PostTransactionExportJobRequestBody,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.OperationStatusResponse,
@@ -58,6 +59,10 @@ export async function glacierOperationsPostTransactionExportJob(
     const payload$ = parsed$.value;
     const body$ = encodeJSON$("body", payload$, { explode: true });
 
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(PostTransactionExportJobServerList[0], { charEncoding: "percent" })();
+
     const path$ = pathToFunc("/v1/operations/transactions:export")();
 
     const headers$ = new Headers({
@@ -75,6 +80,7 @@ export async function glacierOperationsPostTransactionExportJob(
         context,
         {
             method: "POST",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

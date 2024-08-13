@@ -20,7 +20,7 @@ export class Blocks extends ClientSDK {
      */
     async getBlockById(
         request: operations.GetBlockByIdRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.GetPrimaryNetworkBlockResponse> {
         return unwrapAsync(glacierPrimaryNetworkBlocksGetBlockById(this, request, options));
     }
@@ -33,7 +33,7 @@ export class Blocks extends ClientSDK {
      */
     async listPrimaryNetworkBlocksByNodeId(
         request: operations.ListPrimaryNetworkBlocksByNodeIdRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListPrimaryNetworkBlocksByNodeIdResponse>> {
         return unwrapResultIterator(
             glacierPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId(this, request, options)
@@ -48,7 +48,7 @@ export class Blocks extends ClientSDK {
      */
     async listLatestPrimaryNetworkBlocks(
         request: operations.ListLatestPrimaryNetworkBlocksRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListLatestPrimaryNetworkBlocksResponse>> {
         return unwrapResultIterator(
             glacierPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks(this, request, options)

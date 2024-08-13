@@ -18,6 +18,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { CreateWebhookServerList } from "../models/operations/createwebhook.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -29,7 +30,7 @@ import { Result } from "../types/fp.js";
 export async function glacierWebhooksCreateWebhook(
     client$: AvalancheSDKCore,
     request: components.CreateWebhookRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.WebhookResponse,
@@ -55,6 +56,9 @@ export async function glacierWebhooksCreateWebhook(
     const payload$ = parsed$.value;
     const body$ = encodeJSON$("body", payload$, { explode: true });
 
+    const baseURL$ =
+        options?.serverURL || pathToFunc(CreateWebhookServerList[0], { charEncoding: "percent" })();
+
     const path$ = pathToFunc("/v1/webhooks")();
 
     const headers$ = new Headers({
@@ -68,6 +72,7 @@ export async function glacierWebhooksCreateWebhook(
         context,
         {
             method: "POST",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

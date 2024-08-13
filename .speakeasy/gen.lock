@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 87cc6b1a-13e6-4501-a0d7-2da24669a204
 management:
-  docChecksum: b75e10095fdc361347c81b7ef2b19cee
+  docChecksum: 216841ffd9a1defdd89e16a73e33178f
   docVersion: Beta
-  speakeasyVersion: 1.358.0
-  generationVersion: 2.390.6
-  releaseVersion: 0.0.2
-  configChecksum: 1179f8780bced875f1f60201355d4829
+  speakeasyVersion: 1.363.1
+  generationVersion: 2.396.0
+  releaseVersion: 0.5.0
+  configChecksum: 28bc2c234c5dadf029b3d2fe8a97e020
   repoURL: https://github.com/ava-labs/avalanche-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avalanche-sdk-typescript
   published: true
@@ -14,25 +14,36 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
-    constsAndDefaults: 0.1.6
-    core: 3.12.3
+    constsAndDefaults: 0.1.7
+    core: 3.13.1
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
     envVarSecurityUsage: 0.1.1
     globalSecurityCallbacks: 0.1.0
-    globalServerURLs: 2.82.4
     globals: 2.82.1
     groups: 2.81.2
     ignores: 2.81.1
+    methodServerURLs: 2.82.1
     nullables: 0.1.0
     pagination: 2.82.6
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
-    unions: 2.85.6
+    unions: 2.85.7
 generatedFiles:
-  - src/funcs/glacierHealthCheckHealthCheck.ts
+  - src/funcs/metricsHealthCheckHealthCheckV1.ts
+  - src/funcs/metricsHealthCheckHealthCheckV2.ts
+  - src/funcs/metricsLookingGlassGetNftHoldersByContractAddress.ts
+  - src/funcs/metricsLookingGlassGetAddressesByBalanceOverTime.ts
+  - src/funcs/metricsLookingGlassGetAddressesByBtcbBridged.ts
+  - src/funcs/metricsLookingGlassGetValidatorsByDateRange.ts
+  - src/funcs/metricsLookingGlassCompositeQueryV1.ts
+  - src/funcs/metricsLookingGlassCompositeQueryV2.ts
+  - src/funcs/metricsStakingInformationGetValidatorCount.ts
+  - src/funcs/metricsStakingInformationGetValidatorWeight.ts
+  - src/funcs/metricsStakingInformationGetDelegatorCount.ts
+  - src/funcs/metricsStakingInformationGetDelegatorWeight.ts
   - src/funcs/glacierNftsReindexNft.ts
   - src/funcs/glacierNftsListTokens.ts
   - src/funcs/glacierNftsGetTokenDetails.ts
@@ -58,6 +69,23 @@ generatedFiles:
   - src/funcs/glacierWebhooksAddAddressesToWebhook.ts
   - src/funcs/glacierTeleporterGetTeleporterMessage.ts
   - src/funcs/glacierTeleporterListTeleporterMessages.ts
+  - src/funcs/metricsEvmChainsListChains.ts
+  - src/funcs/metricsEvmChainsGetChain.ts
+  - src/funcs/metricsEvmChainsGetMappings.ts
+  - src/funcs/metricsEvmChainsGetMappingsBySubnetId.ts
+  - src/funcs/metricsEvmChainsGetChainInformationByNetwork.ts
+  - src/funcs/metricsEvmChainsGetChainInformationByNetworkAndSubnetId.ts
+  - src/funcs/metricsEvmChainsGetSubnetInformationByNetwork.ts
+  - src/funcs/metricsEvmChainsGetSubnetInformationByNetworkAndSubnetId.ts
+  - src/funcs/metricsChainMetricsGetStakingMetrics.ts
+  - src/funcs/metricsChainThroughputGetRollingWindowGasUsed.ts
+  - src/funcs/metricsChainThroughputGetRollingWindowTxCount.ts
+  - src/funcs/metricsChainThroughputGetRollingWindowAvgGps.ts
+  - src/funcs/metricsChainThroughputGetRollingWindowMaxGps.ts
+  - src/funcs/metricsChainThroughputGetRollingWindowAvgTps.ts
+  - src/funcs/metricsChainThroughputGetRollingWindowMaxTps.ts
+  - src/funcs/metricsChainThroughputGetRollingWindowAvgGasPrice.ts
+  - src/funcs/metricsChainThroughputGetRollingWindowMaxGasPrice.ts
   - src/funcs/glacierPrimaryNetworkTransactionsGetTxByHash.ts
   - src/funcs/glacierPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions.ts
   - src/funcs/glacierPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions.ts
@@ -95,6 +123,14 @@ generatedFiles:
   - src/funcs/glacierEvmChainsSupportedChains.ts
   - src/funcs/glacierEvmChainsGetChainInfo.ts
   - src/sdk/healthcheck.ts
+  - src/sdk/avalanchesdkchains.ts
+  - src/sdk/avalanchesdkevm.ts
+  - src/sdk/avalanchesdkmetrics.ts
+  - src/sdk/throughput.ts
+  - src/sdk/chain.ts
+  - src/sdk/lookingglass.ts
+  - src/sdk/stakinginformation.ts
+  - src/sdk/metrics.ts
   - src/sdk/nfts.ts
   - src/sdk/operations.ts
   - src/sdk/transactions.ts
@@ -116,6 +152,7 @@ generatedFiles:
   - src/sdk/sdk.ts
   - .eslintrc.cjs
   - .npmignore
+  - FUNCTIONS.md
   - RUNTIMES.md
   - jsr.json
   - package.json
@@ -127,6 +164,7 @@ generatedFiles:
   - src/lib/encodings.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
+  - src/lib/logger.ts
   - src/lib/matchers.ts
   - src/lib/primitives.ts
   - src/lib/retries.ts
@@ -139,13 +177,40 @@ generatedFiles:
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
   - src/types/blobs.ts
+  - src/types/constdatetime.ts
   - src/types/enums.ts
   - src/types/fp.ts
   - src/types/index.ts
   - src/types/operations.ts
   - src/types/rfcdate.ts
   - tsconfig.json
-  - src/models/operations/healthcheck.ts
+  - src/models/operations/healthcheckv1.ts
+  - src/models/operations/healthcheckv2.ts
+  - src/models/operations/listchains.ts
+  - src/models/operations/getchain.ts
+  - src/models/operations/getmappings.ts
+  - src/models/operations/getmappingsbysubnetid.ts
+  - src/models/operations/getchaininformationbynetwork.ts
+  - src/models/operations/getchaininformationbynetworkandsubnetid.ts
+  - src/models/operations/getsubnetinformationbynetwork.ts
+  - src/models/operations/getsubnetinformationbynetworkandsubnetid.ts
+  - src/models/operations/getstakingmetrics.ts
+  - src/models/operations/getrollingwindowgasused.ts
+  - src/models/operations/getrollingwindowtxcount.ts
+  - src/models/operations/getrollingwindowavggps.ts
+  - src/models/operations/getrollingwindowmaxgps.ts
+  - src/models/operations/getrollingwindowavgtps.ts
+  - src/models/operations/getrollingwindowmaxtps.ts
+  - src/models/operations/getrollingwindowavggasprice.ts
+  - src/models/operations/getrollingwindowmaxgasprice.ts
+  - src/models/operations/getnftholdersbycontractaddress.ts
+  - src/models/operations/getaddressesbybalanceovertime.ts
+  - src/models/operations/getaddressesbybtcbbridged.ts
+  - src/models/operations/getvalidatorsbydaterange.ts
+  - src/models/operations/getvalidatorcount.ts
+  - src/models/operations/getvalidatorweight.ts
+  - src/models/operations/getdelegatorcount.ts
+  - src/models/operations/getdelegatorweight.ts
   - src/models/operations/reindexnft.ts
   - src/models/operations/listtokens.ts
   - src/models/operations/gettokendetails.ts
@@ -204,7 +269,55 @@ generatedFiles:
   - src/models/operations/getcontractmetadata.ts
   - src/models/operations/supportedchains.ts
   - src/models/operations/getchaininfo.ts
-  - src/models/errors/healthcheck.ts
+  - src/models/operations/compositequeryv1.ts
+  - src/models/operations/compositequeryv2.ts
+  - src/models/operations/createwebhook.ts
+  - src/models/operations/generatesharedsecret.ts
+  - src/models/operations/getsharedsecret.ts
+  - src/models/errors/healthcheckv1.ts
+  - src/models/errors/healthcheckv2.ts
+  - src/models/components/listchainsresponse.ts
+  - src/models/components/chain.ts
+  - src/models/components/networktype.ts
+  - src/models/components/subnetmappingsresponse.ts
+  - src/models/components/subnetmapping.ts
+  - src/models/components/chaininformationresponse.ts
+  - src/models/components/chaininformation.ts
+  - src/models/components/legacynetworks.ts
+  - src/models/components/subnetsresponse.ts
+  - src/models/components/subnetinformation.ts
+  - src/models/components/metricsapiresponse.ts
+  - src/models/components/metricsvalue.ts
+  - src/models/components/networkmetric.ts
+  - src/models/components/rollingwindowresponse.ts
+  - src/models/components/nftholdersresponse.ts
+  - src/models/components/addressdetails.ts
+  - src/models/components/lookingglassresponse.ts
+  - src/models/components/pchainlookingglassresponse.ts
+  - src/models/components/pchainaddressdetails.ts
+  - src/models/components/compositequeryresponse.ts
+  - src/models/components/compositequeryrequestdto.ts
+  - src/models/components/operator.ts
+  - src/models/components/alltimenativebalancequerydto.ts
+  - src/models/components/daterangeminbalanceparam.ts
+  - src/models/components/anytimenativebalancequerydto.ts
+  - src/models/components/alltimeerc20balancequerydto.ts
+  - src/models/components/daterangeerc20minbalanceparam.ts
+  - src/models/components/anytimeerc20balancequerydto.ts
+  - src/models/components/alltimenftholdersquerydto.ts
+  - src/models/components/timestamprangenftholdersparam.ts
+  - src/models/components/daterangenftholdersparam.ts
+  - src/models/components/anytimenftholdersquerydto.ts
+  - src/models/components/latestbalancequerydto.ts
+  - src/models/components/latestbalanceparams.ts
+  - src/models/components/tokentype.ts
+  - src/models/components/alltimestarsarenabalancequerydto.ts
+  - src/models/components/daterangestarsarenaminbalanceparam.ts
+  - src/models/components/anytimestarsarenabalancequerydto.ts
+  - src/models/components/lateststarsarenabalancequerydto.ts
+  - src/models/components/lateststarsarenabalanceparams.ts
+  - src/models/components/stakinginformationresponse.ts
+  - src/models/components/stakinginformation.ts
   - src/models/components/listnfttokens.ts
   - src/models/components/erc721token.ts
   - src/models/components/erc721tokenmetadata.ts
@@ -325,7 +438,6 @@ generatedFiles:
   - src/models/components/teleporterdestinationtransaction.ts
   - src/models/components/deliveredsourcenotindexedteleportermessage.ts
   - src/models/components/listteleportermessagesresponse.ts
-  - src/models/components/networktype.ts
   - src/models/components/getnativebalanceresponse.ts
   - src/models/components/nativetokenbalance.ts
   - src/models/components/listerc20balancesresponse.ts
@@ -375,20 +487,74 @@ generatedFiles:
   - src/models/components/listinternaltransactionsresponse.ts
   - src/models/components/internaltransaction.ts
   - src/models/components/transactionstatus.ts
-  - src/models/components/listchainsresponse.ts
-  - src/models/components/chaininfo.ts
+  - src/models/components/glacierapifeature.ts
+  - src/models/components/getchainresponse.ts
   - src/models/components/utilityaddresses.ts
   - src/models/components/vmname.ts
   - src/models/components/chainstatus.ts
-  - src/models/components/glacierapifeature.ts
-  - src/models/components/getchainresponse.ts
   - src/models/errors/index.ts
   - src/models/operations/index.ts
   - src/models/components/index.ts
   - docs/models/operations/info.md
   - docs/models/operations/errort.md
   - docs/models/operations/details.md
-  - docs/models/operations/healthcheckresponsebody.md
+  - docs/models/operations/healthcheckv1responsebody.md
+  - docs/models/operations/healthcheckv2info.md
+  - docs/models/operations/healthcheckv2error.md
+  - docs/models/operations/healthcheckv2details.md
+  - docs/models/operations/healthcheckv2responsebody.md
+  - docs/models/operations/listchainsrequest.md
+  - docs/models/operations/listchainsresponse.md
+  - docs/models/operations/getchainglobals.md
+  - docs/models/operations/getchainrequest.md
+  - docs/models/operations/getmappingsrequest.md
+  - docs/models/operations/getmappingsresponse.md
+  - docs/models/operations/getmappingsbysubnetidrequest.md
+  - docs/models/operations/getmappingsbysubnetidresponse.md
+  - docs/models/operations/getchaininformationbynetworkrequest.md
+  - docs/models/operations/getchaininformationbynetworkresponse.md
+  - docs/models/operations/getchaininformationbynetworkandsubnetidrequest.md
+  - docs/models/operations/getchaininformationbynetworkandsubnetidresponse.md
+  - docs/models/operations/getsubnetinformationbynetworkrequest.md
+  - docs/models/operations/getsubnetinformationbynetworkresponse.md
+  - docs/models/operations/getsubnetinformationbynetworkandsubnetidrequest.md
+  - docs/models/operations/getsubnetinformationbynetworkandsubnetidresponse.md
+  - docs/models/operations/getstakingmetricsrequest.md
+  - docs/models/operations/getstakingmetricsresponse.md
+  - docs/models/operations/getrollingwindowgasusedglobals.md
+  - docs/models/operations/getrollingwindowgasusedrequest.md
+  - docs/models/operations/getrollingwindowtxcountglobals.md
+  - docs/models/operations/getrollingwindowtxcountrequest.md
+  - docs/models/operations/getrollingwindowavggpsglobals.md
+  - docs/models/operations/getrollingwindowavggpsrequest.md
+  - docs/models/operations/getrollingwindowmaxgpsglobals.md
+  - docs/models/operations/getrollingwindowmaxgpsrequest.md
+  - docs/models/operations/getrollingwindowavgtpsglobals.md
+  - docs/models/operations/getrollingwindowavgtpsrequest.md
+  - docs/models/operations/getrollingwindowmaxtpsglobals.md
+  - docs/models/operations/getrollingwindowmaxtpsrequest.md
+  - docs/models/operations/getrollingwindowavggaspriceglobals.md
+  - docs/models/operations/getrollingwindowavggaspricerequest.md
+  - docs/models/operations/getrollingwindowmaxgaspriceglobals.md
+  - docs/models/operations/getrollingwindowmaxgaspricerequest.md
+  - docs/models/operations/getnftholdersbycontractaddressglobals.md
+  - docs/models/operations/getnftholdersbycontractaddressrequest.md
+  - docs/models/operations/getnftholdersbycontractaddressresponse.md
+  - docs/models/operations/getaddressesbybalanceovertimeglobals.md
+  - docs/models/operations/getaddressesbybalanceovertimerequest.md
+  - docs/models/operations/getaddressesbybalanceovertimeresponse.md
+  - docs/models/operations/getaddressesbybtcbbridgedrequest.md
+  - docs/models/operations/getaddressesbybtcbbridgedresponse.md
+  - docs/models/operations/getvalidatorsbydaterangerequest.md
+  - docs/models/operations/getvalidatorsbydaterangeresponse.md
+  - docs/models/operations/getvalidatorcountrequest.md
+  - docs/models/operations/getvalidatorcountresponse.md
+  - docs/models/operations/getvalidatorweightrequest.md
+  - docs/models/operations/getvalidatorweightresponse.md
+  - docs/models/operations/getdelegatorcountrequest.md
+  - docs/models/operations/getdelegatorcountresponse.md
+  - docs/models/operations/getdelegatorweightrequest.md
+  - docs/models/operations/getdelegatorweightresponse.md
   - docs/models/operations/reindexnftglobals.md
   - docs/models/operations/reindexnftrequest.md
   - docs/models/operations/listtokensglobals.md
@@ -514,7 +680,69 @@ generatedFiles:
   - docs/models/errors/info.md
   - docs/models/errors/errort.md
   - docs/models/errors/details.md
-  - docs/models/errors/healthcheckresponsebody.md
+  - docs/models/errors/healthcheckv1responsebody.md
+  - docs/models/errors/healthcheckv2info.md
+  - docs/models/errors/healthcheckv2error.md
+  - docs/models/errors/healthcheckv2details.md
+  - docs/models/errors/healthcheckv2responsebody.md
+  - docs/models/components/listchainsresponse.md
+  - docs/models/components/chain.md
+  - docs/models/components/networktype.md
+  - docs/models/components/subnetmappingsresponse.md
+  - docs/models/components/subnetmapping.md
+  - docs/models/components/chaininformationresponse.md
+  - docs/models/components/chaininformation.md
+  - docs/models/components/legacynetworks.md
+  - docs/models/components/subnetsresponse.md
+  - docs/models/components/subnetinformation.md
+  - docs/models/components/metricsapiresponse.md
+  - docs/models/components/metricsvalue.md
+  - docs/models/components/networkmetric.md
+  - docs/models/components/two.md
+  - docs/models/components/one.md
+  - docs/models/components/result.md
+  - docs/models/components/rollingwindowresponse.md
+  - docs/models/components/nftholdersresponse.md
+  - docs/models/components/addressdetails.md
+  - docs/models/components/lookingglassresponse.md
+  - docs/models/components/pchainlookingglassresponse.md
+  - docs/models/components/pchainaddressdetails.md
+  - docs/models/components/compositequeryresponse.md
+  - docs/models/components/queries.md
+  - docs/models/components/compositequeryrequestdto.md
+  - docs/models/components/operator.md
+  - docs/models/components/type.md
+  - docs/models/components/alltimenativebalancequerydto.md
+  - docs/models/components/daterangeminbalanceparam.md
+  - docs/models/components/anytimenativebalancequerydtotype.md
+  - docs/models/components/anytimenativebalancequerydto.md
+  - docs/models/components/alltimeerc20balancequerydtotype.md
+  - docs/models/components/alltimeerc20balancequerydto.md
+  - docs/models/components/daterangeerc20minbalanceparam.md
+  - docs/models/components/anytimeerc20balancequerydtotype.md
+  - docs/models/components/anytimeerc20balancequerydto.md
+  - docs/models/components/alltimenftholdersquerydtotype.md
+  - docs/models/components/params.md
+  - docs/models/components/alltimenftholdersquerydto.md
+  - docs/models/components/timestamprangenftholdersparam.md
+  - docs/models/components/daterangenftholdersparam.md
+  - docs/models/components/anytimenftholdersquerydtotype.md
+  - docs/models/components/anytimenftholdersquerydtoparams.md
+  - docs/models/components/anytimenftholdersquerydto.md
+  - docs/models/components/latestbalancequerydtotype.md
+  - docs/models/components/latestbalancequerydto.md
+  - docs/models/components/latestbalanceparams.md
+  - docs/models/components/tokentype.md
+  - docs/models/components/alltimestarsarenabalancequerydtotype.md
+  - docs/models/components/alltimestarsarenabalancequerydto.md
+  - docs/models/components/daterangestarsarenaminbalanceparam.md
+  - docs/models/components/anytimestarsarenabalancequerydtotype.md
+  - docs/models/components/anytimestarsarenabalancequerydto.md
+  - docs/models/components/lateststarsarenabalancequerydtotype.md
+  - docs/models/components/lateststarsarenabalancequerydto.md
+  - docs/models/components/lateststarsarenabalanceparams.md
+  - docs/models/components/stakinginformationresponse.md
+  - docs/models/components/stakinginformation.md
   - docs/models/components/tokens.md
   - docs/models/components/listnfttokens.md
   - docs/models/components/erctype.md
@@ -662,7 +890,6 @@ generatedFiles:
   - docs/models/components/deliveredsourcenotindexedteleportermessage.md
   - docs/models/components/messages.md
   - docs/models/components/listteleportermessagesresponse.md
-  - docs/models/components/networktype.md
   - docs/models/components/getnativebalanceresponse.md
   - docs/models/components/nativetokenbalance.md
   - docs/models/components/listerc20balancesresponse.md
@@ -723,19 +950,24 @@ generatedFiles:
   - docs/models/components/listinternaltransactionsresponse.md
   - docs/models/components/internaltransaction.md
   - docs/models/components/transactionstatus.md
-  - docs/models/components/listchainsresponse.md
+  - docs/models/components/glacierapifeature.md
   - docs/models/components/enabledfeatures.md
-  - docs/models/components/chaininfo.md
+  - docs/models/components/getchainresponse.md
   - docs/models/components/utilityaddresses.md
   - docs/models/components/vmname.md
   - docs/models/components/chainstatus.md
-  - docs/models/components/glacierapifeature.md
-  - docs/models/components/getchainresponseenabledfeatures.md
-  - docs/models/components/getchainresponse.md
   - docs/sdks/avalanchesdk/README.md
-  - docs/sdks/glacier/README.md
+  - docs/sdks/metrics/README.md
   - docs/lib/utils/retryconfig.md
   - docs/sdks/healthcheck/README.md
+  - docs/sdks/avalanchesdkevm/README.md
+  - docs/sdks/avalanchesdkchains/README.md
+  - docs/sdks/chain/README.md
+  - docs/sdks/avalanchesdkmetrics/README.md
+  - docs/sdks/throughput/README.md
+  - docs/sdks/lookingglass/README.md
+  - docs/sdks/stakinginformation/README.md
+  - docs/sdks/glacier/README.md
   - docs/sdks/nfts/README.md
   - docs/sdks/operations/README.md
   - docs/sdks/primarynetwork/README.md

@@ -21,6 +21,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetChainIdsForAddressesServerList } from "../models/operations/getchainidsforaddresses.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
@@ -33,7 +34,7 @@ import { Result } from "../types/fp.js";
 export async function glacierPrimaryNetworkGetChainIdsForAddresses(
     client$: AvalancheSDKCore,
     request: operations.GetChainIdsForAddressesRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.ChainAddressChainIdMapListResponse,
@@ -58,6 +59,10 @@ export async function glacierPrimaryNetworkGetChainIdsForAddresses(
     }
     const payload$ = parsed$.value;
     const body$ = null;
+
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(GetChainIdsForAddressesServerList[0], { charEncoding: "percent" })();
 
     const pathParams$ = {
         network: encodeSimple$("network", payload$.network, {
@@ -86,6 +91,7 @@ export async function glacierPrimaryNetworkGetChainIdsForAddresses(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             query: query$,

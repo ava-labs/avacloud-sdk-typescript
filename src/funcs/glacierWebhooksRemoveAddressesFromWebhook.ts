@@ -19,6 +19,7 @@ import {
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { RemoveAddressesFromWebhookServerList } from "../models/operations/removeaddressesfromwebhook.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -30,7 +31,7 @@ import { Result } from "../types/fp.js";
 export async function glacierWebhooksRemoveAddressesFromWebhook(
     client$: AvalancheSDKCore,
     request: operations.RemoveAddressesFromWebhookRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.WebhookResponse,
@@ -56,6 +57,10 @@ export async function glacierWebhooksRemoveAddressesFromWebhook(
     const payload$ = parsed$.value;
     const body$ = encodeJSON$("body", payload$.AddressesChangeRequest, { explode: true });
 
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(RemoveAddressesFromWebhookServerList[0], { charEncoding: "percent" })();
+
     const pathParams$ = {
         id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
     };
@@ -77,6 +82,7 @@ export async function glacierWebhooksRemoveAddressesFromWebhook(
         context,
         {
             method: "DELETE",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

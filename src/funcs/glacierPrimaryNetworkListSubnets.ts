@@ -22,6 +22,7 @@ import {
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { ListSubnetsServerList } from "../models/operations/listsubnets.js";
 import { Result } from "../types/fp.js";
 import { createPageIterator, haltIterator, PageIterator, Paginator } from "../types/operations.js";
 
@@ -34,7 +35,7 @@ import { createPageIterator, haltIterator, PageIterator, Paginator } from "../ty
 export async function glacierPrimaryNetworkListSubnets(
     client$: AvalancheSDKCore,
     request: operations.ListSubnetsRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     PageIterator<
         Result<
@@ -62,6 +63,9 @@ export async function glacierPrimaryNetworkListSubnets(
     const payload$ = parsed$.value;
     const body$ = null;
 
+    const baseURL$ =
+        options?.serverURL || pathToFunc(ListSubnetsServerList[0], { charEncoding: "percent" })();
+
     const pathParams$ = {
         network: encodeSimple$("network", payload$.network, {
             explode: false,
@@ -87,6 +91,7 @@ export async function glacierPrimaryNetworkListSubnets(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             query: query$,

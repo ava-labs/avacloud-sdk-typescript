@@ -20,7 +20,7 @@ export class Transactions extends ClientSDK {
      */
     async getTxByHash(
         request: operations.GetTxByHashRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<operations.GetTxByHashResponseBody> {
         return unwrapAsync(glacierPrimaryNetworkTransactionsGetTxByHash(this, request, options));
     }
@@ -37,7 +37,7 @@ export class Transactions extends ClientSDK {
      */
     async listLatestPrimaryNetworkTransactions(
         request: operations.ListLatestPrimaryNetworkTransactionsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListLatestPrimaryNetworkTransactionsResponse>> {
         return unwrapResultIterator(
             glacierPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions(
@@ -56,7 +56,7 @@ export class Transactions extends ClientSDK {
      */
     async listActivePrimaryNetworkStakingTransactions(
         request: operations.ListActivePrimaryNetworkStakingTransactionsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListActivePrimaryNetworkStakingTransactionsResponse>> {
         return unwrapResultIterator(
             glacierPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions(
@@ -75,7 +75,7 @@ export class Transactions extends ClientSDK {
      */
     async listAssetTransactions(
         request: operations.ListAssetTransactionsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListAssetTransactionsResponse>> {
         return unwrapResultIterator(
             glacierPrimaryNetworkTransactionsListAssetTransactions(this, request, options)

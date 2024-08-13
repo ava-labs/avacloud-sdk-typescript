@@ -18,7 +18,7 @@ export class Operations extends ClientSDK {
      */
     async getOperationResult(
         request: operations.GetOperationResultRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.OperationStatusResponse> {
         return unwrapAsync(glacierOperationsGetOperationResult(this, request, options));
     }
@@ -33,7 +33,7 @@ export class Operations extends ClientSDK {
      */
     async postTransactionExportJob(
         request: operations.PostTransactionExportJobRequestBody,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.OperationStatusResponse> {
         return unwrapAsync(glacierOperationsPostTransactionExportJob(this, request, options));
     }

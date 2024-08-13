@@ -6,6 +6,8 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export const GetSingleValidatorDetailsServerList = ["http://localhost:3000"] as const;
+
 export type GetSingleValidatorDetailsRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.

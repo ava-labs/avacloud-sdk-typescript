@@ -17,6 +17,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetContractMetadataServerList } from "../models/operations/getcontractmetadata.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
@@ -29,7 +30,7 @@ import { Result } from "../types/fp.js";
 export async function glacierEvmContractsGetContractMetadata(
     client$: AvalancheSDKCore,
     request: operations.GetContractMetadataRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         operations.GetContractMetadataResponseBody,
@@ -55,6 +56,10 @@ export async function glacierEvmContractsGetContractMetadata(
     const payload$ = parsed$.value;
     const body$ = null;
 
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(GetContractMetadataServerList[0], { charEncoding: "percent" })();
+
     const pathParams$ = {
         address: encodeSimple$("address", payload$.address, {
             explode: false,
@@ -78,6 +83,7 @@ export async function glacierEvmContractsGetContractMetadata(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

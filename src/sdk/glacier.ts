@@ -4,7 +4,6 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Evm } from "./evm.js";
-import { HealthCheck } from "./healthcheck.js";
 import { Nfts } from "./nfts.js";
 import { Operations } from "./operations.js";
 import { PrimaryNetwork } from "./primarynetwork.js";
@@ -12,11 +11,6 @@ import { Teleporter } from "./teleporter.js";
 import { Webhooks } from "./webhooks.js";
 
 export class Glacier extends ClientSDK {
-    private _healthCheck?: HealthCheck;
-    get healthCheck(): HealthCheck {
-        return (this._healthCheck ??= new HealthCheck(this.options$));
-    }
-
     private _nfts?: Nfts;
     get nfts(): Nfts {
         return (this._nfts ??= new Nfts(this.options$));

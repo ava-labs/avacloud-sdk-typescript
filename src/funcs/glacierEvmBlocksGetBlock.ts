@@ -18,6 +18,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetBlockServerList } from "../models/operations/getblock.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
@@ -30,7 +31,7 @@ import { Result } from "../types/fp.js";
 export async function glacierEvmBlocksGetBlock(
     client$: AvalancheSDKCore,
     request: operations.GetBlockRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.GetEvmBlockResponse,
@@ -56,6 +57,9 @@ export async function glacierEvmBlocksGetBlock(
     const payload$ = parsed$.value;
     const body$ = null;
 
+    const baseURL$ =
+        options?.serverURL || pathToFunc(GetBlockServerList[0], { charEncoding: "percent" })();
+
     const pathParams$ = {
         blockId: encodeSimple$("blockId", payload$.blockId, {
             explode: false,
@@ -79,6 +83,7 @@ export async function glacierEvmBlocksGetBlock(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

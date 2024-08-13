@@ -5,6 +5,8 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export const GetNativeBalanceServerList = ["http://localhost:3000"] as const;
+
 export type GetNativeBalanceGlobals = {
     chainId?: string | undefined;
 };

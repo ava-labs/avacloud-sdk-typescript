@@ -27,7 +27,7 @@ export class Webhooks extends ClientSDK {
      */
     async listWebhooks(
         request: operations.ListWebhooksRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListWebhooksResponse>> {
         return unwrapResultIterator(glacierWebhooksListWebhooks(this, request, options));
     }
@@ -40,7 +40,7 @@ export class Webhooks extends ClientSDK {
      */
     async createWebhook(
         request: components.CreateWebhookRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.WebhookResponse> {
         return unwrapAsync(glacierWebhooksCreateWebhook(this, request, options));
     }
@@ -53,7 +53,7 @@ export class Webhooks extends ClientSDK {
      */
     async getWebhook(
         request: operations.GetWebhookRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.WebhookResponse> {
         return unwrapAsync(glacierWebhooksGetWebhook(this, request, options));
     }
@@ -66,7 +66,7 @@ export class Webhooks extends ClientSDK {
      */
     async deactivateWebhook(
         request: operations.DeactivateWebhookRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.WebhookResponse> {
         return unwrapAsync(glacierWebhooksDeactivateWebhook(this, request, options));
     }
@@ -79,7 +79,7 @@ export class Webhooks extends ClientSDK {
      */
     async updateWebhook(
         request: operations.UpdateWebhookRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.WebhookResponse> {
         return unwrapAsync(glacierWebhooksUpdateWebhook(this, request, options));
     }
@@ -91,7 +91,7 @@ export class Webhooks extends ClientSDK {
      * Generates a new shared secret.
      */
     async generateSharedSecret(
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.SharedSecretsResponse> {
         return unwrapAsync(glacierWebhooksGenerateSharedSecret(this, options));
     }
@@ -102,7 +102,9 @@ export class Webhooks extends ClientSDK {
      * @remarks
      * Get a previously generated shared secret.
      */
-    async getSharedSecret(options?: RequestOptions): Promise<components.SharedSecretsResponse> {
+    async getSharedSecret(
+        options?: RequestOptions & { serverURL?: string }
+    ): Promise<components.SharedSecretsResponse> {
         return unwrapAsync(glacierWebhooksGetSharedSecret(this, options));
     }
 
@@ -114,7 +116,7 @@ export class Webhooks extends ClientSDK {
      */
     async getAddressesFromWebhook(
         request: operations.GetAddressesFromWebhookRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.GetAddressesFromWebhookResponse>> {
         return unwrapResultIterator(glacierWebhooksGetAddressesFromWebhook(this, request, options));
     }
@@ -127,7 +129,7 @@ export class Webhooks extends ClientSDK {
      */
     async removeAddressesFromWebhook(
         request: operations.RemoveAddressesFromWebhookRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.WebhookResponse> {
         return unwrapAsync(glacierWebhooksRemoveAddressesFromWebhook(this, request, options));
     }
@@ -140,7 +142,7 @@ export class Webhooks extends ClientSDK {
      */
     async addAddressesToWebhook(
         request: operations.AddAddressesToWebhookRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.WebhookResponse> {
         return unwrapAsync(glacierWebhooksAddAddressesToWebhook(this, request, options));
     }

@@ -17,6 +17,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetTokenDetailsServerList } from "../models/operations/gettokendetails.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
@@ -29,7 +30,7 @@ import { Result } from "../types/fp.js";
 export async function glacierNftsGetTokenDetails(
     client$: AvalancheSDKCore,
     request: operations.GetTokenDetailsRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         operations.GetTokenDetailsResponseBody,
@@ -54,6 +55,10 @@ export async function glacierNftsGetTokenDetails(
     }
     const payload$ = parsed$.value;
     const body$ = null;
+
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(GetTokenDetailsServerList[0], { charEncoding: "percent" })();
 
     const pathParams$ = {
         address: encodeSimple$("address", payload$.address, {
@@ -84,6 +89,7 @@ export async function glacierNftsGetTokenDetails(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

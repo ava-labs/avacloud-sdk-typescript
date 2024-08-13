@@ -18,6 +18,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { AddAddressesToWebhookServerList } from "../models/operations/addaddressestowebhook.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
@@ -30,7 +31,7 @@ import { Result } from "../types/fp.js";
 export async function glacierWebhooksAddAddressesToWebhook(
     client$: AvalancheSDKCore,
     request: operations.AddAddressesToWebhookRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.WebhookResponse,
@@ -56,6 +57,10 @@ export async function glacierWebhooksAddAddressesToWebhook(
     const payload$ = parsed$.value;
     const body$ = encodeJSON$("body", payload$.AddressesChangeRequest, { explode: true });
 
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(AddAddressesToWebhookServerList[0], { charEncoding: "percent" })();
+
     const pathParams$ = {
         id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
     };
@@ -77,6 +82,7 @@ export async function glacierWebhooksAddAddressesToWebhook(
         context,
         {
             method: "PATCH",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

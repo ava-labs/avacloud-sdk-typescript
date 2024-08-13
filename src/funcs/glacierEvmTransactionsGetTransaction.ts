@@ -18,6 +18,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetTransactionServerList } from "../models/operations/gettransaction.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
@@ -30,7 +31,7 @@ import { Result } from "../types/fp.js";
 export async function glacierEvmTransactionsGetTransaction(
     client$: AvalancheSDKCore,
     request: operations.GetTransactionRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.GetTransactionResponse,
@@ -56,6 +57,10 @@ export async function glacierEvmTransactionsGetTransaction(
     const payload$ = parsed$.value;
     const body$ = null;
 
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(GetTransactionServerList[0], { charEncoding: "percent" })();
+
     const pathParams$ = {
         chainId: encodeSimple$("chainId", payload$.chainId ?? client$.options$.chainId, {
             explode: false,
@@ -79,6 +84,7 @@ export async function glacierEvmTransactionsGetTransaction(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

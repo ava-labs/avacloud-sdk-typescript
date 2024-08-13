@@ -24,7 +24,7 @@ export class AvalancheSDKBalances extends ClientSDK {
      */
     async getNativeBalance(
         request: operations.GetNativeBalanceRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.GetNativeBalanceResponse> {
         return unwrapAsync(glacierEvmBalancesGetNativeBalance(this, request, options));
     }
@@ -41,7 +41,7 @@ export class AvalancheSDKBalances extends ClientSDK {
      */
     async listErc20Balances(
         request: operations.ListErc20BalancesRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListErc20BalancesResponse>> {
         return unwrapResultIterator(glacierEvmBalancesListErc20Balances(this, request, options));
     }
@@ -56,7 +56,7 @@ export class AvalancheSDKBalances extends ClientSDK {
      */
     async listErc721Balances(
         request: operations.ListErc721BalancesRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListErc721BalancesResponse>> {
         return unwrapResultIterator(glacierEvmBalancesListErc721Balances(this, request, options));
     }
@@ -73,7 +73,7 @@ export class AvalancheSDKBalances extends ClientSDK {
      */
     async listErc1155Balances(
         request: operations.ListErc1155BalancesRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListErc1155BalancesResponse>> {
         return unwrapResultIterator(glacierEvmBalancesListErc1155Balances(this, request, options));
     }
@@ -88,7 +88,7 @@ export class AvalancheSDKBalances extends ClientSDK {
      */
     async listCollectibleBalances(
         request: operations.ListCollectibleBalancesRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListCollectibleBalancesResponse>> {
         return unwrapResultIterator(
             glacierEvmBalancesListCollectibleBalances(this, request, options)

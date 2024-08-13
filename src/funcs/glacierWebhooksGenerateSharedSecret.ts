@@ -16,6 +16,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GenerateSharedSecretServerList } from "../models/operations/generatesharedsecret.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -26,7 +27,7 @@ import { Result } from "../types/fp.js";
  */
 export async function glacierWebhooksGenerateSharedSecret(
     client$: AvalancheSDKCore,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.SharedSecretsResponse,
@@ -39,6 +40,10 @@ export async function glacierWebhooksGenerateSharedSecret(
         | ConnectionError
     >
 > {
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(GenerateSharedSecretServerList[0], { charEncoding: "percent" })();
+
     const path$ = pathToFunc("/v1/webhooks:generateOrRotateSharedSecret")();
 
     const headers$ = new Headers({
@@ -51,6 +56,7 @@ export async function glacierWebhooksGenerateSharedSecret(
         context,
         {
             method: "POST",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,

@@ -18,6 +18,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetAssetDetailsServerList } from "../models/operations/getassetdetails.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
@@ -30,7 +31,7 @@ import { Result } from "../types/fp.js";
 export async function glacierPrimaryNetworkGetAssetDetails(
     client$: AvalancheSDKCore,
     request: operations.GetAssetDetailsRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.XChainAssetDetails,
@@ -55,6 +56,10 @@ export async function glacierPrimaryNetworkGetAssetDetails(
     }
     const payload$ = parsed$.value;
     const body$ = null;
+
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(GetAssetDetailsServerList[0], { charEncoding: "percent" })();
 
     const pathParams$ = {
         assetId: encodeSimple$("assetId", payload$.assetId, {
@@ -85,6 +90,7 @@ export async function glacierPrimaryNetworkGetAssetDetails(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

@@ -18,6 +18,7 @@ import {
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { ReindexNftServerList } from "../models/operations/reindexnft.js";
 import { Result } from "../types/fp.js";
 import * as z from "zod";
 
@@ -30,7 +31,7 @@ import * as z from "zod";
 export async function glacierNftsReindexNft(
     client$: AvalancheSDKCore,
     request: operations.ReindexNftRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         void,
@@ -55,6 +56,9 @@ export async function glacierNftsReindexNft(
     }
     const payload$ = parsed$.value;
     const body$ = null;
+
+    const baseURL$ =
+        options?.serverURL || pathToFunc(ReindexNftServerList[0], { charEncoding: "percent" })();
 
     const pathParams$ = {
         address: encodeSimple$("address", payload$.address, {
@@ -85,6 +89,7 @@ export async function glacierNftsReindexNft(
         context,
         {
             method: "POST",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

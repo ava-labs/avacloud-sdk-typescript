@@ -19,6 +19,7 @@ import {
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { SupportedChainsServerList } from "../models/operations/supportedchains.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -30,7 +31,7 @@ import { Result } from "../types/fp.js";
 export async function glacierEvmChainsSupportedChains(
     client$: AvalancheSDKCore,
     request: operations.SupportedChainsRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         components.ListChainsResponse,
@@ -56,6 +57,10 @@ export async function glacierEvmChainsSupportedChains(
     const payload$ = parsed$.value;
     const body$ = null;
 
+    const baseURL$ =
+        options?.serverURL ||
+        pathToFunc(SupportedChainsServerList[0], { charEncoding: "percent" })();
+
     const path$ = pathToFunc("/v1/chains")();
 
     const query$ = encodeFormQuery$({
@@ -73,6 +78,7 @@ export async function glacierEvmChainsSupportedChains(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             query: query$,

@@ -20,7 +20,7 @@ export class Vertices extends ClientSDK {
      */
     async listLatestXChainVertices(
         request: operations.ListLatestXChainVerticesRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListLatestXChainVerticesResponse>> {
         return unwrapResultIterator(
             glacierPrimaryNetworkVerticesListLatestXChainVertices(this, request, options)
@@ -35,7 +35,7 @@ export class Vertices extends ClientSDK {
      */
     async getVertexByHash(
         request: operations.GetVertexByHashRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.XChainVertex> {
         return unwrapAsync(glacierPrimaryNetworkVerticesGetVertexByHash(this, request, options));
     }
@@ -48,7 +48,7 @@ export class Vertices extends ClientSDK {
      */
     async getVertexByHeight(
         request: operations.GetVertexByHeightRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.GetVertexByHeightResponse>> {
         return unwrapResultIterator(
             glacierPrimaryNetworkVerticesGetVertexByHeight(this, request, options)

@@ -4,6 +4,8 @@
 
 import * as z from "zod";
 
+export const GetChainInfoServerList = ["http://localhost:3000"] as const;
+
 export type GetChainInfoGlobals = {
     chainId?: string | undefined;
 };

@@ -5,6 +5,8 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export const GetChainIdsForAddressesServerList = ["http://localhost:3000"] as const;
+
 export type GetChainIdsForAddressesRequest = {
     /**
      * A comma separated list of X-Chain or P-Chain wallet addresses, starting with "avax"/"fuji", "P-avax"/"P-fuji" or "X-avax"/"X-fuji".

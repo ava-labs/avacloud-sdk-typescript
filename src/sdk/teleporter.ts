@@ -18,7 +18,7 @@ export class Teleporter extends ClientSDK {
      */
     async getTeleporterMessage(
         request: operations.GetTeleporterMessageRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<operations.GetTeleporterMessageResponseBody> {
         return unwrapAsync(glacierTeleporterGetTeleporterMessage(this, request, options));
     }
@@ -31,7 +31,7 @@ export class Teleporter extends ClientSDK {
      */
     async listTeleporterMessages(
         request: operations.ListTeleporterMessagesRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListTeleporterMessagesResponse>> {
         return unwrapResultIterator(
             glacierTeleporterListTeleporterMessages(this, request, options)

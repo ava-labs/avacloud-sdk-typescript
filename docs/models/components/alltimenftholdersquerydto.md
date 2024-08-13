@@ -1,0 +1,10 @@
+# AllTimeNftHoldersQueryDto
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                 | *string*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `type`                                                                                               | [components.AllTimeNftHoldersQueryDtoType](../../models/components/alltimenftholdersquerydtotype.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `params`                                                                                             | *components.Params*                                                                                  | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

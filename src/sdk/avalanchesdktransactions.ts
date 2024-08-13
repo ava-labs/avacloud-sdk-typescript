@@ -29,7 +29,7 @@ export class AvalancheSDKTransactions extends ClientSDK {
      */
     async getDeploymentTransaction(
         request: operations.GetDeploymentTransactionRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.GetTransactionResponse> {
         return unwrapAsync(glacierEvmTransactionsGetDeploymentTransaction(this, request, options));
     }
@@ -42,7 +42,7 @@ export class AvalancheSDKTransactions extends ClientSDK {
      */
     async listContractDeployments(
         request: operations.ListContractDeploymentsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListContractDeploymentsResponse>> {
         return unwrapResultIterator(
             glacierEvmTransactionsListContractDeployments(this, request, options)
@@ -57,7 +57,7 @@ export class AvalancheSDKTransactions extends ClientSDK {
      */
     async listTransfers(
         request: operations.ListTransfersRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListTransfersResponse>> {
         return unwrapResultIterator(glacierEvmTransactionsListTransfers(this, request, options));
     }
@@ -72,7 +72,7 @@ export class AvalancheSDKTransactions extends ClientSDK {
      */
     async listTransactions(
         request: operations.ListTransactionsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListTransactionsResponse>> {
         return unwrapResultIterator(glacierEvmTransactionsListTransactions(this, request, options));
     }
@@ -85,7 +85,7 @@ export class AvalancheSDKTransactions extends ClientSDK {
      */
     async listNativeTransactions(
         request: operations.ListNativeTransactionsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListNativeTransactionsResponse>> {
         return unwrapResultIterator(
             glacierEvmTransactionsListNativeTransactions(this, request, options)
@@ -100,7 +100,7 @@ export class AvalancheSDKTransactions extends ClientSDK {
      */
     async listErc20Transactions(
         request: operations.ListErc20TransactionsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListErc20TransactionsResponse>> {
         return unwrapResultIterator(
             glacierEvmTransactionsListErc20Transactions(this, request, options)
@@ -115,7 +115,7 @@ export class AvalancheSDKTransactions extends ClientSDK {
      */
     async listErc721Transactions(
         request: operations.ListErc721TransactionsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListErc721TransactionsResponse>> {
         return unwrapResultIterator(
             glacierEvmTransactionsListErc721Transactions(this, request, options)
@@ -130,7 +130,7 @@ export class AvalancheSDKTransactions extends ClientSDK {
      */
     async listErc1155Transactions(
         request: operations.ListErc1155TransactionsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListErc1155TransactionsResponse>> {
         return unwrapResultIterator(
             glacierEvmTransactionsListErc1155Transactions(this, request, options)
@@ -147,7 +147,7 @@ export class AvalancheSDKTransactions extends ClientSDK {
      */
     async listInternalTransactions(
         request: operations.ListInternalTransactionsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListInternalTransactionsResponse>> {
         return unwrapResultIterator(
             glacierEvmTransactionsListInternalTransactions(this, request, options)
@@ -162,7 +162,7 @@ export class AvalancheSDKTransactions extends ClientSDK {
      */
     async getTransaction(
         request: operations.GetTransactionRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.GetTransactionResponse> {
         return unwrapAsync(glacierEvmTransactionsGetTransaction(this, request, options));
     }
@@ -175,7 +175,7 @@ export class AvalancheSDKTransactions extends ClientSDK {
      */
     async getTransactionsForBlock(
         request: operations.GetTransactionsForBlockRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<components.ListNativeTransactionsResponse> {
         return unwrapAsync(glacierEvmTransactionsGetTransactionsForBlock(this, request, options));
     }
@@ -188,7 +188,7 @@ export class AvalancheSDKTransactions extends ClientSDK {
      */
     async listLatestTransactions(
         request: operations.ListLatestTransactionsRequest,
-        options?: RequestOptions
+        options?: RequestOptions & { serverURL?: string }
     ): Promise<PageIterator<operations.ListLatestTransactionsResponse>> {
         return unwrapResultIterator(
             glacierEvmTransactionsListLatestTransactions(this, request, options)

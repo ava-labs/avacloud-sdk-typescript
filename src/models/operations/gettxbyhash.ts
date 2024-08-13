@@ -5,6 +5,8 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export const GetTxByHashServerList = ["http://localhost:3000"] as const;
+
 export type GetTxByHashRequest = {
     /**
      * A primary network blockchain id or alias.

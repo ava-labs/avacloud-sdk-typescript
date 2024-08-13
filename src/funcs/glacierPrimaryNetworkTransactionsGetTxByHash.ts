@@ -17,6 +17,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetTxByHashServerList } from "../models/operations/gettxbyhash.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
@@ -29,7 +30,7 @@ import { Result } from "../types/fp.js";
 export async function glacierPrimaryNetworkTransactionsGetTxByHash(
     client$: AvalancheSDKCore,
     request: operations.GetTxByHashRequest,
-    options?: RequestOptions
+    options?: RequestOptions & { serverURL?: string }
 ): Promise<
     Result<
         operations.GetTxByHashResponseBody,
@@ -54,6 +55,9 @@ export async function glacierPrimaryNetworkTransactionsGetTxByHash(
     }
     const payload$ = parsed$.value;
     const body$ = null;
+
+    const baseURL$ =
+        options?.serverURL || pathToFunc(GetTxByHashServerList[0], { charEncoding: "percent" })();
 
     const pathParams$ = {
         blockchainId: encodeSimple$("blockchainId", payload$.blockchainId, {
@@ -84,6 +88,7 @@ export async function glacierPrimaryNetworkTransactionsGetTxByHash(
         context,
         {
             method: "GET",
+            baseURL: baseURL$,
             path: path$,
             headers: headers$,
             body: body$,

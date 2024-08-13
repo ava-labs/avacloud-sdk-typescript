@@ -4,6 +4,8 @@
 
 import * as z from "zod";
 
+export const ReindexNftServerList = ["http://localhost:3000"] as const;
+
 export type ReindexNftGlobals = {
     chainId?: string | undefined;
 };

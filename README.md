@@ -64,7 +64,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-    const result = await avalancheSDK.glacier.healthCheck.healthCheck();
+    const result = await avalancheSDK.metrics.healthCheck.healthCheckV1();
 
     // Handle the result
     console.log(result);
@@ -78,9 +78,55 @@ run();
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [glacier.healthCheck](docs/sdks/healthcheck/README.md)
+### [metrics.healthCheck](docs/sdks/healthcheck/README.md)
 
-* [healthCheck](docs/sdks/healthcheck/README.md#healthcheck) - Get the health of the service
+* [healthCheckV1](docs/sdks/healthcheck/README.md#healthcheckv1) - Get the health of the service
+* [healthCheckV2](docs/sdks/healthcheck/README.md#healthcheckv2) - Get the health of the service
+
+
+### [metrics.evm.chains](docs/sdks/avalanchesdkchains/README.md)
+
+* [listChains](docs/sdks/avalanchesdkchains/README.md#listchains) - Get a list of supported blockchains
+* [getChain](docs/sdks/avalanchesdkchains/README.md#getchain) - Get chain information for supported blockchain
+* [getMappings](docs/sdks/avalanchesdkchains/README.md#getmappings) - Subnet ID to EVM Chain ID mappings
+* [getMappingsBySubnetId](docs/sdks/avalanchesdkchains/README.md#getmappingsbysubnetid) - Subnet ID to EVM Chain ID mappings
+* [getChainInformationByNetwork](docs/sdks/avalanchesdkchains/README.md#getchaininformationbynetwork) - Chain information by network
+* [getChainInformationByNetworkAndSubnetId](docs/sdks/avalanchesdkchains/README.md#getchaininformationbynetworkandsubnetid) - Chain information by network and subnet ID
+* [getSubnetInformationByNetwork](docs/sdks/avalanchesdkchains/README.md#getsubnetinformationbynetwork) - Subnet information by network
+* [getSubnetInformationByNetworkAndSubnetId](docs/sdks/avalanchesdkchains/README.md#getsubnetinformationbynetworkandsubnetid) - Subnet information by network and subnet ID
+
+
+### [metrics.chain.metrics](docs/sdks/avalanchesdkmetrics/README.md)
+
+* [getStakingMetrics](docs/sdks/avalanchesdkmetrics/README.md#getstakingmetrics) - Get staking metrics for a given subnet
+
+### [metrics.chain.throughput](docs/sdks/throughput/README.md)
+
+* [getRollingWindowGasUsed](docs/sdks/throughput/README.md#getrollingwindowgasused) - Rolling window of gas used
+* [getRollingWindowTxCount](docs/sdks/throughput/README.md#getrollingwindowtxcount) - Rolling window of tx count
+* [getRollingWindowAvgGps](docs/sdks/throughput/README.md#getrollingwindowavggps) - Rolling window of average gps consumed
+* [getRollingWindowMaxGps](docs/sdks/throughput/README.md#getrollingwindowmaxgps) - Rolling window of max gps
+* [getRollingWindowAvgTps](docs/sdks/throughput/README.md#getrollingwindowavgtps) - Rolling window of average tps
+* [getRollingWindowMaxTps](docs/sdks/throughput/README.md#getrollingwindowmaxtps) - Rolling window of max tps
+* [getRollingWindowAvgGasPrice](docs/sdks/throughput/README.md#getrollingwindowavggasprice) - Rolling window of average gas price
+* [getRollingWindowMaxGasPrice](docs/sdks/throughput/README.md#getrollingwindowmaxgasprice) - Rolling window of max gas price
+
+### [metrics.lookingGlass](docs/sdks/lookingglass/README.md)
+
+* [getNftHoldersByContractAddress](docs/sdks/lookingglass/README.md#getnftholdersbycontractaddress) - Get NFT holders by contract address
+* [getAddressesByBalanceOverTime](docs/sdks/lookingglass/README.md#getaddressesbybalanceovertime) - Get addresses by balance over time
+* [getAddressesByBtcbBridged](docs/sdks/lookingglass/README.md#getaddressesbybtcbbridged) - Get addresses by BTCb bridged balance
+* [getValidatorsByDateRange](docs/sdks/lookingglass/README.md#getvalidatorsbydaterange) - Get addresses running validators during a given time frame
+* [compositeQueryV1](docs/sdks/lookingglass/README.md#compositequeryv1) - Composite query
+* [compositeQueryV2](docs/sdks/lookingglass/README.md#compositequeryv2) - Composite query
+
+### [metrics.stakingInformation](docs/sdks/stakinginformation/README.md)
+
+* [getValidatorCount](docs/sdks/stakinginformation/README.md#getvalidatorcount) - Get validation count by subnet id
+* [getValidatorWeight](docs/sdks/stakinginformation/README.md#getvalidatorweight) - Get validation weight by subnet id
+* [getDelegatorCount](docs/sdks/stakinginformation/README.md#getdelegatorcount) - Get delegation count by subnet id
+* [getDelegatorWeight](docs/sdks/stakinginformation/README.md#getdelegatorweight) - Get delegation weight by subnet id
+
 
 ### [glacier.nfts](docs/sdks/nfts/README.md)
 
@@ -193,43 +239,6 @@ run();
 * [getChainInfo](docs/sdks/chains/README.md#getchaininfo) - Get chain information
 <!-- End Available Resources and Operations [operations] -->
 
-<!-- Start Global Parameters [global-parameters] -->
-## Global Parameters
-
-Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
-
-For example, you can set `chainId` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `reindexNft`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
-
-
-### Available Globals
-
-The following global parameters are available.
-
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| chainId | string |  | The chainId parameter. |
-| network | string |  | The network parameter. |
-
-
-### Example
-
-```typescript
-import { AvalancheSDK } from "@avalabs/avalanche-sdk";
-
-const avalancheSDK = new AvalancheSDK();
-
-async function run() {
-    await avalancheSDK.glacier.nfts.reindexNft({
-        address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
-        tokenId: "145",
-    });
-}
-
-run();
-
-```
-<!-- End Global Parameters [global-parameters] -->
-
 <!-- Start Pagination [pagination] -->
 ## Pagination
 
@@ -248,9 +257,8 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-    const result = await avalancheSDK.glacier.nfts.listTokens({
-        pageSize: 10,
-        address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+    const result = await avalancheSDK.metrics.evm.chains.listChains({
+        network: "mainnet",
     });
 
     for await (const page of result) {
@@ -275,7 +283,7 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-    const result = await avalancheSDK.glacier.healthCheck.healthCheck({
+    const result = await avalancheSDK.metrics.healthCheck.healthCheckV1({
         retries: {
             strategy: "backoff",
             backoff: {
@@ -314,7 +322,7 @@ const avalancheSDK = new AvalancheSDK({
 });
 
 async function run() {
-    const result = await avalancheSDK.glacier.healthCheck.healthCheck();
+    const result = await avalancheSDK.metrics.healthCheck.healthCheckV1();
 
     // Handle the result
     console.log(result);
@@ -330,10 +338,10 @@ run();
 
 All SDK methods return a response object or throw an error. If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
-| Error Object                   | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.HealthCheckResponseBody | 503                            | application/json               |
-| errors.SDKError                | 4xx-5xx                        | */*                            |
+| Error Object                     | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.HealthCheckV1ResponseBody | 503                              | application/json                 |
+| errors.SDKError                  | 4xx-5xx                          | */*                              |
 
 Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
 
@@ -347,7 +355,7 @@ const avalancheSDK = new AvalancheSDK();
 async function run() {
     let result;
     try {
-        result = await avalancheSDK.glacier.healthCheck.healthCheck();
+        result = await avalancheSDK.metrics.healthCheck.healthCheckV1();
     } catch (err) {
         switch (true) {
             case err instanceof SDKValidationError: {
@@ -357,7 +365,7 @@ async function run() {
                 console.error(err.rawValue);
                 return;
             }
-            case err instanceof errors.HealthCheckResponseBody: {
+            case err instanceof errors.HealthCheckV1ResponseBody: {
                 console.error(err); // handle exception
                 return;
             }
@@ -379,23 +387,19 @@ run();
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Select Server by Index
+### Override Server URL Per-Client
 
-You can override the default server globally by passing a server index to the `serverIdx` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `http://localhost:3000` | None |
+The default server can be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
 
 ```typescript
 import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK({
-    serverIdx: 0,
+    serverURL: "",
 });
 
 async function run() {
-    const result = await avalancheSDK.glacier.healthCheck.healthCheck();
+    const result = await avalancheSDK.metrics.healthCheck.healthCheckV1();
 
     // Handle the result
     console.log(result);
@@ -404,21 +408,19 @@ async function run() {
 run();
 
 ```
+### Override Server URL Per-Operation
 
-
-### Override Server URL Per-Client
-
-The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
 
 ```typescript
 import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
-const avalancheSDK = new AvalancheSDK({
-    serverURL: "http://localhost:3000",
-});
+const avalancheSDK = new AvalancheSDK();
 
 async function run() {
-    const result = await avalancheSDK.glacier.healthCheck.healthCheck();
+    const result = await avalancheSDK.metrics.healthCheck.healthCheckV1({
+        serverURL: "http://localhost:3001",
+    });
 
     // Handle the result
     console.log(result);
@@ -477,6 +479,171 @@ httpClient.addHook("requestError", (error, request) => {
 const sdk = new AvalancheSDK({ httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
+
+<!-- Start Debugging [debug] -->
+## Debugging
+
+To log HTTP requests and responses, you can pass a logger that matches `console`'s interface as an SDK option.
+
+> [!WARNING]
+> Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
+
+```typescript
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
+
+const sdk = new AvalancheSDK({ debugLogger: console });
+```
+<!-- End Debugging [debug] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `chainId` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `listChains`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameters are available.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| chainId | string |  | The chainId parameter. |
+| network | string |  | The network parameter. |
+
+
+### Example
+
+```typescript
+import { AvalancheSDK } from "@avalabs/avalanche-sdk";
+
+const avalancheSDK = new AvalancheSDK();
+
+async function run() {
+    const result = await avalancheSDK.metrics.evm.chains.listChains({
+        network: "mainnet",
+    });
+
+    for await (const page of result) {
+        // handle page
+    }
+}
+
+run();
+
+```
+<!-- End Global Parameters [global-parameters] -->
+
+<!-- Start Standalone functions [standalone-funcs] -->
+## Standalone functions
+
+All the methods listed above are available as standalone functions. These
+functions are ideal for use in applications running in the browser, serverless
+runtimes or other environments where application bundle size is a primary
+concern. When using a bundler to build your application, all unused
+functionality will be either excluded from the final bundle or tree-shaken away.
+
+To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
+
+<details>
+
+<summary>Available standalone functions</summary>
+
+- [glacierEvmBalancesGetNativeBalance](docs/sdks/avalanchesdkbalances/README.md#getnativebalance)
+- [glacierEvmBalancesListCollectibleBalances](docs/sdks/avalanchesdkbalances/README.md#listcollectiblebalances)
+- [glacierEvmBalancesListErc1155Balances](docs/sdks/avalanchesdkbalances/README.md#listerc1155balances)
+- [glacierEvmBalancesListErc20Balances](docs/sdks/avalanchesdkbalances/README.md#listerc20balances)
+- [glacierEvmBalancesListErc721Balances](docs/sdks/avalanchesdkbalances/README.md#listerc721balances)
+- [glacierEvmBlocksGetBlock](docs/sdks/avalanchesdkblocks/README.md#getblock)
+- [glacierEvmBlocksGetLatestBlocks](docs/sdks/avalanchesdkblocks/README.md#getlatestblocks)
+- [glacierEvmChainsGetChainInfo](docs/sdks/chains/README.md#getchaininfo)
+- [glacierEvmChainsSupportedChains](docs/sdks/chains/README.md#supportedchains)
+- [glacierEvmContractsGetContractMetadata](docs/sdks/contracts/README.md#getcontractmetadata)
+- [glacierEvmTransactionsGetDeploymentTransaction](docs/sdks/avalanchesdktransactions/README.md#getdeploymenttransaction)
+- [glacierEvmTransactionsGetTransaction](docs/sdks/avalanchesdktransactions/README.md#gettransaction)
+- [glacierEvmTransactionsGetTransactionsForBlock](docs/sdks/avalanchesdktransactions/README.md#gettransactionsforblock)
+- [glacierEvmTransactionsListContractDeployments](docs/sdks/avalanchesdktransactions/README.md#listcontractdeployments)
+- [glacierEvmTransactionsListErc1155Transactions](docs/sdks/avalanchesdktransactions/README.md#listerc1155transactions)
+- [glacierEvmTransactionsListErc20Transactions](docs/sdks/avalanchesdktransactions/README.md#listerc20transactions)
+- [glacierEvmTransactionsListErc721Transactions](docs/sdks/avalanchesdktransactions/README.md#listerc721transactions)
+- [glacierEvmTransactionsListInternalTransactions](docs/sdks/avalanchesdktransactions/README.md#listinternaltransactions)
+- [glacierEvmTransactionsListLatestTransactions](docs/sdks/avalanchesdktransactions/README.md#listlatesttransactions)
+- [glacierEvmTransactionsListNativeTransactions](docs/sdks/avalanchesdktransactions/README.md#listnativetransactions)
+- [glacierEvmTransactionsListTransactions](docs/sdks/avalanchesdktransactions/README.md#listtransactions)
+- [glacierEvmTransactionsListTransfers](docs/sdks/avalanchesdktransactions/README.md#listtransfers)
+- [glacierNftsGetTokenDetails](docs/sdks/nfts/README.md#gettokendetails)
+- [glacierNftsListTokens](docs/sdks/nfts/README.md#listtokens)
+- [glacierNftsReindexNft](docs/sdks/nfts/README.md#reindexnft)
+- [glacierOperationsGetOperationResult](docs/sdks/operations/README.md#getoperationresult)
+- [glacierOperationsPostTransactionExportJob](docs/sdks/operations/README.md#posttransactionexportjob)
+- [glacierPrimaryNetworkBalancesGetBalancesByAddresses](docs/sdks/balances/README.md#getbalancesbyaddresses)
+- [glacierPrimaryNetworkBlocksGetBlockById](docs/sdks/blocks/README.md#getblockbyid)
+- [glacierPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks](docs/sdks/blocks/README.md#listlatestprimarynetworkblocks)
+- [glacierPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId](docs/sdks/blocks/README.md#listprimarynetworkblocksbynodeid)
+- [glacierPrimaryNetworkGetAssetDetails](docs/sdks/primarynetwork/README.md#getassetdetails)
+- [glacierPrimaryNetworkGetChainIdsForAddresses](docs/sdks/primarynetwork/README.md#getchainidsforaddresses)
+- [glacierPrimaryNetworkGetNetworkDetails](docs/sdks/primarynetwork/README.md#getnetworkdetails)
+- [glacierPrimaryNetworkGetSingleValidatorDetails](docs/sdks/primarynetwork/README.md#getsinglevalidatordetails)
+- [glacierPrimaryNetworkListBlockchains](docs/sdks/primarynetwork/README.md#listblockchains)
+- [glacierPrimaryNetworkListDelegators](docs/sdks/primarynetwork/README.md#listdelegators)
+- [glacierPrimaryNetworkListSubnets](docs/sdks/primarynetwork/README.md#listsubnets)
+- [glacierPrimaryNetworkListValidators](docs/sdks/primarynetwork/README.md#listvalidators)
+- [glacierPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards](docs/sdks/rewards/README.md#listhistoricalprimarynetworkrewards)
+- [glacierPrimaryNetworkRewardsListPendingPrimaryNetworkRewards](docs/sdks/rewards/README.md#listpendingprimarynetworkrewards)
+- [glacierPrimaryNetworkTransactionsGetTxByHash](docs/sdks/transactions/README.md#gettxbyhash)
+- [glacierPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions](docs/sdks/transactions/README.md#listactiveprimarynetworkstakingtransactions)
+- [glacierPrimaryNetworkTransactionsListAssetTransactions](docs/sdks/transactions/README.md#listassettransactions)
+- [glacierPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions](docs/sdks/transactions/README.md#listlatestprimarynetworktransactions)
+- [glacierPrimaryNetworkUtxosGetUtxosByAddresses](docs/sdks/utxos/README.md#getutxosbyaddresses)
+- [glacierPrimaryNetworkVerticesGetVertexByHash](docs/sdks/vertices/README.md#getvertexbyhash)
+- [glacierPrimaryNetworkVerticesGetVertexByHeight](docs/sdks/vertices/README.md#getvertexbyheight)
+- [glacierPrimaryNetworkVerticesListLatestXChainVertices](docs/sdks/vertices/README.md#listlatestxchainvertices)
+- [glacierTeleporterGetTeleporterMessage](docs/sdks/teleporter/README.md#getteleportermessage)
+- [glacierTeleporterListTeleporterMessages](docs/sdks/teleporter/README.md#listteleportermessages)
+- [glacierWebhooksAddAddressesToWebhook](docs/sdks/webhooks/README.md#addaddressestowebhook)
+- [glacierWebhooksCreateWebhook](docs/sdks/webhooks/README.md#createwebhook)
+- [glacierWebhooksDeactivateWebhook](docs/sdks/webhooks/README.md#deactivatewebhook)
+- [glacierWebhooksGenerateSharedSecret](docs/sdks/webhooks/README.md#generatesharedsecret)
+- [glacierWebhooksGetAddressesFromWebhook](docs/sdks/webhooks/README.md#getaddressesfromwebhook)
+- [glacierWebhooksGetSharedSecret](docs/sdks/webhooks/README.md#getsharedsecret)
+- [glacierWebhooksGetWebhook](docs/sdks/webhooks/README.md#getwebhook)
+- [glacierWebhooksListWebhooks](docs/sdks/webhooks/README.md#listwebhooks)
+- [glacierWebhooksRemoveAddressesFromWebhook](docs/sdks/webhooks/README.md#removeaddressesfromwebhook)
+- [glacierWebhooksUpdateWebhook](docs/sdks/webhooks/README.md#updatewebhook)
+- [metricsChainMetricsGetStakingMetrics](docs/sdks/avalanchesdkmetrics/README.md#getstakingmetrics)
+- [metricsChainThroughputGetRollingWindowAvgGasPrice](docs/sdks/throughput/README.md#getrollingwindowavggasprice)
+- [metricsChainThroughputGetRollingWindowAvgGps](docs/sdks/throughput/README.md#getrollingwindowavggps)
+- [metricsChainThroughputGetRollingWindowAvgTps](docs/sdks/throughput/README.md#getrollingwindowavgtps)
+- [metricsChainThroughputGetRollingWindowGasUsed](docs/sdks/throughput/README.md#getrollingwindowgasused)
+- [metricsChainThroughputGetRollingWindowMaxGasPrice](docs/sdks/throughput/README.md#getrollingwindowmaxgasprice)
+- [metricsChainThroughputGetRollingWindowMaxGps](docs/sdks/throughput/README.md#getrollingwindowmaxgps)
+- [metricsChainThroughputGetRollingWindowMaxTps](docs/sdks/throughput/README.md#getrollingwindowmaxtps)
+- [metricsChainThroughputGetRollingWindowTxCount](docs/sdks/throughput/README.md#getrollingwindowtxcount)
+- [metricsEvmChainsGetChainInformationByNetworkAndSubnetId](docs/sdks/avalanchesdkchains/README.md#getchaininformationbynetworkandsubnetid)
+- [metricsEvmChainsGetChainInformationByNetwork](docs/sdks/avalanchesdkchains/README.md#getchaininformationbynetwork)
+- [metricsEvmChainsGetChain](docs/sdks/avalanchesdkchains/README.md#getchain)
+- [metricsEvmChainsGetMappingsBySubnetId](docs/sdks/avalanchesdkchains/README.md#getmappingsbysubnetid)
+- [metricsEvmChainsGetMappings](docs/sdks/avalanchesdkchains/README.md#getmappings)
+- [metricsEvmChainsGetSubnetInformationByNetworkAndSubnetId](docs/sdks/avalanchesdkchains/README.md#getsubnetinformationbynetworkandsubnetid)
+- [metricsEvmChainsGetSubnetInformationByNetwork](docs/sdks/avalanchesdkchains/README.md#getsubnetinformationbynetwork)
+- [metricsEvmChainsListChains](docs/sdks/avalanchesdkchains/README.md#listchains)
+- [metricsHealthCheckHealthCheckV1](docs/sdks/healthcheck/README.md#healthcheckv1)
+- [metricsHealthCheckHealthCheckV2](docs/sdks/healthcheck/README.md#healthcheckv2)
+- [metricsLookingGlassCompositeQueryV1](docs/sdks/lookingglass/README.md#compositequeryv1)
+- [metricsLookingGlassCompositeQueryV2](docs/sdks/lookingglass/README.md#compositequeryv2)
+- [metricsLookingGlassGetAddressesByBalanceOverTime](docs/sdks/lookingglass/README.md#getaddressesbybalanceovertime)
+- [metricsLookingGlassGetAddressesByBtcbBridged](docs/sdks/lookingglass/README.md#getaddressesbybtcbbridged)
+- [metricsLookingGlassGetNftHoldersByContractAddress](docs/sdks/lookingglass/README.md#getnftholdersbycontractaddress)
+- [metricsLookingGlassGetValidatorsByDateRange](docs/sdks/lookingglass/README.md#getvalidatorsbydaterange)
+- [metricsStakingInformationGetDelegatorCount](docs/sdks/stakinginformation/README.md#getdelegatorcount)
+- [metricsStakingInformationGetDelegatorWeight](docs/sdks/stakinginformation/README.md#getdelegatorweight)
+- [metricsStakingInformationGetValidatorCount](docs/sdks/stakinginformation/README.md#getvalidatorcount)
+- [metricsStakingInformationGetValidatorWeight](docs/sdks/stakinginformation/README.md#getvalidatorweight)
+
+
+</details>
+<!-- End Standalone functions [standalone-funcs] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
