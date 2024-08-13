@@ -22,25 +22,25 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 ### NPM
 
 ```bash
-npm add <UNSET>
+npm add @avalabs/avalanche-sdk
 ```
 
 ### PNPM
 
 ```bash
-pnpm add <UNSET>
+pnpm add @avalabs/avalanche-sdk
 ```
 
 ### Bun
 
 ```bash
-bun add <UNSET>
+bun add @avalabs/avalanche-sdk
 ```
 
 ### Yarn
 
 ```bash
-yarn add <UNSET> zod
+yarn add @avalabs/avalanche-sdk zod
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
@@ -98,10 +98,22 @@ run();
 
 ### [metrics.chain.metrics](docs/sdks/avalanchesdkmetrics/README.md)
 
+* [getEvmChainMetrics](docs/sdks/avalanchesdkmetrics/README.md#getevmchainmetrics) - Get metrics for EVM chains
+* [getEvmChainRollingWindowMetrics](docs/sdks/avalanchesdkmetrics/README.md#getevmchainrollingwindowmetrics) - Get rolling window metrics for EVM chains
 * [getStakingMetrics](docs/sdks/avalanchesdkmetrics/README.md#getstakingmetrics) - Get staking metrics for a given subnet
 
 ### [metrics.chain.throughput](docs/sdks/throughput/README.md)
 
+* [getActiveSenders](docs/sdks/throughput/README.md#getactivesenders) - Active senders
+* [getActiveAddresses](docs/sdks/throughput/README.md#getactiveaddresses) - Active addresses
+* [getGasUsed](docs/sdks/throughput/README.md#getgasused) - Gas used
+* [getTxCount](docs/sdks/throughput/README.md#gettxcount) - Transaction count
+* [getAvgGps](docs/sdks/throughput/README.md#getavggps) - Average gas consumed per second
+* [getMaxGps](docs/sdks/throughput/README.md#getmaxgps) - Maxumum gas consumed per second
+* [getAvgTps](docs/sdks/throughput/README.md#getavgtps) - Average transactions per second
+* [getMaxTps](docs/sdks/throughput/README.md#getmaxtps) - Maximum transactions per second
+* [getAvgGasPrice](docs/sdks/throughput/README.md#getavggasprice) - Average gas price
+* [getMaxGasPrice](docs/sdks/throughput/README.md#getmaxgasprice) - Maximum gas price
 * [getRollingWindowGasUsed](docs/sdks/throughput/README.md#getrollingwindowgasused) - Rolling window of gas used
 * [getRollingWindowTxCount](docs/sdks/throughput/README.md#getrollingwindowtxcount) - Rolling window of tx count
 * [getRollingWindowAvgGps](docs/sdks/throughput/README.md#getrollingwindowavggps) - Rolling window of average gps consumed
@@ -119,6 +131,13 @@ run();
 * [getValidatorsByDateRange](docs/sdks/lookingglass/README.md#getvalidatorsbydaterange) - Get addresses running validators during a given time frame
 * [compositeQueryV1](docs/sdks/lookingglass/README.md#compositequeryv1) - Composite query
 * [compositeQueryV2](docs/sdks/lookingglass/README.md#compositequeryv2) - Composite query
+
+### [metrics.cumulative](docs/sdks/cumulative/README.md)
+
+* [getCumulativeAddresses](docs/sdks/cumulative/README.md#getcumulativeaddresses) - Cumulative number of addresses
+* [getCumulativeContracts](docs/sdks/cumulative/README.md#getcumulativecontracts) - Cumulative number of contracts
+* [getCumulativeTxCount](docs/sdks/cumulative/README.md#getcumulativetxcount) - Cumulative transaction count
+* [getCumulativeDeployers](docs/sdks/cumulative/README.md#getcumulativedeployers) - Cumulative number of deployers
 
 ### [metrics.stakingInformation](docs/sdks/stakinginformation/README.md)
 
@@ -596,7 +615,18 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [glacierWebhooksListWebhooks](docs/sdks/webhooks/README.md#listwebhooks)
 - [glacierWebhooksRemoveAddressesFromWebhook](docs/sdks/webhooks/README.md#removeaddressesfromwebhook)
 - [glacierWebhooksUpdateWebhook](docs/sdks/webhooks/README.md#updatewebhook)
+- [metricsChainMetricsGetEvmChainMetrics](docs/sdks/avalanchesdkmetrics/README.md#getevmchainmetrics)
+- [metricsChainMetricsGetEvmChainRollingWindowMetrics](docs/sdks/avalanchesdkmetrics/README.md#getevmchainrollingwindowmetrics)
 - [metricsChainMetricsGetStakingMetrics](docs/sdks/avalanchesdkmetrics/README.md#getstakingmetrics)
+- [metricsChainThroughputGetActiveAddresses](docs/sdks/throughput/README.md#getactiveaddresses)
+- [metricsChainThroughputGetActiveSenders](docs/sdks/throughput/README.md#getactivesenders)
+- [metricsChainThroughputGetAvgGasPrice](docs/sdks/throughput/README.md#getavggasprice)
+- [metricsChainThroughputGetAvgGps](docs/sdks/throughput/README.md#getavggps)
+- [metricsChainThroughputGetAvgTps](docs/sdks/throughput/README.md#getavgtps)
+- [metricsChainThroughputGetGasUsed](docs/sdks/throughput/README.md#getgasused)
+- [metricsChainThroughputGetMaxGasPrice](docs/sdks/throughput/README.md#getmaxgasprice)
+- [metricsChainThroughputGetMaxGps](docs/sdks/throughput/README.md#getmaxgps)
+- [metricsChainThroughputGetMaxTps](docs/sdks/throughput/README.md#getmaxtps)
 - [metricsChainThroughputGetRollingWindowAvgGasPrice](docs/sdks/throughput/README.md#getrollingwindowavggasprice)
 - [metricsChainThroughputGetRollingWindowAvgGps](docs/sdks/throughput/README.md#getrollingwindowavggps)
 - [metricsChainThroughputGetRollingWindowAvgTps](docs/sdks/throughput/README.md#getrollingwindowavgtps)
@@ -605,6 +635,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [metricsChainThroughputGetRollingWindowMaxGps](docs/sdks/throughput/README.md#getrollingwindowmaxgps)
 - [metricsChainThroughputGetRollingWindowMaxTps](docs/sdks/throughput/README.md#getrollingwindowmaxtps)
 - [metricsChainThroughputGetRollingWindowTxCount](docs/sdks/throughput/README.md#getrollingwindowtxcount)
+- [metricsChainThroughputGetTxCount](docs/sdks/throughput/README.md#gettxcount)
+- [metricsCumulativeGetCumulativeAddresses](docs/sdks/cumulative/README.md#getcumulativeaddresses)
+- [metricsCumulativeGetCumulativeContracts](docs/sdks/cumulative/README.md#getcumulativecontracts)
+- [metricsCumulativeGetCumulativeDeployers](docs/sdks/cumulative/README.md#getcumulativedeployers)
+- [metricsCumulativeGetCumulativeTxCount](docs/sdks/cumulative/README.md#getcumulativetxcount)
 - [metricsEvmChainsGetChainInformationByNetworkAndSubnetId](docs/sdks/avalanchesdkchains/README.md#getchaininformationbynetworkandsubnetid)
 - [metricsEvmChainsGetChainInformationByNetwork](docs/sdks/avalanchesdkchains/README.md#getchaininformationbynetwork)
 - [metricsEvmChainsGetChain](docs/sdks/avalanchesdkchains/README.md#getchain)

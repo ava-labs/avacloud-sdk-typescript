@@ -5,6 +5,7 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { AvalancheSDKEvm } from "./avalanchesdkevm.js";
 import { Chain } from "./chain.js";
+import { Cumulative } from "./cumulative.js";
 import { HealthCheck } from "./healthcheck.js";
 import { LookingGlass } from "./lookingglass.js";
 import { StakingInformation } from "./stakinginformation.js";
@@ -28,6 +29,11 @@ export class Metrics extends ClientSDK {
     private _lookingGlass?: LookingGlass;
     get lookingGlass(): LookingGlass {
         return (this._lookingGlass ??= new LookingGlass(this.options$));
+    }
+
+    private _cumulative?: Cumulative;
+    get cumulative(): Cumulative {
+        return (this._cumulative ??= new Cumulative(this.options$));
     }
 
     private _stakingInformation?: StakingInformation;

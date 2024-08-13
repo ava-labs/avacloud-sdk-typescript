@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: d92d2248-44a7-4f20-939b-4f5a23e38b07
 management:
-  docChecksum: 220c1ffbe0b2bf1cd15b2d1575d4672f
+  docChecksum: a885f0a0002e6f5ae1fa9752c4dcc202
   docVersion: Beta
   speakeasyVersion: 1.363.1
   generationVersion: 2.396.0
-  releaseVersion: 0.1.0
-  configChecksum: c0c67af710ca750216d343337f758691
+  releaseVersion: 0.1.2
+  configChecksum: 3c74331a861f16ae299fdb92b4a49489
   published: true
 features:
   typescript:
@@ -38,6 +38,10 @@ generatedFiles:
   - src/funcs/metricsLookingGlassGetValidatorsByDateRange.ts
   - src/funcs/metricsLookingGlassCompositeQueryV1.ts
   - src/funcs/metricsLookingGlassCompositeQueryV2.ts
+  - src/funcs/metricsCumulativeGetCumulativeAddresses.ts
+  - src/funcs/metricsCumulativeGetCumulativeContracts.ts
+  - src/funcs/metricsCumulativeGetCumulativeTxCount.ts
+  - src/funcs/metricsCumulativeGetCumulativeDeployers.ts
   - src/funcs/metricsStakingInformationGetValidatorCount.ts
   - src/funcs/metricsStakingInformationGetValidatorWeight.ts
   - src/funcs/metricsStakingInformationGetDelegatorCount.ts
@@ -75,7 +79,19 @@ generatedFiles:
   - src/funcs/metricsEvmChainsGetChainInformationByNetworkAndSubnetId.ts
   - src/funcs/metricsEvmChainsGetSubnetInformationByNetwork.ts
   - src/funcs/metricsEvmChainsGetSubnetInformationByNetworkAndSubnetId.ts
+  - src/funcs/metricsChainMetricsGetEvmChainMetrics.ts
+  - src/funcs/metricsChainMetricsGetEvmChainRollingWindowMetrics.ts
   - src/funcs/metricsChainMetricsGetStakingMetrics.ts
+  - src/funcs/metricsChainThroughputGetActiveSenders.ts
+  - src/funcs/metricsChainThroughputGetActiveAddresses.ts
+  - src/funcs/metricsChainThroughputGetGasUsed.ts
+  - src/funcs/metricsChainThroughputGetTxCount.ts
+  - src/funcs/metricsChainThroughputGetAvgGps.ts
+  - src/funcs/metricsChainThroughputGetMaxGps.ts
+  - src/funcs/metricsChainThroughputGetAvgTps.ts
+  - src/funcs/metricsChainThroughputGetMaxTps.ts
+  - src/funcs/metricsChainThroughputGetAvgGasPrice.ts
+  - src/funcs/metricsChainThroughputGetMaxGasPrice.ts
   - src/funcs/metricsChainThroughputGetRollingWindowGasUsed.ts
   - src/funcs/metricsChainThroughputGetRollingWindowTxCount.ts
   - src/funcs/metricsChainThroughputGetRollingWindowAvgGps.ts
@@ -127,6 +143,7 @@ generatedFiles:
   - src/sdk/throughput.ts
   - src/sdk/chain.ts
   - src/sdk/lookingglass.ts
+  - src/sdk/cumulative.ts
   - src/sdk/stakinginformation.ts
   - src/sdk/metrics.ts
   - src/sdk/nfts.ts
@@ -192,7 +209,19 @@ generatedFiles:
   - src/models/operations/getchaininformationbynetworkandsubnetid.ts
   - src/models/operations/getsubnetinformationbynetwork.ts
   - src/models/operations/getsubnetinformationbynetworkandsubnetid.ts
+  - src/models/operations/getevmchainmetrics.ts
+  - src/models/operations/getevmchainrollingwindowmetrics.ts
   - src/models/operations/getstakingmetrics.ts
+  - src/models/operations/getactivesenders.ts
+  - src/models/operations/getactiveaddresses.ts
+  - src/models/operations/getgasused.ts
+  - src/models/operations/gettxcount.ts
+  - src/models/operations/getavggps.ts
+  - src/models/operations/getmaxgps.ts
+  - src/models/operations/getavgtps.ts
+  - src/models/operations/getmaxtps.ts
+  - src/models/operations/getavggasprice.ts
+  - src/models/operations/getmaxgasprice.ts
   - src/models/operations/getrollingwindowgasused.ts
   - src/models/operations/getrollingwindowtxcount.ts
   - src/models/operations/getrollingwindowavggps.ts
@@ -205,6 +234,10 @@ generatedFiles:
   - src/models/operations/getaddressesbybalanceovertime.ts
   - src/models/operations/getaddressesbybtcbbridged.ts
   - src/models/operations/getvalidatorsbydaterange.ts
+  - src/models/operations/getcumulativeaddresses.ts
+  - src/models/operations/getcumulativecontracts.ts
+  - src/models/operations/getcumulativetxcount.ts
+  - src/models/operations/getcumulativedeployers.ts
   - src/models/operations/getvalidatorcount.ts
   - src/models/operations/getvalidatorweight.ts
   - src/models/operations/getdelegatorcount.ts
@@ -286,7 +319,15 @@ generatedFiles:
   - src/models/components/subnetinformation.ts
   - src/models/components/metricsapiresponse.ts
   - src/models/components/metricsvalue.ts
+  - src/models/components/chainmetric.ts
+  - src/models/components/timeintervalgranularity.ts
+  - src/models/components/rollingwindowmetricsapiresponse.ts
+  - src/models/components/chainrollingwindowmetricsvalue.ts
+  - src/models/components/chainrollingwindowmetric.ts
   - src/models/components/networkmetric.ts
+  - src/models/components/legacyevmmetricsresponse.ts
+  - src/models/components/legacyevmmetric.ts
+  - src/models/components/legacyinterval.ts
   - src/models/components/rollingwindowresponse.ts
   - src/models/components/nftholdersresponse.ts
   - src/models/components/addressdetails.ts
@@ -517,8 +558,23 @@ generatedFiles:
   - docs/models/operations/getsubnetinformationbynetworkresponse.md
   - docs/models/operations/getsubnetinformationbynetworkandsubnetidrequest.md
   - docs/models/operations/getsubnetinformationbynetworkandsubnetidresponse.md
+  - docs/models/operations/getevmchainmetricsglobals.md
+  - docs/models/operations/getevmchainmetricsrequest.md
+  - docs/models/operations/getevmchainmetricsresponse.md
+  - docs/models/operations/getevmchainrollingwindowmetricsglobals.md
+  - docs/models/operations/getevmchainrollingwindowmetricsrequest.md
   - docs/models/operations/getstakingmetricsrequest.md
   - docs/models/operations/getstakingmetricsresponse.md
+  - docs/models/operations/getactivesendersrequest.md
+  - docs/models/operations/getactiveaddressesrequest.md
+  - docs/models/operations/getgasusedrequest.md
+  - docs/models/operations/gettxcountrequest.md
+  - docs/models/operations/getavggpsrequest.md
+  - docs/models/operations/getmaxgpsrequest.md
+  - docs/models/operations/getavgtpsrequest.md
+  - docs/models/operations/getmaxtpsrequest.md
+  - docs/models/operations/getavggaspricerequest.md
+  - docs/models/operations/getmaxgaspricerequest.md
   - docs/models/operations/getrollingwindowgasusedglobals.md
   - docs/models/operations/getrollingwindowgasusedrequest.md
   - docs/models/operations/getrollingwindowtxcountglobals.md
@@ -545,6 +601,10 @@ generatedFiles:
   - docs/models/operations/getaddressesbybtcbbridgedresponse.md
   - docs/models/operations/getvalidatorsbydaterangerequest.md
   - docs/models/operations/getvalidatorsbydaterangeresponse.md
+  - docs/models/operations/getcumulativeaddressesrequest.md
+  - docs/models/operations/getcumulativecontractsrequest.md
+  - docs/models/operations/getcumulativetxcountrequest.md
+  - docs/models/operations/getcumulativedeployersrequest.md
   - docs/models/operations/getvalidatorcountrequest.md
   - docs/models/operations/getvalidatorcountresponse.md
   - docs/models/operations/getvalidatorweightrequest.md
@@ -695,7 +755,15 @@ generatedFiles:
   - docs/models/components/subnetinformation.md
   - docs/models/components/metricsapiresponse.md
   - docs/models/components/metricsvalue.md
+  - docs/models/components/chainmetric.md
+  - docs/models/components/timeintervalgranularity.md
+  - docs/models/components/rollingwindowmetricsapiresponse.md
+  - docs/models/components/chainrollingwindowmetricsvalue.md
+  - docs/models/components/chainrollingwindowmetric.md
   - docs/models/components/networkmetric.md
+  - docs/models/components/legacyevmmetricsresponse.md
+  - docs/models/components/legacyevmmetric.md
+  - docs/models/components/legacyinterval.md
   - docs/models/components/two.md
   - docs/models/components/one.md
   - docs/models/components/result.md
@@ -964,6 +1032,7 @@ generatedFiles:
   - docs/sdks/avalanchesdkmetrics/README.md
   - docs/sdks/throughput/README.md
   - docs/sdks/lookingglass/README.md
+  - docs/sdks/cumulative/README.md
   - docs/sdks/stakinginformation/README.md
   - docs/sdks/glacier/README.md
   - docs/sdks/nfts/README.md
