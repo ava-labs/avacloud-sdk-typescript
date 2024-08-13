@@ -11,3 +11,6 @@ targets:
     avalanche-sdk:
         target: typescript
         source: AvalancheSDK-OAS
+        publish:
+            npm:
+                token: $npm_token
