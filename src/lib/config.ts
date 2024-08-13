@@ -5,7 +5,7 @@
 import { HTTPClient } from "./http.js";
 import { Logger } from "./logger.js";
 import { RetryConfig } from "./retries.js";
-import { Params, pathToFunc } from "./url.js";
+import { pathToFunc } from "./url.js";
 
 export type SDKOptions = {
     /**
