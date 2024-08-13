@@ -1,0 +1,10 @@
+# AllTimeNativeBalanceQueryDto
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `id`                                                                                       | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `type`                                                                                     | [components.Type](../../models/components/type.md)                                         | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `params`                                                                                   | [components.DateRangeMinBalanceParam](../../models/components/daterangeminbalanceparam.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
