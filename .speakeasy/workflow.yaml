@@ -1,10 +1,9 @@
 workflowVersion: 1.0.0
-speakeasyVersion: 1.365.0
+speakeasyVersion: latest
 sources:
     AvalancheSDK-OAS:
         inputs:
             - location: https://fe65-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json
-            - location: https://cad6-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json
         registry:
             location: registry.speakeasyapi.dev/avalabs/avalabs/avalanche-sdk-oas
 targets:

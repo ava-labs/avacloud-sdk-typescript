@@ -1,5 +1,0 @@
-# Glacier
-(*glacier*)
-
-### Available Operations
-
