@@ -1,0 +1,32 @@
+speakeasyVersion: 1.376.0
+sources:
+    AvalancheSDK-OAS:
+        sourceNamespace: avalanche-sdk-oas
+        sourceRevisionDigest: sha256:aed420c787587df5efc766c5fa3a238a1798aee66322a0e2d74360e048f31603
+        sourceBlobDigest: sha256:91c1ed32d3b508445f81659b89fd93a7d1ad394559406b034c4b042cd8379830
+        tags:
+            - latest
+            - main
+targets:
+    avalanche-sdk:
+        source: AvalancheSDK-OAS
+        sourceNamespace: avalanche-sdk-oas
+        sourceRevisionDigest: sha256:aed420c787587df5efc766c5fa3a238a1798aee66322a0e2d74360e048f31603
+        sourceBlobDigest: sha256:91c1ed32d3b508445f81659b89fd93a7d1ad394559406b034c4b042cd8379830
+        outLocation: /github/workspace/repo
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        AvalancheSDK-OAS:
+            inputs:
+                - location: https://fe65-2405-201-3027-2887-ada2-ca7a-fa63-8ab5.ngrok-free.app/api-json
+            registry:
+                location: registry.speakeasyapi.dev/avalabs/avalabs/avalanche-sdk-oas
+    targets:
+        avalanche-sdk:
+            target: typescript
+            source: AvalancheSDK-OAS
+            publish:
+                npm:
+                    token: $npm_token
