@@ -1,20 +1,15 @@
-# @avalabs/avalanche-sdk
+#Avalanche SDK
 
 <div align="left">
-    <a href="https://www.speakeasy.com/?utm_source=@avalabs/avalanche-sdk&utm_campaign=typescript"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
     </a>
 </div>
 
 
-## 🏗 **Welcome to your new SDK!** 🏗
+## 🏗 **Welcome to Avalanche SDK!** 🏗
 
-It has been generated successfully based on your OpenAPI spec. However, it is not yet ready for production use. Here are some next steps:
-- [ ] 🛠 Make your SDK feel handcrafted by [customizing it](https://www.speakeasy.com/docs/customize-sdks)
-- [ ] ♻️ Refine your SDK quickly by iterating locally with the [Speakeasy CLI](https://github.com/speakeasy-api/speakeasy)
-- [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasy.com/docs/advanced-setup/publish-sdks)
-- [ ] ✨ When ready to productionize, delete this section from the README
+The Avalanche SDK is a powerful and flexible toolset designed to simplify the integration with Avalanche's suite of blockchain services. Currently, this SDK is focused on providing robust support for Glacier APIs.
 
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
@@ -644,5 +639,3 @@ looking for the latest version.
 
 While we value open-source contributions to this SDK, this library is generated programmatically. Any manual changes added to internal files will be overwritten on the next generation. 
 We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release. 
-
-### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=@avalabs/avalanche-sdk&utm_campaign=typescript)

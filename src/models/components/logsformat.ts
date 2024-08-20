@@ -63,7 +63,7 @@ export type LogsFormat = {
     /**
      * The chain id of the request.
      */
-    chainId?: number | undefined;
+    chainId?: string | undefined;
     /**
      * The rpc method of the request.
      */
@@ -87,7 +87,7 @@ export const LogsFormat$inboundSchema: z.ZodType<LogsFormat, z.ZodTypeDef, unkno
     apiCreditsConsumed: z.number(),
     requestDurationMsecs: z.number(),
     responseCode: z.number(),
-    chainId: z.number().optional(),
+    chainId: z.string().optional(),
     rpcMethod: z.string().optional(),
     metadata: LogsFormatMetadata$inboundSchema,
 });
@@ -105,7 +105,7 @@ export type LogsFormat$Outbound = {
     apiCreditsConsumed: number;
     requestDurationMsecs: number;
     responseCode: number;
-    chainId?: number | undefined;
+    chainId?: string | undefined;
     rpcMethod?: string | undefined;
     metadata: LogsFormatMetadata$Outbound;
 };
@@ -124,7 +124,7 @@ export const LogsFormat$outboundSchema: z.ZodType<LogsFormat$Outbound, z.ZodType
         apiCreditsConsumed: z.number(),
         requestDurationMsecs: z.number(),
         responseCode: z.number(),
-        chainId: z.number().optional(),
+        chainId: z.string().optional(),
         rpcMethod: z.string().optional(),
         metadata: LogsFormatMetadata$outboundSchema,
     });
