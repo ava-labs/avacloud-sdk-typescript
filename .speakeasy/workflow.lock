@@ -2,7 +2,7 @@ speakeasyVersion: 1.376.0
 sources:
     AvalancheSDK-OAS:
         sourceNamespace: avalanche-sdk-oas
-        sourceRevisionDigest: sha256:aed420c787587df5efc766c5fa3a238a1798aee66322a0e2d74360e048f31603
+        sourceRevisionDigest: sha256:9577333dadc91f8203212368c56b41cba6c6d2de235fe770450fc251cb6096f5
         sourceBlobDigest: sha256:91c1ed32d3b508445f81659b89fd93a7d1ad394559406b034c4b042cd8379830
         tags:
             - latest
@@ -11,7 +11,7 @@ targets:
     avalanche-sdk:
         source: AvalancheSDK-OAS
         sourceNamespace: avalanche-sdk-oas
-        sourceRevisionDigest: sha256:aed420c787587df5efc766c5fa3a238a1798aee66322a0e2d74360e048f31603
+        sourceRevisionDigest: sha256:9577333dadc91f8203212368c56b41cba6c6d2de235fe770450fc251cb6096f5
         sourceBlobDigest: sha256:91c1ed32d3b508445f81659b89fd93a7d1ad394559406b034c4b042cd8379830
         outLocation: /github/workspace/repo
 workflow:
