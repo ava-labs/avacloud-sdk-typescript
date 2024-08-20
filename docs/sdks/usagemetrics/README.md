@@ -17,6 +17,8 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK({
   glacierApiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
@@ -47,6 +49,8 @@ import { glacierUsageMetricsGetApiUsageMetrics } from "@avalabs/avalanche-sdk/fu
 // You can create one instance of it to use across an application.
 const avalancheSDK = new AvalancheSDKCore({
   glacierApiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
@@ -85,9 +89,17 @@ run();
 **Promise\<[components.UsageMetricsResponseDTO](../../models/components/usagemetricsresponsedto.md)\>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.TooManyRequests     | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.BadGateway          | 502                        | application/json           |
+| errors.ServiceUnavailable  | 503                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 ## getApiLogs
 
@@ -100,6 +112,8 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK({
   glacierApiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
@@ -129,6 +143,8 @@ import { glacierUsageMetricsGetApiLogs } from "@avalabs/avalanche-sdk/funcs/glac
 // You can create one instance of it to use across an application.
 const avalancheSDK = new AvalancheSDKCore({
   glacierApiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
@@ -166,6 +182,14 @@ run();
 **Promise\<[operations.GetApiLogsResponse](../../models/operations/getapilogsresponse.md)\>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.TooManyRequests     | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.BadGateway          | 502                        | application/json           |
+| errors.ServiceUnavailable  | 503                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |

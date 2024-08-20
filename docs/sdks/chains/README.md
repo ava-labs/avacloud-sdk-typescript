@@ -17,6 +17,8 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK({
   glacierApiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
@@ -45,6 +47,8 @@ import { glacierEvmChainsSupportedChains } from "@avalabs/avalanche-sdk/funcs/gl
 // You can create one instance of it to use across an application.
 const avalancheSDK = new AvalancheSDKCore({
   glacierApiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
@@ -81,9 +85,17 @@ run();
 **Promise\<[components.GlacierListChainsResponse](../../models/components/glacierlistchainsresponse.md)\>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.TooManyRequests     | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.BadGateway          | 502                        | application/json           |
+| errors.ServiceUnavailable  | 503                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
 ## getChainInfo
 
@@ -96,6 +108,8 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK({
   glacierApiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
@@ -121,6 +135,8 @@ import { glacierEvmChainsGetChainInfo } from "@avalabs/avalanche-sdk/funcs/glaci
 // You can create one instance of it to use across an application.
 const avalancheSDK = new AvalancheSDKCore({
   glacierApiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
@@ -154,6 +170,14 @@ run();
 **Promise\<[components.GetChainResponse](../../models/components/getchainresponse.md)\>**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.TooManyRequests     | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.BadGateway          | 502                        | application/json           |
+| errors.ServiceUnavailable  | 503                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
