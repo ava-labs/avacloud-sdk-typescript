@@ -17,8 +17,10 @@ generation:
 typescript:
   version: 0.1.2
   additionalDependencies:
-    dependencies: {}
-    devDependencies: {}
+    dependencies:
+      json-canonicalize: "^1.0.6"
+    devDependencies:
+      '@types/node': "^22.4.1"
     peerDependencies: {}
   additionalPackageJSON: {}
   author: Speakeasy
