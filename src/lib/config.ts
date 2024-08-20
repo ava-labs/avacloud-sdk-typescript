@@ -10,7 +10,7 @@ import { Params, pathToFunc } from "./url.js";
 /**
  * Contains the list of servers available to the SDK
  */
-export const ServerList = ["http://localhost:3000"] as const;
+export const ServerList = ["https://glacier-api.avax.network"] as const;
 
 export type SDKOptions = {
     glacierApiKey?: string | (() => Promise<string>);
@@ -62,7 +62,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
     language: "typescript",
     openapiDocVersion: "Beta",
-    sdkVersion: "0.1.2",
+    sdkVersion: "0.1.3",
     genVersion: "2.402.5",
-    userAgent: "speakeasy-sdk/typescript 0.1.2 2.402.5 Beta @avalabs/avalanche-sdk",
+    userAgent: "speakeasy-sdk/typescript 0.1.3 2.402.5 Beta @avalabs/avalanche-sdk",
 } as const;

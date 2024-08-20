@@ -7,6 +7,9 @@ import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type ListErc721TransactionsGlobals = {
+    /**
+     * A supported EVM chain id, chain alias, or blockchain id.
+     */
     chainId?: string | undefined;
 };
 

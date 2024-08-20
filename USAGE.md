@@ -4,6 +4,8 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK({
     glacierApiKey: "<YOUR_API_KEY_HERE>",
+    chainId: "43114",
+    network: "mainnet",
 });
 
 async function run() {

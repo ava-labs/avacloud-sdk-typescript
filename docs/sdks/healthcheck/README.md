@@ -16,6 +16,8 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK({
   glacierApiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
@@ -41,6 +43,8 @@ import { glacierHealthCheckGlacierHealthCheck } from "@avalabs/avalanche-sdk/fun
 // You can create one instance of it to use across an application.
 const avalancheSDK = new AvalancheSDKCore({
   glacierApiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {

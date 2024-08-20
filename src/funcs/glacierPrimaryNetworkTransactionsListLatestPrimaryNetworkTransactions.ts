@@ -20,6 +20,7 @@ import {
     RequestTimeoutError,
     UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
@@ -44,6 +45,14 @@ export async function glacierPrimaryNetworkTransactionsListLatestPrimaryNetworkT
     PageIterator<
         Result<
             operations.ListLatestPrimaryNetworkTransactionsResponse,
+            | errors.BadRequest
+            | errors.Unauthorized
+            | errors.Forbidden
+            | errors.NotFound
+            | errors.TooManyRequests
+            | errors.InternalServerError
+            | errors.BadGateway
+            | errors.ServiceUnavailable
             | SDKError
             | SDKValidationError
             | UnexpectedClientError
@@ -126,7 +135,7 @@ export async function glacierPrimaryNetworkTransactionsListLatestPrimaryNetworkT
 
     const doResult = await client$.do$(request$, {
         context,
-        errorCodes: ["4XX", "5XX"],
+        errorCodes: ["400", "401", "403", "404", "429", "4XX", "500", "502", "503", "5XX"],
         retryConfig: options?.retries ||
             client$.options$.retryConfig || {
                 strategy: "backoff",
@@ -151,6 +160,14 @@ export async function glacierPrimaryNetworkTransactionsListLatestPrimaryNetworkT
 
     const [result$, raw$] = await m$.match<
         operations.ListLatestPrimaryNetworkTransactionsResponse,
+        | errors.BadRequest
+        | errors.Unauthorized
+        | errors.Forbidden
+        | errors.NotFound
+        | errors.TooManyRequests
+        | errors.InternalServerError
+        | errors.BadGateway
+        | errors.ServiceUnavailable
         | SDKError
         | SDKValidationError
         | UnexpectedClientError
@@ -162,6 +179,14 @@ export async function glacierPrimaryNetworkTransactionsListLatestPrimaryNetworkT
         m$.json(200, operations.ListLatestPrimaryNetworkTransactionsResponse$inboundSchema, {
             key: "Result",
         }),
+        m$.jsonErr(400, errors.BadRequest$inboundSchema),
+        m$.jsonErr(401, errors.Unauthorized$inboundSchema),
+        m$.jsonErr(403, errors.Forbidden$inboundSchema),
+        m$.jsonErr(404, errors.NotFound$inboundSchema),
+        m$.jsonErr(429, errors.TooManyRequests$inboundSchema),
+        m$.jsonErr(500, errors.InternalServerError$inboundSchema),
+        m$.jsonErr(502, errors.BadGateway$inboundSchema),
+        m$.jsonErr(503, errors.ServiceUnavailable$inboundSchema),
         m$.fail(["4XX", "5XX"])
     )(response, { extraFields: responseFields$ });
     if (!result$.ok) {
@@ -173,6 +198,14 @@ export async function glacierPrimaryNetworkTransactionsListLatestPrimaryNetworkT
     ): Paginator<
         Result<
             operations.ListLatestPrimaryNetworkTransactionsResponse,
+            | errors.BadRequest
+            | errors.Unauthorized
+            | errors.Forbidden
+            | errors.NotFound
+            | errors.TooManyRequests
+            | errors.InternalServerError
+            | errors.BadGateway
+            | errors.ServiceUnavailable
             | SDKError
             | SDKValidationError
             | UnexpectedClientError

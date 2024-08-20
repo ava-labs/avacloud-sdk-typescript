@@ -58,6 +58,8 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK({
     glacierApiKey: "<YOUR_API_KEY_HERE>",
+    chainId: "43114",
+    network: "mainnet",
 });
 
 async function run() {
@@ -286,7 +288,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `chainId` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `reindexNft`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `chainId` to `"43114"` at SDK initialization and then you do not have to pass the same value on calls to operations like `reindexNft`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -295,8 +297,8 @@ The following global parameters are available.
 
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
-| chainId | string |  | The chainId parameter. |
-| network | string |  | The network parameter. |
+| chainId | string |  | A supported EVM chain id, chain alias, or blockchain id. |
+| network | string |  | A supported network type mainnet or a testnet. |
 
 
 ### Example
@@ -306,6 +308,8 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK({
     glacierApiKey: "<YOUR_API_KEY_HERE>",
+    chainId: "43114",
+    network: "mainnet",
 });
 
 async function run() {
@@ -337,6 +341,8 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK({
     glacierApiKey: "<YOUR_API_KEY_HERE>",
+    chainId: "43114",
+    network: "mainnet",
 });
 
 async function run() {
@@ -366,6 +372,8 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK({
     glacierApiKey: "<YOUR_API_KEY_HERE>",
+    chainId: "43114",
+    network: "mainnet",
 });
 
 async function run() {
@@ -406,6 +414,8 @@ const avalancheSDK = new AvalancheSDK({
         retryConnectionErrors: false,
     },
     glacierApiKey: "<YOUR_API_KEY_HERE>",
+    chainId: "43114",
+    network: "mainnet",
 });
 
 async function run() {
@@ -439,6 +449,8 @@ import { SDKValidationError } from "@avalabs/avalanche-sdk/models/errors";
 
 const avalancheSDK = new AvalancheSDK({
     glacierApiKey: "<YOUR_API_KEY_HERE>",
+    chainId: "43114",
+    network: "mainnet",
 });
 
 async function run() {
@@ -482,7 +494,7 @@ You can override the default server globally by passing a server index to the `s
 
 | # | Server | Variables |
 | - | ------ | --------- |
-| 0 | `http://localhost:3000` | None |
+| 0 | `https://glacier-api.avax.network` | None |
 
 ```typescript
 import { AvalancheSDK } from "@avalabs/avalanche-sdk";
@@ -490,6 +502,8 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 const avalancheSDK = new AvalancheSDK({
     serverIdx: 0,
     glacierApiKey: "<YOUR_API_KEY_HERE>",
+    chainId: "43114",
+    network: "mainnet",
 });
 
 async function run() {
@@ -512,8 +526,10 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK({
-    serverURL: "http://localhost:3000",
+    serverURL: "https://glacier-api.avax.network",
     glacierApiKey: "<YOUR_API_KEY_HERE>",
+    chainId: "43114",
+    network: "mainnet",
 });
 
 async function run() {
@@ -594,6 +610,8 @@ import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK({
     glacierApiKey: "<YOUR_API_KEY_HERE>",
+    chainId: "43114",
+    network: "mainnet",
 });
 
 async function run() {

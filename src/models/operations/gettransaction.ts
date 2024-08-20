@@ -5,6 +5,9 @@
 import * as z from "zod";
 
 export type GetTransactionGlobals = {
+    /**
+     * A supported EVM chain id, chain alias, or blockchain id.
+     */
     chainId?: string | undefined;
 };
 
