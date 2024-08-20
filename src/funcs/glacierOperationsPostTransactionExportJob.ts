@@ -17,6 +17,7 @@ import {
     RequestTimeoutError,
     UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
@@ -37,6 +38,14 @@ export async function glacierOperationsPostTransactionExportJob(
 ): Promise<
     Result<
         components.OperationStatusResponse,
+        | errors.BadRequest
+        | errors.Unauthorized
+        | errors.Forbidden
+        | errors.NotFound
+        | errors.TooManyRequests
+        | errors.InternalServerError
+        | errors.BadGateway
+        | errors.ServiceUnavailable
         | SDKError
         | SDKValidationError
         | UnexpectedClientError
@@ -94,7 +103,7 @@ export async function glacierOperationsPostTransactionExportJob(
 
     const doResult = await client$.do$(request$, {
         context,
-        errorCodes: ["4XX", "5XX"],
+        errorCodes: ["400", "401", "403", "404", "429", "4XX", "500", "502", "503", "5XX"],
         retryConfig: options?.retries ||
             client$.options$.retryConfig || {
                 strategy: "backoff",
@@ -113,8 +122,20 @@ export async function glacierOperationsPostTransactionExportJob(
     }
     const response = doResult.value;
 
+    const responseFields$ = {
+        HttpMeta: { Response: response, Request: request$ },
+    };
+
     const [result$] = await m$.match<
         components.OperationStatusResponse,
+        | errors.BadRequest
+        | errors.Unauthorized
+        | errors.Forbidden
+        | errors.NotFound
+        | errors.TooManyRequests
+        | errors.InternalServerError
+        | errors.BadGateway
+        | errors.ServiceUnavailable
         | SDKError
         | SDKValidationError
         | UnexpectedClientError
@@ -124,8 +145,16 @@ export async function glacierOperationsPostTransactionExportJob(
         | ConnectionError
     >(
         m$.json(200, components.OperationStatusResponse$inboundSchema),
+        m$.jsonErr(400, errors.BadRequest$inboundSchema),
+        m$.jsonErr(401, errors.Unauthorized$inboundSchema),
+        m$.jsonErr(403, errors.Forbidden$inboundSchema),
+        m$.jsonErr(404, errors.NotFound$inboundSchema),
+        m$.jsonErr(429, errors.TooManyRequests$inboundSchema),
+        m$.jsonErr(500, errors.InternalServerError$inboundSchema),
+        m$.jsonErr(502, errors.BadGateway$inboundSchema),
+        m$.jsonErr(503, errors.ServiceUnavailable$inboundSchema),
         m$.fail(["4XX", "5XX"])
-    )(response);
+    )(response, { extraFields: responseFields$ });
     if (!result$.ok) {
         return result$;
     }
