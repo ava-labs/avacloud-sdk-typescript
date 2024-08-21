@@ -1,6 +1,8 @@
 # Operations
 (*glacier.operations*)
 
+## Overview
+
 ### Available Operations
 
 * [getOperationResult](#getoperationresult) - Get operation
@@ -32,7 +34,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -77,10 +78,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[components.OperationStatusResponse](../../models/components/operationstatusresponse.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -94,6 +95,7 @@ run();
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4xx-5xx                    | */*                        |
+
 
 ## postTransactionExportJob
 
@@ -114,17 +116,17 @@ const avalancheSDK = new AvalancheSDK({
 
 async function run() {
   const result = await avalancheSDK.glacier.operations.postTransactionExportJob({
-      type: "TRANSACTION_EXPORT_PRIMARY_NETWORK_STAKING",
-      firstDate: "2023-05-01",
-      lastDate: "2023-05-02",
-      startDate: "2023-05-01",
-      endDate: "2023-05-02",
-      options: {
-        includeChains: [
-          "p-chain",
-        ],
-      },
-    });
+    type: "TRANSACTION_EXPORT_PRIMARY_NETWORK_STAKING",
+    firstDate: "2023-05-01",
+    lastDate: "2023-05-02",
+    startDate: "2023-05-01",
+    endDate: "2023-05-02",
+    options: {
+      includeChains: [
+        "p-chain",
+      ],
+    },
+  });
 
   // Handle the result
   console.log(result)
@@ -132,7 +134,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -152,20 +153,20 @@ const avalancheSDK = new AvalancheSDKCore({
 
 async function run() {
   const res = await glacierOperationsPostTransactionExportJob(avalancheSDK, {
-      type: "TRANSACTION_EXPORT_EVM",
-      firstDate: "2023-05-01",
-      lastDate: "2023-05-02",
-      startDate: "2023-05-01",
-      endDate: "2023-05-02",
-      options: {
-        addresses: [
-          "<value>",
-        ],
-        includeChains: [
-          "43114",
-        ],
-      },
-    });
+    type: "TRANSACTION_EXPORT_EVM",
+    firstDate: "2023-05-01",
+    lastDate: "2023-05-02",
+    startDate: "2023-05-01",
+    endDate: "2023-05-02",
+    options: {
+      addresses: [
+        "<value>",
+      ],
+      includeChains: [
+        "43114",
+      ],
+    },
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -189,10 +190,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[components.OperationStatusResponse](../../models/components/operationstatusresponse.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |

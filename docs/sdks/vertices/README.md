@@ -1,6 +1,8 @@
 # Vertices
 (*glacier.primaryNetwork.vertices*)
 
+## Overview
+
 ### Available Operations
 
 * [listLatestXChainVertices](#listlatestxchainvertices) - List vertices
@@ -36,7 +38,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -84,10 +85,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.ListLatestXChainVerticesResponse](../../models/operations/listlatestxchainverticesresponse.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -101,6 +102,7 @@ run();
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4xx-5xx                    | */*                        |
+
 
 ## getVertexByHash
 
@@ -130,7 +132,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -177,10 +178,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[components.XChainVertex](../../models/components/xchainvertex.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -194,6 +195,7 @@ run();
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4xx-5xx                    | */*                        |
+
 
 ## getVertexByHeight
 
@@ -226,7 +228,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -276,10 +277,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetVertexByHeightResponse](../../models/operations/getvertexbyheightresponse.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |

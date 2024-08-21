@@ -49,3 +49,13 @@ Based on:
 - [typescript v0.1.4] .
 ### Releases
 - [NPM v0.1.4] https://www.npmjs.com/package/@avalabs/avalanche-sdk/v/0.1.4 - .
+
+## 2024-08-21 15:41:31
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.377.1 (2.404.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.5] .
+### Releases
+- [NPM v0.1.5] https://www.npmjs.com/package/@avalabs/avalanche-sdk/v/0.1.5 - .

@@ -1,9 +1,9 @@
-speakeasyVersion: 1.376.1
+speakeasyVersion: 1.377.1
 sources:
     AvalancheSDK-OAS:
         sourceNamespace: avalanche-sdk-oas
-        sourceRevisionDigest: sha256:cc8a7109ac3cb72a746c6cf71ba0e5a41adbe8dcde1c50ccc84e4a7928abeea7
-        sourceBlobDigest: sha256:98fe2920cbabff2bf55c373f45968eafb2845a0ac19f20dc751e45a502718f0d
+        sourceRevisionDigest: sha256:26d2bdbdf8f8e0b0147a4c3cf7a97b352ed71fb3912185a2abc1dec564ab460e
+        sourceBlobDigest: sha256:7308d5317c6799b48d9f7389bce7ee669a4805a0a0031110f9901c4b8769e0f9
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     avalanche-sdk:
         source: AvalancheSDK-OAS
         sourceNamespace: avalanche-sdk-oas
-        sourceRevisionDigest: sha256:cc8a7109ac3cb72a746c6cf71ba0e5a41adbe8dcde1c50ccc84e4a7928abeea7
-        sourceBlobDigest: sha256:98fe2920cbabff2bf55c373f45968eafb2845a0ac19f20dc751e45a502718f0d
+        sourceRevisionDigest: sha256:26d2bdbdf8f8e0b0147a4c3cf7a97b352ed71fb3912185a2abc1dec564ab460e
+        sourceBlobDigest: sha256:7308d5317c6799b48d9f7389bce7ee669a4805a0a0031110f9901c4b8769e0f9
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0

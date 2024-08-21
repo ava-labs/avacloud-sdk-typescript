@@ -5,7 +5,10 @@
 import * as z from "zod";
 
 /**
- * Bad Gateway
+ * This is an internal error indicating invalid response
+ *
+ * @remarks
+ *       received by the client-facing proxy or gateway from the upstream server.
  */
 export type BadGatewayData = {
     /**
@@ -23,7 +26,10 @@ export type BadGatewayData = {
 };
 
 /**
- * Bad Gateway
+ * This is an internal error indicating invalid response
+ *
+ * @remarks
+ *       received by the client-facing proxy or gateway from the upstream server.
  */
 export class BadGateway extends Error {
     /**
