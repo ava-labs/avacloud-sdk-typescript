@@ -1,6 +1,8 @@
 # PrimaryNetwork
 (*glacier.primaryNetwork*)
 
+## Overview
+
 ### Available Operations
 
 * [getAssetDetails](#getassetdetails) - Get asset details
@@ -41,7 +43,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -88,10 +89,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[components.XChainAssetDetails](../../models/components/xchainassetdetails.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -105,6 +106,7 @@ run();
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4xx-5xx                    | */*                        |
+
 
 ## getChainIdsForAddresses
 
@@ -133,7 +135,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -179,10 +180,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[components.ChainAddressChainIdMapListResponse](../../models/components/chainaddresschainidmaplistresponse.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -196,6 +197,7 @@ run();
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4xx-5xx                    | */*                        |
+
 
 ## getNetworkDetails
 
@@ -223,7 +225,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -268,10 +269,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[components.GetNetworkDetailsResponse](../../models/components/getnetworkdetailsresponse.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -285,6 +286,7 @@ run();
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4xx-5xx                    | */*                        |
+
 
 ## listBlockchains
 
@@ -315,7 +317,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -363,10 +364,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.ListBlockchainsResponse](../../models/operations/listblockchainsresponse.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -380,6 +381,7 @@ run();
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4xx-5xx                    | */*                        |
+
 
 ## listSubnets
 
@@ -410,7 +412,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -458,10 +459,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.ListSubnetsResponse](../../models/operations/listsubnetsresponse.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -475,6 +476,7 @@ run();
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4xx-5xx                    | */*                        |
+
 
 ## getSubnetById
 
@@ -503,7 +505,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -549,10 +550,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[components.Subnet](../../models/components/subnet.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -566,6 +567,7 @@ run();
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4xx-5xx                    | */*                        |
+
 
 ## listValidators
 
@@ -607,7 +609,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -666,10 +667,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.ListValidatorsResponse](../../models/operations/listvalidatorsresponse.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -683,6 +684,7 @@ run();
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4xx-5xx                    | */*                        |
+
 
 ## getSingleValidatorDetails
 
@@ -715,7 +717,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -765,10 +766,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetSingleValidatorDetailsResponse](../../models/operations/getsinglevalidatordetailsresponse.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
@@ -782,6 +783,7 @@ run();
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4xx-5xx                    | */*                        |
+
 
 ## listDelegators
 
@@ -815,7 +817,6 @@ async function run() {
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -866,10 +867,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.ListDelegatorsResponse](../../models/operations/listdelegatorsresponse.md)\>**
+
 ### Errors
 
 | Error Object               | Status Code                | Content Type               |
