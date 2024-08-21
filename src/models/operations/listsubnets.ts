@@ -6,6 +6,13 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListSubnetsGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type ListSubnetsRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
@@ -18,7 +25,7 @@ export type ListSubnetsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
     /**
      * The order by which to sort results. Use "asc" for ascending order, "desc" for descending order. Sorted by timestamp or the `sortBy` query parameter, if provided.
      */
@@ -30,6 +37,42 @@ export type ListSubnetsResponse = {
 };
 
 /** @internal */
+export const ListSubnetsGlobals$inboundSchema: z.ZodType<
+    ListSubnetsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type ListSubnetsGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const ListSubnetsGlobals$outboundSchema: z.ZodType<
+    ListSubnetsGlobals$Outbound,
+    z.ZodTypeDef,
+    ListSubnetsGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListSubnetsGlobals$ {
+    /** @deprecated use `ListSubnetsGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListSubnetsGlobals$inboundSchema;
+    /** @deprecated use `ListSubnetsGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListSubnetsGlobals$outboundSchema;
+    /** @deprecated use `ListSubnetsGlobals$Outbound` instead. */
+    export type Outbound = ListSubnetsGlobals$Outbound;
+}
+
+/** @internal */
 export const ListSubnetsRequest$inboundSchema: z.ZodType<
     ListSubnetsRequest,
     z.ZodTypeDef,
@@ -37,7 +80,7 @@ export const ListSubnetsRequest$inboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
 });
 
@@ -45,7 +88,7 @@ export const ListSubnetsRequest$inboundSchema: z.ZodType<
 export type ListSubnetsRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
-    network: string;
+    network?: string | undefined;
     sortOrder?: string | undefined;
 };
 
@@ -57,7 +100,7 @@ export const ListSubnetsRequest$outboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),
 });
 

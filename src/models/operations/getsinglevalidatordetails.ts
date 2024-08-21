@@ -6,6 +6,13 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetSingleValidatorDetailsGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type GetSingleValidatorDetailsRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
@@ -18,7 +25,7 @@ export type GetSingleValidatorDetailsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
     /**
      * A primary network (P or X chain) nodeId.
      */
@@ -38,6 +45,42 @@ export type GetSingleValidatorDetailsResponse = {
 };
 
 /** @internal */
+export const GetSingleValidatorDetailsGlobals$inboundSchema: z.ZodType<
+    GetSingleValidatorDetailsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetSingleValidatorDetailsGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const GetSingleValidatorDetailsGlobals$outboundSchema: z.ZodType<
+    GetSingleValidatorDetailsGlobals$Outbound,
+    z.ZodTypeDef,
+    GetSingleValidatorDetailsGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetSingleValidatorDetailsGlobals$ {
+    /** @deprecated use `GetSingleValidatorDetailsGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetSingleValidatorDetailsGlobals$inboundSchema;
+    /** @deprecated use `GetSingleValidatorDetailsGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetSingleValidatorDetailsGlobals$outboundSchema;
+    /** @deprecated use `GetSingleValidatorDetailsGlobals$Outbound` instead. */
+    export type Outbound = GetSingleValidatorDetailsGlobals$Outbound;
+}
+
+/** @internal */
 export const GetSingleValidatorDetailsRequest$inboundSchema: z.ZodType<
     GetSingleValidatorDetailsRequest,
     z.ZodTypeDef,
@@ -45,7 +88,7 @@ export const GetSingleValidatorDetailsRequest$inboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
     nodeId: z.string(),
     validationStatus: components.ValidationStatusType$inboundSchema.optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
@@ -55,7 +98,7 @@ export const GetSingleValidatorDetailsRequest$inboundSchema: z.ZodType<
 export type GetSingleValidatorDetailsRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
-    network: string;
+    network?: string | undefined;
     nodeId: string;
     validationStatus?: string | undefined;
     sortOrder?: string | undefined;
@@ -69,7 +112,7 @@ export const GetSingleValidatorDetailsRequest$outboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
     nodeId: z.string(),
     validationStatus: components.ValidationStatusType$outboundSchema.optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),

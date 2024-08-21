@@ -59,7 +59,7 @@ export async function glacierPrimaryNetworkListValidators(
         >
     >
 > {
-    const input$ = request;
+    const input$ = typeof request === "undefined" ? {} : request;
 
     const parsed$ = schemas$.safeParse(
         input$,
@@ -73,7 +73,7 @@ export async function glacierPrimaryNetworkListValidators(
     const body$ = null;
 
     const pathParams$ = {
-        network: encodeSimple$("network", payload$.network, {
+        network: encodeSimple$("network", payload$.network ?? client$.options$.network, {
             explode: false,
             charEncoding: "percent",
         }),

@@ -5,6 +5,13 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetAssetDetailsGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type GetAssetDetailsRequest = {
     /**
      * A primary network blockchain id or alias.
@@ -13,12 +20,48 @@ export type GetAssetDetailsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
     /**
      * Asset ID for any asset on X-Chain
      */
     assetId: string;
 };
+
+/** @internal */
+export const GetAssetDetailsGlobals$inboundSchema: z.ZodType<
+    GetAssetDetailsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetAssetDetailsGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const GetAssetDetailsGlobals$outboundSchema: z.ZodType<
+    GetAssetDetailsGlobals$Outbound,
+    z.ZodTypeDef,
+    GetAssetDetailsGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAssetDetailsGlobals$ {
+    /** @deprecated use `GetAssetDetailsGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetAssetDetailsGlobals$inboundSchema;
+    /** @deprecated use `GetAssetDetailsGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetAssetDetailsGlobals$outboundSchema;
+    /** @deprecated use `GetAssetDetailsGlobals$Outbound` instead. */
+    export type Outbound = GetAssetDetailsGlobals$Outbound;
+}
 
 /** @internal */
 export const GetAssetDetailsRequest$inboundSchema: z.ZodType<
@@ -27,14 +70,14 @@ export const GetAssetDetailsRequest$inboundSchema: z.ZodType<
     unknown
 > = z.object({
     blockchainId: components.XChainId$inboundSchema,
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
     assetId: z.string(),
 });
 
 /** @internal */
 export type GetAssetDetailsRequest$Outbound = {
     blockchainId: string;
-    network: string;
+    network?: string | undefined;
     assetId: string;
 };
 
@@ -45,7 +88,7 @@ export const GetAssetDetailsRequest$outboundSchema: z.ZodType<
     GetAssetDetailsRequest
 > = z.object({
     blockchainId: components.XChainId$outboundSchema,
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
     assetId: z.string(),
 });
 

@@ -6,6 +6,13 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetUtxosByAddressesGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type GetUtxosByAddressesRequest = {
     /**
      * A comma separated list of X-Chain or P-Chain wallet addresses, starting with "avax"/"fuji", "P-avax"/"P-fuji" or "X-avax"/"X-fuji".
@@ -26,7 +33,7 @@ export type GetUtxosByAddressesRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
     /**
      * Asset ID for any asset (only applicable X-Chain)
      */
@@ -53,6 +60,42 @@ export type GetUtxosByAddressesResponse = {
 };
 
 /** @internal */
+export const GetUtxosByAddressesGlobals$inboundSchema: z.ZodType<
+    GetUtxosByAddressesGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetUtxosByAddressesGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const GetUtxosByAddressesGlobals$outboundSchema: z.ZodType<
+    GetUtxosByAddressesGlobals$Outbound,
+    z.ZodTypeDef,
+    GetUtxosByAddressesGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetUtxosByAddressesGlobals$ {
+    /** @deprecated use `GetUtxosByAddressesGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetUtxosByAddressesGlobals$inboundSchema;
+    /** @deprecated use `GetUtxosByAddressesGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetUtxosByAddressesGlobals$outboundSchema;
+    /** @deprecated use `GetUtxosByAddressesGlobals$Outbound` instead. */
+    export type Outbound = GetUtxosByAddressesGlobals$Outbound;
+}
+
+/** @internal */
 export const GetUtxosByAddressesRequest$inboundSchema: z.ZodType<
     GetUtxosByAddressesRequest,
     z.ZodTypeDef,
@@ -62,7 +105,7 @@ export const GetUtxosByAddressesRequest$inboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.BlockchainId$inboundSchema,
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
     assetId: z.string().optional(),
     includeSpent: z.boolean().optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
@@ -74,7 +117,7 @@ export type GetUtxosByAddressesRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
     blockchainId: string;
-    network: string;
+    network?: string | undefined;
     assetId?: string | undefined;
     includeSpent?: boolean | undefined;
     sortOrder?: string | undefined;
@@ -90,7 +133,7 @@ export const GetUtxosByAddressesRequest$outboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.BlockchainId$outboundSchema,
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
     assetId: z.string().optional(),
     includeSpent: z.boolean().optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),

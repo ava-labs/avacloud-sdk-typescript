@@ -27,7 +27,6 @@ async function run() {
   const result = await avalancheSDK.glacier.primaryNetwork.rewards.listPendingPrimaryNetworkRewards({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     pageSize: 10,
-    network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
     sortOrder: "asc",
   });
@@ -60,7 +59,6 @@ async function run() {
   const res = await glacierPrimaryNetworkRewardsListPendingPrimaryNetworkRewards(avalancheSDK, {
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     pageSize: 10,
-    network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
     sortOrder: "asc",
   });
@@ -126,7 +124,6 @@ async function run() {
   const result = await avalancheSDK.glacier.primaryNetwork.rewards.listHistoricalPrimaryNetworkRewards({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     pageSize: 10,
-    network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
     sortOrder: "asc",
     currency: "usd",
@@ -160,7 +157,6 @@ async function run() {
   const res = await glacierPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards(avalancheSDK, {
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     pageSize: 10,
-    network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
     sortOrder: "asc",
     currency: "usd",

@@ -8,7 +8,6 @@ import { GetVertexByHashRequest } from "@avalabs/avalanche-sdk/models/operations
 let value: GetVertexByHashRequest = {
     vertexHash: "haP1CW56cspZY7aEuqHNrtpvhqCaMTxQaYe6j5u2Mbn4L2Gqr",
     blockchainId: "x-chain",
-    network: "mainnet",
 };
 ```
 
@@ -18,4 +17,4 @@ let value: GetVertexByHashRequest = {
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
 | `vertexHash`                                               | *string*                                                   | :heavy_check_mark:                                         | A vertex hash string.                                      | haP1CW56cspZY7aEuqHNrtpvhqCaMTxQaYe6j5u2Mbn4L2Gqr          |
 | `blockchainId`                                             | [components.XChainId](../../models/components/xchainid.md) | :heavy_check_mark:                                         | A primary network blockchain id or alias.                  | x-chain                                                    |
-| `network`                                                  | [components.Network](../../models/components/network.md)   | :heavy_check_mark:                                         | Either mainnet or a testnet.                               | mainnet                                                    |
+| `network`                                                  | [components.Network](../../models/components/network.md)   | :heavy_minus_sign:                                         | Either mainnet or a testnet.                               | mainnet                                                    |

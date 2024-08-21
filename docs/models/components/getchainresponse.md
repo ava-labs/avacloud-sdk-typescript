@@ -9,8 +9,8 @@ let value: GetChainResponse = {
     chainId: "<value>",
     status: "UNAVAILABLE",
     chainName: "<value>",
-    description: "Integrated high-level knowledge base",
-    vmName: "ETHEREUM",
+    description: "Re-engineered well-modulated extranet",
+    vmName: "BITCOIN",
     rpcUrl: "<value>",
     isTestnet: false,
     networkToken: {

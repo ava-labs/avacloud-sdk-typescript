@@ -40,8 +40,8 @@ let value: GetUtxosByAddressesResponseBody = {
         },
     ],
     chainInfo: {
-        chainName: "x-chain",
-        network: "fuji",
+        chainName: "c-chain",
+        network: "mainnet",
     },
 };
 ```

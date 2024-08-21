@@ -6,6 +6,13 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListValidatorsGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type ListValidatorsRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
@@ -18,7 +25,7 @@ export type ListValidatorsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
     /**
      * A comma separated list of node ids to filter by.
      */
@@ -82,6 +89,42 @@ export type ListValidatorsResponse = {
 };
 
 /** @internal */
+export const ListValidatorsGlobals$inboundSchema: z.ZodType<
+    ListValidatorsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type ListValidatorsGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const ListValidatorsGlobals$outboundSchema: z.ZodType<
+    ListValidatorsGlobals$Outbound,
+    z.ZodTypeDef,
+    ListValidatorsGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListValidatorsGlobals$ {
+    /** @deprecated use `ListValidatorsGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListValidatorsGlobals$inboundSchema;
+    /** @deprecated use `ListValidatorsGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListValidatorsGlobals$outboundSchema;
+    /** @deprecated use `ListValidatorsGlobals$Outbound` instead. */
+    export type Outbound = ListValidatorsGlobals$Outbound;
+}
+
+/** @internal */
 export const ListValidatorsRequest$inboundSchema: z.ZodType<
     ListValidatorsRequest,
     z.ZodTypeDef,
@@ -89,7 +132,7 @@ export const ListValidatorsRequest$inboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
     nodeIds: z.string().optional(),
     sortBy: components.SortByOption$inboundSchema.optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
@@ -109,7 +152,7 @@ export const ListValidatorsRequest$inboundSchema: z.ZodType<
 export type ListValidatorsRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
-    network: string;
+    network?: string | undefined;
     nodeIds?: string | undefined;
     sortBy?: string | undefined;
     sortOrder?: string | undefined;
@@ -133,7 +176,7 @@ export const ListValidatorsRequest$outboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
     nodeIds: z.string().optional(),
     sortBy: components.SortByOption$outboundSchema.optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),

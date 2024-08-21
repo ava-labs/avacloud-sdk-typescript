@@ -6,6 +6,13 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListLatestPrimaryNetworkBlocksGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type ListLatestPrimaryNetworkBlocksRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
@@ -22,12 +29,48 @@ export type ListLatestPrimaryNetworkBlocksRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
 };
 
 export type ListLatestPrimaryNetworkBlocksResponse = {
     result: components.ListPrimaryNetworkBlocksResponse;
 };
+
+/** @internal */
+export const ListLatestPrimaryNetworkBlocksGlobals$inboundSchema: z.ZodType<
+    ListLatestPrimaryNetworkBlocksGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type ListLatestPrimaryNetworkBlocksGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const ListLatestPrimaryNetworkBlocksGlobals$outboundSchema: z.ZodType<
+    ListLatestPrimaryNetworkBlocksGlobals$Outbound,
+    z.ZodTypeDef,
+    ListLatestPrimaryNetworkBlocksGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListLatestPrimaryNetworkBlocksGlobals$ {
+    /** @deprecated use `ListLatestPrimaryNetworkBlocksGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListLatestPrimaryNetworkBlocksGlobals$inboundSchema;
+    /** @deprecated use `ListLatestPrimaryNetworkBlocksGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListLatestPrimaryNetworkBlocksGlobals$outboundSchema;
+    /** @deprecated use `ListLatestPrimaryNetworkBlocksGlobals$Outbound` instead. */
+    export type Outbound = ListLatestPrimaryNetworkBlocksGlobals$Outbound;
+}
 
 /** @internal */
 export const ListLatestPrimaryNetworkBlocksRequest$inboundSchema: z.ZodType<
@@ -38,7 +81,7 @@ export const ListLatestPrimaryNetworkBlocksRequest$inboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.BlockchainId$inboundSchema,
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -46,7 +89,7 @@ export type ListLatestPrimaryNetworkBlocksRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
     blockchainId: string;
-    network: string;
+    network?: string | undefined;
 };
 
 /** @internal */
@@ -58,7 +101,7 @@ export const ListLatestPrimaryNetworkBlocksRequest$outboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.BlockchainId$outboundSchema,
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
 });
 
 /**

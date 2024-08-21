@@ -5,6 +5,13 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetVertexByHashGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type GetVertexByHashRequest = {
     /**
      * A vertex hash string.
@@ -17,8 +24,44 @@ export type GetVertexByHashRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
 };
+
+/** @internal */
+export const GetVertexByHashGlobals$inboundSchema: z.ZodType<
+    GetVertexByHashGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetVertexByHashGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const GetVertexByHashGlobals$outboundSchema: z.ZodType<
+    GetVertexByHashGlobals$Outbound,
+    z.ZodTypeDef,
+    GetVertexByHashGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetVertexByHashGlobals$ {
+    /** @deprecated use `GetVertexByHashGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetVertexByHashGlobals$inboundSchema;
+    /** @deprecated use `GetVertexByHashGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetVertexByHashGlobals$outboundSchema;
+    /** @deprecated use `GetVertexByHashGlobals$Outbound` instead. */
+    export type Outbound = GetVertexByHashGlobals$Outbound;
+}
 
 /** @internal */
 export const GetVertexByHashRequest$inboundSchema: z.ZodType<
@@ -28,14 +71,14 @@ export const GetVertexByHashRequest$inboundSchema: z.ZodType<
 > = z.object({
     vertexHash: z.string(),
     blockchainId: components.XChainId$inboundSchema,
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetVertexByHashRequest$Outbound = {
     vertexHash: string;
     blockchainId: string;
-    network: string;
+    network?: string | undefined;
 };
 
 /** @internal */
@@ -46,7 +89,7 @@ export const GetVertexByHashRequest$outboundSchema: z.ZodType<
 > = z.object({
     vertexHash: z.string(),
     blockchainId: components.XChainId$outboundSchema,
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
 });
 
 /**

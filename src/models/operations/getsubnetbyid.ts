@@ -5,11 +5,18 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetSubnetByIdGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type GetSubnetByIdRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
     /**
      * Subnet ID to fetch details for
      */
@@ -17,18 +24,54 @@ export type GetSubnetByIdRequest = {
 };
 
 /** @internal */
+export const GetSubnetByIdGlobals$inboundSchema: z.ZodType<
+    GetSubnetByIdGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetSubnetByIdGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const GetSubnetByIdGlobals$outboundSchema: z.ZodType<
+    GetSubnetByIdGlobals$Outbound,
+    z.ZodTypeDef,
+    GetSubnetByIdGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetSubnetByIdGlobals$ {
+    /** @deprecated use `GetSubnetByIdGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetSubnetByIdGlobals$inboundSchema;
+    /** @deprecated use `GetSubnetByIdGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetSubnetByIdGlobals$outboundSchema;
+    /** @deprecated use `GetSubnetByIdGlobals$Outbound` instead. */
+    export type Outbound = GetSubnetByIdGlobals$Outbound;
+}
+
+/** @internal */
 export const GetSubnetByIdRequest$inboundSchema: z.ZodType<
     GetSubnetByIdRequest,
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
     subnetId: z.string(),
 });
 
 /** @internal */
 export type GetSubnetByIdRequest$Outbound = {
-    network: string;
+    network?: string | undefined;
     subnetId: string;
 };
 
@@ -38,7 +81,7 @@ export const GetSubnetByIdRequest$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetSubnetByIdRequest
 > = z.object({
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
     subnetId: z.string(),
 });
 

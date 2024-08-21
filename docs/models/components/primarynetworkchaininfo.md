@@ -6,8 +6,8 @@
 import { PrimaryNetworkChainInfo } from "@avalabs/avalanche-sdk/models/components";
 
 let value: PrimaryNetworkChainInfo = {
-    chainName: "p-chain",
-    network: "mainnet",
+    chainName: "x-chain",
+    network: "fuji",
 };
 ```
 

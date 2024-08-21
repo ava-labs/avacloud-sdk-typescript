@@ -9,7 +9,7 @@ let value: ListCChainAtomicTransactionsResponse = {
     transactions: [],
     chainInfo: {
         chainName: "x-chain",
-        network: "mainnet",
+        network: "fuji",
     },
 };
 ```

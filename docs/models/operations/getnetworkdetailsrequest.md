@@ -5,13 +5,11 @@
 ```typescript
 import { GetNetworkDetailsRequest } from "@avalabs/avalanche-sdk/models/operations";
 
-let value: GetNetworkDetailsRequest = {
-    network: "mainnet",
-};
+let value: GetNetworkDetailsRequest = {};
 ```
 
 ## Fields
 
 | Field                                                    | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `network`                                                | [components.Network](../../models/components/network.md) | :heavy_check_mark:                                       | Either mainnet or a testnet.                             | mainnet                                                  |
+| `network`                                                | [components.Network](../../models/components/network.md) | :heavy_minus_sign:                                       | Either mainnet or a testnet.                             | mainnet                                                  |

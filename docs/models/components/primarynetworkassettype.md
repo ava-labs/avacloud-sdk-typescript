@@ -7,7 +7,7 @@ Type of asset like SECP256K1 or NFT.
 ```typescript
 import { PrimaryNetworkAssetType } from "@avalabs/avalanche-sdk/models/components";
 
-let value: PrimaryNetworkAssetType = "secp256k1";
+let value: PrimaryNetworkAssetType = "nft";
 ```
 
 ## Values

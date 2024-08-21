@@ -12,7 +12,8 @@ let value: Contracts = {
         txHash: "<value>",
         deployerAddress: "<value>",
     },
-    ercType: "UNKNOWN",
+    ercType: "ERC-721",
+    symbol: "WAVAX",
 };
 ```
 

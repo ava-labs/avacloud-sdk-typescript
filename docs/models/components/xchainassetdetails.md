@@ -12,7 +12,7 @@ let value: XChainAssetDetails = {
     denomination: 9,
     type: "secp256k1",
     createdAtTimestamp: 1675444720,
-    cap: "variable",
+    cap: "fixed",
 };
 ```
 

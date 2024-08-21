@@ -6,6 +6,13 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListLatestXChainVerticesGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type ListLatestXChainVerticesRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
@@ -22,12 +29,48 @@ export type ListLatestXChainVerticesRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
 };
 
 export type ListLatestXChainVerticesResponse = {
     result: components.ListXChainVerticesResponse;
 };
+
+/** @internal */
+export const ListLatestXChainVerticesGlobals$inboundSchema: z.ZodType<
+    ListLatestXChainVerticesGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type ListLatestXChainVerticesGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const ListLatestXChainVerticesGlobals$outboundSchema: z.ZodType<
+    ListLatestXChainVerticesGlobals$Outbound,
+    z.ZodTypeDef,
+    ListLatestXChainVerticesGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListLatestXChainVerticesGlobals$ {
+    /** @deprecated use `ListLatestXChainVerticesGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListLatestXChainVerticesGlobals$inboundSchema;
+    /** @deprecated use `ListLatestXChainVerticesGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListLatestXChainVerticesGlobals$outboundSchema;
+    /** @deprecated use `ListLatestXChainVerticesGlobals$Outbound` instead. */
+    export type Outbound = ListLatestXChainVerticesGlobals$Outbound;
+}
 
 /** @internal */
 export const ListLatestXChainVerticesRequest$inboundSchema: z.ZodType<
@@ -38,7 +81,7 @@ export const ListLatestXChainVerticesRequest$inboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.XChainId$inboundSchema,
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -46,7 +89,7 @@ export type ListLatestXChainVerticesRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
     blockchainId: string;
-    network: string;
+    network?: string | undefined;
 };
 
 /** @internal */
@@ -58,7 +101,7 @@ export const ListLatestXChainVerticesRequest$outboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.XChainId$outboundSchema,
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
 });
 
 /**

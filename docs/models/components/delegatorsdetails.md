@@ -6,7 +6,7 @@
 import { DelegatorsDetails } from "@avalabs/avalanche-sdk/models/components";
 
 let value: DelegatorsDetails = {
-    delegatorCount: 2961.4,
+    delegatorCount: 7991.59,
     totalAmountStaked: "<value>",
 };
 ```

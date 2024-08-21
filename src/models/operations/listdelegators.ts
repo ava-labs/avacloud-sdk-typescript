@@ -6,6 +6,13 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListDelegatorsGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type ListDelegatorsRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
@@ -22,7 +29,7 @@ export type ListDelegatorsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
     /**
      * The order by which to sort results. Use "asc" for ascending order, "desc" for descending order. Sorted by timestamp or the `sortBy` query parameter, if provided.
      */
@@ -42,6 +49,42 @@ export type ListDelegatorsResponse = {
 };
 
 /** @internal */
+export const ListDelegatorsGlobals$inboundSchema: z.ZodType<
+    ListDelegatorsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type ListDelegatorsGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const ListDelegatorsGlobals$outboundSchema: z.ZodType<
+    ListDelegatorsGlobals$Outbound,
+    z.ZodTypeDef,
+    ListDelegatorsGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListDelegatorsGlobals$ {
+    /** @deprecated use `ListDelegatorsGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListDelegatorsGlobals$inboundSchema;
+    /** @deprecated use `ListDelegatorsGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListDelegatorsGlobals$outboundSchema;
+    /** @deprecated use `ListDelegatorsGlobals$Outbound` instead. */
+    export type Outbound = ListDelegatorsGlobals$Outbound;
+}
+
+/** @internal */
 export const ListDelegatorsRequest$inboundSchema: z.ZodType<
     ListDelegatorsRequest,
     z.ZodTypeDef,
@@ -50,7 +93,7 @@ export const ListDelegatorsRequest$inboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     rewardAddresses: z.string().optional(),
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
     delegationStatus: components.DelegationStatusType$inboundSchema.optional(),
     nodeIds: z.string().optional(),
@@ -61,7 +104,7 @@ export type ListDelegatorsRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
     rewardAddresses?: string | undefined;
-    network: string;
+    network?: string | undefined;
     sortOrder?: string | undefined;
     delegationStatus?: string | undefined;
     nodeIds?: string | undefined;
@@ -76,7 +119,7 @@ export const ListDelegatorsRequest$outboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     rewardAddresses: z.string().optional(),
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),
     delegationStatus: components.DelegationStatusType$outboundSchema.optional(),
     nodeIds: z.string().optional(),

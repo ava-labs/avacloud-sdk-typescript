@@ -6,6 +6,13 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListHistoricalPrimaryNetworkRewardsGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type ListHistoricalPrimaryNetworkRewardsRequest = {
     /**
      * A comma separated list of X-Chain or P-Chain wallet addresses, starting with "avax"/"fuji", "P-avax"/"P-fuji" or "X-avax"/"X-fuji". Optional, but at least one of addresses or nodeIds is required.
@@ -22,7 +29,7 @@ export type ListHistoricalPrimaryNetworkRewardsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
     /**
      * A comma separated list of node ids to filter by. Optional, but at least one of addresses or nodeIds is required.
      */
@@ -42,6 +49,42 @@ export type ListHistoricalPrimaryNetworkRewardsResponse = {
 };
 
 /** @internal */
+export const ListHistoricalPrimaryNetworkRewardsGlobals$inboundSchema: z.ZodType<
+    ListHistoricalPrimaryNetworkRewardsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type ListHistoricalPrimaryNetworkRewardsGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const ListHistoricalPrimaryNetworkRewardsGlobals$outboundSchema: z.ZodType<
+    ListHistoricalPrimaryNetworkRewardsGlobals$Outbound,
+    z.ZodTypeDef,
+    ListHistoricalPrimaryNetworkRewardsGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListHistoricalPrimaryNetworkRewardsGlobals$ {
+    /** @deprecated use `ListHistoricalPrimaryNetworkRewardsGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListHistoricalPrimaryNetworkRewardsGlobals$inboundSchema;
+    /** @deprecated use `ListHistoricalPrimaryNetworkRewardsGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListHistoricalPrimaryNetworkRewardsGlobals$outboundSchema;
+    /** @deprecated use `ListHistoricalPrimaryNetworkRewardsGlobals$Outbound` instead. */
+    export type Outbound = ListHistoricalPrimaryNetworkRewardsGlobals$Outbound;
+}
+
+/** @internal */
 export const ListHistoricalPrimaryNetworkRewardsRequest$inboundSchema: z.ZodType<
     ListHistoricalPrimaryNetworkRewardsRequest,
     z.ZodTypeDef,
@@ -50,7 +93,7 @@ export const ListHistoricalPrimaryNetworkRewardsRequest$inboundSchema: z.ZodType
     addresses: z.string().optional(),
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
     nodeIds: z.string().optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
     currency: components.CurrencyCode$inboundSchema.optional(),
@@ -61,7 +104,7 @@ export type ListHistoricalPrimaryNetworkRewardsRequest$Outbound = {
     addresses?: string | undefined;
     pageToken?: string | undefined;
     pageSize: number;
-    network: string;
+    network?: string | undefined;
     nodeIds?: string | undefined;
     sortOrder?: string | undefined;
     currency?: string | undefined;
@@ -76,7 +119,7 @@ export const ListHistoricalPrimaryNetworkRewardsRequest$outboundSchema: z.ZodTyp
     addresses: z.string().optional(),
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
     nodeIds: z.string().optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),
     currency: components.CurrencyCode$outboundSchema.optional(),

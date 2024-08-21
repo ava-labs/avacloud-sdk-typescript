@@ -80,7 +80,7 @@ export async function glacierPrimaryNetworkTransactionsListActivePrimaryNetworkS
             explode: false,
             charEncoding: "percent",
         }),
-        network: encodeSimple$("network", payload$.network, {
+        network: encodeSimple$("network", payload$.network ?? client$.options$.network, {
             explode: false,
             charEncoding: "percent",
         }),

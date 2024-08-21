@@ -6,6 +6,13 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListActivePrimaryNetworkStakingTransactionsGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type ListActivePrimaryNetworkStakingTransactionsRequest = {
     /**
      * A comma separated list of X-Chain or P-Chain wallet addresses, starting with "avax"/"fuji", "P-avax"/"P-fuji" or "X-avax"/"X-fuji".
@@ -38,7 +45,7 @@ export type ListActivePrimaryNetworkStakingTransactionsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
     /**
      * The order by which to sort results. Use "asc" for ascending order, "desc" for descending order. Sorted by timestamp or the `sortBy` query parameter, if provided.
      */
@@ -48,6 +55,42 @@ export type ListActivePrimaryNetworkStakingTransactionsRequest = {
 export type ListActivePrimaryNetworkStakingTransactionsResponse = {
     result: components.ListPChainTransactionsResponse;
 };
+
+/** @internal */
+export const ListActivePrimaryNetworkStakingTransactionsGlobals$inboundSchema: z.ZodType<
+    ListActivePrimaryNetworkStakingTransactionsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type ListActivePrimaryNetworkStakingTransactionsGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const ListActivePrimaryNetworkStakingTransactionsGlobals$outboundSchema: z.ZodType<
+    ListActivePrimaryNetworkStakingTransactionsGlobals$Outbound,
+    z.ZodTypeDef,
+    ListActivePrimaryNetworkStakingTransactionsGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListActivePrimaryNetworkStakingTransactionsGlobals$ {
+    /** @deprecated use `ListActivePrimaryNetworkStakingTransactionsGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListActivePrimaryNetworkStakingTransactionsGlobals$inboundSchema;
+    /** @deprecated use `ListActivePrimaryNetworkStakingTransactionsGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListActivePrimaryNetworkStakingTransactionsGlobals$outboundSchema;
+    /** @deprecated use `ListActivePrimaryNetworkStakingTransactionsGlobals$Outbound` instead. */
+    export type Outbound = ListActivePrimaryNetworkStakingTransactionsGlobals$Outbound;
+}
 
 /** @internal */
 export const ListActivePrimaryNetworkStakingTransactionsRequest$inboundSchema: z.ZodType<
@@ -62,7 +105,7 @@ export const ListActivePrimaryNetworkStakingTransactionsRequest$inboundSchema: z
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.PChainId$inboundSchema,
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
 });
 
@@ -75,7 +118,7 @@ export type ListActivePrimaryNetworkStakingTransactionsRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
     blockchainId: string;
-    network: string;
+    network?: string | undefined;
     sortOrder?: string | undefined;
 };
 
@@ -92,7 +135,7 @@ export const ListActivePrimaryNetworkStakingTransactionsRequest$outboundSchema: 
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.PChainId$outboundSchema,
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),
 });
 
