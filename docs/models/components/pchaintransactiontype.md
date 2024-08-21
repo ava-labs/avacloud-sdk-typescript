@@ -5,7 +5,7 @@
 ```typescript
 import { PChainTransactionType } from "@avalabs/avalanche-sdk/models/components";
 
-let value: PChainTransactionType = "TransformSubnetTx";
+let value: PChainTransactionType = "BaseTx";
 ```
 
 ## Values

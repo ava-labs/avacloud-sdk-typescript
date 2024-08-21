@@ -5,6 +5,11 @@
 import * as z from "zod";
 
 /**
+ * The error message describing the reason for the exception
+ */
+export type UnauthorizedMessage = string | Array<string>;
+
+/**
  * When a client attempts to access resources that require
  *
  * @remarks
@@ -15,7 +20,7 @@ export type UnauthorizedData = {
     /**
      * The error message describing the reason for the exception
      */
-    message: Array<string>;
+    message: string | Array<string>;
     /**
      * The HTTP status code of the response
      */
@@ -62,9 +67,39 @@ export class Unauthorized extends Error {
 }
 
 /** @internal */
+export const UnauthorizedMessage$inboundSchema: z.ZodType<
+    UnauthorizedMessage,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type UnauthorizedMessage$Outbound = string | Array<string>;
+
+/** @internal */
+export const UnauthorizedMessage$outboundSchema: z.ZodType<
+    UnauthorizedMessage$Outbound,
+    z.ZodTypeDef,
+    UnauthorizedMessage
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnauthorizedMessage$ {
+    /** @deprecated use `UnauthorizedMessage$inboundSchema` instead. */
+    export const inboundSchema = UnauthorizedMessage$inboundSchema;
+    /** @deprecated use `UnauthorizedMessage$outboundSchema` instead. */
+    export const outboundSchema = UnauthorizedMessage$outboundSchema;
+    /** @deprecated use `UnauthorizedMessage$Outbound` instead. */
+    export type Outbound = UnauthorizedMessage$Outbound;
+}
+
+/** @internal */
 export const Unauthorized$inboundSchema: z.ZodType<Unauthorized, z.ZodTypeDef, unknown> = z
     .object({
-        message: z.array(z.string()),
+        message: z.union([z.string(), z.array(z.string())]),
         statusCode: z.number(),
         error: z.string(),
     })
@@ -74,7 +109,7 @@ export const Unauthorized$inboundSchema: z.ZodType<Unauthorized, z.ZodTypeDef, u
 
 /** @internal */
 export type Unauthorized$Outbound = {
-    message: Array<string>;
+    message: string | Array<string>;
     statusCode: number;
     error: string;
 };
@@ -89,7 +124,7 @@ export const Unauthorized$outboundSchema: z.ZodType<
     .transform((v) => v.data$)
     .pipe(
         z.object({
-            message: z.array(z.string()),
+            message: z.union([z.string(), z.array(z.string())]),
             statusCode: z.number(),
             error: z.string(),
         })

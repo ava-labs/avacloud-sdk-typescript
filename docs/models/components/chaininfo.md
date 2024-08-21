@@ -9,7 +9,7 @@ let value: ChainInfo = {
     chainId: "<value>",
     status: "UNAVAILABLE",
     chainName: "<value>",
-    description: "Implemented multimedia implementation",
+    description: "Cross-group national instruction set",
     vmName: "EVM",
     rpcUrl: "<value>",
     isTestnet: false,

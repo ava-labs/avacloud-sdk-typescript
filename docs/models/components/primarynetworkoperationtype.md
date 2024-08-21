@@ -5,7 +5,7 @@
 ```typescript
 import { PrimaryNetworkOperationType } from "@avalabs/avalanche-sdk/models/components";
 
-let value: PrimaryNetworkOperationType = "TRANSACTION_EXPORT_PRIMARY_NETWORK_STAKING";
+let value: PrimaryNetworkOperationType = "TRANSACTION_EXPORT_PRIMARY_NETWORK_SIMPLE";
 ```
 
 ## Values

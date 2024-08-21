@@ -6,7 +6,7 @@
 import { Erc1155TokenMetadata } from "@avalabs/avalanche-sdk/models/components";
 
 let value: Erc1155TokenMetadata = {
-    indexStatus: "UNINDEXED",
+    indexStatus: "METADATA_CONTENT_TOO_LARGE",
 };
 ```
 

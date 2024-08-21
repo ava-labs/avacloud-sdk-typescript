@@ -10,9 +10,9 @@ let value: CompletedValidatorDetails = {
     nodeId: "<value>",
     subnetId: "<value>",
     amountStaked: "<value>",
-    startTimestamp: 9182.36,
-    endTimestamp: 641.47,
-    delegatorCount: 2168.22,
+    startTimestamp: 5232.48,
+    endTimestamp: 9167.23,
+    delegatorCount: 939.4,
     rewards: {
         validationRewardAmount: "<value>",
         delegationRewardAmount: "<value>",

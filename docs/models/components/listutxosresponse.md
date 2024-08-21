@@ -14,7 +14,7 @@ let value: ListUtxosResponse = {
                 name: "Avalanche",
                 symbol: "AVAX",
                 denomination: 9,
-                type: "nft",
+                type: "secp256k1",
                 amount: "5001000",
             },
             consumedOnChainId: "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
@@ -38,8 +38,8 @@ let value: ListUtxosResponse = {
         },
     ],
     chainInfo: {
-        chainName: "c-chain",
-        network: "mainnet",
+        chainName: "p-chain",
+        network: "fuji",
     },
 };
 ```

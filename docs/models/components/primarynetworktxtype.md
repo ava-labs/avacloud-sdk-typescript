@@ -5,7 +5,7 @@
 ```typescript
 import { PrimaryNetworkTxType } from "@avalabs/avalanche-sdk/models/components";
 
-let value: PrimaryNetworkTxType = "ExportTx";
+let value: PrimaryNetworkTxType = "AdvanceTimeTx";
 ```
 
 ## Values

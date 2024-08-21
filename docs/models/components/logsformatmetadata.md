@@ -6,8 +6,8 @@
 import { LogsFormatMetadata } from "@avalabs/avalanche-sdk/models/components";
 
 let value: LogsFormatMetadata = {
-    ipAddress: "241.145.189.115",
-    host: "limping-washbasin.biz",
+    ipAddress: "21.14.14.111",
+    host: "likely-epauliere.org",
     userAgent: "<value>",
 };
 ```

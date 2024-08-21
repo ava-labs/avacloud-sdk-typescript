@@ -6,7 +6,7 @@
 import { Blockchain } from "@avalabs/avalanche-sdk/models/components";
 
 let value: Blockchain = {
-    createBlockTimestamp: 9795.87,
+    createBlockTimestamp: 8804.76,
     createBlockNumber: "<value>",
     blockchainId: "<value>",
     vmId: "<value>",

@@ -5,7 +5,7 @@
 ```typescript
 import { SortByOption } from "@avalabs/avalanche-sdk/models/components";
 
-let value: SortByOption = "blockIndex";
+let value: SortByOption = "timeRemaining";
 ```
 
 ## Values

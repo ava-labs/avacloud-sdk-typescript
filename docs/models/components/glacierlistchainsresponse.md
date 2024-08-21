@@ -11,8 +11,8 @@ let value: GlacierListChainsResponse = {
             chainId: "<value>",
             status: "OK",
             chainName: "<value>",
-            description: "Ameliorated next generation concept",
-            vmName: "EVM",
+            description: "Extended client-server matrices",
+            vmName: "ETHEREUM",
             rpcUrl: "<value>",
             isTestnet: false,
             networkToken: {

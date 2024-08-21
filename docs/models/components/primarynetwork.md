@@ -5,7 +5,7 @@
 ```typescript
 import { PrimaryNetwork } from "@avalabs/avalanche-sdk/models/components";
 
-let value: PrimaryNetwork = "fuji";
+let value: PrimaryNetwork = "mainnet";
 ```
 
 ## Values
