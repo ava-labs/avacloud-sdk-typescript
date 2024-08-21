@@ -39,7 +39,7 @@ let value: DeliveredSourceNotIndexedTeleporterMessage = {
     },
     destinationTransaction: {
         txHash: "<value>",
-        timestamp: 4560.15,
+        timestamp: 3200.17,
         gasSpent: "<value>",
         rewardRedeemer: "<value>",
         delivererAddress: "<value>",

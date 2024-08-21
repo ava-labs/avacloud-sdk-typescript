@@ -2,7 +2,7 @@
 
 {
   "name": "@avalabs/avalanche-sdk",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "exports": {
     ".": "./src/index.ts",    
     "./models/errors": "./src/models/errors/index.ts",    
@@ -12,7 +12,8 @@
     "./lib/http": "./src/lib/http.ts",
     "./lib/retries": "./src/lib/retries.ts",
     "./lib/sdks": "./src/lib/sdks.ts",
-    "./types": "./src/types/index.ts"
+    "./types": "./src/types/index.ts",
+    "./utils": "./src/utils/index.ts",
   },
   "publish": {
     "include": [

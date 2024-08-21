@@ -5,6 +5,11 @@
 import * as z from "zod";
 
 /**
+ * The error message describing the reason for the exception
+ */
+export type BadGatewayMessage = string | Array<string>;
+
+/**
  * This is an internal error indicating invalid response
  *
  * @remarks
@@ -14,7 +19,7 @@ export type BadGatewayData = {
     /**
      * The error message describing the reason for the exception
      */
-    message: Array<string>;
+    message: string | Array<string>;
     /**
      * The HTTP status code of the response
      */
@@ -60,9 +65,36 @@ export class BadGateway extends Error {
 }
 
 /** @internal */
+export const BadGatewayMessage$inboundSchema: z.ZodType<BadGatewayMessage, z.ZodTypeDef, unknown> =
+    z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type BadGatewayMessage$Outbound = string | Array<string>;
+
+/** @internal */
+export const BadGatewayMessage$outboundSchema: z.ZodType<
+    BadGatewayMessage$Outbound,
+    z.ZodTypeDef,
+    BadGatewayMessage
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BadGatewayMessage$ {
+    /** @deprecated use `BadGatewayMessage$inboundSchema` instead. */
+    export const inboundSchema = BadGatewayMessage$inboundSchema;
+    /** @deprecated use `BadGatewayMessage$outboundSchema` instead. */
+    export const outboundSchema = BadGatewayMessage$outboundSchema;
+    /** @deprecated use `BadGatewayMessage$Outbound` instead. */
+    export type Outbound = BadGatewayMessage$Outbound;
+}
+
+/** @internal */
 export const BadGateway$inboundSchema: z.ZodType<BadGateway, z.ZodTypeDef, unknown> = z
     .object({
-        message: z.array(z.string()),
+        message: z.union([z.string(), z.array(z.string())]),
         statusCode: z.number(),
         error: z.string(),
     })
@@ -72,7 +104,7 @@ export const BadGateway$inboundSchema: z.ZodType<BadGateway, z.ZodTypeDef, unkno
 
 /** @internal */
 export type BadGateway$Outbound = {
-    message: Array<string>;
+    message: string | Array<string>;
     statusCode: number;
     error: string;
 };
@@ -83,7 +115,7 @@ export const BadGateway$outboundSchema: z.ZodType<BadGateway$Outbound, z.ZodType
     .transform((v) => v.data$)
     .pipe(
         z.object({
-            message: z.array(z.string()),
+            message: z.union([z.string(), z.array(z.string())]),
             statusCode: z.number(),
             error: z.string(),
         })

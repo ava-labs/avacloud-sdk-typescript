@@ -108,7 +108,7 @@ export async function glacierWebhooksCreateWebhook(
                     initialInterval: 500,
                     maxInterval: 60000,
                     exponent: 1.5,
-                    maxElapsedTime: 3600000,
+                    maxElapsedTime: 120000,
                 },
                 retryConnectionErrors: true,
             },

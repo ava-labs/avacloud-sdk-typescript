@@ -528,7 +528,7 @@ You can override the default server globally by passing a server index to the `s
 
 | # | Server | Variables |
 | - | ------ | --------- |
-| 0 | `https://glacier-api-dev.avax.network` | None |
+| 0 | `http://localhost:3000` | None |
 
 ```typescript
 import { AvalancheSDK } from "@avalabs/avalanche-sdk";
@@ -560,7 +560,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { AvalancheSDK } from "@avalabs/avalanche-sdk";
 
 const avalancheSDK = new AvalancheSDK({
-    serverURL: "https://glacier-api-dev.avax.network",
+    serverURL: "http://localhost:3000",
     glacierApiKey: "<YOUR_API_KEY_HERE>",
     chainId: "43114",
     network: "mainnet",

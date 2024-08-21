@@ -6,7 +6,7 @@
 import { CreateWebhookRequest } from "@avalabs/avalanche-sdk/models/components";
 
 let value: CreateWebhookRequest = {
-    url: "http://jealous-polyester.name",
+    url: "http://jolly-pint.org",
     chainId: "<value>",
     eventType: "address_activity",
     metadata: {

@@ -5,6 +5,11 @@
 import * as z from "zod";
 
 /**
+ * The error message describing the reason for the exception
+ */
+export type ServiceUnavailableMessage = string | Array<string>;
+
+/**
  * The error is returned for certain routes on a particular
  *
  * @remarks
@@ -15,7 +20,7 @@ export type ServiceUnavailableData = {
     /**
      * The error message describing the reason for the exception
      */
-    message: Array<string>;
+    message: string | Array<string>;
     /**
      * The HTTP status code of the response
      */
@@ -62,13 +67,43 @@ export class ServiceUnavailable extends Error {
 }
 
 /** @internal */
+export const ServiceUnavailableMessage$inboundSchema: z.ZodType<
+    ServiceUnavailableMessage,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type ServiceUnavailableMessage$Outbound = string | Array<string>;
+
+/** @internal */
+export const ServiceUnavailableMessage$outboundSchema: z.ZodType<
+    ServiceUnavailableMessage$Outbound,
+    z.ZodTypeDef,
+    ServiceUnavailableMessage
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ServiceUnavailableMessage$ {
+    /** @deprecated use `ServiceUnavailableMessage$inboundSchema` instead. */
+    export const inboundSchema = ServiceUnavailableMessage$inboundSchema;
+    /** @deprecated use `ServiceUnavailableMessage$outboundSchema` instead. */
+    export const outboundSchema = ServiceUnavailableMessage$outboundSchema;
+    /** @deprecated use `ServiceUnavailableMessage$Outbound` instead. */
+    export type Outbound = ServiceUnavailableMessage$Outbound;
+}
+
+/** @internal */
 export const ServiceUnavailable$inboundSchema: z.ZodType<
     ServiceUnavailable,
     z.ZodTypeDef,
     unknown
 > = z
     .object({
-        message: z.array(z.string()),
+        message: z.union([z.string(), z.array(z.string())]),
         statusCode: z.number(),
         error: z.string(),
     })
@@ -78,7 +113,7 @@ export const ServiceUnavailable$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ServiceUnavailable$Outbound = {
-    message: Array<string>;
+    message: string | Array<string>;
     statusCode: number;
     error: string;
 };
@@ -93,7 +128,7 @@ export const ServiceUnavailable$outboundSchema: z.ZodType<
     .transform((v) => v.data$)
     .pipe(
         z.object({
-            message: z.array(z.string()),
+            message: z.union([z.string(), z.array(z.string())]),
             statusCode: z.number(),
             error: z.string(),
         })

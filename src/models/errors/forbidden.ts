@@ -5,6 +5,11 @@
 import * as z from "zod";
 
 /**
+ * The error message describing the reason for the exception
+ */
+export type ForbiddenMessage = string | Array<string>;
+
+/**
  * When a client attempts to access resources with valid
  *
  * @remarks
@@ -15,7 +20,7 @@ export type ForbiddenData = {
     /**
      * The error message describing the reason for the exception
      */
-    message: Array<string>;
+    message: string | Array<string>;
     /**
      * The HTTP status code of the response
      */
@@ -62,9 +67,36 @@ export class Forbidden extends Error {
 }
 
 /** @internal */
+export const ForbiddenMessage$inboundSchema: z.ZodType<ForbiddenMessage, z.ZodTypeDef, unknown> =
+    z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type ForbiddenMessage$Outbound = string | Array<string>;
+
+/** @internal */
+export const ForbiddenMessage$outboundSchema: z.ZodType<
+    ForbiddenMessage$Outbound,
+    z.ZodTypeDef,
+    ForbiddenMessage
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ForbiddenMessage$ {
+    /** @deprecated use `ForbiddenMessage$inboundSchema` instead. */
+    export const inboundSchema = ForbiddenMessage$inboundSchema;
+    /** @deprecated use `ForbiddenMessage$outboundSchema` instead. */
+    export const outboundSchema = ForbiddenMessage$outboundSchema;
+    /** @deprecated use `ForbiddenMessage$Outbound` instead. */
+    export type Outbound = ForbiddenMessage$Outbound;
+}
+
+/** @internal */
 export const Forbidden$inboundSchema: z.ZodType<Forbidden, z.ZodTypeDef, unknown> = z
     .object({
-        message: z.array(z.string()),
+        message: z.union([z.string(), z.array(z.string())]),
         statusCode: z.number(),
         error: z.string(),
     })
@@ -74,7 +106,7 @@ export const Forbidden$inboundSchema: z.ZodType<Forbidden, z.ZodTypeDef, unknown
 
 /** @internal */
 export type Forbidden$Outbound = {
-    message: Array<string>;
+    message: string | Array<string>;
     statusCode: number;
     error: string;
 };
@@ -85,7 +117,7 @@ export const Forbidden$outboundSchema: z.ZodType<Forbidden$Outbound, z.ZodTypeDe
     .transform((v) => v.data$)
     .pipe(
         z.object({
-            message: z.array(z.string()),
+            message: z.union([z.string(), z.array(z.string())]),
             statusCode: z.number(),
             error: z.string(),
         })

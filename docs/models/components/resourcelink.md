@@ -6,8 +6,8 @@
 import { ResourceLink } from "@avalabs/avalanche-sdk/models/components";
 
 let value: ResourceLink = {
-    type: "Discord",
-    url: "https://weepy-increase.net",
+    type: "Documentation",
+    url: "https://unacceptable-destiny.biz",
 };
 ```
 

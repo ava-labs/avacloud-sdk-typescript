@@ -5,7 +5,7 @@
 ```typescript
 import { WebhookStatusType } from "@avalabs/avalanche-sdk/models/components";
 
-let value: WebhookStatusType = "inactive";
+let value: WebhookStatusType = "active";
 ```
 
 ## Values

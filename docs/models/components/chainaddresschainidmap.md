@@ -6,7 +6,7 @@
 import { ChainAddressChainIdMap } from "@avalabs/avalanche-sdk/models/components";
 
 let value: ChainAddressChainIdMap = {
-    address: "609 Thiel Lane",
+    address: "064 Aufderhar Burgs",
     blockchainIds: ["2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm"],
 };
 ```

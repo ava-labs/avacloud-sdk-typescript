@@ -5,7 +5,7 @@
 ```typescript
 import { EnabledFeatures } from "@avalabs/avalanche-sdk/models/components";
 
-let value: EnabledFeatures = "nftIndexing";
+let value: EnabledFeatures = "webhooks";
 ```
 
 ## Values

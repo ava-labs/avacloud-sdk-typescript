@@ -11,7 +11,7 @@ let value: Erc1155TokenBalance = {
     tokenId: "<value>",
     tokenUri: "<value>",
     metadata: {
-        indexStatus: "INVALID_METADATA_JSON",
+        indexStatus: "THROTTLED_TOKEN_URI",
     },
     chainId: "43114",
     balance: "2000000000000000000",

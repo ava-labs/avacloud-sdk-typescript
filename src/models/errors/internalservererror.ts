@@ -5,6 +5,11 @@
 import * as z from "zod";
 
 /**
+ * The error message describing the reason for the exception
+ */
+export type InternalServerErrorMessage = string | Array<string>;
+
+/**
  * The error is a generic server side error that is
  *
  * @remarks
@@ -16,7 +21,7 @@ export type InternalServerErrorData = {
     /**
      * The error message describing the reason for the exception
      */
-    message: Array<string>;
+    message: string | Array<string>;
     /**
      * The HTTP status code of the response
      */
@@ -64,13 +69,43 @@ export class InternalServerError extends Error {
 }
 
 /** @internal */
+export const InternalServerErrorMessage$inboundSchema: z.ZodType<
+    InternalServerErrorMessage,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type InternalServerErrorMessage$Outbound = string | Array<string>;
+
+/** @internal */
+export const InternalServerErrorMessage$outboundSchema: z.ZodType<
+    InternalServerErrorMessage$Outbound,
+    z.ZodTypeDef,
+    InternalServerErrorMessage
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace InternalServerErrorMessage$ {
+    /** @deprecated use `InternalServerErrorMessage$inboundSchema` instead. */
+    export const inboundSchema = InternalServerErrorMessage$inboundSchema;
+    /** @deprecated use `InternalServerErrorMessage$outboundSchema` instead. */
+    export const outboundSchema = InternalServerErrorMessage$outboundSchema;
+    /** @deprecated use `InternalServerErrorMessage$Outbound` instead. */
+    export type Outbound = InternalServerErrorMessage$Outbound;
+}
+
+/** @internal */
 export const InternalServerError$inboundSchema: z.ZodType<
     InternalServerError,
     z.ZodTypeDef,
     unknown
 > = z
     .object({
-        message: z.array(z.string()),
+        message: z.union([z.string(), z.array(z.string())]),
         statusCode: z.number(),
         error: z.string(),
     })
@@ -80,7 +115,7 @@ export const InternalServerError$inboundSchema: z.ZodType<
 
 /** @internal */
 export type InternalServerError$Outbound = {
-    message: Array<string>;
+    message: string | Array<string>;
     statusCode: number;
     error: string;
 };
@@ -95,7 +130,7 @@ export const InternalServerError$outboundSchema: z.ZodType<
     .transform((v) => v.data$)
     .pipe(
         z.object({
-            message: z.array(z.string()),
+            message: z.union([z.string(), z.array(z.string())]),
             statusCode: z.number(),
             error: z.string(),
         })

@@ -5,6 +5,11 @@
 import * as z from "zod";
 
 /**
+ * The error message describing the reason for the exception
+ */
+export type NotFoundMessage = string | Array<string>;
+
+/**
  * The error is mostly returned when the client requests
  *
  * @remarks
@@ -15,7 +20,7 @@ export type NotFoundData = {
     /**
      * The error message describing the reason for the exception
      */
-    message: Array<string>;
+    message: string | Array<string>;
     /**
      * The HTTP status code of the response
      */
@@ -62,9 +67,36 @@ export class NotFound extends Error {
 }
 
 /** @internal */
+export const NotFoundMessage$inboundSchema: z.ZodType<NotFoundMessage, z.ZodTypeDef, unknown> =
+    z.union([z.string(), z.array(z.string())]);
+
+/** @internal */
+export type NotFoundMessage$Outbound = string | Array<string>;
+
+/** @internal */
+export const NotFoundMessage$outboundSchema: z.ZodType<
+    NotFoundMessage$Outbound,
+    z.ZodTypeDef,
+    NotFoundMessage
+> = z.union([z.string(), z.array(z.string())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace NotFoundMessage$ {
+    /** @deprecated use `NotFoundMessage$inboundSchema` instead. */
+    export const inboundSchema = NotFoundMessage$inboundSchema;
+    /** @deprecated use `NotFoundMessage$outboundSchema` instead. */
+    export const outboundSchema = NotFoundMessage$outboundSchema;
+    /** @deprecated use `NotFoundMessage$Outbound` instead. */
+    export type Outbound = NotFoundMessage$Outbound;
+}
+
+/** @internal */
 export const NotFound$inboundSchema: z.ZodType<NotFound, z.ZodTypeDef, unknown> = z
     .object({
-        message: z.array(z.string()),
+        message: z.union([z.string(), z.array(z.string())]),
         statusCode: z.number(),
         error: z.string(),
     })
@@ -74,7 +106,7 @@ export const NotFound$inboundSchema: z.ZodType<NotFound, z.ZodTypeDef, unknown> 
 
 /** @internal */
 export type NotFound$Outbound = {
-    message: Array<string>;
+    message: string | Array<string>;
     statusCode: number;
     error: string;
 };
@@ -85,7 +117,7 @@ export const NotFound$outboundSchema: z.ZodType<NotFound$Outbound, z.ZodTypeDef,
     .transform((v) => v.data$)
     .pipe(
         z.object({
-            message: z.array(z.string()),
+            message: z.union([z.string(), z.array(z.string())]),
             statusCode: z.number(),
             error: z.string(),
         })

@@ -7,7 +7,7 @@ import { TeleporterDestinationTransaction } from "@avalabs/avalanche-sdk/models/
 
 let value: TeleporterDestinationTransaction = {
     txHash: "<value>",
-    timestamp: 2168.97,
+    timestamp: 8815.86,
     gasSpent: "<value>",
     rewardRedeemer: "<value>",
     delivererAddress: "<value>",

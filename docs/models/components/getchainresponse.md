@@ -9,7 +9,7 @@ let value: GetChainResponse = {
     chainId: "<value>",
     status: "UNAVAILABLE",
     chainName: "<value>",
-    description: "Synergistic optimizing attitude",
+    description: "Integrated high-level knowledge base",
     vmName: "ETHEREUM",
     rpcUrl: "<value>",
     isTestnet: false,

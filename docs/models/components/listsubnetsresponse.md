@@ -8,12 +8,12 @@ import { ListSubnetsResponse } from "@avalabs/avalanche-sdk/models/components";
 let value: ListSubnetsResponse = {
     subnets: [
         {
-            createBlockTimestamp: 1201.96,
+            createBlockTimestamp: 4142.63,
             createBlockIndex: "<value>",
             subnetId: "<value>",
             ownerAddresses: ["<value>"],
-            threshold: 3594.44,
-            locktime: 2961.4,
+            threshold: 9182.36,
+            locktime: 641.47,
             subnetOwnershipInfo: {
                 locktime: 0,
                 threshold: 1,

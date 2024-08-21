@@ -5,6 +5,11 @@
 import * as z from "zod";
 
 /**
+ * The error message describing the reason for the exception
+ */
+export type Message = string | Array<string>;
+
+/**
  * Bad requests generally mean the client has passed invalid
  *
  * @remarks
@@ -15,7 +20,7 @@ export type BadRequestData = {
     /**
      * The error message describing the reason for the exception
      */
-    message: Array<string>;
+    message: string | Array<string>;
     /**
      * The HTTP status code of the response
      */
@@ -62,9 +67,37 @@ export class BadRequest extends Error {
 }
 
 /** @internal */
+export const Message$inboundSchema: z.ZodType<Message, z.ZodTypeDef, unknown> = z.union([
+    z.string(),
+    z.array(z.string()),
+]);
+
+/** @internal */
+export type Message$Outbound = string | Array<string>;
+
+/** @internal */
+export const Message$outboundSchema: z.ZodType<Message$Outbound, z.ZodTypeDef, Message> = z.union([
+    z.string(),
+    z.array(z.string()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Message$ {
+    /** @deprecated use `Message$inboundSchema` instead. */
+    export const inboundSchema = Message$inboundSchema;
+    /** @deprecated use `Message$outboundSchema` instead. */
+    export const outboundSchema = Message$outboundSchema;
+    /** @deprecated use `Message$Outbound` instead. */
+    export type Outbound = Message$Outbound;
+}
+
+/** @internal */
 export const BadRequest$inboundSchema: z.ZodType<BadRequest, z.ZodTypeDef, unknown> = z
     .object({
-        message: z.array(z.string()),
+        message: z.union([z.string(), z.array(z.string())]),
         statusCode: z.number(),
         error: z.string(),
     })
@@ -74,7 +107,7 @@ export const BadRequest$inboundSchema: z.ZodType<BadRequest, z.ZodTypeDef, unkno
 
 /** @internal */
 export type BadRequest$Outbound = {
-    message: Array<string>;
+    message: string | Array<string>;
     statusCode: number;
     error: string;
 };
@@ -85,7 +118,7 @@ export const BadRequest$outboundSchema: z.ZodType<BadRequest$Outbound, z.ZodType
     .transform((v) => v.data$)
     .pipe(
         z.object({
-            message: z.array(z.string()),
+            message: z.union([z.string(), z.array(z.string())]),
             statusCode: z.number(),
             error: z.string(),
         })

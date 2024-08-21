@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: 3a8e2b1af2ac2a9bb597d66210dcb5df
+  docChecksum: def392a2a38d802384d3dea7e9f361df
   docVersion: Beta
   speakeasyVersion: 1.377.1
   generationVersion: 2.404.1
-  releaseVersion: 0.1.5
-  configChecksum: 8ad98e3d38aae5f8df6a115cd41d7821
+  releaseVersion: 0.1.6
+  configChecksum: 67cb6671d1ebbca768961a4106a50f35
   repoURL: https://github.com/ava-labs/avalanche-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avalanche-sdk-typescript
   published: true
@@ -548,13 +548,21 @@ generatedFiles:
   - docs/models/errors/errort.md
   - docs/models/errors/details.md
   - docs/models/errors/glacierhealthcheckresponsebody.md
+  - docs/models/errors/message.md
   - docs/models/errors/badrequest.md
+  - docs/models/errors/unauthorizedmessage.md
   - docs/models/errors/unauthorized.md
+  - docs/models/errors/forbiddenmessage.md
   - docs/models/errors/forbidden.md
+  - docs/models/errors/notfoundmessage.md
   - docs/models/errors/notfound.md
+  - docs/models/errors/toomanyrequestsmessage.md
   - docs/models/errors/toomanyrequests.md
+  - docs/models/errors/internalservererrormessage.md
   - docs/models/errors/internalservererror.md
+  - docs/models/errors/badgatewaymessage.md
   - docs/models/errors/badgateway.md
+  - docs/models/errors/serviceunavailablemessage.md
   - docs/models/errors/serviceunavailable.md
   - docs/models/components/tokens.md
   - docs/models/components/listnfttokens.md

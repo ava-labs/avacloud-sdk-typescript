@@ -8,8 +8,8 @@ import { ListPChainTransactionsResponse } from "@avalabs/avalanche-sdk/models/co
 let value: ListPChainTransactionsResponse = {
     transactions: [],
     chainInfo: {
-        chainName: "x-chain",
-        network: "mainnet",
+        chainName: "c-chain",
+        network: "fuji",
     },
 };
 ```
