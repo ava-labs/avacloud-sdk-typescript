@@ -9,8 +9,8 @@ let value: ListAssetTransactionsResponse = {
     result: {
         transactions: [],
         chainInfo: {
-            chainName: "c-chain",
-            network: "mainnet",
+            chainName: "p-chain",
+            network: "fuji",
         },
     },
 };

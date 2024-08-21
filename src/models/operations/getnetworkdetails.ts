@@ -5,12 +5,55 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetNetworkDetailsGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type GetNetworkDetailsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
 };
+
+/** @internal */
+export const GetNetworkDetailsGlobals$inboundSchema: z.ZodType<
+    GetNetworkDetailsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetNetworkDetailsGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const GetNetworkDetailsGlobals$outboundSchema: z.ZodType<
+    GetNetworkDetailsGlobals$Outbound,
+    z.ZodTypeDef,
+    GetNetworkDetailsGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetNetworkDetailsGlobals$ {
+    /** @deprecated use `GetNetworkDetailsGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetNetworkDetailsGlobals$inboundSchema;
+    /** @deprecated use `GetNetworkDetailsGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetNetworkDetailsGlobals$outboundSchema;
+    /** @deprecated use `GetNetworkDetailsGlobals$Outbound` instead. */
+    export type Outbound = GetNetworkDetailsGlobals$Outbound;
+}
 
 /** @internal */
 export const GetNetworkDetailsRequest$inboundSchema: z.ZodType<
@@ -18,12 +61,12 @@ export const GetNetworkDetailsRequest$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetNetworkDetailsRequest$Outbound = {
-    network: string;
+    network?: string | undefined;
 };
 
 /** @internal */
@@ -32,7 +75,7 @@ export const GetNetworkDetailsRequest$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetNetworkDetailsRequest
 > = z.object({
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
 });
 
 /**

@@ -9,9 +9,9 @@ let value: GlacierListChainsResponse = {
     chains: [
         {
             chainId: "<value>",
-            status: "OK",
+            status: "UNAVAILABLE",
             chainName: "<value>",
-            description: "Extended client-server matrices",
+            description: "Pre-emptive 6th generation leverage",
             vmName: "ETHEREUM",
             rpcUrl: "<value>",
             isTestnet: false,

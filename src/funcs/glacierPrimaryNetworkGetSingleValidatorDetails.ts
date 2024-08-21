@@ -73,7 +73,7 @@ export async function glacierPrimaryNetworkGetSingleValidatorDetails(
     const body$ = null;
 
     const pathParams$ = {
-        network: encodeSimple$("network", payload$.network, {
+        network: encodeSimple$("network", payload$.network ?? client$.options$.network, {
             explode: false,
             charEncoding: "percent",
         }),

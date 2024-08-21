@@ -5,7 +5,7 @@
 ```typescript
 import { ResourceLinkType } from "@avalabs/avalanche-sdk/models/components";
 
-let value: ResourceLinkType = "Discord";
+let value: ResourceLinkType = "Twitter";
 ```
 
 ## Values

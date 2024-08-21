@@ -9,12 +9,15 @@ import { GetTokenDetailsResponseBody } from "@avalabs/avalanche-sdk/models/opera
 
 let value: GetTokenDetailsResponseBody = {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-    ercType: "ERC-1155",
+    name: "Wrapped AVAX",
+    symbol: "WAVAX",
+    ercType: "ERC-721",
     tokenId: "<value>",
     tokenUri: "<value>",
     metadata: {
-        indexStatus: "METADATA_CONTENT_TOO_LARGE",
+        indexStatus: "INVALID_TOKEN_URI",
     },
+    ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
 };
 ```
 

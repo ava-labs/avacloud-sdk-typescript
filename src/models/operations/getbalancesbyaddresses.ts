@@ -5,6 +5,13 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetBalancesByAddressesGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type GetBalancesByAddressesRequest = {
     /**
      * An epoch timestamp in seconds. Balance will be calculated at this timestamp.
@@ -21,7 +28,7 @@ export type GetBalancesByAddressesRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
 };
 
 /**
@@ -33,6 +40,42 @@ export type GetBalancesByAddressesResponseBody =
     | components.ListCChainAtomicBalancesResponse;
 
 /** @internal */
+export const GetBalancesByAddressesGlobals$inboundSchema: z.ZodType<
+    GetBalancesByAddressesGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetBalancesByAddressesGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const GetBalancesByAddressesGlobals$outboundSchema: z.ZodType<
+    GetBalancesByAddressesGlobals$Outbound,
+    z.ZodTypeDef,
+    GetBalancesByAddressesGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetBalancesByAddressesGlobals$ {
+    /** @deprecated use `GetBalancesByAddressesGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetBalancesByAddressesGlobals$inboundSchema;
+    /** @deprecated use `GetBalancesByAddressesGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetBalancesByAddressesGlobals$outboundSchema;
+    /** @deprecated use `GetBalancesByAddressesGlobals$Outbound` instead. */
+    export type Outbound = GetBalancesByAddressesGlobals$Outbound;
+}
+
+/** @internal */
 export const GetBalancesByAddressesRequest$inboundSchema: z.ZodType<
     GetBalancesByAddressesRequest,
     z.ZodTypeDef,
@@ -41,7 +84,7 @@ export const GetBalancesByAddressesRequest$inboundSchema: z.ZodType<
     blockTimestamp: z.number().int().optional(),
     addresses: z.string().optional(),
     blockchainId: components.BlockchainId$inboundSchema,
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -49,7 +92,7 @@ export type GetBalancesByAddressesRequest$Outbound = {
     blockTimestamp?: number | undefined;
     addresses?: string | undefined;
     blockchainId: string;
-    network: string;
+    network?: string | undefined;
 };
 
 /** @internal */
@@ -61,7 +104,7 @@ export const GetBalancesByAddressesRequest$outboundSchema: z.ZodType<
     blockTimestamp: z.number().int().optional(),
     addresses: z.string().optional(),
     blockchainId: components.BlockchainId$outboundSchema,
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
 });
 
 /**

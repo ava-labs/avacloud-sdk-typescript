@@ -6,6 +6,13 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetVertexByHeightGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type GetVertexByHeightRequest = {
     /**
      * The height of a vertex.
@@ -26,7 +33,7 @@ export type GetVertexByHeightRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
     /**
      * The order by which to sort results. Use "asc" for ascending order, "desc" for descending order. Sorted by timestamp or the `sortBy` query parameter, if provided.
      */
@@ -38,6 +45,42 @@ export type GetVertexByHeightResponse = {
 };
 
 /** @internal */
+export const GetVertexByHeightGlobals$inboundSchema: z.ZodType<
+    GetVertexByHeightGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetVertexByHeightGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const GetVertexByHeightGlobals$outboundSchema: z.ZodType<
+    GetVertexByHeightGlobals$Outbound,
+    z.ZodTypeDef,
+    GetVertexByHeightGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetVertexByHeightGlobals$ {
+    /** @deprecated use `GetVertexByHeightGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetVertexByHeightGlobals$inboundSchema;
+    /** @deprecated use `GetVertexByHeightGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetVertexByHeightGlobals$outboundSchema;
+    /** @deprecated use `GetVertexByHeightGlobals$Outbound` instead. */
+    export type Outbound = GetVertexByHeightGlobals$Outbound;
+}
+
+/** @internal */
 export const GetVertexByHeightRequest$inboundSchema: z.ZodType<
     GetVertexByHeightRequest,
     z.ZodTypeDef,
@@ -47,7 +90,7 @@ export const GetVertexByHeightRequest$inboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.XChainId$inboundSchema,
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
 });
 
@@ -57,7 +100,7 @@ export type GetVertexByHeightRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
     blockchainId: string;
-    network: string;
+    network?: string | undefined;
     sortOrder?: string | undefined;
 };
 
@@ -71,7 +114,7 @@ export const GetVertexByHeightRequest$outboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.XChainId$outboundSchema,
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),
 });
 

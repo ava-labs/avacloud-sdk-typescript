@@ -11,7 +11,7 @@ let value: Erc1155Token = {
     tokenId: "<value>",
     tokenUri: "<value>",
     metadata: {
-        indexStatus: "INVALID_TOKEN_URI",
+        indexStatus: "INDEXED",
     },
 };
 ```

@@ -7,11 +7,11 @@ import { OperationStatusResponse } from "@avalabs/avalanche-sdk/models/component
 
 let value: OperationStatusResponse = {
     operationId: "<value>",
-    operationType: "TRANSACTION_EXPORT_PRIMARY_NETWORK",
+    operationType: "TRANSACTION_EXPORT_EVM",
     operationStatus: "COMPLETED",
     metadata: {},
-    createdAtTimestamp: 1103.75,
-    updatedAtTimestamp: 6747.52,
+    createdAtTimestamp: 6235.64,
+    updatedAtTimestamp: 6458.94,
 };
 ```
 

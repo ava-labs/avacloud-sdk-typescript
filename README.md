@@ -298,7 +298,7 @@ The following global parameters are available.
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
 | chainId | string |  | A supported EVM chain id, chain alias, or blockchain id. |
-| network | string |  | A supported network type mainnet or a testnet. |
+| network | components.Network |  | A supported network type mainnet or a testnet. |
 
 
 ### Example

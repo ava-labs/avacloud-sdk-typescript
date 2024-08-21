@@ -10,14 +10,11 @@ let value: Validators = {
     nodeId: "<value>",
     subnetId: "<value>",
     amountStaked: "<value>",
-    startTimestamp: 8651.03,
-    endTimestamp: 2653.89,
-    delegatorCount: 5089.69,
-    rewards: {
-        validationRewardAmount: "<value>",
-        delegationRewardAmount: "<value>",
-    },
-    validationStatus: "completed",
+    startTimestamp: 7586.16,
+    endTimestamp: 5218.48,
+    removeTxHash: "<value>",
+    removeTimestamp: 1059.07,
+    validationStatus: "removed",
 };
 ```
 

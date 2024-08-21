@@ -28,7 +28,6 @@ async function run() {
   const result = await avalancheSDK.glacier.primaryNetwork.vertices.listLatestXChainVertices({
     pageSize: 10,
     blockchainId: "x-chain",
-    network: "mainnet",
   });
 
   for await (const page of result) {
@@ -59,7 +58,6 @@ async function run() {
   const res = await glacierPrimaryNetworkVerticesListLatestXChainVertices(avalancheSDK, {
     pageSize: 10,
     blockchainId: "x-chain",
-    network: "mainnet",
   });
 
   if (!res.ok) {
@@ -123,7 +121,6 @@ async function run() {
   const result = await avalancheSDK.glacier.primaryNetwork.vertices.getVertexByHash({
     vertexHash: "haP1CW56cspZY7aEuqHNrtpvhqCaMTxQaYe6j5u2Mbn4L2Gqr",
     blockchainId: "x-chain",
-    network: "mainnet",
   });
 
   // Handle the result
@@ -153,7 +150,6 @@ async function run() {
   const res = await glacierPrimaryNetworkVerticesGetVertexByHash(avalancheSDK, {
     vertexHash: "haP1CW56cspZY7aEuqHNrtpvhqCaMTxQaYe6j5u2Mbn4L2Gqr",
     blockchainId: "x-chain",
-    network: "mainnet",
   });
 
   if (!res.ok) {
@@ -217,7 +213,6 @@ async function run() {
     vertexHeight: 123,
     pageSize: 10,
     blockchainId: "x-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
 
@@ -250,7 +245,6 @@ async function run() {
     vertexHeight: 123,
     pageSize: 10,
     blockchainId: "x-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
 

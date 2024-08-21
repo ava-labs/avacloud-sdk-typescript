@@ -9,8 +9,8 @@ let value: ChainInfo = {
     chainId: "<value>",
     status: "UNAVAILABLE",
     chainName: "<value>",
-    description: "Cross-group national instruction set",
-    vmName: "EVM",
+    description: "Upgradable demand-driven methodology",
+    vmName: "ETHEREUM",
     rpcUrl: "<value>",
     isTestnet: false,
     networkToken: {

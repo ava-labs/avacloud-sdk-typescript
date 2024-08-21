@@ -5,6 +5,13 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetTxByHashGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type GetTxByHashRequest = {
     /**
      * A primary network blockchain id or alias.
@@ -13,7 +20,7 @@ export type GetTxByHashRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
     /**
      * A primary network (P or X chain) transaction hash.
      */
@@ -31,20 +38,56 @@ export type GetTxByHashResponseBody =
     | components.PChainTransaction;
 
 /** @internal */
+export const GetTxByHashGlobals$inboundSchema: z.ZodType<
+    GetTxByHashGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetTxByHashGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const GetTxByHashGlobals$outboundSchema: z.ZodType<
+    GetTxByHashGlobals$Outbound,
+    z.ZodTypeDef,
+    GetTxByHashGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetTxByHashGlobals$ {
+    /** @deprecated use `GetTxByHashGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetTxByHashGlobals$inboundSchema;
+    /** @deprecated use `GetTxByHashGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetTxByHashGlobals$outboundSchema;
+    /** @deprecated use `GetTxByHashGlobals$Outbound` instead. */
+    export type Outbound = GetTxByHashGlobals$Outbound;
+}
+
+/** @internal */
 export const GetTxByHashRequest$inboundSchema: z.ZodType<
     GetTxByHashRequest,
     z.ZodTypeDef,
     unknown
 > = z.object({
     blockchainId: components.BlockchainId$inboundSchema,
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
     txHash: z.string(),
 });
 
 /** @internal */
 export type GetTxByHashRequest$Outbound = {
     blockchainId: string;
-    network: string;
+    network?: string | undefined;
     txHash: string;
 };
 
@@ -55,7 +98,7 @@ export const GetTxByHashRequest$outboundSchema: z.ZodType<
     GetTxByHashRequest
 > = z.object({
     blockchainId: components.BlockchainId$outboundSchema,
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
     txHash: z.string(),
 });
 

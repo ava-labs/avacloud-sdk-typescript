@@ -6,6 +6,13 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListAssetTransactionsGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type ListAssetTransactionsRequest = {
     /**
      * Query param for filtering items based on transaction types.
@@ -34,7 +41,7 @@ export type ListAssetTransactionsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
     /**
      * Asset ID for any asset on X-Chain
      */
@@ -44,6 +51,42 @@ export type ListAssetTransactionsRequest = {
 export type ListAssetTransactionsResponse = {
     result: components.ListXChainTransactionsResponse;
 };
+
+/** @internal */
+export const ListAssetTransactionsGlobals$inboundSchema: z.ZodType<
+    ListAssetTransactionsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type ListAssetTransactionsGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const ListAssetTransactionsGlobals$outboundSchema: z.ZodType<
+    ListAssetTransactionsGlobals$Outbound,
+    z.ZodTypeDef,
+    ListAssetTransactionsGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAssetTransactionsGlobals$ {
+    /** @deprecated use `ListAssetTransactionsGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListAssetTransactionsGlobals$inboundSchema;
+    /** @deprecated use `ListAssetTransactionsGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListAssetTransactionsGlobals$outboundSchema;
+    /** @deprecated use `ListAssetTransactionsGlobals$Outbound` instead. */
+    export type Outbound = ListAssetTransactionsGlobals$Outbound;
+}
 
 /** @internal */
 export const ListAssetTransactionsRequest$inboundSchema: z.ZodType<
@@ -57,7 +100,7 @@ export const ListAssetTransactionsRequest$inboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.XChainId$inboundSchema,
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
     assetId: z.string(),
 });
 
@@ -69,7 +112,7 @@ export type ListAssetTransactionsRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
     blockchainId: string;
-    network: string;
+    network?: string | undefined;
     assetId: string;
 };
 
@@ -85,7 +128,7 @@ export const ListAssetTransactionsRequest$outboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.XChainId$outboundSchema,
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
     assetId: z.string(),
 });
 

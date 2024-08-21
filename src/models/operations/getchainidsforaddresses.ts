@@ -5,6 +5,13 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type GetChainIdsForAddressesGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type GetChainIdsForAddressesRequest = {
     /**
      * A comma separated list of X-Chain or P-Chain wallet addresses, starting with "avax"/"fuji", "P-avax"/"P-fuji" or "X-avax"/"X-fuji".
@@ -13,8 +20,44 @@ export type GetChainIdsForAddressesRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
 };
+
+/** @internal */
+export const GetChainIdsForAddressesGlobals$inboundSchema: z.ZodType<
+    GetChainIdsForAddressesGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type GetChainIdsForAddressesGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const GetChainIdsForAddressesGlobals$outboundSchema: z.ZodType<
+    GetChainIdsForAddressesGlobals$Outbound,
+    z.ZodTypeDef,
+    GetChainIdsForAddressesGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetChainIdsForAddressesGlobals$ {
+    /** @deprecated use `GetChainIdsForAddressesGlobals$inboundSchema` instead. */
+    export const inboundSchema = GetChainIdsForAddressesGlobals$inboundSchema;
+    /** @deprecated use `GetChainIdsForAddressesGlobals$outboundSchema` instead. */
+    export const outboundSchema = GetChainIdsForAddressesGlobals$outboundSchema;
+    /** @deprecated use `GetChainIdsForAddressesGlobals$Outbound` instead. */
+    export type Outbound = GetChainIdsForAddressesGlobals$Outbound;
+}
 
 /** @internal */
 export const GetChainIdsForAddressesRequest$inboundSchema: z.ZodType<
@@ -23,13 +66,13 @@ export const GetChainIdsForAddressesRequest$inboundSchema: z.ZodType<
     unknown
 > = z.object({
     addresses: z.string(),
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetChainIdsForAddressesRequest$Outbound = {
     addresses: string;
-    network: string;
+    network?: string | undefined;
 };
 
 /** @internal */
@@ -39,7 +82,7 @@ export const GetChainIdsForAddressesRequest$outboundSchema: z.ZodType<
     GetChainIdsForAddressesRequest
 > = z.object({
     addresses: z.string(),
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
 });
 
 /**

@@ -5,7 +5,7 @@
 ```typescript
 import { RewardType } from "@avalabs/avalanche-sdk/models/components";
 
-let value: RewardType = "VALIDATOR_FEE";
+let value: RewardType = "DELEGATOR";
 ```
 
 ## Values

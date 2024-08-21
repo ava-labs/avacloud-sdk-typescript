@@ -27,7 +27,6 @@ const avalancheSDK = new AvalancheSDK({
 async function run() {
   const result = await avalancheSDK.glacier.primaryNetwork.blocks.getBlockById({
     blockchainId: "p-chain",
-    network: "mainnet",
     blockId: "5615di9ytxujackzaXNrVuWQy5y8Yrt8chPCscMr5Ku9YxJ1S",
   });
 
@@ -57,7 +56,6 @@ const avalancheSDK = new AvalancheSDKCore({
 async function run() {
   const res = await glacierPrimaryNetworkBlocksGetBlockById(avalancheSDK, {
     blockchainId: "p-chain",
-    network: "mainnet",
     blockId: "5615di9ytxujackzaXNrVuWQy5y8Yrt8chPCscMr5Ku9YxJ1S",
   });
 
@@ -121,7 +119,6 @@ async function run() {
   const result = await avalancheSDK.glacier.primaryNetwork.blocks.listPrimaryNetworkBlocksByNodeId({
     pageSize: 10,
     blockchainId: "p-chain",
-    network: "mainnet",
     nodeId: "NodeID-111111111111111111116DBWJs",
   });
 
@@ -153,7 +150,6 @@ async function run() {
   const res = await glacierPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId(avalancheSDK, {
     pageSize: 10,
     blockchainId: "p-chain",
-    network: "mainnet",
     nodeId: "NodeID-111111111111111111116DBWJs",
   });
 
@@ -218,7 +214,6 @@ async function run() {
   const result = await avalancheSDK.glacier.primaryNetwork.blocks.listLatestPrimaryNetworkBlocks({
     pageSize: 10,
     blockchainId: "p-chain",
-    network: "mainnet",
   });
 
   for await (const page of result) {
@@ -249,7 +244,6 @@ async function run() {
   const res = await glacierPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks(avalancheSDK, {
     pageSize: 10,
     blockchainId: "p-chain",
-    network: "mainnet",
   });
 
   if (!res.ok) {

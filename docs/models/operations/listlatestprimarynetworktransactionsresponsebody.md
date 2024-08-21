@@ -10,8 +10,8 @@ import { ListLatestPrimaryNetworkTransactionsResponseBody } from "@avalabs/avala
 let value: ListLatestPrimaryNetworkTransactionsResponseBody = {
     transactions: [],
     chainInfo: {
-        chainName: "c-chain",
-        network: "fuji",
+        chainName: "x-chain",
+        network: "mainnet",
     },
 };
 ```

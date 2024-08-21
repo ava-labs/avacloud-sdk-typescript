@@ -7,7 +7,7 @@ import { ListWebhookAddressesResponse } from "@avalabs/avalanche-sdk/models/comp
 
 let value: ListWebhookAddressesResponse = {
     addresses: ["<value>"],
-    totalAddresses: 2633.22,
+    totalAddresses: 8073.19,
 };
 ```
 

@@ -6,8 +6,8 @@
 import { ResourceLink } from "@avalabs/avalanche-sdk/models/components";
 
 let value: ResourceLink = {
-    type: "Documentation",
-    url: "https://unacceptable-destiny.biz",
+    type: "Github",
+    url: "http://definite-airspace.biz",
 };
 ```
 

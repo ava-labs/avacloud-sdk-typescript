@@ -8,7 +8,6 @@ import { ListLatestXChainVerticesRequest } from "@avalabs/avalanche-sdk/models/o
 let value: ListLatestXChainVerticesRequest = {
     pageSize: 10,
     blockchainId: "x-chain",
-    network: "mainnet",
 };
 ```
 
@@ -19,4 +18,4 @@ let value: ListLatestXChainVerticesRequest = {
 | `pageToken`                                                                                     | *string*                                                                                        | :heavy_minus_sign:                                                                              | A page token, received from a previous list call. Provide this to retrieve the subsequent page. |                                                                                                 |
 | `pageSize`                                                                                      | *number*                                                                                        | :heavy_minus_sign:                                                                              | The maximum number of items to return. The minimum page size is 1. The maximum pageSize is 100. | 10                                                                                              |
 | `blockchainId`                                                                                  | [components.XChainId](../../models/components/xchainid.md)                                      | :heavy_check_mark:                                                                              | A primary network blockchain id or alias.                                                       | x-chain                                                                                         |
-| `network`                                                                                       | [components.Network](../../models/components/network.md)                                        | :heavy_check_mark:                                                                              | Either mainnet or a testnet.                                                                    | mainnet                                                                                         |
+| `network`                                                                                       | [components.Network](../../models/components/network.md)                                        | :heavy_minus_sign:                                                                              | Either mainnet or a testnet.                                                                    | mainnet                                                                                         |

@@ -6,6 +6,13 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type ListLatestPrimaryNetworkTransactionsGlobals = {
+    /**
+     * A supported network type mainnet or a testnet.
+     */
+    network?: components.Network | undefined;
+};
+
 export type ListLatestPrimaryNetworkTransactionsRequest = {
     /**
      * A comma separated list of X-Chain or P-Chain wallet addresses, starting with "avax"/"fuji", "P-avax"/"P-fuji" or "X-avax"/"X-fuji".
@@ -38,7 +45,7 @@ export type ListLatestPrimaryNetworkTransactionsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network: components.Network;
+    network?: components.Network | undefined;
     /**
      * The order by which to sort results. Use "asc" for ascending order, "desc" for descending order. Sorted by timestamp or the `sortBy` query parameter, if provided.
      */
@@ -61,6 +68,42 @@ export type ListLatestPrimaryNetworkTransactionsResponse = {
 };
 
 /** @internal */
+export const ListLatestPrimaryNetworkTransactionsGlobals$inboundSchema: z.ZodType<
+    ListLatestPrimaryNetworkTransactionsGlobals,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    network: components.Network$inboundSchema.optional(),
+});
+
+/** @internal */
+export type ListLatestPrimaryNetworkTransactionsGlobals$Outbound = {
+    network?: string | undefined;
+};
+
+/** @internal */
+export const ListLatestPrimaryNetworkTransactionsGlobals$outboundSchema: z.ZodType<
+    ListLatestPrimaryNetworkTransactionsGlobals$Outbound,
+    z.ZodTypeDef,
+    ListLatestPrimaryNetworkTransactionsGlobals
+> = z.object({
+    network: components.Network$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListLatestPrimaryNetworkTransactionsGlobals$ {
+    /** @deprecated use `ListLatestPrimaryNetworkTransactionsGlobals$inboundSchema` instead. */
+    export const inboundSchema = ListLatestPrimaryNetworkTransactionsGlobals$inboundSchema;
+    /** @deprecated use `ListLatestPrimaryNetworkTransactionsGlobals$outboundSchema` instead. */
+    export const outboundSchema = ListLatestPrimaryNetworkTransactionsGlobals$outboundSchema;
+    /** @deprecated use `ListLatestPrimaryNetworkTransactionsGlobals$Outbound` instead. */
+    export type Outbound = ListLatestPrimaryNetworkTransactionsGlobals$Outbound;
+}
+
+/** @internal */
 export const ListLatestPrimaryNetworkTransactionsRequest$inboundSchema: z.ZodType<
     ListLatestPrimaryNetworkTransactionsRequest,
     z.ZodTypeDef,
@@ -73,7 +116,7 @@ export const ListLatestPrimaryNetworkTransactionsRequest$inboundSchema: z.ZodTyp
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.BlockchainId$inboundSchema,
-    network: components.Network$inboundSchema,
+    network: components.Network$inboundSchema.optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
 });
 
@@ -86,7 +129,7 @@ export type ListLatestPrimaryNetworkTransactionsRequest$Outbound = {
     pageToken?: string | undefined;
     pageSize: number;
     blockchainId: string;
-    network: string;
+    network?: string | undefined;
     sortOrder?: string | undefined;
 };
 
@@ -103,7 +146,7 @@ export const ListLatestPrimaryNetworkTransactionsRequest$outboundSchema: z.ZodTy
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.BlockchainId$outboundSchema,
-    network: components.Network$outboundSchema,
+    network: components.Network$outboundSchema.optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),
 });
 

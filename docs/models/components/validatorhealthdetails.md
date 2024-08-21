@@ -6,10 +6,10 @@
 import { ValidatorHealthDetails } from "@avalabs/avalanche-sdk/models/components";
 
 let value: ValidatorHealthDetails = {
-    reachabilityPercent: 1317.97,
-    benchedPChainRequestsPercent: 6471.74,
-    benchedXChainRequestsPercent: 7163.27,
-    benchedCChainRequestsPercent: 8413.86,
+    reachabilityPercent: 6176.36,
+    benchedPChainRequestsPercent: 1496.75,
+    benchedXChainRequestsPercent: 6120.96,
+    benchedCChainRequestsPercent: 2223.21,
 };
 ```
 
