@@ -5,7 +5,7 @@
 ```typescript
 import { InternalTransactionOpCall } from "@avalabs/avalanche-sdk/models/components";
 
-let value: InternalTransactionOpCall = "DELEGATECALL";
+let value: InternalTransactionOpCall = "CALLCODE";
 ```
 
 ## Values

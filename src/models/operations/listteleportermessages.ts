@@ -24,6 +24,10 @@ export type ListTeleporterMessagesRequest = {
      */
     destinationBlockchainId?: string | undefined;
     /**
+     * The base58 encoded blockchain ID of either source or destination chain that one teleporter message interacts with.
+     */
+    blockchainId?: string | undefined;
+    /**
      * The address of the recipient of the teleporter message.
      */
     to?: string | undefined;
@@ -51,6 +55,7 @@ export const ListTeleporterMessagesRequest$inboundSchema: z.ZodType<
     pageSize: z.number().int().default(10),
     sourceBlockchainId: z.string().optional(),
     destinationBlockchainId: z.string().optional(),
+    blockchainId: z.string().optional(),
     to: z.string().optional(),
     from: z.string().optional(),
     network: components.NetworkType$inboundSchema.optional(),
@@ -62,6 +67,7 @@ export type ListTeleporterMessagesRequest$Outbound = {
     pageSize: number;
     sourceBlockchainId?: string | undefined;
     destinationBlockchainId?: string | undefined;
+    blockchainId?: string | undefined;
     to?: string | undefined;
     from?: string | undefined;
     network?: string | undefined;
@@ -77,6 +83,7 @@ export const ListTeleporterMessagesRequest$outboundSchema: z.ZodType<
     pageSize: z.number().int().default(10),
     sourceBlockchainId: z.string().optional(),
     destinationBlockchainId: z.string().optional(),
+    blockchainId: z.string().optional(),
     to: z.string().optional(),
     from: z.string().optional(),
     network: components.NetworkType$outboundSchema.optional(),

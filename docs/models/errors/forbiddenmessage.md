@@ -7,7 +7,7 @@ The error message describing the reason for the exception
 ```typescript
 import { ForbiddenMessage } from "@avalabs/avalanche-sdk/models/errors";
 
-let value: ForbiddenMessage = ["<value>"];
+let value: ForbiddenMessage = "<value>";
 ```
 
 ## Supported Types

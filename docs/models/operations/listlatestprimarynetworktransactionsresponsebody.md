@@ -11,7 +11,7 @@ let value: ListLatestPrimaryNetworkTransactionsResponseBody = {
     transactions: [],
     chainInfo: {
         chainName: "x-chain",
-        network: "mainnet",
+        network: "fuji",
     },
 };
 ```

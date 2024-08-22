@@ -11,17 +11,17 @@ let value: ListLatestXChainVerticesResponse = {
             {
                 vertexHash: "<value>",
                 parentHashes: ["<value>"],
-                vertexHeight: 4254.51,
-                vertexIndex: 7980.47,
-                vertexTimestamp: 8853.38,
-                txCount: 1856.36,
+                vertexHeight: 4635.75,
+                vertexIndex: 2148.8,
+                vertexTimestamp: 2776.28,
+                txCount: 1864.58,
                 transactions: ["<value>"],
-                vertexSizeBytes: 6798.8,
+                vertexSizeBytes: 5867.84,
             },
         ],
         chainInfo: {
             chainName: "c-chain",
-            network: "mainnet",
+            network: "fuji",
         },
     },
 };

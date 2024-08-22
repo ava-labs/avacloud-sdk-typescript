@@ -72,6 +72,7 @@ export async function glacierTeleporterListTeleporterMessages(
     const path$ = pathToFunc("/v1/teleporter/messages")();
 
     const query$ = encodeFormQuery$({
+        blockchainId: payload$.blockchainId,
         destinationBlockchainId: payload$.destinationBlockchainId,
         from: payload$.from,
         network: payload$.network,

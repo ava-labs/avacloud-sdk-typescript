@@ -7,10 +7,10 @@ import { ChainInfo } from "@avalabs/avalanche-sdk/models/components";
 
 let value: ChainInfo = {
     chainId: "<value>",
-    status: "UNAVAILABLE",
+    status: "OK",
     chainName: "<value>",
-    description: "Upgradable demand-driven methodology",
-    vmName: "ETHEREUM",
+    description: "Balanced 6th generation help-desk",
+    vmName: "BITCOIN",
     rpcUrl: "<value>",
     isTestnet: false,
     networkToken: {

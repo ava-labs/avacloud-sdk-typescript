@@ -14,7 +14,7 @@ let value: ListErc1155BalancesResponse = {
                 tokenId: "<value>",
                 tokenUri: "<value>",
                 metadata: {
-                    indexStatus: "THROTTLED_TOKEN_URI",
+                    indexStatus: "INVALID_METADATA_JSON",
                 },
                 chainId: "43114",
                 balance: "2000000000000000000",

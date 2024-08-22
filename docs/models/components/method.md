@@ -6,7 +6,7 @@
 import { Method } from "@avalabs/avalanche-sdk/models/components";
 
 let value: Method = {
-    callType: "CONTRACT_CREATION",
+    callType: "CONTRACT_CALL",
     methodHash: "0xa9059cbb",
     methodName: "transfer(address,uint256)",
 };

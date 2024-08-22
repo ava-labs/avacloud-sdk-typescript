@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: e06c88ec50f388de3f9169ed71ca3e1a
+  docChecksum: 395218419560f39186661fb92c5d406a
   docVersion: Beta
-  speakeasyVersion: 1.377.1
-  generationVersion: 2.404.1
-  releaseVersion: 0.1.8
-  configChecksum: 7769ee0d83be3d0973b78f0f14103616
+  speakeasyVersion: 1.377.3
+  generationVersion: 2.404.2
+  releaseVersion: 0.1.9
+  configChecksum: b1502afb86c2499653290795ffcb0655
   repoURL: https://github.com/ava-labs/avalanche-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avalanche-sdk-typescript
   published: true
@@ -28,6 +28,7 @@ features:
     globals: 2.82.1
     groups: 2.81.2
     ignores: 2.81.1
+    nameOverrides: 2.81.2
     nullables: 0.1.0
     pagination: 2.82.6
     responseFormat: 0.2.3
@@ -256,6 +257,8 @@ generatedFiles:
   - src/models/components/listxchainverticesresponse.ts
   - src/models/components/xchainvertex.ts
   - src/models/components/usagemetricsresponsedto.ts
+  - src/models/components/metric.ts
+  - src/models/components/usagemetricsvaluedto.ts
   - src/models/components/usagemetricsgroupbyenum.ts
   - src/models/components/timeintervalgranularityextended.ts
   - src/models/components/logsresponsedto.ts
@@ -535,6 +538,10 @@ generatedFiles:
   - docs/models/components/listxchainverticesresponse.md
   - docs/models/components/xchainvertex.md
   - docs/models/components/usagemetricsresponsedto.md
+  - docs/models/components/metric.md
+  - docs/models/components/groupedby.md
+  - docs/models/components/groupvalue.md
+  - docs/models/components/usagemetricsvaluedto.md
   - docs/models/components/usagemetricsgroupbyenum.md
   - docs/models/components/timeintervalgranularityextended.md
   - docs/models/components/logsresponsedto.md
