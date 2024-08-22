@@ -7,7 +7,7 @@ The error message describing the reason for the exception
 ```typescript
 import { UnauthorizedMessage } from "@avalabs/avalanche-sdk/models/errors";
 
-let value: UnauthorizedMessage = ["<value>"];
+let value: UnauthorizedMessage = "<value>";
 ```
 
 ## Supported Types

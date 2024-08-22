@@ -39,12 +39,12 @@ let value: DeliveredTeleporterMessage = {
     },
     sourceTransaction: {
         txHash: "<value>",
-        timestamp: 1399.72,
+        timestamp: 1999.96,
         gasSpent: "<value>",
     },
     destinationTransaction: {
         txHash: "<value>",
-        timestamp: 4071.83,
+        timestamp: 1794.9,
         gasSpent: "<value>",
         rewardRedeemer: "<value>",
         delivererAddress: "<value>",

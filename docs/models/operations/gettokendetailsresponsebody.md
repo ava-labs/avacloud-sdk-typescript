@@ -15,7 +15,7 @@ let value: GetTokenDetailsResponseBody = {
     tokenId: "<value>",
     tokenUri: "<value>",
     metadata: {
-        indexStatus: "INVALID_TOKEN_URI",
+        indexStatus: "INDEXED",
     },
     ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
 };

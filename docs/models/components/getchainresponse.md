@@ -9,7 +9,7 @@ let value: GetChainResponse = {
     chainId: "<value>",
     status: "UNAVAILABLE",
     chainName: "<value>",
-    description: "Re-engineered well-modulated extranet",
+    description: "Implemented mobile circuit",
     vmName: "BITCOIN",
     rpcUrl: "<value>",
     isTestnet: false,
