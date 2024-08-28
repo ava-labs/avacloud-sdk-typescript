@@ -2,10 +2,11 @@ speakeasyVersion: 1.381.0
 sources:
     AvaCloudSDK-OAS:
         sourceNamespace: avacloud-sdk-oas
-        sourceRevisionDigest: sha256:37c36833aabed88ac5fc648d71c08774aab7efb83f8a55f0f5d82f63730d4297
-        sourceBlobDigest: sha256:d2334650e088dcffafc60e522230c164b983631632cf6e8297d44d07a9f8dd04
+        sourceRevisionDigest: sha256:a5382f1efeca0333ed8ebce6a4cb4f6f877c34d759b1d96ffcd60274b610f1d8
+        sourceBlobDigest: sha256:05214b8e100c927f60abd8625944d8e60680d0296132e8a4b1a41deab911a3e0
         tags:
             - latest
+            - main
     AvalancheSDK-OAS:
         sourceNamespace: avalanche-sdk-oas
         sourceRevisionDigest: sha256:5a1e07e4561e10de09495e4808d129b671b42547b2864d1828b477aadfcb21ae
@@ -17,11 +18,11 @@ targets:
     avacloud-sdk:
         source: AvaCloudSDK-OAS
         sourceNamespace: avacloud-sdk-oas
-        sourceRevisionDigest: sha256:37c36833aabed88ac5fc648d71c08774aab7efb83f8a55f0f5d82f63730d4297
-        sourceBlobDigest: sha256:d2334650e088dcffafc60e522230c164b983631632cf6e8297d44d07a9f8dd04
+        sourceRevisionDigest: sha256:a5382f1efeca0333ed8ebce6a4cb4f6f877c34d759b1d96ffcd60274b610f1d8
+        sourceBlobDigest: sha256:05214b8e100c927f60abd8625944d8e60680d0296132e8a4b1a41deab911a3e0
         codeSamplesNamespace: avacloud-sdk-ts-code-samples
-        codeSamplesRevisionDigest: sha256:8ae580e1bfa6f4cd695e57aa7057674c59184149eab1e8ad0a90fef7eac98f62
-        outLocation: /Users/sayan.kar/avalabs/avacloud-sdk-typescript
+        codeSamplesRevisionDigest: sha256:9b4e1aecca1da74d66973fea6b615b02bc181dbf2415092dec091b8e891bc104
+        outLocation: /github/workspace/repo
     avalanche-sdk:
         source: AvalancheSDK-OAS
         sourceNamespace: avalanche-sdk-oas
@@ -45,6 +46,6 @@ workflow:
                 npm:
                     token: $npm_token
             codeSamples:
-                output: avacloud-sdk-ts.yaml
+                output: ""
                 registry:
                     location: registry.speakeasyapi.dev/avalabs/avalabs/avacloud-sdk-ts-code-samples

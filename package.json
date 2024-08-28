@@ -1,12 +1,12 @@
 {
   "name": "@avalabs/avacloud-sdk",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.1",
   "author": "Speakeasy",
   "main": "./index.js",
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/ava-labs/avalanche-sdk-typescript.git"
+    "url": "https://github.com/ava-labs/avacloud-sdk-typescript.git"
   },
   "scripts": {
     "lint": "eslint --max-warnings=0 src",
