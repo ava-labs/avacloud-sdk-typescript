@@ -8,7 +8,6 @@
 </div>
 
 <!-- Start SDK Installation [installation] -->
-
 ## SDK Installation
 
 ### NPM
@@ -37,19 +36,15 @@ yarn add @avalabs/avacloud-sdk zod
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
 ```
-
 <!-- End SDK Installation [installation] -->
 
 <!-- Start Requirements [requirements] -->
-
 ## Requirements
 
 For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
-
 <!-- End Requirements [requirements] -->
 
 <!-- Start SDK Example Usage [usage] -->
-
 ## SDK Example Usage
 
 ### Example
@@ -73,11 +68,9 @@ async function run() {
 run();
 
 ```
-
 <!-- End SDK Example Usage [usage] -->
 
 <!-- Start Available Resources and Operations [operations] -->
-
 ## Available Resources and Operations
 
 ### [glacier.healthCheck](docs/sdks/healthcheck/README.md)
@@ -162,6 +155,7 @@ run();
 * [getTeleporterMessage](docs/sdks/teleporter/README.md#getteleportermessage) - Get a teleporter message
 * [listTeleporterMessages](docs/sdks/teleporter/README.md#listteleportermessages) - List teleporter messages
 
+
 ### [glacier.evm.balances](docs/sdks/avacloudsdkbalances/README.md)
 
 * [getNativeBalance](docs/sdks/avacloudsdkbalances/README.md#getnativebalance) - Get native token balance
@@ -198,11 +192,9 @@ run();
 
 * [supportedChains](docs/sdks/chains/README.md#supportedchains) - List chains
 * [getChainInfo](docs/sdks/chains/README.md#getchaininfo) - Get chain information
-
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Standalone functions [standalone-funcs] -->
-
 ## Standalone functions
 
 All the methods listed above are available as standalone functions. These
@@ -283,25 +275,27 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [glacierWebhooksRemoveAddressesFromWebhook](docs/sdks/webhooks/README.md#removeaddressesfromwebhook)
 - [glacierWebhooksUpdateWebhook](docs/sdks/webhooks/README.md#updatewebhook)
 
+
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
 
 <!-- Start Global Parameters [global-parameters] -->
-
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
 For example, you can set `chainId` to `"43114"` at SDK initialization and then you do not have to pass the same value on calls to operations like `reindexNft`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
+
 ### Available Globals
 
 The following global parameters are available.
 
-| Name    | Type               | Required | Description                                              |
-| ------- | ------------------ | :------: | -------------------------------------------------------- |
-| chainId | string             |          | A supported EVM chain id, chain alias, or blockchain id. |
-| network | components.Network |          | A supported network type mainnet or a testnet.           |
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| chainId | string |  | A supported EVM chain id, chain alias, or blockchain id. |
+| network | components.Network |  | A supported network type mainnet or a testnet. |
+
 
 ### Example
 
@@ -324,17 +318,17 @@ async function run() {
 run();
 
 ```
-
 <!-- End Global Parameters [global-parameters] -->
 
 <!-- Start Pagination [pagination] -->
-
 ## Pagination
 
 Some of the endpoints in this SDK support pagination. To use pagination, you
 make your SDK calls as usual, but the returned response object will also be an
-async iterable that can be consumed using the 
+async iterable that can be consumed using the [`for await...of`][for-await-of]
 syntax.
+
+[for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
 
 Here's an example of one such pagination call:
 
@@ -362,17 +356,14 @@ async function run() {
 run();
 
 ```
-
 <!-- End Pagination [pagination] -->
 
 <!-- Start Retries [retries] -->
-
 ## Retries
 
 Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
 To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
-
 ```typescript
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
@@ -405,7 +396,6 @@ run();
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
-
 ```typescript
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
@@ -435,28 +425,27 @@ async function run() {
 run();
 
 ```
-
 <!-- End Retries [retries] -->
 
 <!-- Start Error Handling [errors] -->
-
 ## Error Handling
 
 All SDK methods return a response object or throw an error. If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
-| Error Object               | Status Code | Content Type     |
-| -------------------------- | ----------- | ---------------- |
-| errors.BadRequest          | 400         | application/json |
-| errors.Unauthorized        | 401         | application/json |
-| errors.Forbidden           | 403         | application/json |
-| errors.NotFound            | 404         | application/json |
-| errors.TooManyRequests     | 429         | application/json |
-| errors.InternalServerError | 500         | application/json |
-| errors.BadGateway          | 502         | application/json |
-| errors.ServiceUnavailable  | 503         | application/json |
-| errors.SDKError            | 4xx-5xx     | */*            |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.TooManyRequests     | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.BadGateway          | 502                        | application/json           |
+| errors.ServiceUnavailable  | 503                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
-Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging.
+Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
+
 
 ```typescript
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
@@ -525,20 +514,18 @@ async function run() {
 run();
 
 ```
-
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
-
 ## Server Selection
 
 ### Select Server by Index
 
 You can override the default server globally by passing a server index to the `serverIdx` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| # | Server                               | Variables |
-| - | ------------------------------------ | --------- |
-| 0 | `https://glacier-api.avax.network` | None      |
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://glacier-api.avax.network` | None |
 
 ```typescript
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
@@ -560,6 +547,7 @@ async function run() {
 run();
 
 ```
+
 
 ### Override Server URL Per-Client
 
@@ -585,11 +573,9 @@ async function run() {
 run();
 
 ```
-
 <!-- End Server Selection [server] -->
 
 <!-- Start Custom HTTP Client [http-client] -->
-
 ## Custom HTTP Client
 
 The TypeScript SDK makes API calls using an `HTTPClient` that wraps the native
@@ -636,23 +622,20 @@ httpClient.addHook("requestError", (error, request) => {
 
 const sdk = new AvaCloudSDK({ httpClient });
 ```
-
 <!-- End Custom HTTP Client [http-client] -->
 
 <!-- Start Authentication [security] -->
-
 ## Authentication
 
 ### Per-Client Security Schemes
 
 This SDK supports the following security scheme globally:
 
-| Name              | Type   | Scheme  |
-| ----------------- | ------ | ------- |
-| `glacierApiKey` | apiKey | API key |
+| Name            | Type            | Scheme          |
+| --------------- | --------------- | --------------- |
+| `glacierApiKey` | apiKey          | API key         |
 
 To authenticate with the API the `glacierApiKey` parameter must be set when initializing the SDK client instance. For example:
-
 ```typescript
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
@@ -672,11 +655,9 @@ async function run() {
 run();
 
 ```
-
 <!-- End Authentication [security] -->
 
 <!-- Start Debugging [debug] -->
-
 ## Debugging
 
 You can setup your SDK to emit debug logs for SDK requests and responses.
@@ -691,7 +672,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const sdk = new AvaCloudSDK({ debugLogger: console });
 ```
-
 <!-- End Debugging [debug] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

@@ -5,10 +5,10 @@ management:
   docVersion: Beta
   speakeasyVersion: 1.381.0
   generationVersion: 2.404.9
-  releaseVersion: 0.0.1
-  configChecksum: fb5b8af8961c64b89e572d43f5ceeed0
-  repoURL: https://github.com/ava-labs/avalanche-sdk-typescript.git
-  installationURL: https://github.com/ava-labs/avalanche-sdk-typescript
+  releaseVersion: 0.0.1-alpha.1
+  configChecksum: 229f5bad4be9972a953a3e7c30365a8a
+  repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
+  installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
 features:
   typescript:
