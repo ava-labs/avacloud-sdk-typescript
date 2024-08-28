@@ -1,8 +1,8 @@
-speakeasyVersion: 1.381.0
+speakeasyVersion: 1.382.0
 sources:
     AvaCloudSDK-OAS:
         sourceNamespace: avacloud-sdk-oas
-        sourceRevisionDigest: sha256:a5382f1efeca0333ed8ebce6a4cb4f6f877c34d759b1d96ffcd60274b610f1d8
+        sourceRevisionDigest: sha256:96edd4c94a254eadc1050d032ce3a7e29bab6d04fc6cd1ad4ea773481e157745
         sourceBlobDigest: sha256:05214b8e100c927f60abd8625944d8e60680d0296132e8a4b1a41deab911a3e0
         tags:
             - latest
@@ -18,10 +18,10 @@ targets:
     avacloud-sdk:
         source: AvaCloudSDK-OAS
         sourceNamespace: avacloud-sdk-oas
-        sourceRevisionDigest: sha256:a5382f1efeca0333ed8ebce6a4cb4f6f877c34d759b1d96ffcd60274b610f1d8
+        sourceRevisionDigest: sha256:96edd4c94a254eadc1050d032ce3a7e29bab6d04fc6cd1ad4ea773481e157745
         sourceBlobDigest: sha256:05214b8e100c927f60abd8625944d8e60680d0296132e8a4b1a41deab911a3e0
         codeSamplesNamespace: avacloud-sdk-ts-code-samples
-        codeSamplesRevisionDigest: sha256:9b4e1aecca1da74d66973fea6b615b02bc181dbf2415092dec091b8e891bc104
+        codeSamplesRevisionDigest: sha256:8c001d315ba4837da1765ed35e4c9e167cce6e8732016e62f437fb756c5e369c
         outLocation: /github/workspace/repo
     avalanche-sdk:
         source: AvalancheSDK-OAS
