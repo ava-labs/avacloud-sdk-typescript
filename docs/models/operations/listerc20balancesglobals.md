@@ -1,0 +1,15 @@
+# ListErc20BalancesGlobals
+
+## Example Usage
+
+```typescript
+import { ListErc20BalancesGlobals } from "@avalabs/avacloud-sdk/models/operations";
+
+let value: ListErc20BalancesGlobals = {};
+```
+
+## Fields
+
+| Field                                                    | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `chainId`                                                | *string*                                                 | :heavy_minus_sign:                                       | A supported EVM chain id, chain alias, or blockchain id. | 43114                                                    |
