@@ -1,10 +1,8 @@
 
 <div align="center">
     <h1> AvaCloud SDK TypeScript </h1>
-        <p>The AvaCloud SDK is a powerful and flexible toolset designed to simplify the integration with AvaCloud's suite of blockchain services. Currently, this SDK is focused on providing robust support for Glacier APIs.</p>
-    <a href="https://opensource.org/licenses/MIT">
-        <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
-    </a>
+        <p>
+            The AvaCloud SDK is a powerful and flexible toolset designed to simplify the integration with AvaCloud's suite of blockchain services. Currently, this SDK is focused on providing robust support for Glacier APIs.          </p>
 </div>
 
 <!-- Start SDK Installation [installation] -->
