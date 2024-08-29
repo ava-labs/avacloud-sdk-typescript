@@ -5,8 +5,8 @@ management:
   docVersion: Beta
   speakeasyVersion: 1.383.2
   generationVersion: 2.407.0
-  releaseVersion: 0.1.0
-  configChecksum: 709e4d33e5ed1284bac8de134d427fd6
+  releaseVersion: 0.2.1
+  configChecksum: 33dcfece24f060ffd512c490ce9f9769
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
