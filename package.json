@@ -1,7 +1,8 @@
 {
   "name": "@avalabs/avacloud-sdk",
-  "version": "0.2.0",
-  "author": "Speakeasy",
+  "version": "0.1.0",
+  "author": "AvaCloud",
+  "license": "SEE LICENSE IN LICENSE.md",
   "main": "./index.js",
   "sideEffects": false,
   "repository": {
