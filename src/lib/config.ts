@@ -63,7 +63,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
     language: "typescript",
     openapiDocVersion: "Beta",
-    sdkVersion: "0.0.1-alpha.2",
+    sdkVersion: "0.1.0",
     genVersion: "2.404.11",
-    userAgent: "speakeasy-sdk/typescript 0.0.1-alpha.2 2.404.11 Beta @avalabs/avacloud-sdk",
+    userAgent: "speakeasy-sdk/typescript 0.1.0 2.404.11 Beta @avalabs/avacloud-sdk",
 } as const;
