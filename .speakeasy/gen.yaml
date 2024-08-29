@@ -1,0 +1,47 @@
+configVersion: 2.0.0
+generation:
+  devContainers:
+    enabled: true
+    schemaPath: https://glacier-api.avax.network/api-json
+  sdkClassName: AvaCloudSDK
+  maintainOpenAPIOrder: true
+  usageSnippets:
+    optionalPropertyRendering: withExample
+  useClassNamesForArrayFields: true
+  fixes:
+    nameResolutionDec2023: true
+    parameterOrderingFeb2024: true
+    requestResponseComponentNamesFeb2024: true
+  auth:
+    oAuth2ClientCredentialsEnabled: false
+typescript:
+  version: 0.1.0
+  additionalDependencies:
+    dependencies:
+      json-canonicalize: ^1.0.6
+    devDependencies:
+      '@types/node': ^22.4.1
+    peerDependencies: {}
+  additionalPackageJSON:
+    license: SEE LICENSE IN LICENSE.md
+  clientServerStatusCodesAsErrors: true
+  enumFormat: union
+  flattenGlobalSecurity: true
+  imports:
+    option: openapi
+    paths:
+      callbacks: models/callbacks
+      errors: models/errors
+      operations: models/operations
+      shared: models/components
+      webhooks: models/webhooks
+  inputModelSuffix: input
+  maxMethodParams: 0
+  methodArguments: require-security-and-request
+  moduleFormat: commonjs
+  outputModelSuffix: output
+  packageName: '@avalabs/avacloud-sdk'
+  responseFormat: flat
+  templateVersion: v2
+  useIndexModules: true
+  envVarPrefix: AVACLOUD

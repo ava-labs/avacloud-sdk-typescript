@@ -1,0 +1,51 @@
+speakeasyVersion: 1.383.2
+sources:
+    AvaCloudSDK-OAS:
+        sourceNamespace: avacloud-sdk-oas
+        sourceRevisionDigest: sha256:303aa83897a990f12523549cb34e55ac639a264aab65f09c0107fe21320ca0b2
+        sourceBlobDigest: sha256:7bdbf020c983454ba41e539bdc06708e421d942e068f9a18f85b5f4978ff7c9b
+        tags:
+            - latest
+            - main
+    AvalancheSDK-OAS:
+        sourceNamespace: avalanche-sdk-oas
+        sourceRevisionDigest: sha256:5a1e07e4561e10de09495e4808d129b671b42547b2864d1828b477aadfcb21ae
+        sourceBlobDigest: sha256:44a68090a51ca1b1edbef83da5907c3497ef7de6605f3e5d00d9f2a89976ec99
+        tags:
+            - latest
+            - main
+targets:
+    avacloud-sdk:
+        source: AvaCloudSDK-OAS
+        sourceNamespace: avacloud-sdk-oas
+        sourceRevisionDigest: sha256:303aa83897a990f12523549cb34e55ac639a264aab65f09c0107fe21320ca0b2
+        sourceBlobDigest: sha256:7bdbf020c983454ba41e539bdc06708e421d942e068f9a18f85b5f4978ff7c9b
+        codeSamplesNamespace: avacloud-sdk-ts-code-samples
+        codeSamplesRevisionDigest: sha256:2b497ef2942c118b71bb1b43d19a997370056ee9fe04cc654b294895b01ddb31
+        outLocation: /github/workspace/repo
+    avalanche-sdk:
+        source: AvalancheSDK-OAS
+        sourceNamespace: avalanche-sdk-oas
+        sourceRevisionDigest: sha256:5a1e07e4561e10de09495e4808d129b671b42547b2864d1828b477aadfcb21ae
+        sourceBlobDigest: sha256:44a68090a51ca1b1edbef83da5907c3497ef7de6605f3e5d00d9f2a89976ec99
+        outLocation: /github/workspace/repo
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        AvaCloudSDK-OAS:
+            inputs:
+                - location: https://glacier-api.avax.network/api-json
+            registry:
+                location: registry.speakeasyapi.dev/avalabs/avalabs/avacloud-sdk-oas
+    targets:
+        avacloud-sdk:
+            target: typescript
+            source: AvaCloudSDK-OAS
+            publish:
+                npm:
+                    token: $npm_token
+            codeSamples:
+                output: ""
+                registry:
+                    location: registry.speakeasyapi.dev/avalabs/avalabs/avacloud-sdk-ts-code-samples

@@ -1,0 +1,18 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    AvaCloudSDK-OAS:
+        inputs:
+            - location: https://glacier-api.avax.network/api-json
+        registry:
+            location: registry.speakeasyapi.dev/avalabs/avalabs/avacloud-sdk-oas
+targets:
+    avacloud-sdk:
+        target: typescript
+        source: AvaCloudSDK-OAS
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/avalabs/avalabs/avacloud-sdk-ts-code-samples
+        publish:
+            npm:
+                token: $npm_token
