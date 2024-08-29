@@ -10,7 +10,7 @@ export type ListHistoricalPrimaryNetworkRewardsGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type ListHistoricalPrimaryNetworkRewardsRequest = {
@@ -29,7 +29,7 @@ export type ListHistoricalPrimaryNetworkRewardsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
     /**
      * A comma separated list of node ids to filter by. Optional, but at least one of addresses or nodeIds is required.
      */
@@ -54,7 +54,7 @@ export const ListHistoricalPrimaryNetworkRewardsGlobals$inboundSchema: z.ZodType
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -68,7 +68,7 @@ export const ListHistoricalPrimaryNetworkRewardsGlobals$outboundSchema: z.ZodTyp
     z.ZodTypeDef,
     ListHistoricalPrimaryNetworkRewardsGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -93,7 +93,7 @@ export const ListHistoricalPrimaryNetworkRewardsRequest$inboundSchema: z.ZodType
     addresses: z.string().optional(),
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
     nodeIds: z.string().optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
     currency: components.CurrencyCode$inboundSchema.optional(),
@@ -119,7 +119,7 @@ export const ListHistoricalPrimaryNetworkRewardsRequest$outboundSchema: z.ZodTyp
     addresses: z.string().optional(),
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
     nodeIds: z.string().optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),
     currency: components.CurrencyCode$outboundSchema.optional(),

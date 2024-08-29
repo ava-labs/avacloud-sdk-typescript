@@ -8,7 +8,7 @@ import { GetAddressesFromWebhookResponse } from "@avalabs/avacloud-sdk/models/op
 let value: GetAddressesFromWebhookResponse = {
     result: {
         addresses: ["<value>"],
-        totalAddresses: 834.22,
+        totalAddresses: 7492.55,
     },
 };
 ```

@@ -10,7 +10,7 @@ export type ListLatestXChainVerticesGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type ListLatestXChainVerticesRequest = {
@@ -29,7 +29,7 @@ export type ListLatestXChainVerticesRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type ListLatestXChainVerticesResponse = {
@@ -42,7 +42,7 @@ export const ListLatestXChainVerticesGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -56,7 +56,7 @@ export const ListLatestXChainVerticesGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     ListLatestXChainVerticesGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -81,7 +81,7 @@ export const ListLatestXChainVerticesRequest$inboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.XChainId$inboundSchema,
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -101,7 +101,7 @@ export const ListLatestXChainVerticesRequest$outboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.XChainId$outboundSchema,
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**

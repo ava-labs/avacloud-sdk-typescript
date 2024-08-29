@@ -9,7 +9,7 @@ export type GetBalancesByAddressesGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type GetBalancesByAddressesRequest = {
@@ -28,7 +28,7 @@ export type GetBalancesByAddressesRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 /**
@@ -45,7 +45,7 @@ export const GetBalancesByAddressesGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -59,7 +59,7 @@ export const GetBalancesByAddressesGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetBalancesByAddressesGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -84,7 +84,7 @@ export const GetBalancesByAddressesRequest$inboundSchema: z.ZodType<
     blockTimestamp: z.number().int().optional(),
     addresses: z.string().optional(),
     blockchainId: components.BlockchainId$inboundSchema,
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -104,7 +104,7 @@ export const GetBalancesByAddressesRequest$outboundSchema: z.ZodType<
     blockTimestamp: z.number().int().optional(),
     addresses: z.string().optional(),
     blockchainId: components.BlockchainId$outboundSchema,
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**

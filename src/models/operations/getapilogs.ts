@@ -3,8 +3,21 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
+import { ClosedEnum } from "../../types/enums.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
+
+/**
+ * Filter data by request type.
+ */
+export const QueryParamRequestType = {
+    GlacierAPIRequest: "Glacier API Request",
+    GlacierRPCRequest: "Glacier RPC Request",
+} as const;
+/**
+ * Filter data by request type.
+ */
+export type QueryParamRequestType = ClosedEnum<typeof QueryParamRequestType>;
 
 export type GetApiLogsRequest = {
     /**
@@ -20,6 +33,26 @@ export type GetApiLogsRequest = {
      */
     endTimestamp?: number | undefined;
     /**
+     * Filter data by request path.
+     */
+    requestPath?: string | undefined;
+    /**
+     * Filter data by request type.
+     */
+    requestType?: QueryParamRequestType | undefined;
+    /**
+     * Filter data by response status code.
+     */
+    responseStatusCode?: string | undefined;
+    /**
+     * Filter data by chain ID.
+     */
+    chainId?: string | undefined;
+    /**
+     * Filter data by API key ID.
+     */
+    apiKeyId?: string | undefined;
+    /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
      */
     pageToken?: string | undefined;
@@ -34,11 +67,35 @@ export type GetApiLogsResponse = {
 };
 
 /** @internal */
+export const QueryParamRequestType$inboundSchema: z.ZodNativeEnum<typeof QueryParamRequestType> =
+    z.nativeEnum(QueryParamRequestType);
+
+/** @internal */
+export const QueryParamRequestType$outboundSchema: z.ZodNativeEnum<typeof QueryParamRequestType> =
+    QueryParamRequestType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace QueryParamRequestType$ {
+    /** @deprecated use `QueryParamRequestType$inboundSchema` instead. */
+    export const inboundSchema = QueryParamRequestType$inboundSchema;
+    /** @deprecated use `QueryParamRequestType$outboundSchema` instead. */
+    export const outboundSchema = QueryParamRequestType$outboundSchema;
+}
+
+/** @internal */
 export const GetApiLogsRequest$inboundSchema: z.ZodType<GetApiLogsRequest, z.ZodTypeDef, unknown> =
     z.object({
         orgId: z.string().optional(),
         startTimestamp: z.number().int().optional(),
         endTimestamp: z.number().int().optional(),
+        requestPath: z.string().optional(),
+        requestType: QueryParamRequestType$inboundSchema.optional(),
+        responseStatusCode: z.string().optional(),
+        chainId: z.string().optional(),
+        apiKeyId: z.string().optional(),
         pageToken: z.string().optional(),
         pageSize: z.number().int().default(10),
     });
@@ -48,6 +105,11 @@ export type GetApiLogsRequest$Outbound = {
     orgId?: string | undefined;
     startTimestamp?: number | undefined;
     endTimestamp?: number | undefined;
+    requestPath?: string | undefined;
+    requestType?: string | undefined;
+    responseStatusCode?: string | undefined;
+    chainId?: string | undefined;
+    apiKeyId?: string | undefined;
     pageToken?: string | undefined;
     pageSize: number;
 };
@@ -61,6 +123,11 @@ export const GetApiLogsRequest$outboundSchema: z.ZodType<
     orgId: z.string().optional(),
     startTimestamp: z.number().int().optional(),
     endTimestamp: z.number().int().optional(),
+    requestPath: z.string().optional(),
+    requestType: QueryParamRequestType$outboundSchema.optional(),
+    responseStatusCode: z.string().optional(),
+    chainId: z.string().optional(),
+    apiKeyId: z.string().optional(),
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
 });

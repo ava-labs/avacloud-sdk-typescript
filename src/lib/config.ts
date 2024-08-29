@@ -14,7 +14,7 @@ import { Params, pathToFunc } from "./url.js";
 export const ServerList = ["https://glacier-api.avax.network"] as const;
 
 export type SDKOptions = {
-    glacierApiKey?: string | (() => Promise<string>);
+    apiKey?: string | (() => Promise<string>);
 
     /**
      * Allows setting the chainId parameter for all supported operations
@@ -24,7 +24,7 @@ export type SDKOptions = {
     /**
      * Allows setting the network parameter for all supported operations
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 
     httpClient?: HTTPClient;
     /**
@@ -63,7 +63,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
     language: "typescript",
     openapiDocVersion: "Beta",
-    sdkVersion: "0.1.0",
-    genVersion: "2.404.11",
-    userAgent: "speakeasy-sdk/typescript 0.1.0 2.404.11 Beta @avalabs/avacloud-sdk",
+    sdkVersion: "0.2.0",
+    genVersion: "2.407.0",
+    userAgent: "speakeasy-sdk/typescript 0.2.0 2.407.0 Beta @avalabs/avacloud-sdk",
 } as const;

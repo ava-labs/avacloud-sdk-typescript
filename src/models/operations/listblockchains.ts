@@ -10,7 +10,7 @@ export type ListBlockchainsGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type ListBlockchainsRequest = {
@@ -25,7 +25,7 @@ export type ListBlockchainsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
     /**
      * The order by which to sort results. Use "asc" for ascending order, "desc" for descending order. Sorted by timestamp or the `sortBy` query parameter, if provided.
      */
@@ -42,7 +42,7 @@ export const ListBlockchainsGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -56,7 +56,7 @@ export const ListBlockchainsGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     ListBlockchainsGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -80,7 +80,7 @@ export const ListBlockchainsRequest$inboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
 });
 
@@ -100,7 +100,7 @@ export const ListBlockchainsRequest$outboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),
 });
 

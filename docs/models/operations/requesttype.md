@@ -1,6 +1,6 @@
 # RequestType
 
-Filter aggregated usage metrics by request type.
+Filter data by request type.
 
 ## Example Usage
 

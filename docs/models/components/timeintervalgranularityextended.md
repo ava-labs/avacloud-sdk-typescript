@@ -5,7 +5,7 @@
 ```typescript
 import { TimeIntervalGranularityExtended } from "@avalabs/avacloud-sdk/models/components";
 
-let value: TimeIntervalGranularityExtended = "hourly";
+let value: TimeIntervalGranularityExtended = "daily";
 ```
 
 ## Values

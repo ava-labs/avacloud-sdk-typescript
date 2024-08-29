@@ -10,7 +10,7 @@ export type ListPendingPrimaryNetworkRewardsGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type ListPendingPrimaryNetworkRewardsRequest = {
@@ -29,7 +29,7 @@ export type ListPendingPrimaryNetworkRewardsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
     /**
      * A comma separated list of node ids to filter by. One of addresses or nodeIds is required.
      */
@@ -50,7 +50,7 @@ export const ListPendingPrimaryNetworkRewardsGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -64,7 +64,7 @@ export const ListPendingPrimaryNetworkRewardsGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     ListPendingPrimaryNetworkRewardsGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -89,7 +89,7 @@ export const ListPendingPrimaryNetworkRewardsRequest$inboundSchema: z.ZodType<
     addresses: z.string().optional(),
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
     nodeIds: z.string().optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
 });
@@ -113,7 +113,7 @@ export const ListPendingPrimaryNetworkRewardsRequest$outboundSchema: z.ZodType<
     addresses: z.string().optional(),
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
     nodeIds: z.string().optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),
 });

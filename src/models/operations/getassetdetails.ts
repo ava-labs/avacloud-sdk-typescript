@@ -9,7 +9,7 @@ export type GetAssetDetailsGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type GetAssetDetailsRequest = {
@@ -20,7 +20,7 @@ export type GetAssetDetailsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
     /**
      * Asset ID for any asset on X-Chain
      */
@@ -33,7 +33,7 @@ export const GetAssetDetailsGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -47,7 +47,7 @@ export const GetAssetDetailsGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetAssetDetailsGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -70,7 +70,7 @@ export const GetAssetDetailsRequest$inboundSchema: z.ZodType<
     unknown
 > = z.object({
     blockchainId: components.XChainId$inboundSchema,
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
     assetId: z.string(),
 });
 
@@ -88,7 +88,7 @@ export const GetAssetDetailsRequest$outboundSchema: z.ZodType<
     GetAssetDetailsRequest
 > = z.object({
     blockchainId: components.XChainId$outboundSchema,
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
     assetId: z.string(),
 });
 

@@ -9,14 +9,14 @@ export type GetSubnetByIdGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type GetSubnetByIdRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
     /**
      * Subnet ID to fetch details for
      */
@@ -29,7 +29,7 @@ export const GetSubnetByIdGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -43,7 +43,7 @@ export const GetSubnetByIdGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetSubnetByIdGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -65,7 +65,7 @@ export const GetSubnetByIdRequest$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
     subnetId: z.string(),
 });
 
@@ -81,7 +81,7 @@ export const GetSubnetByIdRequest$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetSubnetByIdRequest
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
     subnetId: z.string(),
 });
 

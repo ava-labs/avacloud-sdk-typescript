@@ -9,14 +9,14 @@ export type GetNetworkDetailsGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type GetNetworkDetailsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 /** @internal */
@@ -25,7 +25,7 @@ export const GetNetworkDetailsGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -39,7 +39,7 @@ export const GetNetworkDetailsGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetNetworkDetailsGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -61,7 +61,7 @@ export const GetNetworkDetailsRequest$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -75,7 +75,7 @@ export const GetNetworkDetailsRequest$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetNetworkDetailsRequest
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**

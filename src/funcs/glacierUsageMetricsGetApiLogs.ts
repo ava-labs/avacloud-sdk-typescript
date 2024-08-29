@@ -72,10 +72,15 @@ export async function glacierUsageMetricsGetApiLogs(
     const path$ = pathToFunc("/v1/apiLogs")();
 
     const query$ = encodeFormQuery$({
+        apiKeyId: payload$.apiKeyId,
+        chainId: payload$.chainId,
         endTimestamp: payload$.endTimestamp,
         orgId: payload$.orgId,
         pageSize: payload$.pageSize,
         pageToken: payload$.pageToken,
+        requestPath: payload$.requestPath,
+        requestType: payload$.requestType,
+        responseStatusCode: payload$.responseStatusCode,
         startTimestamp: payload$.startTimestamp,
     });
 
@@ -83,12 +88,12 @@ export async function glacierUsageMetricsGetApiLogs(
         Accept: "application/json",
     });
 
-    const glacierApiKey$ = await extractSecurity(client$.options$.glacierApiKey);
-    const security$ = glacierApiKey$ == null ? {} : { glacierApiKey: glacierApiKey$ };
+    const apiKey$ = await extractSecurity(client$.options$.apiKey);
+    const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
     const context = {
         operationID: "getApiLogs",
         oAuth2Scopes: [],
-        securitySource: client$.options$.glacierApiKey,
+        securitySource: client$.options$.apiKey,
     };
     const securitySettings$ = resolveGlobalSecurity(security$);
 

@@ -8,6 +8,8 @@
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
+The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
+
 ### NPM
 
 ```bash
@@ -51,7 +53,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    glacierApiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_API_KEY_HERE>",
     chainId: "43114",
     network: "mainnet",
 });
@@ -292,7 +294,7 @@ The following global parameters are available.
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
 | chainId | string |  | A supported EVM chain id, chain alias, or blockchain id. |
-| network | components.Network |  | A supported network type mainnet or a testnet. |
+| network | components.GlobalParamNetwork |  | A supported network type mainnet or a testnet. |
 
 
 ### Example
@@ -301,7 +303,7 @@ The following global parameters are available.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    glacierApiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_API_KEY_HERE>",
     chainId: "43114",
     network: "mainnet",
 });
@@ -334,7 +336,7 @@ Here's an example of one such pagination call:
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    glacierApiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_API_KEY_HERE>",
     chainId: "43114",
     network: "mainnet",
 });
@@ -366,7 +368,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    glacierApiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_API_KEY_HERE>",
     chainId: "43114",
     network: "mainnet",
 });
@@ -408,7 +410,7 @@ const avaCloudSDK = new AvaCloudSDK({
         },
         retryConnectionErrors: false,
     },
-    glacierApiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_API_KEY_HERE>",
     chainId: "43114",
     network: "mainnet",
 });
@@ -447,10 +449,20 @@ Validation errors can also occur when either method arguments or data returned f
 
 ```typescript
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
-import { SDKValidationError } from "@avalabs/avacloud-sdk/models/errors";
+import {
+    BadGateway,
+    BadRequest,
+    Forbidden,
+    InternalServerError,
+    NotFound,
+    SDKValidationError,
+    ServiceUnavailable,
+    TooManyRequests,
+    Unauthorized,
+} from "@avalabs/avacloud-sdk/models/errors";
 
 const avaCloudSDK = new AvaCloudSDK({
-    glacierApiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_API_KEY_HERE>",
     chainId: "43114",
     network: "mainnet",
 });
@@ -470,36 +482,44 @@ async function run() {
                 console.error(err.rawValue);
                 return;
             }
-            case err instanceof errors.BadRequest: {
-                console.error(err); // handle exception
+            case err instanceof BadRequest: {
+                // Handle err.data$: BadRequestData
+                console.error(err);
                 return;
             }
-            case err instanceof errors.Unauthorized: {
-                console.error(err); // handle exception
+            case err instanceof Unauthorized: {
+                // Handle err.data$: UnauthorizedData
+                console.error(err);
                 return;
             }
-            case err instanceof errors.Forbidden: {
-                console.error(err); // handle exception
+            case err instanceof Forbidden: {
+                // Handle err.data$: ForbiddenData
+                console.error(err);
                 return;
             }
-            case err instanceof errors.NotFound: {
-                console.error(err); // handle exception
+            case err instanceof NotFound: {
+                // Handle err.data$: NotFoundData
+                console.error(err);
                 return;
             }
-            case err instanceof errors.TooManyRequests: {
-                console.error(err); // handle exception
+            case err instanceof TooManyRequests: {
+                // Handle err.data$: TooManyRequestsData
+                console.error(err);
                 return;
             }
-            case err instanceof errors.InternalServerError: {
-                console.error(err); // handle exception
+            case err instanceof InternalServerError: {
+                // Handle err.data$: InternalServerErrorData
+                console.error(err);
                 return;
             }
-            case err instanceof errors.BadGateway: {
-                console.error(err); // handle exception
+            case err instanceof BadGateway: {
+                // Handle err.data$: BadGatewayData
+                console.error(err);
                 return;
             }
-            case err instanceof errors.ServiceUnavailable: {
-                console.error(err); // handle exception
+            case err instanceof ServiceUnavailable: {
+                // Handle err.data$: ServiceUnavailableData
+                console.error(err);
                 return;
             }
             default: {
@@ -530,7 +550,7 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
     serverIdx: 0,
-    glacierApiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_API_KEY_HERE>",
     chainId: "43114",
     network: "mainnet",
 });
@@ -556,7 +576,7 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
     serverURL: "https://glacier-api.avax.network",
-    glacierApiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_API_KEY_HERE>",
     chainId: "43114",
     network: "mainnet",
 });
@@ -629,16 +649,16 @@ const sdk = new AvaCloudSDK({ httpClient });
 
 This SDK supports the following security scheme globally:
 
-| Name            | Type            | Scheme          |
-| --------------- | --------------- | --------------- |
-| `glacierApiKey` | apiKey          | API key         |
+| Name     | Type     | Scheme   |
+| -------- | -------- | -------- |
+| `apiKey` | apiKey   | API key  |
 
-To authenticate with the API the `glacierApiKey` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `apiKey` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    glacierApiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_API_KEY_HERE>",
     chainId: "43114",
     network: "mainnet",
 });
@@ -671,6 +691,30 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const sdk = new AvaCloudSDK({ debugLogger: console });
 ```
 <!-- End Debugging [debug] -->
+
+<!-- Start Summary [summary] -->
+## Summary
+
+Glacier API: The Glacier API provides web3 application developers with multi-chain data related to Avalanche's primary network, Avalanche subnets, and Ethereum. With Glacier, you can easily build products that leverage real-time and historical transaction and transfer history, native and token balances, and various types of token metadata. The API is in Beta and may be subject to change.</br></br>If you have feedback or feature requests for the API, please submit them <a href="https://portal.productboard.com/dndv9ahlkdfye4opdm8ksafi/tabs/4-glacier-api">here</a>. Bug reports can be submitted <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJQrcp7QoNiqozMDKrVJGX5wpU827d3cVTgF8qa7t_J1Pb-g/viewform">here</a>, and any potential security issues can be reported <a href="https://immunefi.com/bounty/avalabs">here</a>.
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [Requirements](#requirements)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Standalone functions](#standalone-functions)
+* [Global Parameters](#global-parameters)
+* [Pagination](#pagination)
+* [Retries](#retries)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Custom HTTP Client](#custom-http-client)
+* [Authentication](#authentication)
+* [Debugging](#debugging)
+<!-- End Table of Contents [toc] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

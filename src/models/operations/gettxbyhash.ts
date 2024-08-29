@@ -9,7 +9,7 @@ export type GetTxByHashGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type GetTxByHashRequest = {
@@ -20,7 +20,7 @@ export type GetTxByHashRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
     /**
      * A primary network (P or X chain) transaction hash.
      */
@@ -43,7 +43,7 @@ export const GetTxByHashGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -57,7 +57,7 @@ export const GetTxByHashGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetTxByHashGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -80,7 +80,7 @@ export const GetTxByHashRequest$inboundSchema: z.ZodType<
     unknown
 > = z.object({
     blockchainId: components.BlockchainId$inboundSchema,
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
     txHash: z.string(),
 });
 
@@ -98,7 +98,7 @@ export const GetTxByHashRequest$outboundSchema: z.ZodType<
     GetTxByHashRequest
 > = z.object({
     blockchainId: components.BlockchainId$outboundSchema,
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
     txHash: z.string(),
 });
 

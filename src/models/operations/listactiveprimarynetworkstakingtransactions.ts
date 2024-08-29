@@ -10,7 +10,7 @@ export type ListActivePrimaryNetworkStakingTransactionsGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type ListActivePrimaryNetworkStakingTransactionsRequest = {
@@ -45,7 +45,7 @@ export type ListActivePrimaryNetworkStakingTransactionsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
     /**
      * The order by which to sort results. Use "asc" for ascending order, "desc" for descending order. Sorted by timestamp or the `sortBy` query parameter, if provided.
      */
@@ -62,7 +62,7 @@ export const ListActivePrimaryNetworkStakingTransactionsGlobals$inboundSchema: z
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -76,7 +76,7 @@ export const ListActivePrimaryNetworkStakingTransactionsGlobals$outboundSchema: 
     z.ZodTypeDef,
     ListActivePrimaryNetworkStakingTransactionsGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -105,7 +105,7 @@ export const ListActivePrimaryNetworkStakingTransactionsRequest$inboundSchema: z
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.PChainId$inboundSchema,
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
 });
 
@@ -135,7 +135,7 @@ export const ListActivePrimaryNetworkStakingTransactionsRequest$outboundSchema: 
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.PChainId$outboundSchema,
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),
 });
 

@@ -7,14 +7,14 @@ import * as components from "../components/index.js";
 import * as z from "zod";
 
 /**
- * Filter aggregated usage metrics by request type.
+ * Filter data by request type.
  */
 export const RequestType = {
     GlacierAPIRequest: "Glacier API Request",
     GlacierRPCRequest: "Glacier RPC Request",
 } as const;
 /**
- * Filter aggregated usage metrics by request type.
+ * Filter data by request type.
  */
 export type RequestType = ClosedEnum<typeof RequestType>;
 
@@ -40,23 +40,23 @@ export type GetApiUsageMetricsRequest = {
      */
     groupBy?: components.UsageMetricsGroupByEnum | undefined;
     /**
-     * Filter aggregated usage metrics by request path.
+     * Filter data by request path.
      */
     requestPath?: string | undefined;
     /**
-     * Filter aggregated usage metrics by request type.
+     * Filter data by request type.
      */
     requestType?: RequestType | undefined;
     /**
-     * Filter aggregated usage metrics by response status code.
+     * Filter data by response status code.
      */
     responseStatusCode?: string | undefined;
     /**
-     * Filter aggregated usage metrics by chain ID.
+     * Filter data by chain ID.
      */
     chainId?: string | undefined;
     /**
-     * Filter aggregated usage metrics by API key ID.
+     * Filter data by API key ID.
      */
     apiKeyId?: string | undefined;
 };

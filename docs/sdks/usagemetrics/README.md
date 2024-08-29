@@ -18,7 +18,7 @@ Gets metrics for Glacier API usage over a specified time interval aggregated at 
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  glacierApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -27,7 +27,7 @@ async function run() {
   const result = await avaCloudSDK.glacier.usageMetrics.getApiUsageMetrics({
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
-    timeInterval: "hourly",
+    timeInterval: "daily",
     groupBy: "requestPath",
   });
 
@@ -49,7 +49,7 @@ import { glacierUsageMetricsGetApiUsageMetrics } from "@avalabs/avacloud-sdk/fun
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  glacierApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -58,7 +58,7 @@ async function run() {
   const res = await glacierUsageMetricsGetApiUsageMetrics(avaCloudSDK, {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
-    timeInterval: "hourly",
+    timeInterval: "daily",
     groupBy: "requestPath",
   });
 
@@ -113,7 +113,7 @@ Gets logs for requests made by client over a specified time interval for a speci
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  glacierApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -144,7 +144,7 @@ import { glacierUsageMetricsGetApiLogs } from "@avalabs/avacloud-sdk/funcs/glaci
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  glacierApiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });

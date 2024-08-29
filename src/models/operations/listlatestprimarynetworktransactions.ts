@@ -10,7 +10,7 @@ export type ListLatestPrimaryNetworkTransactionsGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type ListLatestPrimaryNetworkTransactionsRequest = {
@@ -45,7 +45,7 @@ export type ListLatestPrimaryNetworkTransactionsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
     /**
      * The order by which to sort results. Use "asc" for ascending order, "desc" for descending order. Sorted by timestamp or the `sortBy` query parameter, if provided.
      */
@@ -73,7 +73,7 @@ export const ListLatestPrimaryNetworkTransactionsGlobals$inboundSchema: z.ZodTyp
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -87,7 +87,7 @@ export const ListLatestPrimaryNetworkTransactionsGlobals$outboundSchema: z.ZodTy
     z.ZodTypeDef,
     ListLatestPrimaryNetworkTransactionsGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -116,7 +116,7 @@ export const ListLatestPrimaryNetworkTransactionsRequest$inboundSchema: z.ZodTyp
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.BlockchainId$inboundSchema,
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
 });
 
@@ -146,7 +146,7 @@ export const ListLatestPrimaryNetworkTransactionsRequest$outboundSchema: z.ZodTy
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.BlockchainId$outboundSchema,
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),
 });
 

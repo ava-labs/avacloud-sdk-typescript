@@ -9,7 +9,7 @@ export type GetVertexByHashGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type GetVertexByHashRequest = {
@@ -24,7 +24,7 @@ export type GetVertexByHashRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 /** @internal */
@@ -33,7 +33,7 @@ export const GetVertexByHashGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -47,7 +47,7 @@ export const GetVertexByHashGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetVertexByHashGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -71,7 +71,7 @@ export const GetVertexByHashRequest$inboundSchema: z.ZodType<
 > = z.object({
     vertexHash: z.string(),
     blockchainId: components.XChainId$inboundSchema,
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -89,7 +89,7 @@ export const GetVertexByHashRequest$outboundSchema: z.ZodType<
 > = z.object({
     vertexHash: z.string(),
     blockchainId: components.XChainId$outboundSchema,
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**

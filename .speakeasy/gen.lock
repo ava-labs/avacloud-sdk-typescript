@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: a3899fcc878e74b37e045c4648cd947e
+  docChecksum: b7c80728933921cf1fd9ad31274d5ad7
   docVersion: Beta
-  speakeasyVersion: 1.383.0
-  generationVersion: 2.404.11
-  releaseVersion: 0.1.0
-  configChecksum: 9fc60104651d9ae9899527e16e4c7c54
+  speakeasyVersion: 1.383.2
+  generationVersion: 2.407.0
+  releaseVersion: 0.2.0
+  configChecksum: c0ea7d51e7782a892a23d8b54a7e9bce
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -154,7 +154,7 @@ generatedFiles:
   - src/types/operations.ts
   - src/types/rfcdate.ts
   - tsconfig.json
-  - src/models/components/network.ts
+  - src/models/components/globalparamnetwork.ts
   - src/models/components/listnfttokens.ts
   - src/models/components/erc721token.ts
   - src/models/components/erc721tokenmetadata.ts
@@ -415,7 +415,7 @@ generatedFiles:
   - src/models/errors/index.ts
   - src/models/components/index.ts
   - src/models/operations/index.ts
-  - docs/models/components/network.md
+  - docs/models/components/globalparamnetwork.md
   - docs/models/components/tokens.md
   - docs/models/components/listnfttokens.md
   - docs/models/components/erctype.md
@@ -725,6 +725,7 @@ generatedFiles:
   - docs/models/operations/getvertexbyheightresponse.md
   - docs/models/operations/requesttype.md
   - docs/models/operations/getapiusagemetricsrequest.md
+  - docs/models/operations/queryparamrequesttype.md
   - docs/models/operations/getapilogsrequest.md
   - docs/models/operations/getapilogsresponse.md
   - docs/models/operations/listwebhooksrequest.md

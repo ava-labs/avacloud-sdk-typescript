@@ -10,7 +10,7 @@ export type ListDelegatorsGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type ListDelegatorsRequest = {
@@ -29,7 +29,7 @@ export type ListDelegatorsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
     /**
      * The order by which to sort results. Use "asc" for ascending order, "desc" for descending order. Sorted by timestamp or the `sortBy` query parameter, if provided.
      */
@@ -54,7 +54,7 @@ export const ListDelegatorsGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -68,7 +68,7 @@ export const ListDelegatorsGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     ListDelegatorsGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -93,7 +93,7 @@ export const ListDelegatorsRequest$inboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     rewardAddresses: z.string().optional(),
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
     delegationStatus: components.DelegationStatusType$inboundSchema.optional(),
     nodeIds: z.string().optional(),
@@ -119,7 +119,7 @@ export const ListDelegatorsRequest$outboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     rewardAddresses: z.string().optional(),
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),
     delegationStatus: components.DelegationStatusType$outboundSchema.optional(),
     nodeIds: z.string().optional(),

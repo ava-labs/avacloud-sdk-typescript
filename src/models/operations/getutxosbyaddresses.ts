@@ -10,7 +10,7 @@ export type GetUtxosByAddressesGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type GetUtxosByAddressesRequest = {
@@ -33,7 +33,7 @@ export type GetUtxosByAddressesRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
     /**
      * Asset ID for any asset (only applicable X-Chain)
      */
@@ -65,7 +65,7 @@ export const GetUtxosByAddressesGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -79,7 +79,7 @@ export const GetUtxosByAddressesGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetUtxosByAddressesGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -105,7 +105,7 @@ export const GetUtxosByAddressesRequest$inboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.BlockchainId$inboundSchema,
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
     assetId: z.string().optional(),
     includeSpent: z.boolean().optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
@@ -133,7 +133,7 @@ export const GetUtxosByAddressesRequest$outboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.BlockchainId$outboundSchema,
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
     assetId: z.string().optional(),
     includeSpent: z.boolean().optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),

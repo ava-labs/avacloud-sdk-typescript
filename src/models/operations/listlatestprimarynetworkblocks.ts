@@ -10,7 +10,7 @@ export type ListLatestPrimaryNetworkBlocksGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type ListLatestPrimaryNetworkBlocksRequest = {
@@ -29,7 +29,7 @@ export type ListLatestPrimaryNetworkBlocksRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type ListLatestPrimaryNetworkBlocksResponse = {
@@ -42,7 +42,7 @@ export const ListLatestPrimaryNetworkBlocksGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -56,7 +56,7 @@ export const ListLatestPrimaryNetworkBlocksGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     ListLatestPrimaryNetworkBlocksGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -81,7 +81,7 @@ export const ListLatestPrimaryNetworkBlocksRequest$inboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.BlockchainId$inboundSchema,
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -101,7 +101,7 @@ export const ListLatestPrimaryNetworkBlocksRequest$outboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.BlockchainId$outboundSchema,
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**

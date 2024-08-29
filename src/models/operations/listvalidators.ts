@@ -10,7 +10,7 @@ export type ListValidatorsGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type ListValidatorsRequest = {
@@ -25,7 +25,7 @@ export type ListValidatorsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
     /**
      * A comma separated list of node ids to filter by.
      */
@@ -94,7 +94,7 @@ export const ListValidatorsGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -108,7 +108,7 @@ export const ListValidatorsGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     ListValidatorsGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -132,7 +132,7 @@ export const ListValidatorsRequest$inboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
     nodeIds: z.string().optional(),
     sortBy: components.SortByOption$inboundSchema.optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
@@ -176,7 +176,7 @@ export const ListValidatorsRequest$outboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
     nodeIds: z.string().optional(),
     sortBy: components.SortByOption$outboundSchema.optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),

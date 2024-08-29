@@ -10,7 +10,7 @@ export type ListAssetTransactionsGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type ListAssetTransactionsRequest = {
@@ -41,7 +41,7 @@ export type ListAssetTransactionsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
     /**
      * Asset ID for any asset on X-Chain
      */
@@ -58,7 +58,7 @@ export const ListAssetTransactionsGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -72,7 +72,7 @@ export const ListAssetTransactionsGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     ListAssetTransactionsGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -100,7 +100,7 @@ export const ListAssetTransactionsRequest$inboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.XChainId$inboundSchema,
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
     assetId: z.string(),
 });
 
@@ -128,7 +128,7 @@ export const ListAssetTransactionsRequest$outboundSchema: z.ZodType<
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
     blockchainId: components.XChainId$outboundSchema,
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
     assetId: z.string(),
 });
 

@@ -10,7 +10,7 @@ export type GetSingleValidatorDetailsGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type GetSingleValidatorDetailsRequest = {
@@ -25,7 +25,7 @@ export type GetSingleValidatorDetailsRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
     /**
      * A primary network (P or X chain) nodeId.
      */
@@ -50,7 +50,7 @@ export const GetSingleValidatorDetailsGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -64,7 +64,7 @@ export const GetSingleValidatorDetailsGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetSingleValidatorDetailsGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -88,7 +88,7 @@ export const GetSingleValidatorDetailsRequest$inboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
     nodeId: z.string(),
     validationStatus: components.ValidationStatusType$inboundSchema.optional(),
     sortOrder: components.SortOrder$inboundSchema.optional(),
@@ -112,7 +112,7 @@ export const GetSingleValidatorDetailsRequest$outboundSchema: z.ZodType<
 > = z.object({
     pageToken: z.string().optional(),
     pageSize: z.number().int().default(10),
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
     nodeId: z.string(),
     validationStatus: components.ValidationStatusType$outboundSchema.optional(),
     sortOrder: components.SortOrder$outboundSchema.optional(),

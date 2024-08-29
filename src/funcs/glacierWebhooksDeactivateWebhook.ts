@@ -76,12 +76,12 @@ export async function glacierWebhooksDeactivateWebhook(
         Accept: "application/json",
     });
 
-    const glacierApiKey$ = await extractSecurity(client$.options$.glacierApiKey);
-    const security$ = glacierApiKey$ == null ? {} : { glacierApiKey: glacierApiKey$ };
+    const apiKey$ = await extractSecurity(client$.options$.apiKey);
+    const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
     const context = {
         operationID: "deactivateWebhook",
         oAuth2Scopes: [],
-        securitySource: client$.options$.glacierApiKey,
+        securitySource: client$.options$.apiKey,
     };
     const securitySettings$ = resolveGlobalSecurity(security$);
 

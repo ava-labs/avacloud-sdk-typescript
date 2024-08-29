@@ -6,7 +6,7 @@
 import { Security } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Security = {
-    glacierApiKey: "<value>",
+    apiKey: "<value>",
 };
 ```
 
@@ -14,4 +14,4 @@ let value: Security = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `glacierApiKey`    | *string*           | :heavy_check_mark: | N/A                |
+| `apiKey`           | *string*           | :heavy_check_mark: | N/A                |

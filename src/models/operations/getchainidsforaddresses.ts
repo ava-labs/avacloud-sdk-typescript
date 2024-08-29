@@ -9,7 +9,7 @@ export type GetChainIdsForAddressesGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type GetChainIdsForAddressesRequest = {
@@ -20,7 +20,7 @@ export type GetChainIdsForAddressesRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 /** @internal */
@@ -29,7 +29,7 @@ export const GetChainIdsForAddressesGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -43,7 +43,7 @@ export const GetChainIdsForAddressesGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetChainIdsForAddressesGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -66,7 +66,7 @@ export const GetChainIdsForAddressesRequest$inboundSchema: z.ZodType<
     unknown
 > = z.object({
     addresses: z.string(),
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -82,7 +82,7 @@ export const GetChainIdsForAddressesRequest$outboundSchema: z.ZodType<
     GetChainIdsForAddressesRequest
 > = z.object({
     addresses: z.string(),
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**

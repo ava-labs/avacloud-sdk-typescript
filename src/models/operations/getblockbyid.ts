@@ -9,7 +9,7 @@ export type GetBlockByIdGlobals = {
     /**
      * A supported network type mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
 };
 
 export type GetBlockByIdRequest = {
@@ -20,7 +20,7 @@ export type GetBlockByIdRequest = {
     /**
      * Either mainnet or a testnet.
      */
-    network?: components.Network | undefined;
+    network?: components.GlobalParamNetwork | undefined;
     /**
      * A block identifier which is either a block number or the block hash.
      */
@@ -33,7 +33,7 @@ export const GetBlockByIdGlobals$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -47,7 +47,7 @@ export const GetBlockByIdGlobals$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     GetBlockByIdGlobals
 > = z.object({
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
 });
 
 /**
@@ -70,7 +70,7 @@ export const GetBlockByIdRequest$inboundSchema: z.ZodType<
     unknown
 > = z.object({
     blockchainId: components.BlockchainId$inboundSchema,
-    network: components.Network$inboundSchema.optional(),
+    network: components.GlobalParamNetwork$inboundSchema.optional(),
     blockId: z.string(),
 });
 
@@ -88,7 +88,7 @@ export const GetBlockByIdRequest$outboundSchema: z.ZodType<
     GetBlockByIdRequest
 > = z.object({
     blockchainId: components.BlockchainId$outboundSchema,
-    network: components.Network$outboundSchema.optional(),
+    network: components.GlobalParamNetwork$outboundSchema.optional(),
     blockId: z.string(),
 });
 
