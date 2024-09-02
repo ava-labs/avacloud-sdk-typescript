@@ -6,8 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
-export const GetAddressesFromWebhookServerList = ["https://glacier-api.avax.network"] as const;
-
 export type GetAddressesFromWebhookRequest = {
     /**
      * A page token, received from a previous list call. Provide this to retrieve the subsequent page.

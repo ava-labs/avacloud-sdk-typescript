@@ -6,12 +6,12 @@
 import { Subnet } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Subnet = {
-    createBlockTimestamp: 9023.49,
+    createBlockTimestamp: 5820.2,
     createBlockIndex: "<value>",
     subnetId: "<value>",
     ownerAddresses: ["<value>"],
-    threshold: 6976.31,
-    locktime: 992.8,
+    threshold: 1433.53,
+    locktime: 5373.73,
     subnetOwnershipInfo: {
         locktime: 0,
         threshold: 1,

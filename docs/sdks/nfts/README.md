@@ -1,5 +1,5 @@
 # Nfts
-(*data.nfts*)
+(*glacier.nfts*)
 
 ## Overview
 
@@ -25,7 +25,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  await avaCloudSDK.data.nfts.reindexNft({
+  await avaCloudSDK.glacier.nfts.reindexNft({
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
@@ -42,7 +42,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataNftsReindexNft } from "@avalabs/avacloud-sdk/funcs/dataNftsReindexNft.js";
+import { glacierNftsReindexNft } from "@avalabs/avacloud-sdk/funcs/glacierNftsReindexNft.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -53,7 +53,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataNftsReindexNft(avaCloudSDK, {
+  const res = await glacierNftsReindexNft(avaCloudSDK, {
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
@@ -78,7 +78,6 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -115,7 +114,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.nfts.listTokens({
+  const result = await avaCloudSDK.glacier.nfts.listTokens({
     pageSize: 10,
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
@@ -135,7 +134,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataNftsListTokens } from "@avalabs/avacloud-sdk/funcs/dataNftsListTokens.js";
+import { glacierNftsListTokens } from "@avalabs/avacloud-sdk/funcs/glacierNftsListTokens.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -146,7 +145,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataNftsListTokens(avaCloudSDK, {
+  const res = await glacierNftsListTokens(avaCloudSDK, {
     pageSize: 10,
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
@@ -174,7 +173,6 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -211,7 +209,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.nfts.getTokenDetails({
+  const result = await avaCloudSDK.glacier.nfts.getTokenDetails({
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
@@ -229,7 +227,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataNftsGetTokenDetails } from "@avalabs/avacloud-sdk/funcs/dataNftsGetTokenDetails.js";
+import { glacierNftsGetTokenDetails } from "@avalabs/avacloud-sdk/funcs/glacierNftsGetTokenDetails.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -240,7 +238,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataNftsGetTokenDetails(avaCloudSDK, {
+  const res = await glacierNftsGetTokenDetails(avaCloudSDK, {
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
@@ -266,7 +264,6 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 

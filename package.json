@@ -1,6 +1,6 @@
 {
   "name": "@avalabs/avacloud-sdk",
-  "version": "0.3.0",
+  "version": "0.2.1",
   "author": "AvaCloud",
   "license": "SEE LICENSE IN LICENSE.md",
   "main": "./index.js",

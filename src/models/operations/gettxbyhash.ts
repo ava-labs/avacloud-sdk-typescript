@@ -5,8 +5,6 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
-export const GetTxByHashServerList = ["https://glacier-api.avax.network"] as const;
-
 export type GetTxByHashGlobals = {
     /**
      * A supported network type mainnet or a testnet.

@@ -4,8 +4,6 @@
 
 import * as z from "zod";
 
-export const GetChainInfoServerList = ["https://glacier-api.avax.network"] as const;
-
 export type GetChainInfoGlobals = {
     /**
      * A supported EVM chain id, chain alias, or blockchain id.

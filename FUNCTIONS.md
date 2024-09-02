@@ -20,7 +20,7 @@ specific category of applications.
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { metricsHealthCheckMetricsHealthCheck } from "@avalabs/avacloud-sdk/funcs/metricsHealthCheckMetricsHealthCheck.js";
+import { glacierHealthCheckGlacierHealthCheck } from "@avalabs/avacloud-sdk/funcs/glacierHealthCheckGlacierHealthCheck.js";
 import { SDKValidationError } from "@avalabs/avacloud-sdk/models/errors/sdkvalidationerror.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
@@ -32,7 +32,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await metricsHealthCheckMetricsHealthCheck(avaCloudSDK);
+  const res = await glacierHealthCheckGlacierHealthCheck(avaCloudSDK);
 
   switch (true) {
     case res.ok:

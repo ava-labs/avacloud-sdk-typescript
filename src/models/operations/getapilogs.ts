@@ -7,8 +7,6 @@ import { ClosedEnum } from "../../types/enums.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
-export const GetApiLogsServerList = ["https://glacier-api.avax.network"] as const;
-
 /**
  * Filter data by request type.
  */

@@ -8,7 +8,7 @@ import { ListCChainAtomicTransactionsResponse } from "@avalabs/avacloud-sdk/mode
 let value: ListCChainAtomicTransactionsResponse = {
     transactions: [],
     chainInfo: {
-        chainName: "c-chain",
+        chainName: "x-chain",
         network: "fuji",
     },
 };

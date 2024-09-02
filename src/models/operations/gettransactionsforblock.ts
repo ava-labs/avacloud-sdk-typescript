@@ -4,8 +4,6 @@
 
 import * as z from "zod";
 
-export const GetTransactionsForBlockServerList = ["https://glacier-api.avax.network"] as const;
-
 export type GetTransactionsForBlockGlobals = {
     /**
      * A supported EVM chain id, chain alias, or blockchain id.

@@ -9,8 +9,8 @@ let value: ChainInfo = {
     chainId: "<value>",
     status: "OK",
     chainName: "<value>",
-    description: "Profit-focused maximized firmware",
-    vmName: "ETHEREUM",
+    description: "Balanced 6th generation help-desk",
+    vmName: "BITCOIN",
     rpcUrl: "<value>",
     isTestnet: false,
     networkToken: {

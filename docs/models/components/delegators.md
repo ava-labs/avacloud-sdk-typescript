@@ -11,11 +11,11 @@ let value: Delegators = {
     rewardAddresses: ["<value>"],
     amountDelegated: "<value>",
     delegationFee: "<value>",
-    startTimestamp: 6235.1,
-    endTimestamp: 1589.69,
+    startTimestamp: 6130.64,
+    endTimestamp: 4370.32,
     estimatedGrossReward: "<value>",
     estimatedNetReward: "<value>",
-    delegationStatus: "active",
+    delegationStatus: "pending",
 };
 ```
 

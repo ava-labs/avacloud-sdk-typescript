@@ -6,8 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
-export const ListTransfersServerList = ["https://glacier-api.avax.network"] as const;
-
 export type ListTransfersGlobals = {
     /**
      * A supported EVM chain id, chain alias, or blockchain id.

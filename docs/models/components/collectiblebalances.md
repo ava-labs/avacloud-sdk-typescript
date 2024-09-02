@@ -11,7 +11,7 @@ let value: CollectibleBalances = {
     tokenId: "<value>",
     tokenUri: "<value>",
     metadata: {
-        indexStatus: "INVALID_TOKEN_URI",
+        indexStatus: "INVALID_METADATA",
     },
     chainId: "43114",
     balance: "2000000000000000000",

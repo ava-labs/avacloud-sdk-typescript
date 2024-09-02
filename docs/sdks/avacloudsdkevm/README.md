@@ -1,2 +1,0 @@
-# AvaCloudSDKEvm
-(*data.evm*)

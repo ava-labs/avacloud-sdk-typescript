@@ -1,11 +1,12 @@
-speakeasyVersion: 1.385.0
+speakeasyVersion: 1.383.2
 sources:
     AvaCloudSDK-OAS:
         sourceNamespace: avacloud-sdk-oas
-        sourceRevisionDigest: sha256:c0706e2fcbd4849b9ebfb2e3d752b0a8cb8ef4c35d31c5615458b0b2cfcaee25
-        sourceBlobDigest: sha256:5a1aeee543769687486c9f973a23859dd527f4ad944a7e32c19217a9f064df22
+        sourceRevisionDigest: sha256:6ba81e270907163ed56b617e1c0863f1731e6481c62a41f034b255833c0c0565
+        sourceBlobDigest: sha256:7bdbf020c983454ba41e539bdc06708e421d942e068f9a18f85b5f4978ff7c9b
         tags:
             - latest
+            - main
     AvalancheSDK-OAS:
         sourceNamespace: avalanche-sdk-oas
         sourceRevisionDigest: sha256:5a1e07e4561e10de09495e4808d129b671b42547b2864d1828b477aadfcb21ae
@@ -17,11 +18,11 @@ targets:
     avacloud-sdk:
         source: AvaCloudSDK-OAS
         sourceNamespace: avacloud-sdk-oas
-        sourceRevisionDigest: sha256:c0706e2fcbd4849b9ebfb2e3d752b0a8cb8ef4c35d31c5615458b0b2cfcaee25
-        sourceBlobDigest: sha256:5a1aeee543769687486c9f973a23859dd527f4ad944a7e32c19217a9f064df22
+        sourceRevisionDigest: sha256:6ba81e270907163ed56b617e1c0863f1731e6481c62a41f034b255833c0c0565
+        sourceBlobDigest: sha256:7bdbf020c983454ba41e539bdc06708e421d942e068f9a18f85b5f4978ff7c9b
         codeSamplesNamespace: avacloud-sdk-ts-code-samples
-        codeSamplesRevisionDigest: sha256:cd0678ed38c5e2f97309bc63e39d711cfffb95d947756b55222b590e64eddfc0
-        outLocation: /Users/sayan.kar/avalabs/avacloud-sdk-typescript
+        codeSamplesRevisionDigest: sha256:14049a497526fb4eafef4aa0016649547ebe977aa0575fed9f7ca8b9c5a4e237
+        outLocation: /github/workspace/repo
     avalanche-sdk:
         source: AvalancheSDK-OAS
         sourceNamespace: avalanche-sdk-oas
@@ -34,10 +35,7 @@ workflow:
     sources:
         AvaCloudSDK-OAS:
             inputs:
-                - location: https://e4db-2405-201-3027-2887-c59f-283b-9808-8aac.ngrok-free.app/api-json
-                - location: https://c6cd-2405-201-3027-2887-c59f-283b-9808-8aac.ngrok-free.app/api-json
-            overlays:
-                - location: overlays/overlay.yaml
+                - location: https://glacier-api.avax.network/api-json
             registry:
                 location: registry.speakeasyapi.dev/avalabs/avalabs/avacloud-sdk-oas
     targets:

@@ -5,8 +5,6 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
-export const GetNativeBalanceServerList = ["https://glacier-api.avax.network"] as const;
-
 export type GetNativeBalanceGlobals = {
     /**
      * A supported EVM chain id, chain alias, or blockchain id.

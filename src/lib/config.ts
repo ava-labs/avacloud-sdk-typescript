@@ -6,7 +6,12 @@ import * as components from "../models/components/index.js";
 import { HTTPClient } from "./http.js";
 import { Logger } from "./logger.js";
 import { RetryConfig } from "./retries.js";
-import { pathToFunc } from "./url.js";
+import { Params, pathToFunc } from "./url.js";
+
+/**
+ * Contains the list of servers available to the SDK
+ */
+export const ServerList = ["https://glacier-api.avax.network"] as const;
 
 export type SDKOptions = {
     apiKey?: string | (() => Promise<string>);
@@ -23,6 +28,10 @@ export type SDKOptions = {
 
     httpClient?: HTTPClient;
     /**
+     * Allows overriding the default server used by the SDK
+     */
+    serverIdx?: number;
+    /**
      * Allows overriding the default server URL used by the SDK
      */
     serverURL?: string;
@@ -35,13 +44,17 @@ export type SDKOptions = {
 };
 
 export function serverURLFromOptions(options: SDKOptions): URL | null {
-    const serverURL = options.serverURL;
+    let serverURL = options.serverURL;
+
+    const params: Params = {};
 
     if (!serverURL) {
-        return null;
+        const serverIdx = options.serverIdx ?? 0;
+        if (serverIdx < 0 || serverIdx >= ServerList.length) {
+            throw new Error(`Invalid server index ${serverIdx}`);
+        }
+        serverURL = ServerList[serverIdx] || "";
     }
-
-    const params: Record<string, string | undefined> = {};
 
     const u = pathToFunc(serverURL)(params);
     return new URL(u);
@@ -50,7 +63,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
     language: "typescript",
     openapiDocVersion: "Beta",
-    sdkVersion: "0.3.0",
-    genVersion: "2.407.2",
-    userAgent: "speakeasy-sdk/typescript 0.3.0 2.407.2 Beta @avalabs/avacloud-sdk",
+    sdkVersion: "0.2.1",
+    genVersion: "2.407.0",
+    userAgent: "speakeasy-sdk/typescript 0.2.1 2.407.0 Beta @avalabs/avacloud-sdk",
 } as const;

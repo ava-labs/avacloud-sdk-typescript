@@ -38,7 +38,7 @@ let value: ListUtxosResponse = {
         },
     ],
     chainInfo: {
-        chainName: "c-chain",
+        chainName: "p-chain",
         network: "mainnet",
     },
 };

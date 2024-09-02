@@ -39,12 +39,12 @@ let value: Messages = {
     },
     sourceTransaction: {
         txHash: "<value>",
-        timestamp: 5695.74,
+        timestamp: 4634.51,
         gasSpent: "<value>",
     },
     destinationTransaction: {
         txHash: "<value>",
-        timestamp: 7395.51,
+        timestamp: 2239.24,
         gasSpent: "<value>",
         rewardRedeemer: "<value>",
         delivererAddress: "<value>",

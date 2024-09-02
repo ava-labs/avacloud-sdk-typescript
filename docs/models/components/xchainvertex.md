@@ -8,12 +8,12 @@ import { XChainVertex } from "@avalabs/avacloud-sdk/models/components";
 let value: XChainVertex = {
     vertexHash: "<value>",
     parentHashes: ["<value>"],
-    vertexHeight: 7038.89,
-    vertexIndex: 4479.26,
-    vertexTimestamp: 1002.26,
-    txCount: 995.69,
+    vertexHeight: 191.93,
+    vertexIndex: 4701.32,
+    vertexTimestamp: 3015.75,
+    txCount: 7160.75,
     transactions: ["<value>"],
-    vertexSizeBytes: 9194.83,
+    vertexSizeBytes: 6601.74,
 };
 ```
 

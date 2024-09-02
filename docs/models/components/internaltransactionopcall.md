@@ -5,7 +5,7 @@
 ```typescript
 import { InternalTransactionOpCall } from "@avalabs/avacloud-sdk/models/components";
 
-let value: InternalTransactionOpCall = "STATICCALL";
+let value: InternalTransactionOpCall = "CALLCODE";
 ```
 
 ## Values

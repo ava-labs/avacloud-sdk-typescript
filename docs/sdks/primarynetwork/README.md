@@ -1,5 +1,5 @@
 # PrimaryNetwork
-(*data.primaryNetwork*)
+(*glacier.primaryNetwork*)
 
 ## Overview
 
@@ -31,7 +31,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.getAssetDetails({
+  const result = await avaCloudSDK.glacier.primaryNetwork.getAssetDetails({
     blockchainId: "x-chain",
     assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
   });
@@ -49,7 +49,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkGetAssetDetails } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkGetAssetDetails.js";
+import { glacierPrimaryNetworkGetAssetDetails } from "@avalabs/avacloud-sdk/funcs/glacierPrimaryNetworkGetAssetDetails.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -60,7 +60,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkGetAssetDetails(avaCloudSDK, {
+  const res = await glacierPrimaryNetworkGetAssetDetails(avaCloudSDK, {
     blockchainId: "x-chain",
     assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
   });
@@ -86,7 +86,6 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -123,7 +122,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.getChainIdsForAddresses({
+  const result = await avaCloudSDK.glacier.primaryNetwork.getChainIdsForAddresses({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
   });
 
@@ -140,7 +139,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkGetChainIdsForAddresses } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkGetChainIdsForAddresses.js";
+import { glacierPrimaryNetworkGetChainIdsForAddresses } from "@avalabs/avacloud-sdk/funcs/glacierPrimaryNetworkGetChainIdsForAddresses.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -151,7 +150,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkGetChainIdsForAddresses(avaCloudSDK, {
+  const res = await glacierPrimaryNetworkGetChainIdsForAddresses(avaCloudSDK, {
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
   });
 
@@ -176,7 +175,6 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -213,7 +211,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.getNetworkDetails({});
+  const result = await avaCloudSDK.glacier.primaryNetwork.getNetworkDetails({});
 
   // Handle the result
   console.log(result)
@@ -228,7 +226,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkGetNetworkDetails } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkGetNetworkDetails.js";
+import { glacierPrimaryNetworkGetNetworkDetails } from "@avalabs/avacloud-sdk/funcs/glacierPrimaryNetworkGetNetworkDetails.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -239,7 +237,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkGetNetworkDetails(avaCloudSDK, {});
+  const res = await glacierPrimaryNetworkGetNetworkDetails(avaCloudSDK, {});
 
   if (!res.ok) {
     throw res.error;
@@ -262,7 +260,6 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -299,7 +296,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.listBlockchains({
+  const result = await avaCloudSDK.glacier.primaryNetwork.listBlockchains({
     pageSize: 10,
     sortOrder: "asc",
   });
@@ -319,7 +316,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkListBlockchains } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkListBlockchains.js";
+import { glacierPrimaryNetworkListBlockchains } from "@avalabs/avacloud-sdk/funcs/glacierPrimaryNetworkListBlockchains.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -330,7 +327,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkListBlockchains(avaCloudSDK, {
+  const res = await glacierPrimaryNetworkListBlockchains(avaCloudSDK, {
     pageSize: 10,
     sortOrder: "asc",
   });
@@ -358,7 +355,6 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -395,7 +391,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.listSubnets({
+  const result = await avaCloudSDK.glacier.primaryNetwork.listSubnets({
     pageSize: 10,
     sortOrder: "asc",
   });
@@ -415,7 +411,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkListSubnets } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkListSubnets.js";
+import { glacierPrimaryNetworkListSubnets } from "@avalabs/avacloud-sdk/funcs/glacierPrimaryNetworkListSubnets.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -426,7 +422,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkListSubnets(avaCloudSDK, {
+  const res = await glacierPrimaryNetworkListSubnets(avaCloudSDK, {
     pageSize: 10,
     sortOrder: "asc",
   });
@@ -454,7 +450,6 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -491,7 +486,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.getSubnetById({
+  const result = await avaCloudSDK.glacier.primaryNetwork.getSubnetById({
     subnetId: "11111111111111111111111111111111LpoYY",
   });
 
@@ -508,7 +503,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkGetSubnetById } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkGetSubnetById.js";
+import { glacierPrimaryNetworkGetSubnetById } from "@avalabs/avacloud-sdk/funcs/glacierPrimaryNetworkGetSubnetById.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -519,7 +514,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkGetSubnetById(avaCloudSDK, {
+  const res = await glacierPrimaryNetworkGetSubnetById(avaCloudSDK, {
     subnetId: "11111111111111111111111111111111LpoYY",
   });
 
@@ -544,7 +539,6 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -581,7 +575,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.listValidators({
+  const result = await avaCloudSDK.glacier.primaryNetwork.listValidators({
     pageSize: 10,
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
     sortOrder: "asc",
@@ -612,7 +606,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkListValidators } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkListValidators.js";
+import { glacierPrimaryNetworkListValidators } from "@avalabs/avacloud-sdk/funcs/glacierPrimaryNetworkListValidators.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -623,7 +617,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkListValidators(avaCloudSDK, {
+  const res = await glacierPrimaryNetworkListValidators(avaCloudSDK, {
     pageSize: 10,
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
     sortOrder: "asc",
@@ -662,7 +656,6 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -699,7 +692,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.getSingleValidatorDetails({
+  const result = await avaCloudSDK.glacier.primaryNetwork.getSingleValidatorDetails({
     pageSize: 10,
     nodeId: "NodeID-111111111111111111116DBWJs",
     validationStatus: "completed",
@@ -721,7 +714,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkGetSingleValidatorDetails } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkGetSingleValidatorDetails.js";
+import { glacierPrimaryNetworkGetSingleValidatorDetails } from "@avalabs/avacloud-sdk/funcs/glacierPrimaryNetworkGetSingleValidatorDetails.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -732,7 +725,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkGetSingleValidatorDetails(avaCloudSDK, {
+  const res = await glacierPrimaryNetworkGetSingleValidatorDetails(avaCloudSDK, {
     pageSize: 10,
     nodeId: "NodeID-111111111111111111116DBWJs",
     validationStatus: "completed",
@@ -762,7 +755,6 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -799,7 +791,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.listDelegators({
+  const result = await avaCloudSDK.glacier.primaryNetwork.listDelegators({
     pageSize: 10,
     rewardAddresses: "P-avax1679zrp3z9mf7z4an42ddq47qzj36zv6ga20vwl,P-avax1s7kd0kfndlz6mh3l0etrrcmkg5y366k8e0s6cc",
     sortOrder: "asc",
@@ -822,7 +814,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkListDelegators } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkListDelegators.js";
+import { glacierPrimaryNetworkListDelegators } from "@avalabs/avacloud-sdk/funcs/glacierPrimaryNetworkListDelegators.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -833,7 +825,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkListDelegators(avaCloudSDK, {
+  const res = await glacierPrimaryNetworkListDelegators(avaCloudSDK, {
     pageSize: 10,
     rewardAddresses: "P-avax1679zrp3z9mf7z4an42ddq47qzj36zv6ga20vwl,P-avax1s7kd0kfndlz6mh3l0etrrcmkg5y366k8e0s6cc",
     sortOrder: "asc",
@@ -864,7 +856,6 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 

@@ -9,7 +9,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-    const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
+    const result = await avaCloudSDK.glacier.healthCheck.glacierHealthCheck();
 
     // Handle the result
     console.log(result);

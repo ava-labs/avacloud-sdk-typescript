@@ -4,8 +4,6 @@
 
 import * as z from "zod";
 
-export const GetOperationResultServerList = ["https://glacier-api.avax.network"] as const;
-
 export type GetOperationResultRequest = {
     /**
      * UUID of given operation

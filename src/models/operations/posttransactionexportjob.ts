@@ -5,8 +5,6 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
-export const PostTransactionExportJobServerList = ["https://glacier-api.avax.network"] as const;
-
 export type PostTransactionExportJobRequestBody =
     | components.CreateEvmTransactionExportRequest
     | components.CreatePrimaryNetworkTransactionExportRequest;

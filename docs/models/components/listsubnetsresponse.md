@@ -8,12 +8,12 @@ import { ListSubnetsResponse } from "@avalabs/avacloud-sdk/models/components";
 let value: ListSubnetsResponse = {
     subnets: [
         {
-            createBlockTimestamp: 3595.08,
+            createBlockTimestamp: 1182.74,
             createBlockIndex: "<value>",
             subnetId: "<value>",
             ownerAddresses: ["<value>"],
-            threshold: 6130.64,
-            locktime: 4370.32,
+            threshold: 7206.33,
+            locktime: 6399.21,
             subnetOwnershipInfo: {
                 locktime: 0,
                 threshold: 1,

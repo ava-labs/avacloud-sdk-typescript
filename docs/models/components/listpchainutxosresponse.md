@@ -21,18 +21,18 @@ let value: ListPChainUtxosResponse = {
             consumingTxHash: "3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c",
             createdOnChainId: "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
             utxoId: "68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC",
-            amount: "116.20",
+            amount: "841.39",
             assetId: "<value>",
             blockNumber: "<value>",
-            blockTimestamp: 2974.37,
-            outputIndex: 7670.24,
+            blockTimestamp: 2894.06,
+            outputIndex: 2647.3,
             txHash: "<value>",
-            utxoType: "TRANSFER",
+            utxoType: "STAKE",
         },
     ],
     chainInfo: {
         chainName: "x-chain",
-        network: "mainnet",
+        network: "fuji",
     },
 };
 ```
