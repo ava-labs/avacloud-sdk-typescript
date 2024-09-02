@@ -7,12 +7,15 @@ import { Tokens } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Tokens = {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-    ercType: "ERC-1155",
+    name: "Wrapped AVAX",
+    symbol: "WAVAX",
+    ercType: "ERC-721",
     tokenId: "<value>",
     tokenUri: "<value>",
     metadata: {
-        indexStatus: "METADATA_CONTENT_TOO_LARGE",
+        indexStatus: "INVALID_METADATA",
     },
+    ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
 };
 ```
 

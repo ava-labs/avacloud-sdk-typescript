@@ -3,33 +3,9 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
-import { AvaCloudSDKBalances } from "./avacloudsdkbalances.js";
-import { AvaCloudSDKBlocks } from "./avacloudsdkblocks.js";
-import { AvaCloudSDKTransactions } from "./avacloudsdktransactions.js";
 import { Chains } from "./chains.js";
-import { Contracts } from "./contracts.js";
 
 export class Evm extends ClientSDK {
-    private _balances?: AvaCloudSDKBalances;
-    get balances(): AvaCloudSDKBalances {
-        return (this._balances ??= new AvaCloudSDKBalances(this.options$));
-    }
-
-    private _blocks?: AvaCloudSDKBlocks;
-    get blocks(): AvaCloudSDKBlocks {
-        return (this._blocks ??= new AvaCloudSDKBlocks(this.options$));
-    }
-
-    private _transactions?: AvaCloudSDKTransactions;
-    get transactions(): AvaCloudSDKTransactions {
-        return (this._transactions ??= new AvaCloudSDKTransactions(this.options$));
-    }
-
-    private _contracts?: Contracts;
-    get contracts(): Contracts {
-        return (this._contracts ??= new Contracts(this.options$));
-    }
-
     private _chains?: Chains;
     get chains(): Chains {
         return (this._chains ??= new Chains(this.options$));

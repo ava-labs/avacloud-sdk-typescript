@@ -8,7 +8,7 @@ import { ListPChainTransactionsResponse } from "@avalabs/avacloud-sdk/models/com
 let value: ListPChainTransactionsResponse = {
     transactions: [],
     chainInfo: {
-        chainName: "c-chain",
+        chainName: "p-chain",
         network: "mainnet",
     },
 };

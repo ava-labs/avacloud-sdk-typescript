@@ -5,6 +5,8 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export const GetAssetDetailsServerList = ["https://glacier-api.avax.network"] as const;
+
 export type GetAssetDetailsGlobals = {
     /**
      * A supported network type mainnet or a testnet.

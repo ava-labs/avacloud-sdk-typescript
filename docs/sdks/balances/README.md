@@ -1,5 +1,5 @@
 # Balances
-(*glacier.primaryNetwork.balances*)
+(*data.primaryNetwork.balances*)
 
 ## Overview
 
@@ -25,7 +25,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.glacier.primaryNetwork.balances.getBalancesByAddresses({
+  const result = await avaCloudSDK.data.primaryNetwork.balances.getBalancesByAddresses({
     blockTimestamp: 1599696000,
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     blockchainId: "p-chain",
@@ -44,7 +44,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { glacierPrimaryNetworkBalancesGetBalancesByAddresses } from "@avalabs/avacloud-sdk/funcs/glacierPrimaryNetworkBalancesGetBalancesByAddresses.js";
+import { dataPrimaryNetworkBalancesGetBalancesByAddresses } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBalancesGetBalancesByAddresses.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -55,7 +55,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await glacierPrimaryNetworkBalancesGetBalancesByAddresses(avaCloudSDK, {
+  const res = await dataPrimaryNetworkBalancesGetBalancesByAddresses(avaCloudSDK, {
     blockTimestamp: 1599696000,
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     blockchainId: "p-chain",
@@ -82,6 +82,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 

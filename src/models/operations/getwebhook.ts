@@ -4,6 +4,8 @@
 
 import * as z from "zod";
 
+export const GetWebhookServerList = ["https://glacier-api.avax.network"] as const;
+
 export type GetWebhookRequest = {
     /**
      * The webhook identifier.

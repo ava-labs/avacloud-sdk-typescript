@@ -5,6 +5,8 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export const SupportedChainsServerList = ["https://glacier-api.avax.network"] as const;
+
 export type SupportedChainsRequest = {
     /**
      * mainnet or testnet.

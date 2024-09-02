@@ -59,7 +59,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-    const result = await avaCloudSDK.glacier.healthCheck.glacierHealthCheck();
+    const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
 
     // Handle the result
     console.log(result);
@@ -73,22 +73,48 @@ run();
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [glacier.healthCheck](docs/sdks/healthcheck/README.md)
+### [metrics.healthCheck](docs/sdks/healthcheck/README.md)
 
-* [glacierHealthCheck](docs/sdks/healthcheck/README.md#glacierhealthcheck) - Get the health of the service
+* [metricsHealthCheck](docs/sdks/healthcheck/README.md#metricshealthcheck) - Get the health of the service
 
-### [glacier.nfts](docs/sdks/nfts/README.md)
+
+### [metrics.evm.chains](docs/sdks/chains/README.md)
+
+* [listChains](docs/sdks/chains/README.md#listchains) - Get a list of supported blockchains
+* [getChain](docs/sdks/chains/README.md#getchain) - Get chain information for supported blockchain
+
+
+### [metrics.chain.metrics](docs/sdks/avacloudsdkmetrics/README.md)
+
+* [getEvmChainMetrics](docs/sdks/avacloudsdkmetrics/README.md#getevmchainmetrics) - Get metrics for EVM chains
+* [getEvmChainRollingWindowMetrics](docs/sdks/avacloudsdkmetrics/README.md#getevmchainrollingwindowmetrics) - Get rolling window metrics for EVM chains
+* [getStakingMetrics](docs/sdks/avacloudsdkmetrics/README.md#getstakingmetrics) - Get staking metrics for a given subnet
+
+### [metrics.lookingGlass](docs/sdks/lookingglass/README.md)
+
+* [getNftHoldersByContractAddress](docs/sdks/lookingglass/README.md#getnftholdersbycontractaddress) - Get NFT holders by contract address
+* [getAddressesByBalanceOverTime](docs/sdks/lookingglass/README.md#getaddressesbybalanceovertime) - Get addresses by balance over time
+* [getAddressesByBtcbBridged](docs/sdks/lookingglass/README.md#getaddressesbybtcbbridged) - Get addresses by BTCb bridged balance
+* [getValidatorsByDateRange](docs/sdks/lookingglass/README.md#getvalidatorsbydaterange) - Get addresses running validators during a given time frame
+* [compositeQuery](docs/sdks/lookingglass/README.md#compositequery) - Composite query
+
+
+### [data.healthCheck](docs/sdks/avacloudsdkhealthcheck/README.md)
+
+* [dataHealthCheck](docs/sdks/avacloudsdkhealthcheck/README.md#datahealthcheck) - Get the health of the service
+
+### [data.nfts](docs/sdks/nfts/README.md)
 
 * [reindexNft](docs/sdks/nfts/README.md#reindexnft) - Reindex NFT metadata
 * [listTokens](docs/sdks/nfts/README.md#listtokens) - List tokens
 * [getTokenDetails](docs/sdks/nfts/README.md#gettokendetails) - Get token details
 
-### [glacier.operations](docs/sdks/operations/README.md)
+### [data.operations](docs/sdks/operations/README.md)
 
 * [getOperationResult](docs/sdks/operations/README.md#getoperationresult) - Get operation
 * [postTransactionExportJob](docs/sdks/operations/README.md#posttransactionexportjob) - Create transaction export operation
 
-### [glacier.primaryNetwork](docs/sdks/primarynetwork/README.md)
+### [data.primaryNetwork](docs/sdks/primarynetwork/README.md)
 
 * [getAssetDetails](docs/sdks/primarynetwork/README.md#getassetdetails) - Get asset details
 * [getChainIdsForAddresses](docs/sdks/primarynetwork/README.md#getchainidsforaddresses) - Get chain interactions for addresses
@@ -100,44 +126,44 @@ run();
 * [getSingleValidatorDetails](docs/sdks/primarynetwork/README.md#getsinglevalidatordetails) - Get single validator details
 * [listDelegators](docs/sdks/primarynetwork/README.md#listdelegators) - List delegators
 
-### [glacier.primaryNetwork.transactions](docs/sdks/transactions/README.md)
+### [data.primaryNetwork.transactions](docs/sdks/transactions/README.md)
 
 * [getTxByHash](docs/sdks/transactions/README.md#gettxbyhash) - Get transaction
 * [listLatestPrimaryNetworkTransactions](docs/sdks/transactions/README.md#listlatestprimarynetworktransactions) - List latest transactions
 * [listActivePrimaryNetworkStakingTransactions](docs/sdks/transactions/README.md#listactiveprimarynetworkstakingtransactions) - List staking transactions
 * [listAssetTransactions](docs/sdks/transactions/README.md#listassettransactions) - List asset transactions
 
-### [glacier.primaryNetwork.rewards](docs/sdks/rewards/README.md)
+### [data.primaryNetwork.rewards](docs/sdks/rewards/README.md)
 
 * [listPendingPrimaryNetworkRewards](docs/sdks/rewards/README.md#listpendingprimarynetworkrewards) - List pending rewards
 * [listHistoricalPrimaryNetworkRewards](docs/sdks/rewards/README.md#listhistoricalprimarynetworkrewards) - List historical rewards
 
-### [glacier.primaryNetwork.utxos](docs/sdks/utxos/README.md)
+### [data.primaryNetwork.utxos](docs/sdks/utxos/README.md)
 
 * [getUtxosByAddresses](docs/sdks/utxos/README.md#getutxosbyaddresses) - List UTXOs
 
-### [glacier.primaryNetwork.balances](docs/sdks/balances/README.md)
+### [data.primaryNetwork.balances](docs/sdks/balances/README.md)
 
 * [getBalancesByAddresses](docs/sdks/balances/README.md#getbalancesbyaddresses) - Get balances
 
-### [glacier.primaryNetwork.blocks](docs/sdks/blocks/README.md)
+### [data.primaryNetwork.blocks](docs/sdks/blocks/README.md)
 
 * [getBlockById](docs/sdks/blocks/README.md#getblockbyid) - Get block
 * [listPrimaryNetworkBlocksByNodeId](docs/sdks/blocks/README.md#listprimarynetworkblocksbynodeid) - List blocks proposed by node
 * [listLatestPrimaryNetworkBlocks](docs/sdks/blocks/README.md#listlatestprimarynetworkblocks) - List latest blocks
 
-### [glacier.primaryNetwork.vertices](docs/sdks/vertices/README.md)
+### [data.primaryNetwork.vertices](docs/sdks/vertices/README.md)
 
 * [listLatestXChainVertices](docs/sdks/vertices/README.md#listlatestxchainvertices) - List vertices
 * [getVertexByHash](docs/sdks/vertices/README.md#getvertexbyhash) - Get vertex
 * [getVertexByHeight](docs/sdks/vertices/README.md#getvertexbyheight) - List vertices by height
 
-### [glacier.usageMetrics](docs/sdks/usagemetrics/README.md)
+### [data.usageMetrics](docs/sdks/usagemetrics/README.md)
 
 * [getApiUsageMetrics](docs/sdks/usagemetrics/README.md#getapiusagemetrics) - Get usage metrics for the Glacier API
 * [getApiLogs](docs/sdks/usagemetrics/README.md#getapilogs) - Get logs for requests made by client
 
-### [glacier.webhooks](docs/sdks/webhooks/README.md)
+### [data.webhooks](docs/sdks/webhooks/README.md)
 
 * [listWebhooks](docs/sdks/webhooks/README.md#listwebhooks) - List webhooks
 * [createWebhook](docs/sdks/webhooks/README.md#createwebhook) - Create a webhook
@@ -150,13 +176,13 @@ run();
 * [removeAddressesFromWebhook](docs/sdks/webhooks/README.md#removeaddressesfromwebhook) - Remove addresses from webhook
 * [addAddressesToWebhook](docs/sdks/webhooks/README.md#addaddressestowebhook) - Add addresses to webhook
 
-### [glacier.teleporter](docs/sdks/teleporter/README.md)
+### [data.teleporter](docs/sdks/teleporter/README.md)
 
 * [getTeleporterMessage](docs/sdks/teleporter/README.md#getteleportermessage) - Get a teleporter message
 * [listTeleporterMessages](docs/sdks/teleporter/README.md#listteleportermessages) - List teleporter messages
 
 
-### [glacier.evm.balances](docs/sdks/avacloudsdkbalances/README.md)
+### [data.evm.balances](docs/sdks/avacloudsdkbalances/README.md)
 
 * [getNativeBalance](docs/sdks/avacloudsdkbalances/README.md#getnativebalance) - Get native token balance
 * [listErc20Balances](docs/sdks/avacloudsdkbalances/README.md#listerc20balances) - List ERC-20 balances
@@ -164,12 +190,12 @@ run();
 * [listErc1155Balances](docs/sdks/avacloudsdkbalances/README.md#listerc1155balances) - List ERC-1155 balances
 * [listCollectibleBalances](docs/sdks/avacloudsdkbalances/README.md#listcollectiblebalances) - List collectible (ERC-721/ERC-1155) balances
 
-### [glacier.evm.blocks](docs/sdks/avacloudsdkblocks/README.md)
+### [data.evm.blocks](docs/sdks/avacloudsdkblocks/README.md)
 
 * [getLatestBlocks](docs/sdks/avacloudsdkblocks/README.md#getlatestblocks) - List latest blocks
 * [getBlock](docs/sdks/avacloudsdkblocks/README.md#getblock) - Get block
 
-### [glacier.evm.transactions](docs/sdks/avacloudsdktransactions/README.md)
+### [data.evm.transactions](docs/sdks/avacloudsdktransactions/README.md)
 
 * [getDeploymentTransaction](docs/sdks/avacloudsdktransactions/README.md#getdeploymenttransaction) - Get deployment transaction
 * [listContractDeployments](docs/sdks/avacloudsdktransactions/README.md#listcontractdeployments) - List deployed contracts
@@ -184,14 +210,14 @@ run();
 * [getTransactionsForBlock](docs/sdks/avacloudsdktransactions/README.md#gettransactionsforblock) - List transactions for a block
 * [listLatestTransactions](docs/sdks/avacloudsdktransactions/README.md#listlatesttransactions) - List latest transactions
 
-### [glacier.evm.contracts](docs/sdks/contracts/README.md)
+### [data.evm.contracts](docs/sdks/contracts/README.md)
 
 * [getContractMetadata](docs/sdks/contracts/README.md#getcontractmetadata) - Get contract metadata
 
-### [glacier.evm.chains](docs/sdks/chains/README.md)
+### [data.evm.chains](docs/sdks/avacloudsdkchains/README.md)
 
-* [supportedChains](docs/sdks/chains/README.md#supportedchains) - List chains
-* [getChainInfo](docs/sdks/chains/README.md#getchaininfo) - Get chain information
+* [supportedChains](docs/sdks/avacloudsdkchains/README.md#supportedchains) - List chains
+* [getChainInfo](docs/sdks/avacloudsdkchains/README.md#getchaininfo) - Get chain information
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Standalone functions [standalone-funcs] -->
@@ -209,71 +235,82 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [glacierEvmBalancesGetNativeBalance](docs/sdks/avacloudsdkbalances/README.md#getnativebalance)
-- [glacierEvmBalancesListCollectibleBalances](docs/sdks/avacloudsdkbalances/README.md#listcollectiblebalances)
-- [glacierEvmBalancesListErc1155Balances](docs/sdks/avacloudsdkbalances/README.md#listerc1155balances)
-- [glacierEvmBalancesListErc20Balances](docs/sdks/avacloudsdkbalances/README.md#listerc20balances)
-- [glacierEvmBalancesListErc721Balances](docs/sdks/avacloudsdkbalances/README.md#listerc721balances)
-- [glacierEvmBlocksGetBlock](docs/sdks/avacloudsdkblocks/README.md#getblock)
-- [glacierEvmBlocksGetLatestBlocks](docs/sdks/avacloudsdkblocks/README.md#getlatestblocks)
-- [glacierEvmChainsGetChainInfo](docs/sdks/chains/README.md#getchaininfo)
-- [glacierEvmChainsSupportedChains](docs/sdks/chains/README.md#supportedchains)
-- [glacierEvmContractsGetContractMetadata](docs/sdks/contracts/README.md#getcontractmetadata)
-- [glacierEvmTransactionsGetDeploymentTransaction](docs/sdks/avacloudsdktransactions/README.md#getdeploymenttransaction)
-- [glacierEvmTransactionsGetTransaction](docs/sdks/avacloudsdktransactions/README.md#gettransaction)
-- [glacierEvmTransactionsGetTransactionsForBlock](docs/sdks/avacloudsdktransactions/README.md#gettransactionsforblock)
-- [glacierEvmTransactionsListContractDeployments](docs/sdks/avacloudsdktransactions/README.md#listcontractdeployments)
-- [glacierEvmTransactionsListErc1155Transactions](docs/sdks/avacloudsdktransactions/README.md#listerc1155transactions)
-- [glacierEvmTransactionsListErc20Transactions](docs/sdks/avacloudsdktransactions/README.md#listerc20transactions)
-- [glacierEvmTransactionsListErc721Transactions](docs/sdks/avacloudsdktransactions/README.md#listerc721transactions)
-- [glacierEvmTransactionsListInternalTransactions](docs/sdks/avacloudsdktransactions/README.md#listinternaltransactions)
-- [glacierEvmTransactionsListLatestTransactions](docs/sdks/avacloudsdktransactions/README.md#listlatesttransactions)
-- [glacierEvmTransactionsListNativeTransactions](docs/sdks/avacloudsdktransactions/README.md#listnativetransactions)
-- [glacierEvmTransactionsListTransactions](docs/sdks/avacloudsdktransactions/README.md#listtransactions)
-- [glacierEvmTransactionsListTransfers](docs/sdks/avacloudsdktransactions/README.md#listtransfers)
-- [glacierHealthCheckGlacierHealthCheck](docs/sdks/healthcheck/README.md#glacierhealthcheck)
-- [glacierNftsGetTokenDetails](docs/sdks/nfts/README.md#gettokendetails)
-- [glacierNftsListTokens](docs/sdks/nfts/README.md#listtokens)
-- [glacierNftsReindexNft](docs/sdks/nfts/README.md#reindexnft)
-- [glacierOperationsGetOperationResult](docs/sdks/operations/README.md#getoperationresult)
-- [glacierOperationsPostTransactionExportJob](docs/sdks/operations/README.md#posttransactionexportjob)
-- [glacierPrimaryNetworkBalancesGetBalancesByAddresses](docs/sdks/balances/README.md#getbalancesbyaddresses)
-- [glacierPrimaryNetworkBlocksGetBlockById](docs/sdks/blocks/README.md#getblockbyid)
-- [glacierPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks](docs/sdks/blocks/README.md#listlatestprimarynetworkblocks)
-- [glacierPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId](docs/sdks/blocks/README.md#listprimarynetworkblocksbynodeid)
-- [glacierPrimaryNetworkGetAssetDetails](docs/sdks/primarynetwork/README.md#getassetdetails)
-- [glacierPrimaryNetworkGetChainIdsForAddresses](docs/sdks/primarynetwork/README.md#getchainidsforaddresses)
-- [glacierPrimaryNetworkGetNetworkDetails](docs/sdks/primarynetwork/README.md#getnetworkdetails)
-- [glacierPrimaryNetworkGetSingleValidatorDetails](docs/sdks/primarynetwork/README.md#getsinglevalidatordetails)
-- [glacierPrimaryNetworkGetSubnetById](docs/sdks/primarynetwork/README.md#getsubnetbyid)
-- [glacierPrimaryNetworkListBlockchains](docs/sdks/primarynetwork/README.md#listblockchains)
-- [glacierPrimaryNetworkListDelegators](docs/sdks/primarynetwork/README.md#listdelegators)
-- [glacierPrimaryNetworkListSubnets](docs/sdks/primarynetwork/README.md#listsubnets)
-- [glacierPrimaryNetworkListValidators](docs/sdks/primarynetwork/README.md#listvalidators)
-- [glacierPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards](docs/sdks/rewards/README.md#listhistoricalprimarynetworkrewards)
-- [glacierPrimaryNetworkRewardsListPendingPrimaryNetworkRewards](docs/sdks/rewards/README.md#listpendingprimarynetworkrewards)
-- [glacierPrimaryNetworkTransactionsGetTxByHash](docs/sdks/transactions/README.md#gettxbyhash)
-- [glacierPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions](docs/sdks/transactions/README.md#listactiveprimarynetworkstakingtransactions)
-- [glacierPrimaryNetworkTransactionsListAssetTransactions](docs/sdks/transactions/README.md#listassettransactions)
-- [glacierPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions](docs/sdks/transactions/README.md#listlatestprimarynetworktransactions)
-- [glacierPrimaryNetworkUtxosGetUtxosByAddresses](docs/sdks/utxos/README.md#getutxosbyaddresses)
-- [glacierPrimaryNetworkVerticesGetVertexByHash](docs/sdks/vertices/README.md#getvertexbyhash)
-- [glacierPrimaryNetworkVerticesGetVertexByHeight](docs/sdks/vertices/README.md#getvertexbyheight)
-- [glacierPrimaryNetworkVerticesListLatestXChainVertices](docs/sdks/vertices/README.md#listlatestxchainvertices)
-- [glacierTeleporterGetTeleporterMessage](docs/sdks/teleporter/README.md#getteleportermessage)
-- [glacierTeleporterListTeleporterMessages](docs/sdks/teleporter/README.md#listteleportermessages)
-- [glacierUsageMetricsGetApiLogs](docs/sdks/usagemetrics/README.md#getapilogs)
-- [glacierUsageMetricsGetApiUsageMetrics](docs/sdks/usagemetrics/README.md#getapiusagemetrics)
-- [glacierWebhooksAddAddressesToWebhook](docs/sdks/webhooks/README.md#addaddressestowebhook)
-- [glacierWebhooksCreateWebhook](docs/sdks/webhooks/README.md#createwebhook)
-- [glacierWebhooksDeactivateWebhook](docs/sdks/webhooks/README.md#deactivatewebhook)
-- [glacierWebhooksGenerateSharedSecret](docs/sdks/webhooks/README.md#generatesharedsecret)
-- [glacierWebhooksGetAddressesFromWebhook](docs/sdks/webhooks/README.md#getaddressesfromwebhook)
-- [glacierWebhooksGetSharedSecret](docs/sdks/webhooks/README.md#getsharedsecret)
-- [glacierWebhooksGetWebhook](docs/sdks/webhooks/README.md#getwebhook)
-- [glacierWebhooksListWebhooks](docs/sdks/webhooks/README.md#listwebhooks)
-- [glacierWebhooksRemoveAddressesFromWebhook](docs/sdks/webhooks/README.md#removeaddressesfromwebhook)
-- [glacierWebhooksUpdateWebhook](docs/sdks/webhooks/README.md#updatewebhook)
+- [dataEvmBalancesGetNativeBalance](docs/sdks/avacloudsdkbalances/README.md#getnativebalance)
+- [dataEvmBalancesListCollectibleBalances](docs/sdks/avacloudsdkbalances/README.md#listcollectiblebalances)
+- [dataEvmBalancesListErc1155Balances](docs/sdks/avacloudsdkbalances/README.md#listerc1155balances)
+- [dataEvmBalancesListErc20Balances](docs/sdks/avacloudsdkbalances/README.md#listerc20balances)
+- [dataEvmBalancesListErc721Balances](docs/sdks/avacloudsdkbalances/README.md#listerc721balances)
+- [dataEvmBlocksGetBlock](docs/sdks/avacloudsdkblocks/README.md#getblock)
+- [dataEvmBlocksGetLatestBlocks](docs/sdks/avacloudsdkblocks/README.md#getlatestblocks)
+- [dataEvmChainsGetChainInfo](docs/sdks/avacloudsdkchains/README.md#getchaininfo)
+- [dataEvmChainsSupportedChains](docs/sdks/avacloudsdkchains/README.md#supportedchains)
+- [dataEvmContractsGetContractMetadata](docs/sdks/contracts/README.md#getcontractmetadata)
+- [dataEvmTransactionsGetDeploymentTransaction](docs/sdks/avacloudsdktransactions/README.md#getdeploymenttransaction)
+- [dataEvmTransactionsGetTransaction](docs/sdks/avacloudsdktransactions/README.md#gettransaction)
+- [dataEvmTransactionsGetTransactionsForBlock](docs/sdks/avacloudsdktransactions/README.md#gettransactionsforblock)
+- [dataEvmTransactionsListContractDeployments](docs/sdks/avacloudsdktransactions/README.md#listcontractdeployments)
+- [dataEvmTransactionsListErc1155Transactions](docs/sdks/avacloudsdktransactions/README.md#listerc1155transactions)
+- [dataEvmTransactionsListErc20Transactions](docs/sdks/avacloudsdktransactions/README.md#listerc20transactions)
+- [dataEvmTransactionsListErc721Transactions](docs/sdks/avacloudsdktransactions/README.md#listerc721transactions)
+- [dataEvmTransactionsListInternalTransactions](docs/sdks/avacloudsdktransactions/README.md#listinternaltransactions)
+- [dataEvmTransactionsListLatestTransactions](docs/sdks/avacloudsdktransactions/README.md#listlatesttransactions)
+- [dataEvmTransactionsListNativeTransactions](docs/sdks/avacloudsdktransactions/README.md#listnativetransactions)
+- [dataEvmTransactionsListTransactions](docs/sdks/avacloudsdktransactions/README.md#listtransactions)
+- [dataEvmTransactionsListTransfers](docs/sdks/avacloudsdktransactions/README.md#listtransfers)
+- [dataHealthCheckDataHealthCheck](docs/sdks/avacloudsdkhealthcheck/README.md#datahealthcheck)
+- [dataNftsGetTokenDetails](docs/sdks/nfts/README.md#gettokendetails)
+- [dataNftsListTokens](docs/sdks/nfts/README.md#listtokens)
+- [dataNftsReindexNft](docs/sdks/nfts/README.md#reindexnft)
+- [dataOperationsGetOperationResult](docs/sdks/operations/README.md#getoperationresult)
+- [dataOperationsPostTransactionExportJob](docs/sdks/operations/README.md#posttransactionexportjob)
+- [dataPrimaryNetworkBalancesGetBalancesByAddresses](docs/sdks/balances/README.md#getbalancesbyaddresses)
+- [dataPrimaryNetworkBlocksGetBlockById](docs/sdks/blocks/README.md#getblockbyid)
+- [dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks](docs/sdks/blocks/README.md#listlatestprimarynetworkblocks)
+- [dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId](docs/sdks/blocks/README.md#listprimarynetworkblocksbynodeid)
+- [dataPrimaryNetworkGetAssetDetails](docs/sdks/primarynetwork/README.md#getassetdetails)
+- [dataPrimaryNetworkGetChainIdsForAddresses](docs/sdks/primarynetwork/README.md#getchainidsforaddresses)
+- [dataPrimaryNetworkGetNetworkDetails](docs/sdks/primarynetwork/README.md#getnetworkdetails)
+- [dataPrimaryNetworkGetSingleValidatorDetails](docs/sdks/primarynetwork/README.md#getsinglevalidatordetails)
+- [dataPrimaryNetworkGetSubnetById](docs/sdks/primarynetwork/README.md#getsubnetbyid)
+- [dataPrimaryNetworkListBlockchains](docs/sdks/primarynetwork/README.md#listblockchains)
+- [dataPrimaryNetworkListDelegators](docs/sdks/primarynetwork/README.md#listdelegators)
+- [dataPrimaryNetworkListSubnets](docs/sdks/primarynetwork/README.md#listsubnets)
+- [dataPrimaryNetworkListValidators](docs/sdks/primarynetwork/README.md#listvalidators)
+- [dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards](docs/sdks/rewards/README.md#listhistoricalprimarynetworkrewards)
+- [dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards](docs/sdks/rewards/README.md#listpendingprimarynetworkrewards)
+- [dataPrimaryNetworkTransactionsGetTxByHash](docs/sdks/transactions/README.md#gettxbyhash)
+- [dataPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions](docs/sdks/transactions/README.md#listactiveprimarynetworkstakingtransactions)
+- [dataPrimaryNetworkTransactionsListAssetTransactions](docs/sdks/transactions/README.md#listassettransactions)
+- [dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions](docs/sdks/transactions/README.md#listlatestprimarynetworktransactions)
+- [dataPrimaryNetworkUtxosGetUtxosByAddresses](docs/sdks/utxos/README.md#getutxosbyaddresses)
+- [dataPrimaryNetworkVerticesGetVertexByHash](docs/sdks/vertices/README.md#getvertexbyhash)
+- [dataPrimaryNetworkVerticesGetVertexByHeight](docs/sdks/vertices/README.md#getvertexbyheight)
+- [dataPrimaryNetworkVerticesListLatestXChainVertices](docs/sdks/vertices/README.md#listlatestxchainvertices)
+- [dataTeleporterGetTeleporterMessage](docs/sdks/teleporter/README.md#getteleportermessage)
+- [dataTeleporterListTeleporterMessages](docs/sdks/teleporter/README.md#listteleportermessages)
+- [dataUsageMetricsGetApiLogs](docs/sdks/usagemetrics/README.md#getapilogs)
+- [dataUsageMetricsGetApiUsageMetrics](docs/sdks/usagemetrics/README.md#getapiusagemetrics)
+- [dataWebhooksAddAddressesToWebhook](docs/sdks/webhooks/README.md#addaddressestowebhook)
+- [dataWebhooksCreateWebhook](docs/sdks/webhooks/README.md#createwebhook)
+- [dataWebhooksDeactivateWebhook](docs/sdks/webhooks/README.md#deactivatewebhook)
+- [dataWebhooksGenerateSharedSecret](docs/sdks/webhooks/README.md#generatesharedsecret)
+- [dataWebhooksGetAddressesFromWebhook](docs/sdks/webhooks/README.md#getaddressesfromwebhook)
+- [dataWebhooksGetSharedSecret](docs/sdks/webhooks/README.md#getsharedsecret)
+- [dataWebhooksGetWebhook](docs/sdks/webhooks/README.md#getwebhook)
+- [dataWebhooksListWebhooks](docs/sdks/webhooks/README.md#listwebhooks)
+- [dataWebhooksRemoveAddressesFromWebhook](docs/sdks/webhooks/README.md#removeaddressesfromwebhook)
+- [dataWebhooksUpdateWebhook](docs/sdks/webhooks/README.md#updatewebhook)
+- [metricsChainMetricsGetEvmChainMetrics](docs/sdks/avacloudsdkmetrics/README.md#getevmchainmetrics)
+- [metricsChainMetricsGetEvmChainRollingWindowMetrics](docs/sdks/avacloudsdkmetrics/README.md#getevmchainrollingwindowmetrics)
+- [metricsChainMetricsGetStakingMetrics](docs/sdks/avacloudsdkmetrics/README.md#getstakingmetrics)
+- [metricsEvmChainsGetChain](docs/sdks/chains/README.md#getchain)
+- [metricsEvmChainsListChains](docs/sdks/chains/README.md#listchains)
+- [metricsHealthCheckMetricsHealthCheck](docs/sdks/healthcheck/README.md#metricshealthcheck)
+- [metricsLookingGlassCompositeQuery](docs/sdks/lookingglass/README.md#compositequery)
+- [metricsLookingGlassGetAddressesByBalanceOverTime](docs/sdks/lookingglass/README.md#getaddressesbybalanceovertime)
+- [metricsLookingGlassGetAddressesByBtcbBridged](docs/sdks/lookingglass/README.md#getaddressesbybtcbbridged)
+- [metricsLookingGlassGetNftHoldersByContractAddress](docs/sdks/lookingglass/README.md#getnftholdersbycontractaddress)
+- [metricsLookingGlassGetValidatorsByDateRange](docs/sdks/lookingglass/README.md#getvalidatorsbydaterange)
 
 
 </details>
@@ -284,7 +321,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `chainId` to `"43114"` at SDK initialization and then you do not have to pass the same value on calls to operations like `reindexNft`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `chainId` to `"43114"` at SDK initialization and then you do not have to pass the same value on calls to operations like `listChains`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -309,10 +346,14 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-    await avaCloudSDK.glacier.nfts.reindexNft({
-        address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
-        tokenId: "145",
+    const result = await avaCloudSDK.metrics.evm.chains.listChains({
+        network: "mainnet",
     });
+
+    for await (const page of result) {
+        // Handle the page
+        console.log(page);
+    }
 }
 
 run();
@@ -342,9 +383,8 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-    const result = await avaCloudSDK.glacier.nfts.listTokens({
-        pageSize: 10,
-        address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+    const result = await avaCloudSDK.metrics.evm.chains.listChains({
+        network: "mainnet",
     });
 
     for await (const page of result) {
@@ -374,7 +414,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-    const result = await avaCloudSDK.glacier.healthCheck.glacierHealthCheck({
+    const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck({
         retries: {
             strategy: "backoff",
             backoff: {
@@ -416,7 +456,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-    const result = await avaCloudSDK.glacier.healthCheck.glacierHealthCheck();
+    const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
 
     // Handle the result
     console.log(result);
@@ -469,7 +509,7 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
     try {
-        await avaCloudSDK.glacier.nfts.reindexNft({
+        await avaCloudSDK.data.nfts.reindexNft({
             address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
             tokenId: "145",
         });
@@ -537,26 +577,22 @@ run();
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Select Server by Index
+### Override Server URL Per-Client
 
-You can override the default server globally by passing a server index to the `serverIdx` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://glacier-api.avax.network` | None |
+The default server can be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
 
 ```typescript
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    serverIdx: 0,
+    serverURL: "",
     apiKey: "<YOUR_API_KEY_HERE>",
     chainId: "43114",
     network: "mainnet",
 });
 
 async function run() {
-    const result = await avaCloudSDK.glacier.healthCheck.glacierHealthCheck();
+    const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
 
     // Handle the result
     console.log(result);
@@ -565,24 +601,23 @@ async function run() {
 run();
 
 ```
+### Override Server URL Per-Operation
 
-
-### Override Server URL Per-Client
-
-The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
 
 ```typescript
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    serverURL: "https://glacier-api.avax.network",
     apiKey: "<YOUR_API_KEY_HERE>",
     chainId: "43114",
     network: "mainnet",
 });
 
 async function run() {
-    const result = await avaCloudSDK.glacier.healthCheck.glacierHealthCheck();
+    const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck({
+        serverURL: "https://popsicle-api.avax.network",
+    });
 
     // Handle the result
     console.log(result);
@@ -664,7 +699,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-    const result = await avaCloudSDK.glacier.healthCheck.glacierHealthCheck();
+    const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
 
     // Handle the result
     console.log(result);

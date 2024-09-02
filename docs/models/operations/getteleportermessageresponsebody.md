@@ -41,12 +41,12 @@ let value: GetTeleporterMessageResponseBody = {
     },
     sourceTransaction: {
         txHash: "<value>",
-        timestamp: 7316.94,
+        timestamp: 7085.48,
         gasSpent: "<value>",
     },
     destinationTransaction: {
         txHash: "<value>",
-        timestamp: 5844.76,
+        timestamp: 8742.88,
         gasSpent: "<value>",
         rewardRedeemer: "<value>",
         delivererAddress: "<value>",

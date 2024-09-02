@@ -7,7 +7,7 @@ The error message describing the reason for the exception
 ```typescript
 import { ServiceUnavailableMessage } from "@avalabs/avacloud-sdk/models/errors";
 
-let value: ServiceUnavailableMessage = ["<value>"];
+let value: ServiceUnavailableMessage = "<value>";
 ```
 
 ## Supported Types

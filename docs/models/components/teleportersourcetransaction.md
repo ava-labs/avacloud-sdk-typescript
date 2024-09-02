@@ -7,7 +7,7 @@ import { TeleporterSourceTransaction } from "@avalabs/avacloud-sdk/models/compon
 
 let value: TeleporterSourceTransaction = {
     txHash: "<value>",
-    timestamp: 3389.85,
+    timestamp: 2123.9,
     gasSpent: "<value>",
 };
 ```

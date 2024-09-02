@@ -9,7 +9,7 @@ let value: ListLatestPrimaryNetworkTransactionsResponse = {
     result: {
         transactions: [],
         chainInfo: {
-            chainName: "p-chain",
+            chainName: "x-chain",
             network: "mainnet",
         },
     },

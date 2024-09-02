@@ -35,7 +35,7 @@ let value: ListPChainBalancesResponse = {
                 name: "Avalanche",
                 symbol: "AVAX",
                 denomination: 9,
-                type: "secp256k1",
+                type: "nft",
                 amount: "5001000",
                 utxoCount: 1,
             },
@@ -46,7 +46,7 @@ let value: ListPChainBalancesResponse = {
                 name: "Avalanche",
                 symbol: "AVAX",
                 denomination: 9,
-                type: "secp256k1",
+                type: "nft",
                 amount: "5001000",
                 utxoCount: 1,
             },
@@ -79,7 +79,7 @@ let value: ListPChainBalancesResponse = {
                 name: "Avalanche",
                 symbol: "AVAX",
                 denomination: 9,
-                type: "secp256k1",
+                type: "nft",
                 amount: "5001000",
                 utxoCount: 1,
                 sharedWithChainId: "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
@@ -101,8 +101,8 @@ let value: ListPChainBalancesResponse = {
         ],
     },
     chainInfo: {
-        chainName: "c-chain",
-        network: "mainnet",
+        chainName: "x-chain",
+        network: "fuji",
     },
 };
 ```

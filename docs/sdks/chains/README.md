@@ -1,16 +1,16 @@
 # Chains
-(*glacier.evm.chains*)
+(*metrics.evm.chains*)
 
 ## Overview
 
 ### Available Operations
 
-* [supportedChains](#supportedchains) - List chains
-* [getChainInfo](#getchaininfo) - Get chain information
+* [listChains](#listchains) - Get a list of supported blockchains
+* [getChain](#getchain) - Get chain information for supported blockchain
 
-## supportedChains
+## listChains
 
-Lists the supported EVM-compatible chains. Filterable by network.
+Get a list of Popsicle API supported blockchains.
 
 ### Example Usage
 
@@ -24,13 +24,14 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.glacier.evm.chains.supportedChains({
+  const result = await avaCloudSDK.metrics.evm.chains.listChains({
     network: "mainnet",
-    feature: "nftIndexing",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -42,7 +43,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { glacierEvmChainsSupportedChains } from "@avalabs/avacloud-sdk/funcs/glacierEvmChainsSupportedChains.js";
+import { metricsEvmChainsListChains } from "@avalabs/avacloud-sdk/funcs/metricsEvmChainsListChains.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -53,9 +54,8 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await glacierEvmChainsSupportedChains(avaCloudSDK, {
+  const res = await metricsEvmChainsListChains(avaCloudSDK, {
     network: "mainnet",
-    feature: "nftIndexing",
   });
 
   if (!res.ok) {
@@ -64,8 +64,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -75,14 +77,15 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.SupportedChainsRequest](../../models/operations/supportedchainsrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListChainsRequest](../../models/operations/listchainsrequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
-**Promise\<[components.GlacierListChainsResponse](../../models/components/glacierlistchainsresponse.md)\>**
+**Promise\<[operations.ListChainsResponse](../../models/operations/listchainsresponse.md)\>**
 
 ### Errors
 
@@ -99,9 +102,9 @@ run();
 | errors.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## getChainInfo
+## getChain
 
-Gets chain information for the EVM-compatible chain if supported by the api.
+Get chain information for Popsicle API supported blockchain.
 
 ### Example Usage
 
@@ -115,7 +118,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.glacier.evm.chains.getChainInfo({});
+  const result = await avaCloudSDK.metrics.evm.chains.getChain({});
 
   // Handle the result
   console.log(result)
@@ -130,7 +133,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { glacierEvmChainsGetChainInfo } from "@avalabs/avacloud-sdk/funcs/glacierEvmChainsGetChainInfo.js";
+import { metricsEvmChainsGetChain } from "@avalabs/avacloud-sdk/funcs/metricsEvmChainsGetChain.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -141,7 +144,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await glacierEvmChainsGetChainInfo(avaCloudSDK, {});
+  const res = await metricsEvmChainsGetChain(avaCloudSDK, {});
 
   if (!res.ok) {
     throw res.error;
@@ -160,14 +163,15 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetChainInfoRequest](../../models/operations/getchaininforequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetChainRequest](../../models/operations/getchainrequest.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
-**Promise\<[components.GetChainResponse](../../models/components/getchainresponse.md)\>**
+**Promise\<[components.Chain](../../models/components/chain.md)\>**
 
 ### Errors
 

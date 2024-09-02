@@ -5,7 +5,7 @@
 ```typescript
 import { IncludeChains } from "@avalabs/avacloud-sdk/models/components";
 
-let value: IncludeChains = "11111111111111111111111111111111LpoYY";
+let value: IncludeChains = "yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp";
 ```
 
 ## Values
