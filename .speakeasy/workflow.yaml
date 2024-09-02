@@ -3,16 +3,20 @@ speakeasyVersion: latest
 sources:
     AvaCloudSDK-OAS:
         inputs:
+            - location: https://popsicle-api.avax.network/api-json
             - location: https://glacier-api.avax.network/api-json
+        overlays:
+            - location: overlays/overlay.yaml
         registry:
             location: registry.speakeasyapi.dev/avalabs/avalabs/avacloud-sdk-oas
 targets:
     avacloud-sdk:
         target: typescript
         source: AvaCloudSDK-OAS
-        codeSamples:
-            registry:
-                location: registry.speakeasyapi.dev/avalabs/avalabs/avacloud-sdk-ts-code-samples
         publish:
             npm:
                 token: $npm_token
+        codeSamples:
+            output: ""
+            registry:
+                location: registry.speakeasyapi.dev/avalabs/avalabs/avacloud-sdk-ts-code-samples
