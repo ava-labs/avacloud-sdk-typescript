@@ -1,5 +1,5 @@
 # Webhooks
-(*glacier.webhooks*)
+(*data.webhooks*)
 
 ## Overview
 
@@ -32,7 +32,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.glacier.webhooks.listWebhooks({
+  const result = await avaCloudSDK.data.webhooks.listWebhooks({
     pageSize: 10,
     status: "active",
   });
@@ -52,7 +52,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { glacierWebhooksListWebhooks } from "@avalabs/avacloud-sdk/funcs/glacierWebhooksListWebhooks.js";
+import { dataWebhooksListWebhooks } from "@avalabs/avacloud-sdk/funcs/dataWebhooksListWebhooks.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -63,7 +63,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await glacierWebhooksListWebhooks(avaCloudSDK, {
+  const res = await dataWebhooksListWebhooks(avaCloudSDK, {
     pageSize: 10,
     status: "active",
   });
@@ -91,6 +91,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -127,7 +128,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.glacier.webhooks.createWebhook({
+  const result = await avaCloudSDK.data.webhooks.createWebhook({
     url: "https://unrealistic-well-being.name",
     chainId: "<value>",
     eventType: "address_activity",
@@ -154,7 +155,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { glacierWebhooksCreateWebhook } from "@avalabs/avacloud-sdk/funcs/glacierWebhooksCreateWebhook.js";
+import { dataWebhooksCreateWebhook } from "@avalabs/avacloud-sdk/funcs/dataWebhooksCreateWebhook.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -165,7 +166,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await glacierWebhooksCreateWebhook(avaCloudSDK, {
+  const res = await dataWebhooksCreateWebhook(avaCloudSDK, {
     url: "http://revolving-inverse.net",
     chainId: "<value>",
     eventType: "address_activity",
@@ -200,6 +201,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -236,7 +238,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.glacier.webhooks.getWebhook({
+  const result = await avaCloudSDK.data.webhooks.getWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 
@@ -253,7 +255,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { glacierWebhooksGetWebhook } from "@avalabs/avacloud-sdk/funcs/glacierWebhooksGetWebhook.js";
+import { dataWebhooksGetWebhook } from "@avalabs/avacloud-sdk/funcs/dataWebhooksGetWebhook.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -264,7 +266,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await glacierWebhooksGetWebhook(avaCloudSDK, {
+  const res = await dataWebhooksGetWebhook(avaCloudSDK, {
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 
@@ -289,6 +291,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -325,7 +328,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.glacier.webhooks.deactivateWebhook({
+  const result = await avaCloudSDK.data.webhooks.deactivateWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 
@@ -342,7 +345,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { glacierWebhooksDeactivateWebhook } from "@avalabs/avacloud-sdk/funcs/glacierWebhooksDeactivateWebhook.js";
+import { dataWebhooksDeactivateWebhook } from "@avalabs/avacloud-sdk/funcs/dataWebhooksDeactivateWebhook.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -353,7 +356,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await glacierWebhooksDeactivateWebhook(avaCloudSDK, {
+  const res = await dataWebhooksDeactivateWebhook(avaCloudSDK, {
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 
@@ -378,6 +381,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -414,7 +418,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.glacier.webhooks.updateWebhook({
+  const result = await avaCloudSDK.data.webhooks.updateWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     updateWebhookRequest: {},
   });
@@ -432,7 +436,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { glacierWebhooksUpdateWebhook } from "@avalabs/avacloud-sdk/funcs/glacierWebhooksUpdateWebhook.js";
+import { dataWebhooksUpdateWebhook } from "@avalabs/avacloud-sdk/funcs/dataWebhooksUpdateWebhook.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -443,7 +447,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await glacierWebhooksUpdateWebhook(avaCloudSDK, {
+  const res = await dataWebhooksUpdateWebhook(avaCloudSDK, {
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     updateWebhookRequest: {},
   });
@@ -469,6 +473,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -505,7 +510,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.glacier.webhooks.generateSharedSecret();
+  const result = await avaCloudSDK.data.webhooks.generateSharedSecret();
 
   // Handle the result
   console.log(result)
@@ -520,7 +525,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { glacierWebhooksGenerateSharedSecret } from "@avalabs/avacloud-sdk/funcs/glacierWebhooksGenerateSharedSecret.js";
+import { dataWebhooksGenerateSharedSecret } from "@avalabs/avacloud-sdk/funcs/dataWebhooksGenerateSharedSecret.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -531,7 +536,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await glacierWebhooksGenerateSharedSecret(avaCloudSDK);
+  const res = await dataWebhooksGenerateSharedSecret(avaCloudSDK);
 
   if (!res.ok) {
     throw res.error;
@@ -553,6 +558,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -589,7 +595,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.glacier.webhooks.getSharedSecret();
+  const result = await avaCloudSDK.data.webhooks.getSharedSecret();
 
   // Handle the result
   console.log(result)
@@ -604,7 +610,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { glacierWebhooksGetSharedSecret } from "@avalabs/avacloud-sdk/funcs/glacierWebhooksGetSharedSecret.js";
+import { dataWebhooksGetSharedSecret } from "@avalabs/avacloud-sdk/funcs/dataWebhooksGetSharedSecret.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -615,7 +621,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await glacierWebhooksGetSharedSecret(avaCloudSDK);
+  const res = await dataWebhooksGetSharedSecret(avaCloudSDK);
 
   if (!res.ok) {
     throw res.error;
@@ -637,6 +643,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -673,7 +680,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.glacier.webhooks.getAddressesFromWebhook({
+  const result = await avaCloudSDK.data.webhooks.getAddressesFromWebhook({
     pageSize: 10,
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
@@ -693,7 +700,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { glacierWebhooksGetAddressesFromWebhook } from "@avalabs/avacloud-sdk/funcs/glacierWebhooksGetAddressesFromWebhook.js";
+import { dataWebhooksGetAddressesFromWebhook } from "@avalabs/avacloud-sdk/funcs/dataWebhooksGetAddressesFromWebhook.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -704,7 +711,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await glacierWebhooksGetAddressesFromWebhook(avaCloudSDK, {
+  const res = await dataWebhooksGetAddressesFromWebhook(avaCloudSDK, {
     pageSize: 10,
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
@@ -732,6 +739,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -768,7 +776,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.glacier.webhooks.removeAddressesFromWebhook({
+  const result = await avaCloudSDK.data.webhooks.removeAddressesFromWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     addressesChangeRequest: {
       addresses: [
@@ -790,7 +798,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { glacierWebhooksRemoveAddressesFromWebhook } from "@avalabs/avacloud-sdk/funcs/glacierWebhooksRemoveAddressesFromWebhook.js";
+import { dataWebhooksRemoveAddressesFromWebhook } from "@avalabs/avacloud-sdk/funcs/dataWebhooksRemoveAddressesFromWebhook.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -801,7 +809,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await glacierWebhooksRemoveAddressesFromWebhook(avaCloudSDK, {
+  const res = await dataWebhooksRemoveAddressesFromWebhook(avaCloudSDK, {
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     addressesChangeRequest: {
       addresses: [
@@ -831,6 +839,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
@@ -867,7 +876,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.glacier.webhooks.addAddressesToWebhook({
+  const result = await avaCloudSDK.data.webhooks.addAddressesToWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     addressesChangeRequest: {
       addresses: [
@@ -889,7 +898,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { glacierWebhooksAddAddressesToWebhook } from "@avalabs/avacloud-sdk/funcs/glacierWebhooksAddAddressesToWebhook.js";
+import { dataWebhooksAddAddressesToWebhook } from "@avalabs/avacloud-sdk/funcs/dataWebhooksAddAddressesToWebhook.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -900,7 +909,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await glacierWebhooksAddAddressesToWebhook(avaCloudSDK, {
+  const res = await dataWebhooksAddAddressesToWebhook(avaCloudSDK, {
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     addressesChangeRequest: {
       addresses: [
@@ -930,6 +939,7 @@ run();
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 

@@ -10,11 +10,22 @@ let value: Validators = {
     nodeId: "<value>",
     subnetId: "<value>",
     amountStaked: "<value>",
-    startTimestamp: 7586.16,
-    endTimestamp: 5218.48,
-    removeTxHash: "<value>",
-    removeTimestamp: 1059.07,
-    validationStatus: "removed",
+    startTimestamp: 9698.1,
+    endTimestamp: 6667.67,
+    stakePercentage: 6531.4,
+    delegatorCount: 6706.38,
+    uptimePerformance: 1709.09,
+    potentialRewards: {
+        validationRewardAmount: "<value>",
+        delegationRewardAmount: "<value>",
+    },
+    validationStatus: "active",
+    validatorHealth: {
+        reachabilityPercent: 2103.82,
+        benchedPChainRequestsPercent: 3581.52,
+        benchedXChainRequestsPercent: 1289.26,
+        benchedCChainRequestsPercent: 7506.86,
+    },
 };
 ```
 

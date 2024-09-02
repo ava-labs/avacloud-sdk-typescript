@@ -14,8 +14,7 @@ let value: GetContractMetadataResponseBody = {
         txHash: "<value>",
         deployerAddress: "<value>",
     },
-    ercType: "ERC-1155",
-    symbol: "WAVAX",
+    ercType: "UNKNOWN",
 };
 ```
 

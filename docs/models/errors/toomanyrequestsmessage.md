@@ -7,7 +7,7 @@ The error message describing the reason for the exception
 ```typescript
 import { TooManyRequestsMessage } from "@avalabs/avacloud-sdk/models/errors";
 
-let value: TooManyRequestsMessage = "<value>";
+let value: TooManyRequestsMessage = ["<value>"];
 ```
 
 ## Supported Types

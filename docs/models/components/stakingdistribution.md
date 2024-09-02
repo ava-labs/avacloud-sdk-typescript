@@ -8,7 +8,7 @@ import { StakingDistribution } from "@avalabs/avacloud-sdk/models/components";
 let value: StakingDistribution = {
     version: "<value>",
     amountStaked: "<value>",
-    validatorCount: 5204.78,
+    validatorCount: 9025.99,
 };
 ```
 

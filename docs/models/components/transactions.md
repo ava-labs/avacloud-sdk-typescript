@@ -19,7 +19,7 @@ let value: Transactions = {
                 name: "Avalanche",
                 symbol: "AVAX",
                 denomination: 9,
-                type: "secp256k1",
+                type: "nft",
                 amount: "5001000",
             },
             consumedOnChainId: "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
@@ -100,17 +100,12 @@ let value: Transactions = {
         name: "Avalanche",
         symbol: "AVAX",
         denomination: 9,
-        type: "nft",
+        type: "secp256k1",
         createdAtTimestamp: 1675444720,
-        cap: "fixed",
+        cap: "variable",
     },
-    vertices: [
-        {
-            hash: "82qPRREHmh8Cfta4PGD6GymY9ZLyvgYugqW6hj9FykpMVRz1S",
-            height: 1961,
-            timestamp: 1600762738,
-        },
-    ],
+    blockHeight: 1005,
+    blockHash: "82qPRREHmh8Cfta4PGD6GymY9ZLyvgYugqW6hj9FykpMVRz1S",
 };
 ```
 

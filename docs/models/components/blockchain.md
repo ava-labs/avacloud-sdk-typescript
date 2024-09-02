@@ -6,7 +6,7 @@
 import { Blockchain } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Blockchain = {
-    createBlockTimestamp: 6788.8,
+    createBlockTimestamp: 4499.5,
     createBlockNumber: "<value>",
     blockchainId: "<value>",
     vmId: "<value>",

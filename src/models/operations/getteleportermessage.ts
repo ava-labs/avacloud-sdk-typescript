@@ -5,6 +5,8 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export const GetTeleporterMessageServerList = ["https://glacier-api.avax.network"] as const;
+
 export type GetTeleporterMessageRequest = {
     /**
      * The message ID of the teleporter message.

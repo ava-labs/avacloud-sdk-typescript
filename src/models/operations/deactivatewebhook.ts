@@ -4,6 +4,8 @@
 
 import * as z from "zod";
 
+export const DeactivateWebhookServerList = ["https://glacier-api.avax.network"] as const;
+
 export type DeactivateWebhookRequest = {
     /**
      * The webhook identifier.

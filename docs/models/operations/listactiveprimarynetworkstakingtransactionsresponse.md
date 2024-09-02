@@ -10,7 +10,7 @@ let value: ListActivePrimaryNetworkStakingTransactionsResponse = {
         transactions: [],
         chainInfo: {
             chainName: "p-chain",
-            network: "fuji",
+            network: "mainnet",
         },
     },
 };

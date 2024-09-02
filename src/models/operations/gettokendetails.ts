@@ -5,6 +5,8 @@
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export const GetTokenDetailsServerList = ["https://glacier-api.avax.network"] as const;
+
 export type GetTokenDetailsGlobals = {
     /**
      * A supported EVM chain id, chain alias, or blockchain id.

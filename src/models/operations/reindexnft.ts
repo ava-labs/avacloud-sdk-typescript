@@ -4,6 +4,8 @@
 
 import * as z from "zod";
 
+export const ReindexNftServerList = ["https://glacier-api.avax.network"] as const;
+
 export type ReindexNftGlobals = {
     /**
      * A supported EVM chain id, chain alias, or blockchain id.

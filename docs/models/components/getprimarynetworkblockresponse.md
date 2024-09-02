@@ -9,11 +9,11 @@ let value: GetPrimaryNetworkBlockResponse = {
     blockNumber: "<value>",
     blockHash: "<value>",
     parentHash: "<value>",
-    blockTimestamp: 5812.73,
+    blockTimestamp: 5743.25,
     blockType: "<value>",
-    txCount: 3132.18,
+    txCount: 336.25,
     transactions: ["<value>"],
-    blockSizeBytes: 8817.36,
+    blockSizeBytes: 6532.01,
 };
 ```
 
