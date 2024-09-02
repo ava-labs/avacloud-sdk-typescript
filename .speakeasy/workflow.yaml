@@ -3,8 +3,8 @@ speakeasyVersion: latest
 sources:
     AvaCloudSDK-OAS:
         inputs:
-            - location: https://e4db-2405-201-3027-2887-c59f-283b-9808-8aac.ngrok-free.app/api-json
-            - location: https://c6cd-2405-201-3027-2887-c59f-283b-9808-8aac.ngrok-free.app/api-json
+            - location: https://popsicle-api.avax.network/api-json
+            - location: https://glacier-api.avax.network/api-json
         overlays:
             - location: overlays/overlay.yaml
         registry:
