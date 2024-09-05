@@ -23,7 +23,7 @@ typescript:
       '@types/node': ^22.4.1
     peerDependencies: {}
   additionalPackageJSON:
-    homepage: https://developer.avacloud.io/
+    homepage: https://developer.avacloud.io/avacloud-sdk/getting-started
     license: SEE LICENSE.md
   author: AvaCloud
   clientServerStatusCodesAsErrors: true
