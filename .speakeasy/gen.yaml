@@ -23,7 +23,8 @@ typescript:
       '@types/node': ^22.4.1
     peerDependencies: {}
   additionalPackageJSON:
-    license: SEE LICENSE IN LICENSE.md
+    homepage: https://developer.avacloud.io/
+    license: SEE LICENSE.md
   author: AvaCloud
   clientServerStatusCodesAsErrors: true
   enumFormat: union
