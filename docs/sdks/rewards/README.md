@@ -30,7 +30,7 @@ async function run() {
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
     sortOrder: "asc",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -131,7 +131,7 @@ async function run() {
     sortOrder: "asc",
     currency: "usd",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);

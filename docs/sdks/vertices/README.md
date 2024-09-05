@@ -29,7 +29,7 @@ async function run() {
     pageSize: 10,
     blockchainId: "x-chain",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -125,7 +125,7 @@ async function run() {
     vertexHash: "haP1CW56cspZY7aEuqHNrtpvhqCaMTxQaYe6j5u2Mbn4L2Gqr",
     blockchainId: "x-chain",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -219,7 +219,7 @@ async function run() {
     blockchainId: "x-chain",
     sortOrder: "asc",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);

@@ -9,8 +9,8 @@ import * as z from "zod";
  * The type of request made by the client.
  */
 export const RequestType = {
-    GlacierAPIRequest: "Glacier API Request",
-    GlacierRPCRequest: "Glacier RPC Request",
+    Data: "data",
+    Rpc: "rpc",
 } as const;
 /**
  * The type of request made by the client.

@@ -32,7 +32,7 @@ import { createPageIterator, haltIterator, PageIterator, Paginator } from "../ty
  * Get addresses running validators during a given time frame
  *
  * @remarks
- * Get list of addresses and AddValidatorTx timestamps set to receive  awards for validation periods during the specified time frame.
+ * Get list of addresses and AddValidatorTx timestamps set to receive awards for validation periods during the specified time frame.
  */
 export async function metricsLookingGlassGetValidatorsByDateRange(
     client$: AvaCloudSDKCore,

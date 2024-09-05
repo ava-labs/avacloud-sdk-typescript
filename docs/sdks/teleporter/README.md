@@ -27,7 +27,7 @@ async function run() {
   const result = await avaCloudSDK.data.teleporter.getTeleporterMessage({
     messageId: "acf1c8b06f9aec48e9fcbefbbe576ae8a7ca3b327fcae111396e7cc99956674d",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -122,7 +122,7 @@ async function run() {
     from: "0x321eDA69247566D662178feE695C7026c604Cd94",
     network: "mainnet",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);

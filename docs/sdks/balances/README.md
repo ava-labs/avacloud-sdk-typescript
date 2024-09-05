@@ -30,7 +30,7 @@ async function run() {
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     blockchainId: "p-chain",
   });
-
+  
   // Handle the result
   console.log(result)
 }

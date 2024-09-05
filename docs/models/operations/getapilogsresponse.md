@@ -16,7 +16,7 @@ let value: GetApiLogsResponse = {
                 apiKeyId: "<value>",
                 apiKeyAlias: "<value>",
                 hostRegion: "<value>",
-                requestType: "Glacier API Request",
+                requestType: "data",
                 requestPath: "<value>",
                 apiCreditsConsumed: 639.55,
                 requestDurationMsecs: 5123.93,

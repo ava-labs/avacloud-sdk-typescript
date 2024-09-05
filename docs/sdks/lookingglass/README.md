@@ -31,7 +31,7 @@ async function run() {
     pageSize: 10,
     address: "0x7a420AEFF902AAa2c85a190D7B91Ce8BEFffFE14",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -109,7 +109,7 @@ run();
 
 ## getAddressesByBalanceOverTime
 
-Get list of addresses and their latest balances  that have held more than a certain threshold of a given token during the specified time frame.
+Get list of addresses and their latest balances that have held more than a certain threshold of a given token during the specified time frame.
 
 ### Example Usage
 
@@ -130,7 +130,7 @@ async function run() {
     pageSize: 10,
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -229,7 +229,7 @@ async function run() {
     threshold: "1000000",
     pageSize: 10,
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -307,7 +307,7 @@ run();
 
 ## getValidatorsByDateRange
 
-Get list of addresses and AddValidatorTx timestamps set to receive  awards for validation periods during the specified time frame.
+Get list of addresses and AddValidatorTx timestamps set to receive awards for validation periods during the specified time frame.
 
 ### Example Usage
 
@@ -328,7 +328,7 @@ async function run() {
     subnetId: "11111111111111111111111111111111LpoYY",
     network: "mainnet",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -429,7 +429,7 @@ async function run() {
     ],
     operator: "OR",
   });
-
+  
   // Handle the result
   console.log(result)
 }

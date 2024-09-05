@@ -7,11 +7,11 @@ The type of request made by the client.
 ```typescript
 import { RequestType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: RequestType = "Glacier RPC Request";
+let value: RequestType = "rpc";
 ```
 
 ## Values
 
 ```typescript
-"Glacier API Request" | "Glacier RPC Request"
+"data" | "rpc"
 ```

@@ -36,7 +36,7 @@ async function run() {
     pageSize: 10,
     status: "active",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -141,7 +141,7 @@ async function run() {
       ],
     },
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -241,7 +241,7 @@ async function run() {
   const result = await avaCloudSDK.data.webhooks.getWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -331,7 +331,7 @@ async function run() {
   const result = await avaCloudSDK.data.webhooks.deactivateWebhook({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -422,7 +422,7 @@ async function run() {
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     updateWebhookRequest: {},
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -511,7 +511,7 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.webhooks.generateSharedSecret();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -596,7 +596,7 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.webhooks.getSharedSecret();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -684,7 +684,7 @@ async function run() {
     pageSize: 10,
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -784,7 +784,7 @@ async function run() {
       ],
     },
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -884,7 +884,7 @@ async function run() {
       ],
     },
   });
-
+  
   // Handle the result
   console.log(result)
 }

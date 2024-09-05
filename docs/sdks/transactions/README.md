@@ -30,7 +30,7 @@ async function run() {
     blockchainId: "p-chain",
     txHash: "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -133,7 +133,7 @@ async function run() {
     blockchainId: "p-chain",
     sortOrder: "asc",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -243,7 +243,7 @@ async function run() {
     blockchainId: "p-chain",
     sortOrder: "asc",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -352,7 +352,7 @@ async function run() {
     blockchainId: "x-chain",
     assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);

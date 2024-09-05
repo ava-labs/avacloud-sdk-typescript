@@ -24,7 +24,7 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.healthCheck.dataHealthCheck();
-
+  
   // Handle the result
   console.log(result)
 }

@@ -1,8 +1,9 @@
 {
   "name": "@avalabs/avacloud-sdk",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "author": "AvaCloud",
-  "license": "SEE LICENSE IN LICENSE.md",
+  "homepage": "https://developer.avacloud.io/avacloud-sdk/getting-started",
+  "license": "SEE LICENSE.md",
   "main": "./index.js",
   "sideEffects": false,
   "repository": {

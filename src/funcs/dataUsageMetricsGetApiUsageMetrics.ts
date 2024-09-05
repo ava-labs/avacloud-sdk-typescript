@@ -81,7 +81,7 @@ export async function dataUsageMetricsGetApiUsageMetrics(
         orgId: payload$.orgId,
         requestPath: payload$.requestPath,
         requestType: payload$.requestType,
-        responseStatusCode: payload$.responseStatusCode,
+        responseCode: payload$.responseCode,
         startTimestamp: payload$.startTimestamp,
         timeInterval: payload$.timeInterval,
     });
