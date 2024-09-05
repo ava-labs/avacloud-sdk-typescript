@@ -12,7 +12,7 @@ let value: LogsFormat = {
     apiKeyId: "<value>",
     apiKeyAlias: "<value>",
     hostRegion: "<value>",
-    requestType: "Glacier RPC Request",
+    requestType: "rpc",
     requestPath: "<value>",
     apiCreditsConsumed: 1716.29,
     requestDurationMsecs: 3394.04,

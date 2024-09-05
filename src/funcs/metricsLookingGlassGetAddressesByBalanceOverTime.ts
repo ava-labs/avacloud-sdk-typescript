@@ -32,7 +32,7 @@ import { createPageIterator, haltIterator, PageIterator, Paginator } from "../ty
  * Get addresses by balance over time
  *
  * @remarks
- * Get list of addresses and their latest balances  that have held more than a certain threshold of a given token during the specified time frame.
+ * Get list of addresses and their latest balances that have held more than a certain threshold of a given token during the specified time frame.
  */
 export async function metricsLookingGlassGetAddressesByBalanceOverTime(
     client$: AvaCloudSDKCore,

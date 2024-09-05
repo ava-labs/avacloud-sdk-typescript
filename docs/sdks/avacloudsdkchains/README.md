@@ -28,7 +28,7 @@ async function run() {
     network: "mainnet",
     feature: "nftIndexing",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -117,7 +117,7 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.evm.chains.getChainInfo({});
-
+  
   // Handle the result
   console.log(result)
 }

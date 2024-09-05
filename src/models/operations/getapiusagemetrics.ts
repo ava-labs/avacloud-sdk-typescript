@@ -12,8 +12,8 @@ export const GetApiUsageMetricsServerList = ["https://glacier-api.avax.network"]
  * Filter data by request type.
  */
 export const RequestType = {
-    GlacierAPIRequest: "Glacier API Request",
-    GlacierRPCRequest: "Glacier RPC Request",
+    Data: "data",
+    Rpc: "rpc",
 } as const;
 /**
  * Filter data by request type.
@@ -52,7 +52,7 @@ export type GetApiUsageMetricsRequest = {
     /**
      * Filter data by response status code.
      */
-    responseStatusCode?: string | undefined;
+    responseCode?: string | undefined;
     /**
      * Filter data by chain ID.
      */
@@ -95,7 +95,7 @@ export const GetApiUsageMetricsRequest$inboundSchema: z.ZodType<
     groupBy: components.UsageMetricsGroupByEnum$inboundSchema.optional(),
     requestPath: z.string().optional(),
     requestType: RequestType$inboundSchema.optional(),
-    responseStatusCode: z.string().optional(),
+    responseCode: z.string().optional(),
     chainId: z.string().optional(),
     apiKeyId: z.string().optional(),
 });
@@ -109,7 +109,7 @@ export type GetApiUsageMetricsRequest$Outbound = {
     groupBy?: string | undefined;
     requestPath?: string | undefined;
     requestType?: string | undefined;
-    responseStatusCode?: string | undefined;
+    responseCode?: string | undefined;
     chainId?: string | undefined;
     apiKeyId?: string | undefined;
 };
@@ -127,7 +127,7 @@ export const GetApiUsageMetricsRequest$outboundSchema: z.ZodType<
     groupBy: components.UsageMetricsGroupByEnum$outboundSchema.optional(),
     requestPath: z.string().optional(),
     requestType: RequestType$outboundSchema.optional(),
-    responseStatusCode: z.string().optional(),
+    responseCode: z.string().optional(),
     chainId: z.string().optional(),
     apiKeyId: z.string().optional(),
 });

@@ -13,8 +13,8 @@ export const GetApiLogsServerList = ["https://glacier-api.avax.network"] as cons
  * Filter data by request type.
  */
 export const QueryParamRequestType = {
-    GlacierAPIRequest: "Glacier API Request",
-    GlacierRPCRequest: "Glacier RPC Request",
+    Data: "data",
+    Rpc: "rpc",
 } as const;
 /**
  * Filter data by request type.
@@ -45,7 +45,7 @@ export type GetApiLogsRequest = {
     /**
      * Filter data by response status code.
      */
-    responseStatusCode?: string | undefined;
+    responseCode?: string | undefined;
     /**
      * Filter data by chain ID.
      */
@@ -95,7 +95,7 @@ export const GetApiLogsRequest$inboundSchema: z.ZodType<GetApiLogsRequest, z.Zod
         endTimestamp: z.number().int().optional(),
         requestPath: z.string().optional(),
         requestType: QueryParamRequestType$inboundSchema.optional(),
-        responseStatusCode: z.string().optional(),
+        responseCode: z.string().optional(),
         chainId: z.string().optional(),
         apiKeyId: z.string().optional(),
         pageToken: z.string().optional(),
@@ -109,7 +109,7 @@ export type GetApiLogsRequest$Outbound = {
     endTimestamp?: number | undefined;
     requestPath?: string | undefined;
     requestType?: string | undefined;
-    responseStatusCode?: string | undefined;
+    responseCode?: string | undefined;
     chainId?: string | undefined;
     apiKeyId?: string | undefined;
     pageToken?: string | undefined;
@@ -127,7 +127,7 @@ export const GetApiLogsRequest$outboundSchema: z.ZodType<
     endTimestamp: z.number().int().optional(),
     requestPath: z.string().optional(),
     requestType: QueryParamRequestType$outboundSchema.optional(),
-    responseStatusCode: z.string().optional(),
+    responseCode: z.string().optional(),
     chainId: z.string().optional(),
     apiKeyId: z.string().optional(),
     pageToken: z.string().optional(),

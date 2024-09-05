@@ -15,7 +15,7 @@ let value: LogsResponseDTO = {
             apiKeyId: "<value>",
             apiKeyAlias: "<value>",
             hostRegion: "<value>",
-            requestType: "Glacier API Request",
+            requestType: "data",
             requestPath: "<value>",
             apiCreditsConsumed: 8663.83,
             requestDurationMsecs: 3654.96,

@@ -29,8 +29,6 @@ async function run() {
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
-
-  
 }
 
 run();
@@ -119,7 +117,7 @@ async function run() {
     pageSize: 10,
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -215,7 +213,7 @@ async function run() {
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
-
+  
   // Handle the result
   console.log(result)
 }

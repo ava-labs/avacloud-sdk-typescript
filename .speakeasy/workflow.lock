@@ -1,9 +1,9 @@
-speakeasyVersion: 1.385.0
+speakeasyVersion: 1.390.7
 sources:
     AvaCloudSDK-OAS:
         sourceNamespace: avacloud-sdk-oas
-        sourceRevisionDigest: sha256:faba20263f8ab3b849e9f5cb487a2261f5ea26abc4f0916afbde074d3b980edf
-        sourceBlobDigest: sha256:69815043026f50269f356f2ab253ebcbb4ceea80ac047e9cb49717c386528175
+        sourceRevisionDigest: sha256:ea6e603c0db7e27888a744ff8539a5acb6d380d612899714e4cda15d8cd5e2c7
+        sourceBlobDigest: sha256:ba96ad26dd4ca0ced556d74cf2f2ecfaddc9516b8681f8f762e559ce4887befc
         tags:
             - latest
             - main
@@ -18,10 +18,10 @@ targets:
     avacloud-sdk:
         source: AvaCloudSDK-OAS
         sourceNamespace: avacloud-sdk-oas
-        sourceRevisionDigest: sha256:faba20263f8ab3b849e9f5cb487a2261f5ea26abc4f0916afbde074d3b980edf
-        sourceBlobDigest: sha256:69815043026f50269f356f2ab253ebcbb4ceea80ac047e9cb49717c386528175
+        sourceRevisionDigest: sha256:ea6e603c0db7e27888a744ff8539a5acb6d380d612899714e4cda15d8cd5e2c7
+        sourceBlobDigest: sha256:ba96ad26dd4ca0ced556d74cf2f2ecfaddc9516b8681f8f762e559ce4887befc
         codeSamplesNamespace: avacloud-sdk-ts-code-samples
-        codeSamplesRevisionDigest: sha256:59050ba41cdfbcab5da2f0f802cdb5555258fa7a518951ea099e962091a15979
+        codeSamplesRevisionDigest: sha256:0ffc59bac65e5a1125137bdaf4098355df58c5e30f108125d5ad03b047202162
         outLocation: /github/workspace/repo
     avalanche-sdk:
         source: AvalancheSDK-OAS
@@ -35,8 +35,8 @@ workflow:
     sources:
         AvaCloudSDK-OAS:
             inputs:
-                - location: https://e4db-2405-201-3027-2887-c59f-283b-9808-8aac.ngrok-free.app/api-json
-                - location: https://c6cd-2405-201-3027-2887-c59f-283b-9808-8aac.ngrok-free.app/api-json
+                - location: https://popsicle-api.avax.network/api-json
+                - location: https://glacier-api.avax.network/api-json
             overlays:
                 - location: overlays/overlay.yaml
             registry:

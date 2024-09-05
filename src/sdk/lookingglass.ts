@@ -33,7 +33,7 @@ export class LookingGlass extends ClientSDK {
      * Get addresses by balance over time
      *
      * @remarks
-     * Get list of addresses and their latest balances  that have held more than a certain threshold of a given token during the specified time frame.
+     * Get list of addresses and their latest balances that have held more than a certain threshold of a given token during the specified time frame.
      */
     async getAddressesByBalanceOverTime(
         request: operations.GetAddressesByBalanceOverTimeRequest,
@@ -63,7 +63,7 @@ export class LookingGlass extends ClientSDK {
      * Get addresses running validators during a given time frame
      *
      * @remarks
-     * Get list of addresses and AddValidatorTx timestamps set to receive  awards for validation periods during the specified time frame.
+     * Get list of addresses and AddValidatorTx timestamps set to receive awards for validation periods during the specified time frame.
      */
     async getValidatorsByDateRange(
         request: operations.GetValidatorsByDateRangeRequest,

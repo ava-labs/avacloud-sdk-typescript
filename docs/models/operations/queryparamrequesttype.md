@@ -7,11 +7,11 @@ Filter data by request type.
 ```typescript
 import { QueryParamRequestType } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: QueryParamRequestType = "Glacier RPC Request";
+let value: QueryParamRequestType = "rpc";
 ```
 
 ## Values
 
 ```typescript
-"Glacier API Request" | "Glacier RPC Request"
+"data" | "rpc"
 ```

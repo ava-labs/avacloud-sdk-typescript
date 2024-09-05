@@ -84,7 +84,7 @@ export async function dataUsageMetricsGetApiLogs(
         pageToken: payload$.pageToken,
         requestPath: payload$.requestPath,
         requestType: payload$.requestType,
-        responseStatusCode: payload$.responseStatusCode,
+        responseCode: payload$.responseCode,
         startTimestamp: payload$.startTimestamp,
     });
 
