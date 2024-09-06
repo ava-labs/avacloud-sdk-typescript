@@ -800,7 +800,7 @@ app.listen(8000, () => console.log('Server running on port 8000'));
 
 Use this function to securely validate webhooks from AvaCloud.
 
-For more information, visit the [AvaCloud](https://glacier.docs.avacloud.io/reference/validate-signature) documentation.
+For more information, visit the [AvaCloud](https://developer.avacloud.io/webhooks-api/signature) documentation.
 
 # Development
 
