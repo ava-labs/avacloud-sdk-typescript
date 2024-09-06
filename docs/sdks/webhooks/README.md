@@ -167,7 +167,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataWebhooksCreateWebhook(avaCloudSDK, {
-    url: "http://revolving-inverse.net",
+    url: "https://unrealistic-well-being.name",
     chainId: "<value>",
     eventType: "address_activity",
     metadata: {
