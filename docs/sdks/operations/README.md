@@ -154,17 +154,14 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataOperationsPostTransactionExportJob(avaCloudSDK, {
-    type: "TRANSACTION_EXPORT_EVM",
+    type: "TRANSACTION_EXPORT_PRIMARY_NETWORK_STAKING",
     firstDate: "2023-05-01",
     lastDate: "2023-05-02",
     startDate: "2023-05-01",
     endDate: "2023-05-02",
     options: {
-      addresses: [
-        "<value>",
-      ],
       includeChains: [
-        "43114",
+        "p-chain",
       ],
     },
   });
