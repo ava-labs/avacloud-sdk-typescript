@@ -15,7 +15,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 0.4.0
+  version: 0.4.1
   additionalDependencies:
     dependencies:
       json-canonicalize: ^1.0.6
@@ -24,7 +24,7 @@ typescript:
     peerDependencies: {}
   additionalPackageJSON:
     homepage: https://developer.avacloud.io/avacloud-sdk/getting-started
-    license: SEE LICENSE.md
+    license: SEE LICENSE
   author: AvaCloud
   clientServerStatusCodesAsErrors: true
   enumFormat: union
