@@ -2,7 +2,12 @@
 <div align="center">
     <h1> AvaCloud SDK TypeScript </h1>
         <p>
-            The AvaCloud SDK is a powerful and flexible toolset designed to simplify the integration with AvaCloud's suite of blockchain services. Currently, this SDK is focused on providing robust support for Glacier APIs.          </p>
+            The AvaCloud SDK is a powerful and flexible toolset designed to simplify the integration with AvaCloud's suite of blockchain services. Currently, this SDK is focused on providing robust support for Data APIs.          
+        </p>
+        <a href="https://developer.avacloud.io/avacloud-sdk/getting-started">
+            <img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=3b6ef9&style=for-the-badge" />
+        </a>
+
 </div>
 
 <!-- Start SDK Installation [installation] -->
