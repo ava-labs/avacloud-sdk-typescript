@@ -4,7 +4,7 @@
         <p>
             The AvaCloud SDK is a powerful and flexible toolset designed to simplify the integration with AvaCloud's suite of blockchain services. Currently, this SDK is focused on providing robust support for Data APIs.          
         </p>
-        <a href="https://developer.avacloud.io/avacloud-sdk/getting-started">
+        <a href="https://developers.avacloud.io/avacloud-sdk/getting-started">
             <img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=3b6ef9&style=for-the-badge" />
         </a>
 
@@ -800,7 +800,7 @@ app.listen(8000, () => console.log('Server running on port 8000'));
 
 Use this function to securely validate webhooks from AvaCloud.
 
-For more information, visit the [AvaCloud](https://developer.avacloud.io/webhooks-api/signature) documentation.
+For more information, visit the [AvaCloud Developers](https://developers.avacloud.io/webhooks-api/signature) documentation.
 
 # Development
 
