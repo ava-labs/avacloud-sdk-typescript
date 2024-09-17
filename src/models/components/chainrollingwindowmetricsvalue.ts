@@ -5,61 +5,61 @@
 import * as z from "zod";
 
 export type ChainRollingWindowMetricsValue = {
-    /**
-     * Aggregated value for the current metrics in last hour.
-     */
-    lastHour: number;
-    /**
-     * Aggregated value for the current metrics in last day.
-     */
-    lastDay: number;
-    /**
-     * Aggregated value for the current metrics in last month.
-     */
-    lastMonth: number;
-    /**
-     * Aggregated value for the current metrics in last year.
-     */
-    lastYear: number;
-    /**
-     * Aggregated value for the current metrics for all time.
-     */
-    allTime: number;
+  /**
+   * Aggregated value for the current metrics in last hour.
+   */
+  lastHour: number;
+  /**
+   * Aggregated value for the current metrics in last day.
+   */
+  lastDay: number;
+  /**
+   * Aggregated value for the current metrics in last month.
+   */
+  lastMonth: number;
+  /**
+   * Aggregated value for the current metrics in last year.
+   */
+  lastYear: number;
+  /**
+   * Aggregated value for the current metrics for all time.
+   */
+  allTime: number;
 };
 
 /** @internal */
 export const ChainRollingWindowMetricsValue$inboundSchema: z.ZodType<
-    ChainRollingWindowMetricsValue,
-    z.ZodTypeDef,
-    unknown
+  ChainRollingWindowMetricsValue,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    lastHour: z.number(),
-    lastDay: z.number(),
-    lastMonth: z.number(),
-    lastYear: z.number(),
-    allTime: z.number(),
+  lastHour: z.number(),
+  lastDay: z.number(),
+  lastMonth: z.number(),
+  lastYear: z.number(),
+  allTime: z.number(),
 });
 
 /** @internal */
 export type ChainRollingWindowMetricsValue$Outbound = {
-    lastHour: number;
-    lastDay: number;
-    lastMonth: number;
-    lastYear: number;
-    allTime: number;
+  lastHour: number;
+  lastDay: number;
+  lastMonth: number;
+  lastYear: number;
+  allTime: number;
 };
 
 /** @internal */
 export const ChainRollingWindowMetricsValue$outboundSchema: z.ZodType<
-    ChainRollingWindowMetricsValue$Outbound,
-    z.ZodTypeDef,
-    ChainRollingWindowMetricsValue
+  ChainRollingWindowMetricsValue$Outbound,
+  z.ZodTypeDef,
+  ChainRollingWindowMetricsValue
 > = z.object({
-    lastHour: z.number(),
-    lastDay: z.number(),
-    lastMonth: z.number(),
-    lastYear: z.number(),
-    allTime: z.number(),
+  lastHour: z.number(),
+  lastDay: z.number(),
+  lastMonth: z.number(),
+  lastYear: z.number(),
+  allTime: z.number(),
 });
 
 /**
@@ -67,10 +67,10 @@ export const ChainRollingWindowMetricsValue$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace ChainRollingWindowMetricsValue$ {
-    /** @deprecated use `ChainRollingWindowMetricsValue$inboundSchema` instead. */
-    export const inboundSchema = ChainRollingWindowMetricsValue$inboundSchema;
-    /** @deprecated use `ChainRollingWindowMetricsValue$outboundSchema` instead. */
-    export const outboundSchema = ChainRollingWindowMetricsValue$outboundSchema;
-    /** @deprecated use `ChainRollingWindowMetricsValue$Outbound` instead. */
-    export type Outbound = ChainRollingWindowMetricsValue$Outbound;
+  /** @deprecated use `ChainRollingWindowMetricsValue$inboundSchema` instead. */
+  export const inboundSchema = ChainRollingWindowMetricsValue$inboundSchema;
+  /** @deprecated use `ChainRollingWindowMetricsValue$outboundSchema` instead. */
+  export const outboundSchema = ChainRollingWindowMetricsValue$outboundSchema;
+  /** @deprecated use `ChainRollingWindowMetricsValue$Outbound` instead. */
+  export type Outbound = ChainRollingWindowMetricsValue$Outbound;
 }

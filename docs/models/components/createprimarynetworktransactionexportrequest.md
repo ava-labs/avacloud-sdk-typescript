@@ -6,14 +6,16 @@
 import { CreatePrimaryNetworkTransactionExportRequest } from "@avalabs/avacloud-sdk/models/components";
 
 let value: CreatePrimaryNetworkTransactionExportRequest = {
-    type: "TRANSACTION_EXPORT_PRIMARY_NETWORK_STAKING",
-    firstDate: "2023-05-01",
-    lastDate: "2023-05-02",
-    startDate: "2023-05-01",
-    endDate: "2023-05-02",
-    options: {
-        includeChains: ["p-chain"],
-    },
+  type: "TRANSACTION_EXPORT_PRIMARY_NETWORK",
+  firstDate: "2023-05-01",
+  lastDate: "2023-05-02",
+  startDate: "2023-05-01",
+  endDate: "2023-05-02",
+  options: {
+    includeChains: [
+      "p-chain",
+    ],
+  },
 };
 ```
 

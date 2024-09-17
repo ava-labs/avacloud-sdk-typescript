@@ -6,9 +6,9 @@
 import { ListPrimaryNetworkBlocksByNodeIdRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListPrimaryNetworkBlocksByNodeIdRequest = {
-    pageSize: 10,
-    blockchainId: "p-chain",
-    nodeId: "NodeID-111111111111111111116DBWJs",
+  pageSize: 10,
+  blockchainId: "p-chain",
+  nodeId: "NodeID-111111111111111111116DBWJs",
 };
 ```
 

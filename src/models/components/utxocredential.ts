@@ -5,37 +5,40 @@
 import * as z from "zod";
 
 export type UtxoCredential = {
-    /**
-     * Signature provided to consume the output.
-     */
-    signature?: string | undefined;
-    /**
-     * Public key associated with the signature.
-     */
-    publicKey?: string | undefined;
+  /**
+   * Signature provided to consume the output.
+   */
+  signature?: string | undefined;
+  /**
+   * Public key associated with the signature.
+   */
+  publicKey?: string | undefined;
 };
 
 /** @internal */
-export const UtxoCredential$inboundSchema: z.ZodType<UtxoCredential, z.ZodTypeDef, unknown> =
-    z.object({
-        signature: z.string().optional(),
-        publicKey: z.string().optional(),
-    });
+export const UtxoCredential$inboundSchema: z.ZodType<
+  UtxoCredential,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  signature: z.string().optional(),
+  publicKey: z.string().optional(),
+});
 
 /** @internal */
 export type UtxoCredential$Outbound = {
-    signature?: string | undefined;
-    publicKey?: string | undefined;
+  signature?: string | undefined;
+  publicKey?: string | undefined;
 };
 
 /** @internal */
 export const UtxoCredential$outboundSchema: z.ZodType<
-    UtxoCredential$Outbound,
-    z.ZodTypeDef,
-    UtxoCredential
+  UtxoCredential$Outbound,
+  z.ZodTypeDef,
+  UtxoCredential
 > = z.object({
-    signature: z.string().optional(),
-    publicKey: z.string().optional(),
+  signature: z.string().optional(),
+  publicKey: z.string().optional(),
 });
 
 /**
@@ -43,10 +46,10 @@ export const UtxoCredential$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace UtxoCredential$ {
-    /** @deprecated use `UtxoCredential$inboundSchema` instead. */
-    export const inboundSchema = UtxoCredential$inboundSchema;
-    /** @deprecated use `UtxoCredential$outboundSchema` instead. */
-    export const outboundSchema = UtxoCredential$outboundSchema;
-    /** @deprecated use `UtxoCredential$Outbound` instead. */
-    export type Outbound = UtxoCredential$Outbound;
+  /** @deprecated use `UtxoCredential$inboundSchema` instead. */
+  export const inboundSchema = UtxoCredential$inboundSchema;
+  /** @deprecated use `UtxoCredential$outboundSchema` instead. */
+  export const outboundSchema = UtxoCredential$outboundSchema;
+  /** @deprecated use `UtxoCredential$Outbound` instead. */
+  export type Outbound = UtxoCredential$Outbound;
 }

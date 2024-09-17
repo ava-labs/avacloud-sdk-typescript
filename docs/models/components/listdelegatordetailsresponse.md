@@ -6,20 +6,22 @@
 import { ListDelegatorDetailsResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ListDelegatorDetailsResponse = {
-    delegators: [
-        {
-            txHash: "<value>",
-            nodeId: "<value>",
-            rewardAddresses: ["<value>"],
-            amountDelegated: "<value>",
-            delegationFee: "<value>",
-            startTimestamp: 1103.75,
-            endTimestamp: 6747.52,
-            estimatedGrossReward: "<value>",
-            estimatedNetReward: "<value>",
-            delegationStatus: "pending",
-        },
-    ],
+  delegators: [
+    {
+      txHash: "<value>",
+      nodeId: "<value>",
+      rewardAddresses: [
+        "<value>",
+      ],
+      amountDelegated: "<value>",
+      delegationFee: "<value>",
+      startTimestamp: 4746.97,
+      endTimestamp: 2444.25,
+      estimatedGrossReward: "<value>",
+      estimatedNetReward: "<value>",
+      delegationStatus: "pending",
+    },
+  ],
 };
 ```
 

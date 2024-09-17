@@ -6,8 +6,8 @@
 import { ListWebhooksRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListWebhooksRequest = {
-    pageSize: 10,
-    status: "active",
+  pageSize: 10,
+  status: "active",
 };
 ```
 

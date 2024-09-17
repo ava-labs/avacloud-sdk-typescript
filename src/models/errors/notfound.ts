@@ -17,18 +17,18 @@ export type NotFoundMessage = string | Array<string>;
  *     or the resource doesn't exist.
  */
 export type NotFoundData = {
-    /**
-     * The error message describing the reason for the exception
-     */
-    message: string | Array<string>;
-    /**
-     * The HTTP status code of the response
-     */
-    statusCode: number;
-    /**
-     * The type of error
-     */
-    error: string;
+  /**
+   * The error message describing the reason for the exception
+   */
+  message: string | Array<string>;
+  /**
+   * The HTTP status code of the response
+   */
+  statusCode: number;
+  /**
+   * The type of error
+   */
+  error: string;
 };
 
 /**
@@ -39,45 +39,47 @@ export type NotFoundData = {
  *     or the resource doesn't exist.
  */
 export class NotFound extends Error {
-    /**
-     * The HTTP status code of the response
-     */
-    statusCode: number;
-    /**
-     * The type of error
-     */
-    error: string;
+  /**
+   * The HTTP status code of the response
+   */
+  statusCode: number;
+  /**
+   * The type of error
+   */
+  error: string;
 
-    /** The original data that was passed to this error instance. */
-    data$: NotFoundData;
+  /** The original data that was passed to this error instance. */
+  data$: NotFoundData;
 
-    constructor(err: NotFoundData) {
-        const message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : `API error occurred: ${JSON.stringify(err)}`;
-        super(message);
-        this.data$ = err;
+  constructor(err: NotFoundData) {
+    const message = "message" in err && typeof err.message === "string"
+      ? err.message
+      : `API error occurred: ${JSON.stringify(err)}`;
+    super(message);
+    this.data$ = err;
 
-        this.statusCode = err.statusCode;
-        this.error = err.error;
+    this.statusCode = err.statusCode;
+    this.error = err.error;
 
-        this.name = "NotFound";
-    }
+    this.name = "NotFound";
+  }
 }
 
 /** @internal */
-export const NotFoundMessage$inboundSchema: z.ZodType<NotFoundMessage, z.ZodTypeDef, unknown> =
-    z.union([z.string(), z.array(z.string())]);
+export const NotFoundMessage$inboundSchema: z.ZodType<
+  NotFoundMessage,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.array(z.string())]);
 
 /** @internal */
 export type NotFoundMessage$Outbound = string | Array<string>;
 
 /** @internal */
 export const NotFoundMessage$outboundSchema: z.ZodType<
-    NotFoundMessage$Outbound,
-    z.ZodTypeDef,
-    NotFoundMessage
+  NotFoundMessage$Outbound,
+  z.ZodTypeDef,
+  NotFoundMessage
 > = z.union([z.string(), z.array(z.string())]);
 
 /**
@@ -85,53 +87,57 @@ export const NotFoundMessage$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace NotFoundMessage$ {
-    /** @deprecated use `NotFoundMessage$inboundSchema` instead. */
-    export const inboundSchema = NotFoundMessage$inboundSchema;
-    /** @deprecated use `NotFoundMessage$outboundSchema` instead. */
-    export const outboundSchema = NotFoundMessage$outboundSchema;
-    /** @deprecated use `NotFoundMessage$Outbound` instead. */
-    export type Outbound = NotFoundMessage$Outbound;
+  /** @deprecated use `NotFoundMessage$inboundSchema` instead. */
+  export const inboundSchema = NotFoundMessage$inboundSchema;
+  /** @deprecated use `NotFoundMessage$outboundSchema` instead. */
+  export const outboundSchema = NotFoundMessage$outboundSchema;
+  /** @deprecated use `NotFoundMessage$Outbound` instead. */
+  export type Outbound = NotFoundMessage$Outbound;
 }
 
 /** @internal */
-export const NotFound$inboundSchema: z.ZodType<NotFound, z.ZodTypeDef, unknown> = z
-    .object({
-        message: z.union([z.string(), z.array(z.string())]),
-        statusCode: z.number(),
-        error: z.string(),
-    })
-    .transform((v) => {
-        return new NotFound(v);
-    });
+export const NotFound$inboundSchema: z.ZodType<
+  NotFound,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  message: z.union([z.string(), z.array(z.string())]),
+  statusCode: z.number(),
+  error: z.string(),
+})
+  .transform((v) => {
+    return new NotFound(v);
+  });
 
 /** @internal */
 export type NotFound$Outbound = {
-    message: string | Array<string>;
-    statusCode: number;
-    error: string;
+  message: string | Array<string>;
+  statusCode: number;
+  error: string;
 };
 
 /** @internal */
-export const NotFound$outboundSchema: z.ZodType<NotFound$Outbound, z.ZodTypeDef, NotFound> = z
-    .instanceof(NotFound)
-    .transform((v) => v.data$)
-    .pipe(
-        z.object({
-            message: z.union([z.string(), z.array(z.string())]),
-            statusCode: z.number(),
-            error: z.string(),
-        })
-    );
+export const NotFound$outboundSchema: z.ZodType<
+  NotFound$Outbound,
+  z.ZodTypeDef,
+  NotFound
+> = z.instanceof(NotFound)
+  .transform(v => v.data$)
+  .pipe(z.object({
+    message: z.union([z.string(), z.array(z.string())]),
+    statusCode: z.number(),
+    error: z.string(),
+  }));
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace NotFound$ {
-    /** @deprecated use `NotFound$inboundSchema` instead. */
-    export const inboundSchema = NotFound$inboundSchema;
-    /** @deprecated use `NotFound$outboundSchema` instead. */
-    export const outboundSchema = NotFound$outboundSchema;
-    /** @deprecated use `NotFound$Outbound` instead. */
-    export type Outbound = NotFound$Outbound;
+  /** @deprecated use `NotFound$inboundSchema` instead. */
+  export const inboundSchema = NotFound$inboundSchema;
+  /** @deprecated use `NotFound$outboundSchema` instead. */
+  export const outboundSchema = NotFound$outboundSchema;
+  /** @deprecated use `NotFound$Outbound` instead. */
+  export type Outbound = NotFound$Outbound;
 }

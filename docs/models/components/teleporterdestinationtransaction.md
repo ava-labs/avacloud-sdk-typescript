@@ -6,11 +6,11 @@
 import { TeleporterDestinationTransaction } from "@avalabs/avacloud-sdk/models/components";
 
 let value: TeleporterDestinationTransaction = {
-    txHash: "<value>",
-    timestamp: 1861.93,
-    gasSpent: "<value>",
-    rewardRedeemer: "<value>",
-    delivererAddress: "<value>",
+  txHash: "<value>",
+  timestamp: 5542.42,
+  gasSpent: "<value>",
+  rewardRedeemer: "<value>",
+  delivererAddress: "<value>",
 };
 ```
 

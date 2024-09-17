@@ -7,13 +7,13 @@ import { Data } from "./data.js";
 import { Metrics } from "./metrics.js";
 
 export class AvaCloudSDK extends ClientSDK {
-    private _metrics?: Metrics;
-    get metrics(): Metrics {
-        return (this._metrics ??= new Metrics(this.options$));
-    }
+  private _metrics?: Metrics;
+  get metrics(): Metrics {
+    return (this._metrics ??= new Metrics(this.options$));
+  }
 
-    private _data?: Data;
-    get data(): Data {
-        return (this._data ??= new Data(this.options$));
-    }
+  private _data?: Data;
+  get data(): Data {
+    return (this._data ??= new Data(this.options$));
+  }
 }

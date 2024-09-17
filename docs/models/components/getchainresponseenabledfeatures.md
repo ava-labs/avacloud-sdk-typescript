@@ -11,5 +11,5 @@ let value: GetChainResponseEnabledFeatures = "nftIndexing";
 ## Values
 
 ```typescript
-"nftIndexing" | "webhooks"
+"nftIndexing" | "webhooks" | "teleporter"
 ```

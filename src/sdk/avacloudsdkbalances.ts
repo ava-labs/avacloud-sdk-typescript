@@ -14,82 +14,102 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class AvaCloudSDKBalances extends ClientSDK {
-    /**
-     * Get native token balance
-     *
-     * @remarks
-     * Gets native token balance of a wallet address.
-     *
-     * Balance at a given block can be retrieved with the `blockNumber` parameter.
-     */
-    async getNativeBalance(
-        request: operations.GetNativeBalanceRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.GetNativeBalanceResponse> {
-        return unwrapAsync(dataEvmBalancesGetNativeBalance(this, request, options));
-    }
+  /**
+   * Get native token balance
+   *
+   * @remarks
+   * Gets native token balance of a wallet address.
+   *
+   * Balance at a given block can be retrieved with the `blockNumber` parameter.
+   */
+  async getNativeBalance(
+    request: operations.GetNativeBalanceRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.GetNativeBalanceResponse> {
+    return unwrapAsync(dataEvmBalancesGetNativeBalance(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List ERC-20 balances
-     *
-     * @remarks
-     * Lists ERC-20 token balances of a wallet address.
-     *
-     * Balance at a given block can be retrieved with the `blockNumber` parameter.
-     *
-     * Balance for specific contracts can be retrieved with the `contractAddresses` parameter.
-     */
-    async listErc20Balances(
-        request: operations.ListErc20BalancesRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListErc20BalancesResponse>> {
-        return unwrapResultIterator(dataEvmBalancesListErc20Balances(this, request, options));
-    }
+  /**
+   * List ERC-20 balances
+   *
+   * @remarks
+   * Lists ERC-20 token balances of a wallet address.
+   *
+   * Balance at a given block can be retrieved with the `blockNumber` parameter.
+   *
+   * Balance for specific contracts can be retrieved with the `contractAddresses` parameter.
+   */
+  async listErc20Balances(
+    request: operations.ListErc20BalancesRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListErc20BalancesResponse>> {
+    return unwrapResultIterator(dataEvmBalancesListErc20Balances(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List ERC-721 balances
-     *
-     * @remarks
-     * Lists ERC-721 token balances of a wallet address.
-     *
-     * Balance for a specific contract can be retrieved with the `contractAddress` parameter.
-     */
-    async listErc721Balances(
-        request: operations.ListErc721BalancesRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListErc721BalancesResponse>> {
-        return unwrapResultIterator(dataEvmBalancesListErc721Balances(this, request, options));
-    }
+  /**
+   * List ERC-721 balances
+   *
+   * @remarks
+   * Lists ERC-721 token balances of a wallet address.
+   *
+   * Balance for a specific contract can be retrieved with the `contractAddress` parameter.
+   */
+  async listErc721Balances(
+    request: operations.ListErc721BalancesRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListErc721BalancesResponse>> {
+    return unwrapResultIterator(dataEvmBalancesListErc721Balances(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List ERC-1155 balances
-     *
-     * @remarks
-     * Lists ERC-1155 token balances of a wallet address.
-     *
-     * Balance at a given block can be retrieved with the `blockNumber` parameter.
-     *
-     * Balance for a specific contract can be retrieved with the `contractAddress` parameter.
-     */
-    async listErc1155Balances(
-        request: operations.ListErc1155BalancesRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListErc1155BalancesResponse>> {
-        return unwrapResultIterator(dataEvmBalancesListErc1155Balances(this, request, options));
-    }
+  /**
+   * List ERC-1155 balances
+   *
+   * @remarks
+   * Lists ERC-1155 token balances of a wallet address.
+   *
+   * Balance at a given block can be retrieved with the `blockNumber` parameter.
+   *
+   * Balance for a specific contract can be retrieved with the `contractAddress` parameter.
+   */
+  async listErc1155Balances(
+    request: operations.ListErc1155BalancesRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListErc1155BalancesResponse>> {
+    return unwrapResultIterator(dataEvmBalancesListErc1155Balances(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List collectible (ERC-721/ERC-1155) balances
-     *
-     * @remarks
-     * Lists ERC-721 and ERC-1155 token balances of a wallet address.
-     *
-     * Balance for a specific contract can be retrieved with the `contractAddress` parameter.
-     */
-    async listCollectibleBalances(
-        request: operations.ListCollectibleBalancesRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListCollectibleBalancesResponse>> {
-        return unwrapResultIterator(dataEvmBalancesListCollectibleBalances(this, request, options));
-    }
+  /**
+   * List collectible (ERC-721/ERC-1155) balances
+   *
+   * @remarks
+   * Lists ERC-721 and ERC-1155 token balances of a wallet address.
+   *
+   * Balance for a specific contract can be retrieved with the `contractAddress` parameter.
+   */
+  async listCollectibleBalances(
+    request: operations.ListCollectibleBalancesRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListCollectibleBalancesResponse>> {
+    return unwrapResultIterator(dataEvmBalancesListCollectibleBalances(
+      this,
+      request,
+      options,
+    ));
+  }
 }

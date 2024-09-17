@@ -8,18 +8,20 @@ import * as operations from "../models/operations/index.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Utxos extends ClientSDK {
-    /**
-     * List UTXOs
-     *
-     * @remarks
-     * Lists UTXOs on one of the Primary Network chains for the supplied addresses.
-     */
-    async getUtxosByAddresses(
-        request: operations.GetUtxosByAddressesRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.GetUtxosByAddressesResponse>> {
-        return unwrapResultIterator(
-            dataPrimaryNetworkUtxosGetUtxosByAddresses(this, request, options)
-        );
-    }
+  /**
+   * List UTXOs
+   *
+   * @remarks
+   * Lists UTXOs on one of the Primary Network chains for the supplied addresses.
+   */
+  async getUtxosByAddresses(
+    request: operations.GetUtxosByAddressesRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.GetUtxosByAddressesResponse>> {
+    return unwrapResultIterator(dataPrimaryNetworkUtxosGetUtxosByAddresses(
+      this,
+      request,
+      options,
+    ));
+  }
 }

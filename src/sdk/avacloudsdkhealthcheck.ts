@@ -8,12 +8,15 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class AvaCloudSDKHealthCheck extends ClientSDK {
-    /**
-     * Get the health of the service
-     */
-    async dataHealthCheck(
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<operations.DataHealthCheckResponseBody> {
-        return unwrapAsync(dataHealthCheckDataHealthCheck(this, options));
-    }
+  /**
+   * Get the health of the service
+   */
+  async dataHealthCheck(
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<operations.DataHealthCheckResponseBody> {
+    return unwrapAsync(dataHealthCheckDataHealthCheck(
+      this,
+      options,
+    ));
+  }
 }

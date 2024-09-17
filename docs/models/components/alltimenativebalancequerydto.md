@@ -6,14 +6,14 @@
 import { AllTimeNativeBalanceQueryDto } from "@avalabs/avacloud-sdk/models/components";
 
 let value: AllTimeNativeBalanceQueryDto = {
-    id: "<id>",
-    type: "AllTimeNativeBalance",
-    params: {
-        firstDate: "<value>",
-        lastDate: "<value>",
-        minBalance: "<value>",
-        evmChainId: "<value>",
-    },
+  id: "<id>",
+  type: "AllTimeNativeBalance",
+  params: {
+    firstDate: "<value>",
+    lastDate: "<value>",
+    minBalance: "<value>",
+    evmChainId: "<value>",
+  },
 };
 ```
 

@@ -6,8 +6,10 @@
 import { PChainAddressDetails } from "@avalabs/avacloud-sdk/models/components";
 
 let value: PChainAddressDetails = {
-    addresses: ["avax1abcdef1234567890abcdef1234567890abcdef"],
-    sortKey: "123",
+  addresses: [
+    "avax1abcdef1234567890abcdef1234567890abcdef",
+  ],
+  sortKey: "123",
 };
 ```
 

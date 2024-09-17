@@ -6,10 +6,12 @@
 import { PChainLookingGlassResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: PChainLookingGlassResponse = {
-    addresses: {
-        addresses: ["avax1abcdef1234567890abcdef1234567890abcdef"],
-        sortKey: "123",
-    },
+  addresses: {
+    addresses: [
+      "avax1abcdef1234567890abcdef1234567890abcdef",
+    ],
+    sortKey: "123",
+  },
 };
 ```
 

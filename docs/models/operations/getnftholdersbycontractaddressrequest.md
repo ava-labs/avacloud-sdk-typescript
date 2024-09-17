@@ -6,8 +6,8 @@
 import { GetNftHoldersByContractAddressRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetNftHoldersByContractAddressRequest = {
-    pageSize: 10,
-    address: "0x7a420AEFF902AAa2c85a190D7B91Ce8BEFffFE14",
+  pageSize: 10,
+  address: "0x7a420AEFF902AAa2c85a190D7B91Ce8BEFffFE14",
 };
 ```
 

@@ -6,23 +6,23 @@
 import { ListErc721BalancesResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListErc721BalancesResponse = {
-    result: {
-        erc721TokenBalances: [
-            {
-                address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-                name: "Wrapped AVAX",
-                symbol: "WAVAX",
-                ercType: "ERC-721",
-                tokenId: "<value>",
-                tokenUri: "<value>",
-                metadata: {
-                    indexStatus: "THROTTLED_TOKEN_URI",
-                },
-                ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-                chainId: "43114",
-            },
-        ],
-    },
+  result: {
+    erc721TokenBalances: [
+      {
+        address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+        name: "Wrapped AVAX",
+        symbol: "WAVAX",
+        ercType: "ERC-721",
+        tokenId: "<value>",
+        tokenUri: "<value>",
+        metadata: {
+          indexStatus: "METADATA_CONTENT_TOO_LARGE",
+        },
+        ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+        chainId: "43114",
+      },
+    ],
+  },
 };
 ```
 

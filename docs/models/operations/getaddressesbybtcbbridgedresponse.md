@@ -6,12 +6,12 @@
 import { GetAddressesByBtcbBridgedResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetAddressesByBtcbBridgedResponse = {
-    result: {
-        addresses: {
-            address: "0x1234567890abcdef1234567890abcdef123456789",
-            sortKey: "123",
-        },
+  result: {
+    addresses: {
+      address: "0x1234567890abcdef1234567890abcdef123456789",
+      sortKey: "123",
     },
+  },
 };
 ```
 

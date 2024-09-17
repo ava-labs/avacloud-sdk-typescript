@@ -6,9 +6,9 @@
 import { ListTransactionsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListTransactionsResponse = {
-    result: {
-        transactions: [],
-    },
+  result: {
+    transactions: [],
+  },
 };
 ```
 

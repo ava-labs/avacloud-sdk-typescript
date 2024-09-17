@@ -6,7 +6,7 @@
 import { ListCollectibleBalancesResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ListCollectibleBalancesResponse = {
-    collectibleBalances: [],
+  collectibleBalances: [],
 };
 ```
 

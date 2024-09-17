@@ -6,8 +6,8 @@
 import { BlsCredentials } from "@avalabs/avacloud-sdk/models/components";
 
 let value: BlsCredentials = {
-    publicKey: "<value>",
-    proofOfPossession: "<value>",
+  publicKey: "<value>",
+  proofOfPossession: "<value>",
 };
 ```
 

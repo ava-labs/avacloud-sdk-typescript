@@ -18,18 +18,18 @@ export type InternalServerErrorMessage = string | Array<string>;
  *     persists for a longer duration.
  */
 export type InternalServerErrorData = {
-    /**
-     * The error message describing the reason for the exception
-     */
-    message: string | Array<string>;
-    /**
-     * The HTTP status code of the response
-     */
-    statusCode: number;
-    /**
-     * The type of error
-     */
-    error: string;
+  /**
+   * The error message describing the reason for the exception
+   */
+  message: string | Array<string>;
+  /**
+   * The HTTP status code of the response
+   */
+  statusCode: number;
+  /**
+   * The type of error
+   */
+  error: string;
 };
 
 /**
@@ -41,38 +41,37 @@ export type InternalServerErrorData = {
  *     persists for a longer duration.
  */
 export class InternalServerError extends Error {
-    /**
-     * The HTTP status code of the response
-     */
-    statusCode: number;
-    /**
-     * The type of error
-     */
-    error: string;
+  /**
+   * The HTTP status code of the response
+   */
+  statusCode: number;
+  /**
+   * The type of error
+   */
+  error: string;
 
-    /** The original data that was passed to this error instance. */
-    data$: InternalServerErrorData;
+  /** The original data that was passed to this error instance. */
+  data$: InternalServerErrorData;
 
-    constructor(err: InternalServerErrorData) {
-        const message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : `API error occurred: ${JSON.stringify(err)}`;
-        super(message);
-        this.data$ = err;
+  constructor(err: InternalServerErrorData) {
+    const message = "message" in err && typeof err.message === "string"
+      ? err.message
+      : `API error occurred: ${JSON.stringify(err)}`;
+    super(message);
+    this.data$ = err;
 
-        this.statusCode = err.statusCode;
-        this.error = err.error;
+    this.statusCode = err.statusCode;
+    this.error = err.error;
 
-        this.name = "InternalServerError";
-    }
+    this.name = "InternalServerError";
+  }
 }
 
 /** @internal */
 export const InternalServerErrorMessage$inboundSchema: z.ZodType<
-    InternalServerErrorMessage,
-    z.ZodTypeDef,
-    unknown
+  InternalServerErrorMessage,
+  z.ZodTypeDef,
+  unknown
 > = z.union([z.string(), z.array(z.string())]);
 
 /** @internal */
@@ -80,9 +79,9 @@ export type InternalServerErrorMessage$Outbound = string | Array<string>;
 
 /** @internal */
 export const InternalServerErrorMessage$outboundSchema: z.ZodType<
-    InternalServerErrorMessage$Outbound,
-    z.ZodTypeDef,
-    InternalServerErrorMessage
+  InternalServerErrorMessage$Outbound,
+  z.ZodTypeDef,
+  InternalServerErrorMessage
 > = z.union([z.string(), z.array(z.string())]);
 
 /**
@@ -90,61 +89,57 @@ export const InternalServerErrorMessage$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace InternalServerErrorMessage$ {
-    /** @deprecated use `InternalServerErrorMessage$inboundSchema` instead. */
-    export const inboundSchema = InternalServerErrorMessage$inboundSchema;
-    /** @deprecated use `InternalServerErrorMessage$outboundSchema` instead. */
-    export const outboundSchema = InternalServerErrorMessage$outboundSchema;
-    /** @deprecated use `InternalServerErrorMessage$Outbound` instead. */
-    export type Outbound = InternalServerErrorMessage$Outbound;
+  /** @deprecated use `InternalServerErrorMessage$inboundSchema` instead. */
+  export const inboundSchema = InternalServerErrorMessage$inboundSchema;
+  /** @deprecated use `InternalServerErrorMessage$outboundSchema` instead. */
+  export const outboundSchema = InternalServerErrorMessage$outboundSchema;
+  /** @deprecated use `InternalServerErrorMessage$Outbound` instead. */
+  export type Outbound = InternalServerErrorMessage$Outbound;
 }
 
 /** @internal */
 export const InternalServerError$inboundSchema: z.ZodType<
-    InternalServerError,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        message: z.union([z.string(), z.array(z.string())]),
-        statusCode: z.number(),
-        error: z.string(),
-    })
-    .transform((v) => {
-        return new InternalServerError(v);
-    });
+  InternalServerError,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  message: z.union([z.string(), z.array(z.string())]),
+  statusCode: z.number(),
+  error: z.string(),
+})
+  .transform((v) => {
+    return new InternalServerError(v);
+  });
 
 /** @internal */
 export type InternalServerError$Outbound = {
-    message: string | Array<string>;
-    statusCode: number;
-    error: string;
+  message: string | Array<string>;
+  statusCode: number;
+  error: string;
 };
 
 /** @internal */
 export const InternalServerError$outboundSchema: z.ZodType<
-    InternalServerError$Outbound,
-    z.ZodTypeDef,
-    InternalServerError
-> = z
-    .instanceof(InternalServerError)
-    .transform((v) => v.data$)
-    .pipe(
-        z.object({
-            message: z.union([z.string(), z.array(z.string())]),
-            statusCode: z.number(),
-            error: z.string(),
-        })
-    );
+  InternalServerError$Outbound,
+  z.ZodTypeDef,
+  InternalServerError
+> = z.instanceof(InternalServerError)
+  .transform(v => v.data$)
+  .pipe(z.object({
+    message: z.union([z.string(), z.array(z.string())]),
+    statusCode: z.number(),
+    error: z.string(),
+  }));
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace InternalServerError$ {
-    /** @deprecated use `InternalServerError$inboundSchema` instead. */
-    export const inboundSchema = InternalServerError$inboundSchema;
-    /** @deprecated use `InternalServerError$outboundSchema` instead. */
-    export const outboundSchema = InternalServerError$outboundSchema;
-    /** @deprecated use `InternalServerError$Outbound` instead. */
-    export type Outbound = InternalServerError$Outbound;
+  /** @deprecated use `InternalServerError$inboundSchema` instead. */
+  export const inboundSchema = InternalServerError$inboundSchema;
+  /** @deprecated use `InternalServerError$outboundSchema` instead. */
+  export const outboundSchema = InternalServerError$outboundSchema;
+  /** @deprecated use `InternalServerError$Outbound` instead. */
+  export type Outbound = InternalServerError$Outbound;
 }

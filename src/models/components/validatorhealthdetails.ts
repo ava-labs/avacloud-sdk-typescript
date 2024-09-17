@@ -5,54 +5,54 @@
 import * as z from "zod";
 
 export type ValidatorHealthDetails = {
-    /**
-     * Percent of requests responded to in last polling.
-     */
-    reachabilityPercent: number;
-    /**
-     * Percent of requests benched on the P-Chain in last polling.
-     */
-    benchedPChainRequestsPercent: number;
-    /**
-     * Percentage of requests benched on the X-Chain in last polling.
-     */
-    benchedXChainRequestsPercent: number;
-    /**
-     * Percentage of requests benched on the C-Chain in last polling.
-     */
-    benchedCChainRequestsPercent: number;
+  /**
+   * Percent of requests responded to in last polling.
+   */
+  reachabilityPercent: number;
+  /**
+   * Percent of requests benched on the P-Chain in last polling.
+   */
+  benchedPChainRequestsPercent: number;
+  /**
+   * Percentage of requests benched on the X-Chain in last polling.
+   */
+  benchedXChainRequestsPercent: number;
+  /**
+   * Percentage of requests benched on the C-Chain in last polling.
+   */
+  benchedCChainRequestsPercent: number;
 };
 
 /** @internal */
 export const ValidatorHealthDetails$inboundSchema: z.ZodType<
-    ValidatorHealthDetails,
-    z.ZodTypeDef,
-    unknown
+  ValidatorHealthDetails,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    reachabilityPercent: z.number(),
-    benchedPChainRequestsPercent: z.number(),
-    benchedXChainRequestsPercent: z.number(),
-    benchedCChainRequestsPercent: z.number(),
+  reachabilityPercent: z.number(),
+  benchedPChainRequestsPercent: z.number(),
+  benchedXChainRequestsPercent: z.number(),
+  benchedCChainRequestsPercent: z.number(),
 });
 
 /** @internal */
 export type ValidatorHealthDetails$Outbound = {
-    reachabilityPercent: number;
-    benchedPChainRequestsPercent: number;
-    benchedXChainRequestsPercent: number;
-    benchedCChainRequestsPercent: number;
+  reachabilityPercent: number;
+  benchedPChainRequestsPercent: number;
+  benchedXChainRequestsPercent: number;
+  benchedCChainRequestsPercent: number;
 };
 
 /** @internal */
 export const ValidatorHealthDetails$outboundSchema: z.ZodType<
-    ValidatorHealthDetails$Outbound,
-    z.ZodTypeDef,
-    ValidatorHealthDetails
+  ValidatorHealthDetails$Outbound,
+  z.ZodTypeDef,
+  ValidatorHealthDetails
 > = z.object({
-    reachabilityPercent: z.number(),
-    benchedPChainRequestsPercent: z.number(),
-    benchedXChainRequestsPercent: z.number(),
-    benchedCChainRequestsPercent: z.number(),
+  reachabilityPercent: z.number(),
+  benchedPChainRequestsPercent: z.number(),
+  benchedXChainRequestsPercent: z.number(),
+  benchedCChainRequestsPercent: z.number(),
 });
 
 /**
@@ -60,10 +60,10 @@ export const ValidatorHealthDetails$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace ValidatorHealthDetails$ {
-    /** @deprecated use `ValidatorHealthDetails$inboundSchema` instead. */
-    export const inboundSchema = ValidatorHealthDetails$inboundSchema;
-    /** @deprecated use `ValidatorHealthDetails$outboundSchema` instead. */
-    export const outboundSchema = ValidatorHealthDetails$outboundSchema;
-    /** @deprecated use `ValidatorHealthDetails$Outbound` instead. */
-    export type Outbound = ValidatorHealthDetails$Outbound;
+  /** @deprecated use `ValidatorHealthDetails$inboundSchema` instead. */
+  export const inboundSchema = ValidatorHealthDetails$inboundSchema;
+  /** @deprecated use `ValidatorHealthDetails$outboundSchema` instead. */
+  export const outboundSchema = ValidatorHealthDetails$outboundSchema;
+  /** @deprecated use `ValidatorHealthDetails$Outbound` instead. */
+  export type Outbound = ValidatorHealthDetails$Outbound;
 }

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: de56c11640ee74201a1e764914156364
+  docChecksum: ad3053b27e7b8ee3e0999a670859eec5
   docVersion: Beta
-  speakeasyVersion: 1.391.3
-  generationVersion: 2.411.5
-  releaseVersion: 0.4.1
-  configChecksum: 65a11287f2924c59e6f953cbaed453c1
+  speakeasyVersion: 1.398.0
+  generationVersion: 2.415.8
+  releaseVersion: 0.5.0
+  configChecksum: 24b7a2b64288da36f73d316744178030
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -15,10 +15,11 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.16.2
+    core: 3.17.3
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
+    enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.1
     examples: 2.81.4
     globalSecurity: 2.82.11
@@ -117,6 +118,7 @@ generatedFiles:
   - docs/models/components/deliveredsourcenotindexedteleportermessagestatus.md
   - docs/models/components/deliveredteleportermessage.md
   - docs/models/components/deliveredteleportermessagestatus.md
+  - docs/models/components/destinationchainid.md
   - docs/models/components/enabledfeatures.md
   - docs/models/components/erc1155contract.md
   - docs/models/components/erc1155contracterctype.md
@@ -273,11 +275,16 @@ generatedFiles:
   - docs/models/components/sharedsecretsresponse.md
   - docs/models/components/sortbyoption.md
   - docs/models/components/sortorder.md
+  - docs/models/components/sourcechainid.md
   - docs/models/components/stakingdistribution.md
   - docs/models/components/status.md
   - docs/models/components/subnet.md
   - docs/models/components/subnetownershipinfo.md
+  - docs/models/components/teleporterchainmetricsapiresponse.md
   - docs/models/components/teleporterdestinationtransaction.md
+  - docs/models/components/teleportermessageinfo.md
+  - docs/models/components/teleportermetric.md
+  - docs/models/components/teleportermetricsvalue.md
   - docs/models/components/teleporterreceipt.md
   - docs/models/components/teleporterrewarddetails.md
   - docs/models/components/teleporterrewarddetailserctype.md
@@ -288,6 +295,7 @@ generatedFiles:
   - docs/models/components/tokens.md
   - docs/models/components/tokentype.md
   - docs/models/components/transactiondetails.md
+  - docs/models/components/transactiondirectiontype.md
   - docs/models/components/transactionexportmetadata.md
   - docs/models/components/transactionmethodtype.md
   - docs/models/components/transactions.md
@@ -413,6 +421,8 @@ generatedFiles:
   - docs/models/operations/getsubnetbyidrequest.md
   - docs/models/operations/getteleportermessagerequest.md
   - docs/models/operations/getteleportermessageresponsebody.md
+  - docs/models/operations/getteleportermetricsbychainglobals.md
+  - docs/models/operations/getteleportermetricsbychainrequest.md
   - docs/models/operations/gettokendetailsglobals.md
   - docs/models/operations/gettokendetailsrequest.md
   - docs/models/operations/gettokendetailsresponsebody.md
@@ -505,6 +515,7 @@ generatedFiles:
   - docs/models/operations/listsubnetsglobals.md
   - docs/models/operations/listsubnetsrequest.md
   - docs/models/operations/listsubnetsresponse.md
+  - docs/models/operations/listteleportermessagesbyaddressrequest.md
   - docs/models/operations/listteleportermessagesrequest.md
   - docs/models/operations/listteleportermessagesresponse.md
   - docs/models/operations/listtokensglobals.md
@@ -613,6 +624,7 @@ generatedFiles:
   - src/funcs/dataPrimaryNetworkVerticesListLatestXChainVertices.ts
   - src/funcs/dataTeleporterGetTeleporterMessage.ts
   - src/funcs/dataTeleporterListTeleporterMessages.ts
+  - src/funcs/dataTeleporterListTeleporterMessagesByAddress.ts
   - src/funcs/dataUsageMetricsGetApiLogs.ts
   - src/funcs/dataUsageMetricsGetApiUsageMetrics.ts
   - src/funcs/dataWebhooksAddAddressesToWebhook.ts
@@ -628,6 +640,7 @@ generatedFiles:
   - src/funcs/metricsChainMetricsGetEvmChainMetrics.ts
   - src/funcs/metricsChainMetricsGetEvmChainRollingWindowMetrics.ts
   - src/funcs/metricsChainMetricsGetStakingMetrics.ts
+  - src/funcs/metricsChainMetricsGetTeleporterMetricsByChain.ts
   - src/funcs/metricsEvmChainsGetChain.ts
   - src/funcs/metricsEvmChainsListChains.ts
   - src/funcs/metricsHealthCheckMetricsHealthCheck.ts
@@ -842,7 +855,11 @@ generatedFiles:
   - src/models/components/stakingdistribution.ts
   - src/models/components/subnet.ts
   - src/models/components/subnetownershipinfo.ts
+  - src/models/components/teleporterchainmetricsapiresponse.ts
   - src/models/components/teleporterdestinationtransaction.ts
+  - src/models/components/teleportermessageinfo.ts
+  - src/models/components/teleportermetric.ts
+  - src/models/components/teleportermetricsvalue.ts
   - src/models/components/teleporterreceipt.ts
   - src/models/components/teleporterrewarddetails.ts
   - src/models/components/teleportersourcetransaction.ts
@@ -851,6 +868,7 @@ generatedFiles:
   - src/models/components/timestamprangenftholdersparam.ts
   - src/models/components/tokentype.ts
   - src/models/components/transactiondetails.ts
+  - src/models/components/transactiondirectiontype.ts
   - src/models/components/transactionexportmetadata.ts
   - src/models/components/transactionmethodtype.ts
   - src/models/components/transactionstatus.ts
@@ -925,6 +943,7 @@ generatedFiles:
   - src/models/operations/getstakingmetrics.ts
   - src/models/operations/getsubnetbyid.ts
   - src/models/operations/getteleportermessage.ts
+  - src/models/operations/getteleportermetricsbychain.ts
   - src/models/operations/gettokendetails.ts
   - src/models/operations/gettransaction.ts
   - src/models/operations/gettransactionsforblock.ts
@@ -959,6 +978,7 @@ generatedFiles:
   - src/models/operations/listprimarynetworkblocksbynodeid.ts
   - src/models/operations/listsubnets.ts
   - src/models/operations/listteleportermessages.ts
+  - src/models/operations/listteleportermessagesbyaddress.ts
   - src/models/operations/listtokens.ts
   - src/models/operations/listtransactions.ts
   - src/models/operations/listtransfers.ts
@@ -1092,6 +1112,8 @@ examples:
           application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"results": []}
   getEvmChainRollingWindowMetrics:
     "":
       parameters:
@@ -1115,6 +1137,8 @@ examples:
           application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"result": {"lastHour": "7983.08", "lastDay": "45.59", "lastMonth": "371.4", "lastYear": "1064.36", "allTime": "1946.22"}}
   getStakingMetrics:
     "":
       parameters:
@@ -1143,6 +1167,8 @@ examples:
           application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"results": []}
   getNftHoldersByContractAddress:
     "":
       parameters:
@@ -1383,6 +1409,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"operationId": "<value>", "operationType": "TRANSACTION_EXPORT_PRIMARY_NETWORK_SIMPLE", "operationStatus": "RUNNING", "createdAtTimestamp": "8977.59", "updatedAtTimestamp": "7978.63"}
   postTransactionExportJob:
     speakeasy-default-post-transaction-export-job:
       requestBody:
@@ -1404,6 +1432,8 @@ examples:
           application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"operationId": "<value>", "operationType": "TRANSACTION_EXPORT_PRIMARY_NETWORK_SIMPLE", "operationStatus": "COMPLETED", "createdAtTimestamp": "4525.17", "updatedAtTimestamp": "2355.88"}
   getAssetDetails:
     "":
       parameters:
@@ -1454,6 +1484,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"addresses": []}
   getNetworkDetails:
     "":
       parameters:
@@ -1476,6 +1508,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"validatorDetails": {"validatorCount": "2213.22", "totalAmountStaked": "<value>", "estimatedAnnualStakingReward": "<value>", "stakingDistributionByVersion": [], "stakingRatio": "<value>"}, "delegatorDetails": {"delegatorCount": "6055.02", "totalAmountStaked": "<value>"}}
   listBlockchains:
     "":
       parameters:
@@ -1501,6 +1535,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"blockchains": []}
   listSubnets:
     "":
       parameters:
@@ -1589,6 +1625,8 @@ examples:
           application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"validators": []}
   getSingleValidatorDetails:
     "":
       parameters:
@@ -1616,6 +1654,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"validators": []}
   listDelegators:
     "":
       parameters:
@@ -1644,6 +1684,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"delegators": []}
   getTxByHash:
     "":
       parameters:
@@ -1905,6 +1947,8 @@ examples:
           application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"blockNumber": "<value>", "blockHash": "<value>", "parentHash": "<value>", "blockTimestamp": "8593.73", "blockType": "<value>", "txCount": "7619.2", "transactions": [], "blockSizeBytes": "105.5"}
   listPrimaryNetworkBlocksByNodeId:
     "":
       parameters:
@@ -1931,6 +1975,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"blocks": [], "chainInfo": {"chainName": "p-chain", "network": "fuji"}}
   listLatestPrimaryNetworkBlocks:
     "":
       parameters:
@@ -1956,6 +2002,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"blocks": [], "chainInfo": {"chainName": "c-chain", "network": "fuji"}}
   listLatestXChainVertices:
     "":
       parameters:
@@ -1981,6 +2029,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"vertices": [], "chainInfo": {"chainName": "c-chain", "network": "fuji"}}
   getVertexByHash:
     "":
       parameters:
@@ -2005,6 +2055,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"vertexHash": "<value>", "parentHashes": [], "vertexHeight": "4224.5", "vertexIndex": "7135.7", "vertexTimestamp": "2810.46", "txCount": "1065.03", "transactions": [], "vertexSizeBytes": "9438.79"}
   getVertexByHeight:
     "":
       parameters:
@@ -2032,6 +2084,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"vertices": [], "chainInfo": {"chainName": "p-chain", "network": "fuji"}}
   getApiUsageMetrics:
     "":
       parameters:
@@ -2057,6 +2111,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"aggregateDuration": "<value>", "orgId": "<value>", "metrics": []}
   getApiLogs:
     "":
       parameters:
@@ -2080,6 +2136,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"orgId": "<value>", "logs": []}
   listWebhooks:
     "":
       parameters:
@@ -2219,6 +2277,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"secret": "<value>"}
   getSharedSecret:
     speakeasy-default-get-shared-secret:
       responses:
@@ -2238,6 +2298,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"secret": "<value>"}
   getAddressesFromWebhook:
     "":
       parameters:
@@ -2262,6 +2324,8 @@ examples:
           application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "200":
+          application/json: {"addresses": [], "totalAddresses": "1108.33"}
   removeAddressesFromWebhook:
     "":
       parameters:
@@ -2967,5 +3031,57 @@ examples:
           application/json: {"message": "<value>", "statusCode": 500, "error": "Internal Server Error"}
         "502":
           application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+  getTeleporterMetricsByChain:
+    "":
+      parameters:
+        path:
+          metric: "teleporterSourceTxnCount"
+          chainId: "43114"
+      responses:
+        "200":
+          application/json: {"result": {"value": "2345.82"}}
+        "400":
+          application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": [], "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": [], "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": [], "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": "<value>", "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": [], "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+  listTeleporterMessagesByAddress:
+    "":
+      parameters:
+        path:
+          address: "0x8578AE7723751446B196bD5124e1bF57B40EB7Bc"
+        query:
+          pageSize: "10"
+          network: "mainnet"
+      responses:
+        "200":
+          application/json: {"messages": []}
+        "400":
+          application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": [], "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": [], "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": "<value>", "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": "<value>", "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": "<value>", "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}

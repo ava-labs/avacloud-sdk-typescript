@@ -6,20 +6,20 @@
 import { ChainInfo } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ChainInfo = {
-    chainId: "<value>",
-    status: "OK",
-    chainName: "<value>",
-    description: "Profit-focused maximized firmware",
-    vmName: "ETHEREUM",
-    rpcUrl: "<value>",
-    isTestnet: false,
-    networkToken: {
-        name: "Wrapped AVAX",
-        symbol: "WAVAX",
-        decimals: 18,
-        logoUri:
-            "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
-    },
+  chainId: "<value>",
+  status: "UNAVAILABLE",
+  chainName: "<value>",
+  description: "Team-oriented eco-centric support",
+  vmName: "BITCOIN",
+  rpcUrl: "<value>",
+  isTestnet: false,
+  networkToken: {
+    name: "Wrapped AVAX",
+    symbol: "WAVAX",
+    decimals: 18,
+    logoUri:
+      "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+  },
 };
 ```
 

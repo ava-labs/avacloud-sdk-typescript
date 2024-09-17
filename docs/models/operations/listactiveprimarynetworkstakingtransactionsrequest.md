@@ -6,13 +6,15 @@
 import { ListActivePrimaryNetworkStakingTransactionsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListActivePrimaryNetworkStakingTransactionsRequest = {
-    addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
-    txTypes: ["AddValidatorTx"],
-    startTimestamp: 1689541049,
-    endTimestamp: 1689800249,
-    pageSize: 10,
-    blockchainId: "p-chain",
-    sortOrder: "asc",
+  addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
+  txTypes: [
+    "AddValidatorTx",
+  ],
+  startTimestamp: 1689541049,
+  endTimestamp: 1689800249,
+  pageSize: 10,
+  blockchainId: "p-chain",
+  sortOrder: "asc",
 };
 ```
 

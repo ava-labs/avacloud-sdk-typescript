@@ -5,34 +5,39 @@
 import * as z from "zod";
 
 export type Rewards = {
-    validationRewardAmount: string;
-    delegationRewardAmount: string;
-    rewardAddresses?: Array<string> | undefined;
-    rewardTxHash?: string | undefined;
+  validationRewardAmount: string;
+  delegationRewardAmount: string;
+  rewardAddresses?: Array<string> | undefined;
+  rewardTxHash?: string | undefined;
 };
 
 /** @internal */
-export const Rewards$inboundSchema: z.ZodType<Rewards, z.ZodTypeDef, unknown> = z.object({
+export const Rewards$inboundSchema: z.ZodType<Rewards, z.ZodTypeDef, unknown> =
+  z.object({
     validationRewardAmount: z.string(),
     delegationRewardAmount: z.string(),
     rewardAddresses: z.array(z.string()).optional(),
     rewardTxHash: z.string().optional(),
-});
+  });
 
 /** @internal */
 export type Rewards$Outbound = {
-    validationRewardAmount: string;
-    delegationRewardAmount: string;
-    rewardAddresses?: Array<string> | undefined;
-    rewardTxHash?: string | undefined;
+  validationRewardAmount: string;
+  delegationRewardAmount: string;
+  rewardAddresses?: Array<string> | undefined;
+  rewardTxHash?: string | undefined;
 };
 
 /** @internal */
-export const Rewards$outboundSchema: z.ZodType<Rewards$Outbound, z.ZodTypeDef, Rewards> = z.object({
-    validationRewardAmount: z.string(),
-    delegationRewardAmount: z.string(),
-    rewardAddresses: z.array(z.string()).optional(),
-    rewardTxHash: z.string().optional(),
+export const Rewards$outboundSchema: z.ZodType<
+  Rewards$Outbound,
+  z.ZodTypeDef,
+  Rewards
+> = z.object({
+  validationRewardAmount: z.string(),
+  delegationRewardAmount: z.string(),
+  rewardAddresses: z.array(z.string()).optional(),
+  rewardTxHash: z.string().optional(),
 });
 
 /**
@@ -40,10 +45,10 @@ export const Rewards$outboundSchema: z.ZodType<Rewards$Outbound, z.ZodTypeDef, R
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Rewards$ {
-    /** @deprecated use `Rewards$inboundSchema` instead. */
-    export const inboundSchema = Rewards$inboundSchema;
-    /** @deprecated use `Rewards$outboundSchema` instead. */
-    export const outboundSchema = Rewards$outboundSchema;
-    /** @deprecated use `Rewards$Outbound` instead. */
-    export type Outbound = Rewards$Outbound;
+  /** @deprecated use `Rewards$inboundSchema` instead. */
+  export const inboundSchema = Rewards$inboundSchema;
+  /** @deprecated use `Rewards$outboundSchema` instead. */
+  export const outboundSchema = Rewards$outboundSchema;
+  /** @deprecated use `Rewards$Outbound` instead. */
+  export type Outbound = Rewards$Outbound;
 }

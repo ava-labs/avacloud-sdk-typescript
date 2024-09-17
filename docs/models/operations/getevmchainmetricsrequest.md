@@ -6,11 +6,11 @@
 import { GetEvmChainMetricsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetEvmChainMetricsRequest = {
-    metric: "activeAddresses",
-    startTimestamp: 1689541049,
-    endTimestamp: 1689800249,
-    timeInterval: "day",
-    pageSize: 10,
+  metric: "activeAddresses",
+  startTimestamp: 1689541049,
+  endTimestamp: 1689800249,
+  timeInterval: "day",
+  pageSize: 10,
 };
 ```
 

@@ -6,10 +6,10 @@
 import { DateRangeNftHoldersParam } from "@avalabs/avacloud-sdk/models/components";
 
 let value: DateRangeNftHoldersParam = {
-    firstDate: "<value>",
-    lastDate: "<value>",
-    evmChainId: "<value>",
-    contractAddress: "<value>",
+  firstDate: "<value>",
+  lastDate: "<value>",
+  evmChainId: "<value>",
+  contractAddress: "<value>",
 };
 ```
 

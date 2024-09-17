@@ -6,7 +6,7 @@
 import { GetContractMetadataRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetContractMetadataRequest = {
-    address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+  address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
 };
 ```
 

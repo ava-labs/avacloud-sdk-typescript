@@ -6,8 +6,8 @@
 import { Rewards } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Rewards = {
-    validationRewardAmount: "<value>",
-    delegationRewardAmount: "<value>",
+  validationRewardAmount: "<value>",
+  delegationRewardAmount: "<value>",
 };
 ```
 

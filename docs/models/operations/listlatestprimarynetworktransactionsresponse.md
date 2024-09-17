@@ -6,13 +6,13 @@
 import { ListLatestPrimaryNetworkTransactionsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListLatestPrimaryNetworkTransactionsResponse = {
-    result: {
-        transactions: [],
-        chainInfo: {
-            chainName: "x-chain",
-            network: "mainnet",
-        },
+  result: {
+    transactions: [],
+    chainInfo: {
+      chainName: "c-chain",
+      network: "mainnet",
     },
+  },
 };
 ```
 

@@ -6,15 +6,15 @@
 import { EVMOutput } from "@avalabs/avacloud-sdk/models/components";
 
 let value: EVMOutput = {
-    toAddress: "0xD0f2898e49d941D6d479B381d3C8F0bd8d983b4c",
-    asset: {
-        assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
-        name: "Avalanche",
-        symbol: "AVAX",
-        denomination: 9,
-        type: "nft",
-        amount: "5001000",
-    },
+  toAddress: "0xD0f2898e49d941D6d479B381d3C8F0bd8d983b4c",
+  asset: {
+    assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+    name: "Avalanche",
+    symbol: "AVAX",
+    denomination: 9,
+    type: "nft",
+    amount: "5001000",
+  },
 };
 ```
 

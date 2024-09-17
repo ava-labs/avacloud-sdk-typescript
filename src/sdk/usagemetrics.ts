@@ -11,29 +11,37 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class UsageMetrics extends ClientSDK {
-    /**
-     * Get usage metrics for the Glacier API
-     *
-     * @remarks
-     * Gets metrics for Glacier API usage over a specified time interval aggregated at the specified time-duration granularity.
-     */
-    async getApiUsageMetrics(
-        request: operations.GetApiUsageMetricsRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.UsageMetricsResponseDTO> {
-        return unwrapAsync(dataUsageMetricsGetApiUsageMetrics(this, request, options));
-    }
+  /**
+   * Get usage metrics for the Glacier API
+   *
+   * @remarks
+   * Gets metrics for Glacier API usage over a specified time interval aggregated at the specified time-duration granularity.
+   */
+  async getApiUsageMetrics(
+    request: operations.GetApiUsageMetricsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.UsageMetricsResponseDTO> {
+    return unwrapAsync(dataUsageMetricsGetApiUsageMetrics(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get logs for requests made by client
-     *
-     * @remarks
-     * Gets logs for requests made by client over a specified time interval for a specific organization.
-     */
-    async getApiLogs(
-        request: operations.GetApiLogsRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.GetApiLogsResponse>> {
-        return unwrapResultIterator(dataUsageMetricsGetApiLogs(this, request, options));
-    }
+  /**
+   * Get logs for requests made by client
+   *
+   * @remarks
+   * Gets logs for requests made by client over a specified time interval for a specific organization.
+   */
+  async getApiLogs(
+    request: operations.GetApiLogsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.GetApiLogsResponse>> {
+    return unwrapResultIterator(dataUsageMetricsGetApiLogs(
+      this,
+      request,
+      options,
+    ));
+  }
 }

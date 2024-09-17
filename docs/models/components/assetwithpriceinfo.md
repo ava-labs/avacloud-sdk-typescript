@@ -6,16 +6,16 @@
 import { AssetWithPriceInfo } from "@avalabs/avacloud-sdk/models/components";
 
 let value: AssetWithPriceInfo = {
-    assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
-    name: "Avalanche",
-    symbol: "AVAX",
-    denomination: 9,
-    type: "nft",
-    amount: "5001000",
-    historicalPrice: {
-        currencyCode: "usd",
-        value: 42.42,
-    },
+  assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+  name: "Avalanche",
+  symbol: "AVAX",
+  denomination: 9,
+  type: "nft",
+  amount: "5001000",
+  historicalPrice: {
+    currencyCode: "usd",
+    value: 42.42,
+  },
 };
 ```
 

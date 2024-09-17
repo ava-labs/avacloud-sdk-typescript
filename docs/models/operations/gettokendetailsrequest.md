@@ -6,8 +6,8 @@
 import { GetTokenDetailsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetTokenDetailsRequest = {
-    address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
-    tokenId: "145",
+  address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+  tokenId: "145",
 };
 ```
 

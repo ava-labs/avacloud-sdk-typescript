@@ -6,7 +6,7 @@
 import { DeactivateWebhookRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: DeactivateWebhookRequest = {
-    id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
+  id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
 };
 ```
 

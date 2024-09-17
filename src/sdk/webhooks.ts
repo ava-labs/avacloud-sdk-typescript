@@ -19,131 +19,169 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Webhooks extends ClientSDK {
-    /**
-     * List webhooks
-     *
-     * @remarks
-     * Lists webhooks for the user.
-     */
-    async listWebhooks(
-        request: operations.ListWebhooksRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListWebhooksResponse>> {
-        return unwrapResultIterator(dataWebhooksListWebhooks(this, request, options));
-    }
+  /**
+   * List webhooks
+   *
+   * @remarks
+   * Lists webhooks for the user.
+   */
+  async listWebhooks(
+    request: operations.ListWebhooksRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListWebhooksResponse>> {
+    return unwrapResultIterator(dataWebhooksListWebhooks(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create a webhook
-     *
-     * @remarks
-     * Create a new webhook.
-     */
-    async createWebhook(
-        request: components.CreateWebhookRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.WebhookResponse> {
-        return unwrapAsync(dataWebhooksCreateWebhook(this, request, options));
-    }
+  /**
+   * Create a webhook
+   *
+   * @remarks
+   * Create a new webhook.
+   */
+  async createWebhook(
+    request: components.CreateWebhookRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.WebhookResponse> {
+    return unwrapAsync(dataWebhooksCreateWebhook(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get a webhook by ID
-     *
-     * @remarks
-     * Retrieves a webhook by ID.
-     */
-    async getWebhook(
-        request: operations.GetWebhookRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.WebhookResponse> {
-        return unwrapAsync(dataWebhooksGetWebhook(this, request, options));
-    }
+  /**
+   * Get a webhook by ID
+   *
+   * @remarks
+   * Retrieves a webhook by ID.
+   */
+  async getWebhook(
+    request: operations.GetWebhookRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.WebhookResponse> {
+    return unwrapAsync(dataWebhooksGetWebhook(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Deactivate a webhook
-     *
-     * @remarks
-     * Deactivates a webhook by ID.
-     */
-    async deactivateWebhook(
-        request: operations.DeactivateWebhookRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.WebhookResponse> {
-        return unwrapAsync(dataWebhooksDeactivateWebhook(this, request, options));
-    }
+  /**
+   * Deactivate a webhook
+   *
+   * @remarks
+   * Deactivates a webhook by ID.
+   */
+  async deactivateWebhook(
+    request: operations.DeactivateWebhookRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.WebhookResponse> {
+    return unwrapAsync(dataWebhooksDeactivateWebhook(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update a webhook
-     *
-     * @remarks
-     * Updates an existing webhook.
-     */
-    async updateWebhook(
-        request: operations.UpdateWebhookRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.WebhookResponse> {
-        return unwrapAsync(dataWebhooksUpdateWebhook(this, request, options));
-    }
+  /**
+   * Update a webhook
+   *
+   * @remarks
+   * Updates an existing webhook.
+   */
+  async updateWebhook(
+    request: operations.UpdateWebhookRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.WebhookResponse> {
+    return unwrapAsync(dataWebhooksUpdateWebhook(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Generate a shared secret
-     *
-     * @remarks
-     * Generates a new shared secret.
-     */
-    async generateSharedSecret(
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.SharedSecretsResponse> {
-        return unwrapAsync(dataWebhooksGenerateSharedSecret(this, options));
-    }
+  /**
+   * Generate a shared secret
+   *
+   * @remarks
+   * Generates a new shared secret.
+   */
+  async generateSharedSecret(
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.SharedSecretsResponse> {
+    return unwrapAsync(dataWebhooksGenerateSharedSecret(
+      this,
+      options,
+    ));
+  }
 
-    /**
-     * Get a shared secret
-     *
-     * @remarks
-     * Get a previously generated shared secret.
-     */
-    async getSharedSecret(
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.SharedSecretsResponse> {
-        return unwrapAsync(dataWebhooksGetSharedSecret(this, options));
-    }
+  /**
+   * Get a shared secret
+   *
+   * @remarks
+   * Get a previously generated shared secret.
+   */
+  async getSharedSecret(
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.SharedSecretsResponse> {
+    return unwrapAsync(dataWebhooksGetSharedSecret(
+      this,
+      options,
+    ));
+  }
 
-    /**
-     * List adresses by webhook
-     *
-     * @remarks
-     * List adresses by webhook.
-     */
-    async getAddressesFromWebhook(
-        request: operations.GetAddressesFromWebhookRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.GetAddressesFromWebhookResponse>> {
-        return unwrapResultIterator(dataWebhooksGetAddressesFromWebhook(this, request, options));
-    }
+  /**
+   * List adresses by webhook
+   *
+   * @remarks
+   * List adresses by webhook.
+   */
+  async getAddressesFromWebhook(
+    request: operations.GetAddressesFromWebhookRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.GetAddressesFromWebhookResponse>> {
+    return unwrapResultIterator(dataWebhooksGetAddressesFromWebhook(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Remove addresses from webhook
-     *
-     * @remarks
-     * Remove addresses from webhook.
-     */
-    async removeAddressesFromWebhook(
-        request: operations.RemoveAddressesFromWebhookRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.WebhookResponse> {
-        return unwrapAsync(dataWebhooksRemoveAddressesFromWebhook(this, request, options));
-    }
+  /**
+   * Remove addresses from webhook
+   *
+   * @remarks
+   * Remove addresses from webhook.
+   */
+  async removeAddressesFromWebhook(
+    request: operations.RemoveAddressesFromWebhookRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.WebhookResponse> {
+    return unwrapAsync(dataWebhooksRemoveAddressesFromWebhook(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Add addresses to webhook
-     *
-     * @remarks
-     * Add addresses to webhook.
-     */
-    async addAddressesToWebhook(
-        request: operations.AddAddressesToWebhookRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.WebhookResponse> {
-        return unwrapAsync(dataWebhooksAddAddressesToWebhook(this, request, options));
-    }
+  /**
+   * Add addresses to webhook
+   *
+   * @remarks
+   * Add addresses to webhook.
+   */
+  async addAddressesToWebhook(
+    request: operations.AddAddressesToWebhookRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.WebhookResponse> {
+    return unwrapAsync(dataWebhooksAddAddressesToWebhook(
+      this,
+      request,
+      options,
+    ));
+  }
 }

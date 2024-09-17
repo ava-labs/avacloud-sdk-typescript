@@ -5,47 +5,47 @@
 import * as z from "zod";
 
 export type TransactionVertexDetail = {
-    /**
-     * Vertex ID of the vertex this transaction belongs to.
-     */
-    hash: string;
-    /**
-     * Vertex height of the vertex this transaction belongs to.
-     */
-    height: number;
-    /**
-     * Timestamp in seconds this vertex was accepted.
-     */
-    timestamp: number;
+  /**
+   * Vertex ID of the vertex this transaction belongs to.
+   */
+  hash: string;
+  /**
+   * Vertex height of the vertex this transaction belongs to.
+   */
+  height: number;
+  /**
+   * Timestamp in seconds this vertex was accepted.
+   */
+  timestamp: number;
 };
 
 /** @internal */
 export const TransactionVertexDetail$inboundSchema: z.ZodType<
-    TransactionVertexDetail,
-    z.ZodTypeDef,
-    unknown
+  TransactionVertexDetail,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    hash: z.string(),
-    height: z.number(),
-    timestamp: z.number(),
+  hash: z.string(),
+  height: z.number(),
+  timestamp: z.number(),
 });
 
 /** @internal */
 export type TransactionVertexDetail$Outbound = {
-    hash: string;
-    height: number;
-    timestamp: number;
+  hash: string;
+  height: number;
+  timestamp: number;
 };
 
 /** @internal */
 export const TransactionVertexDetail$outboundSchema: z.ZodType<
-    TransactionVertexDetail$Outbound,
-    z.ZodTypeDef,
-    TransactionVertexDetail
+  TransactionVertexDetail$Outbound,
+  z.ZodTypeDef,
+  TransactionVertexDetail
 > = z.object({
-    hash: z.string(),
-    height: z.number(),
-    timestamp: z.number(),
+  hash: z.string(),
+  height: z.number(),
+  timestamp: z.number(),
 });
 
 /**
@@ -53,10 +53,10 @@ export const TransactionVertexDetail$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace TransactionVertexDetail$ {
-    /** @deprecated use `TransactionVertexDetail$inboundSchema` instead. */
-    export const inboundSchema = TransactionVertexDetail$inboundSchema;
-    /** @deprecated use `TransactionVertexDetail$outboundSchema` instead. */
-    export const outboundSchema = TransactionVertexDetail$outboundSchema;
-    /** @deprecated use `TransactionVertexDetail$Outbound` instead. */
-    export type Outbound = TransactionVertexDetail$Outbound;
+  /** @deprecated use `TransactionVertexDetail$inboundSchema` instead. */
+  export const inboundSchema = TransactionVertexDetail$inboundSchema;
+  /** @deprecated use `TransactionVertexDetail$outboundSchema` instead. */
+  export const outboundSchema = TransactionVertexDetail$outboundSchema;
+  /** @deprecated use `TransactionVertexDetail$Outbound` instead. */
+  export type Outbound = TransactionVertexDetail$Outbound;
 }

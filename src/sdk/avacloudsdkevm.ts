@@ -10,28 +10,28 @@ import { AvaCloudSDKTransactions } from "./avacloudsdktransactions.js";
 import { Contracts } from "./contracts.js";
 
 export class AvaCloudSDKEvm extends ClientSDK {
-    private _balances?: AvaCloudSDKBalances;
-    get balances(): AvaCloudSDKBalances {
-        return (this._balances ??= new AvaCloudSDKBalances(this.options$));
-    }
+  private _balances?: AvaCloudSDKBalances;
+  get balances(): AvaCloudSDKBalances {
+    return (this._balances ??= new AvaCloudSDKBalances(this.options$));
+  }
 
-    private _blocks?: AvaCloudSDKBlocks;
-    get blocks(): AvaCloudSDKBlocks {
-        return (this._blocks ??= new AvaCloudSDKBlocks(this.options$));
-    }
+  private _blocks?: AvaCloudSDKBlocks;
+  get blocks(): AvaCloudSDKBlocks {
+    return (this._blocks ??= new AvaCloudSDKBlocks(this.options$));
+  }
 
-    private _transactions?: AvaCloudSDKTransactions;
-    get transactions(): AvaCloudSDKTransactions {
-        return (this._transactions ??= new AvaCloudSDKTransactions(this.options$));
-    }
+  private _transactions?: AvaCloudSDKTransactions;
+  get transactions(): AvaCloudSDKTransactions {
+    return (this._transactions ??= new AvaCloudSDKTransactions(this.options$));
+  }
 
-    private _contracts?: Contracts;
-    get contracts(): Contracts {
-        return (this._contracts ??= new Contracts(this.options$));
-    }
+  private _contracts?: Contracts;
+  get contracts(): Contracts {
+    return (this._contracts ??= new Contracts(this.options$));
+  }
 
-    private _chains?: AvaCloudSDKChains;
-    get chains(): AvaCloudSDKChains {
-        return (this._chains ??= new AvaCloudSDKChains(this.options$));
-    }
+  private _chains?: AvaCloudSDKChains;
+  get chains(): AvaCloudSDKChains {
+    return (this._chains ??= new AvaCloudSDKChains(this.options$));
+  }
 }

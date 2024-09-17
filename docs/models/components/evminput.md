@@ -6,22 +6,22 @@
 import { EVMInput } from "@avalabs/avacloud-sdk/models/components";
 
 let value: EVMInput = {
-    fromAddress: "0xD0f2898e49d941D6d479B381d3C8F0bd8d983b4c",
-    asset: {
-        assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
-        name: "Avalanche",
-        symbol: "AVAX",
-        denomination: 9,
-        type: "nft",
-        amount: "5001000",
+  fromAddress: "0xD0f2898e49d941D6d479B381d3C8F0bd8d983b4c",
+  asset: {
+    assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+    name: "Avalanche",
+    symbol: "AVAX",
+    denomination: 9,
+    type: "nft",
+    amount: "5001000",
+  },
+  credentials: [
+    {
+      signature:
+        "bWWoZUu0Z3STjuk/+2az7M4vP0oqc9NtiA7kOdqINCIE/2+5va5R1KNCWwEX5jE1xVHLvAxU2LHTN5gK8m84HwA",
+      publicKey: "AdMQOtubgBFFJu++0faHPIIA6KmdZ2ERErMRGzyy6juI",
     },
-    credentials: [
-        {
-            signature:
-                "bWWoZUu0Z3STjuk/+2az7M4vP0oqc9NtiA7kOdqINCIE/2+5va5R1KNCWwEX5jE1xVHLvAxU2LHTN5gK8m84HwA",
-            publicKey: "AdMQOtubgBFFJu++0faHPIIA6KmdZ2ERErMRGzyy6juI",
-        },
-    ],
+  ],
 };
 ```
 

@@ -4,35 +4,62 @@
 
 import { dataTeleporterGetTeleporterMessage } from "../funcs/dataTeleporterGetTeleporterMessage.js";
 import { dataTeleporterListTeleporterMessages } from "../funcs/dataTeleporterListTeleporterMessages.js";
+import { dataTeleporterListTeleporterMessagesByAddress } from "../funcs/dataTeleporterListTeleporterMessagesByAddress.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Teleporter extends ClientSDK {
-    /**
-     * Get a teleporter message
-     *
-     * @remarks
-     * Gets a teleporter message by message ID.
-     */
-    async getTeleporterMessage(
-        request: operations.GetTeleporterMessageRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<operations.GetTeleporterMessageResponseBody> {
-        return unwrapAsync(dataTeleporterGetTeleporterMessage(this, request, options));
-    }
+  /**
+   * Get a teleporter message
+   *
+   * @remarks
+   * Gets a teleporter message by message ID.
+   */
+  async getTeleporterMessage(
+    request: operations.GetTeleporterMessageRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<operations.GetTeleporterMessageResponseBody> {
+    return unwrapAsync(dataTeleporterGetTeleporterMessage(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List teleporter messages
-     *
-     * @remarks
-     * Lists teleporter messages. Ordered by timestamp in descending order.
-     */
-    async listTeleporterMessages(
-        request: operations.ListTeleporterMessagesRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListTeleporterMessagesResponse>> {
-        return unwrapResultIterator(dataTeleporterListTeleporterMessages(this, request, options));
-    }
+  /**
+   * List teleporter messages
+   *
+   * @remarks
+   * Lists teleporter messages. Ordered by timestamp in descending order.
+   */
+  async listTeleporterMessages(
+    request: operations.ListTeleporterMessagesRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListTeleporterMessagesResponse>> {
+    return unwrapResultIterator(dataTeleporterListTeleporterMessages(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List teleporter messages by address
+   *
+   * @remarks
+   * Lists teleporter messages by address. Ordered by timestamp in descending order.
+   */
+  async listTeleporterMessagesByAddress(
+    request: operations.ListTeleporterMessagesByAddressRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.ListTeleporterMessagesResponse> {
+    return unwrapAsync(dataTeleporterListTeleporterMessagesByAddress(
+      this,
+      request,
+      options,
+    ));
+  }
 }

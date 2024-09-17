@@ -6,9 +6,9 @@
 import { LatestBalanceParams } from "@avalabs/avacloud-sdk/models/components";
 
 let value: LatestBalanceParams = {
-    minBalance: "<value>",
-    evmChainId: "<value>",
-    tokenType: "ERC20",
+  minBalance: "<value>",
+  evmChainId: "<value>",
+  tokenType: "ERC20",
 };
 ```
 

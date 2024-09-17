@@ -6,9 +6,9 @@
 import { TransactionVertexDetail } from "@avalabs/avacloud-sdk/models/components";
 
 let value: TransactionVertexDetail = {
-    hash: "82qPRREHmh8Cfta4PGD6GymY9ZLyvgYugqW6hj9FykpMVRz1S",
-    height: 1961,
-    timestamp: 1600762738,
+  hash: "82qPRREHmh8Cfta4PGD6GymY9ZLyvgYugqW6hj9FykpMVRz1S",
+  height: 1961,
+  timestamp: 1600762738,
 };
 ```
 

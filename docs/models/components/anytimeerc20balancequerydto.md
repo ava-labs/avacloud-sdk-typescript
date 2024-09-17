@@ -6,15 +6,15 @@
 import { AnyTimeErc20BalanceQueryDto } from "@avalabs/avacloud-sdk/models/components";
 
 let value: AnyTimeErc20BalanceQueryDto = {
-    id: "<id>",
-    type: "AnyTimeErc20Balance",
-    params: {
-        firstDate: "<value>",
-        lastDate: "<value>",
-        minBalance: "<value>",
-        evmChainId: "<value>",
-        contractAddress: "<value>",
-    },
+  id: "<id>",
+  type: "AnyTimeErc20Balance",
+  params: {
+    firstDate: "<value>",
+    lastDate: "<value>",
+    minBalance: "<value>",
+    evmChainId: "<value>",
+    contractAddress: "<value>",
+  },
 };
 ```
 

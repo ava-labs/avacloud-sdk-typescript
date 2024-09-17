@@ -6,8 +6,8 @@
 import { LatestStarsArenaBalanceParams } from "@avalabs/avacloud-sdk/models/components";
 
 let value: LatestStarsArenaBalanceParams = {
-    minBalance: "<value>",
-    subjectAddress: "<value>",
+  minBalance: "<value>",
+  subjectAddress: "<value>",
 };
 ```
 

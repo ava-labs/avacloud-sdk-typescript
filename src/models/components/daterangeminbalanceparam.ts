@@ -5,42 +5,42 @@
 import * as z from "zod";
 
 export type DateRangeMinBalanceParam = {
-    firstDate: string;
-    lastDate: string;
-    minBalance: string;
-    evmChainId: string;
+  firstDate: string;
+  lastDate: string;
+  minBalance: string;
+  evmChainId: string;
 };
 
 /** @internal */
 export const DateRangeMinBalanceParam$inboundSchema: z.ZodType<
-    DateRangeMinBalanceParam,
-    z.ZodTypeDef,
-    unknown
+  DateRangeMinBalanceParam,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    firstDate: z.string(),
-    lastDate: z.string(),
-    minBalance: z.string(),
-    evmChainId: z.string(),
+  firstDate: z.string(),
+  lastDate: z.string(),
+  minBalance: z.string(),
+  evmChainId: z.string(),
 });
 
 /** @internal */
 export type DateRangeMinBalanceParam$Outbound = {
-    firstDate: string;
-    lastDate: string;
-    minBalance: string;
-    evmChainId: string;
+  firstDate: string;
+  lastDate: string;
+  minBalance: string;
+  evmChainId: string;
 };
 
 /** @internal */
 export const DateRangeMinBalanceParam$outboundSchema: z.ZodType<
-    DateRangeMinBalanceParam$Outbound,
-    z.ZodTypeDef,
-    DateRangeMinBalanceParam
+  DateRangeMinBalanceParam$Outbound,
+  z.ZodTypeDef,
+  DateRangeMinBalanceParam
 > = z.object({
-    firstDate: z.string(),
-    lastDate: z.string(),
-    minBalance: z.string(),
-    evmChainId: z.string(),
+  firstDate: z.string(),
+  lastDate: z.string(),
+  minBalance: z.string(),
+  evmChainId: z.string(),
 });
 
 /**
@@ -48,10 +48,10 @@ export const DateRangeMinBalanceParam$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace DateRangeMinBalanceParam$ {
-    /** @deprecated use `DateRangeMinBalanceParam$inboundSchema` instead. */
-    export const inboundSchema = DateRangeMinBalanceParam$inboundSchema;
-    /** @deprecated use `DateRangeMinBalanceParam$outboundSchema` instead. */
-    export const outboundSchema = DateRangeMinBalanceParam$outboundSchema;
-    /** @deprecated use `DateRangeMinBalanceParam$Outbound` instead. */
-    export type Outbound = DateRangeMinBalanceParam$Outbound;
+  /** @deprecated use `DateRangeMinBalanceParam$inboundSchema` instead. */
+  export const inboundSchema = DateRangeMinBalanceParam$inboundSchema;
+  /** @deprecated use `DateRangeMinBalanceParam$outboundSchema` instead. */
+  export const outboundSchema = DateRangeMinBalanceParam$outboundSchema;
+  /** @deprecated use `DateRangeMinBalanceParam$Outbound` instead. */
+  export type Outbound = DateRangeMinBalanceParam$Outbound;
 }

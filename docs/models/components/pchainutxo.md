@@ -6,26 +6,28 @@
 import { PChainUtxo } from "@avalabs/avacloud-sdk/models/components";
 
 let value: PChainUtxo = {
-    addresses: ["avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw"],
-    asset: {
-        assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
-        name: "Avalanche",
-        symbol: "AVAX",
-        denomination: 9,
-        type: "secp256k1",
-        amount: "5001000",
-    },
-    consumedOnChainId: "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
-    consumingTxHash: "3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c",
-    createdOnChainId: "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
-    utxoId: "68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC",
-    amount: "604.85",
-    assetId: "<value>",
-    blockNumber: "<value>",
-    blockTimestamp: 4511.59,
-    outputIndex: 7392.64,
-    txHash: "<value>",
-    utxoType: "STAKE",
+  addresses: [
+    "avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw",
+  ],
+  asset: {
+    assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+    name: "Avalanche",
+    symbol: "AVAX",
+    denomination: 9,
+    type: "nft",
+    amount: "5001000",
+  },
+  consumedOnChainId: "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
+  consumingTxHash: "3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c",
+  createdOnChainId: "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
+  utxoId: "68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC",
+  amount: "878.20",
+  assetId: "<value>",
+  blockNumber: "<value>",
+  blockTimestamp: 4686.51,
+  outputIndex: 5096.24,
+  txHash: "<value>",
+  utxoType: "TRANSFER",
 };
 ```
 

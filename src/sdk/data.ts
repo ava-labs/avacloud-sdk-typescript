@@ -13,43 +13,43 @@ import { UsageMetrics } from "./usagemetrics.js";
 import { Webhooks } from "./webhooks.js";
 
 export class Data extends ClientSDK {
-    private _healthCheck?: AvaCloudSDKHealthCheck;
-    get healthCheck(): AvaCloudSDKHealthCheck {
-        return (this._healthCheck ??= new AvaCloudSDKHealthCheck(this.options$));
-    }
+  private _healthCheck?: AvaCloudSDKHealthCheck;
+  get healthCheck(): AvaCloudSDKHealthCheck {
+    return (this._healthCheck ??= new AvaCloudSDKHealthCheck(this.options$));
+  }
 
-    private _nfts?: Nfts;
-    get nfts(): Nfts {
-        return (this._nfts ??= new Nfts(this.options$));
-    }
+  private _nfts?: Nfts;
+  get nfts(): Nfts {
+    return (this._nfts ??= new Nfts(this.options$));
+  }
 
-    private _operations?: Operations;
-    get operations(): Operations {
-        return (this._operations ??= new Operations(this.options$));
-    }
+  private _operations?: Operations;
+  get operations(): Operations {
+    return (this._operations ??= new Operations(this.options$));
+  }
 
-    private _primaryNetwork?: PrimaryNetwork;
-    get primaryNetwork(): PrimaryNetwork {
-        return (this._primaryNetwork ??= new PrimaryNetwork(this.options$));
-    }
+  private _primaryNetwork?: PrimaryNetwork;
+  get primaryNetwork(): PrimaryNetwork {
+    return (this._primaryNetwork ??= new PrimaryNetwork(this.options$));
+  }
 
-    private _usageMetrics?: UsageMetrics;
-    get usageMetrics(): UsageMetrics {
-        return (this._usageMetrics ??= new UsageMetrics(this.options$));
-    }
+  private _usageMetrics?: UsageMetrics;
+  get usageMetrics(): UsageMetrics {
+    return (this._usageMetrics ??= new UsageMetrics(this.options$));
+  }
 
-    private _webhooks?: Webhooks;
-    get webhooks(): Webhooks {
-        return (this._webhooks ??= new Webhooks(this.options$));
-    }
+  private _webhooks?: Webhooks;
+  get webhooks(): Webhooks {
+    return (this._webhooks ??= new Webhooks(this.options$));
+  }
 
-    private _teleporter?: Teleporter;
-    get teleporter(): Teleporter {
-        return (this._teleporter ??= new Teleporter(this.options$));
-    }
+  private _teleporter?: Teleporter;
+  get teleporter(): Teleporter {
+    return (this._teleporter ??= new Teleporter(this.options$));
+  }
 
-    private _evm?: AvaCloudSDKEvm;
-    get evm(): AvaCloudSDKEvm {
-        return (this._evm ??= new AvaCloudSDKEvm(this.options$));
-    }
+  private _evm?: AvaCloudSDKEvm;
+  get evm(): AvaCloudSDKEvm {
+    return (this._evm ??= new AvaCloudSDKEvm(this.options$));
+  }
 }

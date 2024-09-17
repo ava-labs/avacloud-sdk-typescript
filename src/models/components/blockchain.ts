@@ -5,54 +5,61 @@
 import * as z from "zod";
 
 export type Blockchain = {
-    createBlockTimestamp: number;
-    createBlockNumber: string;
-    blockchainId: string;
-    vmId: string;
-    subnetId: string;
-    blockchainName: string;
+  createBlockTimestamp: number;
+  createBlockNumber: string;
+  blockchainId: string;
+  vmId: string;
+  subnetId: string;
+  blockchainName: string;
 };
 
 /** @internal */
-export const Blockchain$inboundSchema: z.ZodType<Blockchain, z.ZodTypeDef, unknown> = z.object({
-    createBlockTimestamp: z.number(),
-    createBlockNumber: z.string(),
-    blockchainId: z.string(),
-    vmId: z.string(),
-    subnetId: z.string(),
-    blockchainName: z.string(),
+export const Blockchain$inboundSchema: z.ZodType<
+  Blockchain,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createBlockTimestamp: z.number(),
+  createBlockNumber: z.string(),
+  blockchainId: z.string(),
+  vmId: z.string(),
+  subnetId: z.string(),
+  blockchainName: z.string(),
 });
 
 /** @internal */
 export type Blockchain$Outbound = {
-    createBlockTimestamp: number;
-    createBlockNumber: string;
-    blockchainId: string;
-    vmId: string;
-    subnetId: string;
-    blockchainName: string;
+  createBlockTimestamp: number;
+  createBlockNumber: string;
+  blockchainId: string;
+  vmId: string;
+  subnetId: string;
+  blockchainName: string;
 };
 
 /** @internal */
-export const Blockchain$outboundSchema: z.ZodType<Blockchain$Outbound, z.ZodTypeDef, Blockchain> =
-    z.object({
-        createBlockTimestamp: z.number(),
-        createBlockNumber: z.string(),
-        blockchainId: z.string(),
-        vmId: z.string(),
-        subnetId: z.string(),
-        blockchainName: z.string(),
-    });
+export const Blockchain$outboundSchema: z.ZodType<
+  Blockchain$Outbound,
+  z.ZodTypeDef,
+  Blockchain
+> = z.object({
+  createBlockTimestamp: z.number(),
+  createBlockNumber: z.string(),
+  blockchainId: z.string(),
+  vmId: z.string(),
+  subnetId: z.string(),
+  blockchainName: z.string(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Blockchain$ {
-    /** @deprecated use `Blockchain$inboundSchema` instead. */
-    export const inboundSchema = Blockchain$inboundSchema;
-    /** @deprecated use `Blockchain$outboundSchema` instead. */
-    export const outboundSchema = Blockchain$outboundSchema;
-    /** @deprecated use `Blockchain$Outbound` instead. */
-    export type Outbound = Blockchain$Outbound;
+  /** @deprecated use `Blockchain$inboundSchema` instead. */
+  export const inboundSchema = Blockchain$inboundSchema;
+  /** @deprecated use `Blockchain$outboundSchema` instead. */
+  export const outboundSchema = Blockchain$outboundSchema;
+  /** @deprecated use `Blockchain$Outbound` instead. */
+  export type Outbound = Blockchain$Outbound;
 }

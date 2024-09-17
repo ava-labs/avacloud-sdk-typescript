@@ -6,7 +6,7 @@
 import { ListErc20TransactionsResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ListErc20TransactionsResponse = {
-    transactions: [],
+  transactions: [],
 };
 ```
 

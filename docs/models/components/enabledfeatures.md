@@ -5,11 +5,11 @@
 ```typescript
 import { EnabledFeatures } from "@avalabs/avacloud-sdk/models/components";
 
-let value: EnabledFeatures = "webhooks";
+let value: EnabledFeatures = "nftIndexing";
 ```
 
 ## Values
 
 ```typescript
-"nftIndexing" | "webhooks"
+"nftIndexing" | "webhooks" | "teleporter"
 ```

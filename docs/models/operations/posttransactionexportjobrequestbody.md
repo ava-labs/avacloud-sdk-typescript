@@ -6,15 +6,16 @@
 import { PostTransactionExportJobRequestBody } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: PostTransactionExportJobRequestBody = {
-    type: "TRANSACTION_EXPORT_EVM",
-    firstDate: "2023-05-01",
-    lastDate: "2023-05-02",
-    startDate: "2023-05-01",
-    endDate: "2023-05-02",
-    options: {
-        addresses: ["<value>"],
-        includeChains: ["43114"],
-    },
+  type: "TRANSACTION_EXPORT_PRIMARY_NETWORK_SIMPLE",
+  firstDate: "2023-05-01",
+  lastDate: "2023-05-02",
+  startDate: "2023-05-01",
+  endDate: "2023-05-02",
+  options: {
+    includeChains: [
+      "p-chain",
+    ],
+  },
 };
 ```
 

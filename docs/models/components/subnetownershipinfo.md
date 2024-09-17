@@ -6,9 +6,11 @@
 import { SubnetOwnershipInfo } from "@avalabs/avacloud-sdk/models/components";
 
 let value: SubnetOwnershipInfo = {
-    locktime: 0,
-    threshold: 1,
-    addresses: ["avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw"],
+  locktime: 0,
+  threshold: 1,
+  addresses: [
+    "avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw",
+  ],
 };
 ```
 

@@ -8,11 +8,11 @@ Successful response
 import { ListLatestPrimaryNetworkTransactionsResponseBody } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListLatestPrimaryNetworkTransactionsResponseBody = {
-    transactions: [],
-    chainInfo: {
-        chainName: "x-chain",
-        network: "fuji",
-    },
+  transactions: [],
+  chainInfo: {
+    chainName: "x-chain",
+    network: "mainnet",
+  },
 };
 ```
 

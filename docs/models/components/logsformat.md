@@ -6,22 +6,22 @@
 import { LogsFormat } from "@avalabs/avacloud-sdk/models/components";
 
 let value: LogsFormat = {
-    orgId: "<value>",
-    logId: "<value>",
-    eventTimestamp: 7299.91,
-    apiKeyId: "<value>",
-    apiKeyAlias: "<value>",
-    hostRegion: "<value>",
-    requestType: "rpc",
-    requestPath: "<value>",
-    apiCreditsConsumed: 1716.29,
-    requestDurationMsecs: 3394.04,
-    responseCode: 5210.37,
-    metadata: {
-        ipAddress: "125.13.86.51",
-        host: "definite-airspace.biz",
-        userAgent: "<value>",
-    },
+  orgId: "<value>",
+  logId: "<value>",
+  eventTimestamp: 2307.42,
+  apiKeyId: "<value>",
+  apiKeyAlias: "<value>",
+  hostRegion: "<value>",
+  requestType: "data",
+  requestPath: "<value>",
+  apiCreditsConsumed: 7649.12,
+  requestDurationMsecs: 3599.78,
+  responseCode: 9441.24,
+  metadata: {
+    ipAddress: "186.191.43.86",
+    host: "mealy-kilometer.com",
+    userAgent: "<value>",
+  },
 };
 ```
 

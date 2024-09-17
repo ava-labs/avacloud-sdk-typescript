@@ -11,42 +11,54 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Nfts extends ClientSDK {
-    /**
-     * Reindex NFT metadata
-     *
-     * @remarks
-     * Triggers reindexing of token metadata for an NFT token. Reindexing can only be called once per hour for each NFT token.
-     */
-    async reindexNft(
-        request: operations.ReindexNftRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<void> {
-        return unwrapAsync(dataNftsReindexNft(this, request, options));
-    }
+  /**
+   * Reindex NFT metadata
+   *
+   * @remarks
+   * Triggers reindexing of token metadata for an NFT token. Reindexing can only be called once per hour for each NFT token.
+   */
+  async reindexNft(
+    request: operations.ReindexNftRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<void> {
+    return unwrapAsync(dataNftsReindexNft(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List tokens
-     *
-     * @remarks
-     * Lists tokens for an NFT contract.
-     */
-    async listTokens(
-        request: operations.ListTokensRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListTokensResponse>> {
-        return unwrapResultIterator(dataNftsListTokens(this, request, options));
-    }
+  /**
+   * List tokens
+   *
+   * @remarks
+   * Lists tokens for an NFT contract.
+   */
+  async listTokens(
+    request: operations.ListTokensRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListTokensResponse>> {
+    return unwrapResultIterator(dataNftsListTokens(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get token details
-     *
-     * @remarks
-     * Gets token details for a specific token of an NFT contract.
-     */
-    async getTokenDetails(
-        request: operations.GetTokenDetailsRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<operations.GetTokenDetailsResponseBody> {
-        return unwrapAsync(dataNftsGetTokenDetails(this, request, options));
-    }
+  /**
+   * Get token details
+   *
+   * @remarks
+   * Gets token details for a specific token of an NFT contract.
+   */
+  async getTokenDetails(
+    request: operations.GetTokenDetailsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<operations.GetTokenDetailsResponseBody> {
+    return unwrapAsync(dataNftsGetTokenDetails(
+      this,
+      request,
+      options,
+    ));
+  }
 }

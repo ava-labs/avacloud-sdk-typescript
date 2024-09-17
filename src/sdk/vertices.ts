@@ -12,46 +12,56 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Vertices extends ClientSDK {
-    /**
-     * List vertices
-     *
-     * @remarks
-     * Lists latest vertices on the X-Chain.
-     */
-    async listLatestXChainVertices(
-        request: operations.ListLatestXChainVerticesRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListLatestXChainVerticesResponse>> {
-        return unwrapResultIterator(
-            dataPrimaryNetworkVerticesListLatestXChainVertices(this, request, options)
-        );
-    }
+  /**
+   * List vertices
+   *
+   * @remarks
+   * Lists latest vertices on the X-Chain.
+   */
+  async listLatestXChainVertices(
+    request: operations.ListLatestXChainVerticesRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListLatestXChainVerticesResponse>> {
+    return unwrapResultIterator(
+      dataPrimaryNetworkVerticesListLatestXChainVertices(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
 
-    /**
-     * Get vertex
-     *
-     * @remarks
-     * Gets a single vertex on the X-Chain.
-     */
-    async getVertexByHash(
-        request: operations.GetVertexByHashRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.XChainVertex> {
-        return unwrapAsync(dataPrimaryNetworkVerticesGetVertexByHash(this, request, options));
-    }
+  /**
+   * Get vertex
+   *
+   * @remarks
+   * Gets a single vertex on the X-Chain.
+   */
+  async getVertexByHash(
+    request: operations.GetVertexByHashRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.XChainVertex> {
+    return unwrapAsync(dataPrimaryNetworkVerticesGetVertexByHash(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List vertices by height
-     *
-     * @remarks
-     * Lists vertices at the given vertex height on the X-Chain.
-     */
-    async getVertexByHeight(
-        request: operations.GetVertexByHeightRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.GetVertexByHeightResponse>> {
-        return unwrapResultIterator(
-            dataPrimaryNetworkVerticesGetVertexByHeight(this, request, options)
-        );
-    }
+  /**
+   * List vertices by height
+   *
+   * @remarks
+   * Lists vertices at the given vertex height on the X-Chain.
+   */
+  async getVertexByHeight(
+    request: operations.GetVertexByHeightRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.GetVertexByHeightResponse>> {
+    return unwrapResultIterator(dataPrimaryNetworkVerticesGetVertexByHeight(
+      this,
+      request,
+      options,
+    ));
+  }
 }
