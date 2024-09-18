@@ -6,12 +6,14 @@
 import { ListAssetTransactionsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListAssetTransactionsRequest = {
-    txTypes: ["AddValidatorTx"],
-    startTimestamp: 1689541049,
-    endTimestamp: 1689800249,
-    pageSize: 10,
-    blockchainId: "x-chain",
-    assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+  txTypes: [
+    "AddValidatorTx",
+  ],
+  startTimestamp: 1689541049,
+  endTimestamp: 1689800249,
+  pageSize: 10,
+  blockchainId: "x-chain",
+  assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
 };
 ```
 

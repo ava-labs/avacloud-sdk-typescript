@@ -6,28 +6,30 @@
 import { HistoricalReward } from "@avalabs/avacloud-sdk/models/components";
 
 let value: HistoricalReward = {
-    addresses: ["avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg"],
-    txHash: "<value>",
-    amountStaked: "<value>",
-    nodeId: "<value>",
-    startTimestamp: 9527.49,
-    endTimestamp: 6800.56,
-    rewardType: "DELEGATOR",
-    utxoId: "<value>",
-    outputIndex: 4491.98,
-    reward: {
-        assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
-        name: "Avalanche",
-        symbol: "AVAX",
-        denomination: 9,
-        type: "nft",
-        amount: "5001000",
-        historicalPrice: {
-            currencyCode: "usd",
-            value: 42.42,
-        },
+  addresses: [
+    "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
+  ],
+  txHash: "<value>",
+  amountStaked: "<value>",
+  nodeId: "<value>",
+  startTimestamp: 8960.39,
+  endTimestamp: 5722.52,
+  rewardType: "DELEGATOR",
+  utxoId: "<value>",
+  outputIndex: 2230.81,
+  reward: {
+    assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+    name: "Avalanche",
+    symbol: "AVAX",
+    denomination: 9,
+    type: "nft",
+    amount: "5001000",
+    historicalPrice: {
+      currencyCode: "usd",
+      value: 42.42,
     },
-    rewardTxHash: "<value>",
+  },
+  rewardTxHash: "<value>",
 };
 ```
 

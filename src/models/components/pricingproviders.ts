@@ -5,27 +5,30 @@
 import * as z from "zod";
 
 export type PricingProviders = {
-    coingeckoCoinId?: string | undefined;
+  coingeckoCoinId?: string | undefined;
 };
 
 /** @internal */
-export const PricingProviders$inboundSchema: z.ZodType<PricingProviders, z.ZodTypeDef, unknown> =
-    z.object({
-        coingeckoCoinId: z.string().optional(),
-    });
+export const PricingProviders$inboundSchema: z.ZodType<
+  PricingProviders,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  coingeckoCoinId: z.string().optional(),
+});
 
 /** @internal */
 export type PricingProviders$Outbound = {
-    coingeckoCoinId?: string | undefined;
+  coingeckoCoinId?: string | undefined;
 };
 
 /** @internal */
 export const PricingProviders$outboundSchema: z.ZodType<
-    PricingProviders$Outbound,
-    z.ZodTypeDef,
-    PricingProviders
+  PricingProviders$Outbound,
+  z.ZodTypeDef,
+  PricingProviders
 > = z.object({
-    coingeckoCoinId: z.string().optional(),
+  coingeckoCoinId: z.string().optional(),
 });
 
 /**
@@ -33,10 +36,10 @@ export const PricingProviders$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace PricingProviders$ {
-    /** @deprecated use `PricingProviders$inboundSchema` instead. */
-    export const inboundSchema = PricingProviders$inboundSchema;
-    /** @deprecated use `PricingProviders$outboundSchema` instead. */
-    export const outboundSchema = PricingProviders$outboundSchema;
-    /** @deprecated use `PricingProviders$Outbound` instead. */
-    export type Outbound = PricingProviders$Outbound;
+  /** @deprecated use `PricingProviders$inboundSchema` instead. */
+  export const inboundSchema = PricingProviders$inboundSchema;
+  /** @deprecated use `PricingProviders$outboundSchema` instead. */
+  export const outboundSchema = PricingProviders$outboundSchema;
+  /** @deprecated use `PricingProviders$Outbound` instead. */
+  export type Outbound = PricingProviders$Outbound;
 }

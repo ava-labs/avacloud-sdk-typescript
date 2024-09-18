@@ -6,8 +6,8 @@
 import { GetApiLogsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetApiLogsRequest = {
-    startTimestamp: 1689541049,
-    endTimestamp: 1689800249,
+  startTimestamp: 1689541049,
+  endTimestamp: 1689800249,
 };
 ```
 

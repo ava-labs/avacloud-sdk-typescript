@@ -6,12 +6,12 @@
 import { LatestStarsArenaBalanceQueryDto } from "@avalabs/avacloud-sdk/models/components";
 
 let value: LatestStarsArenaBalanceQueryDto = {
-    id: "<id>",
-    type: "LatestBalanceStarsArena",
-    params: {
-        minBalance: "<value>",
-        subjectAddress: "<value>",
-    },
+  id: "<id>",
+  type: "LatestBalanceStarsArena",
+  params: {
+    minBalance: "<value>",
+    subjectAddress: "<value>",
+  },
 };
 ```
 

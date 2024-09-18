@@ -6,22 +6,24 @@
 import { ListPrimaryNetworkBlocksResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ListPrimaryNetworkBlocksResponse = {
-    blocks: [
-        {
-            blockNumber: "<value>",
-            blockHash: "<value>",
-            parentHash: "<value>",
-            blockTimestamp: 9689.62,
-            blockType: "<value>",
-            txCount: 6521.03,
-            transactions: ["<value>"],
-            blockSizeBytes: 3209.97,
-        },
-    ],
-    chainInfo: {
-        chainName: "x-chain",
-        network: "mainnet",
+  blocks: [
+    {
+      blockNumber: "<value>",
+      blockHash: "<value>",
+      parentHash: "<value>",
+      blockTimestamp: 5908.73,
+      blockType: "<value>",
+      txCount: 5518.16,
+      transactions: [
+        "<value>",
+      ],
+      blockSizeBytes: 5743.25,
     },
+  ],
+  chainInfo: {
+    chainName: "p-chain",
+    network: "fuji",
+  },
 };
 ```
 

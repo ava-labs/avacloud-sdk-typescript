@@ -6,10 +6,10 @@
 import { GetApiUsageMetricsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetApiUsageMetricsRequest = {
-    startTimestamp: 1689541049,
-    endTimestamp: 1689800249,
-    timeInterval: "daily",
-    groupBy: "requestPath",
+  startTimestamp: 1689541049,
+  endTimestamp: 1689800249,
+  timeInterval: "daily",
+  groupBy: "requestPath",
 };
 ```
 

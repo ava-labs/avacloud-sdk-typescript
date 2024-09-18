@@ -6,12 +6,14 @@
 import { ChainAddressChainIdMapListResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ChainAddressChainIdMapListResponse = {
-    addresses: [
-        {
-            address: "1597 Breitenberg Isle",
-            blockchainIds: ["2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm"],
-        },
-    ],
+  addresses: [
+    {
+      address: "514 Diego Divide",
+      blockchainIds: [
+        "2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5",
+      ],
+    },
+  ],
 };
 ```
 

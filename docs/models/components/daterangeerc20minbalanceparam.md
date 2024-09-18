@@ -6,11 +6,11 @@
 import { DateRangeErc20MinBalanceParam } from "@avalabs/avacloud-sdk/models/components";
 
 let value: DateRangeErc20MinBalanceParam = {
-    firstDate: "<value>",
-    lastDate: "<value>",
-    minBalance: "<value>",
-    evmChainId: "<value>",
-    contractAddress: "<value>",
+  firstDate: "<value>",
+  lastDate: "<value>",
+  minBalance: "<value>",
+  evmChainId: "<value>",
+  contractAddress: "<value>",
 };
 ```
 

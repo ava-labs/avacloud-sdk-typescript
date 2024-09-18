@@ -6,10 +6,10 @@
 import { DateRangeMinBalanceParam } from "@avalabs/avacloud-sdk/models/components";
 
 let value: DateRangeMinBalanceParam = {
-    firstDate: "<value>",
-    lastDate: "<value>",
-    minBalance: "<value>",
-    evmChainId: "<value>",
+  firstDate: "<value>",
+  lastDate: "<value>",
+  minBalance: "<value>",
+  evmChainId: "<value>",
 };
 ```
 

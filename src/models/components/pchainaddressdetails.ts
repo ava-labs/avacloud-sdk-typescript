@@ -5,40 +5,40 @@
 import * as z from "zod";
 
 export type PChainAddressDetails = {
-    /**
-     * A list of P-Chain addresses.
-     */
-    addresses: Array<string>;
-    /**
-     * Route dependent value associated with an address at a given point in time.
-     */
-    sortKey: string;
+  /**
+   * A list of P-Chain addresses.
+   */
+  addresses: Array<string>;
+  /**
+   * Route dependent value associated with an address at a given point in time.
+   */
+  sortKey: string;
 };
 
 /** @internal */
 export const PChainAddressDetails$inboundSchema: z.ZodType<
-    PChainAddressDetails,
-    z.ZodTypeDef,
-    unknown
+  PChainAddressDetails,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    addresses: z.array(z.string()),
-    sortKey: z.string(),
+  addresses: z.array(z.string()),
+  sortKey: z.string(),
 });
 
 /** @internal */
 export type PChainAddressDetails$Outbound = {
-    addresses: Array<string>;
-    sortKey: string;
+  addresses: Array<string>;
+  sortKey: string;
 };
 
 /** @internal */
 export const PChainAddressDetails$outboundSchema: z.ZodType<
-    PChainAddressDetails$Outbound,
-    z.ZodTypeDef,
-    PChainAddressDetails
+  PChainAddressDetails$Outbound,
+  z.ZodTypeDef,
+  PChainAddressDetails
 > = z.object({
-    addresses: z.array(z.string()),
-    sortKey: z.string(),
+  addresses: z.array(z.string()),
+  sortKey: z.string(),
 });
 
 /**
@@ -46,10 +46,10 @@ export const PChainAddressDetails$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace PChainAddressDetails$ {
-    /** @deprecated use `PChainAddressDetails$inboundSchema` instead. */
-    export const inboundSchema = PChainAddressDetails$inboundSchema;
-    /** @deprecated use `PChainAddressDetails$outboundSchema` instead. */
-    export const outboundSchema = PChainAddressDetails$outboundSchema;
-    /** @deprecated use `PChainAddressDetails$Outbound` instead. */
-    export type Outbound = PChainAddressDetails$Outbound;
+  /** @deprecated use `PChainAddressDetails$inboundSchema` instead. */
+  export const inboundSchema = PChainAddressDetails$inboundSchema;
+  /** @deprecated use `PChainAddressDetails$outboundSchema` instead. */
+  export const outboundSchema = PChainAddressDetails$outboundSchema;
+  /** @deprecated use `PChainAddressDetails$Outbound` instead. */
+  export type Outbound = PChainAddressDetails$Outbound;
 }

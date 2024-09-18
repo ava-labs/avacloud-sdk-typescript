@@ -6,13 +6,13 @@
 import { LatestBalanceQueryDto } from "@avalabs/avacloud-sdk/models/components";
 
 let value: LatestBalanceQueryDto = {
-    id: "<id>",
-    type: "LatestBalance",
-    params: {
-        minBalance: "<value>",
-        evmChainId: "<value>",
-        tokenType: "NATIVE",
-    },
+  id: "<id>",
+  type: "LatestBalance",
+  params: {
+    minBalance: "<value>",
+    evmChainId: "<value>",
+    tokenType: "NATIVE",
+  },
 };
 ```
 

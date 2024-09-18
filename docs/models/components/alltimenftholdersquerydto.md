@@ -6,14 +6,14 @@
 import { AllTimeNftHoldersQueryDto } from "@avalabs/avacloud-sdk/models/components";
 
 let value: AllTimeNftHoldersQueryDto = {
-    id: "<id>",
-    type: "AllTimeNftHolders",
-    params: {
-        firstDate: "<value>",
-        lastDate: "<value>",
-        evmChainId: "<value>",
-        contractAddress: "<value>",
-    },
+  id: "<id>",
+  type: "AllTimeNftHolders",
+  params: {
+    firstDate: "<value>",
+    lastDate: "<value>",
+    evmChainId: "<value>",
+    contractAddress: "<value>",
+  },
 };
 ```
 

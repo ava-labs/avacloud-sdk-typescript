@@ -9,33 +9,45 @@ import * as operations from "../models/operations/index.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Rewards extends ClientSDK {
-    /**
-     * List pending rewards
-     *
-     * @remarks
-     * Lists pending rewards on the Primary Network for the supplied addresses.
-     */
-    async listPendingPrimaryNetworkRewards(
-        request: operations.ListPendingPrimaryNetworkRewardsRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListPendingPrimaryNetworkRewardsResponse>> {
-        return unwrapResultIterator(
-            dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards(this, request, options)
-        );
-    }
+  /**
+   * List pending rewards
+   *
+   * @remarks
+   * Lists pending rewards on the Primary Network for the supplied addresses.
+   */
+  async listPendingPrimaryNetworkRewards(
+    request: operations.ListPendingPrimaryNetworkRewardsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<
+    PageIterator<operations.ListPendingPrimaryNetworkRewardsResponse>
+  > {
+    return unwrapResultIterator(
+      dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
 
-    /**
-     * List historical rewards
-     *
-     * @remarks
-     * Lists historical rewards on the Primary Network for the supplied addresses.
-     */
-    async listHistoricalPrimaryNetworkRewards(
-        request: operations.ListHistoricalPrimaryNetworkRewardsRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListHistoricalPrimaryNetworkRewardsResponse>> {
-        return unwrapResultIterator(
-            dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards(this, request, options)
-        );
-    }
+  /**
+   * List historical rewards
+   *
+   * @remarks
+   * Lists historical rewards on the Primary Network for the supplied addresses.
+   */
+  async listHistoricalPrimaryNetworkRewards(
+    request: operations.ListHistoricalPrimaryNetworkRewardsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<
+    PageIterator<operations.ListHistoricalPrimaryNetworkRewardsResponse>
+  > {
+    return unwrapResultIterator(
+      dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
 }

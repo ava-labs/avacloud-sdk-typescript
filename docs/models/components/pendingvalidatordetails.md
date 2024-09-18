@@ -6,13 +6,13 @@
 import { PendingValidatorDetails } from "@avalabs/avacloud-sdk/models/components";
 
 let value: PendingValidatorDetails = {
-    txHash: "<value>",
-    nodeId: "<value>",
-    subnetId: "<value>",
-    amountStaked: "<value>",
-    startTimestamp: 6531.08,
-    endTimestamp: 5818.5,
-    validationStatus: "pending",
+  txHash: "<value>",
+  nodeId: "<value>",
+  subnetId: "<value>",
+  amountStaked: "<value>",
+  startTimestamp: 6527.9,
+  endTimestamp: 2088.76,
+  validationStatus: "pending",
 };
 ```
 

@@ -11,29 +11,37 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class AvaCloudSDKBlocks extends ClientSDK {
-    /**
-     * List latest blocks
-     *
-     * @remarks
-     * Lists the latest indexed blocks on the EVM-compatible chain sorted in descending order by block timestamp.
-     */
-    async getLatestBlocks(
-        request: operations.GetLatestBlocksRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.GetLatestBlocksResponse>> {
-        return unwrapResultIterator(dataEvmBlocksGetLatestBlocks(this, request, options));
-    }
+  /**
+   * List latest blocks
+   *
+   * @remarks
+   * Lists the latest indexed blocks on the EVM-compatible chain sorted in descending order by block timestamp.
+   */
+  async getLatestBlocks(
+    request: operations.GetLatestBlocksRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.GetLatestBlocksResponse>> {
+    return unwrapResultIterator(dataEvmBlocksGetLatestBlocks(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get block
-     *
-     * @remarks
-     * Gets the details of an individual block on the EVM-compatible chain.
-     */
-    async getBlock(
-        request: operations.GetBlockRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.GetEvmBlockResponse> {
-        return unwrapAsync(dataEvmBlocksGetBlock(this, request, options));
-    }
+  /**
+   * Get block
+   *
+   * @remarks
+   * Gets the details of an individual block on the EVM-compatible chain.
+   */
+  async getBlock(
+    request: operations.GetBlockRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.GetEvmBlockResponse> {
+    return unwrapAsync(dataEvmBlocksGetBlock(
+      this,
+      request,
+      options,
+    ));
+  }
 }

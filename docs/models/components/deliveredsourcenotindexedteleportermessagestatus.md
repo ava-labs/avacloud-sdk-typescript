@@ -5,7 +5,8 @@
 ```typescript
 import { DeliveredSourceNotIndexedTeleporterMessageStatus } from "@avalabs/avacloud-sdk/models/components";
 
-let value: DeliveredSourceNotIndexedTeleporterMessageStatus = "delivered_source_not_indexed";
+let value: DeliveredSourceNotIndexedTeleporterMessageStatus =
+  "delivered_source_not_indexed";
 ```
 
 ## Values

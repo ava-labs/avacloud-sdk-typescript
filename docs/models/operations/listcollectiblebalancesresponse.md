@@ -6,9 +6,9 @@
 import { ListCollectibleBalancesResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListCollectibleBalancesResponse = {
-    result: {
-        collectibleBalances: [],
-    },
+  result: {
+    collectibleBalances: [],
+  },
 };
 ```
 

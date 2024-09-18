@@ -5,31 +5,34 @@
 import * as z from "zod";
 
 export type EvmNetworkOptions = {
-    addresses: Array<string>;
-    includeChains: Array<string>;
+  addresses: Array<string>;
+  includeChains: Array<string>;
 };
 
 /** @internal */
-export const EvmNetworkOptions$inboundSchema: z.ZodType<EvmNetworkOptions, z.ZodTypeDef, unknown> =
-    z.object({
-        addresses: z.array(z.string()),
-        includeChains: z.array(z.string()),
-    });
+export const EvmNetworkOptions$inboundSchema: z.ZodType<
+  EvmNetworkOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  addresses: z.array(z.string()),
+  includeChains: z.array(z.string()),
+});
 
 /** @internal */
 export type EvmNetworkOptions$Outbound = {
-    addresses: Array<string>;
-    includeChains: Array<string>;
+  addresses: Array<string>;
+  includeChains: Array<string>;
 };
 
 /** @internal */
 export const EvmNetworkOptions$outboundSchema: z.ZodType<
-    EvmNetworkOptions$Outbound,
-    z.ZodTypeDef,
-    EvmNetworkOptions
+  EvmNetworkOptions$Outbound,
+  z.ZodTypeDef,
+  EvmNetworkOptions
 > = z.object({
-    addresses: z.array(z.string()),
-    includeChains: z.array(z.string()),
+  addresses: z.array(z.string()),
+  includeChains: z.array(z.string()),
 });
 
 /**
@@ -37,10 +40,10 @@ export const EvmNetworkOptions$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace EvmNetworkOptions$ {
-    /** @deprecated use `EvmNetworkOptions$inboundSchema` instead. */
-    export const inboundSchema = EvmNetworkOptions$inboundSchema;
-    /** @deprecated use `EvmNetworkOptions$outboundSchema` instead. */
-    export const outboundSchema = EvmNetworkOptions$outboundSchema;
-    /** @deprecated use `EvmNetworkOptions$Outbound` instead. */
-    export type Outbound = EvmNetworkOptions$Outbound;
+  /** @deprecated use `EvmNetworkOptions$inboundSchema` instead. */
+  export const inboundSchema = EvmNetworkOptions$inboundSchema;
+  /** @deprecated use `EvmNetworkOptions$outboundSchema` instead. */
+  export const outboundSchema = EvmNetworkOptions$outboundSchema;
+  /** @deprecated use `EvmNetworkOptions$Outbound` instead. */
+  export type Outbound = EvmNetworkOptions$Outbound;
 }

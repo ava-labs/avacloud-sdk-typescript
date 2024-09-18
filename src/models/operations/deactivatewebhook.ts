@@ -4,36 +4,38 @@
 
 import * as z from "zod";
 
-export const DeactivateWebhookServerList = ["https://glacier-api.avax.network"] as const;
+export const DeactivateWebhookServerList = [
+  "https://glacier-api.avax.network",
+] as const;
 
 export type DeactivateWebhookRequest = {
-    /**
-     * The webhook identifier.
-     */
-    id: string;
+  /**
+   * The webhook identifier.
+   */
+  id: string;
 };
 
 /** @internal */
 export const DeactivateWebhookRequest$inboundSchema: z.ZodType<
-    DeactivateWebhookRequest,
-    z.ZodTypeDef,
-    unknown
+  DeactivateWebhookRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    id: z.string(),
+  id: z.string(),
 });
 
 /** @internal */
 export type DeactivateWebhookRequest$Outbound = {
-    id: string;
+  id: string;
 };
 
 /** @internal */
 export const DeactivateWebhookRequest$outboundSchema: z.ZodType<
-    DeactivateWebhookRequest$Outbound,
-    z.ZodTypeDef,
-    DeactivateWebhookRequest
+  DeactivateWebhookRequest$Outbound,
+  z.ZodTypeDef,
+  DeactivateWebhookRequest
 > = z.object({
-    id: z.string(),
+  id: z.string(),
 });
 
 /**
@@ -41,10 +43,10 @@ export const DeactivateWebhookRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace DeactivateWebhookRequest$ {
-    /** @deprecated use `DeactivateWebhookRequest$inboundSchema` instead. */
-    export const inboundSchema = DeactivateWebhookRequest$inboundSchema;
-    /** @deprecated use `DeactivateWebhookRequest$outboundSchema` instead. */
-    export const outboundSchema = DeactivateWebhookRequest$outboundSchema;
-    /** @deprecated use `DeactivateWebhookRequest$Outbound` instead. */
-    export type Outbound = DeactivateWebhookRequest$Outbound;
+  /** @deprecated use `DeactivateWebhookRequest$inboundSchema` instead. */
+  export const inboundSchema = DeactivateWebhookRequest$inboundSchema;
+  /** @deprecated use `DeactivateWebhookRequest$outboundSchema` instead. */
+  export const outboundSchema = DeactivateWebhookRequest$outboundSchema;
+  /** @deprecated use `DeactivateWebhookRequest$Outbound` instead. */
+  export type Outbound = DeactivateWebhookRequest$Outbound;
 }

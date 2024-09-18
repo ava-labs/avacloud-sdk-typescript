@@ -6,11 +6,11 @@
 import { ListPChainTransactionsResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ListPChainTransactionsResponse = {
-    transactions: [],
-    chainInfo: {
-        chainName: "p-chain",
-        network: "mainnet",
-    },
+  transactions: [],
+  chainInfo: {
+    chainName: "p-chain",
+    network: "fuji",
+  },
 };
 ```
 

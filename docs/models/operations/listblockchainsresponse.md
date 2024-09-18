@@ -6,18 +6,18 @@
 import { ListBlockchainsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListBlockchainsResponse = {
-    result: {
-        blockchains: [
-            {
-                createBlockTimestamp: 2155.07,
-                createBlockNumber: "<value>",
-                blockchainId: "<value>",
-                vmId: "<value>",
-                subnetId: "<value>",
-                blockchainName: "<value>",
-            },
-        ],
-    },
+  result: {
+    blockchains: [
+      {
+        createBlockTimestamp: 4561.3,
+        createBlockNumber: "<value>",
+        blockchainId: "<value>",
+        vmId: "<value>",
+        subnetId: "<value>",
+        blockchainName: "<value>",
+      },
+    ],
+  },
 };
 ```
 

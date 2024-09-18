@@ -6,11 +6,11 @@
 import { ListTransactionsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListTransactionsRequest = {
-    pageSize: 10,
-    startBlock: 6479329,
-    endBlock: 6479330,
-    address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-    sortOrder: "asc",
+  pageSize: 10,
+  startBlock: 6479329,
+  endBlock: 6479330,
+  address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+  sortOrder: "asc",
 };
 ```
 

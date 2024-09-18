@@ -6,14 +6,12 @@
 import { Queries } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Queries = {
-    id: "<id>",
-    type: "AnyTimeStarsArenaBalance",
-    params: {
-        firstDate: "<value>",
-        lastDate: "<value>",
-        minBalance: "<value>",
-        subjectAddress: "<value>",
-    },
+  id: "<id>",
+  type: "LatestBalanceStarsArena",
+  params: {
+    minBalance: "<value>",
+    subjectAddress: "<value>",
+  },
 };
 ```
 

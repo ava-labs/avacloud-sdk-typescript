@@ -6,7 +6,7 @@
 import { GetTeleporterMessageRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetTeleporterMessageRequest = {
-    messageId: "acf1c8b06f9aec48e9fcbefbbe576ae8a7ca3b327fcae111396e7cc99956674d",
+  messageId: "acf1c8b06f9aec48e9fcbefbbe576ae8a7ca3b327fcae111396e7cc99956674d",
 };
 ```
 

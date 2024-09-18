@@ -6,8 +6,8 @@
 import { CompositeQueryRequestDto } from "@avalabs/avacloud-sdk/models/components";
 
 let value: CompositeQueryRequestDto = {
-    queries: [],
-    operator: "AND",
+  queries: [],
+  operator: "AND",
 };
 ```
 

@@ -5,30 +5,30 @@
 import * as z from "zod";
 
 export type SharedSecretsResponse = {
-    secret: string;
+  secret: string;
 };
 
 /** @internal */
 export const SharedSecretsResponse$inboundSchema: z.ZodType<
-    SharedSecretsResponse,
-    z.ZodTypeDef,
-    unknown
+  SharedSecretsResponse,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    secret: z.string(),
+  secret: z.string(),
 });
 
 /** @internal */
 export type SharedSecretsResponse$Outbound = {
-    secret: string;
+  secret: string;
 };
 
 /** @internal */
 export const SharedSecretsResponse$outboundSchema: z.ZodType<
-    SharedSecretsResponse$Outbound,
-    z.ZodTypeDef,
-    SharedSecretsResponse
+  SharedSecretsResponse$Outbound,
+  z.ZodTypeDef,
+  SharedSecretsResponse
 > = z.object({
-    secret: z.string(),
+  secret: z.string(),
 });
 
 /**
@@ -36,10 +36,10 @@ export const SharedSecretsResponse$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace SharedSecretsResponse$ {
-    /** @deprecated use `SharedSecretsResponse$inboundSchema` instead. */
-    export const inboundSchema = SharedSecretsResponse$inboundSchema;
-    /** @deprecated use `SharedSecretsResponse$outboundSchema` instead. */
-    export const outboundSchema = SharedSecretsResponse$outboundSchema;
-    /** @deprecated use `SharedSecretsResponse$Outbound` instead. */
-    export type Outbound = SharedSecretsResponse$Outbound;
+  /** @deprecated use `SharedSecretsResponse$inboundSchema` instead. */
+  export const inboundSchema = SharedSecretsResponse$inboundSchema;
+  /** @deprecated use `SharedSecretsResponse$outboundSchema` instead. */
+  export const outboundSchema = SharedSecretsResponse$outboundSchema;
+  /** @deprecated use `SharedSecretsResponse$Outbound` instead. */
+  export type Outbound = SharedSecretsResponse$Outbound;
 }

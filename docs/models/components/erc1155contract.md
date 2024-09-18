@@ -6,14 +6,14 @@
 import { Erc1155Contract } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Erc1155Contract = {
-    name: "Wrapped AVAX",
-    address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-    deploymentDetails: {
-        txHash: "<value>",
-        deployerAddress: "<value>",
-    },
-    ercType: "ERC-1155",
-    symbol: "WAVAX",
+  name: "Wrapped AVAX",
+  address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+  deploymentDetails: {
+    txHash: "<value>",
+    deployerAddress: "<value>",
+  },
+  ercType: "ERC-1155",
+  symbol: "WAVAX",
 };
 ```
 

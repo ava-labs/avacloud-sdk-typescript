@@ -6,7 +6,7 @@
 import { GetChainIdsForAddressesRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetChainIdsForAddressesRequest = {
-    addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
+  addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
 };
 ```
 

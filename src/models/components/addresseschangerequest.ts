@@ -5,33 +5,33 @@
 import * as z from "zod";
 
 export type AddressesChangeRequest = {
-    /**
-     * Ethereum address(es) for the address_activity event type
-     */
-    addresses: Array<string>;
+  /**
+   * Ethereum address(es) for the address_activity event type
+   */
+  addresses: Array<string>;
 };
 
 /** @internal */
 export const AddressesChangeRequest$inboundSchema: z.ZodType<
-    AddressesChangeRequest,
-    z.ZodTypeDef,
-    unknown
+  AddressesChangeRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    addresses: z.array(z.string()),
+  addresses: z.array(z.string()),
 });
 
 /** @internal */
 export type AddressesChangeRequest$Outbound = {
-    addresses: Array<string>;
+  addresses: Array<string>;
 };
 
 /** @internal */
 export const AddressesChangeRequest$outboundSchema: z.ZodType<
-    AddressesChangeRequest$Outbound,
-    z.ZodTypeDef,
-    AddressesChangeRequest
+  AddressesChangeRequest$Outbound,
+  z.ZodTypeDef,
+  AddressesChangeRequest
 > = z.object({
-    addresses: z.array(z.string()),
+  addresses: z.array(z.string()),
 });
 
 /**
@@ -39,10 +39,10 @@ export const AddressesChangeRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace AddressesChangeRequest$ {
-    /** @deprecated use `AddressesChangeRequest$inboundSchema` instead. */
-    export const inboundSchema = AddressesChangeRequest$inboundSchema;
-    /** @deprecated use `AddressesChangeRequest$outboundSchema` instead. */
-    export const outboundSchema = AddressesChangeRequest$outboundSchema;
-    /** @deprecated use `AddressesChangeRequest$Outbound` instead. */
-    export type Outbound = AddressesChangeRequest$Outbound;
+  /** @deprecated use `AddressesChangeRequest$inboundSchema` instead. */
+  export const inboundSchema = AddressesChangeRequest$inboundSchema;
+  /** @deprecated use `AddressesChangeRequest$outboundSchema` instead. */
+  export const outboundSchema = AddressesChangeRequest$outboundSchema;
+  /** @deprecated use `AddressesChangeRequest$Outbound` instead. */
+  export type Outbound = AddressesChangeRequest$Outbound;
 }

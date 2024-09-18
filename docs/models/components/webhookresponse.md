@@ -6,18 +6,22 @@
 import { WebhookResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: WebhookResponse = {
-    id: "<id>",
-    eventType: "address_activity",
-    metadata: {
-        addresses: ["0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E"],
-        eventSignatures: ["0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64"],
-    },
-    url: "https://enraged-wrench.org",
-    chainId: "<value>",
-    status: "active",
-    createdAt: 6139.66,
-    name: "<value>",
-    description: "Progressive interactive standardization",
+  id: "<id>",
+  eventType: "address_activity",
+  metadata: {
+    addresses: [
+      "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+    ],
+    eventSignatures: [
+      "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64",
+    ],
+  },
+  url: "http://loose-overcoat.com",
+  chainId: "<value>",
+  status: "inactive",
+  createdAt: 6990.98,
+  name: "<value>",
+  description: "Enterprise-wide zero tolerance task-force",
 };
 ```
 

@@ -6,13 +6,13 @@
 import { XChainAssetDetails } from "@avalabs/avacloud-sdk/models/components";
 
 let value: XChainAssetDetails = {
-    assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
-    name: "Avalanche",
-    symbol: "AVAX",
-    denomination: 9,
-    type: "nft",
-    createdAtTimestamp: 1675444720,
-    cap: "fixed",
+  assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+  name: "Avalanche",
+  symbol: "AVAX",
+  denomination: 9,
+  type: "nft",
+  createdAtTimestamp: 1675444720,
+  cap: "fixed",
 };
 ```
 

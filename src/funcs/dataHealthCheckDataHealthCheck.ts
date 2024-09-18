@@ -8,11 +8,11 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-    ConnectionError,
-    InvalidRequestError,
-    RequestAbortedError,
-    RequestTimeoutError,
-    UnexpectedClientError,
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
@@ -25,100 +25,96 @@ import { Result } from "../types/fp.js";
  * Get the health of the service
  */
 export async function dataHealthCheckDataHealthCheck(
-    client$: AvaCloudSDKCore,
-    options?: RequestOptions & { serverURL?: string }
+  client$: AvaCloudSDKCore,
+  options?: RequestOptions & { serverURL?: string },
 ): Promise<
-    Result<
-        operations.DataHealthCheckResponseBody,
-        | errors.DataHealthCheckResponseBody
-        | SDKError
-        | SDKValidationError
-        | UnexpectedClientError
-        | InvalidRequestError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | ConnectionError
-    >
+  Result<
+    operations.DataHealthCheckResponseBody,
+    | errors.DataHealthCheckResponseBody
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
+  >
 > {
-    const baseURL$ =
-        options?.serverURL ||
-        pathToFunc(DataHealthCheckServerList[0], { charEncoding: "percent" })();
+  const baseURL$ = options?.serverURL
+    || pathToFunc(DataHealthCheckServerList[0], { charEncoding: "percent" })();
 
-    const path$ = pathToFunc("/v1/health-check")();
+  const path$ = pathToFunc("/v1/health-check")();
 
-    const headers$ = new Headers({
-        Accept: "application/json",
-    });
+  const headers$ = new Headers({
+    Accept: "application/json",
+  });
 
-    const apiKey$ = await extractSecurity(client$.options$.apiKey);
-    const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
-    const context = {
-        operationID: "data-health-check",
-        oAuth2Scopes: [],
-        securitySource: client$.options$.apiKey,
-    };
-    const securitySettings$ = resolveGlobalSecurity(security$);
+  const apiKey$ = await extractSecurity(client$.options$.apiKey);
+  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const context = {
+    operationID: "data-health-check",
+    oAuth2Scopes: [],
+    securitySource: client$.options$.apiKey,
+  };
+  const securitySettings$ = resolveGlobalSecurity(security$);
 
-    const requestRes = client$.createRequest$(
-        context,
-        {
-            security: securitySettings$,
-            method: "GET",
-            baseURL: baseURL$,
-            path: path$,
-            headers: headers$,
-            timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+  const requestRes = client$.createRequest$(context, {
+    security: securitySettings$,
+    method: "GET",
+    baseURL: baseURL$,
+    path: path$,
+    headers: headers$,
+    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+  }, options);
+  if (!requestRes.ok) {
+    return requestRes;
+  }
+  const request$ = requestRes.value;
+
+  const doResult = await client$.do$(request$, {
+    context,
+    errorCodes: ["4XX", "503", "5XX"],
+    retryConfig: options?.retries
+      || client$.options$.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 60000,
+          exponent: 1.5,
+          maxElapsedTime: 120000,
         },
-        options
-    );
-    if (!requestRes.ok) {
-        return requestRes;
-    }
-    const request$ = requestRes.value;
+        retryConnectionErrors: true,
+      },
+    retryCodes: options?.retryCodes || ["5XX"],
+  });
+  if (!doResult.ok) {
+    return doResult;
+  }
+  const response = doResult.value;
 
-    const doResult = await client$.do$(request$, {
-        context,
-        errorCodes: ["4XX", "503", "5XX"],
-        retryConfig: options?.retries ||
-            client$.options$.retryConfig || {
-                strategy: "backoff",
-                backoff: {
-                    initialInterval: 500,
-                    maxInterval: 60000,
-                    exponent: 1.5,
-                    maxElapsedTime: 120000,
-                },
-                retryConnectionErrors: true,
-            },
-        retryCodes: options?.retryCodes || ["5XX"],
-    });
-    if (!doResult.ok) {
-        return doResult;
-    }
-    const response = doResult.value;
+  const responseFields$ = {
+    HttpMeta: { Response: response, Request: request$ },
+  };
 
-    const responseFields$ = {
-        HttpMeta: { Response: response, Request: request$ },
-    };
-
-    const [result$] = await m$.match<
-        operations.DataHealthCheckResponseBody,
-        | errors.DataHealthCheckResponseBody
-        | SDKError
-        | SDKValidationError
-        | UnexpectedClientError
-        | InvalidRequestError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | ConnectionError
-    >(
-        m$.json(200, operations.DataHealthCheckResponseBody$inboundSchema),
-        m$.jsonErr(503, errors.DataHealthCheckResponseBody$inboundSchema),
-        m$.fail(["4XX", "5XX"])
-    )(response, { extraFields: responseFields$ });
-    if (!result$.ok) {
-        return result$;
-    }
-
+  const [result$] = await m$.match<
+    operations.DataHealthCheckResponseBody,
+    | errors.DataHealthCheckResponseBody
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
+  >(
+    m$.json(200, operations.DataHealthCheckResponseBody$inboundSchema),
+    m$.jsonErr(503, errors.DataHealthCheckResponseBody$inboundSchema),
+    m$.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields$ });
+  if (!result$.ok) {
     return result$;
+  }
+
+  return result$;
 }

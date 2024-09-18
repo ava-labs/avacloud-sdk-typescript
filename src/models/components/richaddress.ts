@@ -5,57 +5,61 @@
 import * as z from "zod";
 
 export type RichAddress = {
-    /**
-     * The contract name.
-     */
-    name?: string | undefined;
-    /**
-     * The contract symbol.
-     */
-    symbol?: string | undefined;
-    /**
-     * The number of decimals the token uses. For example `6`, means to divide the token amount by `1000000` to get its user representation.
-     */
-    decimals?: number | undefined;
-    /**
-     * The logo uri for the address.
-     */
-    logoUri?: string | undefined;
-    /**
-     * A wallet or contract address in mixed-case checksum encoding.
-     */
-    address: string;
+  /**
+   * The contract name.
+   */
+  name?: string | undefined;
+  /**
+   * The contract symbol.
+   */
+  symbol?: string | undefined;
+  /**
+   * The number of decimals the token uses. For example `6`, means to divide the token amount by `1000000` to get its user representation.
+   */
+  decimals?: number | undefined;
+  /**
+   * The logo uri for the address.
+   */
+  logoUri?: string | undefined;
+  /**
+   * A wallet or contract address in mixed-case checksum encoding.
+   */
+  address: string;
 };
 
 /** @internal */
-export const RichAddress$inboundSchema: z.ZodType<RichAddress, z.ZodTypeDef, unknown> = z.object({
-    name: z.string().optional(),
-    symbol: z.string().optional(),
-    decimals: z.number().optional(),
-    logoUri: z.string().optional(),
-    address: z.string(),
+export const RichAddress$inboundSchema: z.ZodType<
+  RichAddress,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string().optional(),
+  symbol: z.string().optional(),
+  decimals: z.number().optional(),
+  logoUri: z.string().optional(),
+  address: z.string(),
 });
 
 /** @internal */
 export type RichAddress$Outbound = {
-    name?: string | undefined;
-    symbol?: string | undefined;
-    decimals?: number | undefined;
-    logoUri?: string | undefined;
-    address: string;
+  name?: string | undefined;
+  symbol?: string | undefined;
+  decimals?: number | undefined;
+  logoUri?: string | undefined;
+  address: string;
 };
 
 /** @internal */
 export const RichAddress$outboundSchema: z.ZodType<
-    RichAddress$Outbound,
-    z.ZodTypeDef,
-    RichAddress
+  RichAddress$Outbound,
+  z.ZodTypeDef,
+  RichAddress
 > = z.object({
-    name: z.string().optional(),
-    symbol: z.string().optional(),
-    decimals: z.number().optional(),
-    logoUri: z.string().optional(),
-    address: z.string(),
+  name: z.string().optional(),
+  symbol: z.string().optional(),
+  decimals: z.number().optional(),
+  logoUri: z.string().optional(),
+  address: z.string(),
 });
 
 /**
@@ -63,10 +67,10 @@ export const RichAddress$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace RichAddress$ {
-    /** @deprecated use `RichAddress$inboundSchema` instead. */
-    export const inboundSchema = RichAddress$inboundSchema;
-    /** @deprecated use `RichAddress$outboundSchema` instead. */
-    export const outboundSchema = RichAddress$outboundSchema;
-    /** @deprecated use `RichAddress$Outbound` instead. */
-    export type Outbound = RichAddress$Outbound;
+  /** @deprecated use `RichAddress$inboundSchema` instead. */
+  export const inboundSchema = RichAddress$inboundSchema;
+  /** @deprecated use `RichAddress$outboundSchema` instead. */
+  export const outboundSchema = RichAddress$outboundSchema;
+  /** @deprecated use `RichAddress$Outbound` instead. */
+  export type Outbound = RichAddress$Outbound;
 }

@@ -6,14 +6,14 @@
 import { GetEvmChainMetricsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetEvmChainMetricsResponse = {
-    result: {
-        results: [
-            {
-                value: 8853.38,
-                timestamp: 1856.36,
-            },
-        ],
-    },
+  result: {
+    results: [
+      {
+        value: 3118.6,
+        timestamp: 2735.42,
+      },
+    ],
+  },
 };
 ```
 

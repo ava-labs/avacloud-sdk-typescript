@@ -6,8 +6,8 @@
 import { ListLatestPrimaryNetworkBlocksRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListLatestPrimaryNetworkBlocksRequest = {
-    pageSize: 10,
-    blockchainId: "p-chain",
+  pageSize: 10,
+  blockchainId: "p-chain",
 };
 ```
 

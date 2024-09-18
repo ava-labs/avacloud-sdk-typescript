@@ -4,40 +4,45 @@
 
 import * as z from "zod";
 
-export const GetChainServerList = ["https://popsicle-api.avax.network"] as const;
+export const GetChainServerList = [
+  "https://metrics.avax.network",
+] as const;
 
 export type GetChainGlobals = {
-    /**
-     * A supported EVM chain id, chain alias, or blockchain id.
-     */
-    chainId?: string | undefined;
+  /**
+   * A supported EVM chain id, chain alias, or blockchain id.
+   */
+  chainId?: string | undefined;
 };
 
 export type GetChainRequest = {
-    /**
-     * A supported evm chain id. Use the `/chains` endpoint to get a list of supported chain ids.
-     */
-    chainId?: string | undefined;
+  /**
+   * A supported evm chain id. Use the `/chains` endpoint to get a list of supported chain ids.
+   */
+  chainId?: string | undefined;
 };
 
 /** @internal */
-export const GetChainGlobals$inboundSchema: z.ZodType<GetChainGlobals, z.ZodTypeDef, unknown> =
-    z.object({
-        chainId: z.string().optional(),
-    });
+export const GetChainGlobals$inboundSchema: z.ZodType<
+  GetChainGlobals,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  chainId: z.string().optional(),
+});
 
 /** @internal */
 export type GetChainGlobals$Outbound = {
-    chainId?: string | undefined;
+  chainId?: string | undefined;
 };
 
 /** @internal */
 export const GetChainGlobals$outboundSchema: z.ZodType<
-    GetChainGlobals$Outbound,
-    z.ZodTypeDef,
-    GetChainGlobals
+  GetChainGlobals$Outbound,
+  z.ZodTypeDef,
+  GetChainGlobals
 > = z.object({
-    chainId: z.string().optional(),
+  chainId: z.string().optional(),
 });
 
 /**
@@ -45,32 +50,35 @@ export const GetChainGlobals$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetChainGlobals$ {
-    /** @deprecated use `GetChainGlobals$inboundSchema` instead. */
-    export const inboundSchema = GetChainGlobals$inboundSchema;
-    /** @deprecated use `GetChainGlobals$outboundSchema` instead. */
-    export const outboundSchema = GetChainGlobals$outboundSchema;
-    /** @deprecated use `GetChainGlobals$Outbound` instead. */
-    export type Outbound = GetChainGlobals$Outbound;
+  /** @deprecated use `GetChainGlobals$inboundSchema` instead. */
+  export const inboundSchema = GetChainGlobals$inboundSchema;
+  /** @deprecated use `GetChainGlobals$outboundSchema` instead. */
+  export const outboundSchema = GetChainGlobals$outboundSchema;
+  /** @deprecated use `GetChainGlobals$Outbound` instead. */
+  export type Outbound = GetChainGlobals$Outbound;
 }
 
 /** @internal */
-export const GetChainRequest$inboundSchema: z.ZodType<GetChainRequest, z.ZodTypeDef, unknown> =
-    z.object({
-        chainId: z.string().optional(),
-    });
+export const GetChainRequest$inboundSchema: z.ZodType<
+  GetChainRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  chainId: z.string().optional(),
+});
 
 /** @internal */
 export type GetChainRequest$Outbound = {
-    chainId?: string | undefined;
+  chainId?: string | undefined;
 };
 
 /** @internal */
 export const GetChainRequest$outboundSchema: z.ZodType<
-    GetChainRequest$Outbound,
-    z.ZodTypeDef,
-    GetChainRequest
+  GetChainRequest$Outbound,
+  z.ZodTypeDef,
+  GetChainRequest
 > = z.object({
-    chainId: z.string().optional(),
+  chainId: z.string().optional(),
 });
 
 /**
@@ -78,10 +86,10 @@ export const GetChainRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetChainRequest$ {
-    /** @deprecated use `GetChainRequest$inboundSchema` instead. */
-    export const inboundSchema = GetChainRequest$inboundSchema;
-    /** @deprecated use `GetChainRequest$outboundSchema` instead. */
-    export const outboundSchema = GetChainRequest$outboundSchema;
-    /** @deprecated use `GetChainRequest$Outbound` instead. */
-    export type Outbound = GetChainRequest$Outbound;
+  /** @deprecated use `GetChainRequest$inboundSchema` instead. */
+  export const inboundSchema = GetChainRequest$inboundSchema;
+  /** @deprecated use `GetChainRequest$outboundSchema` instead. */
+  export const outboundSchema = GetChainRequest$outboundSchema;
+  /** @deprecated use `GetChainRequest$Outbound` instead. */
+  export type Outbound = GetChainRequest$Outbound;
 }

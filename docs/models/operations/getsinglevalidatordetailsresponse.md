@@ -6,9 +6,9 @@
 import { GetSingleValidatorDetailsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetSingleValidatorDetailsResponse = {
-    result: {
-        validators: [],
-    },
+  result: {
+    validators: [],
+  },
 };
 ```
 

@@ -6,15 +6,15 @@
 import { RemovedValidatorDetails } from "@avalabs/avacloud-sdk/models/components";
 
 let value: RemovedValidatorDetails = {
-    txHash: "<value>",
-    nodeId: "<value>",
-    subnetId: "<value>",
-    amountStaked: "<value>",
-    startTimestamp: 2532.91,
-    endTimestamp: 4143.69,
-    removeTxHash: "<value>",
-    removeTimestamp: 4663.11,
-    validationStatus: "removed",
+  txHash: "<value>",
+  nodeId: "<value>",
+  subnetId: "<value>",
+  amountStaked: "<value>",
+  startTimestamp: 6350.59,
+  endTimestamp: 1613.09,
+  removeTxHash: "<value>",
+  removeTimestamp: 9953,
+  validationStatus: "removed",
 };
 ```
 

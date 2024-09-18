@@ -6,8 +6,8 @@
 import { GetAddressesByBtcbBridgedRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetAddressesByBtcbBridgedRequest = {
-    threshold: "1000000",
-    pageSize: 10,
+  threshold: "1000000",
+  pageSize: 10,
 };
 ```
 

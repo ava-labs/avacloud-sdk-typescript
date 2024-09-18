@@ -5,51 +5,51 @@
 import * as z from "zod";
 
 export type CompositeQueryResponse = {
-    /**
-     * A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
-     */
-    nextPageToken?: string | undefined;
-    /**
-     * The number of results for each subquery by query id.
-     */
-    subQueryCounts: { [k: string]: number };
-    /**
-     * The total number of addresses returned by the composite query.
-     */
-    totalCount: number;
-    addresses: Array<string>;
+  /**
+   * A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
+   */
+  nextPageToken?: string | undefined;
+  /**
+   * The number of results for each subquery by query id.
+   */
+  subQueryCounts: { [k: string]: number };
+  /**
+   * The total number of addresses returned by the composite query.
+   */
+  totalCount: number;
+  addresses: Array<string>;
 };
 
 /** @internal */
 export const CompositeQueryResponse$inboundSchema: z.ZodType<
-    CompositeQueryResponse,
-    z.ZodTypeDef,
-    unknown
+  CompositeQueryResponse,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    nextPageToken: z.string().optional(),
-    subQueryCounts: z.record(z.number()),
-    totalCount: z.number(),
-    addresses: z.array(z.string()),
+  nextPageToken: z.string().optional(),
+  subQueryCounts: z.record(z.number()),
+  totalCount: z.number(),
+  addresses: z.array(z.string()),
 });
 
 /** @internal */
 export type CompositeQueryResponse$Outbound = {
-    nextPageToken?: string | undefined;
-    subQueryCounts: { [k: string]: number };
-    totalCount: number;
-    addresses: Array<string>;
+  nextPageToken?: string | undefined;
+  subQueryCounts: { [k: string]: number };
+  totalCount: number;
+  addresses: Array<string>;
 };
 
 /** @internal */
 export const CompositeQueryResponse$outboundSchema: z.ZodType<
-    CompositeQueryResponse$Outbound,
-    z.ZodTypeDef,
-    CompositeQueryResponse
+  CompositeQueryResponse$Outbound,
+  z.ZodTypeDef,
+  CompositeQueryResponse
 > = z.object({
-    nextPageToken: z.string().optional(),
-    subQueryCounts: z.record(z.number()),
-    totalCount: z.number(),
-    addresses: z.array(z.string()),
+  nextPageToken: z.string().optional(),
+  subQueryCounts: z.record(z.number()),
+  totalCount: z.number(),
+  addresses: z.array(z.string()),
 });
 
 /**
@@ -57,10 +57,10 @@ export const CompositeQueryResponse$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace CompositeQueryResponse$ {
-    /** @deprecated use `CompositeQueryResponse$inboundSchema` instead. */
-    export const inboundSchema = CompositeQueryResponse$inboundSchema;
-    /** @deprecated use `CompositeQueryResponse$outboundSchema` instead. */
-    export const outboundSchema = CompositeQueryResponse$outboundSchema;
-    /** @deprecated use `CompositeQueryResponse$Outbound` instead. */
-    export type Outbound = CompositeQueryResponse$Outbound;
+  /** @deprecated use `CompositeQueryResponse$inboundSchema` instead. */
+  export const inboundSchema = CompositeQueryResponse$inboundSchema;
+  /** @deprecated use `CompositeQueryResponse$outboundSchema` instead. */
+  export const outboundSchema = CompositeQueryResponse$outboundSchema;
+  /** @deprecated use `CompositeQueryResponse$Outbound` instead. */
+  export type Outbound = CompositeQueryResponse$Outbound;
 }

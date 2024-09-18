@@ -4,33 +4,38 @@
 
 import * as z from "zod";
 
-export const GetWebhookServerList = ["https://glacier-api.avax.network"] as const;
+export const GetWebhookServerList = [
+  "https://glacier-api.avax.network",
+] as const;
 
 export type GetWebhookRequest = {
-    /**
-     * The webhook identifier.
-     */
-    id: string;
+  /**
+   * The webhook identifier.
+   */
+  id: string;
 };
 
 /** @internal */
-export const GetWebhookRequest$inboundSchema: z.ZodType<GetWebhookRequest, z.ZodTypeDef, unknown> =
-    z.object({
-        id: z.string(),
-    });
+export const GetWebhookRequest$inboundSchema: z.ZodType<
+  GetWebhookRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+});
 
 /** @internal */
 export type GetWebhookRequest$Outbound = {
-    id: string;
+  id: string;
 };
 
 /** @internal */
 export const GetWebhookRequest$outboundSchema: z.ZodType<
-    GetWebhookRequest$Outbound,
-    z.ZodTypeDef,
-    GetWebhookRequest
+  GetWebhookRequest$Outbound,
+  z.ZodTypeDef,
+  GetWebhookRequest
 > = z.object({
-    id: z.string(),
+  id: z.string(),
 });
 
 /**
@@ -38,10 +43,10 @@ export const GetWebhookRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetWebhookRequest$ {
-    /** @deprecated use `GetWebhookRequest$inboundSchema` instead. */
-    export const inboundSchema = GetWebhookRequest$inboundSchema;
-    /** @deprecated use `GetWebhookRequest$outboundSchema` instead. */
-    export const outboundSchema = GetWebhookRequest$outboundSchema;
-    /** @deprecated use `GetWebhookRequest$Outbound` instead. */
-    export type Outbound = GetWebhookRequest$Outbound;
+  /** @deprecated use `GetWebhookRequest$inboundSchema` instead. */
+  export const inboundSchema = GetWebhookRequest$inboundSchema;
+  /** @deprecated use `GetWebhookRequest$outboundSchema` instead. */
+  export const outboundSchema = GetWebhookRequest$outboundSchema;
+  /** @deprecated use `GetWebhookRequest$Outbound` instead. */
+  export type Outbound = GetWebhookRequest$Outbound;
 }

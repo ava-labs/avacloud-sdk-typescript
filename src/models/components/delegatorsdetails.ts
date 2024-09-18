@@ -5,31 +5,34 @@
 import * as z from "zod";
 
 export type DelegatorsDetails = {
-    delegatorCount: number;
-    totalAmountStaked: string;
+  delegatorCount: number;
+  totalAmountStaked: string;
 };
 
 /** @internal */
-export const DelegatorsDetails$inboundSchema: z.ZodType<DelegatorsDetails, z.ZodTypeDef, unknown> =
-    z.object({
-        delegatorCount: z.number(),
-        totalAmountStaked: z.string(),
-    });
+export const DelegatorsDetails$inboundSchema: z.ZodType<
+  DelegatorsDetails,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  delegatorCount: z.number(),
+  totalAmountStaked: z.string(),
+});
 
 /** @internal */
 export type DelegatorsDetails$Outbound = {
-    delegatorCount: number;
-    totalAmountStaked: string;
+  delegatorCount: number;
+  totalAmountStaked: string;
 };
 
 /** @internal */
 export const DelegatorsDetails$outboundSchema: z.ZodType<
-    DelegatorsDetails$Outbound,
-    z.ZodTypeDef,
-    DelegatorsDetails
+  DelegatorsDetails$Outbound,
+  z.ZodTypeDef,
+  DelegatorsDetails
 > = z.object({
-    delegatorCount: z.number(),
-    totalAmountStaked: z.string(),
+  delegatorCount: z.number(),
+  totalAmountStaked: z.string(),
 });
 
 /**
@@ -37,10 +40,10 @@ export const DelegatorsDetails$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace DelegatorsDetails$ {
-    /** @deprecated use `DelegatorsDetails$inboundSchema` instead. */
-    export const inboundSchema = DelegatorsDetails$inboundSchema;
-    /** @deprecated use `DelegatorsDetails$outboundSchema` instead. */
-    export const outboundSchema = DelegatorsDetails$outboundSchema;
-    /** @deprecated use `DelegatorsDetails$Outbound` instead. */
-    export type Outbound = DelegatorsDetails$Outbound;
+  /** @deprecated use `DelegatorsDetails$inboundSchema` instead. */
+  export const inboundSchema = DelegatorsDetails$inboundSchema;
+  /** @deprecated use `DelegatorsDetails$outboundSchema` instead. */
+  export const outboundSchema = DelegatorsDetails$outboundSchema;
+  /** @deprecated use `DelegatorsDetails$Outbound` instead. */
+  export type Outbound = DelegatorsDetails$Outbound;
 }

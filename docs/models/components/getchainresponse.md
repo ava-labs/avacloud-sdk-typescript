@@ -6,20 +6,20 @@
 import { GetChainResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: GetChainResponse = {
-    chainId: "<value>",
-    status: "UNAVAILABLE",
-    chainName: "<value>",
-    description: "Fully-configurable didactic hardware",
-    vmName: "ETHEREUM",
-    rpcUrl: "<value>",
-    isTestnet: false,
-    networkToken: {
-        name: "Wrapped AVAX",
-        symbol: "WAVAX",
-        decimals: 18,
-        logoUri:
-            "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
-    },
+  chainId: "<value>",
+  status: "UNAVAILABLE",
+  chainName: "<value>",
+  description: "Open-architected modular ability",
+  vmName: "ETHEREUM",
+  rpcUrl: "<value>",
+  isTestnet: false,
+  networkToken: {
+    name: "Wrapped AVAX",
+    symbol: "WAVAX",
+    decimals: 18,
+    logoUri:
+      "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+  },
 };
 ```
 

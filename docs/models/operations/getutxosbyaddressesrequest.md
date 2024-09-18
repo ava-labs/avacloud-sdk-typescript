@@ -6,10 +6,10 @@
 import { GetUtxosByAddressesRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetUtxosByAddressesRequest = {
-    addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
-    pageSize: 10,
-    blockchainId: "p-chain",
-    sortOrder: "asc",
+  addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
+  pageSize: 10,
+  blockchainId: "p-chain",
+  sortOrder: "asc",
 };
 ```
 

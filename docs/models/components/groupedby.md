@@ -7,7 +7,7 @@ Column name used for data aggregation
 ```typescript
 import { GroupedBy } from "@avalabs/avacloud-sdk/models/components";
 
-let value: GroupedBy = "chainId";
+let value: GroupedBy = "requestPath";
 ```
 
 ## Values

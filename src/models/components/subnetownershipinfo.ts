@@ -5,47 +5,47 @@
 import * as z from "zod";
 
 export type SubnetOwnershipInfo = {
-    /**
-     * Locktime in seconds after which Subnet owners can control this Subnet.
-     */
-    locktime: number;
-    /**
-     * Minimum number of signatures required to sign the Subnet update transactions.
-     */
-    threshold: number;
-    /**
-     * Addresses that are eligible to sign the Subnet update transactions.
-     */
-    addresses: Array<string>;
+  /**
+   * Locktime in seconds after which Subnet owners can control this Subnet.
+   */
+  locktime: number;
+  /**
+   * Minimum number of signatures required to sign the Subnet update transactions.
+   */
+  threshold: number;
+  /**
+   * Addresses that are eligible to sign the Subnet update transactions.
+   */
+  addresses: Array<string>;
 };
 
 /** @internal */
 export const SubnetOwnershipInfo$inboundSchema: z.ZodType<
-    SubnetOwnershipInfo,
-    z.ZodTypeDef,
-    unknown
+  SubnetOwnershipInfo,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    locktime: z.number(),
-    threshold: z.number(),
-    addresses: z.array(z.string()),
+  locktime: z.number(),
+  threshold: z.number(),
+  addresses: z.array(z.string()),
 });
 
 /** @internal */
 export type SubnetOwnershipInfo$Outbound = {
-    locktime: number;
-    threshold: number;
-    addresses: Array<string>;
+  locktime: number;
+  threshold: number;
+  addresses: Array<string>;
 };
 
 /** @internal */
 export const SubnetOwnershipInfo$outboundSchema: z.ZodType<
-    SubnetOwnershipInfo$Outbound,
-    z.ZodTypeDef,
-    SubnetOwnershipInfo
+  SubnetOwnershipInfo$Outbound,
+  z.ZodTypeDef,
+  SubnetOwnershipInfo
 > = z.object({
-    locktime: z.number(),
-    threshold: z.number(),
-    addresses: z.array(z.string()),
+  locktime: z.number(),
+  threshold: z.number(),
+  addresses: z.array(z.string()),
 });
 
 /**
@@ -53,10 +53,10 @@ export const SubnetOwnershipInfo$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace SubnetOwnershipInfo$ {
-    /** @deprecated use `SubnetOwnershipInfo$inboundSchema` instead. */
-    export const inboundSchema = SubnetOwnershipInfo$inboundSchema;
-    /** @deprecated use `SubnetOwnershipInfo$outboundSchema` instead. */
-    export const outboundSchema = SubnetOwnershipInfo$outboundSchema;
-    /** @deprecated use `SubnetOwnershipInfo$Outbound` instead. */
-    export type Outbound = SubnetOwnershipInfo$Outbound;
+  /** @deprecated use `SubnetOwnershipInfo$inboundSchema` instead. */
+  export const inboundSchema = SubnetOwnershipInfo$inboundSchema;
+  /** @deprecated use `SubnetOwnershipInfo$outboundSchema` instead. */
+  export const outboundSchema = SubnetOwnershipInfo$outboundSchema;
+  /** @deprecated use `SubnetOwnershipInfo$Outbound` instead. */
+  export type Outbound = SubnetOwnershipInfo$Outbound;
 }

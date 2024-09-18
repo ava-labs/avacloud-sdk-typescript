@@ -6,9 +6,9 @@
 import { Method } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Method = {
-    callType: "NATIVE_TRANSFER",
-    methodHash: "0xa9059cbb",
-    methodName: "transfer(address,uint256)",
+  callType: "NATIVE_TRANSFER",
+  methodHash: "0xa9059cbb",
+  methodName: "transfer(address,uint256)",
 };
 ```
 
