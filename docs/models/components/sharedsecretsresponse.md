@@ -6,7 +6,7 @@
 import { SharedSecretsResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: SharedSecretsResponse = {
-    secret: "<value>",
+  secret: "<value>",
 };
 ```
 

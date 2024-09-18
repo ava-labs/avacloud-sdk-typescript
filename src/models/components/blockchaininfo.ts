@@ -5,27 +5,30 @@
 import * as z from "zod";
 
 export type BlockchainInfo = {
-    blockchainId: string;
+  blockchainId: string;
 };
 
 /** @internal */
-export const BlockchainInfo$inboundSchema: z.ZodType<BlockchainInfo, z.ZodTypeDef, unknown> =
-    z.object({
-        blockchainId: z.string(),
-    });
+export const BlockchainInfo$inboundSchema: z.ZodType<
+  BlockchainInfo,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  blockchainId: z.string(),
+});
 
 /** @internal */
 export type BlockchainInfo$Outbound = {
-    blockchainId: string;
+  blockchainId: string;
 };
 
 /** @internal */
 export const BlockchainInfo$outboundSchema: z.ZodType<
-    BlockchainInfo$Outbound,
-    z.ZodTypeDef,
-    BlockchainInfo
+  BlockchainInfo$Outbound,
+  z.ZodTypeDef,
+  BlockchainInfo
 > = z.object({
-    blockchainId: z.string(),
+  blockchainId: z.string(),
 });
 
 /**
@@ -33,10 +36,10 @@ export const BlockchainInfo$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace BlockchainInfo$ {
-    /** @deprecated use `BlockchainInfo$inboundSchema` instead. */
-    export const inboundSchema = BlockchainInfo$inboundSchema;
-    /** @deprecated use `BlockchainInfo$outboundSchema` instead. */
-    export const outboundSchema = BlockchainInfo$outboundSchema;
-    /** @deprecated use `BlockchainInfo$Outbound` instead. */
-    export type Outbound = BlockchainInfo$Outbound;
+  /** @deprecated use `BlockchainInfo$inboundSchema` instead. */
+  export const inboundSchema = BlockchainInfo$inboundSchema;
+  /** @deprecated use `BlockchainInfo$outboundSchema` instead. */
+  export const outboundSchema = BlockchainInfo$outboundSchema;
+  /** @deprecated use `BlockchainInfo$Outbound` instead. */
+  export type Outbound = BlockchainInfo$Outbound;
 }

@@ -6,17 +6,18 @@
 import { EvmBlock } from "@avalabs/avacloud-sdk/models/components";
 
 let value: EvmBlock = {
-    blockNumber: "339",
-    blockTimestamp: 1648672486,
-    blockHash: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
-    txCount: 580.29,
-    baseFee: "<value>",
-    gasUsed: "<value>",
-    gasLimit: "<value>",
-    gasCost: "<value>",
-    parentHash: "<value>",
-    feesSpent: "<value>",
-    cumulativeTransactions: "<value>",
+  blockNumber: "339",
+  blockTimestamp: 1648672486,
+  blockHash:
+    "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
+  txCount: 4904.59,
+  baseFee: "<value>",
+  gasUsed: "<value>",
+  gasLimit: "<value>",
+  gasCost: "<value>",
+  parentHash: "<value>",
+  feesSpent: "<value>",
+  cumulativeTransactions: "<value>",
 };
 ```
 

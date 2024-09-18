@@ -6,8 +6,8 @@
 import { GetTxByHashRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetTxByHashRequest = {
-    blockchainId: "p-chain",
-    txHash: "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP",
+  blockchainId: "p-chain",
+  txHash: "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP",
 };
 ```
 

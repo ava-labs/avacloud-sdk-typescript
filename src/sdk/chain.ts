@@ -6,8 +6,8 @@ import { ClientSDK } from "../lib/sdks.js";
 import { AvaCloudSDKMetrics } from "./avacloudsdkmetrics.js";
 
 export class Chain extends ClientSDK {
-    private _metrics?: AvaCloudSDKMetrics;
-    get metrics(): AvaCloudSDKMetrics {
-        return (this._metrics ??= new AvaCloudSDKMetrics(this.options$));
-    }
+  private _metrics?: AvaCloudSDKMetrics;
+  get metrics(): AvaCloudSDKMetrics {
+    return (this._metrics ??= new AvaCloudSDKMetrics(this.options$));
+  }
 }

@@ -6,24 +6,26 @@
 import { ListWebhooksResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ListWebhooksResponse = {
-    webhooks: [
-        {
-            id: "<id>",
-            eventType: "address_activity",
-            metadata: {
-                addresses: ["0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E"],
-                eventSignatures: [
-                    "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64",
-                ],
-            },
-            url: "https://ornery-antechamber.net",
-            chainId: "<value>",
-            status: "active",
-            createdAt: 5000.26,
-            name: "<value>",
-            description: "Pre-emptive 6th generation leverage",
-        },
-    ],
+  webhooks: [
+    {
+      id: "<id>",
+      eventType: "address_activity",
+      metadata: {
+        addresses: [
+          "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+        ],
+        eventSignatures: [
+          "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64",
+        ],
+      },
+      url: "https://grandiose-urge.org",
+      chainId: "<value>",
+      status: "inactive",
+      createdAt: 7044.15,
+      name: "<value>",
+      description: "Persistent 4th generation productivity",
+    },
+  ],
 };
 ```
 

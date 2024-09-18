@@ -6,9 +6,9 @@
 import { GetBalancesByAddressesRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetBalancesByAddressesRequest = {
-    blockTimestamp: 1599696000,
-    addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
-    blockchainId: "p-chain",
+  blockTimestamp: 1599696000,
+  addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
+  blockchainId: "p-chain",
 };
 ```
 

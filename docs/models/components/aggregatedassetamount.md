@@ -6,13 +6,13 @@
 import { AggregatedAssetAmount } from "@avalabs/avacloud-sdk/models/components";
 
 let value: AggregatedAssetAmount = {
-    assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
-    name: "Avalanche",
-    symbol: "AVAX",
-    denomination: 9,
-    type: "secp256k1",
-    amount: "5001000",
-    utxoCount: 1,
+  assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+  name: "Avalanche",
+  symbol: "AVAX",
+  denomination: 9,
+  type: "secp256k1",
+  amount: "5001000",
+  utxoCount: 1,
 };
 ```
 

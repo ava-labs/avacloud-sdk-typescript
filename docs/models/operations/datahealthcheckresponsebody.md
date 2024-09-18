@@ -8,20 +8,20 @@ The Health Check is successful
 import { DataHealthCheckResponseBody } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: DataHealthCheckResponseBody = {
-    status: "ok",
-    info: {
-        database: {
-            status: "up",
-            additionalProperties: {},
-        },
+  status: "ok",
+  info: {
+    "database": {
+      status: "up",
+      additionalProperties: {},
     },
-    error: {},
-    details: {
-        database: {
-            status: "up",
-            additionalProperties: {},
-        },
+  },
+  error: {},
+  details: {
+    "database": {
+      status: "up",
+      additionalProperties: {},
     },
+  },
 };
 ```
 

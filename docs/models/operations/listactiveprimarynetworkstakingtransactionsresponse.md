@@ -6,13 +6,13 @@
 import { ListActivePrimaryNetworkStakingTransactionsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListActivePrimaryNetworkStakingTransactionsResponse = {
-    result: {
-        transactions: [],
-        chainInfo: {
-            chainName: "p-chain",
-            network: "mainnet",
-        },
+  result: {
+    transactions: [],
+    chainInfo: {
+      chainName: "p-chain",
+      network: "mainnet",
     },
+  },
 };
 ```
 

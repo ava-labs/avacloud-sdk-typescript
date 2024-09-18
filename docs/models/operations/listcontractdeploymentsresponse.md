@@ -6,9 +6,9 @@
 import { ListContractDeploymentsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListContractDeploymentsResponse = {
-    result: {
-        contracts: [],
-    },
+  result: {
+    contracts: [],
+  },
 };
 ```
 

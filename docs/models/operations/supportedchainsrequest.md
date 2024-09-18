@@ -6,8 +6,8 @@
 import { SupportedChainsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: SupportedChainsRequest = {
-    network: "mainnet",
-    feature: "nftIndexing",
+  network: "mainnet",
+  feature: "nftIndexing",
 };
 ```
 

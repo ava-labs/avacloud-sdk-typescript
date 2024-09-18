@@ -5,100 +5,100 @@
 import * as z from "zod";
 
 export type GetEvmBlockResponse = {
-    /**
-     * The block number on the chain.
-     */
-    blockNumber: string;
-    /**
-     * The block finality timestamp.
-     */
-    blockTimestamp: number;
-    /**
-     * The block hash identifier.
-     */
-    blockHash: string;
-    /**
-     * The number of evm transactions in the block.
-     */
-    txCount: number;
-    /**
-     * The base gas fee for a transaction to be included in the block.
-     */
-    baseFee: string;
-    /**
-     * The gas used for transactions in the block.
-     */
-    gasUsed: string;
-    /**
-     * The total gas limit set for transactions in the block.
-     */
-    gasLimit: string;
-    gasCost: string;
-    /**
-     * The hash of the parent block.
-     */
-    parentHash: string;
-    /**
-     * The amount of fees spent/burned for transactions in the block.
-     */
-    feesSpent: string;
-    /**
-     * The cumulative number of transactions for the chain including this block.
-     */
-    cumulativeTransactions: string;
+  /**
+   * The block number on the chain.
+   */
+  blockNumber: string;
+  /**
+   * The block finality timestamp.
+   */
+  blockTimestamp: number;
+  /**
+   * The block hash identifier.
+   */
+  blockHash: string;
+  /**
+   * The number of evm transactions in the block.
+   */
+  txCount: number;
+  /**
+   * The base gas fee for a transaction to be included in the block.
+   */
+  baseFee: string;
+  /**
+   * The gas used for transactions in the block.
+   */
+  gasUsed: string;
+  /**
+   * The total gas limit set for transactions in the block.
+   */
+  gasLimit: string;
+  gasCost: string;
+  /**
+   * The hash of the parent block.
+   */
+  parentHash: string;
+  /**
+   * The amount of fees spent/burned for transactions in the block.
+   */
+  feesSpent: string;
+  /**
+   * The cumulative number of transactions for the chain including this block.
+   */
+  cumulativeTransactions: string;
 };
 
 /** @internal */
 export const GetEvmBlockResponse$inboundSchema: z.ZodType<
-    GetEvmBlockResponse,
-    z.ZodTypeDef,
-    unknown
+  GetEvmBlockResponse,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    blockNumber: z.string(),
-    blockTimestamp: z.number(),
-    blockHash: z.string(),
-    txCount: z.number(),
-    baseFee: z.string(),
-    gasUsed: z.string(),
-    gasLimit: z.string(),
-    gasCost: z.string(),
-    parentHash: z.string(),
-    feesSpent: z.string(),
-    cumulativeTransactions: z.string(),
+  blockNumber: z.string(),
+  blockTimestamp: z.number(),
+  blockHash: z.string(),
+  txCount: z.number(),
+  baseFee: z.string(),
+  gasUsed: z.string(),
+  gasLimit: z.string(),
+  gasCost: z.string(),
+  parentHash: z.string(),
+  feesSpent: z.string(),
+  cumulativeTransactions: z.string(),
 });
 
 /** @internal */
 export type GetEvmBlockResponse$Outbound = {
-    blockNumber: string;
-    blockTimestamp: number;
-    blockHash: string;
-    txCount: number;
-    baseFee: string;
-    gasUsed: string;
-    gasLimit: string;
-    gasCost: string;
-    parentHash: string;
-    feesSpent: string;
-    cumulativeTransactions: string;
+  blockNumber: string;
+  blockTimestamp: number;
+  blockHash: string;
+  txCount: number;
+  baseFee: string;
+  gasUsed: string;
+  gasLimit: string;
+  gasCost: string;
+  parentHash: string;
+  feesSpent: string;
+  cumulativeTransactions: string;
 };
 
 /** @internal */
 export const GetEvmBlockResponse$outboundSchema: z.ZodType<
-    GetEvmBlockResponse$Outbound,
-    z.ZodTypeDef,
-    GetEvmBlockResponse
+  GetEvmBlockResponse$Outbound,
+  z.ZodTypeDef,
+  GetEvmBlockResponse
 > = z.object({
-    blockNumber: z.string(),
-    blockTimestamp: z.number(),
-    blockHash: z.string(),
-    txCount: z.number(),
-    baseFee: z.string(),
-    gasUsed: z.string(),
-    gasLimit: z.string(),
-    gasCost: z.string(),
-    parentHash: z.string(),
-    feesSpent: z.string(),
-    cumulativeTransactions: z.string(),
+  blockNumber: z.string(),
+  blockTimestamp: z.number(),
+  blockHash: z.string(),
+  txCount: z.number(),
+  baseFee: z.string(),
+  gasUsed: z.string(),
+  gasLimit: z.string(),
+  gasCost: z.string(),
+  parentHash: z.string(),
+  feesSpent: z.string(),
+  cumulativeTransactions: z.string(),
 });
 
 /**
@@ -106,10 +106,10 @@ export const GetEvmBlockResponse$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetEvmBlockResponse$ {
-    /** @deprecated use `GetEvmBlockResponse$inboundSchema` instead. */
-    export const inboundSchema = GetEvmBlockResponse$inboundSchema;
-    /** @deprecated use `GetEvmBlockResponse$outboundSchema` instead. */
-    export const outboundSchema = GetEvmBlockResponse$outboundSchema;
-    /** @deprecated use `GetEvmBlockResponse$Outbound` instead. */
-    export type Outbound = GetEvmBlockResponse$Outbound;
+  /** @deprecated use `GetEvmBlockResponse$inboundSchema` instead. */
+  export const inboundSchema = GetEvmBlockResponse$inboundSchema;
+  /** @deprecated use `GetEvmBlockResponse$outboundSchema` instead. */
+  export const outboundSchema = GetEvmBlockResponse$outboundSchema;
+  /** @deprecated use `GetEvmBlockResponse$Outbound` instead. */
+  export type Outbound = GetEvmBlockResponse$Outbound;
 }

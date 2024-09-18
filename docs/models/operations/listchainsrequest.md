@@ -6,7 +6,7 @@
 import { ListChainsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListChainsRequest = {
-    network: "mainnet",
+  network: "mainnet",
 };
 ```
 

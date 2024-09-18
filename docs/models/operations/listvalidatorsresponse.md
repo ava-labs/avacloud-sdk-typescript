@@ -6,9 +6,9 @@
 import { ListValidatorsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListValidatorsResponse = {
-    result: {
-        validators: [],
-    },
+  result: {
+    validators: [],
+  },
 };
 ```
 

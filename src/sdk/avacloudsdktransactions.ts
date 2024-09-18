@@ -21,177 +21,211 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class AvaCloudSDKTransactions extends ClientSDK {
-    /**
-     * Get deployment transaction
-     *
-     * @remarks
-     * If the address is a smart contract, returns the transaction in which it was deployed.
-     */
-    async getDeploymentTransaction(
-        request: operations.GetDeploymentTransactionRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.GetTransactionResponse> {
-        return unwrapAsync(dataEvmTransactionsGetDeploymentTransaction(this, request, options));
-    }
+  /**
+   * Get deployment transaction
+   *
+   * @remarks
+   * If the address is a smart contract, returns the transaction in which it was deployed.
+   */
+  async getDeploymentTransaction(
+    request: operations.GetDeploymentTransactionRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.GetTransactionResponse> {
+    return unwrapAsync(dataEvmTransactionsGetDeploymentTransaction(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List deployed contracts
-     *
-     * @remarks
-     * Lists all contracts deployed by the given address.
-     */
-    async listContractDeployments(
-        request: operations.ListContractDeploymentsRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListContractDeploymentsResponse>> {
-        return unwrapResultIterator(
-            dataEvmTransactionsListContractDeployments(this, request, options)
-        );
-    }
+  /**
+   * List deployed contracts
+   *
+   * @remarks
+   * Lists all contracts deployed by the given address.
+   */
+  async listContractDeployments(
+    request: operations.ListContractDeploymentsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListContractDeploymentsResponse>> {
+    return unwrapResultIterator(dataEvmTransactionsListContractDeployments(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List ERC transfers
-     *
-     * @remarks
-     * Lists ERC transfers for an ERC-20, ERC-721, or ERC-1155 contract address.
-     */
-    async listTransfers(
-        request: operations.ListTransfersRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListTransfersResponse>> {
-        return unwrapResultIterator(dataEvmTransactionsListTransfers(this, request, options));
-    }
+  /**
+   * List ERC transfers
+   *
+   * @remarks
+   * Lists ERC transfers for an ERC-20, ERC-721, or ERC-1155 contract address.
+   */
+  async listTransfers(
+    request: operations.ListTransfersRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListTransfersResponse>> {
+    return unwrapResultIterator(dataEvmTransactionsListTransfers(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List transactions
-     *
-     * @remarks
-     * Returns a list of transactions where the given wallet address had an on-chain interaction for the given chain. The ERC-20 transfers, ERC-721 transfers, ERC-1155, and internal transactions returned are only those where the input address had an interaction. Specifically, those lists only inlcude entries where the input address was the sender (`from` field) or the receiver (`to` field) for the sub-transaction. Therefore the transactions returned from this list may not be complete representations of the on-chain data. For a complete view of a transaction use the `/chains/:chainId/transactions/:txHash` endpoint.
-     *
-     * Filterable by block ranges.
-     */
-    async listTransactions(
-        request: operations.ListTransactionsRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListTransactionsResponse>> {
-        return unwrapResultIterator(dataEvmTransactionsListTransactions(this, request, options));
-    }
+  /**
+   * List transactions
+   *
+   * @remarks
+   * Returns a list of transactions where the given wallet address had an on-chain interaction for the given chain. The ERC-20 transfers, ERC-721 transfers, ERC-1155, and internal transactions returned are only those where the input address had an interaction. Specifically, those lists only inlcude entries where the input address was the sender (`from` field) or the receiver (`to` field) for the sub-transaction. Therefore the transactions returned from this list may not be complete representations of the on-chain data. For a complete view of a transaction use the `/chains/:chainId/transactions/:txHash` endpoint.
+   *
+   * Filterable by block ranges.
+   */
+  async listTransactions(
+    request: operations.ListTransactionsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListTransactionsResponse>> {
+    return unwrapResultIterator(dataEvmTransactionsListTransactions(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List native transactions
-     *
-     * @remarks
-     * Lists native transactions for an address. Filterable by block range.
-     */
-    async listNativeTransactions(
-        request: operations.ListNativeTransactionsRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListNativeTransactionsResponse>> {
-        return unwrapResultIterator(
-            dataEvmTransactionsListNativeTransactions(this, request, options)
-        );
-    }
+  /**
+   * List native transactions
+   *
+   * @remarks
+   * Lists native transactions for an address. Filterable by block range.
+   */
+  async listNativeTransactions(
+    request: operations.ListNativeTransactionsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListNativeTransactionsResponse>> {
+    return unwrapResultIterator(dataEvmTransactionsListNativeTransactions(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List ERC-20 transfers
-     *
-     * @remarks
-     * Lists ERC-20 transfers for an address. Filterable by block range.
-     */
-    async listErc20Transactions(
-        request: operations.ListErc20TransactionsRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListErc20TransactionsResponse>> {
-        return unwrapResultIterator(
-            dataEvmTransactionsListErc20Transactions(this, request, options)
-        );
-    }
+  /**
+   * List ERC-20 transfers
+   *
+   * @remarks
+   * Lists ERC-20 transfers for an address. Filterable by block range.
+   */
+  async listErc20Transactions(
+    request: operations.ListErc20TransactionsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListErc20TransactionsResponse>> {
+    return unwrapResultIterator(dataEvmTransactionsListErc20Transactions(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List ERC-721 transfers
-     *
-     * @remarks
-     * Lists ERC-721 transfers for an address. Filterable by block range.
-     */
-    async listErc721Transactions(
-        request: operations.ListErc721TransactionsRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListErc721TransactionsResponse>> {
-        return unwrapResultIterator(
-            dataEvmTransactionsListErc721Transactions(this, request, options)
-        );
-    }
+  /**
+   * List ERC-721 transfers
+   *
+   * @remarks
+   * Lists ERC-721 transfers for an address. Filterable by block range.
+   */
+  async listErc721Transactions(
+    request: operations.ListErc721TransactionsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListErc721TransactionsResponse>> {
+    return unwrapResultIterator(dataEvmTransactionsListErc721Transactions(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List ERC-1155 transfers
-     *
-     * @remarks
-     * Lists ERC-1155 transfers for an address. Filterable by block range.
-     */
-    async listErc1155Transactions(
-        request: operations.ListErc1155TransactionsRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListErc1155TransactionsResponse>> {
-        return unwrapResultIterator(
-            dataEvmTransactionsListErc1155Transactions(this, request, options)
-        );
-    }
+  /**
+   * List ERC-1155 transfers
+   *
+   * @remarks
+   * Lists ERC-1155 transfers for an address. Filterable by block range.
+   */
+  async listErc1155Transactions(
+    request: operations.ListErc1155TransactionsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListErc1155TransactionsResponse>> {
+    return unwrapResultIterator(dataEvmTransactionsListErc1155Transactions(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List internal transactions
-     *
-     * @remarks
-     * Returns a list of internal transactions for an address and chain. Filterable by block range.
-     *
-     * Note that the internal transactions list only contains `CALL` or `CALLCODE` transactions with a non-zero value and `CREATE`/`CREATE2` transactions. To get a complete list of internal transactions use the `debug_` prefixed RPC methods on an archive node.
-     */
-    async listInternalTransactions(
-        request: operations.ListInternalTransactionsRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListInternalTransactionsResponse>> {
-        return unwrapResultIterator(
-            dataEvmTransactionsListInternalTransactions(this, request, options)
-        );
-    }
+  /**
+   * List internal transactions
+   *
+   * @remarks
+   * Returns a list of internal transactions for an address and chain. Filterable by block range.
+   *
+   * Note that the internal transactions list only contains `CALL` or `CALLCODE` transactions with a non-zero value and `CREATE`/`CREATE2` transactions. To get a complete list of internal transactions use the `debug_` prefixed RPC methods on an archive node.
+   */
+  async listInternalTransactions(
+    request: operations.ListInternalTransactionsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListInternalTransactionsResponse>> {
+    return unwrapResultIterator(dataEvmTransactionsListInternalTransactions(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get transaction
-     *
-     * @remarks
-     * Gets the details of a single transaction.
-     */
-    async getTransaction(
-        request: operations.GetTransactionRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.GetTransactionResponse> {
-        return unwrapAsync(dataEvmTransactionsGetTransaction(this, request, options));
-    }
+  /**
+   * Get transaction
+   *
+   * @remarks
+   * Gets the details of a single transaction.
+   */
+  async getTransaction(
+    request: operations.GetTransactionRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.GetTransactionResponse> {
+    return unwrapAsync(dataEvmTransactionsGetTransaction(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List transactions for a block
-     *
-     * @remarks
-     * Lists the transactions that occured in a given block.
-     */
-    async getTransactionsForBlock(
-        request: operations.GetTransactionsForBlockRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.ListNativeTransactionsResponse> {
-        return unwrapAsync(dataEvmTransactionsGetTransactionsForBlock(this, request, options));
-    }
+  /**
+   * List transactions for a block
+   *
+   * @remarks
+   * Lists the transactions that occured in a given block.
+   */
+  async getTransactionsForBlock(
+    request: operations.GetTransactionsForBlockRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.ListNativeTransactionsResponse> {
+    return unwrapAsync(dataEvmTransactionsGetTransactionsForBlock(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List latest transactions
-     *
-     * @remarks
-     * Lists the latest transactions. Filterable by status.
-     */
-    async listLatestTransactions(
-        request: operations.ListLatestTransactionsRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListLatestTransactionsResponse>> {
-        return unwrapResultIterator(
-            dataEvmTransactionsListLatestTransactions(this, request, options)
-        );
-    }
+  /**
+   * List latest transactions
+   *
+   * @remarks
+   * Lists the latest transactions. Filterable by status.
+   */
+  async listLatestTransactions(
+    request: operations.ListLatestTransactionsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListLatestTransactionsResponse>> {
+    return unwrapResultIterator(dataEvmTransactionsListLatestTransactions(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -5,27 +5,30 @@
 import * as z from "zod";
 
 export type UtilityAddresses = {
-    multicall?: string | undefined;
+  multicall?: string | undefined;
 };
 
 /** @internal */
-export const UtilityAddresses$inboundSchema: z.ZodType<UtilityAddresses, z.ZodTypeDef, unknown> =
-    z.object({
-        multicall: z.string().optional(),
-    });
+export const UtilityAddresses$inboundSchema: z.ZodType<
+  UtilityAddresses,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  multicall: z.string().optional(),
+});
 
 /** @internal */
 export type UtilityAddresses$Outbound = {
-    multicall?: string | undefined;
+  multicall?: string | undefined;
 };
 
 /** @internal */
 export const UtilityAddresses$outboundSchema: z.ZodType<
-    UtilityAddresses$Outbound,
-    z.ZodTypeDef,
-    UtilityAddresses
+  UtilityAddresses$Outbound,
+  z.ZodTypeDef,
+  UtilityAddresses
 > = z.object({
-    multicall: z.string().optional(),
+  multicall: z.string().optional(),
 });
 
 /**
@@ -33,10 +36,10 @@ export const UtilityAddresses$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace UtilityAddresses$ {
-    /** @deprecated use `UtilityAddresses$inboundSchema` instead. */
-    export const inboundSchema = UtilityAddresses$inboundSchema;
-    /** @deprecated use `UtilityAddresses$outboundSchema` instead. */
-    export const outboundSchema = UtilityAddresses$outboundSchema;
-    /** @deprecated use `UtilityAddresses$Outbound` instead. */
-    export type Outbound = UtilityAddresses$Outbound;
+  /** @deprecated use `UtilityAddresses$inboundSchema` instead. */
+  export const inboundSchema = UtilityAddresses$inboundSchema;
+  /** @deprecated use `UtilityAddresses$outboundSchema` instead. */
+  export const outboundSchema = UtilityAddresses$outboundSchema;
+  /** @deprecated use `UtilityAddresses$Outbound` instead. */
+  export type Outbound = UtilityAddresses$Outbound;
 }

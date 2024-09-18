@@ -6,14 +6,16 @@
 import { GetPrimaryNetworkBlockResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: GetPrimaryNetworkBlockResponse = {
-    blockNumber: "<value>",
-    blockHash: "<value>",
-    parentHash: "<value>",
-    blockTimestamp: 5743.25,
-    blockType: "<value>",
-    txCount: 336.25,
-    transactions: ["<value>"],
-    blockSizeBytes: 6532.01,
+  blockNumber: "<value>",
+  blockHash: "<value>",
+  parentHash: "<value>",
+  blockTimestamp: 923.73,
+  blockType: "<value>",
+  txCount: 5699.65,
+  transactions: [
+    "<value>",
+  ],
+  blockSizeBytes: 3540.47,
 };
 ```
 

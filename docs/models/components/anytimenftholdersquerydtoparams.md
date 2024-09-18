@@ -6,10 +6,10 @@
 import { AnyTimeNftHoldersQueryDtoParams } from "@avalabs/avacloud-sdk/models/components";
 
 let value: AnyTimeNftHoldersQueryDtoParams = {
-    evmChainId: "<value>",
-    contractAddress: "<value>",
-    startTs: 5680.45,
-    endTs: 3927.85,
+  evmChainId: "<value>",
+  contractAddress: "<value>",
+  startTs: 9255.97,
+  endTs: 8360.79,
 };
 ```
 

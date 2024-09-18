@@ -6,14 +6,14 @@
 import { AnyTimeStarsArenaBalanceQueryDto } from "@avalabs/avacloud-sdk/models/components";
 
 let value: AnyTimeStarsArenaBalanceQueryDto = {
-    id: "<id>",
-    type: "AnyTimeStarsArenaBalance",
-    params: {
-        firstDate: "<value>",
-        lastDate: "<value>",
-        minBalance: "<value>",
-        subjectAddress: "<value>",
-    },
+  id: "<id>",
+  type: "AnyTimeStarsArenaBalance",
+  params: {
+    firstDate: "<value>",
+    lastDate: "<value>",
+    minBalance: "<value>",
+    subjectAddress: "<value>",
+  },
 };
 ```
 

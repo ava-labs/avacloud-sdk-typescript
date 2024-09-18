@@ -6,9 +6,9 @@
 import { ListErc20BalancesResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListErc20BalancesResponse = {
-    result: {
-        erc20TokenBalances: [],
-    },
+  result: {
+    erc20TokenBalances: [],
+  },
 };
 ```
 

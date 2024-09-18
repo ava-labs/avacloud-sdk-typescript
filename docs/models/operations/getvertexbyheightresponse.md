@@ -6,24 +6,28 @@
 import { GetVertexByHeightResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetVertexByHeightResponse = {
-    result: {
-        vertices: [
-            {
-                vertexHash: "<value>",
-                parentHashes: ["<value>"],
-                vertexHeight: 5556.49,
-                vertexIndex: 9295.3,
-                vertexTimestamp: 92.4,
-                txCount: 6699.17,
-                transactions: ["<value>"],
-                vertexSizeBytes: 8330.38,
-            },
+  result: {
+    vertices: [
+      {
+        vertexHash: "<value>",
+        parentHashes: [
+          "<value>",
         ],
-        chainInfo: {
-            chainName: "c-chain",
-            network: "fuji",
-        },
+        vertexHeight: 630.38,
+        vertexIndex: 164.29,
+        vertexTimestamp: 5556.49,
+        txCount: 9295.3,
+        transactions: [
+          "<value>",
+        ],
+        vertexSizeBytes: 92.4,
+      },
+    ],
+    chainInfo: {
+      chainName: "c-chain",
+      network: "fuji",
     },
+  },
 };
 ```
 

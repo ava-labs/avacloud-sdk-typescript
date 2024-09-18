@@ -6,8 +6,8 @@
 import { ContractDeploymentDetails } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ContractDeploymentDetails = {
-    txHash: "<value>",
-    deployerAddress: "<value>",
+  txHash: "<value>",
+  deployerAddress: "<value>",
 };
 ```
 

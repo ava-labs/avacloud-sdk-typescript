@@ -6,8 +6,8 @@
 import { ListSubnetsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListSubnetsRequest = {
-    pageSize: 10,
-    sortOrder: "asc",
+  pageSize: 10,
+  sortOrder: "asc",
 };
 ```
 

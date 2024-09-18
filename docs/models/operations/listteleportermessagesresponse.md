@@ -6,9 +6,9 @@
 import { ListTeleporterMessagesResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListTeleporterMessagesResponse = {
-    result: {
-        messages: [],
-    },
+  result: {
+    messages: [],
+  },
 };
 ```
 

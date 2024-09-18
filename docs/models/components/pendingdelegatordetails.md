@@ -6,16 +6,18 @@
 import { PendingDelegatorDetails } from "@avalabs/avacloud-sdk/models/components";
 
 let value: PendingDelegatorDetails = {
-    txHash: "<value>",
-    nodeId: "<value>",
-    rewardAddresses: ["<value>"],
-    amountDelegated: "<value>",
-    delegationFee: "<value>",
-    startTimestamp: 1965.82,
-    endTimestamp: 9495.72,
-    estimatedGrossReward: "<value>",
-    estimatedNetReward: "<value>",
-    delegationStatus: "pending",
+  txHash: "<value>",
+  nodeId: "<value>",
+  rewardAddresses: [
+    "<value>",
+  ],
+  amountDelegated: "<value>",
+  delegationFee: "<value>",
+  startTimestamp: 6747.52,
+  endTimestamp: 6563.3,
+  estimatedGrossReward: "<value>",
+  estimatedNetReward: "<value>",
+  delegationStatus: "pending",
 };
 ```
 

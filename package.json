@@ -1,9 +1,9 @@
 {
   "name": "@avalabs/avacloud-sdk",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "author": "AvaCloud",
-  "homepage": "https://developer.avacloud.io/avacloud-sdk/getting-started",
   "license": "SEE LICENSE",
+  "homepage": "https://developer.avacloud.io/avacloud-sdk/getting-started",
   "main": "./index.js",
   "sideEffects": false,
   "repository": {
@@ -13,7 +13,7 @@
   "scripts": {
     "lint": "eslint --max-warnings=0 src",
     "build": "tsc",
-    "prepare": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "zod": ">= 3"

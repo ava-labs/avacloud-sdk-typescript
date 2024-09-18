@@ -6,9 +6,9 @@
 import { ListTransfersResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListTransfersResponse = {
-    result: {
-        transfers: [],
-    },
+  result: {
+    transfers: [],
+  },
 };
 ```
 

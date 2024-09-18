@@ -6,7 +6,7 @@
 import { GetEvmChainRollingWindowMetricsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetEvmChainRollingWindowMetricsRequest = {
-    metric: "txCount",
+  metric: "txCount",
 };
 ```
 

@@ -6,13 +6,13 @@
 import { ListAssetTransactionsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListAssetTransactionsResponse = {
-    result: {
-        transactions: [],
-        chainInfo: {
-            chainName: "p-chain",
-            network: "fuji",
-        },
+  result: {
+    transactions: [],
+    chainInfo: {
+      chainName: "c-chain",
+      network: "mainnet",
     },
+  },
 };
 ```
 

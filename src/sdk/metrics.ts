@@ -9,23 +9,23 @@ import { HealthCheck } from "./healthcheck.js";
 import { LookingGlass } from "./lookingglass.js";
 
 export class Metrics extends ClientSDK {
-    private _healthCheck?: HealthCheck;
-    get healthCheck(): HealthCheck {
-        return (this._healthCheck ??= new HealthCheck(this.options$));
-    }
+  private _healthCheck?: HealthCheck;
+  get healthCheck(): HealthCheck {
+    return (this._healthCheck ??= new HealthCheck(this.options$));
+  }
 
-    private _evm?: Evm;
-    get evm(): Evm {
-        return (this._evm ??= new Evm(this.options$));
-    }
+  private _evm?: Evm;
+  get evm(): Evm {
+    return (this._evm ??= new Evm(this.options$));
+  }
 
-    private _chain?: Chain;
-    get chain(): Chain {
-        return (this._chain ??= new Chain(this.options$));
-    }
+  private _chain?: Chain;
+  get chain(): Chain {
+    return (this._chain ??= new Chain(this.options$));
+  }
 
-    private _lookingGlass?: LookingGlass;
-    get lookingGlass(): LookingGlass {
-        return (this._lookingGlass ??= new LookingGlass(this.options$));
-    }
+  private _lookingGlass?: LookingGlass;
+  get lookingGlass(): LookingGlass {
+    return (this._lookingGlass ??= new LookingGlass(this.options$));
+  }
 }

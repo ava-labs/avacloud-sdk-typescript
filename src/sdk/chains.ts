@@ -11,29 +11,37 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Chains extends ClientSDK {
-    /**
-     * Get a list of supported blockchains
-     *
-     * @remarks
-     * Get a list of Popsicle API supported blockchains.
-     */
-    async listChains(
-        request: operations.ListChainsRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<PageIterator<operations.ListChainsResponse>> {
-        return unwrapResultIterator(metricsEvmChainsListChains(this, request, options));
-    }
+  /**
+   * Get a list of supported blockchains
+   *
+   * @remarks
+   * Get a list of Metrics API supported blockchains.
+   */
+  async listChains(
+    request: operations.ListChainsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListChainsResponse>> {
+    return unwrapResultIterator(metricsEvmChainsListChains(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get chain information for supported blockchain
-     *
-     * @remarks
-     * Get chain information for Popsicle API supported blockchain.
-     */
-    async getChain(
-        request: operations.GetChainRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<components.Chain> {
-        return unwrapAsync(metricsEvmChainsGetChain(this, request, options));
-    }
+  /**
+   * Get chain information for supported blockchain
+   *
+   * @remarks
+   * Get chain information for Metrics API supported blockchain.
+   */
+  async getChain(
+    request: operations.GetChainRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.Chain> {
+    return unwrapAsync(metricsEvmChainsGetChain(
+      this,
+      request,
+      options,
+    ));
+  }
 }

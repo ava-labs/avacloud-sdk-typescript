@@ -6,7 +6,7 @@
 import { ListNftTokens } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ListNftTokens = {
-    tokens: [],
+  tokens: [],
 };
 ```
 

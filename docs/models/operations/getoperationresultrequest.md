@@ -6,7 +6,7 @@
 import { GetOperationResultRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetOperationResultRequest = {
-    operationId: "aa22054a-cb7c-4a4e-9b83-59f2ede74138",
+  operationId: "aa22054a-cb7c-4a4e-9b83-59f2ede74138",
 };
 ```
 

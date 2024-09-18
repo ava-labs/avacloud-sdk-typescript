@@ -6,9 +6,9 @@
 import { ListErc1155TransactionsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListErc1155TransactionsResponse = {
-    result: {
-        transactions: [],
-    },
+  result: {
+    transactions: [],
+  },
 };
 ```
 

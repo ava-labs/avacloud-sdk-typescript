@@ -6,7 +6,9 @@
 import { PrimaryNetworkOptions } from "@avalabs/avacloud-sdk/models/components";
 
 let value: PrimaryNetworkOptions = {
-    includeChains: ["p-chain"],
+  includeChains: [
+    "p-chain",
+  ],
 };
 ```
 

@@ -6,7 +6,7 @@
 import { GetSubnetByIdRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetSubnetByIdRequest = {
-    subnetId: "11111111111111111111111111111111LpoYY",
+  subnetId: "11111111111111111111111111111111LpoYY",
 };
 ```
 

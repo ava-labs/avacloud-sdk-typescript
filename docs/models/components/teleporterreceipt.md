@@ -6,8 +6,8 @@
 import { TeleporterReceipt } from "@avalabs/avacloud-sdk/models/components";
 
 let value: TeleporterReceipt = {
-    receivedMessageNonce: "<value>",
-    relayerRewardAddress: "<value>",
+  receivedMessageNonce: "<value>",
+  relayerRewardAddress: "<value>",
 };
 ```
 

@@ -5,31 +5,34 @@
 import * as z from "zod";
 
 export type TeleporterReceipt = {
-    receivedMessageNonce: string;
-    relayerRewardAddress: string;
+  receivedMessageNonce: string;
+  relayerRewardAddress: string;
 };
 
 /** @internal */
-export const TeleporterReceipt$inboundSchema: z.ZodType<TeleporterReceipt, z.ZodTypeDef, unknown> =
-    z.object({
-        receivedMessageNonce: z.string(),
-        relayerRewardAddress: z.string(),
-    });
+export const TeleporterReceipt$inboundSchema: z.ZodType<
+  TeleporterReceipt,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  receivedMessageNonce: z.string(),
+  relayerRewardAddress: z.string(),
+});
 
 /** @internal */
 export type TeleporterReceipt$Outbound = {
-    receivedMessageNonce: string;
-    relayerRewardAddress: string;
+  receivedMessageNonce: string;
+  relayerRewardAddress: string;
 };
 
 /** @internal */
 export const TeleporterReceipt$outboundSchema: z.ZodType<
-    TeleporterReceipt$Outbound,
-    z.ZodTypeDef,
-    TeleporterReceipt
+  TeleporterReceipt$Outbound,
+  z.ZodTypeDef,
+  TeleporterReceipt
 > = z.object({
-    receivedMessageNonce: z.string(),
-    relayerRewardAddress: z.string(),
+  receivedMessageNonce: z.string(),
+  relayerRewardAddress: z.string(),
 });
 
 /**
@@ -37,10 +40,10 @@ export const TeleporterReceipt$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace TeleporterReceipt$ {
-    /** @deprecated use `TeleporterReceipt$inboundSchema` instead. */
-    export const inboundSchema = TeleporterReceipt$inboundSchema;
-    /** @deprecated use `TeleporterReceipt$outboundSchema` instead. */
-    export const outboundSchema = TeleporterReceipt$outboundSchema;
-    /** @deprecated use `TeleporterReceipt$Outbound` instead. */
-    export type Outbound = TeleporterReceipt$Outbound;
+  /** @deprecated use `TeleporterReceipt$inboundSchema` instead. */
+  export const inboundSchema = TeleporterReceipt$inboundSchema;
+  /** @deprecated use `TeleporterReceipt$outboundSchema` instead. */
+  export const outboundSchema = TeleporterReceipt$outboundSchema;
+  /** @deprecated use `TeleporterReceipt$Outbound` instead. */
+  export type Outbound = TeleporterReceipt$Outbound;
 }

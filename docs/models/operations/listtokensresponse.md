@@ -6,9 +6,9 @@
 import { ListTokensResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListTokensResponse = {
-    result: {
-        tokens: [],
-    },
+  result: {
+    tokens: [],
+  },
 };
 ```
 

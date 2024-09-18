@@ -6,23 +6,24 @@
 import { GetLatestBlocksResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetLatestBlocksResponse = {
-    result: {
-        blocks: [
-            {
-                blockNumber: "339",
-                blockTimestamp: 1648672486,
-                blockHash: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
-                txCount: 8445.5,
-                baseFee: "<value>",
-                gasUsed: "<value>",
-                gasLimit: "<value>",
-                gasCost: "<value>",
-                parentHash: "<value>",
-                feesSpent: "<value>",
-                cumulativeTransactions: "<value>",
-            },
-        ],
-    },
+  result: {
+    blocks: [
+      {
+        blockNumber: "339",
+        blockTimestamp: 1648672486,
+        blockHash:
+          "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
+        txCount: 8742.88,
+        baseFee: "<value>",
+        gasUsed: "<value>",
+        gasLimit: "<value>",
+        gasCost: "<value>",
+        parentHash: "<value>",
+        feesSpent: "<value>",
+        cumulativeTransactions: "<value>",
+      },
+    ],
+  },
 };
 ```
 

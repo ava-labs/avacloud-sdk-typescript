@@ -10,7 +10,7 @@
 
 ## listChains
 
-Get a list of Popsicle API supported blockchains.
+Get a list of Metrics API supported blockchains.
 
 ### Example Usage
 
@@ -104,7 +104,7 @@ run();
 
 ## getChain
 
-Get chain information for Popsicle API supported blockchain.
+Get chain information for Metrics API supported blockchain.
 
 ### Example Usage
 

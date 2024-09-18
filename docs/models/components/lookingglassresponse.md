@@ -6,10 +6,10 @@
 import { LookingGlassResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: LookingGlassResponse = {
-    addresses: {
-        address: "0x1234567890abcdef1234567890abcdef123456789",
-        sortKey: "123",
-    },
+  addresses: {
+    address: "0x1234567890abcdef1234567890abcdef123456789",
+    sortKey: "123",
+  },
 };
 ```
 

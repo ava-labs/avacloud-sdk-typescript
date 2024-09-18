@@ -6,12 +6,12 @@
 import { OperationStatusResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: OperationStatusResponse = {
-    operationId: "<value>",
-    operationType: "TRANSACTION_EXPORT_PRIMARY_NETWORK",
-    operationStatus: "FAILED",
-    metadata: {},
-    createdAtTimestamp: 8700.88,
-    updatedAtTimestamp: 9786.19,
+  operationId: "<value>",
+  operationType: "TRANSACTION_EXPORT_PRIMARY_NETWORK_STAKING",
+  operationStatus: "FAILED",
+  metadata: {},
+  createdAtTimestamp: 8009.11,
+  updatedAtTimestamp: 4614.79,
 };
 ```
 

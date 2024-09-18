@@ -5,40 +5,40 @@
 import * as z from "zod";
 
 export type AddressActivityMetadata = {
-    /**
-     * Ethereum address(es) for the address_activity event type
-     */
-    addresses: Array<string>;
-    /**
-     * Array of hexadecimal strings of the event signatures.
-     */
-    eventSignatures?: Array<string> | undefined;
+  /**
+   * Ethereum address(es) for the address_activity event type
+   */
+  addresses: Array<string>;
+  /**
+   * Array of hexadecimal strings of the event signatures.
+   */
+  eventSignatures?: Array<string> | undefined;
 };
 
 /** @internal */
 export const AddressActivityMetadata$inboundSchema: z.ZodType<
-    AddressActivityMetadata,
-    z.ZodTypeDef,
-    unknown
+  AddressActivityMetadata,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    addresses: z.array(z.string()),
-    eventSignatures: z.array(z.string()).optional(),
+  addresses: z.array(z.string()),
+  eventSignatures: z.array(z.string()).optional(),
 });
 
 /** @internal */
 export type AddressActivityMetadata$Outbound = {
-    addresses: Array<string>;
-    eventSignatures?: Array<string> | undefined;
+  addresses: Array<string>;
+  eventSignatures?: Array<string> | undefined;
 };
 
 /** @internal */
 export const AddressActivityMetadata$outboundSchema: z.ZodType<
-    AddressActivityMetadata$Outbound,
-    z.ZodTypeDef,
-    AddressActivityMetadata
+  AddressActivityMetadata$Outbound,
+  z.ZodTypeDef,
+  AddressActivityMetadata
 > = z.object({
-    addresses: z.array(z.string()),
-    eventSignatures: z.array(z.string()).optional(),
+  addresses: z.array(z.string()),
+  eventSignatures: z.array(z.string()).optional(),
 });
 
 /**
@@ -46,10 +46,10 @@ export const AddressActivityMetadata$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace AddressActivityMetadata$ {
-    /** @deprecated use `AddressActivityMetadata$inboundSchema` instead. */
-    export const inboundSchema = AddressActivityMetadata$inboundSchema;
-    /** @deprecated use `AddressActivityMetadata$outboundSchema` instead. */
-    export const outboundSchema = AddressActivityMetadata$outboundSchema;
-    /** @deprecated use `AddressActivityMetadata$Outbound` instead. */
-    export type Outbound = AddressActivityMetadata$Outbound;
+  /** @deprecated use `AddressActivityMetadata$inboundSchema` instead. */
+  export const inboundSchema = AddressActivityMetadata$inboundSchema;
+  /** @deprecated use `AddressActivityMetadata$outboundSchema` instead. */
+  export const outboundSchema = AddressActivityMetadata$outboundSchema;
+  /** @deprecated use `AddressActivityMetadata$Outbound` instead. */
+  export type Outbound = AddressActivityMetadata$Outbound;
 }

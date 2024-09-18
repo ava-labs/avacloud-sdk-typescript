@@ -3,16 +3,16 @@
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    apiKey: "<YOUR_API_KEY_HERE>",
-    chainId: "43114",
-    network: "mainnet",
+  apiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
-    const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
+  const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();

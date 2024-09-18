@@ -6,10 +6,10 @@
 import { DateRangeStarsArenaMinBalanceParam } from "@avalabs/avacloud-sdk/models/components";
 
 let value: DateRangeStarsArenaMinBalanceParam = {
-    firstDate: "<value>",
-    lastDate: "<value>",
-    minBalance: "<value>",
-    subjectAddress: "<value>",
+  firstDate: "<value>",
+  lastDate: "<value>",
+  minBalance: "<value>",
+  subjectAddress: "<value>",
 };
 ```
 

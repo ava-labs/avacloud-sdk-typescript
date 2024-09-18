@@ -6,8 +6,10 @@
 import { ListWebhookAddressesResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ListWebhookAddressesResponse = {
-    addresses: ["<value>"],
-    totalAddresses: 5542.42,
+  addresses: [
+    "<value>",
+  ],
+  totalAddresses: 5899.1,
 };
 ```
 

@@ -6,8 +6,8 @@
 import { Money } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Money = {
-    currencyCode: "usd",
-    value: 42.42,
+  currencyCode: "usd",
+  value: 42.42,
 };
 ```
 

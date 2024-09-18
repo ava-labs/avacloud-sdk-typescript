@@ -58,16 +58,16 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    apiKey: "<YOUR_API_KEY_HERE>",
-    chainId: "43114",
-    network: "mainnet",
+  apiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
-    const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
+  const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -78,116 +78,17 @@ run();
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [metrics.healthCheck](docs/sdks/healthcheck/README.md)
-
-* [metricsHealthCheck](docs/sdks/healthcheck/README.md#metricshealthcheck) - Get the health of the service
-
-
-### [metrics.evm.chains](docs/sdks/chains/README.md)
-
-* [listChains](docs/sdks/chains/README.md#listchains) - Get a list of supported blockchains
-* [getChain](docs/sdks/chains/README.md#getchain) - Get chain information for supported blockchain
+<details open>
+<summary>Available methods</summary>
 
 
-### [metrics.chain.metrics](docs/sdks/avacloudsdkmetrics/README.md)
-
-* [getEvmChainMetrics](docs/sdks/avacloudsdkmetrics/README.md#getevmchainmetrics) - Get metrics for EVM chains
-* [getEvmChainRollingWindowMetrics](docs/sdks/avacloudsdkmetrics/README.md#getevmchainrollingwindowmetrics) - Get rolling window metrics for EVM chains
-* [getStakingMetrics](docs/sdks/avacloudsdkmetrics/README.md#getstakingmetrics) - Get staking metrics for a given subnet
-
-### [metrics.lookingGlass](docs/sdks/lookingglass/README.md)
-
-* [getNftHoldersByContractAddress](docs/sdks/lookingglass/README.md#getnftholdersbycontractaddress) - Get NFT holders by contract address
-* [getAddressesByBalanceOverTime](docs/sdks/lookingglass/README.md#getaddressesbybalanceovertime) - Get addresses by balance over time
-* [getAddressesByBtcbBridged](docs/sdks/lookingglass/README.md#getaddressesbybtcbbridged) - Get addresses by BTCb bridged balance
-* [getValidatorsByDateRange](docs/sdks/lookingglass/README.md#getvalidatorsbydaterange) - Get addresses running validators during a given time frame
-* [compositeQuery](docs/sdks/lookingglass/README.md#compositequery) - Composite query
+### [data](docs/sdks/data/README.md)
 
 
-### [data.healthCheck](docs/sdks/avacloudsdkhealthcheck/README.md)
-
-* [dataHealthCheck](docs/sdks/avacloudsdkhealthcheck/README.md#datahealthcheck) - Get the health of the service
-
-### [data.nfts](docs/sdks/nfts/README.md)
-
-* [reindexNft](docs/sdks/nfts/README.md#reindexnft) - Reindex NFT metadata
-* [listTokens](docs/sdks/nfts/README.md#listtokens) - List tokens
-* [getTokenDetails](docs/sdks/nfts/README.md#gettokendetails) - Get token details
-
-### [data.operations](docs/sdks/operations/README.md)
-
-* [getOperationResult](docs/sdks/operations/README.md#getoperationresult) - Get operation
-* [postTransactionExportJob](docs/sdks/operations/README.md#posttransactionexportjob) - Create transaction export operation
-
-### [data.primaryNetwork](docs/sdks/primarynetwork/README.md)
-
-* [getAssetDetails](docs/sdks/primarynetwork/README.md#getassetdetails) - Get asset details
-* [getChainIdsForAddresses](docs/sdks/primarynetwork/README.md#getchainidsforaddresses) - Get chain interactions for addresses
-* [getNetworkDetails](docs/sdks/primarynetwork/README.md#getnetworkdetails) - Get network details
-* [listBlockchains](docs/sdks/primarynetwork/README.md#listblockchains) - List blockchains
-* [listSubnets](docs/sdks/primarynetwork/README.md#listsubnets) - List subnets
-* [getSubnetById](docs/sdks/primarynetwork/README.md#getsubnetbyid) - Get Subnet details by ID
-* [listValidators](docs/sdks/primarynetwork/README.md#listvalidators) - List validators
-* [getSingleValidatorDetails](docs/sdks/primarynetwork/README.md#getsinglevalidatordetails) - Get single validator details
-* [listDelegators](docs/sdks/primarynetwork/README.md#listdelegators) - List delegators
-
-### [data.primaryNetwork.transactions](docs/sdks/transactions/README.md)
-
-* [getTxByHash](docs/sdks/transactions/README.md#gettxbyhash) - Get transaction
-* [listLatestPrimaryNetworkTransactions](docs/sdks/transactions/README.md#listlatestprimarynetworktransactions) - List latest transactions
-* [listActivePrimaryNetworkStakingTransactions](docs/sdks/transactions/README.md#listactiveprimarynetworkstakingtransactions) - List staking transactions
-* [listAssetTransactions](docs/sdks/transactions/README.md#listassettransactions) - List asset transactions
-
-### [data.primaryNetwork.rewards](docs/sdks/rewards/README.md)
-
-* [listPendingPrimaryNetworkRewards](docs/sdks/rewards/README.md#listpendingprimarynetworkrewards) - List pending rewards
-* [listHistoricalPrimaryNetworkRewards](docs/sdks/rewards/README.md#listhistoricalprimarynetworkrewards) - List historical rewards
-
-### [data.primaryNetwork.utxos](docs/sdks/utxos/README.md)
-
-* [getUtxosByAddresses](docs/sdks/utxos/README.md#getutxosbyaddresses) - List UTXOs
-
-### [data.primaryNetwork.balances](docs/sdks/balances/README.md)
-
-* [getBalancesByAddresses](docs/sdks/balances/README.md#getbalancesbyaddresses) - Get balances
-
-### [data.primaryNetwork.blocks](docs/sdks/blocks/README.md)
-
-* [getBlockById](docs/sdks/blocks/README.md#getblockbyid) - Get block
-* [listPrimaryNetworkBlocksByNodeId](docs/sdks/blocks/README.md#listprimarynetworkblocksbynodeid) - List blocks proposed by node
-* [listLatestPrimaryNetworkBlocks](docs/sdks/blocks/README.md#listlatestprimarynetworkblocks) - List latest blocks
-
-### [data.primaryNetwork.vertices](docs/sdks/vertices/README.md)
-
-* [listLatestXChainVertices](docs/sdks/vertices/README.md#listlatestxchainvertices) - List vertices
-* [getVertexByHash](docs/sdks/vertices/README.md#getvertexbyhash) - Get vertex
-* [getVertexByHeight](docs/sdks/vertices/README.md#getvertexbyheight) - List vertices by height
-
-### [data.usageMetrics](docs/sdks/usagemetrics/README.md)
-
-* [getApiUsageMetrics](docs/sdks/usagemetrics/README.md#getapiusagemetrics) - Get usage metrics for the Glacier API
-* [getApiLogs](docs/sdks/usagemetrics/README.md#getapilogs) - Get logs for requests made by client
-
-### [data.webhooks](docs/sdks/webhooks/README.md)
-
-* [listWebhooks](docs/sdks/webhooks/README.md#listwebhooks) - List webhooks
-* [createWebhook](docs/sdks/webhooks/README.md#createwebhook) - Create a webhook
-* [getWebhook](docs/sdks/webhooks/README.md#getwebhook) - Get a webhook by ID
-* [deactivateWebhook](docs/sdks/webhooks/README.md#deactivatewebhook) - Deactivate a webhook
-* [updateWebhook](docs/sdks/webhooks/README.md#updatewebhook) - Update a webhook
-* [generateSharedSecret](docs/sdks/webhooks/README.md#generatesharedsecret) - Generate a shared secret
-* [getSharedSecret](docs/sdks/webhooks/README.md#getsharedsecret) - Get a shared secret
-* [getAddressesFromWebhook](docs/sdks/webhooks/README.md#getaddressesfromwebhook) - List adresses by webhook
-* [removeAddressesFromWebhook](docs/sdks/webhooks/README.md#removeaddressesfromwebhook) - Remove addresses from webhook
-* [addAddressesToWebhook](docs/sdks/webhooks/README.md#addaddressestowebhook) - Add addresses to webhook
-
-### [data.teleporter](docs/sdks/teleporter/README.md)
-
-* [getTeleporterMessage](docs/sdks/teleporter/README.md#getteleportermessage) - Get a teleporter message
-* [listTeleporterMessages](docs/sdks/teleporter/README.md#listteleportermessages) - List teleporter messages
+#### [data.evm](docs/sdks/avacloudsdkevm/README.md)
 
 
-### [data.evm.balances](docs/sdks/avacloudsdkbalances/README.md)
+#### [data.evm.balances](docs/sdks/avacloudsdkbalances/README.md)
 
 * [getNativeBalance](docs/sdks/avacloudsdkbalances/README.md#getnativebalance) - Get native token balance
 * [listErc20Balances](docs/sdks/avacloudsdkbalances/README.md#listerc20balances) - List ERC-20 balances
@@ -195,12 +96,21 @@ run();
 * [listErc1155Balances](docs/sdks/avacloudsdkbalances/README.md#listerc1155balances) - List ERC-1155 balances
 * [listCollectibleBalances](docs/sdks/avacloudsdkbalances/README.md#listcollectiblebalances) - List collectible (ERC-721/ERC-1155) balances
 
-### [data.evm.blocks](docs/sdks/avacloudsdkblocks/README.md)
+#### [data.evm.blocks](docs/sdks/avacloudsdkblocks/README.md)
 
 * [getLatestBlocks](docs/sdks/avacloudsdkblocks/README.md#getlatestblocks) - List latest blocks
 * [getBlock](docs/sdks/avacloudsdkblocks/README.md#getblock) - Get block
 
-### [data.evm.transactions](docs/sdks/avacloudsdktransactions/README.md)
+#### [data.evm.chains](docs/sdks/avacloudsdkchains/README.md)
+
+* [supportedChains](docs/sdks/avacloudsdkchains/README.md#supportedchains) - List chains
+* [getChainInfo](docs/sdks/avacloudsdkchains/README.md#getchaininfo) - Get chain information
+
+#### [data.evm.contracts](docs/sdks/contracts/README.md)
+
+* [getContractMetadata](docs/sdks/contracts/README.md#getcontractmetadata) - Get contract metadata
+
+#### [data.evm.transactions](docs/sdks/avacloudsdktransactions/README.md)
 
 * [getDeploymentTransaction](docs/sdks/avacloudsdktransactions/README.md#getdeploymenttransaction) - Get deployment transaction
 * [listContractDeployments](docs/sdks/avacloudsdktransactions/README.md#listcontractdeployments) - List deployed contracts
@@ -215,14 +125,123 @@ run();
 * [getTransactionsForBlock](docs/sdks/avacloudsdktransactions/README.md#gettransactionsforblock) - List transactions for a block
 * [listLatestTransactions](docs/sdks/avacloudsdktransactions/README.md#listlatesttransactions) - List latest transactions
 
-### [data.evm.contracts](docs/sdks/contracts/README.md)
+#### [data.healthCheck](docs/sdks/avacloudsdkhealthcheck/README.md)
 
-* [getContractMetadata](docs/sdks/contracts/README.md#getcontractmetadata) - Get contract metadata
+* [dataHealthCheck](docs/sdks/avacloudsdkhealthcheck/README.md#datahealthcheck) - Get the health of the service
 
-### [data.evm.chains](docs/sdks/avacloudsdkchains/README.md)
+#### [data.nfts](docs/sdks/nfts/README.md)
 
-* [supportedChains](docs/sdks/avacloudsdkchains/README.md#supportedchains) - List chains
-* [getChainInfo](docs/sdks/avacloudsdkchains/README.md#getchaininfo) - Get chain information
+* [reindexNft](docs/sdks/nfts/README.md#reindexnft) - Reindex NFT metadata
+* [listTokens](docs/sdks/nfts/README.md#listtokens) - List tokens
+* [getTokenDetails](docs/sdks/nfts/README.md#gettokendetails) - Get token details
+
+#### [data.operations](docs/sdks/operations/README.md)
+
+* [getOperationResult](docs/sdks/operations/README.md#getoperationresult) - Get operation
+* [postTransactionExportJob](docs/sdks/operations/README.md#posttransactionexportjob) - Create transaction export operation
+
+#### [data.primaryNetwork](docs/sdks/primarynetwork/README.md)
+
+* [getAssetDetails](docs/sdks/primarynetwork/README.md#getassetdetails) - Get asset details
+* [getChainIdsForAddresses](docs/sdks/primarynetwork/README.md#getchainidsforaddresses) - Get chain interactions for addresses
+* [getNetworkDetails](docs/sdks/primarynetwork/README.md#getnetworkdetails) - Get network details
+* [listBlockchains](docs/sdks/primarynetwork/README.md#listblockchains) - List blockchains
+* [listSubnets](docs/sdks/primarynetwork/README.md#listsubnets) - List subnets
+* [getSubnetById](docs/sdks/primarynetwork/README.md#getsubnetbyid) - Get Subnet details by ID
+* [listValidators](docs/sdks/primarynetwork/README.md#listvalidators) - List validators
+* [getSingleValidatorDetails](docs/sdks/primarynetwork/README.md#getsinglevalidatordetails) - Get single validator details
+* [listDelegators](docs/sdks/primarynetwork/README.md#listdelegators) - List delegators
+
+#### [data.primaryNetwork.balances](docs/sdks/balances/README.md)
+
+* [getBalancesByAddresses](docs/sdks/balances/README.md#getbalancesbyaddresses) - Get balances
+
+#### [data.primaryNetwork.blocks](docs/sdks/blocks/README.md)
+
+* [getBlockById](docs/sdks/blocks/README.md#getblockbyid) - Get block
+* [listPrimaryNetworkBlocksByNodeId](docs/sdks/blocks/README.md#listprimarynetworkblocksbynodeid) - List blocks proposed by node
+* [listLatestPrimaryNetworkBlocks](docs/sdks/blocks/README.md#listlatestprimarynetworkblocks) - List latest blocks
+
+#### [data.primaryNetwork.rewards](docs/sdks/rewards/README.md)
+
+* [listPendingPrimaryNetworkRewards](docs/sdks/rewards/README.md#listpendingprimarynetworkrewards) - List pending rewards
+* [listHistoricalPrimaryNetworkRewards](docs/sdks/rewards/README.md#listhistoricalprimarynetworkrewards) - List historical rewards
+
+#### [data.primaryNetwork.transactions](docs/sdks/transactions/README.md)
+
+* [getTxByHash](docs/sdks/transactions/README.md#gettxbyhash) - Get transaction
+* [listLatestPrimaryNetworkTransactions](docs/sdks/transactions/README.md#listlatestprimarynetworktransactions) - List latest transactions
+* [listActivePrimaryNetworkStakingTransactions](docs/sdks/transactions/README.md#listactiveprimarynetworkstakingtransactions) - List staking transactions
+* [listAssetTransactions](docs/sdks/transactions/README.md#listassettransactions) - List asset transactions
+
+#### [data.primaryNetwork.utxos](docs/sdks/utxos/README.md)
+
+* [getUtxosByAddresses](docs/sdks/utxos/README.md#getutxosbyaddresses) - List UTXOs
+
+#### [data.primaryNetwork.vertices](docs/sdks/vertices/README.md)
+
+* [listLatestXChainVertices](docs/sdks/vertices/README.md#listlatestxchainvertices) - List vertices
+* [getVertexByHash](docs/sdks/vertices/README.md#getvertexbyhash) - Get vertex
+* [getVertexByHeight](docs/sdks/vertices/README.md#getvertexbyheight) - List vertices by height
+
+#### [data.teleporter](docs/sdks/teleporter/README.md)
+
+* [getTeleporterMessage](docs/sdks/teleporter/README.md#getteleportermessage) - Get a teleporter message
+* [listTeleporterMessages](docs/sdks/teleporter/README.md#listteleportermessages) - List teleporter messages
+* [listTeleporterMessagesByAddress](docs/sdks/teleporter/README.md#listteleportermessagesbyaddress) - List teleporter messages by address
+
+#### [data.usageMetrics](docs/sdks/usagemetrics/README.md)
+
+* [getApiUsageMetrics](docs/sdks/usagemetrics/README.md#getapiusagemetrics) - Get usage metrics for the Glacier API
+* [getApiLogs](docs/sdks/usagemetrics/README.md#getapilogs) - Get logs for requests made by client
+
+#### [data.webhooks](docs/sdks/webhooks/README.md)
+
+* [listWebhooks](docs/sdks/webhooks/README.md#listwebhooks) - List webhooks
+* [createWebhook](docs/sdks/webhooks/README.md#createwebhook) - Create a webhook
+* [getWebhook](docs/sdks/webhooks/README.md#getwebhook) - Get a webhook by ID
+* [deactivateWebhook](docs/sdks/webhooks/README.md#deactivatewebhook) - Deactivate a webhook
+* [updateWebhook](docs/sdks/webhooks/README.md#updatewebhook) - Update a webhook
+* [generateSharedSecret](docs/sdks/webhooks/README.md#generatesharedsecret) - Generate a shared secret
+* [getSharedSecret](docs/sdks/webhooks/README.md#getsharedsecret) - Get a shared secret
+* [getAddressesFromWebhook](docs/sdks/webhooks/README.md#getaddressesfromwebhook) - List adresses by webhook
+* [removeAddressesFromWebhook](docs/sdks/webhooks/README.md#removeaddressesfromwebhook) - Remove addresses from webhook
+* [addAddressesToWebhook](docs/sdks/webhooks/README.md#addaddressestowebhook) - Add addresses to webhook
+
+### [metrics](docs/sdks/metrics/README.md)
+
+
+#### [metrics.chain](docs/sdks/chain/README.md)
+
+
+#### [metrics.chain.metrics](docs/sdks/avacloudsdkmetrics/README.md)
+
+* [getEvmChainMetrics](docs/sdks/avacloudsdkmetrics/README.md#getevmchainmetrics) - Get metrics for EVM chains
+* [getTeleporterMetricsByChain](docs/sdks/avacloudsdkmetrics/README.md#getteleportermetricsbychain) - Get teleporter metrics for EVM chains
+* [getEvmChainRollingWindowMetrics](docs/sdks/avacloudsdkmetrics/README.md#getevmchainrollingwindowmetrics) - Get rolling window metrics for EVM chains
+* [getStakingMetrics](docs/sdks/avacloudsdkmetrics/README.md#getstakingmetrics) - Get staking metrics for a given subnet
+
+#### [metrics.evm](docs/sdks/evm/README.md)
+
+
+#### [metrics.evm.chains](docs/sdks/chains/README.md)
+
+* [listChains](docs/sdks/chains/README.md#listchains) - Get a list of supported blockchains
+* [getChain](docs/sdks/chains/README.md#getchain) - Get chain information for supported blockchain
+
+#### [metrics.healthCheck](docs/sdks/healthcheck/README.md)
+
+* [metricsHealthCheck](docs/sdks/healthcheck/README.md#metricshealthcheck) - Get the health of the service
+
+#### [metrics.lookingGlass](docs/sdks/lookingglass/README.md)
+
+* [getNftHoldersByContractAddress](docs/sdks/lookingglass/README.md#getnftholdersbycontractaddress) - Get NFT holders by contract address
+* [getAddressesByBalanceOverTime](docs/sdks/lookingglass/README.md#getaddressesbybalanceovertime) - Get addresses by balance over time
+* [getAddressesByBtcbBridged](docs/sdks/lookingglass/README.md#getaddressesbybtcbbridged) - Get addresses by BTCb bridged balance
+* [getValidatorsByDateRange](docs/sdks/lookingglass/README.md#getvalidatorsbydaterange) - Get addresses running validators during a given time frame
+* [compositeQuery](docs/sdks/lookingglass/README.md#compositequery) - Composite query
+
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Standalone functions [standalone-funcs] -->
@@ -292,6 +311,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [dataPrimaryNetworkVerticesGetVertexByHeight](docs/sdks/vertices/README.md#getvertexbyheight)
 - [dataPrimaryNetworkVerticesListLatestXChainVertices](docs/sdks/vertices/README.md#listlatestxchainvertices)
 - [dataTeleporterGetTeleporterMessage](docs/sdks/teleporter/README.md#getteleportermessage)
+- [dataTeleporterListTeleporterMessagesByAddress](docs/sdks/teleporter/README.md#listteleportermessagesbyaddress)
 - [dataTeleporterListTeleporterMessages](docs/sdks/teleporter/README.md#listteleportermessages)
 - [dataUsageMetricsGetApiLogs](docs/sdks/usagemetrics/README.md#getapilogs)
 - [dataUsageMetricsGetApiUsageMetrics](docs/sdks/usagemetrics/README.md#getapiusagemetrics)
@@ -308,6 +328,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [metricsChainMetricsGetEvmChainMetrics](docs/sdks/avacloudsdkmetrics/README.md#getevmchainmetrics)
 - [metricsChainMetricsGetEvmChainRollingWindowMetrics](docs/sdks/avacloudsdkmetrics/README.md#getevmchainrollingwindowmetrics)
 - [metricsChainMetricsGetStakingMetrics](docs/sdks/avacloudsdkmetrics/README.md#getstakingmetrics)
+- [metricsChainMetricsGetTeleporterMetricsByChain](docs/sdks/avacloudsdkmetrics/README.md#getteleportermetricsbychain)
 - [metricsEvmChainsGetChain](docs/sdks/chains/README.md#getchain)
 - [metricsEvmChainsListChains](docs/sdks/chains/README.md#listchains)
 - [metricsHealthCheckMetricsHealthCheck](docs/sdks/healthcheck/README.md#metricshealthcheck)
@@ -345,20 +366,20 @@ The following global parameters are available.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    apiKey: "<YOUR_API_KEY_HERE>",
-    chainId: "43114",
-    network: "mainnet",
+  apiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
-    const result = await avaCloudSDK.metrics.evm.chains.listChains({
-        network: "mainnet",
-    });
+  const result = await avaCloudSDK.metrics.evm.chains.listChains({
+    network: "mainnet",
+  });
 
-    for await (const page of result) {
-        // Handle the page
-        console.log(page);
-    }
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -382,20 +403,20 @@ Here's an example of one such pagination call:
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    apiKey: "<YOUR_API_KEY_HERE>",
-    chainId: "43114",
-    network: "mainnet",
+  apiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
-    const result = await avaCloudSDK.metrics.evm.chains.listChains({
-        network: "mainnet",
-    });
+  const result = await avaCloudSDK.metrics.evm.chains.listChains({
+    network: "mainnet",
+  });
 
-    for await (const page of result) {
-        // Handle the page
-        console.log(page);
-    }
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -413,27 +434,27 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    apiKey: "<YOUR_API_KEY_HERE>",
-    chainId: "43114",
-    network: "mainnet",
+  apiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
-    const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck({
-        retries: {
-            strategy: "backoff",
-            backoff: {
-                initialInterval: 1,
-                maxInterval: 50,
-                exponent: 1.1,
-                maxElapsedTime: 100,
-            },
-            retryConnectionErrors: false,
-        },
-    });
+  const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck({
+    retries: {
+      strategy: "backoff",
+      backoff: {
+        initialInterval: 1,
+        maxInterval: 50,
+        exponent: 1.1,
+        maxElapsedTime: 100,
+      },
+      retryConnectionErrors: false,
+    },
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -445,26 +466,26 @@ If you'd like to override the default retry strategy for all operations that sup
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    retryConfig: {
-        strategy: "backoff",
-        backoff: {
-            initialInterval: 1,
-            maxInterval: 50,
-            exponent: 1.1,
-            maxElapsedTime: 100,
-        },
-        retryConnectionErrors: false,
+  retryConfig: {
+    strategy: "backoff",
+    backoff: {
+      initialInterval: 1,
+      maxInterval: 50,
+      exponent: 1.1,
+      maxElapsedTime: 100,
     },
-    apiKey: "<YOUR_API_KEY_HERE>",
-    chainId: "43114",
-    network: "mainnet",
+    retryConnectionErrors: false,
+  },
+  apiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
-    const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
+  const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -495,83 +516,83 @@ Validation errors can also occur when either method arguments or data returned f
 ```typescript
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 import {
-    BadGateway,
-    BadRequest,
-    Forbidden,
-    InternalServerError,
-    NotFound,
-    SDKValidationError,
-    ServiceUnavailable,
-    TooManyRequests,
-    Unauthorized,
+  BadGateway,
+  BadRequest,
+  Forbidden,
+  InternalServerError,
+  NotFound,
+  SDKValidationError,
+  ServiceUnavailable,
+  TooManyRequests,
+  Unauthorized,
 } from "@avalabs/avacloud-sdk/models/errors";
 
 const avaCloudSDK = new AvaCloudSDK({
-    apiKey: "<YOUR_API_KEY_HERE>",
-    chainId: "43114",
-    network: "mainnet",
+  apiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
-    try {
-        await avaCloudSDK.data.nfts.reindexNft({
-            address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
-            tokenId: "145",
-        });
-    } catch (err) {
-        switch (true) {
-            case err instanceof SDKValidationError: {
-                // Validation errors can be pretty-printed
-                console.error(err.pretty());
-                // Raw value may also be inspected
-                console.error(err.rawValue);
-                return;
-            }
-            case err instanceof BadRequest: {
-                // Handle err.data$: BadRequestData
-                console.error(err);
-                return;
-            }
-            case err instanceof Unauthorized: {
-                // Handle err.data$: UnauthorizedData
-                console.error(err);
-                return;
-            }
-            case err instanceof Forbidden: {
-                // Handle err.data$: ForbiddenData
-                console.error(err);
-                return;
-            }
-            case err instanceof NotFound: {
-                // Handle err.data$: NotFoundData
-                console.error(err);
-                return;
-            }
-            case err instanceof TooManyRequests: {
-                // Handle err.data$: TooManyRequestsData
-                console.error(err);
-                return;
-            }
-            case err instanceof InternalServerError: {
-                // Handle err.data$: InternalServerErrorData
-                console.error(err);
-                return;
-            }
-            case err instanceof BadGateway: {
-                // Handle err.data$: BadGatewayData
-                console.error(err);
-                return;
-            }
-            case err instanceof ServiceUnavailable: {
-                // Handle err.data$: ServiceUnavailableData
-                console.error(err);
-                return;
-            }
-            default: {
-                throw err;
-            }
-        }
+  try {
+    await avaCloudSDK.data.nfts.reindexNft({
+      address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+      tokenId: "145",
+    });
+  } catch (err) {
+    switch (true) {
+      case (err instanceof SDKValidationError): {
+        // Validation errors can be pretty-printed
+        console.error(err.pretty());
+        // Raw value may also be inspected
+        console.error(err.rawValue);
+        return;
+      }
+      case (err instanceof BadRequest): {
+        // Handle err.data$: BadRequestData
+        console.error(err);
+        return;
+      }
+      case (err instanceof Unauthorized): {
+        // Handle err.data$: UnauthorizedData
+        console.error(err);
+        return;
+      }
+      case (err instanceof Forbidden): {
+        // Handle err.data$: ForbiddenData
+        console.error(err);
+        return;
+      }
+      case (err instanceof NotFound): {
+        // Handle err.data$: NotFoundData
+        console.error(err);
+        return;
+      }
+      case (err instanceof TooManyRequests): {
+        // Handle err.data$: TooManyRequestsData
+        console.error(err);
+        return;
+      }
+      case (err instanceof InternalServerError): {
+        // Handle err.data$: InternalServerErrorData
+        console.error(err);
+        return;
+      }
+      case (err instanceof BadGateway): {
+        // Handle err.data$: BadGatewayData
+        console.error(err);
+        return;
+      }
+      case (err instanceof ServiceUnavailable): {
+        // Handle err.data$: ServiceUnavailableData
+        console.error(err);
+        return;
+      }
+      default: {
+        throw err;
+      }
     }
+  }
 }
 
 run();
@@ -590,17 +611,17 @@ The default server can be overridden globally by passing a URL to the `serverURL
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    serverURL: "",
-    apiKey: "<YOUR_API_KEY_HERE>",
-    chainId: "43114",
-    network: "mainnet",
+  serverURL: "",
+  apiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
-    const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
+  const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -614,18 +635,18 @@ The server URL can also be overridden on a per-operation basis, provided a serve
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    apiKey: "<YOUR_API_KEY_HERE>",
-    chainId: "43114",
-    network: "mainnet",
+  apiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
-    const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck({
-        serverURL: "https://popsicle-api.avax.network",
-    });
+  const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck({
+    serverURL: "https://metrics.avax.network",
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -698,16 +719,16 @@ To authenticate with the API the `apiKey` parameter must be set when initializin
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-    apiKey: "<YOUR_API_KEY_HERE>",
-    chainId: "43114",
-    network: "mainnet",
+  apiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
 });
 
 async function run() {
-    const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
+  const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();

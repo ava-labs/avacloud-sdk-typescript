@@ -5,37 +5,40 @@
 import * as z from "zod";
 
 export type AddressDetails = {
-    /**
-     * An EVM address.
-     */
-    address: string;
-    /**
-     * Route dependent value associated with an address at a given point in time.
-     */
-    sortKey: string;
+  /**
+   * An EVM address.
+   */
+  address: string;
+  /**
+   * Route dependent value associated with an address at a given point in time.
+   */
+  sortKey: string;
 };
 
 /** @internal */
-export const AddressDetails$inboundSchema: z.ZodType<AddressDetails, z.ZodTypeDef, unknown> =
-    z.object({
-        address: z.string(),
-        sortKey: z.string(),
-    });
+export const AddressDetails$inboundSchema: z.ZodType<
+  AddressDetails,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  address: z.string(),
+  sortKey: z.string(),
+});
 
 /** @internal */
 export type AddressDetails$Outbound = {
-    address: string;
-    sortKey: string;
+  address: string;
+  sortKey: string;
 };
 
 /** @internal */
 export const AddressDetails$outboundSchema: z.ZodType<
-    AddressDetails$Outbound,
-    z.ZodTypeDef,
-    AddressDetails
+  AddressDetails$Outbound,
+  z.ZodTypeDef,
+  AddressDetails
 > = z.object({
-    address: z.string(),
-    sortKey: z.string(),
+  address: z.string(),
+  sortKey: z.string(),
 });
 
 /**
@@ -43,10 +46,10 @@ export const AddressDetails$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace AddressDetails$ {
-    /** @deprecated use `AddressDetails$inboundSchema` instead. */
-    export const inboundSchema = AddressDetails$inboundSchema;
-    /** @deprecated use `AddressDetails$outboundSchema` instead. */
-    export const outboundSchema = AddressDetails$outboundSchema;
-    /** @deprecated use `AddressDetails$Outbound` instead. */
-    export type Outbound = AddressDetails$Outbound;
+  /** @deprecated use `AddressDetails$inboundSchema` instead. */
+  export const inboundSchema = AddressDetails$inboundSchema;
+  /** @deprecated use `AddressDetails$outboundSchema` instead. */
+  export const outboundSchema = AddressDetails$outboundSchema;
+  /** @deprecated use `AddressDetails$Outbound` instead. */
+  export type Outbound = AddressDetails$Outbound;
 }

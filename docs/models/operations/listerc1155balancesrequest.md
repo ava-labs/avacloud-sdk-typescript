@@ -6,10 +6,10 @@
 import { ListErc1155BalancesRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListErc1155BalancesRequest = {
-    blockNumber: "6479329",
-    pageSize: 10,
-    address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-    contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+  blockNumber: "6479329",
+  pageSize: 10,
+  address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+  contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
 };
 ```
 

@@ -6,19 +6,20 @@
 import { ListValidatorsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListValidatorsRequest = {
-    pageSize: 10,
-    nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
-    sortOrder: "asc",
-    validationStatus: "completed",
-    minDelegationCapacity: "0",
-    maxDelegationCapacity: "720000000000000000",
-    minTimeRemaining: 0,
-    maxTimeRemaining: 2147483647,
-    minFeePercentage: 2,
-    maxFeePercentage: 100,
-    minUptimePerformance: 90,
-    maxUptimePerformance: 100,
-    subnetId: "11111111111111111111111111111111LpoYY",
+  pageSize: 10,
+  nodeIds:
+    "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
+  sortOrder: "asc",
+  validationStatus: "completed",
+  minDelegationCapacity: "0",
+  maxDelegationCapacity: "720000000000000000",
+  minTimeRemaining: 0,
+  maxTimeRemaining: 2147483647,
+  minFeePercentage: 2,
+  maxFeePercentage: 100,
+  minUptimePerformance: 90,
+  maxUptimePerformance: 100,
+  subnetId: "11111111111111111111111111111111LpoYY",
 };
 ```
 

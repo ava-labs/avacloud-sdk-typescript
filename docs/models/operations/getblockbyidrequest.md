@@ -6,8 +6,8 @@
 import { GetBlockByIdRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetBlockByIdRequest = {
-    blockchainId: "p-chain",
-    blockId: "5615di9ytxujackzaXNrVuWQy5y8Yrt8chPCscMr5Ku9YxJ1S",
+  blockchainId: "p-chain",
+  blockId: "5615di9ytxujackzaXNrVuWQy5y8Yrt8chPCscMr5Ku9YxJ1S",
 };
 ```
 

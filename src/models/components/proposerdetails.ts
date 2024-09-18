@@ -5,43 +5,46 @@
 import * as z from "zod";
 
 export type ProposerDetails = {
-    proposerId?: string | undefined;
-    proposerParentId?: string | undefined;
-    proposerNodeId?: string | undefined;
-    proposerPChainHeight?: number | undefined;
-    proposerTimestamp?: number | undefined;
+  proposerId?: string | undefined;
+  proposerParentId?: string | undefined;
+  proposerNodeId?: string | undefined;
+  proposerPChainHeight?: number | undefined;
+  proposerTimestamp?: number | undefined;
 };
 
 /** @internal */
-export const ProposerDetails$inboundSchema: z.ZodType<ProposerDetails, z.ZodTypeDef, unknown> =
-    z.object({
-        proposerId: z.string().optional(),
-        proposerParentId: z.string().optional(),
-        proposerNodeId: z.string().optional(),
-        proposerPChainHeight: z.number().optional(),
-        proposerTimestamp: z.number().optional(),
-    });
+export const ProposerDetails$inboundSchema: z.ZodType<
+  ProposerDetails,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  proposerId: z.string().optional(),
+  proposerParentId: z.string().optional(),
+  proposerNodeId: z.string().optional(),
+  proposerPChainHeight: z.number().optional(),
+  proposerTimestamp: z.number().optional(),
+});
 
 /** @internal */
 export type ProposerDetails$Outbound = {
-    proposerId?: string | undefined;
-    proposerParentId?: string | undefined;
-    proposerNodeId?: string | undefined;
-    proposerPChainHeight?: number | undefined;
-    proposerTimestamp?: number | undefined;
+  proposerId?: string | undefined;
+  proposerParentId?: string | undefined;
+  proposerNodeId?: string | undefined;
+  proposerPChainHeight?: number | undefined;
+  proposerTimestamp?: number | undefined;
 };
 
 /** @internal */
 export const ProposerDetails$outboundSchema: z.ZodType<
-    ProposerDetails$Outbound,
-    z.ZodTypeDef,
-    ProposerDetails
+  ProposerDetails$Outbound,
+  z.ZodTypeDef,
+  ProposerDetails
 > = z.object({
-    proposerId: z.string().optional(),
-    proposerParentId: z.string().optional(),
-    proposerNodeId: z.string().optional(),
-    proposerPChainHeight: z.number().optional(),
-    proposerTimestamp: z.number().optional(),
+  proposerId: z.string().optional(),
+  proposerParentId: z.string().optional(),
+  proposerNodeId: z.string().optional(),
+  proposerPChainHeight: z.number().optional(),
+  proposerTimestamp: z.number().optional(),
 });
 
 /**
@@ -49,10 +52,10 @@ export const ProposerDetails$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace ProposerDetails$ {
-    /** @deprecated use `ProposerDetails$inboundSchema` instead. */
-    export const inboundSchema = ProposerDetails$inboundSchema;
-    /** @deprecated use `ProposerDetails$outboundSchema` instead. */
-    export const outboundSchema = ProposerDetails$outboundSchema;
-    /** @deprecated use `ProposerDetails$Outbound` instead. */
-    export type Outbound = ProposerDetails$Outbound;
+  /** @deprecated use `ProposerDetails$inboundSchema` instead. */
+  export const inboundSchema = ProposerDetails$inboundSchema;
+  /** @deprecated use `ProposerDetails$outboundSchema` instead. */
+  export const outboundSchema = ProposerDetails$outboundSchema;
+  /** @deprecated use `ProposerDetails$Outbound` instead. */
+  export type Outbound = ProposerDetails$Outbound;
 }

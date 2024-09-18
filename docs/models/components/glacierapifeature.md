@@ -11,5 +11,5 @@ let value: GlacierApiFeature = "nftIndexing";
 ## Values
 
 ```typescript
-"nftIndexing" | "webhooks"
+"nftIndexing" | "webhooks" | "teleporter"
 ```

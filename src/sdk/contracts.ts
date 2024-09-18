@@ -8,16 +8,20 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Contracts extends ClientSDK {
-    /**
-     * Get contract metadata
-     *
-     * @remarks
-     * Gets metadata about the contract at the given address.
-     */
-    async getContractMetadata(
-        request: operations.GetContractMetadataRequest,
-        options?: RequestOptions & { serverURL?: string }
-    ): Promise<operations.GetContractMetadataResponseBody> {
-        return unwrapAsync(dataEvmContractsGetContractMetadata(this, request, options));
-    }
+  /**
+   * Get contract metadata
+   *
+   * @remarks
+   * Gets metadata about the contract at the given address.
+   */
+  async getContractMetadata(
+    request: operations.GetContractMetadataRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<operations.GetContractMetadataResponseBody> {
+    return unwrapAsync(dataEvmContractsGetContractMetadata(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -6,12 +6,12 @@
 import { MetricsApiResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: MetricsApiResponse = {
-    results: [
-        {
-            value: 5488.14,
-            timestamp: 5928.45,
-        },
-    ],
+  results: [
+    {
+      value: 5488.14,
+      timestamp: 5928.45,
+    },
+  ],
 };
 ```
 

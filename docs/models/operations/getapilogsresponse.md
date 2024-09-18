@@ -6,29 +6,29 @@
 import { GetApiLogsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetApiLogsResponse = {
-    result: {
+  result: {
+    orgId: "<value>",
+    logs: [
+      {
         orgId: "<value>",
-        logs: [
-            {
-                orgId: "<value>",
-                logId: "<value>",
-                eventTimestamp: 5864.1,
-                apiKeyId: "<value>",
-                apiKeyAlias: "<value>",
-                hostRegion: "<value>",
-                requestType: "data",
-                requestPath: "<value>",
-                apiCreditsConsumed: 639.55,
-                requestDurationMsecs: 5123.93,
-                responseCode: 4856.28,
-                metadata: {
-                    ipAddress: "148.250.201.224",
-                    host: "overlooked-feature.biz",
-                    userAgent: "<value>",
-                },
-            },
-        ],
-    },
+        logId: "<value>",
+        eventTimestamp: 2817.3,
+        apiKeyId: "<value>",
+        apiKeyAlias: "<value>",
+        hostRegion: "<value>",
+        requestType: "rpc",
+        requestPath: "<value>",
+        apiCreditsConsumed: 5864.1,
+        requestDurationMsecs: 1816.31,
+        responseCode: 639.55,
+        metadata: {
+          ipAddress: "131.124.148.250",
+          host: "spicy-swallow.name",
+          userAgent: "<value>",
+        },
+      },
+    ],
+  },
 };
 ```
 

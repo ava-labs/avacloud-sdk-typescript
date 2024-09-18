@@ -6,22 +6,24 @@
 import { PendingReward } from "@avalabs/avacloud-sdk/models/components";
 
 let value: PendingReward = {
-    addresses: ["avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg"],
-    txHash: "<value>",
-    amountStaked: "<value>",
-    nodeId: "<value>",
-    startTimestamp: 2487.53,
-    endTimestamp: 7561.07,
-    rewardType: "DELEGATOR",
-    progress: 3960.98,
-    estimatedReward: {
-        assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
-        name: "Avalanche",
-        symbol: "AVAX",
-        denomination: 9,
-        type: "nft",
-        amount: "5001000",
-    },
+  addresses: [
+    "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
+  ],
+  txHash: "<value>",
+  amountStaked: "<value>",
+  nodeId: "<value>",
+  startTimestamp: 7037.37,
+  endTimestamp: 7351.94,
+  rewardType: "VALIDATOR",
+  progress: 9621.89,
+  estimatedReward: {
+    assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+    name: "Avalanche",
+    symbol: "AVAX",
+    denomination: 9,
+    type: "secp256k1",
+    amount: "5001000",
+  },
 };
 ```
 

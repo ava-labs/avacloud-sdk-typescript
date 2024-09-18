@@ -6,14 +6,16 @@
 import { PrimaryNetworkBlock } from "@avalabs/avacloud-sdk/models/components";
 
 let value: PrimaryNetworkBlock = {
-    blockNumber: "<value>",
-    blockHash: "<value>",
-    parentHash: "<value>",
-    blockTimestamp: 8965.47,
-    blockType: "<value>",
-    txCount: 1412.64,
-    transactions: ["<value>"],
-    blockSizeBytes: 3675.62,
+  blockNumber: "<value>",
+  blockHash: "<value>",
+  parentHash: "<value>",
+  blockTimestamp: 9689.62,
+  blockType: "<value>",
+  txCount: 6521.03,
+  transactions: [
+    "<value>",
+  ],
+  blockSizeBytes: 3209.97,
 };
 ```
 

@@ -6,26 +6,26 @@
 import { ActiveValidatorDetails } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ActiveValidatorDetails = {
-    txHash: "<value>",
-    nodeId: "<value>",
-    subnetId: "<value>",
-    amountStaked: "<value>",
-    startTimestamp: 3250.47,
-    endTimestamp: 5701.97,
-    stakePercentage: 384.25,
-    delegatorCount: 4386.01,
-    uptimePerformance: 6342.74,
-    potentialRewards: {
-        validationRewardAmount: "<value>",
-        delegationRewardAmount: "<value>",
-    },
-    validationStatus: "active",
-    validatorHealth: {
-        reachabilityPercent: 9883.74,
-        benchedPChainRequestsPercent: 9589.5,
-        benchedXChainRequestsPercent: 1020.44,
-        benchedCChainRequestsPercent: 6527.9,
-    },
+  txHash: "<value>",
+  nodeId: "<value>",
+  subnetId: "<value>",
+  amountStaked: "<value>",
+  startTimestamp: 1289.26,
+  endTimestamp: 7506.86,
+  stakePercentage: 3154.28,
+  delegatorCount: 6078.31,
+  uptimePerformance: 3637.11,
+  potentialRewards: {
+    validationRewardAmount: "<value>",
+    delegationRewardAmount: "<value>",
+  },
+  validationStatus: "active",
+  validatorHealth: {
+    reachabilityPercent: 3250.47,
+    benchedPChainRequestsPercent: 5701.97,
+    benchedXChainRequestsPercent: 384.25,
+    benchedCChainRequestsPercent: 4386.01,
+  },
 };
 ```
 

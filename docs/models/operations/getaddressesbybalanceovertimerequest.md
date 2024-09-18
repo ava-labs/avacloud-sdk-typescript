@@ -6,11 +6,11 @@
 import { GetAddressesByBalanceOverTimeRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetAddressesByBalanceOverTimeRequest = {
-    threshold: "1000000",
-    startTimestamp: 1689541049,
-    endTimestamp: 1689800249,
-    pageSize: 10,
-    address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+  threshold: "1000000",
+  startTimestamp: 1689541049,
+  endTimestamp: 1689800249,
+  pageSize: 10,
+  address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
 };
 ```
 

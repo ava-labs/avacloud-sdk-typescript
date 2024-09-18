@@ -6,64 +6,66 @@
 import { GetTransactionResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: GetTransactionResponse = {
-    erc20Transfers: [],
-    erc721Transfers: [],
-    erc1155Transfers: [],
-    internalTransactions: [],
-    networkTokenDetails: {
-        networkToken: {
-            name: "Wrapped AVAX",
-            symbol: "WAVAX",
-            decimals: 18,
-            logoUri:
-                "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
-        },
-        currentPrice: {
-            currencyCode: "usd",
-            value: 42.42,
-        },
-        historicalPrice: {
-            currencyCode: "usd",
-            value: 42.42,
-        },
+  erc20Transfers: [],
+  erc721Transfers: [],
+  erc1155Transfers: [],
+  internalTransactions: [],
+  networkTokenDetails: {
+    networkToken: {
+      name: "Wrapped AVAX",
+      symbol: "WAVAX",
+      decimals: 18,
+      logoUri:
+        "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     },
-    nativeTransaction: {
-        blockNumber: "339",
-        blockTimestamp: 1648672486,
-        blockHash: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
-        blockIndex: 0,
-        txHash: "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4",
-        txStatus: "1",
-        txType: 1,
-        gasLimit: "51373",
-        gasUsed: "51373",
-        gasPrice: "470000000000",
-        nonce: "1",
-        from: {
-            name: "Wrapped AVAX",
-            symbol: "WAVAX",
-            decimals: 18,
-            logoUri:
-                "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
-            address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-        },
-        to: {
-            name: "Wrapped AVAX",
-            symbol: "WAVAX",
-            decimals: 18,
-            logoUri:
-                "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
-            address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-        },
-        method: {
-            callType: "CONTRACT_CALL",
-            methodHash: "0xa9059cbb",
-            methodName: "transfer(address,uint256)",
-        },
-        value: "10000000000000000000",
-        input: "<value>",
-        baseFeePerGas: "<value>",
+    currentPrice: {
+      currencyCode: "usd",
+      value: 42.42,
     },
+    historicalPrice: {
+      currencyCode: "usd",
+      value: 42.42,
+    },
+  },
+  nativeTransaction: {
+    blockNumber: "339",
+    blockTimestamp: 1648672486,
+    blockHash:
+      "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
+    blockIndex: 0,
+    txHash:
+      "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4",
+    txStatus: "1",
+    txType: 1,
+    gasLimit: "51373",
+    gasUsed: "51373",
+    gasPrice: "470000000000",
+    nonce: "1",
+    from: {
+      name: "Wrapped AVAX",
+      symbol: "WAVAX",
+      decimals: 18,
+      logoUri:
+        "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+      address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+    },
+    to: {
+      name: "Wrapped AVAX",
+      symbol: "WAVAX",
+      decimals: 18,
+      logoUri:
+        "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+      address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+    },
+    method: {
+      callType: "NATIVE_TRANSFER",
+      methodHash: "0xa9059cbb",
+      methodName: "transfer(address,uint256)",
+    },
+    value: "10000000000000000000",
+    input: "<value>",
+    baseFeePerGas: "<value>",
+  },
 };
 ```
 
@@ -77,3 +79,4 @@ let value: GetTransactionResponse = {
 | `internalTransactions`                                                                                                                                                                                                                   | [components.InternalTransactionDetails](../../models/components/internaltransactiondetails.md)[]                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                                                                       | The list of internal transactions. Note that this list only includes CALL and CALLCODE internal transactions that had a non-zero value and CREATE/CREATE2 calls. Use a client provider to recieve a full debug trace of the transaction. |
 | `networkTokenDetails`                                                                                                                                                                                                                    | [components.NetworkTokenDetails](../../models/components/networktokendetails.md)                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                                                                                       | N/A                                                                                                                                                                                                                                      |
 | `nativeTransaction`                                                                                                                                                                                                                      | [components.FullNativeTransactionDetails](../../models/components/fullnativetransactiondetails.md)                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                                                                       | N/A                                                                                                                                                                                                                                      |
+| `teleporterMessageInfo`                                                                                                                                                                                                                  | [components.TeleporterMessageInfo](../../models/components/teleportermessageinfo.md)                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                       | Corresponding teleporter message info if available.                                                                                                                                                                                      |

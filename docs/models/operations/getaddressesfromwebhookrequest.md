@@ -6,8 +6,8 @@
 import { GetAddressesFromWebhookRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetAddressesFromWebhookRequest = {
-    pageSize: 10,
-    id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
+  pageSize: 10,
+  id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
 };
 ```
 

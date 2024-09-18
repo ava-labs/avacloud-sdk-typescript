@@ -5,47 +5,47 @@
 import * as z from "zod";
 
 export type LogsFormatMetadata = {
-    /**
-     * The IP address of the client that made the request.
-     */
-    ipAddress: string;
-    /**
-     * The host for the request made by the client.
-     */
-    host: string;
-    /**
-     * The user agent of the client that made the request.
-     */
-    userAgent: string;
+  /**
+   * The IP address of the client that made the request.
+   */
+  ipAddress: string;
+  /**
+   * The host for the request made by the client.
+   */
+  host: string;
+  /**
+   * The user agent of the client that made the request.
+   */
+  userAgent: string;
 };
 
 /** @internal */
 export const LogsFormatMetadata$inboundSchema: z.ZodType<
-    LogsFormatMetadata,
-    z.ZodTypeDef,
-    unknown
+  LogsFormatMetadata,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    ipAddress: z.string(),
-    host: z.string(),
-    userAgent: z.string(),
+  ipAddress: z.string(),
+  host: z.string(),
+  userAgent: z.string(),
 });
 
 /** @internal */
 export type LogsFormatMetadata$Outbound = {
-    ipAddress: string;
-    host: string;
-    userAgent: string;
+  ipAddress: string;
+  host: string;
+  userAgent: string;
 };
 
 /** @internal */
 export const LogsFormatMetadata$outboundSchema: z.ZodType<
-    LogsFormatMetadata$Outbound,
-    z.ZodTypeDef,
-    LogsFormatMetadata
+  LogsFormatMetadata$Outbound,
+  z.ZodTypeDef,
+  LogsFormatMetadata
 > = z.object({
-    ipAddress: z.string(),
-    host: z.string(),
-    userAgent: z.string(),
+  ipAddress: z.string(),
+  host: z.string(),
+  userAgent: z.string(),
 });
 
 /**
@@ -53,10 +53,10 @@ export const LogsFormatMetadata$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace LogsFormatMetadata$ {
-    /** @deprecated use `LogsFormatMetadata$inboundSchema` instead. */
-    export const inboundSchema = LogsFormatMetadata$inboundSchema;
-    /** @deprecated use `LogsFormatMetadata$outboundSchema` instead. */
-    export const outboundSchema = LogsFormatMetadata$outboundSchema;
-    /** @deprecated use `LogsFormatMetadata$Outbound` instead. */
-    export type Outbound = LogsFormatMetadata$Outbound;
+  /** @deprecated use `LogsFormatMetadata$inboundSchema` instead. */
+  export const inboundSchema = LogsFormatMetadata$inboundSchema;
+  /** @deprecated use `LogsFormatMetadata$outboundSchema` instead. */
+  export const outboundSchema = LogsFormatMetadata$outboundSchema;
+  /** @deprecated use `LogsFormatMetadata$Outbound` instead. */
+  export type Outbound = LogsFormatMetadata$Outbound;
 }

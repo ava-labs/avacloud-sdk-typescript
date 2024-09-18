@@ -6,7 +6,7 @@
 import { Security } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Security = {
-    apiKey: "<value>",
+  apiKey: "<value>",
 };
 ```
 

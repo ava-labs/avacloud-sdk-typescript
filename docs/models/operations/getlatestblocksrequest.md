@@ -6,7 +6,7 @@
 import { GetLatestBlocksRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetLatestBlocksRequest = {
-    pageSize: 10,
+  pageSize: 10,
 };
 ```
 

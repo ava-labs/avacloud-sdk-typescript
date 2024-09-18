@@ -8,20 +8,20 @@ The Health Check is successful
 import { MetricsHealthCheckResponseBody } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: MetricsHealthCheckResponseBody = {
-    status: "ok",
-    info: {
-        database: {
-            status: "up",
-            additionalProperties: {},
-        },
+  status: "ok",
+  info: {
+    "database": {
+      status: "up",
+      additionalProperties: {},
     },
-    error: {},
-    details: {
-        database: {
-            status: "up",
-            additionalProperties: {},
-        },
+  },
+  error: {},
+  details: {
+    "database": {
+      status: "up",
+      additionalProperties: {},
     },
+  },
 };
 ```
 
