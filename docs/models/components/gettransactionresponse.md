@@ -6,10 +6,130 @@
 import { GetTransactionResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: GetTransactionResponse = {
-  erc20Transfers: [],
-  erc721Transfers: [],
-  erc1155Transfers: [],
-  internalTransactions: [],
+  erc20Transfers: [
+    {
+      from: {
+        name: "Wrapped AVAX",
+        symbol: "WAVAX",
+        decimals: 18,
+        logoUri:
+          "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+        address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+      },
+      to: {
+        name: "Wrapped AVAX",
+        symbol: "WAVAX",
+        decimals: 18,
+        logoUri:
+          "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+        address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+      },
+      logIndex: 8391.89,
+      value: "10000000000000000000",
+      erc20Token: {
+        address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+        name: "Wrapped AVAX",
+        symbol: "WAVAX",
+        decimals: 18,
+        logoUri:
+          "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+        ercType: "ERC-20",
+        price: {
+          currencyCode: "usd",
+          value: 42.42,
+        },
+      },
+    },
+  ],
+  erc721Transfers: [
+    {
+      from: {
+        name: "Wrapped AVAX",
+        symbol: "WAVAX",
+        decimals: 18,
+        logoUri:
+          "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+        address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+      },
+      to: {
+        name: "Wrapped AVAX",
+        symbol: "WAVAX",
+        decimals: 18,
+        logoUri:
+          "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+        address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+      },
+      logIndex: 2377.42,
+      erc721Token: {
+        address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+        name: "Wrapped AVAX",
+        symbol: "WAVAX",
+        ercType: "ERC-721",
+        tokenId: "<value>",
+        tokenUri: "<value>",
+        metadata: {
+          indexStatus: "THROTTLED_TOKEN_URI",
+        },
+        ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+      },
+    },
+  ],
+  erc1155Transfers: [
+    {
+      from: {
+        name: "Wrapped AVAX",
+        symbol: "WAVAX",
+        decimals: 18,
+        logoUri:
+          "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+        address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+      },
+      to: {
+        name: "Wrapped AVAX",
+        symbol: "WAVAX",
+        decimals: 18,
+        logoUri:
+          "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+        address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+      },
+      logIndex: 9425.84,
+      value: "10000000000000000000",
+      erc1155Token: {
+        address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+        ercType: "ERC-1155",
+        tokenId: "<value>",
+        tokenUri: "<value>",
+        metadata: {
+          indexStatus: "METADATA_CONTENT_TOO_LARGE",
+        },
+      },
+    },
+  ],
+  internalTransactions: [
+    {
+      from: {
+        name: "Wrapped AVAX",
+        symbol: "WAVAX",
+        decimals: 18,
+        logoUri:
+          "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+        address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+      },
+      to: {
+        name: "Wrapped AVAX",
+        symbol: "WAVAX",
+        decimals: 18,
+        logoUri:
+          "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+        address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+      },
+      internalTxType: "STATICCALL",
+      value: "10000000000000000000",
+      isReverted: false,
+      gasUsed: "<value>",
+      gasLimit: "<value>",
+    },
+  ],
   networkTokenDetails: {
     networkToken: {
       name: "Wrapped AVAX",
@@ -58,7 +178,7 @@ let value: GetTransactionResponse = {
       address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     },
     method: {
-      callType: "NATIVE_TRANSFER",
+      callType: "CONTRACT_CREATION",
       methodHash: "0xa9059cbb",
       methodName: "transfer(address,uint256)",
     },

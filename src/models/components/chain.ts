@@ -26,6 +26,9 @@ export type Chain = {
    * Subnet ID this blockchain belongs to.
    */
   subnetId: string;
+  /**
+   * Network on which this blockchain or subnet is created on.
+   */
   network: NetworkType;
 };
 

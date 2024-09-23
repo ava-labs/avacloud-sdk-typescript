@@ -11,8 +11,8 @@ let value: AnyTimeNftHoldersQueryDto = {
   params: {
     evmChainId: "<value>",
     contractAddress: "<value>",
-    startTs: 3373.96,
-    endTs: 871.29,
+    startTs: 5684.34,
+    endTs: 187.90,
   },
 };
 ```

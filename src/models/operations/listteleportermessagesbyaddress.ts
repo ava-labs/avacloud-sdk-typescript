@@ -23,9 +23,9 @@ export type ListTeleporterMessagesByAddressRequest = {
    */
   address: string;
   /**
-   * mainnet or testnet.
+   * Either mainnet or testnet/fuji.
    */
-  network?: components.NetworkType | undefined;
+  network?: components.Network | undefined;
 };
 
 /** @internal */
@@ -37,7 +37,7 @@ export const ListTeleporterMessagesByAddressRequest$inboundSchema: z.ZodType<
   pageToken: z.string().optional(),
   pageSize: z.number().int().default(10),
   address: z.string(),
-  network: components.NetworkType$inboundSchema.optional(),
+  network: components.Network$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -57,7 +57,7 @@ export const ListTeleporterMessagesByAddressRequest$outboundSchema: z.ZodType<
   pageToken: z.string().optional(),
   pageSize: z.number().int().default(10),
   address: z.string(),
-  network: components.NetworkType$outboundSchema.optional(),
+  network: components.Network$outboundSchema.optional(),
 });
 
 /**

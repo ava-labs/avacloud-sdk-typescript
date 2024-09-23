@@ -27,7 +27,7 @@ let value: Erc1155Transfer = {
       "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
-  logIndex: 8966.72,
+  logIndex: 7505.95,
   value: "10000000000000000000",
   erc1155Token: {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
@@ -35,7 +35,7 @@ let value: Erc1155Transfer = {
     tokenId: "<value>",
     tokenUri: "<value>",
     metadata: {
-      indexStatus: "INVALID_METADATA",
+      indexStatus: "INVALID_TOKEN_URI_SCHEME",
     },
   },
 };

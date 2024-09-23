@@ -12,7 +12,7 @@ export const ListLatestPrimaryNetworkBlocksServerList = [
 
 export type ListLatestPrimaryNetworkBlocksGlobals = {
   /**
-   * A supported network type mainnet or a testnet.
+   * A supported network type mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
 };
@@ -31,7 +31,7 @@ export type ListLatestPrimaryNetworkBlocksRequest = {
    */
   blockchainId: components.BlockchainId;
   /**
-   * Either mainnet or a testnet.
+   * Either mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
 };

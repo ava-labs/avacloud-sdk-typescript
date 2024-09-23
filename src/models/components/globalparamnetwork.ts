@@ -8,6 +8,7 @@ import { ClosedEnum } from "../../types/enums.js";
 export const GlobalParamNetwork = {
   Mainnet: "mainnet",
   Fuji: "fuji",
+  Testnet: "testnet",
 } as const;
 export type GlobalParamNetwork = ClosedEnum<typeof GlobalParamNetwork>;
 

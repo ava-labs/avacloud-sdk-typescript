@@ -5,7 +5,7 @@
 ```typescript
 import { OperationType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: OperationType = "TRANSACTION_EXPORT_PRIMARY_NETWORK_SIMPLE";
+let value: OperationType = "TRANSACTION_EXPORT_PRIMARY_NETWORK";
 ```
 
 ## Values

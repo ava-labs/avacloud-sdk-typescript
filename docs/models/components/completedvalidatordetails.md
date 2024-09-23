@@ -10,9 +10,9 @@ let value: CompletedValidatorDetails = {
   nodeId: "<value>",
   subnetId: "<value>",
   amountStaked: "<value>",
-  startTimestamp: 1709.09,
-  endTimestamp: 2103.82,
-  delegatorCount: 3581.52,
+  startTimestamp: 2487.53,
+  endTimestamp: 5761.57,
+  delegatorCount: 5920.42,
   rewards: {
     validationRewardAmount: "<value>",
     delegationRewardAmount: "<value>",
@@ -34,5 +34,6 @@ let value: CompletedValidatorDetails = {
 | `endTimestamp`                                                             | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
 | `blsCredentials`                                                           | [components.BlsCredentials](../../models/components/blscredentials.md)     | :heavy_minus_sign:                                                         | Present for AddPermissionlessValidatorTx                                   |
 | `delegatorCount`                                                           | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `amountDelegated`                                                          | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `rewards`                                                                  | [components.Rewards](../../models/components/rewards.md)                   | :heavy_check_mark:                                                         | N/A                                                                        |
 | `validationStatus`                                                         | [components.ValidationStatus](../../models/components/validationstatus.md) | :heavy_check_mark:                                                         | N/A                                                                        |

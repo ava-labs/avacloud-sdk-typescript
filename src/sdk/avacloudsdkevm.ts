@@ -12,26 +12,26 @@ import { Contracts } from "./contracts.js";
 export class AvaCloudSDKEvm extends ClientSDK {
   private _balances?: AvaCloudSDKBalances;
   get balances(): AvaCloudSDKBalances {
-    return (this._balances ??= new AvaCloudSDKBalances(this.options$));
+    return (this._balances ??= new AvaCloudSDKBalances(this._options));
   }
 
   private _blocks?: AvaCloudSDKBlocks;
   get blocks(): AvaCloudSDKBlocks {
-    return (this._blocks ??= new AvaCloudSDKBlocks(this.options$));
+    return (this._blocks ??= new AvaCloudSDKBlocks(this._options));
   }
 
   private _transactions?: AvaCloudSDKTransactions;
   get transactions(): AvaCloudSDKTransactions {
-    return (this._transactions ??= new AvaCloudSDKTransactions(this.options$));
+    return (this._transactions ??= new AvaCloudSDKTransactions(this._options));
   }
 
   private _contracts?: Contracts;
   get contracts(): Contracts {
-    return (this._contracts ??= new Contracts(this.options$));
+    return (this._contracts ??= new Contracts(this._options));
   }
 
   private _chains?: AvaCloudSDKChains;
   get chains(): AvaCloudSDKChains {
-    return (this._chains ??= new AvaCloudSDKChains(this.options$));
+    return (this._chains ??= new AvaCloudSDKChains(this._options));
   }
 }

@@ -5,12 +5,12 @@
 
 ### Available Operations
 
-* [getApiUsageMetrics](#getapiusagemetrics) - Get usage metrics for the Glacier API
+* [getApiUsageMetrics](#getapiusagemetrics) - Get usage metrics for the Data API
 * [getApiLogs](#getapilogs) - Get logs for requests made by client
 
 ## getApiUsageMetrics
 
-Gets metrics for Glacier API usage over a specified time interval aggregated at the specified time-duration granularity.
+Gets metrics for Data API usage over a specified time interval aggregated at the specified time-duration granularity.
 
 ### Example Usage
 

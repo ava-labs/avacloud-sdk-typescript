@@ -6,10 +6,12 @@
 import { LookingGlassResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: LookingGlassResponse = {
-  addresses: {
-    address: "0x1234567890abcdef1234567890abcdef123456789",
-    sortKey: "123",
-  },
+  addresses: [
+    {
+      address: "0x1234567890abcdef1234567890abcdef123456789",
+      sortKey: "123",
+    },
+  ],
 };
 ```
 
@@ -18,4 +20,4 @@ let value: LookingGlassResponse = {
 | Field                                                                                                                                  | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            |
 | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `nextPageToken`                                                                                                                        | *string*                                                                                                                               | :heavy_minus_sign:                                                                                                                     | A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages. |
-| `addresses`                                                                                                                            | [components.AddressDetails](../../models/components/addressdetails.md)                                                                 | :heavy_check_mark:                                                                                                                     | List of addresses that match provided criteria.                                                                                        |
+| `addresses`                                                                                                                            | [components.AddressDetails](../../models/components/addressdetails.md)[]                                                               | :heavy_check_mark:                                                                                                                     | List of addresses that match provided criteria.                                                                                        |

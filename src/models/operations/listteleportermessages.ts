@@ -40,9 +40,9 @@ export type ListTeleporterMessagesRequest = {
    */
   from?: string | undefined;
   /**
-   * mainnet or testnet.
+   * Either mainnet or testnet/fuji.
    */
-  network?: components.NetworkType | undefined;
+  network?: components.Network | undefined;
 };
 
 export type ListTeleporterMessagesResponse = {
@@ -62,7 +62,7 @@ export const ListTeleporterMessagesRequest$inboundSchema: z.ZodType<
   blockchainId: z.string().optional(),
   to: z.string().optional(),
   from: z.string().optional(),
-  network: components.NetworkType$inboundSchema.optional(),
+  network: components.Network$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -90,7 +90,7 @@ export const ListTeleporterMessagesRequest$outboundSchema: z.ZodType<
   blockchainId: z.string().optional(),
   to: z.string().optional(),
   from: z.string().optional(),
-  network: components.NetworkType$outboundSchema.optional(),
+  network: components.Network$outboundSchema.optional(),
 });
 
 /**

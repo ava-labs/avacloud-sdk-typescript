@@ -18,7 +18,7 @@ export type LookingGlassResponse = {
   /**
    * List of addresses that match provided criteria.
    */
-  addresses: AddressDetails;
+  addresses: Array<AddressDetails>;
 };
 
 /** @internal */
@@ -28,13 +28,13 @@ export const LookingGlassResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   nextPageToken: z.string().optional(),
-  addresses: AddressDetails$inboundSchema,
+  addresses: z.array(AddressDetails$inboundSchema),
 });
 
 /** @internal */
 export type LookingGlassResponse$Outbound = {
   nextPageToken?: string | undefined;
-  addresses: AddressDetails$Outbound;
+  addresses: Array<AddressDetails$Outbound>;
 };
 
 /** @internal */
@@ -44,7 +44,7 @@ export const LookingGlassResponse$outboundSchema: z.ZodType<
   LookingGlassResponse
 > = z.object({
   nextPageToken: z.string().optional(),
-  addresses: AddressDetails$outboundSchema,
+  addresses: z.array(AddressDetails$outboundSchema),
 });
 
 /**

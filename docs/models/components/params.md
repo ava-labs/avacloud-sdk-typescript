@@ -6,10 +6,10 @@
 import { Params } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Params = {
+  firstDate: "<value>",
+  lastDate: "<value>",
   evmChainId: "<value>",
   contractAddress: "<value>",
-  startTs: 7917.25,
-  endTs: 8121.69,
 };
 ```
 

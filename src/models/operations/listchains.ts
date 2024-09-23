@@ -16,9 +16,9 @@ export type ListChainsRequest = {
    */
   pageToken?: string | undefined;
   /**
-   * mainnet or testnet.
+   * Either mainnet or testnet/fuji.
    */
-  network?: components.NetworkType | undefined;
+  network?: components.Network | undefined;
 };
 
 export type ListChainsResponse = {
@@ -32,7 +32,7 @@ export const ListChainsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   pageToken: z.string().optional(),
-  network: components.NetworkType$inboundSchema.optional(),
+  network: components.Network$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -48,7 +48,7 @@ export const ListChainsRequest$outboundSchema: z.ZodType<
   ListChainsRequest
 > = z.object({
   pageToken: z.string().optional(),
-  network: components.NetworkType$outboundSchema.optional(),
+  network: components.Network$outboundSchema.optional(),
 });
 
 /**

@@ -7,14 +7,16 @@ import { CollectibleBalances } from "@avalabs/avacloud-sdk/models/components";
 
 let value: CollectibleBalances = {
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-  ercType: "ERC-1155",
+  name: "Wrapped AVAX",
+  symbol: "WAVAX",
+  ercType: "ERC-721",
   tokenId: "<value>",
   tokenUri: "<value>",
   metadata: {
-    indexStatus: "INVALID_METADATA_JSON",
+    indexStatus: "UNREACHABLE_TOKEN_URI",
   },
+  ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   chainId: "43114",
-  balance: "2000000000000000000",
 };
 ```
 

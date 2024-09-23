@@ -26,32 +26,32 @@ import { Vertices } from "./vertices.js";
 export class PrimaryNetwork extends ClientSDK {
   private _transactions?: Transactions;
   get transactions(): Transactions {
-    return (this._transactions ??= new Transactions(this.options$));
+    return (this._transactions ??= new Transactions(this._options));
   }
 
   private _rewards?: Rewards;
   get rewards(): Rewards {
-    return (this._rewards ??= new Rewards(this.options$));
+    return (this._rewards ??= new Rewards(this._options));
   }
 
   private _utxos?: Utxos;
   get utxos(): Utxos {
-    return (this._utxos ??= new Utxos(this.options$));
+    return (this._utxos ??= new Utxos(this._options));
   }
 
   private _balances?: Balances;
   get balances(): Balances {
-    return (this._balances ??= new Balances(this.options$));
+    return (this._balances ??= new Balances(this._options));
   }
 
   private _blocks?: Blocks;
   get blocks(): Blocks {
-    return (this._blocks ??= new Blocks(this.options$));
+    return (this._blocks ??= new Blocks(this._options));
   }
 
   private _vertices?: Vertices;
   get vertices(): Vertices {
-    return (this._vertices ??= new Vertices(this.options$));
+    return (this._vertices ??= new Vertices(this._options));
   }
 
   /**

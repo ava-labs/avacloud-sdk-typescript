@@ -11,13 +11,13 @@ export const SupportedChainsServerList = [
 
 export type SupportedChainsRequest = {
   /**
-   * mainnet or testnet.
+   * Either mainnet or testnet/fuji.
    */
-  network?: components.NetworkType | undefined;
+  network?: components.Network | undefined;
   /**
    * Filter by feature.
    */
-  feature?: components.GlacierApiFeature | undefined;
+  feature?: components.ApiFeature | undefined;
 };
 
 /** @internal */
@@ -26,8 +26,8 @@ export const SupportedChainsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  network: components.NetworkType$inboundSchema.optional(),
-  feature: components.GlacierApiFeature$inboundSchema.optional(),
+  network: components.Network$inboundSchema.optional(),
+  feature: components.ApiFeature$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -42,8 +42,8 @@ export const SupportedChainsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SupportedChainsRequest
 > = z.object({
-  network: components.NetworkType$outboundSchema.optional(),
-  feature: components.GlacierApiFeature$outboundSchema.optional(),
+  network: components.Network$outboundSchema.optional(),
+  feature: components.ApiFeature$outboundSchema.optional(),
 });
 
 /**

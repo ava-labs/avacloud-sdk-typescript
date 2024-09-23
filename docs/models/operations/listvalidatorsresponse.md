@@ -7,7 +7,19 @@ import { ListValidatorsResponse } from "@avalabs/avacloud-sdk/models/operations"
 
 let value: ListValidatorsResponse = {
   result: {
-    validators: [],
+    validators: [
+      {
+        txHash: "<value>",
+        nodeId: "<value>",
+        subnetId: "<value>",
+        amountStaked: "<value>",
+        startTimestamp: 8717.86,
+        endTimestamp: 5027.21,
+        removeTxHash: "<value>",
+        removeTimestamp: 9223.48,
+        validationStatus: "removed",
+      },
+    ],
   },
 };
 ```

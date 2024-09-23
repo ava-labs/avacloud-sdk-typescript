@@ -3,12 +3,9 @@
  */
 
 import { AvaCloudSDKCore } from "../core.js";
-import {
-  encodeJSON as encodeJSON$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -34,7 +31,7 @@ import { Result } from "../types/fp.js";
  * Updates an existing webhook.
  */
 export async function dataWebhooksUpdateWebhook(
-  client$: AvaCloudSDKCore,
+  client: AvaCloudSDKCore,
   request: operations.UpdateWebhookRequest,
   options?: RequestOptions & { serverURL?: string },
 ): Promise<
@@ -57,62 +54,62 @@ export async function dataWebhooksUpdateWebhook(
     | ConnectionError
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) => operations.UpdateWebhookRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) => operations.UpdateWebhookRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = encodeJSON$("body", payload$.UpdateWebhookRequest, {
+  const payload = parsed.value;
+  const body = encodeJSON("body", payload.UpdateWebhookRequest, {
     explode: true,
   });
 
-  const baseURL$ = options?.serverURL
+  const baseURL = options?.serverURL
     || pathToFunc(UpdateWebhookServerList[0], { charEncoding: "percent" })();
 
-  const pathParams$ = {
-    id: encodeSimple$("id", payload$.id, {
+  const pathParams = {
+    id: encodeSimple("id", payload.id, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/v1/webhooks/{id}")(pathParams$);
+  const path = pathToFunc("/v1/webhooks/{id}")(pathParams);
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     "Content-Type": "application/json",
     Accept: "application/json",
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
     operationID: "updateWebhook",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
+    securitySource: client._options.apiKey,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "PATCH",
-    baseURL: baseURL$,
-    path: path$,
-    headers: headers$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    baseURL: baseURL,
+    path: path,
+    headers: headers,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: [
       "400",
@@ -127,7 +124,7 @@ export async function dataWebhooksUpdateWebhook(
       "5XX",
     ],
     retryConfig: options?.retries
-      || client$.options$.retryConfig
+      || client._options.retryConfig
       || {
         strategy: "backoff",
         backoff: {
@@ -145,11 +142,11 @@ export async function dataWebhooksUpdateWebhook(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     components.WebhookResponse,
     | errors.BadRequest
     | errors.Unauthorized
@@ -167,20 +164,20 @@ export async function dataWebhooksUpdateWebhook(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, components.WebhookResponse$inboundSchema),
-    m$.jsonErr(400, errors.BadRequest$inboundSchema),
-    m$.jsonErr(401, errors.Unauthorized$inboundSchema),
-    m$.jsonErr(403, errors.Forbidden$inboundSchema),
-    m$.jsonErr(404, errors.NotFound$inboundSchema),
-    m$.jsonErr(429, errors.TooManyRequests$inboundSchema),
-    m$.jsonErr(500, errors.InternalServerError$inboundSchema),
-    m$.jsonErr(502, errors.BadGateway$inboundSchema),
-    m$.jsonErr(503, errors.ServiceUnavailable$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.json(200, components.WebhookResponse$inboundSchema),
+    M.jsonErr(400, errors.BadRequest$inboundSchema),
+    M.jsonErr(401, errors.Unauthorized$inboundSchema),
+    M.jsonErr(403, errors.Forbidden$inboundSchema),
+    M.jsonErr(404, errors.NotFound$inboundSchema),
+    M.jsonErr(429, errors.TooManyRequests$inboundSchema),
+    M.jsonErr(500, errors.InternalServerError$inboundSchema),
+    M.jsonErr(502, errors.BadGateway$inboundSchema),
+    M.jsonErr(503, errors.ServiceUnavailable$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

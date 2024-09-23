@@ -13,11 +13,11 @@ let value: Delegators = {
   ],
   amountDelegated: "<value>",
   delegationFee: "<value>",
-  startTimestamp: 2532.91,
-  endTimestamp: 4143.69,
+  startTimestamp: 3015.75,
+  endTimestamp: 6601.74,
   estimatedGrossReward: "<value>",
   estimatedNetReward: "<value>",
-  delegationStatus: "pending",
+  delegationStatus: "active",
 };
 ```
 

@@ -7,7 +7,7 @@ The value of the column used for data aggregation
 ```typescript
 import { GroupValue } from "@avalabs/avacloud-sdk/models/components";
 
-let value: GroupValue = 8480.09;
+let value: GroupValue = 6455.70;
 ```
 
 ## Supported Types

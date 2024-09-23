@@ -6,9 +6,9 @@
 import { ChainAddressChainIdMap } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ChainAddressChainIdMap = {
-  address: "425 Aiden Glen",
+  address: "9670 Blanche Forks",
   blockchainIds: [
-    "2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5",
+    "11111111111111111111111111111111LpoYY",
   ],
 };
 ```

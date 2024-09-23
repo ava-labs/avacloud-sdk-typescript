@@ -12,7 +12,7 @@ export const ListAssetTransactionsServerList = [
 
 export type ListAssetTransactionsGlobals = {
   /**
-   * A supported network type mainnet or a testnet.
+   * A supported network type mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
 };
@@ -43,7 +43,7 @@ export type ListAssetTransactionsRequest = {
    */
   blockchainId: components.XChainId;
   /**
-   * Either mainnet or a testnet.
+   * Either mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
   /**

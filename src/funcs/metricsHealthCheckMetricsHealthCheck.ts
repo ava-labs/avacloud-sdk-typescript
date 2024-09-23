@@ -3,7 +3,7 @@
  */
 
 import { AvaCloudSDKCore } from "../core.js";
-import * as m$ from "../lib/matchers.js";
+import * as M from "../lib/matchers.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -25,7 +25,7 @@ import { Result } from "../types/fp.js";
  * Get the health of the service
  */
 export async function metricsHealthCheckMetricsHealthCheck(
-  client$: AvaCloudSDKCore,
+  client: AvaCloudSDKCore,
   options?: RequestOptions & { serverURL?: string },
 ): Promise<
   Result<
@@ -40,44 +40,44 @@ export async function metricsHealthCheckMetricsHealthCheck(
     | ConnectionError
   >
 > {
-  const baseURL$ = options?.serverURL
+  const baseURL = options?.serverURL
     || pathToFunc(MetricsHealthCheckServerList[0], {
       charEncoding: "percent",
     })();
 
-  const path$ = pathToFunc("/v2/health-check")();
+  const path = pathToFunc("/v2/health-check")();
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
     operationID: "metrics-health-check",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
+    securitySource: client._options.apiKey,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    baseURL: baseURL$,
-    path: path$,
-    headers: headers$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    baseURL: baseURL,
+    path: path,
+    headers: headers,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["4XX", "503", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig
+      || client._options.retryConfig
       || {
         strategy: "backoff",
         backoff: {
@@ -95,11 +95,11 @@ export async function metricsHealthCheckMetricsHealthCheck(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     operations.MetricsHealthCheckResponseBody,
     | errors.MetricsHealthCheckResponseBody
     | SDKError
@@ -110,13 +110,13 @@ export async function metricsHealthCheckMetricsHealthCheck(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, operations.MetricsHealthCheckResponseBody$inboundSchema),
-    m$.jsonErr(503, errors.MetricsHealthCheckResponseBody$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.json(200, operations.MetricsHealthCheckResponseBody$inboundSchema),
+    M.jsonErr(503, errors.MetricsHealthCheckResponseBody$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

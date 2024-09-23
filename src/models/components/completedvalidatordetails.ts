@@ -35,6 +35,7 @@ export type CompletedValidatorDetails = {
    */
   blsCredentials?: BlsCredentials | undefined;
   delegatorCount: number;
+  amountDelegated?: string | undefined;
   rewards: Rewards;
   validationStatus: ValidationStatus;
 };
@@ -75,6 +76,7 @@ export const CompletedValidatorDetails$inboundSchema: z.ZodType<
   endTimestamp: z.number(),
   blsCredentials: BlsCredentials$inboundSchema.optional(),
   delegatorCount: z.number(),
+  amountDelegated: z.string().optional(),
   rewards: Rewards$inboundSchema,
   validationStatus: ValidationStatus$inboundSchema,
 });
@@ -90,6 +92,7 @@ export type CompletedValidatorDetails$Outbound = {
   endTimestamp: number;
   blsCredentials?: BlsCredentials$Outbound | undefined;
   delegatorCount: number;
+  amountDelegated?: string | undefined;
   rewards: Rewards$Outbound;
   validationStatus: string;
 };
@@ -109,6 +112,7 @@ export const CompletedValidatorDetails$outboundSchema: z.ZodType<
   endTimestamp: z.number(),
   blsCredentials: BlsCredentials$outboundSchema.optional(),
   delegatorCount: z.number(),
+  amountDelegated: z.string().optional(),
   rewards: Rewards$outboundSchema,
   validationStatus: ValidationStatus$outboundSchema,
 });

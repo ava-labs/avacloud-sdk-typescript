@@ -6,8 +6,17 @@
 import { CompositeQueryRequestDto } from "@avalabs/avacloud-sdk/models/components";
 
 let value: CompositeQueryRequestDto = {
-  queries: [],
-  operator: "AND",
+  queries: [
+    {
+      id: "<id>",
+      type: "LatestBalanceStarsArena",
+      params: {
+        minBalance: "<value>",
+        subjectAddress: "<value>",
+      },
+    },
+  ],
+  operator: "OR",
 };
 ```
 

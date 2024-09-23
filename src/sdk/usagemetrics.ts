@@ -12,10 +12,10 @@ import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class UsageMetrics extends ClientSDK {
   /**
-   * Get usage metrics for the Glacier API
+   * Get usage metrics for the Data API
    *
    * @remarks
-   * Gets metrics for Glacier API usage over a specified time interval aggregated at the specified time-duration granularity.
+   * Gets metrics for Data API usage over a specified time interval aggregated at the specified time-duration granularity.
    */
   async getApiUsageMetrics(
     request: operations.GetApiUsageMetricsRequest,

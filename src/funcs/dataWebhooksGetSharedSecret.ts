@@ -3,7 +3,7 @@
  */
 
 import { AvaCloudSDKCore } from "../core.js";
-import * as m$ from "../lib/matchers.js";
+import * as M from "../lib/matchers.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -28,7 +28,7 @@ import { Result } from "../types/fp.js";
  * Get a previously generated shared secret.
  */
 export async function dataWebhooksGetSharedSecret(
-  client$: AvaCloudSDKCore,
+  client: AvaCloudSDKCore,
   options?: RequestOptions & { serverURL?: string },
 ): Promise<
   Result<
@@ -50,38 +50,38 @@ export async function dataWebhooksGetSharedSecret(
     | ConnectionError
   >
 > {
-  const baseURL$ = options?.serverURL
+  const baseURL = options?.serverURL
     || pathToFunc(GetSharedSecretServerList[0], { charEncoding: "percent" })();
 
-  const path$ = pathToFunc("/v1/webhooks:getSharedSecret")();
+  const path = pathToFunc("/v1/webhooks:getSharedSecret")();
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
     operationID: "getSharedSecret",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
+    securitySource: client._options.apiKey,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    baseURL: baseURL$,
-    path: path$,
-    headers: headers$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    baseURL: baseURL,
+    path: path,
+    headers: headers,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: [
       "400",
@@ -96,7 +96,7 @@ export async function dataWebhooksGetSharedSecret(
       "5XX",
     ],
     retryConfig: options?.retries
-      || client$.options$.retryConfig
+      || client._options.retryConfig
       || {
         strategy: "backoff",
         backoff: {
@@ -114,11 +114,11 @@ export async function dataWebhooksGetSharedSecret(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     components.SharedSecretsResponse,
     | errors.BadRequest
     | errors.Unauthorized
@@ -136,20 +136,20 @@ export async function dataWebhooksGetSharedSecret(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, components.SharedSecretsResponse$inboundSchema),
-    m$.jsonErr(400, errors.BadRequest$inboundSchema),
-    m$.jsonErr(401, errors.Unauthorized$inboundSchema),
-    m$.jsonErr(403, errors.Forbidden$inboundSchema),
-    m$.jsonErr(404, errors.NotFound$inboundSchema),
-    m$.jsonErr(429, errors.TooManyRequests$inboundSchema),
-    m$.jsonErr(500, errors.InternalServerError$inboundSchema),
-    m$.jsonErr(502, errors.BadGateway$inboundSchema),
-    m$.jsonErr(503, errors.ServiceUnavailable$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.json(200, components.SharedSecretsResponse$inboundSchema),
+    M.jsonErr(400, errors.BadRequest$inboundSchema),
+    M.jsonErr(401, errors.Unauthorized$inboundSchema),
+    M.jsonErr(403, errors.Forbidden$inboundSchema),
+    M.jsonErr(404, errors.NotFound$inboundSchema),
+    M.jsonErr(429, errors.TooManyRequests$inboundSchema),
+    M.jsonErr(500, errors.InternalServerError$inboundSchema),
+    M.jsonErr(502, errors.BadGateway$inboundSchema),
+    M.jsonErr(503, errors.ServiceUnavailable$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

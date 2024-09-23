@@ -9,7 +9,7 @@ let value: GetChainResponse = {
   chainId: "<value>",
   status: "UNAVAILABLE",
   chainName: "<value>",
-  description: "Open-architected modular ability",
+  description: "Versatile 24/7 open system",
   vmName: "ETHEREUM",
   rpcUrl: "<value>",
   isTestnet: false,

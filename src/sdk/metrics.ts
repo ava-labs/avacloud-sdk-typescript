@@ -11,21 +11,21 @@ import { LookingGlass } from "./lookingglass.js";
 export class Metrics extends ClientSDK {
   private _healthCheck?: HealthCheck;
   get healthCheck(): HealthCheck {
-    return (this._healthCheck ??= new HealthCheck(this.options$));
+    return (this._healthCheck ??= new HealthCheck(this._options));
   }
 
   private _evm?: Evm;
   get evm(): Evm {
-    return (this._evm ??= new Evm(this.options$));
+    return (this._evm ??= new Evm(this._options));
   }
 
   private _chain?: Chain;
   get chain(): Chain {
-    return (this._chain ??= new Chain(this.options$));
+    return (this._chain ??= new Chain(this._options));
   }
 
   private _lookingGlass?: LookingGlass;
   get lookingGlass(): LookingGlass {
-    return (this._lookingGlass ??= new LookingGlass(this.options$));
+    return (this._lookingGlass ??= new LookingGlass(this._options));
   }
 }

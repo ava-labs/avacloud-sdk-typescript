@@ -12,7 +12,7 @@ export const GetStakingMetricsServerList = [
 
 export type GetStakingMetricsGlobals = {
   /**
-   * A supported network type mainnet or a testnet.
+   * A supported network type mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
 };
@@ -39,7 +39,7 @@ export type GetStakingMetricsRequest = {
    */
   pageSize?: number | undefined;
   /**
-   * mainnet or testnet.
+   * Either mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
   /**
@@ -100,7 +100,7 @@ export const GetStakingMetricsRequest$inboundSchema: z.ZodType<
   pageToken: z.string().optional(),
   pageSize: z.number().int().default(100),
   network: components.GlobalParamNetwork$inboundSchema.optional(),
-  subnetId: z.any().optional(),
+  subnetId: z.any(),
 });
 
 /** @internal */
@@ -111,7 +111,7 @@ export type GetStakingMetricsRequest$Outbound = {
   pageToken?: string | undefined;
   pageSize: number;
   network?: string | undefined;
-  subnetId?: any | undefined;
+  subnetId?: any;
 };
 
 /** @internal */
@@ -126,7 +126,7 @@ export const GetStakingMetricsRequest$outboundSchema: z.ZodType<
   pageToken: z.string().optional(),
   pageSize: z.number().int().default(100),
   network: components.GlobalParamNetwork$outboundSchema.optional(),
-  subnetId: z.any().optional(),
+  subnetId: z.any(),
 });
 
 /**

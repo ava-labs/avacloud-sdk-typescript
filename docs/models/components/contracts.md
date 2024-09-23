@@ -12,9 +12,7 @@ let value: Contracts = {
     txHash: "<value>",
     deployerAddress: "<value>",
   },
-  ercType: "ERC-20",
-  symbol: "WAVAX",
-  decimals: 18,
+  ercType: "UNKNOWN",
 };
 ```
 

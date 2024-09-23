@@ -16,12 +16,12 @@ let value: WebhookResponse = {
       "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64",
     ],
   },
-  url: "http://loose-overcoat.com",
+  url: "https://expensive-pick.name",
   chainId: "<value>",
-  status: "inactive",
-  createdAt: 6990.98,
+  status: "active",
+  createdAt: 5546.88,
   name: "<value>",
-  description: "Enterprise-wide zero tolerance task-force",
+  description: "Face to face next generation groupware",
 };
 ```
 

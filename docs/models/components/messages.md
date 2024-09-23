@@ -39,7 +39,7 @@ let value: Messages = {
   },
   sourceTransaction: {
     txHash: "<value>",
-    timestamp: 2098.43,
+    timestamp: 1059.06,
     gasSpent: "<value>",
   },
   status: "pending",

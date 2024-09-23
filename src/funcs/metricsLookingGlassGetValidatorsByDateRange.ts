@@ -4,12 +4,9 @@
 
 import { AvaCloudSDKCore } from "../core.js";
 import { dlv } from "../lib/dlv.js";
-import {
-  encodeFormQuery as encodeFormQuery$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -40,7 +37,7 @@ import {
  * Get list of addresses and AddValidatorTx timestamps set to receive awards for validation periods during the specified time frame.
  */
 export async function metricsLookingGlassGetValidatorsByDateRange(
-  client$: AvaCloudSDKCore,
+  client: AvaCloudSDKCore,
   request: operations.GetValidatorsByDateRangeRequest,
   options?: RequestOptions & { serverURL?: string },
 ): Promise<
@@ -65,73 +62,73 @@ export async function metricsLookingGlassGetValidatorsByDateRange(
     >
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
-      operations.GetValidatorsByDateRangeRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) =>
+      operations.GetValidatorsByDateRangeRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return haltIterator(parsed$);
+  if (!parsed.ok) {
+    return haltIterator(parsed);
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const baseURL$ = options?.serverURL
+  const baseURL = options?.serverURL
     || pathToFunc(GetValidatorsByDateRangeServerList[0], {
       charEncoding: "percent",
     })();
 
-  const pathParams$ = {
-    subnetId: encodeSimple$("subnetId", payload$.subnetId, {
+  const pathParams = {
+    subnetId: encodeSimple("subnetId", payload.subnetId, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/v2/subnets/{subnetId}/validators:getAddresses")(
-    pathParams$,
+  const path = pathToFunc("/v2/subnets/{subnetId}/validators:getAddresses")(
+    pathParams,
   );
 
-  const query$ = encodeFormQuery$({
-    "endTimestamp": payload$.endTimestamp,
-    "network": payload$.network,
-    "pageSize": payload$.pageSize,
-    "pageToken": payload$.pageToken,
-    "startTimestamp": payload$.startTimestamp,
+  const query = encodeFormQuery({
+    "endTimestamp": payload.endTimestamp,
+    "network": payload.network,
+    "pageSize": payload.pageSize,
+    "pageToken": payload.pageToken,
+    "startTimestamp": payload.startTimestamp,
   });
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
     operationID: "getValidatorsByDateRange",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
+    securitySource: client._options.apiKey,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    baseURL: baseURL$,
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    baseURL: baseURL,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return haltIterator(requestRes);
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: [
       "400",
@@ -146,7 +143,7 @@ export async function metricsLookingGlassGetValidatorsByDateRange(
       "5XX",
     ],
     retryConfig: options?.retries
-      || client$.options$.retryConfig
+      || client._options.retryConfig
       || {
         strategy: "backoff",
         backoff: {
@@ -164,11 +161,11 @@ export async function metricsLookingGlassGetValidatorsByDateRange(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$, raw$] = await m$.match<
+  const [result, raw] = await M.match<
     operations.GetValidatorsByDateRangeResponse,
     | errors.BadRequest
     | errors.Unauthorized
@@ -186,21 +183,21 @@ export async function metricsLookingGlassGetValidatorsByDateRange(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, operations.GetValidatorsByDateRangeResponse$inboundSchema, {
+    M.json(200, operations.GetValidatorsByDateRangeResponse$inboundSchema, {
       key: "Result",
     }),
-    m$.jsonErr(400, errors.BadRequest$inboundSchema),
-    m$.jsonErr(401, errors.Unauthorized$inboundSchema),
-    m$.jsonErr(403, errors.Forbidden$inboundSchema),
-    m$.jsonErr(404, errors.NotFound$inboundSchema),
-    m$.jsonErr(429, errors.TooManyRequests$inboundSchema),
-    m$.jsonErr(500, errors.InternalServerError$inboundSchema),
-    m$.jsonErr(502, errors.BadGateway$inboundSchema),
-    m$.jsonErr(503, errors.ServiceUnavailable$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return haltIterator(result$);
+    M.jsonErr(400, errors.BadRequest$inboundSchema),
+    M.jsonErr(401, errors.Unauthorized$inboundSchema),
+    M.jsonErr(403, errors.Forbidden$inboundSchema),
+    M.jsonErr(404, errors.NotFound$inboundSchema),
+    M.jsonErr(429, errors.TooManyRequests$inboundSchema),
+    M.jsonErr(500, errors.InternalServerError$inboundSchema),
+    M.jsonErr(502, errors.BadGateway$inboundSchema),
+    M.jsonErr(503, errors.ServiceUnavailable$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return haltIterator(result);
   }
 
   const nextFunc = (
@@ -233,15 +230,15 @@ export async function metricsLookingGlassGetValidatorsByDateRange(
 
     return () =>
       metricsLookingGlassGetValidatorsByDateRange(
-        client$,
+        client,
         {
-          ...input$,
+          ...input,
           pageToken: nextCursor,
         },
         options,
       );
   };
 
-  const page$ = { ...result$, next: nextFunc(raw$) };
-  return { ...page$, ...createPageIterator(page$, (v) => !v.ok) };
+  const page = { ...result, next: nextFunc(raw) };
+  return { ...page, ...createPageIterator(page, (v) => !v.ok) };
 }

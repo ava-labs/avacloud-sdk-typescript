@@ -6,7 +6,22 @@
 import { ListValidatorDetailsResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ListValidatorDetailsResponse = {
-  validators: [],
+  validators: [
+    {
+      txHash: "<value>",
+      nodeId: "<value>",
+      subnetId: "<value>",
+      amountStaked: "<value>",
+      startTimestamp: 2700.08,
+      endTimestamp: 7351.94,
+      delegatorCount: 9621.89,
+      rewards: {
+        validationRewardAmount: "<value>",
+        delegationRewardAmount: "<value>",
+      },
+      validationStatus: "completed",
+    },
+  ],
 };
 ```
 

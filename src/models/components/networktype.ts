@@ -5,10 +5,16 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Network on which this blockchain or subnet is created on.
+ */
 export const NetworkType = {
   Mainnet: "mainnet",
   Testnet: "testnet",
 } as const;
+/**
+ * Network on which this blockchain or subnet is created on.
+ */
 export type NetworkType = ClosedEnum<typeof NetworkType>;
 
 /** @internal */

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: 0a601eeff2a842e0ce421042c59435e8
+  docChecksum: 91a0e02e81b109251a6b0f980ebcb501
   docVersion: Beta
-  speakeasyVersion: 1.399.0
-  generationVersion: 2.415.8
-  releaseVersion: 0.5.0
-  configChecksum: 24b7a2b64288da36f73d316744178030
+  speakeasyVersion: 1.402.0
+  generationVersion: 2.422.6
+  releaseVersion: 0.5.1
+  configChecksum: 2266b6d28d0cfeed797681f1785a842f
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.17.3
+    core: 3.17.6
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -72,6 +72,7 @@ generatedFiles:
   - docs/models/components/anytimenftholdersquerydtotype.md
   - docs/models/components/anytimestarsarenabalancequerydto.md
   - docs/models/components/anytimestarsarenabalancequerydtotype.md
+  - docs/models/components/apifeature.md
   - docs/models/components/assetamount.md
   - docs/models/components/assetwithpriceinfo.md
   - docs/models/components/blockchain.md
@@ -160,7 +161,6 @@ generatedFiles:
   - docs/models/components/getnetworkdetailsresponse.md
   - docs/models/components/getprimarynetworkblockresponse.md
   - docs/models/components/gettransactionresponse.md
-  - docs/models/components/glacierapifeature.md
   - docs/models/components/globalparamnetwork.md
   - docs/models/components/groupedby.md
   - docs/models/components/groupvalue.md
@@ -224,6 +224,7 @@ generatedFiles:
   - docs/models/components/money.md
   - docs/models/components/nativetokenbalance.md
   - docs/models/components/nativetransaction.md
+  - docs/models/components/network.md
   - docs/models/components/networkmetric.md
   - docs/models/components/networktoken.md
   - docs/models/components/networktokendetails.md
@@ -358,6 +359,7 @@ generatedFiles:
   - docs/models/errors/unauthorized.md
   - docs/models/errors/unauthorizedmessage.md
   - docs/models/operations/addaddressestowebhookrequest.md
+  - docs/models/operations/compositequeryv2response.md
   - docs/models/operations/datahealthcheckdetails.md
   - docs/models/operations/datahealthcheckerror.md
   - docs/models/operations/datahealthcheckinfo.md
@@ -682,6 +684,7 @@ generatedFiles:
   - src/models/components/anytimenativebalancequerydto.ts
   - src/models/components/anytimenftholdersquerydto.ts
   - src/models/components/anytimestarsarenabalancequerydto.ts
+  - src/models/components/apifeature.ts
   - src/models/components/assetamount.ts
   - src/models/components/assetwithpriceinfo.ts
   - src/models/components/blockchain.ts
@@ -749,7 +752,6 @@ generatedFiles:
   - src/models/components/getnetworkdetailsresponse.ts
   - src/models/components/getprimarynetworkblockresponse.ts
   - src/models/components/gettransactionresponse.ts
-  - src/models/components/glacierapifeature.ts
   - src/models/components/globalparamnetwork.ts
   - src/models/components/historicalreward.ts
   - src/models/components/imageasset.ts
@@ -806,6 +808,7 @@ generatedFiles:
   - src/models/components/money.ts
   - src/models/components/nativetokenbalance.ts
   - src/models/components/nativetransaction.ts
+  - src/models/components/network.ts
   - src/models/components/networkmetric.ts
   - src/models/components/networktoken.ts
   - src/models/components/networktokendetails.ts
@@ -1179,7 +1182,7 @@ examples:
           pageSize: "10"
       responses:
         "200":
-          application/json: {"addresses": {"address": "0x1234567890abcdef1234567890abcdef123456789", "sortKey": "123"}, "nftCollectionName": "NFT Project", "nftSymbol": "NFTPROJ", "totalHolders": 10, "totalTokens": 10}
+          application/json: {"addresses": [{"address": "0x1234567890abcdef1234567890abcdef123456789", "sortKey": "123"}], "nftCollectionName": "NFT Project", "nftSymbol": "NFTPROJ", "totalHolders": 10, "totalTokens": 10}
         "400":
           application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
         "401":
@@ -1209,7 +1212,7 @@ examples:
           pageSize: "10"
       responses:
         "200":
-          application/json: {"addresses": {"address": "0x1234567890abcdef1234567890abcdef123456789", "sortKey": "123"}}
+          application/json: {"addresses": [{"address": "0x1234567890abcdef1234567890abcdef123456789", "sortKey": "123"}]}
         "400":
           application/json: {"message": [], "statusCode": 400, "error": "Bad Request"}
         "401":
@@ -1234,7 +1237,7 @@ examples:
           pageSize: "10"
       responses:
         "200":
-          application/json: {"addresses": {"address": "0x1234567890abcdef1234567890abcdef123456789", "sortKey": "123"}}
+          application/json: {"addresses": [{"address": "0x1234567890abcdef1234567890abcdef123456789", "sortKey": "123"}]}
         "400":
           application/json: {"message": [], "statusCode": 400, "error": "Bad Request"}
         "401":
@@ -1434,6 +1437,8 @@ examples:
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
         "200":
           application/json: {"operationId": "<value>", "operationType": "TRANSACTION_EXPORT_PRIMARY_NETWORK_SIMPLE", "operationStatus": "COMPLETED", "createdAtTimestamp": "4525.17", "updatedAtTimestamp": "2355.88"}
+        "201":
+          application/json: {"operationId": "<value>", "operationType": "TRANSACTION_EXPORT_PRIMARY_NETWORK_SIMPLE", "operationStatus": "COMPLETED", "createdAtTimestamp": "3310.42", "updatedAtTimestamp": "8864.13"}
   getAssetDetails:
     "":
       parameters:
@@ -2186,6 +2191,8 @@ examples:
           application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+        "201":
+          application/json: {"id": "<id>", "eventType": "address_activity", "metadata": {"addresses": ["0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E"], "eventSignatures": ["0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64"]}, "url": "https://woeful-yin.biz", "chainId": "<value>", "status": "active", "createdAt": "4728.39", "name": "<value>", "description": "Digitized didactic Graphic Interface"}
   getWebhook:
     "":
       parameters:
@@ -2278,6 +2285,8 @@ examples:
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
         "200":
+          application/json: {"secret": "<value>"}
+        "201":
           application/json: {"secret": "<value>"}
   getSharedSecret:
     speakeasy-default-get-shared-secret:
