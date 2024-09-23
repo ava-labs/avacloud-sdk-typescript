@@ -7,11 +7,11 @@ import { RollingWindowMetricsApiResponse } from "@avalabs/avacloud-sdk/models/co
 
 let value: RollingWindowMetricsApiResponse = {
   result: {
-    lastHour: 5448.83,
-    lastDay: 8472.52,
-    lastMonth: 4236.55,
-    lastYear: 6235.64,
-    allTime: 6458.94,
+    lastHour: 3834.42,
+    lastDay: 7917.25,
+    lastMonth: 5288.95,
+    lastYear: 5680.45,
+    allTime: 9255.97,
   },
 };
 ```

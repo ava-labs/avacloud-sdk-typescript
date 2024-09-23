@@ -8,6 +8,6 @@ import { AvaCloudSDKMetrics } from "./avacloudsdkmetrics.js";
 export class Chain extends ClientSDK {
   private _metrics?: AvaCloudSDKMetrics;
   get metrics(): AvaCloudSDKMetrics {
-    return (this._metrics ??= new AvaCloudSDKMetrics(this.options$));
+    return (this._metrics ??= new AvaCloudSDKMetrics(this._options));
   }
 }

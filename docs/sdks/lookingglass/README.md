@@ -425,13 +425,22 @@ const avaCloudSDK = new AvaCloudSDK({
 async function run() {
   const result = await avaCloudSDK.metrics.lookingGlass.compositeQuery({
     queries: [
-  
+      {
+        id: "<id>",
+        type: "LatestBalanceStarsArena",
+        params: {
+          minBalance: "<value>",
+          subjectAddress: "<value>",
+        },
+      },
     ],
     operator: "OR",
   });
   
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -456,7 +465,16 @@ const avaCloudSDK = new AvaCloudSDKCore({
 async function run() {
   const res = await metricsLookingGlassCompositeQuery(avaCloudSDK, {
     queries: [
-  
+      {
+        id: "<id>",
+        type: "AnyTimeStarsArenaBalance",
+        params: {
+          firstDate: "<value>",
+          lastDate: "<value>",
+          minBalance: "<value>",
+          subjectAddress: "<value>",
+        },
+      },
     ],
     operator: "OR",
   });
@@ -467,8 +485,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -486,7 +506,7 @@ run();
 
 ### Response
 
-**Promise\<[components.CompositeQueryResponse](../../models/components/compositequeryresponse.md)\>**
+**Promise\<[operations.CompositeQueryV2Response](../../models/operations/compositequeryv2response.md)\>**
 
 ### Errors
 

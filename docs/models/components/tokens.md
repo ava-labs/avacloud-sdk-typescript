@@ -11,7 +11,7 @@ let value: Tokens = {
   tokenId: "<value>",
   tokenUri: "<value>",
   metadata: {
-    indexStatus: "UNINDEXED",
+    indexStatus: "INVALID_METADATA",
   },
 };
 ```

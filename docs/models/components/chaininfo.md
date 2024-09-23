@@ -7,10 +7,10 @@ import { ChainInfo } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ChainInfo = {
   chainId: "<value>",
-  status: "UNAVAILABLE",
+  status: "OK",
   chainName: "<value>",
-  description: "Team-oriented eco-centric support",
-  vmName: "BITCOIN",
+  description: "Organized neutral moratorium",
+  vmName: "ETHEREUM",
   rpcUrl: "<value>",
   isTestnet: false,
   networkToken: {

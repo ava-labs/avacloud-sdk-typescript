@@ -5,7 +5,7 @@
 ```typescript
 import { TokenType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: TokenType = "ERC20";
+let value: TokenType = "NATIVE";
 ```
 
 ## Values

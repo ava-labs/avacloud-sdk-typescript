@@ -12,7 +12,7 @@ export const ListActivePrimaryNetworkStakingTransactionsServerList = [
 
 export type ListActivePrimaryNetworkStakingTransactionsGlobals = {
   /**
-   * A supported network type mainnet or a testnet.
+   * A supported network type mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
 };
@@ -47,7 +47,7 @@ export type ListActivePrimaryNetworkStakingTransactionsRequest = {
    */
   blockchainId: components.PChainId;
   /**
-   * Either mainnet or a testnet.
+   * Either mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
   /**

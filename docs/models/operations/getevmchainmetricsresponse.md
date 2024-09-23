@@ -9,8 +9,8 @@ let value: GetEvmChainMetricsResponse = {
   result: {
     results: [
       {
-        value: 3118.6,
-        timestamp: 2735.42,
+        value: 3339.65,
+        timestamp: 7908.40,
       },
     ],
   },

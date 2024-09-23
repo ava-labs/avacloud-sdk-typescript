@@ -7,10 +7,12 @@ import { GetAddressesByBalanceOverTimeResponse } from "@avalabs/avacloud-sdk/mod
 
 let value: GetAddressesByBalanceOverTimeResponse = {
   result: {
-    addresses: {
-      address: "0x1234567890abcdef1234567890abcdef123456789",
-      sortKey: "123",
-    },
+    addresses: [
+      {
+        address: "0x1234567890abcdef1234567890abcdef123456789",
+        sortKey: "123",
+      },
+    ],
   },
 };
 ```

@@ -12,7 +12,7 @@ export const ListPendingPrimaryNetworkRewardsServerList = [
 
 export type ListPendingPrimaryNetworkRewardsGlobals = {
   /**
-   * A supported network type mainnet or a testnet.
+   * A supported network type mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
 };
@@ -31,7 +31,7 @@ export type ListPendingPrimaryNetworkRewardsRequest = {
    */
   pageSize?: number | undefined;
   /**
-   * Either mainnet or a testnet.
+   * Either mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
   /**

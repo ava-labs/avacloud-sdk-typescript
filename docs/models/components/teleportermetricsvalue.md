@@ -6,7 +6,7 @@
 import { TeleporterMetricsValue } from "@avalabs/avacloud-sdk/models/components";
 
 let value: TeleporterMetricsValue = {
-  value: 8579.46,
+  value: 9636.63,
 };
 ```
 

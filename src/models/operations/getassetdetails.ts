@@ -11,7 +11,7 @@ export const GetAssetDetailsServerList = [
 
 export type GetAssetDetailsGlobals = {
   /**
-   * A supported network type mainnet or a testnet.
+   * A supported network type mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
 };
@@ -22,7 +22,7 @@ export type GetAssetDetailsRequest = {
    */
   blockchainId: components.XChainId;
   /**
-   * Either mainnet or a testnet.
+   * Either mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
   /**

@@ -39,14 +39,12 @@ let value: GetTeleporterMessageResponseBody = {
     },
     value: "<value>",
   },
-  destinationTransaction: {
+  sourceTransaction: {
     txHash: "<value>",
-    timestamp: 4861.6,
+    timestamp: 9707.31,
     gasSpent: "<value>",
-    rewardRedeemer: "<value>",
-    delivererAddress: "<value>",
   },
-  status: "delivered_source_not_indexed",
+  status: "pending",
 };
 ```
 

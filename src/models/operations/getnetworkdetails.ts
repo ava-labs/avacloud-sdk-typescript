@@ -11,14 +11,14 @@ export const GetNetworkDetailsServerList = [
 
 export type GetNetworkDetailsGlobals = {
   /**
-   * A supported network type mainnet or a testnet.
+   * A supported network type mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
 };
 
 export type GetNetworkDetailsRequest = {
   /**
-   * Either mainnet or a testnet.
+   * Either mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
 };

@@ -18,15 +18,15 @@ export type NftHoldersResponse = {
   /**
    * List of addresses that match provided criteria.
    */
-  addresses: AddressDetails;
+  addresses: Array<AddressDetails>;
   /**
    * NFT project name.
    */
-  nftCollectionName: string;
+  nftCollectionName?: string | null | undefined;
   /**
    * NFT symbol.
    */
-  nftSymbol: string;
+  nftSymbol?: string | null | undefined;
   /**
    * Total number of holders of a given NFT project.
    */
@@ -44,9 +44,9 @@ export const NftHoldersResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   nextPageToken: z.string().optional(),
-  addresses: AddressDetails$inboundSchema,
-  nftCollectionName: z.string(),
-  nftSymbol: z.string(),
+  addresses: z.array(AddressDetails$inboundSchema),
+  nftCollectionName: z.nullable(z.string()).optional(),
+  nftSymbol: z.nullable(z.string()).optional(),
   totalHolders: z.number(),
   totalTokens: z.number(),
 });
@@ -54,9 +54,9 @@ export const NftHoldersResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type NftHoldersResponse$Outbound = {
   nextPageToken?: string | undefined;
-  addresses: AddressDetails$Outbound;
-  nftCollectionName: string;
-  nftSymbol: string;
+  addresses: Array<AddressDetails$Outbound>;
+  nftCollectionName?: string | null | undefined;
+  nftSymbol?: string | null | undefined;
   totalHolders: number;
   totalTokens: number;
 };
@@ -68,9 +68,9 @@ export const NftHoldersResponse$outboundSchema: z.ZodType<
   NftHoldersResponse
 > = z.object({
   nextPageToken: z.string().optional(),
-  addresses: AddressDetails$outboundSchema,
-  nftCollectionName: z.string(),
-  nftSymbol: z.string(),
+  addresses: z.array(AddressDetails$outboundSchema),
+  nftCollectionName: z.nullable(z.string()).optional(),
+  nftSymbol: z.nullable(z.string()).optional(),
   totalHolders: z.number(),
   totalTokens: z.number(),
 });

@@ -10,7 +10,6 @@ import { metricsLookingGlassGetValidatorsByDateRange } from "../funcs/metricsLoo
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
-import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class LookingGlass extends ClientSDK {
@@ -95,8 +94,8 @@ export class LookingGlass extends ClientSDK {
   async compositeQuery(
     request: components.CompositeQueryRequestDto,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<components.CompositeQueryResponse> {
-    return unwrapAsync(metricsLookingGlassCompositeQuery(
+  ): Promise<PageIterator<operations.CompositeQueryV2Response>> {
+    return unwrapResultIterator(metricsLookingGlassCompositeQuery(
       this,
       request,
       options,

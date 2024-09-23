@@ -7,8 +7,10 @@ import { Queries } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Queries = {
   id: "<id>",
-  type: "LatestBalanceStarsArena",
+  type: "AnyTimeStarsArenaBalance",
   params: {
+    firstDate: "<value>",
+    lastDate: "<value>",
     minBalance: "<value>",
     subjectAddress: "<value>",
   },

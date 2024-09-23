@@ -17,8 +17,8 @@ import {
 
 export type CreateEvmTransactionExportRequest = {
   type: EVMOperationType;
-  firstDate: string;
-  lastDate: string;
+  firstDate?: string | undefined;
+  lastDate?: string | undefined;
   /**
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
@@ -37,8 +37,8 @@ export const CreateEvmTransactionExportRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: EVMOperationType$inboundSchema,
-  firstDate: z.string(),
-  lastDate: z.string(),
+  firstDate: z.string().optional(),
+  lastDate: z.string().optional(),
   startDate: z.string(),
   endDate: z.string(),
   options: EvmNetworkOptions$inboundSchema,
@@ -47,8 +47,8 @@ export const CreateEvmTransactionExportRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateEvmTransactionExportRequest$Outbound = {
   type: string;
-  firstDate: string;
-  lastDate: string;
+  firstDate?: string | undefined;
+  lastDate?: string | undefined;
   startDate: string;
   endDate: string;
   options: EvmNetworkOptions$Outbound;
@@ -61,8 +61,8 @@ export const CreateEvmTransactionExportRequest$outboundSchema: z.ZodType<
   CreateEvmTransactionExportRequest
 > = z.object({
   type: EVMOperationType$outboundSchema,
-  firstDate: z.string(),
-  lastDate: z.string(),
+  firstDate: z.string().optional(),
+  lastDate: z.string().optional(),
   startDate: z.string(),
   endDate: z.string(),
   options: EvmNetworkOptions$outboundSchema,

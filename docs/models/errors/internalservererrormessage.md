@@ -7,9 +7,7 @@ The error message describing the reason for the exception
 ```typescript
 import { InternalServerErrorMessage } from "@avalabs/avacloud-sdk/models/errors";
 
-let value: InternalServerErrorMessage = [
-  "<value>",
-];
+let value: InternalServerErrorMessage = "<value>";
 ```
 
 ## Supported Types

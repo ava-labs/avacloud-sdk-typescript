@@ -12,7 +12,7 @@ export const ListLatestXChainVerticesServerList = [
 
 export type ListLatestXChainVerticesGlobals = {
   /**
-   * A supported network type mainnet or a testnet.
+   * A supported network type mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
 };
@@ -31,7 +31,7 @@ export type ListLatestXChainVerticesRequest = {
    */
   blockchainId: components.XChainId;
   /**
-   * Either mainnet or a testnet.
+   * Either mainnet or testnet/fuji.
    */
   network?: components.GlobalParamNetwork | undefined;
 };

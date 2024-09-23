@@ -3,9 +3,10 @@
  */
 
 import { AvaCloudSDKCore } from "../core.js";
-import { encodeJSON as encodeJSON$ } from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { dlv } from "../lib/dlv.js";
+import { encodeJSON } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -21,7 +22,14 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { CompositeQueryV2ServerList } from "../models/operations/compositequeryv2.js";
+import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
+import {
+  createPageIterator,
+  haltIterator,
+  PageIterator,
+  Paginator,
+} from "../types/operations.js";
 
 /**
  * Composite query
@@ -30,77 +38,78 @@ import { Result } from "../types/fp.js";
  * Composite query to get list of addresses from multiple subqueries.
  */
 export async function metricsLookingGlassCompositeQuery(
-  client$: AvaCloudSDKCore,
+  client: AvaCloudSDKCore,
   request: components.CompositeQueryRequestDto,
   options?: RequestOptions & { serverURL?: string },
 ): Promise<
-  Result<
-    components.CompositeQueryResponse,
-    | errors.BadRequest
-    | errors.Unauthorized
-    | errors.Forbidden
-    | errors.NotFound
-    | errors.TooManyRequests
-    | errors.InternalServerError
-    | errors.BadGateway
-    | errors.ServiceUnavailable
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | ConnectionError
+  PageIterator<
+    Result<
+      operations.CompositeQueryV2Response,
+      | errors.BadRequest
+      | errors.Unauthorized
+      | errors.Forbidden
+      | errors.NotFound
+      | errors.TooManyRequests
+      | errors.InternalServerError
+      | errors.BadGateway
+      | errors.ServiceUnavailable
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
-      components.CompositeQueryRequestDto$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) => components.CompositeQueryRequestDto$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return haltIterator(parsed);
   }
-  const payload$ = parsed$.value;
-  const body$ = encodeJSON$("body", payload$, { explode: true });
+  const payload = parsed.value;
+  const body = encodeJSON("body", payload, { explode: true });
 
-  const baseURL$ = options?.serverURL
+  const baseURL = options?.serverURL
     || pathToFunc(CompositeQueryV2ServerList[0], { charEncoding: "percent" })();
 
-  const path$ = pathToFunc("/v2/lookingGlass/compositeQuery")();
+  const path = pathToFunc("/v2/lookingGlass/compositeQuery")();
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     "Content-Type": "application/json",
     Accept: "application/json",
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
     operationID: "compositeQueryV2",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
+    securitySource: client._options.apiKey,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "POST",
-    baseURL: baseURL$,
-    path: path$,
-    headers: headers$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    baseURL: baseURL,
+    path: path,
+    headers: headers,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return haltIterator(requestRes);
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: [
       "400",
@@ -115,7 +124,7 @@ export async function metricsLookingGlassCompositeQuery(
       "5XX",
     ],
     retryConfig: options?.retries
-      || client$.options$.retryConfig
+      || client._options.retryConfig
       || {
         strategy: "backoff",
         backoff: {
@@ -129,16 +138,16 @@ export async function metricsLookingGlassCompositeQuery(
     retryCodes: options?.retryCodes || ["5XX"],
   });
   if (!doResult.ok) {
-    return doResult;
+    return haltIterator(doResult);
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$] = await m$.match<
-    components.CompositeQueryResponse,
+  const [result, raw] = await M.match<
+    operations.CompositeQueryV2Response,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -155,20 +164,62 @@ export async function metricsLookingGlassCompositeQuery(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, components.CompositeQueryResponse$inboundSchema),
-    m$.jsonErr(400, errors.BadRequest$inboundSchema),
-    m$.jsonErr(401, errors.Unauthorized$inboundSchema),
-    m$.jsonErr(403, errors.Forbidden$inboundSchema),
-    m$.jsonErr(404, errors.NotFound$inboundSchema),
-    m$.jsonErr(429, errors.TooManyRequests$inboundSchema),
-    m$.jsonErr(500, errors.InternalServerError$inboundSchema),
-    m$.jsonErr(502, errors.BadGateway$inboundSchema),
-    m$.jsonErr(503, errors.ServiceUnavailable$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.json(200, operations.CompositeQueryV2Response$inboundSchema, {
+      key: "Result",
+    }),
+    M.jsonErr(400, errors.BadRequest$inboundSchema),
+    M.jsonErr(401, errors.Unauthorized$inboundSchema),
+    M.jsonErr(403, errors.Forbidden$inboundSchema),
+    M.jsonErr(404, errors.NotFound$inboundSchema),
+    M.jsonErr(429, errors.TooManyRequests$inboundSchema),
+    M.jsonErr(500, errors.InternalServerError$inboundSchema),
+    M.jsonErr(502, errors.BadGateway$inboundSchema),
+    M.jsonErr(503, errors.ServiceUnavailable$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return haltIterator(result);
   }
 
-  return result$;
+  const nextFunc = (
+    responseData: unknown,
+  ): Paginator<
+    Result<
+      operations.CompositeQueryV2Response,
+      | errors.BadRequest
+      | errors.Unauthorized
+      | errors.Forbidden
+      | errors.NotFound
+      | errors.TooManyRequests
+      | errors.InternalServerError
+      | errors.BadGateway
+      | errors.ServiceUnavailable
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >
+  > => {
+    const nextCursor = dlv(responseData, "nextPageToken");
+
+    if (nextCursor == null) {
+      return () => null;
+    }
+
+    return () =>
+      metricsLookingGlassCompositeQuery(
+        client,
+        {
+          ...input,
+          pageToken: nextCursor,
+        },
+        options,
+      );
+  };
+
+  const page = { ...result, next: nextFunc(raw) };
+  return { ...page, ...createPageIterator(page, (v) => !v.ok) };
 }

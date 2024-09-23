@@ -8,6 +8,6 @@ import { Chains } from "./chains.js";
 export class Evm extends ClientSDK {
   private _chains?: Chains;
   get chains(): Chains {
-    return (this._chains ??= new Chains(this.options$));
+    return (this._chains ??= new Chains(this._options));
   }
 }

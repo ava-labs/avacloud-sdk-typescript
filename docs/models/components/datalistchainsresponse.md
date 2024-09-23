@@ -9,9 +9,9 @@ let value: DataListChainsResponse = {
   chains: [
     {
       chainId: "<value>",
-      status: "UNAVAILABLE",
+      status: "OK",
       chainName: "<value>",
-      description: "Triple-buffered demand-driven budgetary management",
+      description: "Ameliorated encompassing middleware",
       vmName: "EVM",
       rpcUrl: "<value>",
       isTestnet: false,

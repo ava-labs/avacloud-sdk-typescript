@@ -7,7 +7,9 @@ The error message describing the reason for the exception
 ```typescript
 import { BadGatewayMessage } from "@avalabs/avacloud-sdk/models/errors";
 
-let value: BadGatewayMessage = "<value>";
+let value: BadGatewayMessage = [
+  "<value>",
+];
 ```
 
 ## Supported Types

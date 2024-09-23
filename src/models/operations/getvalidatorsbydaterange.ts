@@ -32,9 +32,9 @@ export type GetValidatorsByDateRangeRequest = {
    */
   subnetId: string;
   /**
-   * mainnet or testnet.
+   * Either mainnet or testnet/fuji.
    */
-  network?: components.NetworkType | undefined;
+  network?: components.Network | undefined;
 };
 
 export type GetValidatorsByDateRangeResponse = {
@@ -52,7 +52,7 @@ export const GetValidatorsByDateRangeRequest$inboundSchema: z.ZodType<
   pageToken: z.string().optional(),
   pageSize: z.number().int().default(1000),
   subnetId: z.string(),
-  network: components.NetworkType$inboundSchema.optional(),
+  network: components.Network$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -76,7 +76,7 @@ export const GetValidatorsByDateRangeRequest$outboundSchema: z.ZodType<
   pageToken: z.string().optional(),
   pageSize: z.number().int().default(1000),
   subnetId: z.string(),
-  network: components.NetworkType$outboundSchema.optional(),
+  network: components.Network$outboundSchema.optional(),
 });
 
 /**

@@ -7,7 +7,19 @@ import { ListContractDeploymentsResponse } from "@avalabs/avacloud-sdk/models/op
 
 let value: ListContractDeploymentsResponse = {
   result: {
-    contracts: [],
+    contracts: [
+      {
+        name: "Wrapped AVAX",
+        address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+        deploymentDetails: {
+          txHash: "<value>",
+          deployerAddress: "<value>",
+        },
+        ercType: "ERC-20",
+        symbol: "WAVAX",
+        decimals: 18,
+      },
+    ],
   },
 };
 ```
