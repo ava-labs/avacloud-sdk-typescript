@@ -220,7 +220,6 @@ export async function dataPrimaryNetworkListDelegators(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

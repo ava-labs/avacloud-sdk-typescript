@@ -220,7 +220,6 @@ export async function dataNftsListTokens(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

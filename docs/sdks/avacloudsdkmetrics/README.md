@@ -33,7 +33,7 @@ async function run() {
     timeInterval: "day",
     pageSize: 10,
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -131,9 +131,9 @@ async function run() {
   const result = await avaCloudSDK.metrics.chain.metrics.getTeleporterMetricsByChain({
     metric: "teleporterSourceTxnCount",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -167,7 +167,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -221,9 +221,9 @@ async function run() {
   const result = await avaCloudSDK.metrics.chain.metrics.getEvmChainRollingWindowMetrics({
     metric: "txCount",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -257,7 +257,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -315,7 +315,7 @@ async function run() {
     pageSize: 10,
     subnetId: "11111111111111111111111111111111LpoYY",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);

@@ -27,7 +27,7 @@ async function run() {
   const result = await avaCloudSDK.data.evm.blocks.getLatestBlocks({
     pageSize: 10,
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -121,9 +121,9 @@ async function run() {
   const result = await avaCloudSDK.data.evm.blocks.getBlock({
     blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -157,7 +157,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

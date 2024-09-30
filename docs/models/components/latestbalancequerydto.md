@@ -10,8 +10,8 @@ let value: LatestBalanceQueryDto = {
   type: "LatestBalance",
   params: {
     minBalance: "<value>",
-    evmChainId: "<value>",
-    tokenType: "NATIVE",
+    evmChainId: "<id>",
+    tokenType: "ERC20",
   },
 };
 ```

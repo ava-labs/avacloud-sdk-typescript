@@ -5,7 +5,7 @@
 ```typescript
 import { OperationStatusCode } from "@avalabs/avacloud-sdk/models/components";
 
-let value: OperationStatusCode = "ErrInternal";
+let value: OperationStatusCode = "WarnTruncatedExport";
 ```
 
 ## Values

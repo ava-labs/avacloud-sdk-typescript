@@ -209,7 +209,6 @@ export async function dataWebhooksListWebhooks(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

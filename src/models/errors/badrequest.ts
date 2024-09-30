@@ -9,13 +9,6 @@ import * as z from "zod";
  */
 export type Message = string | Array<string>;
 
-/**
- * Bad requests generally mean the client has passed invalid
- *
- * @remarks
- *     or malformed parameters. Error messages in the response could help in
- *     evaluating the error.
- */
 export type BadRequestData = {
   /**
    * The error message describing the reason for the exception
@@ -31,13 +24,6 @@ export type BadRequestData = {
   error: string;
 };
 
-/**
- * Bad requests generally mean the client has passed invalid
- *
- * @remarks
- *     or malformed parameters. Error messages in the response could help in
- *     evaluating the error.
- */
 export class BadRequest extends Error {
   /**
    * The HTTP status code of the response

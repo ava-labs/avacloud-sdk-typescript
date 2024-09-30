@@ -27,7 +27,7 @@ async function run() {
   const result = await avaCloudSDK.metrics.evm.chains.listChains({
     network: "mainnet",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -119,9 +119,9 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.metrics.evm.chains.getChain({});
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -153,7 +153,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

@@ -8,12 +8,12 @@ import { DataListChainsResponse } from "@avalabs/avacloud-sdk/models/components"
 let value: DataListChainsResponse = {
   chains: [
     {
-      chainId: "<value>",
-      status: "OK",
+      chainId: "<id>",
+      status: "UNAVAILABLE",
       chainName: "<value>",
-      description: "Ameliorated encompassing middleware",
-      vmName: "EVM",
-      rpcUrl: "<value>",
+      description: "strait huge verbally knowledgeably knowledgeably upon hoot",
+      vmName: "BITCOIN",
+      rpcUrl: "https://scared-valley.info",
       isTestnet: false,
       networkToken: {
         name: "Wrapped AVAX",

@@ -10,17 +10,12 @@ let value: GetSingleValidatorDetailsResponse = {
     validators: [
       {
         txHash: "<value>",
-        nodeId: "<value>",
-        subnetId: "<value>",
+        nodeId: "<id>",
+        subnetId: "<id>",
         amountStaked: "<value>",
-        startTimestamp: 9233.06,
-        endTimestamp: 8298.97,
-        delegatorCount: 9682.86,
-        rewards: {
-          validationRewardAmount: "<value>",
-          delegationRewardAmount: "<value>",
-        },
-        validationStatus: "completed",
+        startTimestamp: 7277.71,
+        endTimestamp: 8151.99,
+        validationStatus: "pending",
       },
     ],
   },

@@ -1,9 +1,5 @@
 # Forbidden
 
-When a client attempts to access resources with valid
-    credentials but doesn't have the privilege to perform that action, 
-    the server responds with 403.
-
 ## Example Usage
 
 ```typescript

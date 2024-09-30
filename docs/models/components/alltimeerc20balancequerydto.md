@@ -12,7 +12,7 @@ let value: AllTimeErc20BalanceQueryDto = {
     firstDate: "<value>",
     lastDate: "<value>",
     minBalance: "<value>",
-    evmChainId: "<value>",
+    evmChainId: "<id>",
     contractAddress: "<value>",
   },
 };

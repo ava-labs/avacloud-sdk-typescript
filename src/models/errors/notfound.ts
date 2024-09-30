@@ -9,13 +9,6 @@ import * as z from "zod";
  */
 export type NotFoundMessage = string | Array<string>;
 
-/**
- * The error is mostly returned when the client requests
- *
- * @remarks
- *     with either mistyped URL, or the passed resource is moved or deleted,
- *     or the resource doesn't exist.
- */
 export type NotFoundData = {
   /**
    * The error message describing the reason for the exception
@@ -31,13 +24,6 @@ export type NotFoundData = {
   error: string;
 };
 
-/**
- * The error is mostly returned when the client requests
- *
- * @remarks
- *     with either mistyped URL, or the passed resource is moved or deleted,
- *     or the resource doesn't exist.
- */
 export class NotFound extends Error {
   /**
    * The HTTP status code of the response

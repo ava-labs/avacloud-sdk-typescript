@@ -6,12 +6,12 @@
 import { ChainInfo } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ChainInfo = {
-  chainId: "<value>",
-  status: "OK",
+  chainId: "<id>",
+  status: "UNAVAILABLE",
   chainName: "<value>",
-  description: "Organized neutral moratorium",
+  description: "down cross-contamination before enrage upside-down",
   vmName: "ETHEREUM",
-  rpcUrl: "<value>",
+  rpcUrl: "https://hopeful-lay.org/",
   isTestnet: false,
   networkToken: {
     name: "Wrapped AVAX",

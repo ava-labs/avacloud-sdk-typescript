@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: 91a0e02e81b109251a6b0f980ebcb501
+  docChecksum: 4eba30cda024caf8d26a77769245c028
   docVersion: Beta
-  speakeasyVersion: 1.402.0
-  generationVersion: 2.422.6
-  releaseVersion: 0.5.1
-  configChecksum: 2266b6d28d0cfeed797681f1785a842f
+  speakeasyVersion: 1.404.5
+  generationVersion: 2.426.2
+  releaseVersion: 0.6.0
+  configChecksum: f5c0c3a7211079b363c1b44088b13d00
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.17.6
+    core: 3.18.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -31,7 +31,7 @@ features:
     methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
     nullables: 0.1.0
-    pagination: 2.82.6
+    pagination: 2.82.7
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
@@ -1266,7 +1266,7 @@ examples:
           network: "mainnet"
       responses:
         "200":
-          application/json: {"addresses": {"addresses": ["avax1abcdef1234567890abcdef1234567890abcdef"], "sortKey": "123"}}
+          application/json: {"addresses": [{"addresses": ["avax1abcdef1234567890abcdef1234567890abcdef"], "sortKey": "123"}]}
         "400":
           application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
         "401":

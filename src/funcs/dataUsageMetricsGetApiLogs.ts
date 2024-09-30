@@ -214,7 +214,6 @@ export async function dataUsageMetricsGetApiLogs(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

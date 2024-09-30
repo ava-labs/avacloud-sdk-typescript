@@ -235,7 +235,6 @@ export async function dataPrimaryNetworkTransactionsListActivePrimaryNetworkStak
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

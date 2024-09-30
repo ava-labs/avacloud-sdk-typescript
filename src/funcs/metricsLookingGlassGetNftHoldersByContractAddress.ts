@@ -229,7 +229,6 @@ export async function metricsLookingGlassGetNftHoldersByContractAddress(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

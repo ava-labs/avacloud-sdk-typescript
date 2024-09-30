@@ -223,7 +223,6 @@ export async function metricsLookingGlassGetValidatorsByDateRange(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

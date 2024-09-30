@@ -34,9 +34,9 @@ async function run() {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     currency: "usd",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -72,7 +72,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -134,7 +134,7 @@ async function run() {
     contractAddresses: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7, 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
     currency: "usd",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -236,7 +236,7 @@ async function run() {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -339,7 +339,7 @@ async function run() {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -440,7 +440,7 @@ async function run() {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);

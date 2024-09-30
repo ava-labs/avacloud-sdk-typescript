@@ -226,7 +226,6 @@ export async function dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewar
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

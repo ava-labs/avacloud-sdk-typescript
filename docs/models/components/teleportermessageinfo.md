@@ -6,8 +6,8 @@
 import { TeleporterMessageInfo } from "@avalabs/avacloud-sdk/models/components";
 
 let value: TeleporterMessageInfo = {
-  teleporterMessageId: "<value>",
-  direction: "DESTINATION_TRANSACTION",
+  teleporterMessageId: "<id>",
+  direction: "SOURCE_TRANSACTION",
 };
 ```
 

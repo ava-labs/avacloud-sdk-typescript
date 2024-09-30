@@ -8,10 +8,10 @@ import { Erc1155TokenBalance } from "@avalabs/avacloud-sdk/models/components";
 let value: Erc1155TokenBalance = {
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   ercType: "ERC-1155",
-  tokenId: "<value>",
-  tokenUri: "<value>",
+  tokenId: "<id>",
+  tokenUri: "https://grim-vision.com/",
   metadata: {
-    indexStatus: "INVALID_TOKEN_URI",
+    indexStatus: "MISSING_TOKEN",
   },
   chainId: "43114",
   balance: "2000000000000000000",

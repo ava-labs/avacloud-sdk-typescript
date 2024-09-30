@@ -227,7 +227,6 @@ export async function metricsChainMetricsGetStakingMetrics(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

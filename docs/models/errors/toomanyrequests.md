@@ -1,8 +1,5 @@
 # TooManyRequests
 
-This error is returned when the client has sent too many,
-    and has hit the rate limit.
-
 ## Example Usage
 
 ```typescript

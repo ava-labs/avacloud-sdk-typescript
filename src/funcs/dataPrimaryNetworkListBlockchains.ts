@@ -217,7 +217,6 @@ export async function dataPrimaryNetworkListBlockchains(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

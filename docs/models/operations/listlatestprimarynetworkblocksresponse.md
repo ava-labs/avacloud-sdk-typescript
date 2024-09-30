@@ -12,18 +12,18 @@ let value: ListLatestPrimaryNetworkBlocksResponse = {
         blockNumber: "<value>",
         blockHash: "<value>",
         parentHash: "<value>",
-        blockTimestamp: 7137.67,
+        blockTimestamp: 4724.14,
         blockType: "<value>",
-        txCount: 6391.87,
+        txCount: 4382.56,
         transactions: [
           "<value>",
         ],
-        blockSizeBytes: 3991.61,
+        blockSizeBytes: 2027.96,
       },
     ],
     chainInfo: {
       chainName: "x-chain",
-      network: "fuji",
+      network: "mainnet",
     },
   },
 };

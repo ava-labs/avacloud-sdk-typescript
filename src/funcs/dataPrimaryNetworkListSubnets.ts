@@ -217,7 +217,6 @@ export async function dataPrimaryNetworkListSubnets(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

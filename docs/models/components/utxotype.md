@@ -5,7 +5,7 @@
 ```typescript
 import { UtxoType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: UtxoType = "STAKE";
+let value: UtxoType = "TRANSFER";
 ```
 
 ## Values

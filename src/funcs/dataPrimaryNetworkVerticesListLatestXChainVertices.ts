@@ -225,7 +225,6 @@ export async function dataPrimaryNetworkVerticesListLatestXChainVertices(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

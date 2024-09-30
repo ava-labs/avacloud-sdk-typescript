@@ -227,7 +227,6 @@ export async function dataEvmTransactionsListErc1155Transactions(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

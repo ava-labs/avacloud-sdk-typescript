@@ -38,9 +38,9 @@ async function run() {
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     currency: "usd",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -75,7 +75,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -130,7 +130,7 @@ async function run() {
     pageSize: 10,
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -228,7 +228,7 @@ async function run() {
     pageSize: 10,
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -331,7 +331,7 @@ async function run() {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     sortOrder: "asc",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -432,7 +432,7 @@ async function run() {
     pageSize: 10,
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -532,7 +532,7 @@ async function run() {
     pageSize: 10,
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -632,7 +632,7 @@ async function run() {
     pageSize: 10,
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -732,7 +732,7 @@ async function run() {
     pageSize: 10,
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -834,7 +834,7 @@ async function run() {
     pageSize: 10,
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -931,9 +931,9 @@ async function run() {
   const result = await avaCloudSDK.data.evm.transactions.getTransaction({
     txHash: "0x8bf584d7b14b92a32a339872a66b134a70ba3ba7c305823f348db6f860253f45",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -967,7 +967,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1021,9 +1021,9 @@ async function run() {
   const result = await avaCloudSDK.data.evm.transactions.getTransactionsForBlock({
     blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1057,7 +1057,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1111,7 +1111,7 @@ async function run() {
   const result = await avaCloudSDK.data.evm.transactions.listLatestTransactions({
     pageSize: 10,
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);

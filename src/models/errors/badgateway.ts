@@ -9,12 +9,6 @@ import * as z from "zod";
  */
 export type BadGatewayMessage = string | Array<string>;
 
-/**
- * This is an internal error indicating invalid response
- *
- * @remarks
- *       received by the client-facing proxy or gateway from the upstream server.
- */
 export type BadGatewayData = {
   /**
    * The error message describing the reason for the exception
@@ -30,12 +24,6 @@ export type BadGatewayData = {
   error: string;
 };
 
-/**
- * This is an internal error indicating invalid response
- *
- * @remarks
- *       received by the client-facing proxy or gateway from the upstream server.
- */
 export class BadGateway extends Error {
   /**
    * The HTTP status code of the response
