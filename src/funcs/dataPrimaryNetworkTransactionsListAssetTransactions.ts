@@ -232,7 +232,6 @@ export async function dataPrimaryNetworkTransactionsListAssetTransactions(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

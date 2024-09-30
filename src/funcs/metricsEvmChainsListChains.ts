@@ -206,7 +206,6 @@ export async function metricsEvmChainsListChains(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

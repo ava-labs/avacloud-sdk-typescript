@@ -6,7 +6,7 @@
 import { BlockchainInfo } from "@avalabs/avacloud-sdk/models/components";
 
 let value: BlockchainInfo = {
-  blockchainId: "<value>",
+  blockchainId: "<id>",
 };
 ```
 

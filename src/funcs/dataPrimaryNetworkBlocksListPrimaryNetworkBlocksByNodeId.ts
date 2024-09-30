@@ -233,7 +233,6 @@ export async function dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

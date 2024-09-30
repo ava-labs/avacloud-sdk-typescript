@@ -217,7 +217,6 @@ export async function dataTeleporterListTeleporterMessages(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

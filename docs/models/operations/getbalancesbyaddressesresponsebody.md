@@ -2,12 +2,13 @@
 
 Successful response
 
-## Example Usage
+
+## Supported Types
+
+### `components.ListPChainBalancesResponse`
 
 ```typescript
-import { GetBalancesByAddressesResponseBody } from "@avalabs/avacloud-sdk/models/operations";
-
-let value: GetBalancesByAddressesResponseBody = {
+const value: components.ListPChainBalancesResponse = {
   balances: {
     unlockedUnstaked: [
       {
@@ -15,7 +16,7 @@ let value: GetBalancesByAddressesResponseBody = {
         name: "Avalanche",
         symbol: "AVAX",
         denomination: 9,
-        type: "secp256k1",
+        type: "nft",
         amount: "5001000",
         utxoCount: 1,
       },
@@ -37,7 +38,7 @@ let value: GetBalancesByAddressesResponseBody = {
         name: "Avalanche",
         symbol: "AVAX",
         denomination: 9,
-        type: "secp256k1",
+        type: "nft",
         amount: "5001000",
         utxoCount: 1,
       },
@@ -59,7 +60,7 @@ let value: GetBalancesByAddressesResponseBody = {
         name: "Avalanche",
         symbol: "AVAX",
         denomination: 9,
-        type: "secp256k1",
+        type: "nft",
         amount: "5001000",
         utxoCount: 1,
       },
@@ -70,7 +71,7 @@ let value: GetBalancesByAddressesResponseBody = {
         name: "Avalanche",
         symbol: "AVAX",
         denomination: 9,
-        type: "secp256k1",
+        type: "nft",
         amount: "5001000",
         utxoCount: 1,
       },
@@ -103,29 +104,105 @@ let value: GetBalancesByAddressesResponseBody = {
     ],
   },
   chainInfo: {
-    chainName: "c-chain",
-    network: "mainnet",
+    chainName: "p-chain",
+    network: "fuji",
   },
 };
-```
-
-## Supported Types
-
-### `components.ListPChainBalancesResponse`
-
-```typescript
-const value: components.ListPChainBalancesResponse = /* values here */
 ```
 
 ### `components.ListXChainBalancesResponse`
 
 ```typescript
-const value: components.ListXChainBalancesResponse = /* values here */
+const value: components.ListXChainBalancesResponse = {
+  balances: {
+    locked: [
+      {
+        assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+        name: "Avalanche",
+        symbol: "AVAX",
+        denomination: 9,
+        type: "nft",
+        amount: "5001000",
+        utxoCount: 1,
+      },
+    ],
+    unlocked: [
+      {
+        assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+        name: "Avalanche",
+        symbol: "AVAX",
+        denomination: 9,
+        type: "secp256k1",
+        amount: "5001000",
+        utxoCount: 1,
+      },
+    ],
+    atomicMemoryUnlocked: [
+      {
+        assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+        name: "Avalanche",
+        symbol: "AVAX",
+        denomination: 9,
+        type: "nft",
+        amount: "5001000",
+        utxoCount: 1,
+        sharedWithChainId: "<id>",
+      },
+    ],
+    atomicMemoryLocked: [
+      {
+        assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+        name: "Avalanche",
+        symbol: "AVAX",
+        denomination: 9,
+        type: "secp256k1",
+        amount: "5001000",
+        utxoCount: 1,
+        sharedWithChainId: "<id>",
+      },
+    ],
+  },
+  chainInfo: {
+    chainName: "c-chain",
+    network: "fuji",
+  },
+};
 ```
 
 ### `components.ListCChainAtomicBalancesResponse`
 
 ```typescript
-const value: components.ListCChainAtomicBalancesResponse = /* values here */
+const value: components.ListCChainAtomicBalancesResponse = {
+  balances: {
+    atomicMemoryUnlocked: [
+      {
+        assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+        name: "Avalanche",
+        symbol: "AVAX",
+        denomination: 9,
+        type: "nft",
+        amount: "5001000",
+        utxoCount: 1,
+        sharedWithChainId: "<id>",
+      },
+    ],
+    atomicMemoryLocked: [
+      {
+        assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+        name: "Avalanche",
+        symbol: "AVAX",
+        denomination: 9,
+        type: "secp256k1",
+        amount: "5001000",
+        utxoCount: 1,
+        sharedWithChainId: "<id>",
+      },
+    ],
+  },
+  chainInfo: {
+    chainName: "c-chain",
+    network: "mainnet",
+  },
+};
 ```
 

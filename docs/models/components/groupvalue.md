@@ -2,25 +2,18 @@
 
 The value of the column used for data aggregation
 
-## Example Usage
-
-```typescript
-import { GroupValue } from "@avalabs/avacloud-sdk/models/components";
-
-let value: GroupValue = 6455.70;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 8490.38;
 ```
 

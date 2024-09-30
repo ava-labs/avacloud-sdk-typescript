@@ -7,12 +7,14 @@ import { GetValidatorsByDateRangeResponse } from "@avalabs/avacloud-sdk/models/o
 
 let value: GetValidatorsByDateRangeResponse = {
   result: {
-    addresses: {
-      addresses: [
-        "avax1abcdef1234567890abcdef1234567890abcdef",
-      ],
-      sortKey: "123",
-    },
+    addresses: [
+      {
+        addresses: [
+          "avax1abcdef1234567890abcdef1234567890abcdef",
+        ],
+        sortKey: "123",
+      },
+    ],
   },
 };
 ```

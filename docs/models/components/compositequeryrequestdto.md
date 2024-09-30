@@ -9,14 +9,16 @@ let value: CompositeQueryRequestDto = {
   queries: [
     {
       id: "<id>",
-      type: "LatestBalanceStarsArena",
+      type: "AllTimeNftHolders",
       params: {
-        minBalance: "<value>",
-        subjectAddress: "<value>",
+        firstDate: "<value>",
+        lastDate: "<value>",
+        evmChainId: "<id>",
+        contractAddress: "<value>",
       },
     },
   ],
-  operator: "OR",
+  operator: "AND",
 };
 ```
 

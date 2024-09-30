@@ -1,9 +1,5 @@
 # ServiceUnavailable
 
-The error is returned for certain routes on a particular
-    Subnet. This indicates an internal problem with our Subnet node, and may 
-    not necessarily mean the Subnet is down or affected.
-
 ## Example Usage
 
 ```typescript

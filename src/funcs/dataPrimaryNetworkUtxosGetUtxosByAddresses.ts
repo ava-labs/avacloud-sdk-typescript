@@ -229,7 +229,6 @@ export async function dataPrimaryNetworkUtxosGetUtxosByAddresses(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

@@ -204,7 +204,6 @@ export async function metricsLookingGlassCompositeQuery(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

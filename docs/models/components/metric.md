@@ -6,17 +6,17 @@
 import { Metric } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Metric = {
-  timestamp: 2728.22,
+  timestamp: 5757.51,
   values: [
     {
-      groupedBy: "chainId",
-      totalRequests: 1970.54,
-      requestsPerSecond: 4598.56,
-      successRatePercent: 446.12,
-      medianResponseTimeMsecs: 7997.96,
-      invalidRequests: 769.56,
-      apiCreditsUsed: 5188.35,
-      apiCreditsWasted: 3068.10,
+      groupedBy: "requestType",
+      totalRequests: 9088.44,
+      requestsPerSecond: 8155.24,
+      successRatePercent: 1594.14,
+      medianResponseTimeMsecs: 6288.98,
+      invalidRequests: 3984.34,
+      apiCreditsUsed: 627.13,
+      apiCreditsWasted: 4240.32,
     },
   ],
 };

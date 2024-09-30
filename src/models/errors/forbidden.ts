@@ -9,13 +9,6 @@ import * as z from "zod";
  */
 export type ForbiddenMessage = string | Array<string>;
 
-/**
- * When a client attempts to access resources with valid
- *
- * @remarks
- *     credentials but doesn't have the privilege to perform that action,
- *     the server responds with 403.
- */
 export type ForbiddenData = {
   /**
    * The error message describing the reason for the exception
@@ -31,13 +24,6 @@ export type ForbiddenData = {
   error: string;
 };
 
-/**
- * When a client attempts to access resources with valid
- *
- * @remarks
- *     credentials but doesn't have the privilege to perform that action,
- *     the server responds with 403.
- */
 export class Forbidden extends Error {
   /**
    * The HTTP status code of the response

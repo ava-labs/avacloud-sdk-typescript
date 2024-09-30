@@ -22,7 +22,7 @@ export type GetNativeBalanceRequest = {
    */
   blockNumber?: string | undefined;
   /**
-   * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
+   * A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
    */
   chainId?: string | undefined;
   /**

@@ -1,29 +1,27 @@
 # Params
 
-## Example Usage
-
-```typescript
-import { Params } from "@avalabs/avacloud-sdk/models/components";
-
-let value: Params = {
-  firstDate: "<value>",
-  lastDate: "<value>",
-  evmChainId: "<value>",
-  contractAddress: "<value>",
-};
-```
 
 ## Supported Types
 
 ### `components.TimestampRangeNftHoldersParam`
 
 ```typescript
-const value: components.TimestampRangeNftHoldersParam = /* values here */
+const value: components.TimestampRangeNftHoldersParam = {
+  evmChainId: "<id>",
+  contractAddress: "<value>",
+  startTs: 1433.53,
+  endTs: 9446.69,
+};
 ```
 
 ### `components.DateRangeNftHoldersParam`
 
 ```typescript
-const value: components.DateRangeNftHoldersParam = /* values here */
+const value: components.DateRangeNftHoldersParam = {
+  firstDate: "<value>",
+  lastDate: "<value>",
+  evmChainId: "<id>",
+  contractAddress: "<value>",
+};
 ```
 

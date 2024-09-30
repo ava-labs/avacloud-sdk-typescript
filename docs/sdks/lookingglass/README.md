@@ -31,7 +31,7 @@ async function run() {
     pageSize: 10,
     address: "0x7a420AEFF902AAa2c85a190D7B91Ce8BEFffFE14",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -130,7 +130,7 @@ async function run() {
     pageSize: 10,
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -229,7 +229,7 @@ async function run() {
     threshold: "1000000",
     pageSize: 10,
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -328,7 +328,7 @@ async function run() {
     subnetId: "11111111111111111111111111111111LpoYY",
     network: "mainnet",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -436,7 +436,7 @@ async function run() {
     ],
     operator: "OR",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);

@@ -1,9 +1,5 @@
 # BadRequest
 
-Bad requests generally mean the client has passed invalid 
-    or malformed parameters. Error messages in the response could help in 
-    evaluating the error.
-
 ## Example Usage
 
 ```typescript

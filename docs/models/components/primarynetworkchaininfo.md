@@ -7,7 +7,7 @@ import { PrimaryNetworkChainInfo } from "@avalabs/avacloud-sdk/models/components
 
 let value: PrimaryNetworkChainInfo = {
   chainName: "p-chain",
-  network: "mainnet",
+  network: "fuji",
 };
 ```
 

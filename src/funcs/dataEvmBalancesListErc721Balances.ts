@@ -227,7 +227,6 @@ export async function dataEvmBalancesListErc721Balances(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

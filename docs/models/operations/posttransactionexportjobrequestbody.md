@@ -1,11 +1,12 @@
 # PostTransactionExportJobRequestBody
 
-## Example Usage
+
+## Supported Types
+
+### `components.CreateEvmTransactionExportRequest`
 
 ```typescript
-import { PostTransactionExportJobRequestBody } from "@avalabs/avacloud-sdk/models/operations";
-
-let value: PostTransactionExportJobRequestBody = {
+const value: components.CreateEvmTransactionExportRequest = {
   type: "TRANSACTION_EXPORT_EVM",
   firstDate: "2023-05-01",
   lastDate: "2023-05-02",
@@ -22,17 +23,20 @@ let value: PostTransactionExportJobRequestBody = {
 };
 ```
 
-## Supported Types
-
-### `components.CreateEvmTransactionExportRequest`
-
-```typescript
-const value: components.CreateEvmTransactionExportRequest = /* values here */
-```
-
 ### `components.CreatePrimaryNetworkTransactionExportRequest`
 
 ```typescript
-const value: components.CreatePrimaryNetworkTransactionExportRequest = /* values here */
+const value: components.CreatePrimaryNetworkTransactionExportRequest = {
+  type: "TRANSACTION_EXPORT_PRIMARY_NETWORK",
+  firstDate: "2023-05-01",
+  lastDate: "2023-05-02",
+  startDate: "2023-05-01",
+  endDate: "2023-05-02",
+  options: {
+    includeChains: [
+      "p-chain",
+    ],
+  },
+};
 ```
 

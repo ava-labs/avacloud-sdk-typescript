@@ -6,10 +6,10 @@
 import { TimestampRangeNftHoldersParam } from "@avalabs/avacloud-sdk/models/components";
 
 let value: TimestampRangeNftHoldersParam = {
-  evmChainId: "<value>",
+  evmChainId: "<id>",
   contractAddress: "<value>",
-  startTs: 9446.69,
-  endTs: 5218.48,
+  startTs: 4146.62,
+  endTs: 2645.56,
 };
 ```
 

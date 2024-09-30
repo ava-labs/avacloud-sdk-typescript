@@ -17,7 +17,7 @@ export type GetChainInfoGlobals = {
 
 export type GetChainInfoRequest = {
   /**
-   * A supported evm chain id, chain alias or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
+   * A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
    */
   chainId?: string | undefined;
 };

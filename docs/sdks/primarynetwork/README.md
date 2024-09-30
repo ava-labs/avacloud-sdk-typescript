@@ -35,9 +35,9 @@ async function run() {
     blockchainId: "x-chain",
     assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -72,7 +72,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -126,9 +126,9 @@ async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.getChainIdsForAddresses({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -162,7 +162,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -214,9 +214,9 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.getNetworkDetails({});
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -248,7 +248,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -303,7 +303,7 @@ async function run() {
     pageSize: 10,
     sortOrder: "asc",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -399,7 +399,7 @@ async function run() {
     pageSize: 10,
     sortOrder: "asc",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -494,9 +494,9 @@ async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.getSubnetById({
     subnetId: "11111111111111111111111111111111LpoYY",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -530,7 +530,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -596,7 +596,7 @@ async function run() {
     maxUptimePerformance: 100,
     subnetId: "11111111111111111111111111111111LpoYY",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -705,7 +705,7 @@ async function run() {
     validationStatus: "completed",
     sortOrder: "asc",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -806,7 +806,7 @@ async function run() {
     delegationStatus: "completed",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);

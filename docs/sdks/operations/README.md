@@ -27,9 +27,9 @@ async function run() {
   const result = await avaCloudSDK.data.operations.getOperationResult({
     operationId: "aa22054a-cb7c-4a4e-9b83-59f2ede74138",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -63,7 +63,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -128,9 +128,9 @@ async function run() {
       ],
     },
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -173,7 +173,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

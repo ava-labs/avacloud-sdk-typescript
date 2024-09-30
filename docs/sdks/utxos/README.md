@@ -29,7 +29,7 @@ async function run() {
     blockchainId: "p-chain",
     sortOrder: "asc",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);

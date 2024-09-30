@@ -5,7 +5,7 @@
 ```typescript
 import { TransactionDirectionType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: TransactionDirectionType = "DESTINATION_TRANSACTION";
+let value: TransactionDirectionType = "SOURCE_TRANSACTION";
 ```
 
 ## Values

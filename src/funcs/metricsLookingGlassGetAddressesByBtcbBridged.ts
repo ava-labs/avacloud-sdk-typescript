@@ -212,7 +212,6 @@ export async function metricsLookingGlassGetAddressesByBtcbBridged(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

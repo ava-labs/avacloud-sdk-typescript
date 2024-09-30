@@ -226,7 +226,6 @@ export async function dataPrimaryNetworkVerticesGetVertexByHeight(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }

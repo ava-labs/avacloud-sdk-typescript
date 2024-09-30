@@ -16,12 +16,12 @@ let value: WebhookResponse = {
       "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64",
     ],
   },
-  url: "https://expensive-pick.name",
-  chainId: "<value>",
-  status: "active",
-  createdAt: 5546.88,
+  url: "https://squeaky-brace.info/",
+  chainId: "<id>",
+  status: "inactive",
+  createdAt: 6939.56,
   name: "<value>",
-  description: "Face to face next generation groupware",
+  description: "within wiggly huzzah",
 };
 ```
 

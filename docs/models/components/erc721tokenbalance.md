@@ -10,10 +10,10 @@ let value: Erc721TokenBalance = {
   name: "Wrapped AVAX",
   symbol: "WAVAX",
   ercType: "ERC-721",
-  tokenId: "<value>",
-  tokenUri: "<value>",
+  tokenId: "<id>",
+  tokenUri: "https://good-natured-platypus.com/",
   metadata: {
-    indexStatus: "INVALID_METADATA_JSON",
+    indexStatus: "METADATA_CONTENT_TOO_LARGE",
   },
   ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   chainId: "43114",

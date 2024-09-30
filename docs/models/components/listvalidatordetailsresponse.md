@@ -9,17 +9,12 @@ let value: ListValidatorDetailsResponse = {
   validators: [
     {
       txHash: "<value>",
-      nodeId: "<value>",
-      subnetId: "<value>",
+      nodeId: "<id>",
+      subnetId: "<id>",
       amountStaked: "<value>",
-      startTimestamp: 2700.08,
-      endTimestamp: 7351.94,
-      delegatorCount: 9621.89,
-      rewards: {
-        validationRewardAmount: "<value>",
-        delegationRewardAmount: "<value>",
-      },
-      validationStatus: "completed",
+      startTimestamp: 5699.65,
+      endTimestamp: 5908.73,
+      validationStatus: "pending",
     },
   ],
 };

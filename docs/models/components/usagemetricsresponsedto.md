@@ -7,20 +7,20 @@ import { UsageMetricsResponseDTO } from "@avalabs/avacloud-sdk/models/components
 
 let value: UsageMetricsResponseDTO = {
   aggregateDuration: "<value>",
-  orgId: "<value>",
+  orgId: "<id>",
   metrics: [
     {
-      timestamp: 1811.51,
+      timestamp: 2400.20,
       values: [
         {
-          groupedBy: "requestType",
-          totalRequests: 568.48,
-          requestsPerSecond: 6969.97,
-          successRatePercent: 7786.95,
-          medianResponseTimeMsecs: 7774.08,
-          invalidRequests: 2594.23,
-          apiCreditsUsed: 3738.13,
-          apiCreditsWasted: 5876.00,
+          groupedBy: "requestPath",
+          totalRequests: 7963.91,
+          requestsPerSecond: 9591.67,
+          successRatePercent: 4581.39,
+          medianResponseTimeMsecs: 5909.84,
+          invalidRequests: 8577.23,
+          apiCreditsUsed: 4572.23,
+          apiCreditsWasted: 9518.74,
         },
       ],
     },

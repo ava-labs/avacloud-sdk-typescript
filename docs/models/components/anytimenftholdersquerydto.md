@@ -9,10 +9,10 @@ let value: AnyTimeNftHoldersQueryDto = {
   id: "<id>",
   type: "AnyTimeNftHolders",
   params: {
-    evmChainId: "<value>",
+    firstDate: "<value>",
+    lastDate: "<value>",
+    evmChainId: "<id>",
     contractAddress: "<value>",
-    startTs: 5684.34,
-    endTs: 187.90,
   },
 };
 ```

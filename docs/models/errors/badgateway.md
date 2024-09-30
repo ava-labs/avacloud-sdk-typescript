@@ -1,8 +1,5 @@
 # BadGateway
 
-This is an internal error indicating invalid response 
-      received by the client-facing proxy or gateway from the upstream server.
-
 ## Example Usage
 
 ```typescript

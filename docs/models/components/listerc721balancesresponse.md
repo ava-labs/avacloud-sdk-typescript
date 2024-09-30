@@ -12,10 +12,10 @@ let value: ListErc721BalancesResponse = {
       name: "Wrapped AVAX",
       symbol: "WAVAX",
       ercType: "ERC-721",
-      tokenId: "<value>",
-      tokenUri: "<value>",
+      tokenId: "<id>",
+      tokenUri: "https://heavenly-instruction.info",
       metadata: {
-        indexStatus: "UNKNOWN",
+        indexStatus: "UNINDEXED",
       },
       ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
       chainId: "43114",

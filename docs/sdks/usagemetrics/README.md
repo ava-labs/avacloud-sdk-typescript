@@ -30,9 +30,9 @@ async function run() {
     timeInterval: "daily",
     groupBy: "requestPath",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -69,7 +69,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -124,7 +124,7 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);

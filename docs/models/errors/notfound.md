@@ -1,9 +1,5 @@
 # NotFound
 
-The error is mostly returned when the client requests
-    with either mistyped URL, or the passed resource is moved or deleted, 
-    or the resource doesn't exist.
-
 ## Example Usage
 
 ```typescript
