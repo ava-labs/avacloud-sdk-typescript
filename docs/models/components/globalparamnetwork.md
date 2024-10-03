@@ -11,5 +11,5 @@ let value: GlobalParamNetwork = "mainnet";
 ## Values
 
 ```typescript
-"mainnet" | "fuji" | "testnet"
+"mainnet" | "fuji" | "testnet" | "devnet"
 ```

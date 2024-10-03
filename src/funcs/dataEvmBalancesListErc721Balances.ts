@@ -64,10 +64,8 @@ export async function dataEvmBalancesListErc721Balances(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.ListErc721BalancesRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
@@ -235,7 +233,7 @@ export async function dataEvmBalancesListErc721Balances(
       dataEvmBalancesListErc721Balances(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

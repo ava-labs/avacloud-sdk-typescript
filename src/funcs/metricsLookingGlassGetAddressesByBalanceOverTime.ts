@@ -62,10 +62,8 @@ export async function metricsLookingGlassGetAddressesByBalanceOverTime(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetAddressesByBalanceOverTimeRequest$outboundSchema.parse(
         value,
@@ -240,7 +238,7 @@ export async function metricsLookingGlassGetAddressesByBalanceOverTime(
       metricsLookingGlassGetAddressesByBalanceOverTime(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

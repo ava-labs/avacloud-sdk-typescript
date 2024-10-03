@@ -55,10 +55,8 @@ export async function dataPrimaryNetworkBalancesGetBalancesByAddresses(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetBalancesByAddressesRequest$outboundSchema.parse(value),
     "Input validation failed",

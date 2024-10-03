@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: 4eba30cda024caf8d26a77769245c028
+  docChecksum: 8c4d190a1bb4c0404c840c648989cfcf
   docVersion: Beta
-  speakeasyVersion: 1.404.5
-  generationVersion: 2.426.2
-  releaseVersion: 0.6.0
-  configChecksum: f5c0c3a7211079b363c1b44088b13d00
+  speakeasyVersion: 1.406.0
+  generationVersion: 2.429.0
+  releaseVersion: 0.6.1
+  configChecksum: e7a878f44183448a7a63a40cda87a099
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.18.0
+    core: 3.18.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0

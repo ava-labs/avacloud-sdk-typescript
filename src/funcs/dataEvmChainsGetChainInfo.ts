@@ -54,10 +54,8 @@ export async function dataEvmChainsGetChainInfo(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetChainInfoRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

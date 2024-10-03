@@ -22,11 +22,11 @@ export type CreatePrimaryNetworkTransactionExportRequest = {
   /**
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  startDate: string;
+  startDate?: string | undefined;
   /**
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  endDate: string;
+  endDate?: string | undefined;
   options: PrimaryNetworkOptions;
 };
 
@@ -40,8 +40,8 @@ export const CreatePrimaryNetworkTransactionExportRequest$inboundSchema:
     type: PrimaryNetworkOperationType$inboundSchema,
     firstDate: z.string().optional(),
     lastDate: z.string().optional(),
-    startDate: z.string(),
-    endDate: z.string(),
+    startDate: z.string().optional(),
+    endDate: z.string().optional(),
     options: PrimaryNetworkOptions$inboundSchema,
   });
 
@@ -50,8 +50,8 @@ export type CreatePrimaryNetworkTransactionExportRequest$Outbound = {
   type: string;
   firstDate?: string | undefined;
   lastDate?: string | undefined;
-  startDate: string;
-  endDate: string;
+  startDate?: string | undefined;
+  endDate?: string | undefined;
   options: PrimaryNetworkOptions$Outbound;
 };
 
@@ -65,8 +65,8 @@ export const CreatePrimaryNetworkTransactionExportRequest$outboundSchema:
     type: PrimaryNetworkOperationType$outboundSchema,
     firstDate: z.string().optional(),
     lastDate: z.string().optional(),
-    startDate: z.string(),
-    endDate: z.string(),
+    startDate: z.string().optional(),
+    endDate: z.string().optional(),
     options: PrimaryNetworkOptions$outboundSchema,
   });
 

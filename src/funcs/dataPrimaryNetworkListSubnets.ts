@@ -62,10 +62,8 @@ export async function dataPrimaryNetworkListSubnets(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.ListSubnetsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
@@ -225,7 +223,7 @@ export async function dataPrimaryNetworkListSubnets(
       dataPrimaryNetworkListSubnets(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

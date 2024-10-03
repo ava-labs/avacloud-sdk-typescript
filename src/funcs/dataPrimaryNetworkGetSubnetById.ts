@@ -54,10 +54,8 @@ export async function dataPrimaryNetworkGetSubnetById(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetSubnetByIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

@@ -9,6 +9,7 @@ export const Network = {
   Mainnet: "mainnet",
   Fuji: "fuji",
   Testnet: "testnet",
+  Devnet: "devnet",
 } as const;
 export type Network = ClosedEnum<typeof Network>;
 

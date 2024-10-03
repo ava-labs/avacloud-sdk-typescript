@@ -97,7 +97,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -107,8 +107,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listContractDeployments
 
@@ -193,7 +192,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -203,8 +202,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listTransfers
 
@@ -293,7 +291,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -303,8 +301,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listTransactions
 
@@ -397,7 +394,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -407,8 +404,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listNativeTransactions
 
@@ -497,7 +493,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -507,8 +503,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listErc20Transactions
 
@@ -597,7 +592,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -607,8 +602,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listErc721Transactions
 
@@ -697,7 +691,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -707,8 +701,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listErc1155Transactions
 
@@ -797,7 +790,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -807,8 +800,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listInternalTransactions
 
@@ -899,7 +891,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -909,8 +901,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getTransaction
 
@@ -989,7 +980,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -999,8 +990,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getTransactionsForBlock
 
@@ -1079,7 +1069,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -1089,8 +1079,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listLatestTransactions
 
@@ -1173,7 +1162,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -1183,4 +1172,4 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |

@@ -94,7 +94,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -104,8 +104,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getChainIdsForAddresses
 
@@ -184,7 +183,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -194,8 +193,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getNetworkDetails
 
@@ -270,7 +268,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -280,8 +278,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listBlockchains
 
@@ -366,7 +363,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -376,8 +373,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listSubnets
 
@@ -462,7 +458,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -472,8 +468,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getSubnetById
 
@@ -552,7 +547,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -562,8 +557,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listValidators
 
@@ -670,7 +664,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -680,8 +674,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getSingleValidatorDetails
 
@@ -770,7 +763,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -780,8 +773,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listDelegators
 
@@ -872,7 +864,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -882,4 +874,4 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |

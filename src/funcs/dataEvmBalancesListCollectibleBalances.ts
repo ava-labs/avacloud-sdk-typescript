@@ -64,10 +64,8 @@ export async function dataEvmBalancesListCollectibleBalances(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.ListCollectibleBalancesRequest$outboundSchema.parse(value),
     "Input validation failed",
@@ -236,7 +234,7 @@ export async function dataEvmBalancesListCollectibleBalances(
       dataEvmBalancesListCollectibleBalances(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

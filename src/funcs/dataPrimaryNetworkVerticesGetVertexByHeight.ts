@@ -62,10 +62,8 @@ export async function dataPrimaryNetworkVerticesGetVertexByHeight(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetVertexByHeightRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
@@ -234,7 +232,7 @@ export async function dataPrimaryNetworkVerticesGetVertexByHeight(
       dataPrimaryNetworkVerticesGetVertexByHeight(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

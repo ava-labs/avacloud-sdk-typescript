@@ -11,5 +11,5 @@ let value: Network = "mainnet";
 ## Values
 
 ```typescript
-"mainnet" | "fuji" | "testnet"
+"mainnet" | "fuji" | "testnet" | "devnet"
 ```

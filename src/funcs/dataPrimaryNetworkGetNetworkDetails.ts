@@ -54,10 +54,8 @@ export async function dataPrimaryNetworkGetNetworkDetails(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetNetworkDetailsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

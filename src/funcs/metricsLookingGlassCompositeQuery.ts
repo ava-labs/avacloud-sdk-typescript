@@ -63,10 +63,8 @@ export async function metricsLookingGlassCompositeQuery(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => components.CompositeQueryRequestDto$outboundSchema.parse(value),
     "Input validation failed",
   );
@@ -212,7 +210,7 @@ export async function metricsLookingGlassCompositeQuery(
       metricsLookingGlassCompositeQuery(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

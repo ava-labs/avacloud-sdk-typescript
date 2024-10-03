@@ -25,7 +25,7 @@ let value: GetVertexByHeightResponse = {
     ],
     chainInfo: {
       chainName: "c-chain",
-      network: "fuji",
+      network: "devnet",
     },
   },
 };

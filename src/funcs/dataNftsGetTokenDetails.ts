@@ -53,10 +53,8 @@ export async function dataNftsGetTokenDetails(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetTokenDetailsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

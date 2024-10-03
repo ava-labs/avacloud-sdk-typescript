@@ -123,7 +123,7 @@ let value: ListAssetTransactionsResponse = {
     ],
     chainInfo: {
       chainName: "c-chain",
-      network: "fuji",
+      network: "devnet",
     },
   },
 };
