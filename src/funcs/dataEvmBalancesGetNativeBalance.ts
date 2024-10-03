@@ -56,10 +56,8 @@ export async function dataEvmBalancesGetNativeBalance(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetNativeBalanceRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

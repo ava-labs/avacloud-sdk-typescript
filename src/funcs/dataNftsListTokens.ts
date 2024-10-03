@@ -62,10 +62,8 @@ export async function dataNftsListTokens(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.ListTokensRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
@@ -228,7 +226,7 @@ export async function dataNftsListTokens(
       dataNftsListTokens(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

@@ -62,10 +62,8 @@ export async function metricsEvmChainsListChains(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.ListChainsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
@@ -214,7 +212,7 @@ export async function metricsEvmChainsListChains(
       metricsEvmChainsListChains(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

@@ -54,10 +54,8 @@ export async function dataEvmBlocksGetBlock(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetBlockRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

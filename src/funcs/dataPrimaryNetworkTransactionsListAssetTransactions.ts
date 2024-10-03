@@ -62,10 +62,8 @@ export async function dataPrimaryNetworkTransactionsListAssetTransactions(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.ListAssetTransactionsRequest$outboundSchema.parse(value),
     "Input validation failed",
@@ -240,7 +238,7 @@ export async function dataPrimaryNetworkTransactionsListAssetTransactions(
       dataPrimaryNetworkTransactionsListAssetTransactions(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

@@ -54,10 +54,8 @@ export async function dataUsageMetricsGetApiUsageMetrics(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetApiUsageMetricsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

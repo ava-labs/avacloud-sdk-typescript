@@ -62,10 +62,8 @@ export async function dataEvmTransactionsListErc721Transactions(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.ListErc721TransactionsRequest$outboundSchema.parse(value),
     "Input validation failed",
@@ -235,7 +233,7 @@ export async function dataEvmTransactionsListErc721Transactions(
       dataEvmTransactionsListErc721Transactions(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

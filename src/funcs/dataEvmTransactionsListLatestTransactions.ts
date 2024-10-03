@@ -62,10 +62,8 @@ export async function dataEvmTransactionsListLatestTransactions(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.ListLatestTransactionsRequest$outboundSchema.parse(value),
     "Input validation failed",
@@ -228,7 +226,7 @@ export async function dataEvmTransactionsListLatestTransactions(
       dataEvmTransactionsListLatestTransactions(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

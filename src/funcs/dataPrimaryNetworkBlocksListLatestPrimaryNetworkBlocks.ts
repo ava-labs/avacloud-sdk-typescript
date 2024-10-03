@@ -62,10 +62,8 @@ export async function dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.ListLatestPrimaryNetworkBlocksRequest$outboundSchema.parse(
         value,
@@ -237,7 +235,7 @@ export async function dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks(
       dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

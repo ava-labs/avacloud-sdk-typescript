@@ -62,10 +62,8 @@ export async function dataPrimaryNetworkUtxosGetUtxosByAddresses(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetUtxosByAddressesRequest$outboundSchema.parse(value),
     "Input validation failed",
@@ -237,7 +235,7 @@ export async function dataPrimaryNetworkUtxosGetUtxosByAddresses(
       dataPrimaryNetworkUtxosGetUtxosByAddresses(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

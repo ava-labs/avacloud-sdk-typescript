@@ -62,10 +62,8 @@ export async function dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.ListPendingPrimaryNetworkRewardsRequest$outboundSchema.parse(
         value,
@@ -236,7 +234,7 @@ export async function dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards(
       dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

@@ -62,10 +62,8 @@ export async function metricsLookingGlassGetAddressesByBtcbBridged(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetAddressesByBtcbBridgedRequest$outboundSchema.parse(value),
     "Input validation failed",
@@ -220,7 +218,7 @@ export async function metricsLookingGlassGetAddressesByBtcbBridged(
       metricsLookingGlassGetAddressesByBtcbBridged(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

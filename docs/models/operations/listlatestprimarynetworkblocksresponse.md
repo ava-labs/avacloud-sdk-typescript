@@ -23,7 +23,7 @@ let value: ListLatestPrimaryNetworkBlocksResponse = {
     ],
     chainInfo: {
       chainName: "x-chain",
-      network: "mainnet",
+      network: "fuji",
     },
   },
 };

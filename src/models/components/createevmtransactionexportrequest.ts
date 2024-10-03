@@ -22,11 +22,11 @@ export type CreateEvmTransactionExportRequest = {
   /**
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  startDate: string;
+  startDate?: string | undefined;
   /**
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  endDate: string;
+  endDate?: string | undefined;
   options: EvmNetworkOptions;
 };
 
@@ -39,8 +39,8 @@ export const CreateEvmTransactionExportRequest$inboundSchema: z.ZodType<
   type: EVMOperationType$inboundSchema,
   firstDate: z.string().optional(),
   lastDate: z.string().optional(),
-  startDate: z.string(),
-  endDate: z.string(),
+  startDate: z.string().optional(),
+  endDate: z.string().optional(),
   options: EvmNetworkOptions$inboundSchema,
 });
 
@@ -49,8 +49,8 @@ export type CreateEvmTransactionExportRequest$Outbound = {
   type: string;
   firstDate?: string | undefined;
   lastDate?: string | undefined;
-  startDate: string;
-  endDate: string;
+  startDate?: string | undefined;
+  endDate?: string | undefined;
   options: EvmNetworkOptions$Outbound;
 };
 
@@ -63,8 +63,8 @@ export const CreateEvmTransactionExportRequest$outboundSchema: z.ZodType<
   type: EVMOperationType$outboundSchema,
   firstDate: z.string().optional(),
   lastDate: z.string().optional(),
-  startDate: z.string(),
-  endDate: z.string(),
+  startDate: z.string().optional(),
+  endDate: z.string().optional(),
   options: EvmNetworkOptions$outboundSchema,
 });
 

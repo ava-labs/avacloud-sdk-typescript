@@ -123,7 +123,7 @@ let value: ListLatestPrimaryNetworkTransactionsResponse = {
     ],
     chainInfo: {
       chainName: "p-chain",
-      network: "fuji",
+      network: "devnet",
     },
   },
 };

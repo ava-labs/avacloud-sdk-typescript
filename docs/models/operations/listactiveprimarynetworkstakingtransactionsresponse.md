@@ -115,7 +115,7 @@ let value: ListActivePrimaryNetworkStakingTransactionsResponse = {
     ],
     chainInfo: {
       chainName: "c-chain",
-      network: "mainnet",
+      network: "fuji",
     },
   },
 };

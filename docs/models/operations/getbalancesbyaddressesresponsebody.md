@@ -105,7 +105,7 @@ const value: components.ListPChainBalancesResponse = {
   },
   chainInfo: {
     chainName: "p-chain",
-    network: "fuji",
+    network: "devnet",
   },
 };
 ```

@@ -8,6 +8,7 @@ import { ClosedEnum } from "../../types/enums.js";
 export const PrimaryNetwork = {
   Mainnet: "mainnet",
   Fuji: "fuji",
+  Devnet: "devnet",
 } as const;
 export type PrimaryNetwork = ClosedEnum<typeof PrimaryNetwork>;
 

@@ -120,7 +120,7 @@ let value: ListXChainTransactionsResponse = {
   ],
   chainInfo: {
     chainName: "c-chain",
-    network: "fuji",
+    network: "devnet",
   },
 };
 ```

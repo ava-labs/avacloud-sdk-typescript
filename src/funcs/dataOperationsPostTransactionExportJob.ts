@@ -56,10 +56,8 @@ export async function dataOperationsPostTransactionExportJob(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.PostTransactionExportJobRequestBody$outboundSchema.parse(
         value,

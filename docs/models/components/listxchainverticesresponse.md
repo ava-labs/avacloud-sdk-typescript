@@ -24,7 +24,7 @@ let value: ListXChainVerticesResponse = {
   ],
   chainInfo: {
     chainName: "x-chain",
-    network: "fuji",
+    network: "devnet",
   },
 };
 ```

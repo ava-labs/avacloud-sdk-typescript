@@ -62,10 +62,8 @@ export async function dataPrimaryNetworkListBlockchains(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.ListBlockchainsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
@@ -225,7 +223,7 @@ export async function dataPrimaryNetworkListBlockchains(
       dataPrimaryNetworkListBlockchains(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

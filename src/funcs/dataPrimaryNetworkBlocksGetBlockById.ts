@@ -54,10 +54,8 @@ export async function dataPrimaryNetworkBlocksGetBlockById(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetBlockByIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

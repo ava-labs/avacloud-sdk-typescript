@@ -15,7 +15,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 0.6.0
+  version: 0.6.1
   additionalDependencies:
     dependencies:
       json-canonicalize: ^1.0.6
@@ -29,6 +29,7 @@ typescript:
   clientServerStatusCodesAsErrors: true
   enumFormat: union
   flattenGlobalSecurity: true
+  flatteningOrder: body-first
   imports:
     option: openapi
     paths:

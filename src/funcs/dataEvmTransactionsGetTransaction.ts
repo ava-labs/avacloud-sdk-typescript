@@ -54,10 +54,8 @@ export async function dataEvmTransactionsGetTransaction(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetTransactionRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
