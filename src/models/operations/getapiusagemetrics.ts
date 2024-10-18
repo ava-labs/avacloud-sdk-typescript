@@ -28,11 +28,11 @@ export type GetApiUsageMetricsRequest = {
    */
   orgId?: string | undefined;
   /**
-   * Query param for retrieving items after a specific timestamp.
+   * The start time of the range as a UNIX timestamp. The requested start time  will be rounded down to 0:00 UTC of the day.
    */
   startTimestamp?: number | undefined;
   /**
-   * Query param for retrieving items before a specific timestamp.
+   * The end time of the range as a UNIX timestamp. The requested end time will be rounded down to 0:00 UTC of the day. `endTimestamp` must be no  earlier than 0:00 UTC of the day after `startTimestamp`.
    */
   endTimestamp?: number | undefined;
   /**
@@ -44,21 +44,21 @@ export type GetApiUsageMetricsRequest = {
    */
   groupBy?: components.UsageMetricsGroupByEnum | undefined;
   /**
+   * Filter data by chain ID.
+   */
+  chainId?: string | undefined;
+  /**
    * Filter data by request path.
    */
   requestPath?: string | undefined;
-  /**
-   * Filter data by request type.
-   */
-  requestType?: RequestType | undefined;
   /**
    * Filter data by response status code.
    */
   responseCode?: string | undefined;
   /**
-   * Filter data by chain ID.
+   * Filter data by request type.
    */
-  chainId?: string | undefined;
+  requestType?: RequestType | undefined;
   /**
    * Filter data by API key ID.
    */
@@ -96,10 +96,10 @@ export const GetApiUsageMetricsRequest$inboundSchema: z.ZodType<
   timeInterval: components.TimeIntervalGranularityExtended$inboundSchema
     .optional(),
   groupBy: components.UsageMetricsGroupByEnum$inboundSchema.optional(),
-  requestPath: z.string().optional(),
-  requestType: RequestType$inboundSchema.optional(),
-  responseCode: z.string().optional(),
   chainId: z.string().optional(),
+  requestPath: z.string().optional(),
+  responseCode: z.string().optional(),
+  requestType: RequestType$inboundSchema.optional(),
   apiKeyId: z.string().optional(),
 });
 
@@ -110,10 +110,10 @@ export type GetApiUsageMetricsRequest$Outbound = {
   endTimestamp?: number | undefined;
   timeInterval?: string | undefined;
   groupBy?: string | undefined;
-  requestPath?: string | undefined;
-  requestType?: string | undefined;
-  responseCode?: string | undefined;
   chainId?: string | undefined;
+  requestPath?: string | undefined;
+  responseCode?: string | undefined;
+  requestType?: string | undefined;
   apiKeyId?: string | undefined;
 };
 
@@ -129,10 +129,10 @@ export const GetApiUsageMetricsRequest$outboundSchema: z.ZodType<
   timeInterval: components.TimeIntervalGranularityExtended$outboundSchema
     .optional(),
   groupBy: components.UsageMetricsGroupByEnum$outboundSchema.optional(),
-  requestPath: z.string().optional(),
-  requestType: RequestType$outboundSchema.optional(),
-  responseCode: z.string().optional(),
   chainId: z.string().optional(),
+  requestPath: z.string().optional(),
+  responseCode: z.string().optional(),
+  requestType: RequestType$outboundSchema.optional(),
   apiKeyId: z.string().optional(),
 });
 

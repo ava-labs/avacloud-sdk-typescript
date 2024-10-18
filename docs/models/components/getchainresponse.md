@@ -7,11 +7,11 @@ import { GetChainResponse } from "@avalabs/avacloud-sdk/models/components";
 
 let value: GetChainResponse = {
   chainId: "<id>",
-  status: "UNAVAILABLE",
+  status: "OK",
   chainName: "<value>",
-  description: "ecliptic make woot saw husband powerless pish and",
+  description: "stage inside sternly uh-huh bathrobe",
   vmName: "ETHEREUM",
-  rpcUrl: "https://tragic-mentor.info/",
+  rpcUrl: "https://gaseous-publicity.info/",
   isTestnet: false,
   networkToken: {
     name: "Wrapped AVAX",

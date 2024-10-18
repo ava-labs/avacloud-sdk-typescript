@@ -14,9 +14,9 @@ let value: ListTokensResponse = {
         symbol: "WAVAX",
         ercType: "ERC-721",
         tokenId: "<id>",
-        tokenUri: "https://nifty-soliloquy.net",
+        tokenUri: "https://grubby-iridescence.name/",
         metadata: {
-          indexStatus: "UNKNOWN",
+          indexStatus: "INDEXED",
         },
         ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
       },

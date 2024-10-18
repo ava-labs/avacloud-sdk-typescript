@@ -42,7 +42,7 @@ let value: GetUtxosByAddressesResponse = {
     ],
     chainInfo: {
       chainName: "c-chain",
-      network: "mainnet",
+      network: "devnet",
     },
   },
 };

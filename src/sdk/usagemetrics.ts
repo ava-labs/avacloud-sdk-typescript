@@ -4,6 +4,7 @@
 
 import { dataUsageMetricsGetApiLogs } from "../funcs/dataUsageMetricsGetApiLogs.js";
 import { dataUsageMetricsGetApiUsageMetrics } from "../funcs/dataUsageMetricsGetApiUsageMetrics.js";
+import { dataUsageMetricsGetRpcUsageMetrics } from "../funcs/dataUsageMetricsGetRpcUsageMetrics.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -39,6 +40,23 @@ export class UsageMetrics extends ClientSDK {
     options?: RequestOptions & { serverURL?: string },
   ): Promise<PageIterator<operations.GetApiLogsResponse>> {
     return unwrapResultIterator(dataUsageMetricsGetApiLogs(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get usage metrics for the Subnet RPC
+   *
+   * @remarks
+   * Gets metrics for Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
+   */
+  async getRpcUsageMetrics(
+    request: operations.GetRpcUsageMetricsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<components.RpcUsageMetricsResponseDTO> {
+    return unwrapAsync(dataUsageMetricsGetRpcUsageMetrics(
       this,
       request,
       options,
