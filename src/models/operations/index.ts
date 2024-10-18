@@ -29,6 +29,7 @@ export * from "./getnativebalance.js";
 export * from "./getnetworkdetails.js";
 export * from "./getnftholdersbycontractaddress.js";
 export * from "./getoperationresult.js";
+export * from "./getrpcusagemetrics.js";
 export * from "./getsharedsecret.js";
 export * from "./getsinglevalidatordetails.js";
 export * from "./getstakingmetrics.js";

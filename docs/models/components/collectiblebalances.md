@@ -12,9 +12,9 @@ const value: components.Erc721TokenBalance = {
   symbol: "WAVAX",
   ercType: "ERC-721",
   tokenId: "<id>",
-  tokenUri: "https://palatable-permafrost.info/",
+  tokenUri: "https://misguided-saloon.org/",
   metadata: {
-    indexStatus: "UNINDEXED",
+    indexStatus: "MISSING_TOKEN",
   },
   ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   chainId: "43114",
@@ -28,7 +28,7 @@ const value: components.Erc1155TokenBalance = {
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   ercType: "ERC-1155",
   tokenId: "<id>",
-  tokenUri: "https://selfish-pacemaker.net/",
+  tokenUri: "https://overcooked-replacement.org/",
   metadata: {
     indexStatus: "UNINDEXED",
   },

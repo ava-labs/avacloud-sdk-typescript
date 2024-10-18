@@ -14,7 +14,7 @@ let value: ListErc721BalancesResponse = {
         symbol: "WAVAX",
         ercType: "ERC-721",
         tokenId: "<id>",
-        tokenUri: "https://doting-mentor.biz",
+        tokenUri: "https://obvious-convection.com/",
         metadata: {
           indexStatus: "MISSING_TOKEN",
         },

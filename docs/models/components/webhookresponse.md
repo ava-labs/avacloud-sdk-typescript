@@ -16,12 +16,12 @@ let value: WebhookResponse = {
       "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64",
     ],
   },
-  url: "https://squeaky-brace.info/",
+  url: "https://stylish-language.info",
   chainId: "<id>",
   status: "inactive",
-  createdAt: 6939.56,
+  createdAt: 972.43,
   name: "<value>",
-  description: "within wiggly huzzah",
+  description: "sunbathe like joyously coast blindly evince",
 };
 ```
 
