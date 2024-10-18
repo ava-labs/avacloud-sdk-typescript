@@ -5,7 +5,7 @@
 ```typescript
 import { EnabledFeatures } from "@avalabs/avacloud-sdk/models/components";
 
-let value: EnabledFeatures = "teleporter";
+let value: EnabledFeatures = "webhooks";
 ```
 
 ## Values

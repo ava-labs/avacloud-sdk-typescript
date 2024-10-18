@@ -14,9 +14,9 @@ let value: ListErc721BalancesResponse = {
         symbol: "WAVAX",
         ercType: "ERC-721",
         tokenId: "<id>",
-        tokenUri: "https://doting-mentor.biz",
+        tokenUri: "https://grandiose-fax.org/",
         metadata: {
-          indexStatus: "MISSING_TOKEN",
+          indexStatus: "INDEXED",
         },
         ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
         chainId: "43114",

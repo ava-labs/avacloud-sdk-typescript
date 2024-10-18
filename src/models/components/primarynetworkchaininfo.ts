@@ -4,10 +4,10 @@
 
 import * as z from "zod";
 import {
-  PrimaryNetwork,
-  PrimaryNetwork$inboundSchema,
-  PrimaryNetwork$outboundSchema,
-} from "./primarynetwork.js";
+  Network,
+  Network$inboundSchema,
+  Network$outboundSchema,
+} from "./network.js";
 import {
   PrimaryNetworkChainName,
   PrimaryNetworkChainName$inboundSchema,
@@ -16,7 +16,7 @@ import {
 
 export type PrimaryNetworkChainInfo = {
   chainName: PrimaryNetworkChainName;
-  network: PrimaryNetwork;
+  network: Network;
 };
 
 /** @internal */
@@ -26,7 +26,7 @@ export const PrimaryNetworkChainInfo$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   chainName: PrimaryNetworkChainName$inboundSchema,
-  network: PrimaryNetwork$inboundSchema,
+  network: Network$inboundSchema,
 });
 
 /** @internal */
@@ -42,7 +42,7 @@ export const PrimaryNetworkChainInfo$outboundSchema: z.ZodType<
   PrimaryNetworkChainInfo
 > = z.object({
   chainName: PrimaryNetworkChainName$outboundSchema,
-  network: PrimaryNetwork$outboundSchema,
+  network: Network$outboundSchema,
 });
 
 /**

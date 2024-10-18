@@ -13,19 +13,19 @@ let value: ListLatestXChainVerticesResponse = {
         parentHashes: [
           "<value>",
         ],
-        vertexHeight: 1636.84,
-        vertexIndex: 4413.74,
-        vertexTimestamp: 2628.00,
-        txCount: 5220.62,
+        vertexHeight: 6530.00,
+        vertexIndex: 3442.89,
+        vertexTimestamp: 5488.49,
+        txCount: 8152.25,
         transactions: [
           "<value>",
         ],
-        vertexSizeBytes: 351.60,
+        vertexSizeBytes: 986.10,
       },
     ],
     chainInfo: {
       chainName: "c-chain",
-      network: "devnet",
+      network: "mainnet",
     },
   },
 };

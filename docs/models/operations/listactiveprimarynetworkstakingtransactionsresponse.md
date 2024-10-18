@@ -10,7 +10,7 @@ let value: ListActivePrimaryNetworkStakingTransactionsResponse = {
     transactions: [
       {
         txHash: "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP",
-        txType: "UNKNOWN",
+        txType: "AddValidatorTx",
         blockTimestamp: 1648672486,
         blockNumber: "<value>",
         blockHash: "<value>",
@@ -24,7 +24,7 @@ let value: ListActivePrimaryNetworkStakingTransactionsResponse = {
               name: "Avalanche",
               symbol: "AVAX",
               denomination: 9,
-              type: "nft",
+              type: "secp256k1",
               amount: "5001000",
             },
             consumedOnChainId:
@@ -34,11 +34,11 @@ let value: ListActivePrimaryNetworkStakingTransactionsResponse = {
             createdOnChainId:
               "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
             utxoId: "68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC",
-            amount: "349.99",
+            amount: "956.13",
             assetId: "<id>",
             blockNumber: "<value>",
-            blockTimestamp: 2543.82,
-            outputIndex: 2653.03,
+            blockTimestamp: 3304.41,
+            outputIndex: 6383.90,
             txHash: "<value>",
             utxoType: "STAKE",
           },
@@ -63,13 +63,13 @@ let value: ListActivePrimaryNetworkStakingTransactionsResponse = {
             createdOnChainId:
               "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
             utxoId: "68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC",
-            amount: "141.81",
+            amount: "728.56",
             assetId: "<id>",
             blockNumber: "<value>",
-            blockTimestamp: 3167.31,
-            outputIndex: 6267.06,
+            blockTimestamp: 3296.51,
+            outputIndex: 7917.61,
             txHash: "<value>",
-            utxoType: "TRANSFER",
+            utxoType: "STAKE",
           },
         ],
         sourceChain: "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
@@ -114,8 +114,8 @@ let value: ListActivePrimaryNetworkStakingTransactionsResponse = {
       },
     ],
     chainInfo: {
-      chainName: "c-chain",
-      network: "fuji",
+      chainName: "p-chain",
+      network: "mainnet",
     },
   },
 };

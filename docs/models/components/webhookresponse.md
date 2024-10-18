@@ -16,12 +16,12 @@ let value: WebhookResponse = {
       "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64",
     ],
   },
-  url: "https://squeaky-brace.info/",
+  url: "https://trusting-knitting.org",
   chainId: "<id>",
   status: "inactive",
-  createdAt: 6939.56,
+  createdAt: 9233.06,
   name: "<value>",
-  description: "within wiggly huzzah",
+  description: "ah hunt until freckle across following gadzooks wobbly athwart",
 };
 ```
 

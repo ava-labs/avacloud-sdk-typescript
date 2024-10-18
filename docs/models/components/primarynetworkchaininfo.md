@@ -6,14 +6,14 @@
 import { PrimaryNetworkChainInfo } from "@avalabs/avacloud-sdk/models/components";
 
 let value: PrimaryNetworkChainInfo = {
-  chainName: "p-chain",
-  network: "fuji",
+  chainName: "x-chain",
+  network: "mainnet",
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `chainName`                                                                              | [components.PrimaryNetworkChainName](../../models/components/primarynetworkchainname.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `network`                                                                                | [components.PrimaryNetwork](../../models/components/primarynetwork.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `chainName`                                                                              | [components.PrimaryNetworkChainName](../../models/components/primarynetworkchainname.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |
+| `network`                                                                                | [components.Network](../../models/components/network.md)                                 | :heavy_check_mark:                                                                       | N/A                                                                                      | mainnet                                                                                  |

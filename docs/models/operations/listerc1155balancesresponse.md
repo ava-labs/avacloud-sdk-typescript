@@ -12,9 +12,9 @@ let value: ListErc1155BalancesResponse = {
         address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
         ercType: "ERC-1155",
         tokenId: "<id>",
-        tokenUri: "https://harmful-accelerator.info/",
+        tokenUri: "https://alive-sonata.name/",
         metadata: {
-          indexStatus: "INVALID_METADATA",
+          indexStatus: "MISSING_TOKEN",
         },
         chainId: "43114",
         balance: "2000000000000000000",
