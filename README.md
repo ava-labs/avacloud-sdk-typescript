@@ -194,6 +194,7 @@ run();
 
 * [getApiUsageMetrics](docs/sdks/usagemetrics/README.md#getapiusagemetrics) - Get usage metrics for the Data API
 * [getApiLogs](docs/sdks/usagemetrics/README.md#getapilogs) - Get logs for requests made by client
+* [getRpcUsageMetrics](docs/sdks/usagemetrics/README.md#getrpcusagemetrics) - Get usage metrics for the Subnet RPC
 
 #### [data.webhooks](docs/sdks/webhooks/README.md)
 
@@ -315,6 +316,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataTeleporterListTeleporterMessagesByAddress`](docs/sdks/teleporter/README.md#listteleportermessagesbyaddress) - List teleporter messages by address
 - [`dataUsageMetricsGetApiLogs`](docs/sdks/usagemetrics/README.md#getapilogs) - Get logs for requests made by client
 - [`dataUsageMetricsGetApiUsageMetrics`](docs/sdks/usagemetrics/README.md#getapiusagemetrics) - Get usage metrics for the Data API
+- [`dataUsageMetricsGetRpcUsageMetrics`](docs/sdks/usagemetrics/README.md#getrpcusagemetrics) - Get usage metrics for the Subnet RPC
 - [`dataWebhooksAddAddressesToWebhook`](docs/sdks/webhooks/README.md#addaddressestowebhook) - Add addresses to webhook
 - [`dataWebhooksCreateWebhook`](docs/sdks/webhooks/README.md#createwebhook) - Create a webhook
 - [`dataWebhooksDeactivateWebhook`](docs/sdks/webhooks/README.md#deactivatewebhook) - Deactivate a webhook
