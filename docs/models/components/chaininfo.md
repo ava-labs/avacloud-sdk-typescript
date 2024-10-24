@@ -9,10 +9,9 @@ let value: ChainInfo = {
   chainId: "<id>",
   status: "UNAVAILABLE",
   chainName: "<value>",
-  description:
-    "mockingly important throbbing wrongly extricate serpentine along consequently incidentally",
-  vmName: "ETHEREUM",
-  rpcUrl: "https://educated-volleyball.com",
+  description: "hence per formal aw",
+  vmName: "BITCOIN",
+  rpcUrl: "https://instructive-baritone.biz/",
   isTestnet: false,
   networkToken: {
     name: "Wrapped AVAX",

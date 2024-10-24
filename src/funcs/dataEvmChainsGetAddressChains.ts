@@ -3,7 +3,7 @@
  */
 
 import { AvaCloudSDKCore } from "../core.js";
-import { encodeFormQuery } from "../lib/encodings.js";
+import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
@@ -20,23 +20,23 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import { GetRpcUsageMetricsServerList } from "../models/operations/getrpcusagemetrics.js";
+import { GetAddressChainsServerList } from "../models/operations/getaddresschains.js";
 import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get usage metrics for the Subnet RPC
+ * Get chains for address
  *
  * @remarks
- * Gets metrics for Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
+ * Gets the list of chains an address has interacted with.
  */
-export async function dataUsageMetricsGetRpcUsageMetrics(
+export async function dataEvmChainsGetAddressChains(
   client: AvaCloudSDKCore,
-  request: operations.GetRpcUsageMetricsRequest,
+  request: operations.GetAddressChainsRequest,
   options?: RequestOptions & { serverURL?: string },
 ): Promise<
   Result<
-    components.RpcUsageMetricsResponseDTO,
+    components.DataListChainsResponse,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -56,7 +56,7 @@ export async function dataUsageMetricsGetRpcUsageMetrics(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.GetRpcUsageMetricsRequest$outboundSchema.parse(value),
+    (value) => operations.GetAddressChainsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -66,23 +66,16 @@ export async function dataUsageMetricsGetRpcUsageMetrics(
   const body = null;
 
   const baseURL = options?.serverURL
-    || pathToFunc(GetRpcUsageMetricsServerList[0], {
+    || pathToFunc(GetAddressChainsServerList[0], { charEncoding: "percent" })();
+
+  const pathParams = {
+    address: encodeSimple("address", payload.address, {
+      explode: false,
       charEncoding: "percent",
-    })();
+    }),
+  };
 
-  const path = pathToFunc("/v1/rpcUsageMetrics")();
-
-  const query = encodeFormQuery({
-    "chainId": payload.chainId,
-    "endTimestamp": payload.endTimestamp,
-    "groupBy": payload.groupBy,
-    "requestPath": payload.requestPath,
-    "responseCode": payload.responseCode,
-    "rlBypassApiToken": payload.rlBypassApiToken,
-    "rpcMethod": payload.rpcMethod,
-    "startTimestamp": payload.startTimestamp,
-    "timeInterval": payload.timeInterval,
-  });
+  const path = pathToFunc("/v1/chains/address/{address}")(pathParams);
 
   const headers = new Headers({
     Accept: "application/json",
@@ -91,7 +84,7 @@ export async function dataUsageMetricsGetRpcUsageMetrics(
   const secConfig = await extractSecurity(client._options.apiKey);
   const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
-    operationID: "getRpcUsageMetrics",
+    operationID: "getAddressChains",
     oAuth2Scopes: [],
     securitySource: client._options.apiKey,
   };
@@ -103,7 +96,6 @@ export async function dataUsageMetricsGetRpcUsageMetrics(
     baseURL: baseURL,
     path: path,
     headers: headers,
-    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
@@ -150,7 +142,7 @@ export async function dataUsageMetricsGetRpcUsageMetrics(
   };
 
   const [result] = await M.match<
-    components.RpcUsageMetricsResponseDTO,
+    components.DataListChainsResponse,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -167,7 +159,7 @@ export async function dataUsageMetricsGetRpcUsageMetrics(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.RpcUsageMetricsResponseDTO$inboundSchema),
+    M.json(200, components.DataListChainsResponse$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

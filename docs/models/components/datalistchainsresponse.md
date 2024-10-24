@@ -9,12 +9,12 @@ let value: DataListChainsResponse = {
   chains: [
     {
       chainId: "<id>",
-      status: "OK",
+      status: "UNAVAILABLE",
       chainName: "<value>",
       description:
-        "joy unexpectedly sightseeing contravene jaggedly programme ecliptic make woot",
-      vmName: "BITCOIN",
-      rpcUrl: "https://shameful-railway.biz",
+        "without kielbasa with vibration swanling drat squiggly inventory sit",
+      vmName: "EVM",
+      rpcUrl: "https://frugal-beret.info/",
       isTestnet: false,
       networkToken: {
         name: "Wrapped AVAX",

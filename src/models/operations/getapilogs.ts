@@ -33,7 +33,7 @@ export type GetApiLogsRequest = {
    */
   startTimestamp?: number | undefined;
   /**
-   * The end time of the range as a UNIX timestamp. The requested end time will be rounded down to 0:00 UTC of the day. `endTimestamp` must be no  earlier than 0:00 UTC of the day after `startTimestamp`.
+   * The end time of the range as a UNIX timestamp. The requested end time will be rounded down to 0:00 UTC of the day.
    */
   endTimestamp?: number | undefined;
   /**

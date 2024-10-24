@@ -6,14 +6,14 @@
 import { UsageMetricsValueDTO } from "@avalabs/avacloud-sdk/models/components";
 
 let value: UsageMetricsValueDTO = {
-  groupedBy: "None",
-  totalRequests: 5757.51,
-  requestsPerSecond: 8207.67,
-  successRatePercent: 9088.44,
-  medianResponseTimeMsecs: 8155.24,
-  invalidRequests: 1594.14,
-  apiCreditsUsed: 6288.98,
-  apiCreditsWasted: 3984.34,
+  groupedBy: "requestType",
+  totalRequests: 9088.44,
+  requestsPerSecond: 8155.24,
+  successRatePercent: 1594.14,
+  medianResponseTimeMsecs: 6288.98,
+  invalidRequests: 3984.34,
+  apiCreditsUsed: 627.13,
+  apiCreditsWasted: 4240.32,
 };
 ```
 

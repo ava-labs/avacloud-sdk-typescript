@@ -5,7 +5,7 @@
 ```typescript
 import { PrimaryNetworkChainName } from "@avalabs/avacloud-sdk/models/components";
 
-let value: PrimaryNetworkChainName = "p-chain";
+let value: PrimaryNetworkChainName = "c-chain";
 ```
 
 ## Values

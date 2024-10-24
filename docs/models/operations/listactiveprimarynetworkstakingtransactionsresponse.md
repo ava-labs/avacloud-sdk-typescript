@@ -10,40 +10,11 @@ let value: ListActivePrimaryNetworkStakingTransactionsResponse = {
     transactions: [
       {
         txHash: "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP",
-        txType: "AddValidatorTx",
+        txType: "TransformSubnetTx",
         blockTimestamp: 1648672486,
         blockNumber: "<value>",
         blockHash: "<value>",
         consumedUtxos: [
-          {
-            addresses: [
-              "avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw",
-            ],
-            asset: {
-              assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
-              name: "Avalanche",
-              symbol: "AVAX",
-              denomination: 9,
-              type: "secp256k1",
-              amount: "5001000",
-            },
-            consumedOnChainId:
-              "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
-            consumingTxHash:
-              "3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c",
-            createdOnChainId:
-              "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
-            utxoId: "68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC",
-            amount: "956.13",
-            assetId: "<id>",
-            blockNumber: "<value>",
-            blockTimestamp: 3304.41,
-            outputIndex: 6383.90,
-            txHash: "<value>",
-            utxoType: "STAKE",
-          },
-        ],
-        emittedUtxos: [
           {
             addresses: [
               "avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw",
@@ -63,11 +34,40 @@ let value: ListActivePrimaryNetworkStakingTransactionsResponse = {
             createdOnChainId:
               "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
             utxoId: "68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC",
-            amount: "728.56",
+            amount: "833.98",
             assetId: "<id>",
             blockNumber: "<value>",
-            blockTimestamp: 3296.51,
-            outputIndex: 7917.61,
+            blockTimestamp: 2138.35,
+            outputIndex: 7712.25,
+            txHash: "<value>",
+            utxoType: "STAKE",
+          },
+        ],
+        emittedUtxos: [
+          {
+            addresses: [
+              "avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw",
+            ],
+            asset: {
+              assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+              name: "Avalanche",
+              symbol: "AVAX",
+              denomination: 9,
+              type: "secp256k1",
+              amount: "5001000",
+            },
+            consumedOnChainId:
+              "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
+            consumingTxHash:
+              "3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c",
+            createdOnChainId:
+              "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
+            utxoId: "68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC",
+            amount: "229.56",
+            assetId: "<id>",
+            blockNumber: "<value>",
+            blockTimestamp: 5068.63,
+            outputIndex: 7368.53,
             txHash: "<value>",
             utxoType: "STAKE",
           },
@@ -80,7 +80,7 @@ let value: ListActivePrimaryNetworkStakingTransactionsResponse = {
             name: "Avalanche",
             symbol: "AVAX",
             denomination: 9,
-            type: "secp256k1",
+            type: "nft",
             amount: "5001000",
           },
         ],
@@ -90,11 +90,21 @@ let value: ListActivePrimaryNetworkStakingTransactionsResponse = {
             name: "Avalanche",
             symbol: "AVAX",
             denomination: 9,
-            type: "secp256k1",
+            type: "nft",
             amount: "5001000",
           },
         ],
         amountStaked: [
+          {
+            assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+            name: "Avalanche",
+            symbol: "AVAX",
+            denomination: 9,
+            type: "secp256k1",
+            amount: "5001000",
+          },
+        ],
+        amountSovBalanceBurned: [
           {
             assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
             name: "Avalanche",
@@ -114,7 +124,7 @@ let value: ListActivePrimaryNetworkStakingTransactionsResponse = {
       },
     ],
     chainInfo: {
-      chainName: "p-chain",
+      chainName: "x-chain",
       network: "mainnet",
     },
   },

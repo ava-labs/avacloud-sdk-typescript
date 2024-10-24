@@ -5,7 +5,7 @@
 ```typescript
 import { ResourceLinkType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: ResourceLinkType = "Medium";
+let value: ResourceLinkType = "CoinGecko";
 ```
 
 ## Values

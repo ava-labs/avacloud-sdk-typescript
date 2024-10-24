@@ -28,7 +28,7 @@ const value: components.Erc20Transfer = {
       "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
-  logIndex: 3763.89,
+  logIndex: 5896.95,
   value: "10000000000000000000",
   erc20Token: {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
@@ -71,16 +71,16 @@ const value: components.Erc721Transfer = {
       "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
-  logIndex: 3649.12,
+  logIndex: 7453.98,
   erc721Token: {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     name: "Wrapped AVAX",
     symbol: "WAVAX",
     ercType: "ERC-721",
     tokenId: "<id>",
-    tokenUri: "https://major-pleasure.biz/",
+    tokenUri: "https://voluminous-whale.info",
     metadata: {
-      indexStatus: "THROTTLED_TOKEN_URI",
+      indexStatus: "UNREACHABLE_TOKEN_URI",
     },
     ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
@@ -112,15 +112,15 @@ const value: components.Erc1155Transfer = {
       "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
-  logIndex: 1173.80,
+  logIndex: 1478.09,
   value: "10000000000000000000",
   erc1155Token: {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     ercType: "ERC-1155",
     tokenId: "<id>",
-    tokenUri: "https://athletic-vision.com/",
+    tokenUri: "https://querulous-stump.com",
     metadata: {
-      indexStatus: "MISSING_TOKEN",
+      indexStatus: "THROTTLED_TOKEN_URI",
     },
   },
 };
