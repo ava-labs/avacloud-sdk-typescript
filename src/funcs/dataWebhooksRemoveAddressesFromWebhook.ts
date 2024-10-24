@@ -54,10 +54,8 @@ export async function dataWebhooksRemoveAddressesFromWebhook(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.RemoveAddressesFromWebhookRequest$outboundSchema.parse(value),
     "Input validation failed",

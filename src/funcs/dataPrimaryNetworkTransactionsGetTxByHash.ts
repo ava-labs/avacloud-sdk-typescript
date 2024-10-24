@@ -53,10 +53,8 @@ export async function dataPrimaryNetworkTransactionsGetTxByHash(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetTxByHashRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

@@ -9,14 +9,6 @@ import * as z from "zod";
  */
 export type InternalServerErrorMessage = string | Array<string>;
 
-/**
- * The error is a generic server side error that is
- *
- * @remarks
- *     returned for any uncaught and unexpected issues on the server side.
- *     This should be very rare, and you may reach out to us if the problem
- *     persists for a longer duration.
- */
 export type InternalServerErrorData = {
   /**
    * The error message describing the reason for the exception
@@ -32,14 +24,6 @@ export type InternalServerErrorData = {
   error: string;
 };
 
-/**
- * The error is a generic server side error that is
- *
- * @remarks
- *     returned for any uncaught and unexpected issues on the server side.
- *     This should be very rare, and you may reach out to us if the problem
- *     persists for a longer duration.
- */
 export class InternalServerError extends Error {
   /**
    * The HTTP status code of the response

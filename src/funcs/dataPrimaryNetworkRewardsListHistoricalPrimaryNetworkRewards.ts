@@ -62,10 +62,8 @@ export async function dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewar
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.ListHistoricalPrimaryNetworkRewardsRequest$outboundSchema
         .parse(value),
@@ -226,7 +224,6 @@ export async function dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewar
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -235,7 +232,7 @@ export async function dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewar
       dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

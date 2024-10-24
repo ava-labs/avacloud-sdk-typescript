@@ -5,7 +5,7 @@
 ```typescript
 import { Operator } from "@avalabs/avacloud-sdk/models/components";
 
-let value: Operator = "AND";
+let value: Operator = "OR";
 ```
 
 ## Values

@@ -9,13 +9,6 @@ import * as z from "zod";
  */
 export type ServiceUnavailableMessage = string | Array<string>;
 
-/**
- * The error is returned for certain routes on a particular
- *
- * @remarks
- *     Subnet. This indicates an internal problem with our Subnet node, and may
- *     not necessarily mean the Subnet is down or affected.
- */
 export type ServiceUnavailableData = {
   /**
    * The error message describing the reason for the exception
@@ -31,13 +24,6 @@ export type ServiceUnavailableData = {
   error: string;
 };
 
-/**
- * The error is returned for certain routes on a particular
- *
- * @remarks
- *     Subnet. This indicates an internal problem with our Subnet node, and may
- *     not necessarily mean the Subnet is down or affected.
- */
 export class ServiceUnavailable extends Error {
   /**
    * The HTTP status code of the response

@@ -62,10 +62,8 @@ export async function dataWebhooksListWebhooks(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.ListWebhooksRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
@@ -209,7 +207,6 @@ export async function dataWebhooksListWebhooks(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -218,7 +215,7 @@ export async function dataWebhooksListWebhooks(
       dataWebhooksListWebhooks(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

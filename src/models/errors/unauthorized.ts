@@ -9,13 +9,6 @@ import * as z from "zod";
  */
 export type UnauthorizedMessage = string | Array<string>;
 
-/**
- * When a client attempts to access resources that require
- *
- * @remarks
- *     authorization credentials but the client lacks proper authentication
- *     in the request, the server responds with 401.
- */
 export type UnauthorizedData = {
   /**
    * The error message describing the reason for the exception
@@ -31,13 +24,6 @@ export type UnauthorizedData = {
   error: string;
 };
 
-/**
- * When a client attempts to access resources that require
- *
- * @remarks
- *     authorization credentials but the client lacks proper authentication
- *     in the request, the server responds with 401.
- */
 export class Unauthorized extends Error {
   /**
    * The HTTP status code of the response

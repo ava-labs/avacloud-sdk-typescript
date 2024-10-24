@@ -16,12 +16,12 @@ let value: WebhookResponse = {
       "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64",
     ],
   },
-  url: "https://expensive-pick.name",
-  chainId: "<value>",
-  status: "active",
-  createdAt: 5546.88,
+  url: "https://trusting-knitting.org",
+  chainId: "<id>",
+  status: "inactive",
+  createdAt: 9233.06,
   name: "<value>",
-  description: "Face to face next generation groupware",
+  description: "ah hunt until freckle across following gadzooks wobbly athwart",
 };
 ```
 

@@ -6,11 +6,11 @@
 import { Blockchain } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Blockchain = {
-  createBlockTimestamp: 9292.96,
+  createBlockTimestamp: 9527.49,
   createBlockNumber: "<value>",
-  blockchainId: "<value>",
-  vmId: "<value>",
-  subnetId: "<value>",
+  blockchainId: "<id>",
+  vmId: "<id>",
+  subnetId: "<id>",
   blockchainName: "<value>",
 };
 ```

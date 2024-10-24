@@ -54,10 +54,8 @@ export async function dataOperationsGetOperationResult(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetOperationResultRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

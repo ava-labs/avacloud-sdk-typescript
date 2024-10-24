@@ -9,7 +9,7 @@ let value: ListPChainTransactionsResponse = {
   transactions: [
     {
       txHash: "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP",
-      txType: "RemoveSubnetValidatorTx",
+      txType: "CreateSubnetTx",
       blockTimestamp: 1648672486,
       blockNumber: "<value>",
       blockHash: "<value>",
@@ -32,11 +32,11 @@ let value: ListPChainTransactionsResponse = {
           createdOnChainId:
             "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
           utxoId: "68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC",
-          amount: "311.94",
-          assetId: "<value>",
+          amount: "185.63",
+          assetId: "<id>",
           blockNumber: "<value>",
-          blockTimestamp: 3982.21,
-          outputIndex: 2098.44,
+          blockTimestamp: 9527.92,
+          outputIndex: 6874.88,
           txHash: "<value>",
           utxoType: "STAKE",
         },
@@ -60,13 +60,13 @@ let value: ListPChainTransactionsResponse = {
           createdOnChainId:
             "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
           utxoId: "68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC",
-          amount: "739.55",
-          assetId: "<value>",
+          amount: "730.86",
+          assetId: "<id>",
           blockNumber: "<value>",
-          blockTimestamp: 4904.59,
-          outputIndex: 2274.15,
+          blockTimestamp: 2539.42,
+          outputIndex: 2133.12,
           txHash: "<value>",
-          utxoType: "STAKE",
+          utxoType: "TRANSFER",
         },
       ],
       sourceChain: "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
@@ -111,7 +111,7 @@ let value: ListPChainTransactionsResponse = {
     },
   ],
   chainInfo: {
-    chainName: "c-chain",
+    chainName: "x-chain",
     network: "mainnet",
   },
 };

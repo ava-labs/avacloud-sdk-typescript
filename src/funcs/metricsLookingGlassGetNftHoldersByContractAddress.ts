@@ -62,10 +62,8 @@ export async function metricsLookingGlassGetNftHoldersByContractAddress(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetNftHoldersByContractAddressRequest$outboundSchema.parse(
         value,
@@ -229,7 +227,6 @@ export async function metricsLookingGlassGetNftHoldersByContractAddress(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -238,7 +235,7 @@ export async function metricsLookingGlassGetNftHoldersByContractAddress(
       metricsLookingGlassGetNftHoldersByContractAddress(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

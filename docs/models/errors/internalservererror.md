@@ -1,10 +1,5 @@
 # InternalServerError
 
-The error is a generic server side error that is 
-    returned for any uncaught and unexpected issues on the server side. 
-    This should be very rare, and you may reach out to us if the problem 
-    persists for a longer duration.
-
 ## Example Usage
 
 ```typescript

@@ -7,14 +7,14 @@ import { ActiveDelegatorDetails } from "@avalabs/avacloud-sdk/models/components"
 
 let value: ActiveDelegatorDetails = {
   txHash: "<value>",
-  nodeId: "<value>",
+  nodeId: "<id>",
   rewardAddresses: [
     "<value>",
   ],
   amountDelegated: "<value>",
   delegationFee: "<value>",
-  startTimestamp: 5699.65,
-  endTimestamp: 5908.73,
+  startTimestamp: 1716.30,
+  endTimestamp: 5210.37,
   estimatedGrossReward: "<value>",
   estimatedNetReward: "<value>",
   delegationStatus: "active",

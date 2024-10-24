@@ -12,7 +12,7 @@ let value: AllTimeNativeBalanceQueryDto = {
     firstDate: "<value>",
     lastDate: "<value>",
     minBalance: "<value>",
-    evmChainId: "<value>",
+    evmChainId: "<id>",
   },
 };
 ```

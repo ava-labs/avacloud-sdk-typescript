@@ -10,17 +10,17 @@ let value: ListDelegatorsResponse = {
     delegators: [
       {
         txHash: "<value>",
-        nodeId: "<value>",
+        nodeId: "<id>",
         rewardAddresses: [
           "<value>",
         ],
         amountDelegated: "<value>",
         delegationFee: "<value>",
-        startTimestamp: 360.34,
-        endTimestamp: 1747.72,
-        grossReward: "<value>",
-        netReward: "<value>",
-        delegationStatus: "completed",
+        startTimestamp: 4837.53,
+        endTimestamp: 2561.14,
+        estimatedGrossReward: "<value>",
+        estimatedNetReward: "<value>",
+        delegationStatus: "active",
       },
     ],
   },

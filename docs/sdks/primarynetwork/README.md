@@ -35,9 +35,9 @@ async function run() {
     blockchainId: "x-chain",
     assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -72,7 +72,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -94,7 +94,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -104,8 +104,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getChainIdsForAddresses
 
@@ -126,9 +125,9 @@ async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.getChainIdsForAddresses({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -162,7 +161,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -184,7 +183,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -194,8 +193,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getNetworkDetails
 
@@ -214,9 +212,9 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.getNetworkDetails({});
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -248,7 +246,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -270,7 +268,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -280,8 +278,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listBlockchains
 
@@ -303,7 +300,7 @@ async function run() {
     pageSize: 10,
     sortOrder: "asc",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -366,7 +363,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -376,8 +373,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listSubnets
 
@@ -399,7 +395,7 @@ async function run() {
     pageSize: 10,
     sortOrder: "asc",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -462,7 +458,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -472,8 +468,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getSubnetById
 
@@ -494,9 +489,9 @@ async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.getSubnetById({
     subnetId: "11111111111111111111111111111111LpoYY",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -530,7 +525,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -552,7 +547,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -562,8 +557,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listValidators
 
@@ -596,7 +590,7 @@ async function run() {
     maxUptimePerformance: 100,
     subnetId: "11111111111111111111111111111111LpoYY",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -670,7 +664,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -680,8 +674,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getSingleValidatorDetails
 
@@ -705,7 +698,7 @@ async function run() {
     validationStatus: "completed",
     sortOrder: "asc",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -770,7 +763,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -780,8 +773,7 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## listDelegators
 
@@ -806,7 +798,7 @@ async function run() {
     delegationStatus: "completed",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -872,7 +864,7 @@ run();
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -882,4 +874,4 @@ run();
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |

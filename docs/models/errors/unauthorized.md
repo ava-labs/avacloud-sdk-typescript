@@ -1,9 +1,5 @@
 # Unauthorized
 
-When a client attempts to access resources that require 
-    authorization credentials but the client lacks proper authentication 
-    in the request, the server responds with 401.
-
 ## Example Usage
 
 ```typescript

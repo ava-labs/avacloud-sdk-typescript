@@ -194,6 +194,7 @@ run();
 
 * [getApiUsageMetrics](docs/sdks/usagemetrics/README.md#getapiusagemetrics) - Get usage metrics for the Data API
 * [getApiLogs](docs/sdks/usagemetrics/README.md#getapilogs) - Get logs for requests made by client
+* [getRpcUsageMetrics](docs/sdks/usagemetrics/README.md#getrpcusagemetrics) - Get usage metrics for the Subnet RPC
 
 #### [data.webhooks](docs/sdks/webhooks/README.md)
 
@@ -259,85 +260,85 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [dataEvmBalancesGetNativeBalance](docs/sdks/avacloudsdkbalances/README.md#getnativebalance)
-- [dataEvmBalancesListCollectibleBalances](docs/sdks/avacloudsdkbalances/README.md#listcollectiblebalances)
-- [dataEvmBalancesListErc1155Balances](docs/sdks/avacloudsdkbalances/README.md#listerc1155balances)
-- [dataEvmBalancesListErc20Balances](docs/sdks/avacloudsdkbalances/README.md#listerc20balances)
-- [dataEvmBalancesListErc721Balances](docs/sdks/avacloudsdkbalances/README.md#listerc721balances)
-- [dataEvmBlocksGetBlock](docs/sdks/avacloudsdkblocks/README.md#getblock)
-- [dataEvmBlocksGetLatestBlocks](docs/sdks/avacloudsdkblocks/README.md#getlatestblocks)
-- [dataEvmChainsGetChainInfo](docs/sdks/avacloudsdkchains/README.md#getchaininfo)
-- [dataEvmChainsSupportedChains](docs/sdks/avacloudsdkchains/README.md#supportedchains)
-- [dataEvmContractsGetContractMetadata](docs/sdks/contracts/README.md#getcontractmetadata)
-- [dataEvmTransactionsGetDeploymentTransaction](docs/sdks/avacloudsdktransactions/README.md#getdeploymenttransaction)
-- [dataEvmTransactionsGetTransaction](docs/sdks/avacloudsdktransactions/README.md#gettransaction)
-- [dataEvmTransactionsGetTransactionsForBlock](docs/sdks/avacloudsdktransactions/README.md#gettransactionsforblock)
-- [dataEvmTransactionsListContractDeployments](docs/sdks/avacloudsdktransactions/README.md#listcontractdeployments)
-- [dataEvmTransactionsListErc1155Transactions](docs/sdks/avacloudsdktransactions/README.md#listerc1155transactions)
-- [dataEvmTransactionsListErc20Transactions](docs/sdks/avacloudsdktransactions/README.md#listerc20transactions)
-- [dataEvmTransactionsListErc721Transactions](docs/sdks/avacloudsdktransactions/README.md#listerc721transactions)
-- [dataEvmTransactionsListInternalTransactions](docs/sdks/avacloudsdktransactions/README.md#listinternaltransactions)
-- [dataEvmTransactionsListLatestTransactions](docs/sdks/avacloudsdktransactions/README.md#listlatesttransactions)
-- [dataEvmTransactionsListNativeTransactions](docs/sdks/avacloudsdktransactions/README.md#listnativetransactions)
-- [dataEvmTransactionsListTransactions](docs/sdks/avacloudsdktransactions/README.md#listtransactions)
-- [dataEvmTransactionsListTransfers](docs/sdks/avacloudsdktransactions/README.md#listtransfers)
-- [dataHealthCheckDataHealthCheck](docs/sdks/avacloudsdkhealthcheck/README.md#datahealthcheck)
-- [dataNftsGetTokenDetails](docs/sdks/nfts/README.md#gettokendetails)
-- [dataNftsListTokens](docs/sdks/nfts/README.md#listtokens)
-- [dataNftsReindexNft](docs/sdks/nfts/README.md#reindexnft)
-- [dataOperationsGetOperationResult](docs/sdks/operations/README.md#getoperationresult)
-- [dataOperationsPostTransactionExportJob](docs/sdks/operations/README.md#posttransactionexportjob)
-- [dataPrimaryNetworkBalancesGetBalancesByAddresses](docs/sdks/balances/README.md#getbalancesbyaddresses)
-- [dataPrimaryNetworkBlocksGetBlockById](docs/sdks/blocks/README.md#getblockbyid)
-- [dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks](docs/sdks/blocks/README.md#listlatestprimarynetworkblocks)
-- [dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId](docs/sdks/blocks/README.md#listprimarynetworkblocksbynodeid)
-- [dataPrimaryNetworkGetAssetDetails](docs/sdks/primarynetwork/README.md#getassetdetails)
-- [dataPrimaryNetworkGetChainIdsForAddresses](docs/sdks/primarynetwork/README.md#getchainidsforaddresses)
-- [dataPrimaryNetworkGetNetworkDetails](docs/sdks/primarynetwork/README.md#getnetworkdetails)
-- [dataPrimaryNetworkGetSingleValidatorDetails](docs/sdks/primarynetwork/README.md#getsinglevalidatordetails)
-- [dataPrimaryNetworkGetSubnetById](docs/sdks/primarynetwork/README.md#getsubnetbyid)
-- [dataPrimaryNetworkListBlockchains](docs/sdks/primarynetwork/README.md#listblockchains)
-- [dataPrimaryNetworkListDelegators](docs/sdks/primarynetwork/README.md#listdelegators)
-- [dataPrimaryNetworkListSubnets](docs/sdks/primarynetwork/README.md#listsubnets)
-- [dataPrimaryNetworkListValidators](docs/sdks/primarynetwork/README.md#listvalidators)
-- [dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards](docs/sdks/rewards/README.md#listhistoricalprimarynetworkrewards)
-- [dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards](docs/sdks/rewards/README.md#listpendingprimarynetworkrewards)
-- [dataPrimaryNetworkTransactionsGetTxByHash](docs/sdks/transactions/README.md#gettxbyhash)
-- [dataPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions](docs/sdks/transactions/README.md#listactiveprimarynetworkstakingtransactions)
-- [dataPrimaryNetworkTransactionsListAssetTransactions](docs/sdks/transactions/README.md#listassettransactions)
-- [dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions](docs/sdks/transactions/README.md#listlatestprimarynetworktransactions)
-- [dataPrimaryNetworkUtxosGetUtxosByAddresses](docs/sdks/utxos/README.md#getutxosbyaddresses)
-- [dataPrimaryNetworkVerticesGetVertexByHash](docs/sdks/vertices/README.md#getvertexbyhash)
-- [dataPrimaryNetworkVerticesGetVertexByHeight](docs/sdks/vertices/README.md#getvertexbyheight)
-- [dataPrimaryNetworkVerticesListLatestXChainVertices](docs/sdks/vertices/README.md#listlatestxchainvertices)
-- [dataTeleporterGetTeleporterMessage](docs/sdks/teleporter/README.md#getteleportermessage)
-- [dataTeleporterListTeleporterMessagesByAddress](docs/sdks/teleporter/README.md#listteleportermessagesbyaddress)
-- [dataTeleporterListTeleporterMessages](docs/sdks/teleporter/README.md#listteleportermessages)
-- [dataUsageMetricsGetApiLogs](docs/sdks/usagemetrics/README.md#getapilogs)
-- [dataUsageMetricsGetApiUsageMetrics](docs/sdks/usagemetrics/README.md#getapiusagemetrics)
-- [dataWebhooksAddAddressesToWebhook](docs/sdks/webhooks/README.md#addaddressestowebhook)
-- [dataWebhooksCreateWebhook](docs/sdks/webhooks/README.md#createwebhook)
-- [dataWebhooksDeactivateWebhook](docs/sdks/webhooks/README.md#deactivatewebhook)
-- [dataWebhooksGenerateSharedSecret](docs/sdks/webhooks/README.md#generatesharedsecret)
-- [dataWebhooksGetAddressesFromWebhook](docs/sdks/webhooks/README.md#getaddressesfromwebhook)
-- [dataWebhooksGetSharedSecret](docs/sdks/webhooks/README.md#getsharedsecret)
-- [dataWebhooksGetWebhook](docs/sdks/webhooks/README.md#getwebhook)
-- [dataWebhooksListWebhooks](docs/sdks/webhooks/README.md#listwebhooks)
-- [dataWebhooksRemoveAddressesFromWebhook](docs/sdks/webhooks/README.md#removeaddressesfromwebhook)
-- [dataWebhooksUpdateWebhook](docs/sdks/webhooks/README.md#updatewebhook)
-- [metricsChainMetricsGetEvmChainMetrics](docs/sdks/avacloudsdkmetrics/README.md#getevmchainmetrics)
-- [metricsChainMetricsGetEvmChainRollingWindowMetrics](docs/sdks/avacloudsdkmetrics/README.md#getevmchainrollingwindowmetrics)
-- [metricsChainMetricsGetStakingMetrics](docs/sdks/avacloudsdkmetrics/README.md#getstakingmetrics)
-- [metricsChainMetricsGetTeleporterMetricsByChain](docs/sdks/avacloudsdkmetrics/README.md#getteleportermetricsbychain)
-- [metricsEvmChainsGetChain](docs/sdks/chains/README.md#getchain)
-- [metricsEvmChainsListChains](docs/sdks/chains/README.md#listchains)
-- [metricsHealthCheckMetricsHealthCheck](docs/sdks/healthcheck/README.md#metricshealthcheck)
-- [metricsLookingGlassCompositeQuery](docs/sdks/lookingglass/README.md#compositequery)
-- [metricsLookingGlassGetAddressesByBalanceOverTime](docs/sdks/lookingglass/README.md#getaddressesbybalanceovertime)
-- [metricsLookingGlassGetAddressesByBtcbBridged](docs/sdks/lookingglass/README.md#getaddressesbybtcbbridged)
-- [metricsLookingGlassGetNftHoldersByContractAddress](docs/sdks/lookingglass/README.md#getnftholdersbycontractaddress)
-- [metricsLookingGlassGetValidatorsByDateRange](docs/sdks/lookingglass/README.md#getvalidatorsbydaterange)
-
+- [`dataEvmBalancesGetNativeBalance`](docs/sdks/avacloudsdkbalances/README.md#getnativebalance) - Get native token balance
+- [`dataEvmBalancesListCollectibleBalances`](docs/sdks/avacloudsdkbalances/README.md#listcollectiblebalances) - List collectible (ERC-721/ERC-1155) balances
+- [`dataEvmBalancesListErc1155Balances`](docs/sdks/avacloudsdkbalances/README.md#listerc1155balances) - List ERC-1155 balances
+- [`dataEvmBalancesListErc20Balances`](docs/sdks/avacloudsdkbalances/README.md#listerc20balances) - List ERC-20 balances
+- [`dataEvmBalancesListErc721Balances`](docs/sdks/avacloudsdkbalances/README.md#listerc721balances) - List ERC-721 balances
+- [`dataEvmBlocksGetBlock`](docs/sdks/avacloudsdkblocks/README.md#getblock) - Get block
+- [`dataEvmBlocksGetLatestBlocks`](docs/sdks/avacloudsdkblocks/README.md#getlatestblocks) - List latest blocks
+- [`dataEvmChainsGetChainInfo`](docs/sdks/avacloudsdkchains/README.md#getchaininfo) - Get chain information
+- [`dataEvmChainsSupportedChains`](docs/sdks/avacloudsdkchains/README.md#supportedchains) - List chains
+- [`dataEvmContractsGetContractMetadata`](docs/sdks/contracts/README.md#getcontractmetadata) - Get contract metadata
+- [`dataEvmTransactionsGetDeploymentTransaction`](docs/sdks/avacloudsdktransactions/README.md#getdeploymenttransaction) - Get deployment transaction
+- [`dataEvmTransactionsGetTransaction`](docs/sdks/avacloudsdktransactions/README.md#gettransaction) - Get transaction
+- [`dataEvmTransactionsGetTransactionsForBlock`](docs/sdks/avacloudsdktransactions/README.md#gettransactionsforblock) - List transactions for a block
+- [`dataEvmTransactionsListContractDeployments`](docs/sdks/avacloudsdktransactions/README.md#listcontractdeployments) - List deployed contracts
+- [`dataEvmTransactionsListErc1155Transactions`](docs/sdks/avacloudsdktransactions/README.md#listerc1155transactions) - List ERC-1155 transfers
+- [`dataEvmTransactionsListErc20Transactions`](docs/sdks/avacloudsdktransactions/README.md#listerc20transactions) - List ERC-20 transfers
+- [`dataEvmTransactionsListErc721Transactions`](docs/sdks/avacloudsdktransactions/README.md#listerc721transactions) - List ERC-721 transfers
+- [`dataEvmTransactionsListInternalTransactions`](docs/sdks/avacloudsdktransactions/README.md#listinternaltransactions) - List internal transactions
+- [`dataEvmTransactionsListLatestTransactions`](docs/sdks/avacloudsdktransactions/README.md#listlatesttransactions) - List latest transactions
+- [`dataEvmTransactionsListNativeTransactions`](docs/sdks/avacloudsdktransactions/README.md#listnativetransactions) - List native transactions
+- [`dataEvmTransactionsListTransactions`](docs/sdks/avacloudsdktransactions/README.md#listtransactions) - List transactions
+- [`dataEvmTransactionsListTransfers`](docs/sdks/avacloudsdktransactions/README.md#listtransfers) - List ERC transfers
+- [`dataHealthCheckDataHealthCheck`](docs/sdks/avacloudsdkhealthcheck/README.md#datahealthcheck) - Get the health of the service
+- [`dataNftsGetTokenDetails`](docs/sdks/nfts/README.md#gettokendetails) - Get token details
+- [`dataNftsListTokens`](docs/sdks/nfts/README.md#listtokens) - List tokens
+- [`dataNftsReindexNft`](docs/sdks/nfts/README.md#reindexnft) - Reindex NFT metadata
+- [`dataOperationsGetOperationResult`](docs/sdks/operations/README.md#getoperationresult) - Get operation
+- [`dataOperationsPostTransactionExportJob`](docs/sdks/operations/README.md#posttransactionexportjob) - Create transaction export operation
+- [`dataPrimaryNetworkBalancesGetBalancesByAddresses`](docs/sdks/balances/README.md#getbalancesbyaddresses) - Get balances
+- [`dataPrimaryNetworkBlocksGetBlockById`](docs/sdks/blocks/README.md#getblockbyid) - Get block
+- [`dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks`](docs/sdks/blocks/README.md#listlatestprimarynetworkblocks) - List latest blocks
+- [`dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId`](docs/sdks/blocks/README.md#listprimarynetworkblocksbynodeid) - List blocks proposed by node
+- [`dataPrimaryNetworkGetAssetDetails`](docs/sdks/primarynetwork/README.md#getassetdetails) - Get asset details
+- [`dataPrimaryNetworkGetChainIdsForAddresses`](docs/sdks/primarynetwork/README.md#getchainidsforaddresses) - Get chain interactions for addresses
+- [`dataPrimaryNetworkGetNetworkDetails`](docs/sdks/primarynetwork/README.md#getnetworkdetails) - Get network details
+- [`dataPrimaryNetworkGetSingleValidatorDetails`](docs/sdks/primarynetwork/README.md#getsinglevalidatordetails) - Get single validator details
+- [`dataPrimaryNetworkGetSubnetById`](docs/sdks/primarynetwork/README.md#getsubnetbyid) - Get Subnet details by ID
+- [`dataPrimaryNetworkListBlockchains`](docs/sdks/primarynetwork/README.md#listblockchains) - List blockchains
+- [`dataPrimaryNetworkListDelegators`](docs/sdks/primarynetwork/README.md#listdelegators) - List delegators
+- [`dataPrimaryNetworkListSubnets`](docs/sdks/primarynetwork/README.md#listsubnets) - List subnets
+- [`dataPrimaryNetworkListValidators`](docs/sdks/primarynetwork/README.md#listvalidators) - List validators
+- [`dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards`](docs/sdks/rewards/README.md#listhistoricalprimarynetworkrewards) - List historical rewards
+- [`dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards`](docs/sdks/rewards/README.md#listpendingprimarynetworkrewards) - List pending rewards
+- [`dataPrimaryNetworkTransactionsGetTxByHash`](docs/sdks/transactions/README.md#gettxbyhash) - Get transaction
+- [`dataPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions`](docs/sdks/transactions/README.md#listactiveprimarynetworkstakingtransactions) - List staking transactions
+- [`dataPrimaryNetworkTransactionsListAssetTransactions`](docs/sdks/transactions/README.md#listassettransactions) - List asset transactions
+- [`dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions`](docs/sdks/transactions/README.md#listlatestprimarynetworktransactions) - List latest transactions
+- [`dataPrimaryNetworkUtxosGetUtxosByAddresses`](docs/sdks/utxos/README.md#getutxosbyaddresses) - List UTXOs
+- [`dataPrimaryNetworkVerticesGetVertexByHash`](docs/sdks/vertices/README.md#getvertexbyhash) - Get vertex
+- [`dataPrimaryNetworkVerticesGetVertexByHeight`](docs/sdks/vertices/README.md#getvertexbyheight) - List vertices by height
+- [`dataPrimaryNetworkVerticesListLatestXChainVertices`](docs/sdks/vertices/README.md#listlatestxchainvertices) - List vertices
+- [`dataTeleporterGetTeleporterMessage`](docs/sdks/teleporter/README.md#getteleportermessage) - Get a teleporter message
+- [`dataTeleporterListTeleporterMessages`](docs/sdks/teleporter/README.md#listteleportermessages) - List teleporter messages
+- [`dataTeleporterListTeleporterMessagesByAddress`](docs/sdks/teleporter/README.md#listteleportermessagesbyaddress) - List teleporter messages by address
+- [`dataUsageMetricsGetApiLogs`](docs/sdks/usagemetrics/README.md#getapilogs) - Get logs for requests made by client
+- [`dataUsageMetricsGetApiUsageMetrics`](docs/sdks/usagemetrics/README.md#getapiusagemetrics) - Get usage metrics for the Data API
+- [`dataUsageMetricsGetRpcUsageMetrics`](docs/sdks/usagemetrics/README.md#getrpcusagemetrics) - Get usage metrics for the Subnet RPC
+- [`dataWebhooksAddAddressesToWebhook`](docs/sdks/webhooks/README.md#addaddressestowebhook) - Add addresses to webhook
+- [`dataWebhooksCreateWebhook`](docs/sdks/webhooks/README.md#createwebhook) - Create a webhook
+- [`dataWebhooksDeactivateWebhook`](docs/sdks/webhooks/README.md#deactivatewebhook) - Deactivate a webhook
+- [`dataWebhooksGenerateSharedSecret`](docs/sdks/webhooks/README.md#generatesharedsecret) - Generate a shared secret
+- [`dataWebhooksGetAddressesFromWebhook`](docs/sdks/webhooks/README.md#getaddressesfromwebhook) - List adresses by webhook
+- [`dataWebhooksGetSharedSecret`](docs/sdks/webhooks/README.md#getsharedsecret) - Get a shared secret
+- [`dataWebhooksGetWebhook`](docs/sdks/webhooks/README.md#getwebhook) - Get a webhook by ID
+- [`dataWebhooksListWebhooks`](docs/sdks/webhooks/README.md#listwebhooks) - List webhooks
+- [`dataWebhooksRemoveAddressesFromWebhook`](docs/sdks/webhooks/README.md#removeaddressesfromwebhook) - Remove addresses from webhook
+- [`dataWebhooksUpdateWebhook`](docs/sdks/webhooks/README.md#updatewebhook) - Update a webhook
+- [`metricsChainMetricsGetEvmChainMetrics`](docs/sdks/avacloudsdkmetrics/README.md#getevmchainmetrics) - Get metrics for EVM chains
+- [`metricsChainMetricsGetEvmChainRollingWindowMetrics`](docs/sdks/avacloudsdkmetrics/README.md#getevmchainrollingwindowmetrics) - Get rolling window metrics for EVM chains
+- [`metricsChainMetricsGetStakingMetrics`](docs/sdks/avacloudsdkmetrics/README.md#getstakingmetrics) - Get staking metrics for a given subnet
+- [`metricsChainMetricsGetTeleporterMetricsByChain`](docs/sdks/avacloudsdkmetrics/README.md#getteleportermetricsbychain) - Get teleporter metrics for EVM chains
+- [`metricsEvmChainsGetChain`](docs/sdks/chains/README.md#getchain) - Get chain information for supported blockchain
+- [`metricsEvmChainsListChains`](docs/sdks/chains/README.md#listchains) - Get a list of supported blockchains
+- [`metricsHealthCheckMetricsHealthCheck`](docs/sdks/healthcheck/README.md#metricshealthcheck) - Get the health of the service
+- [`metricsLookingGlassCompositeQuery`](docs/sdks/lookingglass/README.md#compositequery) - Composite query
+- [`metricsLookingGlassGetAddressesByBalanceOverTime`](docs/sdks/lookingglass/README.md#getaddressesbybalanceovertime) - Get addresses by balance over time
+- [`metricsLookingGlassGetAddressesByBtcbBridged`](docs/sdks/lookingglass/README.md#getaddressesbybtcbbridged) - Get addresses by BTCb bridged balance
+- [`metricsLookingGlassGetNftHoldersByContractAddress`](docs/sdks/lookingglass/README.md#getnftholdersbycontractaddress) - Get NFT holders by contract address
+- [`metricsLookingGlassGetValidatorsByDateRange`](docs/sdks/lookingglass/README.md#getvalidatorsbydaterange) - Get addresses running validators during a given time frame
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -496,9 +497,21 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-All SDK methods return a response object or throw an error. If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+All SDK methods return a response object or throw an error. By default, an API error will throw a `errors.SDKError`.
 
-| Error Object               | Status Code                | Content Type               |
+If a HTTP request fails, an operation my also throw an error from the `models/errors/httpclienterrors.ts` module:
+
+| HTTP Client Error                                    | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- |
+| RequestAbortedError                                  | HTTP request was aborted by the client               |
+| RequestTimeoutError                                  | HTTP request timed out due to an AbortSignal signal  |
+| ConnectionError                                      | HTTP client was unable to make a request to a server |
+| InvalidRequestError                                  | Any input used to create a request is invalid        |
+| UnexpectedClientError                                | Unrecognised or unexpected error                     |
+
+In addition, when custom error responses are specified for an operation, the SDK may throw their associated Error type. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation. For example, the `reindexNft` method may throw the following errors:
+
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.BadRequest          | 400                        | application/json           |
 | errors.Unauthorized        | 401                        | application/json           |
@@ -508,10 +521,7 @@ All SDK methods return a response object or throw an error. If Error objects are
 | errors.InternalServerError | 500                        | application/json           |
 | errors.BadGateway          | 502                        | application/json           |
 | errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4xx-5xx                    | */*                        |
-
-Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
-
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ```typescript
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
@@ -598,6 +608,8 @@ async function run() {
 run();
 
 ```
+
+Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->

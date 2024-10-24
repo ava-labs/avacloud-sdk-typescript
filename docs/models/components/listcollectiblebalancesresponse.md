@@ -9,14 +9,16 @@ let value: ListCollectibleBalancesResponse = {
   collectibleBalances: [
     {
       address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-      ercType: "ERC-1155",
-      tokenId: "<value>",
-      tokenUri: "<value>",
+      name: "Wrapped AVAX",
+      symbol: "WAVAX",
+      ercType: "ERC-721",
+      tokenId: "<id>",
+      tokenUri: "https://ample-reconsideration.com/",
       metadata: {
-        indexStatus: "INVALID_TOKEN_URI",
+        indexStatus: "METADATA_CONTENT_TOO_LARGE",
       },
+      ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
       chainId: "43114",
-      balance: "2000000000000000000",
     },
   ],
 };

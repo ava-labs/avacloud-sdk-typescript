@@ -18,7 +18,7 @@ export type PChainLookingGlassResponse = {
   /**
    * List of addresses that match provided criteria.
    */
-  addresses: PChainAddressDetails;
+  addresses: Array<PChainAddressDetails>;
 };
 
 /** @internal */
@@ -28,13 +28,13 @@ export const PChainLookingGlassResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   nextPageToken: z.string().optional(),
-  addresses: PChainAddressDetails$inboundSchema,
+  addresses: z.array(PChainAddressDetails$inboundSchema),
 });
 
 /** @internal */
 export type PChainLookingGlassResponse$Outbound = {
   nextPageToken?: string | undefined;
-  addresses: PChainAddressDetails$Outbound;
+  addresses: Array<PChainAddressDetails$Outbound>;
 };
 
 /** @internal */
@@ -44,7 +44,7 @@ export const PChainLookingGlassResponse$outboundSchema: z.ZodType<
   PChainLookingGlassResponse
 > = z.object({
   nextPageToken: z.string().optional(),
-  addresses: PChainAddressDetails$outboundSchema,
+  addresses: z.array(PChainAddressDetails$outboundSchema),
 });
 
 /**

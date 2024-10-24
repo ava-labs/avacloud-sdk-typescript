@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: 91a0e02e81b109251a6b0f980ebcb501
+  docChecksum: 9dcc1f3377a49f8d451590b88cd5386d
   docVersion: Beta
-  speakeasyVersion: 1.402.0
-  generationVersion: 2.422.6
-  releaseVersion: 0.5.1
-  configChecksum: 2266b6d28d0cfeed797681f1785a842f
+  speakeasyVersion: 1.419.2
+  generationVersion: 2.438.15
+  releaseVersion: 0.6.3
+  configChecksum: 1c716bc9a0eefa5dd6fd700e89239817
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.17.6
+    core: 3.18.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -31,7 +31,7 @@ features:
     methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
     nullables: 0.1.0
-    pagination: 2.82.6
+    pagination: 2.82.7
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
@@ -252,7 +252,6 @@ generatedFiles:
   - docs/models/components/pendingvalidatordetails.md
   - docs/models/components/pendingvalidatordetailsvalidationstatus.md
   - docs/models/components/pricingproviders.md
-  - docs/models/components/primarynetwork.md
   - docs/models/components/primarynetworkassetcap.md
   - docs/models/components/primarynetworkassettype.md
   - docs/models/components/primarynetworkblock.md
@@ -272,6 +271,11 @@ generatedFiles:
   - docs/models/components/rewardtype.md
   - docs/models/components/richaddress.md
   - docs/models/components/rollingwindowmetricsapiresponse.md
+  - docs/models/components/rpcmetrics.md
+  - docs/models/components/rpcusagemetricsresponsedto.md
+  - docs/models/components/rpcusagemetricsvalueaggregated.md
+  - docs/models/components/rpcusagemetricsvalueaggregatedgroupedby.md
+  - docs/models/components/rpcusagemetricsvalueaggregatedgroupvalue.md
   - docs/models/components/security.md
   - docs/models/components/sharedsecretsresponse.md
   - docs/models/components/sortbyoption.md
@@ -413,6 +417,7 @@ generatedFiles:
   - docs/models/operations/getnftholdersbycontractaddressrequest.md
   - docs/models/operations/getnftholdersbycontractaddressresponse.md
   - docs/models/operations/getoperationresultrequest.md
+  - docs/models/operations/getrpcusagemetricsrequest.md
   - docs/models/operations/getsinglevalidatordetailsglobals.md
   - docs/models/operations/getsinglevalidatordetailsrequest.md
   - docs/models/operations/getsinglevalidatordetailsresponse.md
@@ -629,6 +634,7 @@ generatedFiles:
   - src/funcs/dataTeleporterListTeleporterMessagesByAddress.ts
   - src/funcs/dataUsageMetricsGetApiLogs.ts
   - src/funcs/dataUsageMetricsGetApiUsageMetrics.ts
+  - src/funcs/dataUsageMetricsGetRpcUsageMetrics.ts
   - src/funcs/dataWebhooksAddAddressesToWebhook.ts
   - src/funcs/dataWebhooksCreateWebhook.ts
   - src/funcs/dataWebhooksDeactivateWebhook.ts
@@ -833,7 +839,6 @@ generatedFiles:
   - src/models/components/pendingteleportermessage.ts
   - src/models/components/pendingvalidatordetails.ts
   - src/models/components/pricingproviders.ts
-  - src/models/components/primarynetwork.ts
   - src/models/components/primarynetworkassetcap.ts
   - src/models/components/primarynetworkassettype.ts
   - src/models/components/primarynetworkblock.ts
@@ -851,6 +856,9 @@ generatedFiles:
   - src/models/components/rewardtype.ts
   - src/models/components/richaddress.ts
   - src/models/components/rollingwindowmetricsapiresponse.ts
+  - src/models/components/rpcmetrics.ts
+  - src/models/components/rpcusagemetricsresponsedto.ts
+  - src/models/components/rpcusagemetricsvalueaggregated.ts
   - src/models/components/security.ts
   - src/models/components/sharedsecretsresponse.ts
   - src/models/components/sortbyoption.ts
@@ -941,6 +949,7 @@ generatedFiles:
   - src/models/operations/getnetworkdetails.ts
   - src/models/operations/getnftholdersbycontractaddress.ts
   - src/models/operations/getoperationresult.ts
+  - src/models/operations/getrpcusagemetrics.ts
   - src/models/operations/getsharedsecret.ts
   - src/models/operations/getsinglevalidatordetails.ts
   - src/models/operations/getstakingmetrics.ts
@@ -1266,7 +1275,7 @@ examples:
           network: "mainnet"
       responses:
         "200":
-          application/json: {"addresses": {"addresses": ["avax1abcdef1234567890abcdef1234567890abcdef"], "sortKey": "123"}}
+          application/json: {"addresses": [{"addresses": ["avax1abcdef1234567890abcdef1234567890abcdef"], "sortKey": "123"}]}
         "400":
           application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
         "401":
@@ -2095,8 +2104,8 @@ examples:
     "":
       parameters:
         query:
-          startTimestamp: 1689541049
-          endTimestamp: 1689800249
+          startTimestamp: 1698100000
+          endTimestamp: 1698300000
           timeInterval: "daily"
           groupBy: "requestPath"
       responses:
@@ -2122,8 +2131,8 @@ examples:
     "":
       parameters:
         query:
-          startTimestamp: 1689541049
-          endTimestamp: 1689800249
+          startTimestamp: 1698100000
+          endTimestamp: 1698300000
       responses:
         "400":
           application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
@@ -3088,6 +3097,32 @@ examples:
           application/json: {"message": "<value>", "statusCode": 404, "error": "Not Found"}
         "429":
           application/json: {"message": "<value>", "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": "<value>", "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+  getRpcUsageMetrics:
+    "":
+      parameters:
+        query:
+          startTimestamp: 1698100000
+          endTimestamp: 1698300000
+          groupBy: "chainId"
+      responses:
+        "200":
+          application/json: {"aggregateDuration": "<value>", "chainId": "<id>", "metrics": []}
+        "400":
+          application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": [], "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": ["<value>", "<value>", "<value>"], "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": [], "statusCode": 429, "error": "Too Many Requests"}
         "500":
           application/json: {"message": "<value>", "statusCode": 500, "error": "Internal Server Error"}
         "502":

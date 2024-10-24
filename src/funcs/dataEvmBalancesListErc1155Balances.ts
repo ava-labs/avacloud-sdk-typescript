@@ -66,10 +66,8 @@ export async function dataEvmBalancesListErc1155Balances(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.ListErc1155BalancesRequest$outboundSchema.parse(value),
     "Input validation failed",
@@ -231,7 +229,6 @@ export async function dataEvmBalancesListErc1155Balances(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -240,7 +237,7 @@ export async function dataEvmBalancesListErc1155Balances(
       dataEvmBalancesListErc1155Balances(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

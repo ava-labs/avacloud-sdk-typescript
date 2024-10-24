@@ -66,10 +66,8 @@ export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTran
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.ListLatestPrimaryNetworkTransactionsRequest$outboundSchema
         .parse(value),
@@ -237,7 +235,6 @@ export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTran
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -246,7 +243,7 @@ export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTran
       dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

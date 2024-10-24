@@ -13,7 +13,7 @@ let value: XChainSharedAssetBalance = {
   type: "nft",
   amount: "5001000",
   utxoCount: 1,
-  sharedWithChainId: "<value>",
+  sharedWithChainId: "<id>",
 };
 ```
 

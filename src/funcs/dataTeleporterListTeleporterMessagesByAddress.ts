@@ -54,10 +54,8 @@ export async function dataTeleporterListTeleporterMessagesByAddress(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.ListTeleporterMessagesByAddressRequest$outboundSchema.parse(
         value,

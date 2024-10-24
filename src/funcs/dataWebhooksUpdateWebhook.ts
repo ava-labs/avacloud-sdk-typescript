@@ -54,10 +54,8 @@ export async function dataWebhooksUpdateWebhook(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.UpdateWebhookRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

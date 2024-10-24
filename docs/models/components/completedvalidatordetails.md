@@ -7,12 +7,12 @@ import { CompletedValidatorDetails } from "@avalabs/avacloud-sdk/models/componen
 
 let value: CompletedValidatorDetails = {
   txHash: "<value>",
-  nodeId: "<value>",
-  subnetId: "<value>",
+  nodeId: "<id>",
+  subnetId: "<id>",
   amountStaked: "<value>",
-  startTimestamp: 2487.53,
-  endTimestamp: 5761.57,
-  delegatorCount: 5920.42,
+  startTimestamp: 5743.25,
+  endTimestamp: 6532.01,
+  delegatorCount: 6521.03,
   rewards: {
     validationRewardAmount: "<value>",
     delegationRewardAmount: "<value>",

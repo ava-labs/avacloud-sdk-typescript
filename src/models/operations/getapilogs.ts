@@ -29,29 +29,29 @@ export type GetApiLogsRequest = {
    */
   orgId?: string | undefined;
   /**
-   * Query param for retrieving items after a specific timestamp.
+   * The start time of the range as a UNIX timestamp. The requested start time  will be rounded down to 0:00 UTC of the day.
    */
   startTimestamp?: number | undefined;
   /**
-   * Query param for retrieving items before a specific timestamp.
+   * The end time of the range as a UNIX timestamp. The requested end time will be rounded down to 0:00 UTC of the day. `endTimestamp` must be no  earlier than 0:00 UTC of the day after `startTimestamp`.
    */
   endTimestamp?: number | undefined;
+  /**
+   * Filter data by chain ID.
+   */
+  chainId?: string | undefined;
   /**
    * Filter data by request path.
    */
   requestPath?: string | undefined;
   /**
-   * Filter data by request type.
-   */
-  requestType?: QueryParamRequestType | undefined;
-  /**
    * Filter data by response status code.
    */
   responseCode?: string | undefined;
   /**
-   * Filter data by chain ID.
+   * Filter data by request type.
    */
-  chainId?: string | undefined;
+  requestType?: QueryParamRequestType | undefined;
   /**
    * Filter data by API key ID.
    */
@@ -100,10 +100,10 @@ export const GetApiLogsRequest$inboundSchema: z.ZodType<
   orgId: z.string().optional(),
   startTimestamp: z.number().int().optional(),
   endTimestamp: z.number().int().optional(),
-  requestPath: z.string().optional(),
-  requestType: QueryParamRequestType$inboundSchema.optional(),
-  responseCode: z.string().optional(),
   chainId: z.string().optional(),
+  requestPath: z.string().optional(),
+  responseCode: z.string().optional(),
+  requestType: QueryParamRequestType$inboundSchema.optional(),
   apiKeyId: z.string().optional(),
   pageToken: z.string().optional(),
   pageSize: z.number().int().default(10),
@@ -114,10 +114,10 @@ export type GetApiLogsRequest$Outbound = {
   orgId?: string | undefined;
   startTimestamp?: number | undefined;
   endTimestamp?: number | undefined;
-  requestPath?: string | undefined;
-  requestType?: string | undefined;
-  responseCode?: string | undefined;
   chainId?: string | undefined;
+  requestPath?: string | undefined;
+  responseCode?: string | undefined;
+  requestType?: string | undefined;
   apiKeyId?: string | undefined;
   pageToken?: string | undefined;
   pageSize: number;
@@ -132,10 +132,10 @@ export const GetApiLogsRequest$outboundSchema: z.ZodType<
   orgId: z.string().optional(),
   startTimestamp: z.number().int().optional(),
   endTimestamp: z.number().int().optional(),
-  requestPath: z.string().optional(),
-  requestType: QueryParamRequestType$outboundSchema.optional(),
-  responseCode: z.string().optional(),
   chainId: z.string().optional(),
+  requestPath: z.string().optional(),
+  responseCode: z.string().optional(),
+  requestType: QueryParamRequestType$outboundSchema.optional(),
   apiKeyId: z.string().optional(),
   pageToken: z.string().optional(),
   pageSize: z.number().int().default(10),

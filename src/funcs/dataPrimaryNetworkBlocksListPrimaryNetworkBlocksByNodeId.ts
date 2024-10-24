@@ -62,10 +62,8 @@ export async function dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.ListPrimaryNetworkBlocksByNodeIdRequest$outboundSchema.parse(
         value,
@@ -233,7 +231,6 @@ export async function dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -242,7 +239,7 @@ export async function dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId(
       dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

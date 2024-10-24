@@ -62,10 +62,8 @@ export async function metricsChainMetricsGetEvmChainMetrics(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetEvmChainMetricsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
@@ -225,7 +223,6 @@ export async function metricsChainMetricsGetEvmChainMetrics(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -234,7 +231,7 @@ export async function metricsChainMetricsGetEvmChainMetrics(
       metricsChainMetricsGetEvmChainMetrics(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

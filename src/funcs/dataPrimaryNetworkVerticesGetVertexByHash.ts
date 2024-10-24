@@ -54,10 +54,8 @@ export async function dataPrimaryNetworkVerticesGetVertexByHash(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetVertexByHashRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

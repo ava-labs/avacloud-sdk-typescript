@@ -62,10 +62,8 @@ export async function dataEvmTransactionsListContractDeployments(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.ListContractDeploymentsRequest$outboundSchema.parse(value),
     "Input validation failed",
@@ -225,7 +223,6 @@ export async function dataEvmTransactionsListContractDeployments(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -234,7 +231,7 @@ export async function dataEvmTransactionsListContractDeployments(
       dataEvmTransactionsListContractDeployments(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

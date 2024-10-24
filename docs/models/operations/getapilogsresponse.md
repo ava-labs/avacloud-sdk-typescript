@@ -7,23 +7,23 @@ import { GetApiLogsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetApiLogsResponse = {
   result: {
-    orgId: "<value>",
+    orgId: "<id>",
     logs: [
       {
-        orgId: "<value>",
-        logId: "<value>",
-        eventTimestamp: 1032.98,
-        apiKeyId: "<value>",
+        orgId: "<id>",
+        logId: "<id>",
+        eventTimestamp: 7732.59,
+        apiKeyId: "<id>",
         apiKeyAlias: "<value>",
         hostRegion: "<value>",
         requestType: "rpc",
         requestPath: "<value>",
-        apiCreditsConsumed: 291.90,
-        requestDurationMsecs: 5349.17,
-        responseCode: 4042.44,
+        apiCreditsConsumed: 9829.99,
+        requestDurationMsecs: 9822.48,
+        responseCode: 9926.67,
         metadata: {
-          ipAddress: "840b:c841:1425:11c3:cba3:49b7:bae0:d8df",
-          host: "wretched-ribbon.info",
+          ipAddress: "240.62.117.193",
+          host: "doting-mentor.biz",
           userAgent: "<value>",
         },
       },

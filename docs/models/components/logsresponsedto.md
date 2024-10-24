@@ -6,23 +6,23 @@
 import { LogsResponseDTO } from "@avalabs/avacloud-sdk/models/components";
 
 let value: LogsResponseDTO = {
-  orgId: "<value>",
+  orgId: "<id>",
   logs: [
     {
-      orgId: "<value>",
-      logId: "<value>",
-      eventTimestamp: 9564.06,
-      apiKeyId: "<value>",
+      orgId: "<id>",
+      logId: "<id>",
+      eventTimestamp: 627.13,
+      apiKeyId: "<id>",
       apiKeyAlias: "<value>",
       hostRegion: "<value>",
       requestType: "data",
       requestPath: "<value>",
-      apiCreditsConsumed: 9039.84,
-      requestDurationMsecs: 5438.06,
-      responseCode: 4569.11,
+      apiCreditsConsumed: 2586.84,
+      requestDurationMsecs: 8490.38,
+      responseCode: 333.05,
       metadata: {
-        ipAddress: "af8d:ff7a:d53b:fadc:aecc:db3d:8195:c0f7",
-        host: "hard-to-find-adviser.biz",
+        ipAddress: "7704:8e2e:d975:d009:1545:202d:ff83:eaf1",
+        host: "spherical-electronics.biz",
         userAgent: "<value>",
       },
     },

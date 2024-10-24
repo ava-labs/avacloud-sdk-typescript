@@ -2,18 +2,19 @@
 
 Successful response
 
-## Example Usage
+
+## Supported Types
+
+### `components.Erc721Token`
 
 ```typescript
-import { GetTokenDetailsResponseBody } from "@avalabs/avacloud-sdk/models/operations";
-
-let value: GetTokenDetailsResponseBody = {
+const value: components.Erc721Token = {
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   name: "Wrapped AVAX",
   symbol: "WAVAX",
   ercType: "ERC-721",
-  tokenId: "<value>",
-  tokenUri: "<value>",
+  tokenId: "<id>",
+  tokenUri: "https://spanish-steak.info",
   metadata: {
     indexStatus: "INVALID_TOKEN_URI",
   },
@@ -21,17 +22,17 @@ let value: GetTokenDetailsResponseBody = {
 };
 ```
 
-## Supported Types
-
-### `components.Erc721Token`
-
-```typescript
-const value: components.Erc721Token = /* values here */
-```
-
 ### `components.Erc1155Token`
 
 ```typescript
-const value: components.Erc1155Token = /* values here */
+const value: components.Erc1155Token = {
+  address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+  ercType: "ERC-1155",
+  tokenId: "<id>",
+  tokenUri: "https://common-instructor.com",
+  metadata: {
+    indexStatus: "UNINDEXED",
+  },
+};
 ```
 

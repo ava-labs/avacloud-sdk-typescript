@@ -62,10 +62,8 @@ export async function dataWebhooksGetAddressesFromWebhook(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetAddressesFromWebhookRequest$outboundSchema.parse(value),
     "Input validation failed",
@@ -218,7 +216,6 @@ export async function dataWebhooksGetAddressesFromWebhook(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -227,7 +224,7 @@ export async function dataWebhooksGetAddressesFromWebhook(
       dataWebhooksGetAddressesFromWebhook(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

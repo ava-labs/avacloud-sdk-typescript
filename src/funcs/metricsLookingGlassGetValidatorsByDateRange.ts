@@ -62,10 +62,8 @@ export async function metricsLookingGlassGetValidatorsByDateRange(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetValidatorsByDateRangeRequest$outboundSchema.parse(value),
     "Input validation failed",
@@ -223,7 +221,6 @@ export async function metricsLookingGlassGetValidatorsByDateRange(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -232,7 +229,7 @@ export async function metricsLookingGlassGetValidatorsByDateRange(
       metricsLookingGlassGetValidatorsByDateRange(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

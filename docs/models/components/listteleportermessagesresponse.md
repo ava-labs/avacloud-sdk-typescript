@@ -8,12 +8,12 @@ import { ListTeleporterMessagesResponse } from "@avalabs/avacloud-sdk/models/com
 let value: ListTeleporterMessagesResponse = {
   messages: [
     {
-      messageId: "<value>",
+      messageId: "<id>",
       teleporterContractAddress: "<value>",
-      sourceBlockchainId: "<value>",
-      destinationBlockchainId: "<value>",
-      sourceEvmChainId: "<value>",
-      destinationEvmChainId: "<value>",
+      sourceBlockchainId: "<id>",
+      destinationBlockchainId: "<id>",
+      sourceEvmChainId: "<id>",
+      destinationEvmChainId: "<id>",
       messageNonce: "<value>",
       from: "<value>",
       to: "<value>",
@@ -41,12 +41,12 @@ let value: ListTeleporterMessagesResponse = {
       },
       sourceTransaction: {
         txHash: "<value>",
-        timestamp: 2334.20,
+        timestamp: 8620.63,
         gasSpent: "<value>",
       },
       destinationTransaction: {
         txHash: "<value>",
-        timestamp: 6897.68,
+        timestamp: 972.58,
         gasSpent: "<value>",
         rewardRedeemer: "<value>",
         delivererAddress: "<value>",

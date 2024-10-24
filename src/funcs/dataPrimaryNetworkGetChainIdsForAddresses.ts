@@ -54,10 +54,8 @@ export async function dataPrimaryNetworkGetChainIdsForAddresses(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetChainIdsForAddressesRequest$outboundSchema.parse(value),
     "Input validation failed",

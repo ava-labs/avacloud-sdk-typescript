@@ -62,10 +62,8 @@ export async function dataUsageMetricsGetApiLogs(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetApiLogsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
@@ -214,7 +212,6 @@ export async function dataUsageMetricsGetApiLogs(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -223,7 +220,7 @@ export async function dataUsageMetricsGetApiLogs(
       dataUsageMetricsGetApiLogs(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

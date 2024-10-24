@@ -10,7 +10,7 @@ export type MetricsValue = {
    */
   value: number;
   /**
-   * Timestamp at which metrics are aggregated.
+   * Unix Epoch timestamp for which metrics are aggregated. Depending on the interval of the metric this can be at the start of the relevant hour, day, month, year, etc.
    */
   timestamp: number;
 };

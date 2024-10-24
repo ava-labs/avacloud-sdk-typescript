@@ -6,12 +6,12 @@
 import { PendingTeleporterMessage } from "@avalabs/avacloud-sdk/models/components";
 
 let value: PendingTeleporterMessage = {
-  messageId: "<value>",
+  messageId: "<id>",
   teleporterContractAddress: "<value>",
-  sourceBlockchainId: "<value>",
-  destinationBlockchainId: "<value>",
-  sourceEvmChainId: "<value>",
-  destinationEvmChainId: "<value>",
+  sourceBlockchainId: "<id>",
+  destinationBlockchainId: "<id>",
+  sourceEvmChainId: "<id>",
+  destinationEvmChainId: "<id>",
   messageNonce: "<value>",
   from: "<value>",
   to: "<value>",
@@ -39,7 +39,7 @@ let value: PendingTeleporterMessage = {
   },
   sourceTransaction: {
     txHash: "<value>",
-    timestamp: 8149.66,
+    timestamp: 5896.95,
     gasSpent: "<value>",
   },
   status: "pending",

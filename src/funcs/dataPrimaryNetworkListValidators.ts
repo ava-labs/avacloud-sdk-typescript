@@ -62,10 +62,8 @@ export async function dataPrimaryNetworkListValidators(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.ListValidatorsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
@@ -229,7 +227,6 @@ export async function dataPrimaryNetworkListValidators(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -238,7 +235,7 @@ export async function dataPrimaryNetworkListValidators(
       dataPrimaryNetworkListValidators(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

@@ -10,7 +10,7 @@ let value: GetEvmBlockResponse = {
   blockTimestamp: 1648672486,
   blockHash:
     "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
-  txCount: 3044.68,
+  txCount: 9591.42,
   baseFee: "<value>",
   gasUsed: "<value>",
   gasLimit: "<value>",

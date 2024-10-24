@@ -6,20 +6,20 @@
 import { LogsFormat } from "@avalabs/avacloud-sdk/models/components";
 
 let value: LogsFormat = {
-  orgId: "<value>",
-  logId: "<value>",
-  eventTimestamp: 4012.60,
-  apiKeyId: "<value>",
+  orgId: "<id>",
+  logId: "<id>",
+  eventTimestamp: 6625.05,
+  apiKeyId: "<id>",
   apiKeyAlias: "<value>",
   hostRegion: "<value>",
-  requestType: "rpc",
+  requestType: "data",
   requestPath: "<value>",
-  apiCreditsConsumed: 996.15,
-  requestDurationMsecs: 9453.02,
-  responseCode: 8694.89,
+  apiCreditsConsumed: 6658.59,
+  requestDurationMsecs: 5173.09,
+  responseCode: 4240.89,
   metadata: {
-    ipAddress: "83.59.157.8",
-    host: "aggravating-horde.com",
+    ipAddress: "6f97:ce15:7bff:d6f5:2e5f:1ad5:88a5:396c",
+    host: "everlasting-knitting.org",
     userAgent: "<value>",
   },
 };

@@ -9,12 +9,6 @@ import * as z from "zod";
  */
 export type TooManyRequestsMessage = string | Array<string>;
 
-/**
- * This error is returned when the client has sent too many,
- *
- * @remarks
- *     and has hit the rate limit.
- */
 export type TooManyRequestsData = {
   /**
    * The error message describing the reason for the exception
@@ -30,12 +24,6 @@ export type TooManyRequestsData = {
   error: string;
 };
 
-/**
- * This error is returned when the client has sent too many,
- *
- * @remarks
- *     and has hit the rate limit.
- */
 export class TooManyRequests extends Error {
   /**
    * The HTTP status code of the response

@@ -62,10 +62,8 @@ export async function dataPrimaryNetworkTransactionsListActivePrimaryNetworkStak
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations
         .ListActivePrimaryNetworkStakingTransactionsRequest$outboundSchema
@@ -235,7 +233,6 @@ export async function dataPrimaryNetworkTransactionsListActivePrimaryNetworkStak
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -244,7 +241,7 @@ export async function dataPrimaryNetworkTransactionsListActivePrimaryNetworkStak
       dataPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

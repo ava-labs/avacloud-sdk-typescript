@@ -6,8 +6,8 @@
 import { CreateWebhookRequest } from "@avalabs/avacloud-sdk/models/components";
 
 let value: CreateWebhookRequest = {
-  url: "https://vain-archaeology.biz",
-  chainId: "<value>",
+  url: "https://sore-velocity.com",
+  chainId: "<id>",
   eventType: "address_activity",
   metadata: {
     addresses: [

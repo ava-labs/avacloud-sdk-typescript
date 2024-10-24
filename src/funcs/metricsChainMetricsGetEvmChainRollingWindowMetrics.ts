@@ -54,10 +54,8 @@ export async function metricsChainMetricsGetEvmChainRollingWindowMetrics(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetEvmChainRollingWindowMetricsRequest$outboundSchema.parse(
         value,

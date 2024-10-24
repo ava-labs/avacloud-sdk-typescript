@@ -62,10 +62,8 @@ export async function dataEvmTransactionsListTransfers(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.ListTransfersRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
@@ -224,7 +222,6 @@ export async function dataEvmTransactionsListTransfers(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -233,7 +230,7 @@ export async function dataEvmTransactionsListTransfers(
       dataEvmTransactionsListTransfers(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

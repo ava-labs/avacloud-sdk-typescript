@@ -62,10 +62,8 @@ export async function dataPrimaryNetworkGetSingleValidatorDetails(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.GetSingleValidatorDetailsRequest$outboundSchema.parse(value),
     "Input validation failed",
@@ -227,7 +225,6 @@ export async function dataPrimaryNetworkGetSingleValidatorDetails(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -236,7 +233,7 @@ export async function dataPrimaryNetworkGetSingleValidatorDetails(
       dataPrimaryNetworkGetSingleValidatorDetails(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

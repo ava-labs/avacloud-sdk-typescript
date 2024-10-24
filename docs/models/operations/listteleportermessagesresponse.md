@@ -9,12 +9,12 @@ let value: ListTeleporterMessagesResponse = {
   result: {
     messages: [
       {
-        messageId: "<value>",
+        messageId: "<id>",
         teleporterContractAddress: "<value>",
-        sourceBlockchainId: "<value>",
-        destinationBlockchainId: "<value>",
-        sourceEvmChainId: "<value>",
-        destinationEvmChainId: "<value>",
+        sourceBlockchainId: "<id>",
+        destinationBlockchainId: "<id>",
+        sourceEvmChainId: "<id>",
+        destinationEvmChainId: "<id>",
         messageNonce: "<value>",
         from: "<value>",
         to: "<value>",
@@ -42,10 +42,17 @@ let value: ListTeleporterMessagesResponse = {
         },
         sourceTransaction: {
           txHash: "<value>",
-          timestamp: 1785.80,
+          timestamp: 1397.46,
           gasSpent: "<value>",
         },
-        status: "pending",
+        destinationTransaction: {
+          txHash: "<value>",
+          timestamp: 3305.96,
+          gasSpent: "<value>",
+          rewardRedeemer: "<value>",
+          delivererAddress: "<value>",
+        },
+        status: "delivered",
       },
     ],
   },

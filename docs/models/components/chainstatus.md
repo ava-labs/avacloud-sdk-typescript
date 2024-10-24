@@ -7,7 +7,7 @@ Status of chain nodes. Chain nodes can become temporarily `UNAVAILABLE` for seve
 ```typescript
 import { ChainStatus } from "@avalabs/avacloud-sdk/models/components";
 
-let value: ChainStatus = "UNAVAILABLE";
+let value: ChainStatus = "OK";
 ```
 
 ## Values

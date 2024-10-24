@@ -70,3 +70,43 @@ Based on:
 - [typescript v0.5.1] .
 ### Releases
 - [NPM v0.5.1] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.5.1 - .
+
+## 2024-09-30 00:22:45
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.404.5 (2.426.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.6.0] .
+### Releases
+- [NPM v0.6.0] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.6.0 - .
+
+## 2024-10-03 00:21:42
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.406.0 (2.429.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.6.1] .
+### Releases
+- [NPM v0.6.1] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.6.1 - .
+
+## 2024-10-09 00:21:47
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.413.0 (2.436.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.6.2] .
+### Releases
+- [NPM v0.6.2] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.6.2 - .
+
+## 2024-10-18 20:33:12
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.419.2 (2.438.15) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.6.3] .
+### Releases
+- [NPM v0.6.3] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.6.3 - .

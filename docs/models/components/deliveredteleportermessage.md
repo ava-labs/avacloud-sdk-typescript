@@ -6,12 +6,12 @@
 import { DeliveredTeleporterMessage } from "@avalabs/avacloud-sdk/models/components";
 
 let value: DeliveredTeleporterMessage = {
-  messageId: "<value>",
+  messageId: "<id>",
   teleporterContractAddress: "<value>",
-  sourceBlockchainId: "<value>",
-  destinationBlockchainId: "<value>",
-  sourceEvmChainId: "<value>",
-  destinationEvmChainId: "<value>",
+  sourceBlockchainId: "<id>",
+  destinationBlockchainId: "<id>",
+  sourceEvmChainId: "<id>",
+  destinationEvmChainId: "<id>",
   messageNonce: "<value>",
   from: "<value>",
   to: "<value>",
@@ -39,12 +39,12 @@ let value: DeliveredTeleporterMessage = {
   },
   sourceTransaction: {
     txHash: "<value>",
-    timestamp: 9689.72,
+    timestamp: 8481.50,
     gasSpent: "<value>",
   },
   destinationTransaction: {
     txHash: "<value>",
-    timestamp: 9049.48,
+    timestamp: 9358.32,
     gasSpent: "<value>",
     rewardRedeemer: "<value>",
     delivererAddress: "<value>",

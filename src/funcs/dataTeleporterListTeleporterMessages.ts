@@ -62,10 +62,8 @@ export async function dataTeleporterListTeleporterMessages(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.ListTeleporterMessagesRequest$outboundSchema.parse(value),
     "Input validation failed",
@@ -217,7 +215,6 @@ export async function dataTeleporterListTeleporterMessages(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -226,7 +223,7 @@ export async function dataTeleporterListTeleporterMessages(
       dataTeleporterListTeleporterMessages(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,

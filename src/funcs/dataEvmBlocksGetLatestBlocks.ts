@@ -62,10 +62,8 @@ export async function dataEvmBlocksGetLatestBlocks(
     >
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.GetLatestBlocksRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
@@ -216,7 +214,6 @@ export async function dataEvmBlocksGetLatestBlocks(
     >
   > => {
     const nextCursor = dlv(responseData, "nextPageToken");
-
     if (nextCursor == null) {
       return () => null;
     }
@@ -225,7 +222,7 @@ export async function dataEvmBlocksGetLatestBlocks(
       dataEvmBlocksGetLatestBlocks(
         client,
         {
-          ...input,
+          ...request,
           pageToken: nextCursor,
         },
         options,
