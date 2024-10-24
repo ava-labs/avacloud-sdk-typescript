@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: 9dcc1f3377a49f8d451590b88cd5386d
+  docChecksum: 0a0ba9e004f5841a57a26670eb5d36c8
   docVersion: Beta
-  speakeasyVersion: 1.419.2
+  speakeasyVersion: 1.421.1
   generationVersion: 2.438.15
-  releaseVersion: 0.6.3
-  configChecksum: 1c716bc9a0eefa5dd6fd700e89239817
+  releaseVersion: 0.6.4
+  configChecksum: 4876ff9ec64734edb320b2ebbd078bea
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -271,11 +271,6 @@ generatedFiles:
   - docs/models/components/rewardtype.md
   - docs/models/components/richaddress.md
   - docs/models/components/rollingwindowmetricsapiresponse.md
-  - docs/models/components/rpcmetrics.md
-  - docs/models/components/rpcusagemetricsresponsedto.md
-  - docs/models/components/rpcusagemetricsvalueaggregated.md
-  - docs/models/components/rpcusagemetricsvalueaggregatedgroupedby.md
-  - docs/models/components/rpcusagemetricsvalueaggregatedgroupvalue.md
   - docs/models/components/security.md
   - docs/models/components/sharedsecretsresponse.md
   - docs/models/components/sortbyoption.md
@@ -285,6 +280,7 @@ generatedFiles:
   - docs/models/components/status.md
   - docs/models/components/subnet.md
   - docs/models/components/subnetownershipinfo.md
+  - docs/models/components/subnetvalidatormanagerdetails.md
   - docs/models/components/teleporterchainmetricsapiresponse.md
   - docs/models/components/teleporterdestinationtransaction.md
   - docs/models/components/teleportermessageinfo.md
@@ -371,6 +367,7 @@ generatedFiles:
   - docs/models/operations/deactivatewebhookrequest.md
   - docs/models/operations/details.md
   - docs/models/operations/errort.md
+  - docs/models/operations/getaddresschainsrequest.md
   - docs/models/operations/getaddressesbybalanceovertimeglobals.md
   - docs/models/operations/getaddressesbybalanceovertimerequest.md
   - docs/models/operations/getaddressesbybalanceovertimeresponse.md
@@ -417,7 +414,6 @@ generatedFiles:
   - docs/models/operations/getnftholdersbycontractaddressrequest.md
   - docs/models/operations/getnftholdersbycontractaddressresponse.md
   - docs/models/operations/getoperationresultrequest.md
-  - docs/models/operations/getrpcusagemetricsrequest.md
   - docs/models/operations/getsinglevalidatordetailsglobals.md
   - docs/models/operations/getsinglevalidatordetailsrequest.md
   - docs/models/operations/getsinglevalidatordetailsresponse.md
@@ -585,6 +581,7 @@ generatedFiles:
   - src/funcs/dataEvmBalancesListErc721Balances.ts
   - src/funcs/dataEvmBlocksGetBlock.ts
   - src/funcs/dataEvmBlocksGetLatestBlocks.ts
+  - src/funcs/dataEvmChainsGetAddressChains.ts
   - src/funcs/dataEvmChainsGetChainInfo.ts
   - src/funcs/dataEvmChainsSupportedChains.ts
   - src/funcs/dataEvmContractsGetContractMetadata.ts
@@ -634,7 +631,6 @@ generatedFiles:
   - src/funcs/dataTeleporterListTeleporterMessagesByAddress.ts
   - src/funcs/dataUsageMetricsGetApiLogs.ts
   - src/funcs/dataUsageMetricsGetApiUsageMetrics.ts
-  - src/funcs/dataUsageMetricsGetRpcUsageMetrics.ts
   - src/funcs/dataWebhooksAddAddressesToWebhook.ts
   - src/funcs/dataWebhooksCreateWebhook.ts
   - src/funcs/dataWebhooksDeactivateWebhook.ts
@@ -856,9 +852,6 @@ generatedFiles:
   - src/models/components/rewardtype.ts
   - src/models/components/richaddress.ts
   - src/models/components/rollingwindowmetricsapiresponse.ts
-  - src/models/components/rpcmetrics.ts
-  - src/models/components/rpcusagemetricsresponsedto.ts
-  - src/models/components/rpcusagemetricsvalueaggregated.ts
   - src/models/components/security.ts
   - src/models/components/sharedsecretsresponse.ts
   - src/models/components/sortbyoption.ts
@@ -866,6 +859,7 @@ generatedFiles:
   - src/models/components/stakingdistribution.ts
   - src/models/components/subnet.ts
   - src/models/components/subnetownershipinfo.ts
+  - src/models/components/subnetvalidatormanagerdetails.ts
   - src/models/components/teleporterchainmetricsapiresponse.ts
   - src/models/components/teleporterdestinationtransaction.ts
   - src/models/components/teleportermessageinfo.ts
@@ -928,6 +922,7 @@ generatedFiles:
   - src/models/operations/datahealthcheck.ts
   - src/models/operations/deactivatewebhook.ts
   - src/models/operations/generatesharedsecret.ts
+  - src/models/operations/getaddresschains.ts
   - src/models/operations/getaddressesbybalanceovertime.ts
   - src/models/operations/getaddressesbybtcbbridged.ts
   - src/models/operations/getaddressesfromwebhook.ts
@@ -949,7 +944,6 @@ generatedFiles:
   - src/models/operations/getnetworkdetails.ts
   - src/models/operations/getnftholdersbycontractaddress.ts
   - src/models/operations/getoperationresult.ts
-  - src/models/operations/getrpcusagemetrics.ts
   - src/models/operations/getsharedsecret.ts
   - src/models/operations/getsinglevalidatordetails.ts
   - src/models/operations/getstakingmetrics.ts
@@ -3129,3 +3123,27 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+  getAddressChains:
+    "":
+      parameters:
+        path:
+          address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
+      responses:
+        "200":
+          application/json: {"chains": [{"chainId": "<id>", "status": "OK", "chainName": "<value>", "description": "fashion anti gracious although gadzooks huzzah settler uselessly reflate", "vmName": "ETHEREUM", "rpcUrl": "https://equatorial-sandbar.com", "isTestnet": false, "networkToken": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg"}}, {"chainId": "<id>", "status": "UNAVAILABLE", "chainName": "<value>", "description": "outside airline consequently lady mostly gosh duh excluding", "vmName": "ETHEREUM", "rpcUrl": "https://whirlwind-co-producer.name", "isTestnet": false, "networkToken": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg"}}, {"chainId": "<id>", "status": "OK", "chainName": "<value>", "description": "yuck quicker excluding", "vmName": "EVM", "rpcUrl": "https://smart-foodstuffs.net/", "isTestnet": false, "networkToken": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg"}}]}
+        "400":
+          application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": "<value>", "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": "<value>", "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": "<value>", "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": "<value>", "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": "<value>", "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}

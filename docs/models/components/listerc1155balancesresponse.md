@@ -11,9 +11,9 @@ let value: ListErc1155BalancesResponse = {
       address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
       ercType: "ERC-1155",
       tokenId: "<id>",
-      tokenUri: "https://tinted-carboxyl.biz/",
+      tokenUri: "https://svelte-video.org",
       metadata: {
-        indexStatus: "UNREACHABLE_TOKEN_URI",
+        indexStatus: "UNKNOWN",
       },
       chainId: "43114",
       balance: "2000000000000000000",

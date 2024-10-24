@@ -32,6 +32,12 @@ import {
   SubnetOwnershipInfo$Outbound,
   SubnetOwnershipInfo$outboundSchema,
 } from "./subnetownershipinfo.js";
+import {
+  SubnetValidatorManagerDetails,
+  SubnetValidatorManagerDetails$inboundSchema,
+  SubnetValidatorManagerDetails$Outbound,
+  SubnetValidatorManagerDetails$outboundSchema,
+} from "./subnetvalidatormanagerdetails.js";
 
 export type PChainTransaction = {
   /**
@@ -68,6 +74,10 @@ export type PChainTransaction = {
    */
   amountStaked: Array<AssetAmount>;
   /**
+   * A list of objects containing P-chain Asset basic info and the amount of that Asset ID.
+   */
+  amountSovBalanceBurned: Array<AssetAmount>;
+  /**
    * Present for AddValidatorTx, AddSubnetValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx
    */
   startTimestamp?: number | undefined;
@@ -87,6 +97,14 @@ export type PChainTransaction = {
    * Present for AddValidatorTx, AddSubnetValidatorTx, RemoveSubnetValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx, CreateChainTx, CreateSubnetTx
    */
   subnetId?: string | undefined;
+  /**
+   * Present for ConvertSubnetTx
+   */
+  subnetValidatorManagerDetails?: SubnetValidatorManagerDetails | undefined;
+  /**
+   * Present for ConvertSubnetTx, RegisterSubnetValidatorTx
+   */
+  subnetOnlyValidatorDetails?: Array<string> | undefined;
   /**
    * Present for AddValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx
    */
@@ -126,11 +144,15 @@ export const PChainTransaction$inboundSchema: z.ZodType<
   value: z.array(AssetAmount$inboundSchema),
   amountBurned: z.array(AssetAmount$inboundSchema),
   amountStaked: z.array(AssetAmount$inboundSchema),
+  amountSovBalanceBurned: z.array(AssetAmount$inboundSchema),
   startTimestamp: z.number().optional(),
   endTimestamp: z.number().optional(),
   delegationFeePercent: z.string().optional(),
   nodeId: z.string().optional(),
   subnetId: z.string().optional(),
+  subnetValidatorManagerDetails: SubnetValidatorManagerDetails$inboundSchema
+    .optional(),
+  subnetOnlyValidatorDetails: z.array(z.string()).optional(),
   estimatedReward: z.string().optional(),
   rewardTxHash: z.string().optional(),
   rewardAddresses: z.array(z.string()).optional(),
@@ -154,11 +176,16 @@ export type PChainTransaction$Outbound = {
   value: Array<AssetAmount$Outbound>;
   amountBurned: Array<AssetAmount$Outbound>;
   amountStaked: Array<AssetAmount$Outbound>;
+  amountSovBalanceBurned: Array<AssetAmount$Outbound>;
   startTimestamp?: number | undefined;
   endTimestamp?: number | undefined;
   delegationFeePercent?: string | undefined;
   nodeId?: string | undefined;
   subnetId?: string | undefined;
+  subnetValidatorManagerDetails?:
+    | SubnetValidatorManagerDetails$Outbound
+    | undefined;
+  subnetOnlyValidatorDetails?: Array<string> | undefined;
   estimatedReward?: string | undefined;
   rewardTxHash?: string | undefined;
   rewardAddresses?: Array<string> | undefined;
@@ -186,11 +213,15 @@ export const PChainTransaction$outboundSchema: z.ZodType<
   value: z.array(AssetAmount$outboundSchema),
   amountBurned: z.array(AssetAmount$outboundSchema),
   amountStaked: z.array(AssetAmount$outboundSchema),
+  amountSovBalanceBurned: z.array(AssetAmount$outboundSchema),
   startTimestamp: z.number().optional(),
   endTimestamp: z.number().optional(),
   delegationFeePercent: z.string().optional(),
   nodeId: z.string().optional(),
   subnetId: z.string().optional(),
+  subnetValidatorManagerDetails: SubnetValidatorManagerDetails$outboundSchema
+    .optional(),
+  subnetOnlyValidatorDetails: z.array(z.string()).optional(),
   estimatedReward: z.string().optional(),
   rewardTxHash: z.string().optional(),
   rewardAddresses: z.array(z.string()).optional(),

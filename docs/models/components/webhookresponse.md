@@ -16,12 +16,12 @@ let value: WebhookResponse = {
       "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64",
     ],
   },
-  url: "https://trusting-knitting.org",
+  url: "https://pale-technician.info/",
   chainId: "<id>",
   status: "inactive",
-  createdAt: 9233.06,
+  createdAt: 2716.53,
   name: "<value>",
-  description: "ah hunt until freckle across following gadzooks wobbly athwart",
+  description: "sizzling cheerfully hungrily accessorise fly gadzooks",
 };
 ```
 

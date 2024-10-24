@@ -10,7 +10,7 @@ const value: components.XChainNonLinearTransaction = {
   txHash: "3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c",
   chainFormat: "non-linear",
   timestamp: 1600762738,
-  txType: "ImportTx",
+  txType: "BaseTx",
   memo: "0x546865204176616c616e6368652050726f6a656374",
   consumedUtxos: [
     {
@@ -126,7 +126,7 @@ const value: components.XChainLinearTransaction = {
   txHash: "3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c",
   chainFormat: "non-linear",
   timestamp: 1600762738,
-  txType: "ImportTx",
+  txType: "BaseTx",
   memo: "0x546865204176616c616e6368652050726f6a656374",
   consumedUtxos: [
     {
@@ -200,7 +200,7 @@ const value: components.XChainLinearTransaction = {
       name: "Avalanche",
       symbol: "AVAX",
       denomination: 9,
-      type: "secp256k1",
+      type: "nft",
       amount: "5001000",
     },
   ],
@@ -210,7 +210,7 @@ const value: components.XChainLinearTransaction = {
       name: "Avalanche",
       symbol: "AVAX",
       denomination: 9,
-      type: "secp256k1",
+      type: "nft",
       amount: "5001000",
     },
   ],

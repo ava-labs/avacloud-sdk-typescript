@@ -21,6 +21,11 @@ export const PChainTransactionType = {
   AddPermissionlessDelegatorTx: "AddPermissionlessDelegatorTx",
   BaseTx: "BaseTx",
   TransferSubnetOwnershipTx: "TransferSubnetOwnershipTx",
+  ConvertSubnetTx: "ConvertSubnetTx",
+  RegisterSubnetValidatorTx: "RegisterSubnetValidatorTx",
+  SetSubnetValidatorWeightTx: "SetSubnetValidatorWeightTx",
+  DisableSubnetValidatorTx: "DisableSubnetValidatorTx",
+  IncreaseBalanceTx: "IncreaseBalanceTx",
   Unknown: "UNKNOWN",
 } as const;
 export type PChainTransactionType = ClosedEnum<typeof PChainTransactionType>;

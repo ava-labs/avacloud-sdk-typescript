@@ -5,11 +5,11 @@
 ```typescript
 import { PrimaryNetworkTxType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: PrimaryNetworkTxType = "CreateAssetTx";
+let value: PrimaryNetworkTxType = "TransferSubnetOwnershipTx";
 ```
 
 ## Values
 
 ```typescript
-"AddValidatorTx" | "AddSubnetValidatorTx" | "AddDelegatorTx" | "CreateChainTx" | "CreateSubnetTx" | "ImportTx" | "ExportTx" | "AdvanceTimeTx" | "RewardValidatorTx" | "RemoveSubnetValidatorTx" | "TransformSubnetTx" | "AddPermissionlessValidatorTx" | "AddPermissionlessDelegatorTx" | "BaseTx" | "TransferSubnetOwnershipTx" | "UNKNOWN" | "CreateAssetTx" | "OperationTx"
+"AddValidatorTx" | "AddSubnetValidatorTx" | "AddDelegatorTx" | "CreateChainTx" | "CreateSubnetTx" | "ImportTx" | "ExportTx" | "AdvanceTimeTx" | "RewardValidatorTx" | "RemoveSubnetValidatorTx" | "TransformSubnetTx" | "AddPermissionlessValidatorTx" | "AddPermissionlessDelegatorTx" | "BaseTx" | "TransferSubnetOwnershipTx" | "ConvertSubnetTx" | "RegisterSubnetValidatorTx" | "SetSubnetValidatorWeightTx" | "DisableSubnetValidatorTx" | "IncreaseBalanceTx" | "UNKNOWN" | "CreateAssetTx" | "OperationTx"
 ```

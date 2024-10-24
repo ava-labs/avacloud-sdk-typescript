@@ -42,7 +42,7 @@ const value: components.PendingTeleporterMessage = {
   },
   sourceTransaction: {
     txHash: "<value>",
-    timestamp: 6751.26,
+    timestamp: 1081.66,
     gasSpent: "<value>",
   },
   status: "pending",
@@ -86,12 +86,12 @@ const value: components.DeliveredTeleporterMessage = {
   },
   sourceTransaction: {
     txHash: "<value>",
-    timestamp: 213.59,
+    timestamp: 3923.19,
     gasSpent: "<value>",
   },
   destinationTransaction: {
     txHash: "<value>",
-    timestamp: 1023.17,
+    timestamp: 2212.18,
     gasSpent: "<value>",
     rewardRedeemer: "<value>",
     delivererAddress: "<value>",
@@ -137,7 +137,7 @@ const value: components.DeliveredSourceNotIndexedTeleporterMessage = {
   },
   destinationTransaction: {
     txHash: "<value>",
-    timestamp: 2921.77,
+    timestamp: 6837.26,
     gasSpent: "<value>",
     rewardRedeemer: "<value>",
     delivererAddress: "<value>",
