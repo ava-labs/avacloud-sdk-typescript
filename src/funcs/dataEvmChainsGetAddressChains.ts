@@ -36,7 +36,7 @@ export async function dataEvmChainsGetAddressChains(
   options?: RequestOptions & { serverURL?: string },
 ): Promise<
   Result<
-    components.DataListChainsResponse,
+    components.ListAddressChainsResponse,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -142,7 +142,7 @@ export async function dataEvmChainsGetAddressChains(
   };
 
   const [result] = await M.match<
-    components.DataListChainsResponse,
+    components.ListAddressChainsResponse,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -159,7 +159,7 @@ export async function dataEvmChainsGetAddressChains(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.DataListChainsResponse$inboundSchema),
+    M.json(200, components.ListAddressChainsResponse$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

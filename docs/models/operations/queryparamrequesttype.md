@@ -7,7 +7,7 @@ Filter data by request type.
 ```typescript
 import { QueryParamRequestType } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: QueryParamRequestType = "data";
+let value: QueryParamRequestType = "rpc";
 ```
 
 ## Values

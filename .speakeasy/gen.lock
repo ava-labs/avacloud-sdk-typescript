@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: 0a0ba9e004f5841a57a26670eb5d36c8
+  docChecksum: c4a679b7515c124138ba68577df2a46c
   docVersion: Beta
-  speakeasyVersion: 1.421.1
+  speakeasyVersion: 1.421.2
   generationVersion: 2.438.15
-  releaseVersion: 0.6.4
-  configChecksum: 4876ff9ec64734edb320b2ebbd078bea
+  releaseVersion: 0.6.5
+  configChecksum: e2d6847e2e3c1a1764b233c74245461c
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -176,6 +176,7 @@ generatedFiles:
   - docs/models/components/lateststarsarenabalanceparams.md
   - docs/models/components/lateststarsarenabalancequerydto.md
   - docs/models/components/lateststarsarenabalancequerydtotype.md
+  - docs/models/components/listaddresschainsresponse.md
   - docs/models/components/listblockchainsresponse.md
   - docs/models/components/listcchainatomicbalancesresponse.md
   - docs/models/components/listcchainatomictransactionsresponse.md
@@ -765,6 +766,7 @@ generatedFiles:
   - src/models/components/latestbalancequerydto.ts
   - src/models/components/lateststarsarenabalanceparams.ts
   - src/models/components/lateststarsarenabalancequerydto.ts
+  - src/models/components/listaddresschainsresponse.ts
   - src/models/components/listblockchainsresponse.ts
   - src/models/components/listcchainatomicbalancesresponse.ts
   - src/models/components/listcchainatomictransactionsresponse.ts
@@ -3130,7 +3132,7 @@ examples:
           address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
       responses:
         "200":
-          application/json: {"chains": [{"chainId": "<id>", "status": "OK", "chainName": "<value>", "description": "fashion anti gracious although gadzooks huzzah settler uselessly reflate", "vmName": "ETHEREUM", "rpcUrl": "https://equatorial-sandbar.com", "isTestnet": false, "networkToken": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg"}}, {"chainId": "<id>", "status": "UNAVAILABLE", "chainName": "<value>", "description": "outside airline consequently lady mostly gosh duh excluding", "vmName": "ETHEREUM", "rpcUrl": "https://whirlwind-co-producer.name", "isTestnet": false, "networkToken": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg"}}, {"chainId": "<id>", "status": "OK", "chainName": "<value>", "description": "yuck quicker excluding", "vmName": "EVM", "rpcUrl": "https://smart-foodstuffs.net/", "isTestnet": false, "networkToken": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg"}}]}
+          application/json: {"indexedChains": [{"chainId": "<id>", "status": "OK", "chainName": "<value>", "description": "fashion anti gracious although gadzooks huzzah settler uselessly reflate", "vmName": "ETHEREUM", "rpcUrl": "https://equatorial-sandbar.com", "isTestnet": false, "networkToken": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg"}}, {"chainId": "<id>", "status": "UNAVAILABLE", "chainName": "<value>", "description": "outside airline consequently lady mostly gosh duh excluding", "vmName": "ETHEREUM", "rpcUrl": "https://whirlwind-co-producer.name", "isTestnet": false, "networkToken": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg"}}, {"chainId": "<id>", "status": "OK", "chainName": "<value>", "description": "yuck quicker excluding", "vmName": "EVM", "rpcUrl": "https://smart-foodstuffs.net/", "isTestnet": false, "networkToken": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg"}}]}
         "400":
           application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
         "401":
