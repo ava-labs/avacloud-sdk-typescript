@@ -94,6 +94,7 @@ export * from "./latestbalanceparams.js";
 export * from "./latestbalancequerydto.js";
 export * from "./lateststarsarenabalanceparams.js";
 export * from "./lateststarsarenabalancequerydto.js";
+export * from "./listaddresschainsresponse.js";
 export * from "./listblockchainsresponse.js";
 export * from "./listcchainatomicbalancesresponse.js";
 export * from "./listcchainatomictransactionsresponse.js";

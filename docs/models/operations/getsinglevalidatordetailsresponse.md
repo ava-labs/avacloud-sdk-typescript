@@ -13,9 +13,9 @@ let value: GetSingleValidatorDetailsResponse = {
         nodeId: "<id>",
         subnetId: "<id>",
         amountStaked: "<value>",
-        startTimestamp: 6211.69,
-        endTimestamp: 4981.80,
-        delegatorCount: 8667.89,
+        startTimestamp: 8151.99,
+        endTimestamp: 2176.63,
+        delegatorCount: 9738.19,
         rewards: {
           validationRewardAmount: "<value>",
           delegationRewardAmount: "<value>",

@@ -9,7 +9,7 @@ let value: ListBlockchainsResponse = {
   result: {
     blockchains: [
       {
-        createBlockTimestamp: 3445.30,
+        createBlockTimestamp: 2273.62,
         createBlockNumber: "<value>",
         blockchainId: "<id>",
         vmId: "<id>",

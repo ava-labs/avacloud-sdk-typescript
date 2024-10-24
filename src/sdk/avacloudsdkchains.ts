@@ -54,7 +54,7 @@ export class AvaCloudSDKChains extends ClientSDK {
   async getAddressChains(
     request: operations.GetAddressChainsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<components.DataListChainsResponse> {
+  ): Promise<components.ListAddressChainsResponse> {
     return unwrapAsync(dataEvmChainsGetAddressChains(
       this,
       request,

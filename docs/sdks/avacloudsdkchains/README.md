@@ -258,7 +258,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DataListChainsResponse](../../models/components/datalistchainsresponse.md)\>**
+**Promise\<[components.ListAddressChainsResponse](../../models/components/listaddresschainsresponse.md)\>**
 
 ### Errors
 

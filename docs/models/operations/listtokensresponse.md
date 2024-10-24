@@ -12,9 +12,9 @@ let value: ListTokensResponse = {
         address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
         ercType: "ERC-1155",
         tokenId: "<id>",
-        tokenUri: "https://unrealistic-convection.name/",
+        tokenUri: "https://serpentine-annual.net",
         metadata: {
-          indexStatus: "INVALID_TOKEN_URI_SCHEME",
+          indexStatus: "INVALID_TOKEN_URI",
         },
       },
     ],

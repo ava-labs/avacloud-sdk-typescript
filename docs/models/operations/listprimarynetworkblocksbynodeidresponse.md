@@ -12,13 +12,13 @@ let value: ListPrimaryNetworkBlocksByNodeIdResponse = {
         blockNumber: "<value>",
         blockHash: "<value>",
         parentHash: "<value>",
-        blockTimestamp: 4753.25,
+        blockTimestamp: 9670.55,
         blockType: "<value>",
-        txCount: 9692.06,
+        txCount: 6150.58,
         transactions: [
           "<value>",
         ],
-        blockSizeBytes: 2656.33,
+        blockSizeBytes: 5524.39,
       },
     ],
     chainInfo: {
