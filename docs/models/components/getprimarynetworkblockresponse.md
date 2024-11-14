@@ -9,13 +9,13 @@ let value: GetPrimaryNetworkBlockResponse = {
   blockNumber: "<value>",
   blockHash: "<value>",
   parentHash: "<value>",
-  blockTimestamp: 446.12,
+  blockTimestamp: 2775.96,
   blockType: "<value>",
-  txCount: 7997.96,
+  txCount: 1288.61,
   transactions: [
     "<value>",
   ],
-  blockSizeBytes: 769.56,
+  blockSizeBytes: 3926.76,
 };
 ```
 
@@ -31,5 +31,7 @@ let value: GetPrimaryNetworkBlockResponse = {
 | `txCount`                                                                | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
 | `transactions`                                                           | *string*[]                                                               | :heavy_check_mark:                                                       | N/A                                                                      |
 | `blockSizeBytes`                                                         | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `subnetOnlyValidatorsAccruedFees`                                        | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `activeSubnetOnlyValidators`                                             | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `currentSupply`                                                          | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `proposerDetails`                                                        | [components.ProposerDetails](../../models/components/proposerdetails.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

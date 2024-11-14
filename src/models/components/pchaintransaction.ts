@@ -16,6 +16,12 @@ import {
   BlsCredentials$outboundSchema,
 } from "./blscredentials.js";
 import {
+  L1ValidatorManagerDetails,
+  L1ValidatorManagerDetails$inboundSchema,
+  L1ValidatorManagerDetails$Outbound,
+  L1ValidatorManagerDetails$outboundSchema,
+} from "./l1validatormanagerdetails.js";
+import {
   PChainTransactionType,
   PChainTransactionType$inboundSchema,
   PChainTransactionType$outboundSchema,
@@ -27,17 +33,17 @@ import {
   PChainUtxo$outboundSchema,
 } from "./pchainutxo.js";
 import {
+  SoVDetailsTransaction,
+  SoVDetailsTransaction$inboundSchema,
+  SoVDetailsTransaction$Outbound,
+  SoVDetailsTransaction$outboundSchema,
+} from "./sovdetailstransaction.js";
+import {
   SubnetOwnershipInfo,
   SubnetOwnershipInfo$inboundSchema,
   SubnetOwnershipInfo$Outbound,
   SubnetOwnershipInfo$outboundSchema,
 } from "./subnetownershipinfo.js";
-import {
-  SubnetValidatorManagerDetails,
-  SubnetValidatorManagerDetails$inboundSchema,
-  SubnetValidatorManagerDetails$Outbound,
-  SubnetValidatorManagerDetails$outboundSchema,
-} from "./subnetvalidatormanagerdetails.js";
 
 export type PChainTransaction = {
   /**
@@ -98,13 +104,13 @@ export type PChainTransaction = {
    */
   subnetId?: string | undefined;
   /**
-   * Present for ConvertSubnetTx
+   * Details of the L1's validator manager contract and blockchain. Present for the ConvertSubnetTx which transforms a subnet into L1
    */
-  subnetValidatorManagerDetails?: SubnetValidatorManagerDetails | undefined;
+  l1ValidatorManagerDetails?: L1ValidatorManagerDetails | undefined;
   /**
-   * Present for ConvertSubnetTx, RegisterSubnetValidatorTx
+   * Details of Subnet-only-Validators registered or changed in the current transaction. The details reflect the state at the time of the transaction, not in real-time
    */
-  subnetOnlyValidatorDetails?: Array<string> | undefined;
+  l1ValidatorDetails?: Array<SoVDetailsTransaction> | undefined;
   /**
    * Present for AddValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx
    */
@@ -150,9 +156,8 @@ export const PChainTransaction$inboundSchema: z.ZodType<
   delegationFeePercent: z.string().optional(),
   nodeId: z.string().optional(),
   subnetId: z.string().optional(),
-  subnetValidatorManagerDetails: SubnetValidatorManagerDetails$inboundSchema
-    .optional(),
-  subnetOnlyValidatorDetails: z.array(z.string()).optional(),
+  l1ValidatorManagerDetails: L1ValidatorManagerDetails$inboundSchema.optional(),
+  l1ValidatorDetails: z.array(SoVDetailsTransaction$inboundSchema).optional(),
   estimatedReward: z.string().optional(),
   rewardTxHash: z.string().optional(),
   rewardAddresses: z.array(z.string()).optional(),
@@ -182,10 +187,8 @@ export type PChainTransaction$Outbound = {
   delegationFeePercent?: string | undefined;
   nodeId?: string | undefined;
   subnetId?: string | undefined;
-  subnetValidatorManagerDetails?:
-    | SubnetValidatorManagerDetails$Outbound
-    | undefined;
-  subnetOnlyValidatorDetails?: Array<string> | undefined;
+  l1ValidatorManagerDetails?: L1ValidatorManagerDetails$Outbound | undefined;
+  l1ValidatorDetails?: Array<SoVDetailsTransaction$Outbound> | undefined;
   estimatedReward?: string | undefined;
   rewardTxHash?: string | undefined;
   rewardAddresses?: Array<string> | undefined;
@@ -219,9 +222,9 @@ export const PChainTransaction$outboundSchema: z.ZodType<
   delegationFeePercent: z.string().optional(),
   nodeId: z.string().optional(),
   subnetId: z.string().optional(),
-  subnetValidatorManagerDetails: SubnetValidatorManagerDetails$outboundSchema
+  l1ValidatorManagerDetails: L1ValidatorManagerDetails$outboundSchema
     .optional(),
-  subnetOnlyValidatorDetails: z.array(z.string()).optional(),
+  l1ValidatorDetails: z.array(SoVDetailsTransaction$outboundSchema).optional(),
   estimatedReward: z.string().optional(),
   rewardTxHash: z.string().optional(),
   rewardAddresses: z.array(z.string()).optional(),

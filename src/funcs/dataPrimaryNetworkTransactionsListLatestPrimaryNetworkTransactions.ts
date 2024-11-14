@@ -38,6 +38,8 @@ import {
  *
  * Transactions are filterable by addresses, txTypes, and timestamps. When querying for latest transactions without an address parameter, filtering by txTypes and timestamps is not supported. An address filter must be provided to utilize txTypes and timestamp filters.
  *
+ * For P-Chain, you can fetch all the Subnet-only-Validator (SoV) related transactions like ConvertSubnetTx, IncreaseBalanceTx etc. using the unique SoV validation ID. These transactions are further filterable by txTypes and timestamps as well.
+ *
  * Given that each transaction may return a large number of UTXO objects, bounded only by the maximum transaction size, the query may return less transactions than the provided page size. The result will contain less results than the page size if the number of utxos contained in the resulting transactions reach a performance threshold.
  */
 export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions(
@@ -106,6 +108,7 @@ export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTran
     "pageSize": payload.pageSize,
     "pageToken": payload.pageToken,
     "sortOrder": payload.sortOrder,
+    "sovValidationId": payload.sovValidationId,
     "startTimestamp": payload.startTimestamp,
     "txTypes": payload.txTypes,
   });
@@ -116,12 +119,30 @@ export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTran
 
   const secConfig = await extractSecurity(client._options.apiKey);
   const securityInput = secConfig == null ? {} : { apiKey: secConfig };
+  const requestSecurity = resolveGlobalSecurity(securityInput);
+
   const context = {
     operationID: "listLatestPrimaryNetworkTransactions",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
+    retryConfig: options?.retries
+      || client._options.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 60000,
+          exponent: 1.5,
+          maxElapsedTime: 120000,
+        },
+        retryConnectionErrors: true,
+      }
+      || { strategy: "none" },
+    retryCodes: options?.retryCodes || ["5XX"],
   };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
@@ -152,19 +173,8 @@ export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTran
       "503",
       "5XX",
     ],
-    retryConfig: options?.retries
-      || client._options.retryConfig
-      || {
-        strategy: "backoff",
-        backoff: {
-          initialInterval: 500,
-          maxInterval: 60000,
-          exponent: 1.5,
-          maxElapsedTime: 120000,
-        },
-        retryConnectionErrors: true,
-      },
-    retryCodes: options?.retryCodes || ["5XX"],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
     return haltIterator(doResult);

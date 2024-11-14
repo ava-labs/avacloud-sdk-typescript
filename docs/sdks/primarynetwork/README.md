@@ -14,6 +14,7 @@
 * [listValidators](#listvalidators) - List validators
 * [getSingleValidatorDetails](#getsinglevalidatordetails) - Get single validator details
 * [listDelegators](#listdelegators) - List delegators
+* [listSubnetOnlyValidators](#listsubnetonlyvalidators) - List subnet-only validators
 
 ## getAssetDetails
 
@@ -861,6 +862,105 @@ run();
 ### Response
 
 **Promise\<[operations.ListDelegatorsResponse](../../models/operations/listdelegatorsresponse.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.TooManyRequests     | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.BadGateway          | 502                        | application/json           |
+| errors.ServiceUnavailable  | 503                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## listSubnetOnlyValidators
+
+Lists details for subnet only validators. By default, returns details for all active subnet only validators. Filterable by validator node ids, subnet id, and validation id.
+
+### Example Usage
+
+```typescript
+import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
+
+const avaCloudSDK = new AvaCloudSDK({
+  apiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
+});
+
+async function run() {
+  const result = await avaCloudSDK.data.primaryNetwork.listSubnetOnlyValidators({
+    pageSize: 10,
+    sovValidationId: "BsSpTd1SDvdhaoYAuKJvRj1WnoRyu8mAuMZeuz9g7brGj6KhX",
+    nodeId: "NodeID-111111111111111111116DBWJs",
+    subnetId: "11111111111111111111111111111111LpoYY",
+  });
+
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
+import { dataPrimaryNetworkListSubnetOnlyValidators } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkListSubnetOnlyValidators.js";
+
+// Use `AvaCloudSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const avaCloudSDK = new AvaCloudSDKCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+  chainId: "43114",
+  network: "mainnet",
+});
+
+async function run() {
+  const res = await dataPrimaryNetworkListSubnetOnlyValidators(avaCloudSDK, {
+    pageSize: 10,
+    sovValidationId: "BsSpTd1SDvdhaoYAuKJvRj1WnoRyu8mAuMZeuz9g7brGj6KhX",
+    nodeId: "NodeID-111111111111111111116DBWJs",
+    subnetId: "11111111111111111111111111111111LpoYY",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListSubnetOnlyValidatorsRequest](../../models/operations/listsubnetonlyvalidatorsrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
+
+### Response
+
+**Promise\<[operations.ListSubnetOnlyValidatorsResponse](../../models/operations/listsubnetonlyvalidatorsresponse.md)\>**
 
 ### Errors
 

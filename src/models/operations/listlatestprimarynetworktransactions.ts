@@ -22,6 +22,7 @@ export type ListLatestPrimaryNetworkTransactionsRequest = {
    * A comma separated list of X-Chain or P-Chain wallet addresses, starting with "avax"/"fuji", "P-avax"/"P-fuji" or "X-avax"/"X-fuji". Also accepts EVM formatted addresses starting with "0x" for C-Chain-related atomic transaction lookups.
    */
   addresses?: string | undefined;
+  sovValidationId?: string | undefined;
   /**
    * Query param for filtering items based on transaction types.
    */
@@ -119,6 +120,7 @@ export const ListLatestPrimaryNetworkTransactionsRequest$inboundSchema:
     unknown
   > = z.object({
     addresses: z.string().optional(),
+    sovValidationId: z.string().optional(),
     txTypes: z.array(components.PrimaryNetworkTxType$inboundSchema).optional(),
     startTimestamp: z.number().int().optional(),
     endTimestamp: z.number().int().optional(),
@@ -132,6 +134,7 @@ export const ListLatestPrimaryNetworkTransactionsRequest$inboundSchema:
 /** @internal */
 export type ListLatestPrimaryNetworkTransactionsRequest$Outbound = {
   addresses?: string | undefined;
+  sovValidationId?: string | undefined;
   txTypes?: Array<string> | undefined;
   startTimestamp?: number | undefined;
   endTimestamp?: number | undefined;
@@ -150,6 +153,7 @@ export const ListLatestPrimaryNetworkTransactionsRequest$outboundSchema:
     ListLatestPrimaryNetworkTransactionsRequest
   > = z.object({
     addresses: z.string().optional(),
+    sovValidationId: z.string().optional(),
     txTypes: z.array(components.PrimaryNetworkTxType$outboundSchema).optional(),
     startTimestamp: z.number().int().optional(),
     endTimestamp: z.number().int().optional(),

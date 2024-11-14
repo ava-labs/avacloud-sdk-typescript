@@ -23,6 +23,7 @@ let value: ListSubnetsResponse = {
           "avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw",
         ],
       },
+      isL1: false,
       blockchains: [
         {
           blockchainId: "<id>",

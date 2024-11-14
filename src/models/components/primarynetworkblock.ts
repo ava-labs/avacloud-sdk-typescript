@@ -19,6 +19,8 @@ export type PrimaryNetworkBlock = {
   txCount: number;
   transactions: Array<string>;
   blockSizeBytes: number;
+  subnetOnlyValidatorsAccruedFees?: number | undefined;
+  activeSubnetOnlyValidators?: number | undefined;
   currentSupply?: string | undefined;
   proposerDetails?: ProposerDetails | undefined;
 };
@@ -37,6 +39,8 @@ export const PrimaryNetworkBlock$inboundSchema: z.ZodType<
   txCount: z.number(),
   transactions: z.array(z.string()),
   blockSizeBytes: z.number(),
+  subnetOnlyValidatorsAccruedFees: z.number().optional(),
+  activeSubnetOnlyValidators: z.number().optional(),
   currentSupply: z.string().optional(),
   proposerDetails: ProposerDetails$inboundSchema.optional(),
 });
@@ -51,6 +55,8 @@ export type PrimaryNetworkBlock$Outbound = {
   txCount: number;
   transactions: Array<string>;
   blockSizeBytes: number;
+  subnetOnlyValidatorsAccruedFees?: number | undefined;
+  activeSubnetOnlyValidators?: number | undefined;
   currentSupply?: string | undefined;
   proposerDetails?: ProposerDetails$Outbound | undefined;
 };
@@ -69,6 +75,8 @@ export const PrimaryNetworkBlock$outboundSchema: z.ZodType<
   txCount: z.number(),
   transactions: z.array(z.string()),
   blockSizeBytes: z.number(),
+  subnetOnlyValidatorsAccruedFees: z.number().optional(),
+  activeSubnetOnlyValidators: z.number().optional(),
   currentSupply: z.string().optional(),
   proposerDetails: ProposerDetails$outboundSchema.optional(),
 });

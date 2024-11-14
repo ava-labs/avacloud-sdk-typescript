@@ -28,7 +28,7 @@ const value: components.Erc20Transfer = {
       "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
-  logIndex: 5896.95,
+  logIndex: 4317.60,
   value: "10000000000000000000",
   erc20Token: {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
@@ -71,16 +71,16 @@ const value: components.Erc721Transfer = {
       "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
-  logIndex: 7453.98,
+  logIndex: 6145.28,
   erc721Token: {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     name: "Wrapped AVAX",
     symbol: "WAVAX",
     ercType: "ERC-721",
     tokenId: "<id>",
-    tokenUri: "https://voluminous-whale.info",
+    tokenUri: "https://super-pendant.net/",
     metadata: {
-      indexStatus: "UNREACHABLE_TOKEN_URI",
+      indexStatus: "THROTTLED_TOKEN_URI",
     },
     ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
@@ -112,15 +112,15 @@ const value: components.Erc1155Transfer = {
       "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
-  logIndex: 1478.09,
+  logIndex: 1104.77,
   value: "10000000000000000000",
   erc1155Token: {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     ercType: "ERC-1155",
     tokenId: "<id>",
-    tokenUri: "https://querulous-stump.com",
+    tokenUri: "https://impressive-feather.com/",
     metadata: {
-      indexStatus: "THROTTLED_TOKEN_URI",
+      indexStatus: "INVALID_METADATA_JSON",
     },
   },
 };

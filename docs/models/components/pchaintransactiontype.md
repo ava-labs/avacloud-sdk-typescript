@@ -5,7 +5,7 @@
 ```typescript
 import { PChainTransactionType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: PChainTransactionType = "CreateSubnetTx";
+let value: PChainTransactionType = "DisableSubnetValidatorTx";
 ```
 
 ## Values
