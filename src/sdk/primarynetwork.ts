@@ -9,6 +9,7 @@ import { dataPrimaryNetworkGetSingleValidatorDetails } from "../funcs/dataPrimar
 import { dataPrimaryNetworkGetSubnetById } from "../funcs/dataPrimaryNetworkGetSubnetById.js";
 import { dataPrimaryNetworkListBlockchains } from "../funcs/dataPrimaryNetworkListBlockchains.js";
 import { dataPrimaryNetworkListDelegators } from "../funcs/dataPrimaryNetworkListDelegators.js";
+import { dataPrimaryNetworkListSubnetOnlyValidators } from "../funcs/dataPrimaryNetworkListSubnetOnlyValidators.js";
 import { dataPrimaryNetworkListSubnets } from "../funcs/dataPrimaryNetworkListSubnets.js";
 import { dataPrimaryNetworkListValidators } from "../funcs/dataPrimaryNetworkListValidators.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -201,6 +202,23 @@ export class PrimaryNetwork extends ClientSDK {
     options?: RequestOptions & { serverURL?: string },
   ): Promise<PageIterator<operations.ListDelegatorsResponse>> {
     return unwrapResultIterator(dataPrimaryNetworkListDelegators(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List subnet-only validators
+   *
+   * @remarks
+   * Lists details for subnet only validators. By default, returns details for all active subnet only validators. Filterable by validator node ids, subnet id, and validation id.
+   */
+  async listSubnetOnlyValidators(
+    request: operations.ListSubnetOnlyValidatorsRequest,
+    options?: RequestOptions & { serverURL?: string },
+  ): Promise<PageIterator<operations.ListSubnetOnlyValidatorsResponse>> {
+    return unwrapResultIterator(dataPrimaryNetworkListSubnetOnlyValidators(
       this,
       request,
       options,

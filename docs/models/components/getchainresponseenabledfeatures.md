@@ -5,7 +5,7 @@
 ```typescript
 import { GetChainResponseEnabledFeatures } from "@avalabs/avacloud-sdk/models/components";
 
-let value: GetChainResponseEnabledFeatures = "teleporter";
+let value: GetChainResponseEnabledFeatures = "nftIndexing";
 ```
 
 ## Values

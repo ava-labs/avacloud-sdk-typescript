@@ -1,9 +1,9 @@
-speakeasyVersion: 1.421.2
+speakeasyVersion: 1.438.3
 sources:
     AvaCloudSDK-OAS:
         sourceNamespace: avacloud-sdk-oas
-        sourceRevisionDigest: sha256:d3862e8e86d49dfd69d85caf2384f93a240658bcc36b2cc8809b031dede1083e
-        sourceBlobDigest: sha256:eb345d40a482d93c2b24b7c040611c646f7300afd6ce65366406fe2f01a712ef
+        sourceRevisionDigest: sha256:4696908cb252c30de0f988fcc94a81a55ecd043f9d44a7c7c8dcda86891d0b22
+        sourceBlobDigest: sha256:5d62836cafe045df1d31e83d77b2e6e2a857eaf646885bdcb82982c024438bc9
         tags:
             - latest
             - main
@@ -18,10 +18,10 @@ targets:
     avacloud-sdk:
         source: AvaCloudSDK-OAS
         sourceNamespace: avacloud-sdk-oas
-        sourceRevisionDigest: sha256:d3862e8e86d49dfd69d85caf2384f93a240658bcc36b2cc8809b031dede1083e
-        sourceBlobDigest: sha256:eb345d40a482d93c2b24b7c040611c646f7300afd6ce65366406fe2f01a712ef
+        sourceRevisionDigest: sha256:4696908cb252c30de0f988fcc94a81a55ecd043f9d44a7c7c8dcda86891d0b22
+        sourceBlobDigest: sha256:5d62836cafe045df1d31e83d77b2e6e2a857eaf646885bdcb82982c024438bc9
         codeSamplesNamespace: avacloud-sdk-ts-code-samples
-        codeSamplesRevisionDigest: sha256:fb44537cd83d35d7cb8c08d5abcba5fb5a4f1acdf4d463288c405bbeddb3fd6c
+        codeSamplesRevisionDigest: sha256:0e2c0125a15796f38fb30e369ea9d96d643a5d5e7863a74b82ae8a66c3e7586d
     avalanche-sdk:
         source: AvalancheSDK-OAS
         sourceNamespace: avalanche-sdk-oas
@@ -47,6 +47,5 @@ workflow:
                 npm:
                     token: $npm_token
             codeSamples:
-                output: ""
                 registry:
                     location: registry.speakeasyapi.dev/avalabs/avalabs/avacloud-sdk-ts-code-samples

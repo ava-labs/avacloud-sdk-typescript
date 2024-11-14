@@ -152,6 +152,7 @@ run();
 * [listValidators](docs/sdks/primarynetwork/README.md#listvalidators) - List validators
 * [getSingleValidatorDetails](docs/sdks/primarynetwork/README.md#getsinglevalidatordetails) - Get single validator details
 * [listDelegators](docs/sdks/primarynetwork/README.md#listdelegators) - List delegators
+* [listSubnetOnlyValidators](docs/sdks/primarynetwork/README.md#listsubnetonlyvalidators) - List subnet-only validators
 
 #### [data.primaryNetwork.balances](docs/sdks/balances/README.md)
 
@@ -300,6 +301,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataPrimaryNetworkGetSubnetById`](docs/sdks/primarynetwork/README.md#getsubnetbyid) - Get Subnet details by ID
 - [`dataPrimaryNetworkListBlockchains`](docs/sdks/primarynetwork/README.md#listblockchains) - List blockchains
 - [`dataPrimaryNetworkListDelegators`](docs/sdks/primarynetwork/README.md#listdelegators) - List delegators
+- [`dataPrimaryNetworkListSubnetOnlyValidators`](docs/sdks/primarynetwork/README.md#listsubnetonlyvalidators) - List subnet-only validators
 - [`dataPrimaryNetworkListSubnets`](docs/sdks/primarynetwork/README.md#listsubnets) - List subnets
 - [`dataPrimaryNetworkListValidators`](docs/sdks/primarynetwork/README.md#listvalidators) - List validators
 - [`dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards`](docs/sdks/rewards/README.md#listhistoricalprimarynetworkrewards) - List historical rewards
@@ -355,11 +357,10 @@ For example, you can set `chainId` to `"43114"` at SDK initialization and then y
 
 The following global parameters are available.
 
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| chainId | string |  | A supported EVM chain id, chain alias, or blockchain id. |
-| network | components.GlobalParamNetwork |  | A supported network type mainnet or testnet/fuji. |
-
+| Name    | Type                          | Description                                              |
+| ------- | ----------------------------- | -------------------------------------------------------- |
+| chainId | string                        | A supported EVM chain id, chain alias, or blockchain id. |
+| network | components.GlobalParamNetwork | A supported network type mainnet or testnet/fuji.        |
 
 ### Example
 
@@ -511,17 +512,17 @@ If a HTTP request fails, an operation my also throw an error from the `models/er
 
 In addition, when custom error responses are specified for an operation, the SDK may throw their associated Error type. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation. For example, the `reindexNft` method may throw the following errors:
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.TooManyRequests     | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.BadGateway          | 502                        | application/json           |
-| errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                 | Status Code | Content Type     |
+| -------------------------- | ----------- | ---------------- |
+| errors.BadRequest          | 400         | application/json |
+| errors.Unauthorized        | 401         | application/json |
+| errors.Forbidden           | 403         | application/json |
+| errors.NotFound            | 404         | application/json |
+| errors.TooManyRequests     | 429         | application/json |
+| errors.InternalServerError | 500         | application/json |
+| errors.BadGateway          | 502         | application/json |
+| errors.ServiceUnavailable  | 503         | application/json |
+| errors.SDKError            | 4XX, 5XX    | \*/\*            |
 
 ```typescript
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
@@ -615,55 +616,7 @@ Validation errors can also occur when either method arguments or data returned f
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Override Server URL Per-Client
 
-The default server can be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
-
-```typescript
-import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
-
-const avaCloudSDK = new AvaCloudSDK({
-  serverURL: "",
-  apiKey: "<YOUR_API_KEY_HERE>",
-  chainId: "43114",
-  network: "mainnet",
-});
-
-async function run() {
-  const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck();
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-
-```
-### Override Server URL Per-Operation
-
-The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
-
-```typescript
-import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
-
-const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
-  chainId: "43114",
-  network: "mainnet",
-});
-
-async function run() {
-  const result = await avaCloudSDK.metrics.healthCheck.metricsHealthCheck({
-    serverURL: "https://metrics.avax.network",
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-
-```
 <!-- End Server Selection [server] -->
 
 <!-- Start Custom HTTP Client [http-client] -->
@@ -722,9 +675,9 @@ const sdk = new AvaCloudSDK({ httpClient });
 
 This SDK supports the following security scheme globally:
 
-| Name     | Type     | Scheme   |
-| -------- | -------- | -------- |
-| `apiKey` | apiKey   | API key  |
+| Name     | Type   | Scheme  |
+| -------- | ------ | ------- |
+| `apiKey` | apiKey | API key |
 
 To authenticate with the API the `apiKey` parameter must be set when initializing the SDK client instance. For example:
 ```typescript

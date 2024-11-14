@@ -16,12 +16,12 @@ let value: WebhookResponse = {
       "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64",
     ],
   },
-  url: "https://pale-technician.info/",
+  url: "https://rubbery-silk.name/",
   chainId: "<id>",
-  status: "inactive",
-  createdAt: 2716.53,
+  status: "active",
+  createdAt: 7908.40,
   name: "<value>",
-  description: "sizzling cheerfully hungrily accessorise fly gadzooks",
+  description: "questioningly topsail diligently",
 };
 ```
 

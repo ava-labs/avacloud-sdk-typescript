@@ -13,9 +13,9 @@ let value: ListCollectibleBalancesResponse = {
       symbol: "WAVAX",
       ercType: "ERC-721",
       tokenId: "<id>",
-      tokenUri: "https://untried-redesign.org/",
+      tokenUri: "https://private-silk.org",
       metadata: {
-        indexStatus: "INVALID_METADATA",
+        indexStatus: "INDEXED",
       },
       ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
       chainId: "43114",

@@ -14,8 +14,9 @@ generation:
     requestResponseComponentNamesFeb2024: true
   auth:
     oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
 typescript:
-  version: 0.6.5
+  version: 0.7.0
   additionalDependencies:
     dependencies:
       json-canonicalize: ^1.0.6
@@ -27,6 +28,7 @@ typescript:
     license: SEE LICENSE
   author: AvaCloud
   clientServerStatusCodesAsErrors: true
+  defaultErrorName: SDKError
   enumFormat: union
   flattenGlobalSecurity: true
   flatteningOrder: body-first

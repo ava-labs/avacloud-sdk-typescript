@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: c4a679b7515c124138ba68577df2a46c
+  docChecksum: b2e251785dfddb8484369dbd2e44a02a
   docVersion: Beta
-  speakeasyVersion: 1.421.2
-  generationVersion: 2.438.15
-  releaseVersion: 0.6.5
-  configChecksum: e2d6847e2e3c1a1764b233c74245461c
+  speakeasyVersion: 1.438.3
+  generationVersion: 2.457.9
+  releaseVersion: 0.7.0
+  configChecksum: 2c7acd87db30f2733007f153fb240eb9
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -15,12 +15,12 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.18.2
+    core: 3.18.4
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
     enumUnions: 0.1.0
-    envVarSecurityUsage: 0.1.1
+    envVarSecurityUsage: 0.1.2
     examples: 2.81.4
     globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
@@ -34,8 +34,9 @@ features:
     pagination: 2.82.7
     responseFormat: 0.2.3
     retries: 2.83.0
-    sdkHooks: 0.1.0
-    unions: 2.85.7
+    sdkHooks: 0.2.0
+    tests: 0.7.0
+    unions: 2.85.8
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
@@ -75,6 +76,7 @@ generatedFiles:
   - docs/models/components/apifeature.md
   - docs/models/components/assetamount.md
   - docs/models/components/assetwithpriceinfo.md
+  - docs/models/components/balanceowner.md
   - docs/models/components/blockchain.md
   - docs/models/components/blockchainid.md
   - docs/models/components/blockchainids.md
@@ -170,6 +172,7 @@ generatedFiles:
   - docs/models/components/internaltransaction.md
   - docs/models/components/internaltransactiondetails.md
   - docs/models/components/internaltransactionopcall.md
+  - docs/models/components/l1validatormanagerdetails.md
   - docs/models/components/latestbalanceparams.md
   - docs/models/components/latestbalancequerydto.md
   - docs/models/components/latestbalancequerydtotype.md
@@ -200,6 +203,7 @@ generatedFiles:
   - docs/models/components/listpchainutxosresponse.md
   - docs/models/components/listpendingrewardsresponse.md
   - docs/models/components/listprimarynetworkblocksresponse.md
+  - docs/models/components/listsubnetonlyvalidatorsresponse.md
   - docs/models/components/listsubnetsresponse.md
   - docs/models/components/listteleportermessagesresponse.md
   - docs/models/components/listtransactiondetailsresponse.md
@@ -277,11 +281,14 @@ generatedFiles:
   - docs/models/components/sortbyoption.md
   - docs/models/components/sortorder.md
   - docs/models/components/sourcechainid.md
+  - docs/models/components/sovdetailsfull.md
+  - docs/models/components/sovdetailsfullblscredentials.md
+  - docs/models/components/sovdetailstransaction.md
+  - docs/models/components/sovdetailstransactionblscredentials.md
   - docs/models/components/stakingdistribution.md
   - docs/models/components/status.md
   - docs/models/components/subnet.md
   - docs/models/components/subnetownershipinfo.md
-  - docs/models/components/subnetvalidatormanagerdetails.md
   - docs/models/components/teleporterchainmetricsapiresponse.md
   - docs/models/components/teleporterdestinationtransaction.md
   - docs/models/components/teleportermessageinfo.md
@@ -516,6 +523,9 @@ generatedFiles:
   - docs/models/operations/listprimarynetworkblocksbynodeidglobals.md
   - docs/models/operations/listprimarynetworkblocksbynodeidrequest.md
   - docs/models/operations/listprimarynetworkblocksbynodeidresponse.md
+  - docs/models/operations/listsubnetonlyvalidatorsglobals.md
+  - docs/models/operations/listsubnetonlyvalidatorsrequest.md
+  - docs/models/operations/listsubnetonlyvalidatorsresponse.md
   - docs/models/operations/listsubnetsglobals.md
   - docs/models/operations/listsubnetsrequest.md
   - docs/models/operations/listsubnetsresponse.md
@@ -615,6 +625,7 @@ generatedFiles:
   - src/funcs/dataPrimaryNetworkGetSubnetById.ts
   - src/funcs/dataPrimaryNetworkListBlockchains.ts
   - src/funcs/dataPrimaryNetworkListDelegators.ts
+  - src/funcs/dataPrimaryNetworkListSubnetOnlyValidators.ts
   - src/funcs/dataPrimaryNetworkListSubnets.ts
   - src/funcs/dataPrimaryNetworkListValidators.ts
   - src/funcs/dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards.ts
@@ -690,6 +701,7 @@ generatedFiles:
   - src/models/components/apifeature.ts
   - src/models/components/assetamount.ts
   - src/models/components/assetwithpriceinfo.ts
+  - src/models/components/balanceowner.ts
   - src/models/components/blockchain.ts
   - src/models/components/blockchainid.ts
   - src/models/components/blockchainids.ts
@@ -762,6 +774,7 @@ generatedFiles:
   - src/models/components/internaltransaction.ts
   - src/models/components/internaltransactiondetails.ts
   - src/models/components/internaltransactionopcall.ts
+  - src/models/components/l1validatormanagerdetails.ts
   - src/models/components/latestbalanceparams.ts
   - src/models/components/latestbalancequerydto.ts
   - src/models/components/lateststarsarenabalanceparams.ts
@@ -789,6 +802,7 @@ generatedFiles:
   - src/models/components/listpchainutxosresponse.ts
   - src/models/components/listpendingrewardsresponse.ts
   - src/models/components/listprimarynetworkblocksresponse.ts
+  - src/models/components/listsubnetonlyvalidatorsresponse.ts
   - src/models/components/listsubnetsresponse.ts
   - src/models/components/listteleportermessagesresponse.ts
   - src/models/components/listtransactiondetailsresponse.ts
@@ -858,10 +872,11 @@ generatedFiles:
   - src/models/components/sharedsecretsresponse.ts
   - src/models/components/sortbyoption.ts
   - src/models/components/sortorder.ts
+  - src/models/components/sovdetailsfull.ts
+  - src/models/components/sovdetailstransaction.ts
   - src/models/components/stakingdistribution.ts
   - src/models/components/subnet.ts
   - src/models/components/subnetownershipinfo.ts
-  - src/models/components/subnetvalidatormanagerdetails.ts
   - src/models/components/teleporterchainmetricsapiresponse.ts
   - src/models/components/teleporterdestinationtransaction.ts
   - src/models/components/teleportermessageinfo.ts
@@ -984,6 +999,7 @@ generatedFiles:
   - src/models/operations/listnativetransactions.ts
   - src/models/operations/listpendingprimarynetworkrewards.ts
   - src/models/operations/listprimarynetworkblocksbynodeid.ts
+  - src/models/operations/listsubnetonlyvalidators.ts
   - src/models/operations/listsubnets.ts
   - src/models/operations/listteleportermessages.ts
   - src/models/operations/listteleportermessagesbyaddress.ts
@@ -1582,7 +1598,7 @@ examples:
           subnetId: "11111111111111111111111111111111LpoYY"
       responses:
         "200":
-          application/json: {"createBlockTimestamp": "6811.96", "createBlockIndex": "<value>", "subnetId": "<value>", "ownerAddresses": [], "threshold": "3670.2", "locktime": "7826.82", "subnetOwnershipInfo": {"locktime": 0, "threshold": 1, "addresses": ["avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw"]}, "blockchains": []}
+          application/json: {"createBlockTimestamp": "6811.96", "createBlockIndex": "<value>", "subnetId": "<value>", "ownerAddresses": [], "threshold": "3670.2", "locktime": "7826.82", "subnetOwnershipInfo": {"locktime": 0, "threshold": 1, "addresses": ["avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw"]}, "isL1": false, "blockchains": []}
         "400":
           application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
         "401":
@@ -3149,3 +3165,32 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+  listSubnetOnlyValidators:
+    "":
+      parameters:
+        path:
+          network: "mainnet"
+        query:
+          pageSize: "10"
+          sovValidationId: "BsSpTd1SDvdhaoYAuKJvRj1WnoRyu8mAuMZeuz9g7brGj6KhX"
+          nodeId: "NodeID-111111111111111111116DBWJs"
+          subnetId: "11111111111111111111111111111111LpoYY"
+      responses:
+        "200":
+          application/json: {"validators": [{"validationId": "<id>", "nodeId": "<id>", "subnetId": "<id>", "weight": "355.81", "remainingBalance": "1521.73", "creationTimestamp": "5454.26", "remainingBalanceOwner": {"addresses": ["<value>"], "threshold": "4075.33"}, "deactivationOwner": {"addresses": ["<value>"], "threshold": "2076.03"}}, {"validationId": "<id>", "nodeId": "<id>", "subnetId": "<id>", "weight": "2118.09", "remainingBalance": "6067.99", "creationTimestamp": "3363.06", "remainingBalanceOwner": {"addresses": ["<value>", "<value>"], "threshold": "1899.45"}, "deactivationOwner": {"addresses": [], "threshold": "5590.33"}}, {"validationId": "<id>", "nodeId": "<id>", "subnetId": "<id>", "weight": "4123.30", "remainingBalance": "1430.31", "creationTimestamp": "374.39", "remainingBalanceOwner": {"addresses": ["<value>"], "threshold": "979.28"}, "deactivationOwner": {"addresses": ["<value>", "<value>"], "threshold": "3041.48"}}]}
+        "400":
+          application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": [], "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": "<value>", "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": ["<value>", "<value>", "<value>"], "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": ["<value>"], "statusCode": 503, "error": "Service Unavailable"}

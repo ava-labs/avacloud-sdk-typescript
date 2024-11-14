@@ -10,6 +10,12 @@ import {
   BlockchainInfo$outboundSchema,
 } from "./blockchaininfo.js";
 import {
+  L1ValidatorManagerDetails,
+  L1ValidatorManagerDetails$inboundSchema,
+  L1ValidatorManagerDetails$Outbound,
+  L1ValidatorManagerDetails$outboundSchema,
+} from "./l1validatormanagerdetails.js";
+import {
   SubnetOwnershipInfo,
   SubnetOwnershipInfo$inboundSchema,
   SubnetOwnershipInfo$Outbound,
@@ -42,6 +48,14 @@ export type Subnet = {
    * Latest subnet owner details for this Subnet.
    */
   subnetOwnershipInfo: SubnetOwnershipInfo;
+  /**
+   * Whether the subnet is an L1 or not.
+   */
+  isL1: boolean;
+  /**
+   * L1 validator manager details.
+   */
+  l1ValidatorManagerDetails?: L1ValidatorManagerDetails | undefined;
   blockchains: Array<BlockchainInfo>;
 };
 
@@ -55,6 +69,9 @@ export const Subnet$inboundSchema: z.ZodType<Subnet, z.ZodTypeDef, unknown> = z
     threshold: z.number(),
     locktime: z.number(),
     subnetOwnershipInfo: SubnetOwnershipInfo$inboundSchema,
+    isL1: z.boolean(),
+    l1ValidatorManagerDetails: L1ValidatorManagerDetails$inboundSchema
+      .optional(),
     blockchains: z.array(BlockchainInfo$inboundSchema),
   });
 
@@ -67,6 +84,8 @@ export type Subnet$Outbound = {
   threshold: number;
   locktime: number;
   subnetOwnershipInfo: SubnetOwnershipInfo$Outbound;
+  isL1: boolean;
+  l1ValidatorManagerDetails?: L1ValidatorManagerDetails$Outbound | undefined;
   blockchains: Array<BlockchainInfo$Outbound>;
 };
 
@@ -83,6 +102,9 @@ export const Subnet$outboundSchema: z.ZodType<
   threshold: z.number(),
   locktime: z.number(),
   subnetOwnershipInfo: SubnetOwnershipInfo$outboundSchema,
+  isL1: z.boolean(),
+  l1ValidatorManagerDetails: L1ValidatorManagerDetails$outboundSchema
+    .optional(),
   blockchains: z.array(BlockchainInfo$outboundSchema),
 });
 

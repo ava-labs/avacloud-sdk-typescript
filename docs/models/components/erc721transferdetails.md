@@ -22,14 +22,14 @@ let value: Erc721TransferDetails = {
       "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
-  logIndex: 9762.26,
+  logIndex: 1158.34,
   erc721Token: {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     name: "Wrapped AVAX",
     symbol: "WAVAX",
     ercType: "ERC-721",
     tokenId: "<id>",
-    tokenUri: "https://sneaky-precedent.info",
+    tokenUri: "https://wordy-hierarchy.org/",
     metadata: {
       indexStatus: "MISSING_TOKEN",
     },

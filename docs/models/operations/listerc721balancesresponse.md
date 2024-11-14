@@ -14,9 +14,9 @@ let value: ListErc721BalancesResponse = {
         symbol: "WAVAX",
         ercType: "ERC-721",
         tokenId: "<id>",
-        tokenUri: "https://exhausted-impostor.net",
+        tokenUri: "https://worst-chapel.biz/",
         metadata: {
-          indexStatus: "INVALID_TOKEN_URI",
+          indexStatus: "UNKNOWN",
         },
         ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
         chainId: "43114",

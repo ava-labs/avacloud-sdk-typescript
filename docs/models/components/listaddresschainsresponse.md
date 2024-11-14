@@ -11,9 +11,10 @@ let value: ListAddressChainsResponse = {
       chainId: "<id>",
       status: "OK",
       chainName: "<value>",
-      description: "apud who grown meanwhile heartbeat whoa burgeon",
-      vmName: "ETHEREUM",
-      rpcUrl: "https://hidden-flint.net",
+      description:
+        "apprehensive legitimize geez mmm forearm before substantiate mosh",
+      vmName: "EVM",
+      rpcUrl: "https://palatable-toothpick.net/",
       isTestnet: false,
       networkToken: {
         name: "Wrapped AVAX",

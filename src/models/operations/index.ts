@@ -67,6 +67,7 @@ export * from "./listlatestxchainvertices.js";
 export * from "./listnativetransactions.js";
 export * from "./listpendingprimarynetworkrewards.js";
 export * from "./listprimarynetworkblocksbynodeid.js";
+export * from "./listsubnetonlyvalidators.js";
 export * from "./listsubnets.js";
 export * from "./listteleportermessages.js";
 export * from "./listteleportermessagesbyaddress.js";
