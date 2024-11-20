@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const RemoveAddressesFromWebhookServerList = [
   "https://glacier-api.avax.network",
@@ -64,4 +67,24 @@ export namespace RemoveAddressesFromWebhookRequest$ {
     RemoveAddressesFromWebhookRequest$outboundSchema;
   /** @deprecated use `RemoveAddressesFromWebhookRequest$Outbound` instead. */
   export type Outbound = RemoveAddressesFromWebhookRequest$Outbound;
+}
+
+export function removeAddressesFromWebhookRequestToJSON(
+  removeAddressesFromWebhookRequest: RemoveAddressesFromWebhookRequest,
+): string {
+  return JSON.stringify(
+    RemoveAddressesFromWebhookRequest$outboundSchema.parse(
+      removeAddressesFromWebhookRequest,
+    ),
+  );
+}
+
+export function removeAddressesFromWebhookRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RemoveAddressesFromWebhookRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RemoveAddressesFromWebhookRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemoveAddressesFromWebhookRequest' from JSON`,
+  );
 }

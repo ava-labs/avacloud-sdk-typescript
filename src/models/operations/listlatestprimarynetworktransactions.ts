@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListLatestPrimaryNetworkTransactionsServerList = [
   "https://glacier-api.avax.network",
@@ -22,7 +25,7 @@ export type ListLatestPrimaryNetworkTransactionsRequest = {
    * A comma separated list of X-Chain or P-Chain wallet addresses, starting with "avax"/"fuji", "P-avax"/"P-fuji" or "X-avax"/"X-fuji". Also accepts EVM formatted addresses starting with "0x" for C-Chain-related atomic transaction lookups.
    */
   addresses?: string | undefined;
-  sovValidationId?: string | undefined;
+  l1ValidationId?: string | undefined;
   /**
    * Query param for filtering items based on transaction types.
    */
@@ -112,6 +115,33 @@ export namespace ListLatestPrimaryNetworkTransactionsGlobals$ {
   export type Outbound = ListLatestPrimaryNetworkTransactionsGlobals$Outbound;
 }
 
+export function listLatestPrimaryNetworkTransactionsGlobalsToJSON(
+  listLatestPrimaryNetworkTransactionsGlobals:
+    ListLatestPrimaryNetworkTransactionsGlobals,
+): string {
+  return JSON.stringify(
+    ListLatestPrimaryNetworkTransactionsGlobals$outboundSchema.parse(
+      listLatestPrimaryNetworkTransactionsGlobals,
+    ),
+  );
+}
+
+export function listLatestPrimaryNetworkTransactionsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListLatestPrimaryNetworkTransactionsGlobals,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListLatestPrimaryNetworkTransactionsGlobals$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListLatestPrimaryNetworkTransactionsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListLatestPrimaryNetworkTransactionsRequest$inboundSchema:
   z.ZodType<
@@ -120,7 +150,7 @@ export const ListLatestPrimaryNetworkTransactionsRequest$inboundSchema:
     unknown
   > = z.object({
     addresses: z.string().optional(),
-    sovValidationId: z.string().optional(),
+    l1ValidationId: z.string().optional(),
     txTypes: z.array(components.PrimaryNetworkTxType$inboundSchema).optional(),
     startTimestamp: z.number().int().optional(),
     endTimestamp: z.number().int().optional(),
@@ -134,7 +164,7 @@ export const ListLatestPrimaryNetworkTransactionsRequest$inboundSchema:
 /** @internal */
 export type ListLatestPrimaryNetworkTransactionsRequest$Outbound = {
   addresses?: string | undefined;
-  sovValidationId?: string | undefined;
+  l1ValidationId?: string | undefined;
   txTypes?: Array<string> | undefined;
   startTimestamp?: number | undefined;
   endTimestamp?: number | undefined;
@@ -153,7 +183,7 @@ export const ListLatestPrimaryNetworkTransactionsRequest$outboundSchema:
     ListLatestPrimaryNetworkTransactionsRequest
   > = z.object({
     addresses: z.string().optional(),
-    sovValidationId: z.string().optional(),
+    l1ValidationId: z.string().optional(),
     txTypes: z.array(components.PrimaryNetworkTxType$outboundSchema).optional(),
     startTimestamp: z.number().int().optional(),
     endTimestamp: z.number().int().optional(),
@@ -177,6 +207,33 @@ export namespace ListLatestPrimaryNetworkTransactionsRequest$ {
     ListLatestPrimaryNetworkTransactionsRequest$outboundSchema;
   /** @deprecated use `ListLatestPrimaryNetworkTransactionsRequest$Outbound` instead. */
   export type Outbound = ListLatestPrimaryNetworkTransactionsRequest$Outbound;
+}
+
+export function listLatestPrimaryNetworkTransactionsRequestToJSON(
+  listLatestPrimaryNetworkTransactionsRequest:
+    ListLatestPrimaryNetworkTransactionsRequest,
+): string {
+  return JSON.stringify(
+    ListLatestPrimaryNetworkTransactionsRequest$outboundSchema.parse(
+      listLatestPrimaryNetworkTransactionsRequest,
+    ),
+  );
+}
+
+export function listLatestPrimaryNetworkTransactionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListLatestPrimaryNetworkTransactionsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListLatestPrimaryNetworkTransactionsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListLatestPrimaryNetworkTransactionsRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -223,6 +280,33 @@ export namespace ListLatestPrimaryNetworkTransactionsResponseBody$ {
   /** @deprecated use `ListLatestPrimaryNetworkTransactionsResponseBody$Outbound` instead. */
   export type Outbound =
     ListLatestPrimaryNetworkTransactionsResponseBody$Outbound;
+}
+
+export function listLatestPrimaryNetworkTransactionsResponseBodyToJSON(
+  listLatestPrimaryNetworkTransactionsResponseBody:
+    ListLatestPrimaryNetworkTransactionsResponseBody,
+): string {
+  return JSON.stringify(
+    ListLatestPrimaryNetworkTransactionsResponseBody$outboundSchema.parse(
+      listLatestPrimaryNetworkTransactionsResponseBody,
+    ),
+  );
+}
+
+export function listLatestPrimaryNetworkTransactionsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListLatestPrimaryNetworkTransactionsResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListLatestPrimaryNetworkTransactionsResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListLatestPrimaryNetworkTransactionsResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -282,4 +366,31 @@ export namespace ListLatestPrimaryNetworkTransactionsResponse$ {
     ListLatestPrimaryNetworkTransactionsResponse$outboundSchema;
   /** @deprecated use `ListLatestPrimaryNetworkTransactionsResponse$Outbound` instead. */
   export type Outbound = ListLatestPrimaryNetworkTransactionsResponse$Outbound;
+}
+
+export function listLatestPrimaryNetworkTransactionsResponseToJSON(
+  listLatestPrimaryNetworkTransactionsResponse:
+    ListLatestPrimaryNetworkTransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListLatestPrimaryNetworkTransactionsResponse$outboundSchema.parse(
+      listLatestPrimaryNetworkTransactionsResponse,
+    ),
+  );
+}
+
+export function listLatestPrimaryNetworkTransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListLatestPrimaryNetworkTransactionsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListLatestPrimaryNetworkTransactionsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListLatestPrimaryNetworkTransactionsResponse' from JSON`,
+  );
 }

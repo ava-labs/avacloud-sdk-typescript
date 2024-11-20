@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PrimaryNetworkAssetType,
   PrimaryNetworkAssetType$inboundSchema,
@@ -97,4 +100,22 @@ export namespace PChainSharedAsset$ {
   export const outboundSchema = PChainSharedAsset$outboundSchema;
   /** @deprecated use `PChainSharedAsset$Outbound` instead. */
   export type Outbound = PChainSharedAsset$Outbound;
+}
+
+export function pChainSharedAssetToJSON(
+  pChainSharedAsset: PChainSharedAsset,
+): string {
+  return JSON.stringify(
+    PChainSharedAsset$outboundSchema.parse(pChainSharedAsset),
+  );
+}
+
+export function pChainSharedAssetFromJSON(
+  jsonString: string,
+): SafeParseResult<PChainSharedAsset, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PChainSharedAsset$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PChainSharedAsset' from JSON`,
+  );
 }

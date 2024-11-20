@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BlsCredentials = {
   publicKey: string;
@@ -46,4 +49,18 @@ export namespace BlsCredentials$ {
   export const outboundSchema = BlsCredentials$outboundSchema;
   /** @deprecated use `BlsCredentials$Outbound` instead. */
   export type Outbound = BlsCredentials$Outbound;
+}
+
+export function blsCredentialsToJSON(blsCredentials: BlsCredentials): string {
+  return JSON.stringify(BlsCredentials$outboundSchema.parse(blsCredentials));
+}
+
+export function blsCredentialsFromJSON(
+  jsonString: string,
+): SafeParseResult<BlsCredentials, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BlsCredentials$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BlsCredentials' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetAddressesByBtcbBridgedServerList = [
   "https://metrics.avax.network",
@@ -71,6 +74,26 @@ export namespace GetAddressesByBtcbBridgedRequest$ {
   export type Outbound = GetAddressesByBtcbBridgedRequest$Outbound;
 }
 
+export function getAddressesByBtcbBridgedRequestToJSON(
+  getAddressesByBtcbBridgedRequest: GetAddressesByBtcbBridgedRequest,
+): string {
+  return JSON.stringify(
+    GetAddressesByBtcbBridgedRequest$outboundSchema.parse(
+      getAddressesByBtcbBridgedRequest,
+    ),
+  );
+}
+
+export function getAddressesByBtcbBridgedRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAddressesByBtcbBridgedRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAddressesByBtcbBridgedRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAddressesByBtcbBridgedRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAddressesByBtcbBridgedResponse$inboundSchema: z.ZodType<
   GetAddressesByBtcbBridgedResponse,
@@ -114,4 +137,24 @@ export namespace GetAddressesByBtcbBridgedResponse$ {
     GetAddressesByBtcbBridgedResponse$outboundSchema;
   /** @deprecated use `GetAddressesByBtcbBridgedResponse$Outbound` instead. */
   export type Outbound = GetAddressesByBtcbBridgedResponse$Outbound;
+}
+
+export function getAddressesByBtcbBridgedResponseToJSON(
+  getAddressesByBtcbBridgedResponse: GetAddressesByBtcbBridgedResponse,
+): string {
+  return JSON.stringify(
+    GetAddressesByBtcbBridgedResponse$outboundSchema.parse(
+      getAddressesByBtcbBridgedResponse,
+    ),
+  );
+}
+
+export function getAddressesByBtcbBridgedResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAddressesByBtcbBridgedResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAddressesByBtcbBridgedResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAddressesByBtcbBridgedResponse' from JSON`,
+  );
 }

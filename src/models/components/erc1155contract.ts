@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ContractDeploymentDetails,
   ContractDeploymentDetails$inboundSchema,
@@ -154,4 +157,20 @@ export namespace Erc1155Contract$ {
   export const outboundSchema = Erc1155Contract$outboundSchema;
   /** @deprecated use `Erc1155Contract$Outbound` instead. */
   export type Outbound = Erc1155Contract$Outbound;
+}
+
+export function erc1155ContractToJSON(
+  erc1155Contract: Erc1155Contract,
+): string {
+  return JSON.stringify(Erc1155Contract$outboundSchema.parse(erc1155Contract));
+}
+
+export function erc1155ContractFromJSON(
+  jsonString: string,
+): SafeParseResult<Erc1155Contract, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Erc1155Contract$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Erc1155Contract' from JSON`,
+  );
 }

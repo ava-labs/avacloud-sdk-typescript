@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BlockchainIds,
   BlockchainIds$inboundSchema,
@@ -51,4 +54,22 @@ export namespace ChainAddressChainIdMap$ {
   export const outboundSchema = ChainAddressChainIdMap$outboundSchema;
   /** @deprecated use `ChainAddressChainIdMap$Outbound` instead. */
   export type Outbound = ChainAddressChainIdMap$Outbound;
+}
+
+export function chainAddressChainIdMapToJSON(
+  chainAddressChainIdMap: ChainAddressChainIdMap,
+): string {
+  return JSON.stringify(
+    ChainAddressChainIdMap$outboundSchema.parse(chainAddressChainIdMap),
+  );
+}
+
+export function chainAddressChainIdMapFromJSON(
+  jsonString: string,
+): SafeParseResult<ChainAddressChainIdMap, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ChainAddressChainIdMap$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChainAddressChainIdMap' from JSON`,
+  );
 }

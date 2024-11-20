@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BalanceOwner = {
   addresses: Array<string>;
@@ -46,4 +49,18 @@ export namespace BalanceOwner$ {
   export const outboundSchema = BalanceOwner$outboundSchema;
   /** @deprecated use `BalanceOwner$Outbound` instead. */
   export type Outbound = BalanceOwner$Outbound;
+}
+
+export function balanceOwnerToJSON(balanceOwner: BalanceOwner): string {
+  return JSON.stringify(BalanceOwner$outboundSchema.parse(balanceOwner));
+}
+
+export function balanceOwnerFromJSON(
+  jsonString: string,
+): SafeParseResult<BalanceOwner, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BalanceOwner$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BalanceOwner' from JSON`,
+  );
 }

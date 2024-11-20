@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetAddressesFromWebhookServerList = [
   "https://glacier-api.avax.network",
@@ -71,6 +74,26 @@ export namespace GetAddressesFromWebhookRequest$ {
   export type Outbound = GetAddressesFromWebhookRequest$Outbound;
 }
 
+export function getAddressesFromWebhookRequestToJSON(
+  getAddressesFromWebhookRequest: GetAddressesFromWebhookRequest,
+): string {
+  return JSON.stringify(
+    GetAddressesFromWebhookRequest$outboundSchema.parse(
+      getAddressesFromWebhookRequest,
+    ),
+  );
+}
+
+export function getAddressesFromWebhookRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAddressesFromWebhookRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAddressesFromWebhookRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAddressesFromWebhookRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAddressesFromWebhookResponse$inboundSchema: z.ZodType<
   GetAddressesFromWebhookResponse,
@@ -113,4 +136,24 @@ export namespace GetAddressesFromWebhookResponse$ {
   export const outboundSchema = GetAddressesFromWebhookResponse$outboundSchema;
   /** @deprecated use `GetAddressesFromWebhookResponse$Outbound` instead. */
   export type Outbound = GetAddressesFromWebhookResponse$Outbound;
+}
+
+export function getAddressesFromWebhookResponseToJSON(
+  getAddressesFromWebhookResponse: GetAddressesFromWebhookResponse,
+): string {
+  return JSON.stringify(
+    GetAddressesFromWebhookResponse$outboundSchema.parse(
+      getAddressesFromWebhookResponse,
+    ),
+  );
+}
+
+export function getAddressesFromWebhookResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAddressesFromWebhookResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAddressesFromWebhookResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAddressesFromWebhookResponse' from JSON`,
+  );
 }

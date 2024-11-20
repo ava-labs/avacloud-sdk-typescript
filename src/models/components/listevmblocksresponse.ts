@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EvmBlock,
   EvmBlock$inboundSchema,
@@ -55,4 +58,22 @@ export namespace ListEvmBlocksResponse$ {
   export const outboundSchema = ListEvmBlocksResponse$outboundSchema;
   /** @deprecated use `ListEvmBlocksResponse$Outbound` instead. */
   export type Outbound = ListEvmBlocksResponse$Outbound;
+}
+
+export function listEvmBlocksResponseToJSON(
+  listEvmBlocksResponse: ListEvmBlocksResponse,
+): string {
+  return JSON.stringify(
+    ListEvmBlocksResponse$outboundSchema.parse(listEvmBlocksResponse),
+  );
+}
+
+export function listEvmBlocksResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEvmBlocksResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEvmBlocksResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEvmBlocksResponse' from JSON`,
+  );
 }

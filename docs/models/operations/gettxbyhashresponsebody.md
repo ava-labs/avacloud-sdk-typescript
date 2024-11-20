@@ -98,7 +98,7 @@ const value: components.PChainTransaction = {
       amount: "5001000",
     },
   ],
-  amountSovBalanceBurned: [
+  amountL1ValidatorBalanceBurned: [
     {
       assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
       name: "Avalanche",

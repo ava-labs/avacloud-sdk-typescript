@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DateRangeStarsArenaMinBalanceParam = {
   firstDate: string;
@@ -55,4 +58,25 @@ export namespace DateRangeStarsArenaMinBalanceParam$ {
     DateRangeStarsArenaMinBalanceParam$outboundSchema;
   /** @deprecated use `DateRangeStarsArenaMinBalanceParam$Outbound` instead. */
   export type Outbound = DateRangeStarsArenaMinBalanceParam$Outbound;
+}
+
+export function dateRangeStarsArenaMinBalanceParamToJSON(
+  dateRangeStarsArenaMinBalanceParam: DateRangeStarsArenaMinBalanceParam,
+): string {
+  return JSON.stringify(
+    DateRangeStarsArenaMinBalanceParam$outboundSchema.parse(
+      dateRangeStarsArenaMinBalanceParam,
+    ),
+  );
+}
+
+export function dateRangeStarsArenaMinBalanceParamFromJSON(
+  jsonString: string,
+): SafeParseResult<DateRangeStarsArenaMinBalanceParam, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DateRangeStarsArenaMinBalanceParam$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DateRangeStarsArenaMinBalanceParam' from JSON`,
+  );
 }

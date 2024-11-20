@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ChainRollingWindowMetricsValue,
   ChainRollingWindowMetricsValue$inboundSchema,
@@ -51,4 +54,24 @@ export namespace RollingWindowMetricsApiResponse$ {
   export const outboundSchema = RollingWindowMetricsApiResponse$outboundSchema;
   /** @deprecated use `RollingWindowMetricsApiResponse$Outbound` instead. */
   export type Outbound = RollingWindowMetricsApiResponse$Outbound;
+}
+
+export function rollingWindowMetricsApiResponseToJSON(
+  rollingWindowMetricsApiResponse: RollingWindowMetricsApiResponse,
+): string {
+  return JSON.stringify(
+    RollingWindowMetricsApiResponse$outboundSchema.parse(
+      rollingWindowMetricsApiResponse,
+    ),
+  );
+}
+
+export function rollingWindowMetricsApiResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<RollingWindowMetricsApiResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RollingWindowMetricsApiResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RollingWindowMetricsApiResponse' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type StakingDistribution = {
   version: string;
@@ -50,4 +53,22 @@ export namespace StakingDistribution$ {
   export const outboundSchema = StakingDistribution$outboundSchema;
   /** @deprecated use `StakingDistribution$Outbound` instead. */
   export type Outbound = StakingDistribution$Outbound;
+}
+
+export function stakingDistributionToJSON(
+  stakingDistribution: StakingDistribution,
+): string {
+  return JSON.stringify(
+    StakingDistribution$outboundSchema.parse(stakingDistribution),
+  );
+}
+
+export function stakingDistributionFromJSON(
+  jsonString: string,
+): SafeParseResult<StakingDistribution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StakingDistribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StakingDistribution' from JSON`,
+  );
 }

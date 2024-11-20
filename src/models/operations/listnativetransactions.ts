@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListNativeTransactionsServerList = [
   "https://glacier-api.avax.network",
@@ -84,6 +87,26 @@ export namespace ListNativeTransactionsGlobals$ {
   export type Outbound = ListNativeTransactionsGlobals$Outbound;
 }
 
+export function listNativeTransactionsGlobalsToJSON(
+  listNativeTransactionsGlobals: ListNativeTransactionsGlobals,
+): string {
+  return JSON.stringify(
+    ListNativeTransactionsGlobals$outboundSchema.parse(
+      listNativeTransactionsGlobals,
+    ),
+  );
+}
+
+export function listNativeTransactionsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListNativeTransactionsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListNativeTransactionsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListNativeTransactionsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListNativeTransactionsRequest$inboundSchema: z.ZodType<
   ListNativeTransactionsRequest,
@@ -135,6 +158,26 @@ export namespace ListNativeTransactionsRequest$ {
   export type Outbound = ListNativeTransactionsRequest$Outbound;
 }
 
+export function listNativeTransactionsRequestToJSON(
+  listNativeTransactionsRequest: ListNativeTransactionsRequest,
+): string {
+  return JSON.stringify(
+    ListNativeTransactionsRequest$outboundSchema.parse(
+      listNativeTransactionsRequest,
+    ),
+  );
+}
+
+export function listNativeTransactionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListNativeTransactionsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListNativeTransactionsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListNativeTransactionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListNativeTransactionsResponse$inboundSchema: z.ZodType<
   ListNativeTransactionsResponse,
@@ -177,4 +220,24 @@ export namespace ListNativeTransactionsResponse$ {
   export const outboundSchema = ListNativeTransactionsResponse$outboundSchema;
   /** @deprecated use `ListNativeTransactionsResponse$Outbound` instead. */
   export type Outbound = ListNativeTransactionsResponse$Outbound;
+}
+
+export function listNativeTransactionsResponseToJSON(
+  listNativeTransactionsResponse: ListNativeTransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListNativeTransactionsResponse$outboundSchema.parse(
+      listNativeTransactionsResponse,
+    ),
+  );
+}
+
+export function listNativeTransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListNativeTransactionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListNativeTransactionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListNativeTransactionsResponse' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BlockchainInfo,
   BlockchainInfo$inboundSchema,
@@ -119,4 +122,18 @@ export namespace Subnet$ {
   export const outboundSchema = Subnet$outboundSchema;
   /** @deprecated use `Subnet$Outbound` instead. */
   export type Outbound = Subnet$Outbound;
+}
+
+export function subnetToJSON(subnet: Subnet): string {
+  return JSON.stringify(Subnet$outboundSchema.parse(subnet));
+}
+
+export function subnetFromJSON(
+  jsonString: string,
+): SafeParseResult<Subnet, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Subnet$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Subnet' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListValidatorsServerList = [
   "https://glacier-api.avax.network",
@@ -128,6 +131,24 @@ export namespace ListValidatorsGlobals$ {
   export type Outbound = ListValidatorsGlobals$Outbound;
 }
 
+export function listValidatorsGlobalsToJSON(
+  listValidatorsGlobals: ListValidatorsGlobals,
+): string {
+  return JSON.stringify(
+    ListValidatorsGlobals$outboundSchema.parse(listValidatorsGlobals),
+  );
+}
+
+export function listValidatorsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListValidatorsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListValidatorsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListValidatorsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListValidatorsRequest$inboundSchema: z.ZodType<
   ListValidatorsRequest,
@@ -209,6 +230,24 @@ export namespace ListValidatorsRequest$ {
   export type Outbound = ListValidatorsRequest$Outbound;
 }
 
+export function listValidatorsRequestToJSON(
+  listValidatorsRequest: ListValidatorsRequest,
+): string {
+  return JSON.stringify(
+    ListValidatorsRequest$outboundSchema.parse(listValidatorsRequest),
+  );
+}
+
+export function listValidatorsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListValidatorsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListValidatorsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListValidatorsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListValidatorsResponse$inboundSchema: z.ZodType<
   ListValidatorsResponse,
@@ -251,4 +290,22 @@ export namespace ListValidatorsResponse$ {
   export const outboundSchema = ListValidatorsResponse$outboundSchema;
   /** @deprecated use `ListValidatorsResponse$Outbound` instead. */
   export type Outbound = ListValidatorsResponse$Outbound;
+}
+
+export function listValidatorsResponseToJSON(
+  listValidatorsResponse: ListValidatorsResponse,
+): string {
+  return JSON.stringify(
+    ListValidatorsResponse$outboundSchema.parse(listValidatorsResponse),
+  );
+}
+
+export function listValidatorsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListValidatorsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListValidatorsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListValidatorsResponse' from JSON`,
+  );
 }

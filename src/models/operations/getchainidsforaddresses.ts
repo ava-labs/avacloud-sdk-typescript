@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetChainIdsForAddressesServerList = [
   "https://glacier-api.avax.network",
@@ -63,6 +66,26 @@ export namespace GetChainIdsForAddressesGlobals$ {
   export type Outbound = GetChainIdsForAddressesGlobals$Outbound;
 }
 
+export function getChainIdsForAddressesGlobalsToJSON(
+  getChainIdsForAddressesGlobals: GetChainIdsForAddressesGlobals,
+): string {
+  return JSON.stringify(
+    GetChainIdsForAddressesGlobals$outboundSchema.parse(
+      getChainIdsForAddressesGlobals,
+    ),
+  );
+}
+
+export function getChainIdsForAddressesGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetChainIdsForAddressesGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetChainIdsForAddressesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetChainIdsForAddressesGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetChainIdsForAddressesRequest$inboundSchema: z.ZodType<
   GetChainIdsForAddressesRequest,
@@ -100,4 +123,24 @@ export namespace GetChainIdsForAddressesRequest$ {
   export const outboundSchema = GetChainIdsForAddressesRequest$outboundSchema;
   /** @deprecated use `GetChainIdsForAddressesRequest$Outbound` instead. */
   export type Outbound = GetChainIdsForAddressesRequest$Outbound;
+}
+
+export function getChainIdsForAddressesRequestToJSON(
+  getChainIdsForAddressesRequest: GetChainIdsForAddressesRequest,
+): string {
+  return JSON.stringify(
+    GetChainIdsForAddressesRequest$outboundSchema.parse(
+      getChainIdsForAddressesRequest,
+    ),
+  );
+}
+
+export function getChainIdsForAddressesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetChainIdsForAddressesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetChainIdsForAddressesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetChainIdsForAddressesRequest' from JSON`,
+  );
 }

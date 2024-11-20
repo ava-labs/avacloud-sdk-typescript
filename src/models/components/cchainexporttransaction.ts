@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AssetAmount,
   AssetAmount$inboundSchema,
@@ -165,4 +168,22 @@ export namespace CChainExportTransaction$ {
   export const outboundSchema = CChainExportTransaction$outboundSchema;
   /** @deprecated use `CChainExportTransaction$Outbound` instead. */
   export type Outbound = CChainExportTransaction$Outbound;
+}
+
+export function cChainExportTransactionToJSON(
+  cChainExportTransaction: CChainExportTransaction,
+): string {
+  return JSON.stringify(
+    CChainExportTransaction$outboundSchema.parse(cChainExportTransaction),
+  );
+}
+
+export function cChainExportTransactionFromJSON(
+  jsonString: string,
+): SafeParseResult<CChainExportTransaction, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CChainExportTransaction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CChainExportTransaction' from JSON`,
+  );
 }

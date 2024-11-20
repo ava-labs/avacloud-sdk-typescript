@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TransactionDirectionType,
   TransactionDirectionType$inboundSchema,
@@ -62,6 +65,20 @@ export namespace SourceChainId$ {
   export type Outbound = SourceChainId$Outbound;
 }
 
+export function sourceChainIdToJSON(sourceChainId: SourceChainId): string {
+  return JSON.stringify(SourceChainId$outboundSchema.parse(sourceChainId));
+}
+
+export function sourceChainIdFromJSON(
+  jsonString: string,
+): SafeParseResult<SourceChainId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SourceChainId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SourceChainId' from JSON`,
+  );
+}
+
 /** @internal */
 export const DestinationChainId$inboundSchema: z.ZodType<
   DestinationChainId,
@@ -90,6 +107,24 @@ export namespace DestinationChainId$ {
   export const outboundSchema = DestinationChainId$outboundSchema;
   /** @deprecated use `DestinationChainId$Outbound` instead. */
   export type Outbound = DestinationChainId$Outbound;
+}
+
+export function destinationChainIdToJSON(
+  destinationChainId: DestinationChainId,
+): string {
+  return JSON.stringify(
+    DestinationChainId$outboundSchema.parse(destinationChainId),
+  );
+}
+
+export function destinationChainIdFromJSON(
+  jsonString: string,
+): SafeParseResult<DestinationChainId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DestinationChainId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DestinationChainId' from JSON`,
+  );
 }
 
 /** @internal */
@@ -136,4 +171,22 @@ export namespace TeleporterMessageInfo$ {
   export const outboundSchema = TeleporterMessageInfo$outboundSchema;
   /** @deprecated use `TeleporterMessageInfo$Outbound` instead. */
   export type Outbound = TeleporterMessageInfo$Outbound;
+}
+
+export function teleporterMessageInfoToJSON(
+  teleporterMessageInfo: TeleporterMessageInfo,
+): string {
+  return JSON.stringify(
+    TeleporterMessageInfo$outboundSchema.parse(teleporterMessageInfo),
+  );
+}
+
+export function teleporterMessageInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<TeleporterMessageInfo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TeleporterMessageInfo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeleporterMessageInfo' from JSON`,
+  );
 }

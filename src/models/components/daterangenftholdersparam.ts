@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DateRangeNftHoldersParam = {
   firstDate: string;
@@ -54,4 +57,22 @@ export namespace DateRangeNftHoldersParam$ {
   export const outboundSchema = DateRangeNftHoldersParam$outboundSchema;
   /** @deprecated use `DateRangeNftHoldersParam$Outbound` instead. */
   export type Outbound = DateRangeNftHoldersParam$Outbound;
+}
+
+export function dateRangeNftHoldersParamToJSON(
+  dateRangeNftHoldersParam: DateRangeNftHoldersParam,
+): string {
+  return JSON.stringify(
+    DateRangeNftHoldersParam$outboundSchema.parse(dateRangeNftHoldersParam),
+  );
+}
+
+export function dateRangeNftHoldersParamFromJSON(
+  jsonString: string,
+): SafeParseResult<DateRangeNftHoldersParam, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DateRangeNftHoldersParam$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DateRangeNftHoldersParam' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CChainAtomicBalances,
   CChainAtomicBalances$inboundSchema,
@@ -58,4 +61,24 @@ export namespace ListCChainAtomicBalancesResponse$ {
   export const outboundSchema = ListCChainAtomicBalancesResponse$outboundSchema;
   /** @deprecated use `ListCChainAtomicBalancesResponse$Outbound` instead. */
   export type Outbound = ListCChainAtomicBalancesResponse$Outbound;
+}
+
+export function listCChainAtomicBalancesResponseToJSON(
+  listCChainAtomicBalancesResponse: ListCChainAtomicBalancesResponse,
+): string {
+  return JSON.stringify(
+    ListCChainAtomicBalancesResponse$outboundSchema.parse(
+      listCChainAtomicBalancesResponse,
+    ),
+  );
+}
+
+export function listCChainAtomicBalancesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCChainAtomicBalancesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCChainAtomicBalancesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCChainAtomicBalancesResponse' from JSON`,
+  );
 }

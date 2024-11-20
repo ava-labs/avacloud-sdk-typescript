@@ -21,7 +21,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
-import { ListSubnetOnlyValidatorsServerList } from "../models/operations/listsubnetonlyvalidators.js";
+import { ListL1ValidatorsServerList } from "../models/operations/listl1validators.js";
 import { Result } from "../types/fp.js";
 import {
   createPageIterator,
@@ -31,19 +31,19 @@ import {
 } from "../types/operations.js";
 
 /**
- * List subnet-only validators
+ * List L1 validators
  *
  * @remarks
- * Lists details for subnet only validators. By default, returns details for all active subnet only validators. Filterable by validator node ids, subnet id, and validation id.
+ * Lists details for L1 validators. By default, returns details for all active L1 validators. Filterable by validator node ids, subnet id, and validation id.
  */
-export async function dataPrimaryNetworkListSubnetOnlyValidators(
+export async function dataPrimaryNetworkListL1Validators(
   client: AvaCloudSDKCore,
-  request: operations.ListSubnetOnlyValidatorsRequest,
+  request: operations.ListL1ValidatorsRequest,
   options?: RequestOptions & { serverURL?: string },
 ): Promise<
   PageIterator<
     Result<
-      operations.ListSubnetOnlyValidatorsResponse,
+      operations.ListL1ValidatorsResponse,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -64,8 +64,7 @@ export async function dataPrimaryNetworkListSubnetOnlyValidators(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.ListSubnetOnlyValidatorsRequest$outboundSchema.parse(value),
+    (value) => operations.ListL1ValidatorsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -75,9 +74,7 @@ export async function dataPrimaryNetworkListSubnetOnlyValidators(
   const body = null;
 
   const baseURL = options?.serverURL
-    || pathToFunc(ListSubnetOnlyValidatorsServerList[0], {
-      charEncoding: "percent",
-    })();
+    || pathToFunc(ListL1ValidatorsServerList[0], { charEncoding: "percent" })();
 
   const pathParams = {
     network: encodeSimple(
@@ -87,16 +84,14 @@ export async function dataPrimaryNetworkListSubnetOnlyValidators(
     ),
   };
 
-  const path = pathToFunc("/v1/networks/{network}/subnetOnlyValidators")(
-    pathParams,
-  );
+  const path = pathToFunc("/v1/networks/{network}/l1Validators")(pathParams);
 
   const query = encodeFormQuery({
-    "includeInactiveSovs": payload.includeInactiveSovs,
+    "includeInactiveL1Validators": payload.includeInactiveL1Validators,
+    "l1ValidationId": payload.l1ValidationId,
     "nodeId": payload.nodeId,
     "pageSize": payload.pageSize,
     "pageToken": payload.pageToken,
-    "sovValidationId": payload.sovValidationId,
     "subnetId": payload.subnetId,
   });
 
@@ -109,7 +104,7 @@ export async function dataPrimaryNetworkListSubnetOnlyValidators(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    operationID: "listSubnetOnlyValidators",
+    operationID: "listL1Validators",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -173,7 +168,7 @@ export async function dataPrimaryNetworkListSubnetOnlyValidators(
   };
 
   const [result, raw] = await M.match<
-    operations.ListSubnetOnlyValidatorsResponse,
+    operations.ListL1ValidatorsResponse,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -190,7 +185,7 @@ export async function dataPrimaryNetworkListSubnetOnlyValidators(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.ListSubnetOnlyValidatorsResponse$inboundSchema, {
+    M.json(200, operations.ListL1ValidatorsResponse$inboundSchema, {
       key: "Result",
     }),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
@@ -211,7 +206,7 @@ export async function dataPrimaryNetworkListSubnetOnlyValidators(
     responseData: unknown,
   ): Paginator<
     Result<
-      operations.ListSubnetOnlyValidatorsResponse,
+      operations.ListL1ValidatorsResponse,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -235,7 +230,7 @@ export async function dataPrimaryNetworkListSubnetOnlyValidators(
     }
 
     return () =>
-      dataPrimaryNetworkListSubnetOnlyValidators(
+      dataPrimaryNetworkListL1Validators(
         client,
         {
           ...request,

@@ -4,7 +4,12 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { collectExtraKeys as collectExtraKeys$ } from "../../lib/schemas.js";
+import {
+  collectExtraKeys as collectExtraKeys$,
+  safeParse,
+} from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const DataHealthCheckServerList = [
   "https://glacier-api.avax.network",
@@ -83,6 +88,24 @@ export namespace DataHealthCheckInfo$ {
   export type Outbound = DataHealthCheckInfo$Outbound;
 }
 
+export function dataHealthCheckInfoToJSON(
+  dataHealthCheckInfo: DataHealthCheckInfo,
+): string {
+  return JSON.stringify(
+    DataHealthCheckInfo$outboundSchema.parse(dataHealthCheckInfo),
+  );
+}
+
+export function dataHealthCheckInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<DataHealthCheckInfo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DataHealthCheckInfo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DataHealthCheckInfo' from JSON`,
+  );
+}
+
 /** @internal */
 export const DataHealthCheckError$inboundSchema: z.ZodType<
   DataHealthCheckError,
@@ -131,6 +154,24 @@ export namespace DataHealthCheckError$ {
   export type Outbound = DataHealthCheckError$Outbound;
 }
 
+export function dataHealthCheckErrorToJSON(
+  dataHealthCheckError: DataHealthCheckError,
+): string {
+  return JSON.stringify(
+    DataHealthCheckError$outboundSchema.parse(dataHealthCheckError),
+  );
+}
+
+export function dataHealthCheckErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<DataHealthCheckError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DataHealthCheckError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DataHealthCheckError' from JSON`,
+  );
+}
+
 /** @internal */
 export const DataHealthCheckDetails$inboundSchema: z.ZodType<
   DataHealthCheckDetails,
@@ -177,6 +218,24 @@ export namespace DataHealthCheckDetails$ {
   export const outboundSchema = DataHealthCheckDetails$outboundSchema;
   /** @deprecated use `DataHealthCheckDetails$Outbound` instead. */
   export type Outbound = DataHealthCheckDetails$Outbound;
+}
+
+export function dataHealthCheckDetailsToJSON(
+  dataHealthCheckDetails: DataHealthCheckDetails,
+): string {
+  return JSON.stringify(
+    DataHealthCheckDetails$outboundSchema.parse(dataHealthCheckDetails),
+  );
+}
+
+export function dataHealthCheckDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<DataHealthCheckDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DataHealthCheckDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DataHealthCheckDetails' from JSON`,
+  );
 }
 
 /** @internal */
@@ -228,4 +287,24 @@ export namespace DataHealthCheckResponseBody$ {
   export const outboundSchema = DataHealthCheckResponseBody$outboundSchema;
   /** @deprecated use `DataHealthCheckResponseBody$Outbound` instead. */
   export type Outbound = DataHealthCheckResponseBody$Outbound;
+}
+
+export function dataHealthCheckResponseBodyToJSON(
+  dataHealthCheckResponseBody: DataHealthCheckResponseBody,
+): string {
+  return JSON.stringify(
+    DataHealthCheckResponseBody$outboundSchema.parse(
+      dataHealthCheckResponseBody,
+    ),
+  );
+}
+
+export function dataHealthCheckResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DataHealthCheckResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DataHealthCheckResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DataHealthCheckResponseBody' from JSON`,
+  );
 }

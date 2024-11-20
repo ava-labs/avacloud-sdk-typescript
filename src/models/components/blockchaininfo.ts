@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BlockchainInfo = {
   blockchainId: string;
@@ -42,4 +45,18 @@ export namespace BlockchainInfo$ {
   export const outboundSchema = BlockchainInfo$outboundSchema;
   /** @deprecated use `BlockchainInfo$Outbound` instead. */
   export type Outbound = BlockchainInfo$Outbound;
+}
+
+export function blockchainInfoToJSON(blockchainInfo: BlockchainInfo): string {
+  return JSON.stringify(BlockchainInfo$outboundSchema.parse(blockchainInfo));
+}
+
+export function blockchainInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<BlockchainInfo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BlockchainInfo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BlockchainInfo' from JSON`,
+  );
 }

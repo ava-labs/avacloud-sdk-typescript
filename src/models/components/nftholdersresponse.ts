@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AddressDetails,
   AddressDetails$inboundSchema,
@@ -86,4 +89,22 @@ export namespace NftHoldersResponse$ {
   export const outboundSchema = NftHoldersResponse$outboundSchema;
   /** @deprecated use `NftHoldersResponse$Outbound` instead. */
   export type Outbound = NftHoldersResponse$Outbound;
+}
+
+export function nftHoldersResponseToJSON(
+  nftHoldersResponse: NftHoldersResponse,
+): string {
+  return JSON.stringify(
+    NftHoldersResponse$outboundSchema.parse(nftHoldersResponse),
+  );
+}
+
+export function nftHoldersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<NftHoldersResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NftHoldersResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NftHoldersResponse' from JSON`,
+  );
 }

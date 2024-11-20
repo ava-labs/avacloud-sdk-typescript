@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * The error message describing the reason for the exception
@@ -79,6 +82,24 @@ export namespace InternalServerErrorMessage$ {
   export const outboundSchema = InternalServerErrorMessage$outboundSchema;
   /** @deprecated use `InternalServerErrorMessage$Outbound` instead. */
   export type Outbound = InternalServerErrorMessage$Outbound;
+}
+
+export function internalServerErrorMessageToJSON(
+  internalServerErrorMessage: InternalServerErrorMessage,
+): string {
+  return JSON.stringify(
+    InternalServerErrorMessage$outboundSchema.parse(internalServerErrorMessage),
+  );
+}
+
+export function internalServerErrorMessageFromJSON(
+  jsonString: string,
+): SafeParseResult<InternalServerErrorMessage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InternalServerErrorMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InternalServerErrorMessage' from JSON`,
+  );
 }
 
 /** @internal */

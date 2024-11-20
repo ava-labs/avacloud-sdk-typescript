@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AssetWithPriceInfo,
   AssetWithPriceInfo$inboundSchema,
@@ -96,4 +99,22 @@ export namespace HistoricalReward$ {
   export const outboundSchema = HistoricalReward$outboundSchema;
   /** @deprecated use `HistoricalReward$Outbound` instead. */
   export type Outbound = HistoricalReward$Outbound;
+}
+
+export function historicalRewardToJSON(
+  historicalReward: HistoricalReward,
+): string {
+  return JSON.stringify(
+    HistoricalReward$outboundSchema.parse(historicalReward),
+  );
+}
+
+export function historicalRewardFromJSON(
+  jsonString: string,
+): SafeParseResult<HistoricalReward, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HistoricalReward$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HistoricalReward' from JSON`,
+  );
 }

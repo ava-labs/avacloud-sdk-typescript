@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AllTimeErc20BalanceQueryDto,
   AllTimeErc20BalanceQueryDto$inboundSchema,
@@ -250,6 +253,20 @@ export namespace Queries$ {
   export type Outbound = Queries$Outbound;
 }
 
+export function queriesToJSON(queries: Queries): string {
+  return JSON.stringify(Queries$outboundSchema.parse(queries));
+}
+
+export function queriesFromJSON(
+  jsonString: string,
+): SafeParseResult<Queries, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Queries$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Queries' from JSON`,
+  );
+}
+
 /** @internal */
 export const CompositeQueryRequestDto$inboundSchema: z.ZodType<
   CompositeQueryRequestDto,
@@ -416,4 +433,22 @@ export namespace CompositeQueryRequestDto$ {
   export const outboundSchema = CompositeQueryRequestDto$outboundSchema;
   /** @deprecated use `CompositeQueryRequestDto$Outbound` instead. */
   export type Outbound = CompositeQueryRequestDto$Outbound;
+}
+
+export function compositeQueryRequestDtoToJSON(
+  compositeQueryRequestDto: CompositeQueryRequestDto,
+): string {
+  return JSON.stringify(
+    CompositeQueryRequestDto$outboundSchema.parse(compositeQueryRequestDto),
+  );
+}
+
+export function compositeQueryRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<CompositeQueryRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompositeQueryRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompositeQueryRequestDto' from JSON`,
+  );
 }

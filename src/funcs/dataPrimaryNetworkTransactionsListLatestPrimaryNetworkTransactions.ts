@@ -38,7 +38,7 @@ import {
  *
  * Transactions are filterable by addresses, txTypes, and timestamps. When querying for latest transactions without an address parameter, filtering by txTypes and timestamps is not supported. An address filter must be provided to utilize txTypes and timestamp filters.
  *
- * For P-Chain, you can fetch all the Subnet-only-Validator (SoV) related transactions like ConvertSubnetTx, IncreaseBalanceTx etc. using the unique SoV validation ID. These transactions are further filterable by txTypes and timestamps as well.
+ * For P-Chain, you can fetch all L1 validators related transactions like ConvertSubnetToL1Tx, IncreaseL1ValidatorBalanceTx etc. using the unique L1 validation ID. These transactions are further filterable by txTypes and timestamps as well.
  *
  * Given that each transaction may return a large number of UTXO objects, bounded only by the maximum transaction size, the query may return less transactions than the provided page size. The result will contain less results than the page size if the number of utxos contained in the resulting transactions reach a performance threshold.
  */
@@ -105,10 +105,10 @@ export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTran
   const query = encodeFormQuery({
     "addresses": payload.addresses,
     "endTimestamp": payload.endTimestamp,
+    "l1ValidationId": payload.l1ValidationId,
     "pageSize": payload.pageSize,
     "pageToken": payload.pageToken,
     "sortOrder": payload.sortOrder,
-    "sovValidationId": payload.sovValidationId,
     "startTimestamp": payload.startTimestamp,
     "txTypes": payload.txTypes,
   });

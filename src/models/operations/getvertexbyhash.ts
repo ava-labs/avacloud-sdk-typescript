@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetVertexByHashServerList = [
   "https://glacier-api.avax.network",
@@ -67,6 +70,24 @@ export namespace GetVertexByHashGlobals$ {
   export type Outbound = GetVertexByHashGlobals$Outbound;
 }
 
+export function getVertexByHashGlobalsToJSON(
+  getVertexByHashGlobals: GetVertexByHashGlobals,
+): string {
+  return JSON.stringify(
+    GetVertexByHashGlobals$outboundSchema.parse(getVertexByHashGlobals),
+  );
+}
+
+export function getVertexByHashGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetVertexByHashGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetVertexByHashGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetVertexByHashGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetVertexByHashRequest$inboundSchema: z.ZodType<
   GetVertexByHashRequest,
@@ -107,4 +128,22 @@ export namespace GetVertexByHashRequest$ {
   export const outboundSchema = GetVertexByHashRequest$outboundSchema;
   /** @deprecated use `GetVertexByHashRequest$Outbound` instead. */
   export type Outbound = GetVertexByHashRequest$Outbound;
+}
+
+export function getVertexByHashRequestToJSON(
+  getVertexByHashRequest: GetVertexByHashRequest,
+): string {
+  return JSON.stringify(
+    GetVertexByHashRequest$outboundSchema.parse(getVertexByHashRequest),
+  );
+}
+
+export function getVertexByHashRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetVertexByHashRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetVertexByHashRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetVertexByHashRequest' from JSON`,
+  );
 }

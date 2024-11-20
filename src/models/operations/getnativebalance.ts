@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetNativeBalanceServerList = [
   "https://glacier-api.avax.network",
@@ -71,6 +74,24 @@ export namespace GetNativeBalanceGlobals$ {
   export type Outbound = GetNativeBalanceGlobals$Outbound;
 }
 
+export function getNativeBalanceGlobalsToJSON(
+  getNativeBalanceGlobals: GetNativeBalanceGlobals,
+): string {
+  return JSON.stringify(
+    GetNativeBalanceGlobals$outboundSchema.parse(getNativeBalanceGlobals),
+  );
+}
+
+export function getNativeBalanceGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetNativeBalanceGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetNativeBalanceGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetNativeBalanceGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetNativeBalanceRequest$inboundSchema: z.ZodType<
   GetNativeBalanceRequest,
@@ -114,4 +135,22 @@ export namespace GetNativeBalanceRequest$ {
   export const outboundSchema = GetNativeBalanceRequest$outboundSchema;
   /** @deprecated use `GetNativeBalanceRequest$Outbound` instead. */
   export type Outbound = GetNativeBalanceRequest$Outbound;
+}
+
+export function getNativeBalanceRequestToJSON(
+  getNativeBalanceRequest: GetNativeBalanceRequest,
+): string {
+  return JSON.stringify(
+    GetNativeBalanceRequest$outboundSchema.parse(getNativeBalanceRequest),
+  );
+}
+
+export function getNativeBalanceRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetNativeBalanceRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetNativeBalanceRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetNativeBalanceRequest' from JSON`,
+  );
 }

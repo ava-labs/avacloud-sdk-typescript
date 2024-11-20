@@ -4,8 +4,11 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetApiLogsServerList = [
   "https://glacier-api.avax.network",
@@ -154,6 +157,24 @@ export namespace GetApiLogsRequest$ {
   export type Outbound = GetApiLogsRequest$Outbound;
 }
 
+export function getApiLogsRequestToJSON(
+  getApiLogsRequest: GetApiLogsRequest,
+): string {
+  return JSON.stringify(
+    GetApiLogsRequest$outboundSchema.parse(getApiLogsRequest),
+  );
+}
+
+export function getApiLogsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetApiLogsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetApiLogsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetApiLogsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetApiLogsResponse$inboundSchema: z.ZodType<
   GetApiLogsResponse,
@@ -196,4 +217,22 @@ export namespace GetApiLogsResponse$ {
   export const outboundSchema = GetApiLogsResponse$outboundSchema;
   /** @deprecated use `GetApiLogsResponse$Outbound` instead. */
   export type Outbound = GetApiLogsResponse$Outbound;
+}
+
+export function getApiLogsResponseToJSON(
+  getApiLogsResponse: GetApiLogsResponse,
+): string {
+  return JSON.stringify(
+    GetApiLogsResponse$outboundSchema.parse(getApiLogsResponse),
+  );
+}
+
+export function getApiLogsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetApiLogsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetApiLogsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetApiLogsResponse' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PrimaryNetworkOperationType,
   PrimaryNetworkOperationType$inboundSchema,
@@ -83,4 +86,31 @@ export namespace CreatePrimaryNetworkTransactionExportRequest$ {
     CreatePrimaryNetworkTransactionExportRequest$outboundSchema;
   /** @deprecated use `CreatePrimaryNetworkTransactionExportRequest$Outbound` instead. */
   export type Outbound = CreatePrimaryNetworkTransactionExportRequest$Outbound;
+}
+
+export function createPrimaryNetworkTransactionExportRequestToJSON(
+  createPrimaryNetworkTransactionExportRequest:
+    CreatePrimaryNetworkTransactionExportRequest,
+): string {
+  return JSON.stringify(
+    CreatePrimaryNetworkTransactionExportRequest$outboundSchema.parse(
+      createPrimaryNetworkTransactionExportRequest,
+    ),
+  );
+}
+
+export function createPrimaryNetworkTransactionExportRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreatePrimaryNetworkTransactionExportRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreatePrimaryNetworkTransactionExportRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreatePrimaryNetworkTransactionExportRequest' from JSON`,
+  );
 }

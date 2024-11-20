@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LatestStarsArenaBalanceParams = {
   minBalance: string;
@@ -46,4 +49,24 @@ export namespace LatestStarsArenaBalanceParams$ {
   export const outboundSchema = LatestStarsArenaBalanceParams$outboundSchema;
   /** @deprecated use `LatestStarsArenaBalanceParams$Outbound` instead. */
   export type Outbound = LatestStarsArenaBalanceParams$Outbound;
+}
+
+export function latestStarsArenaBalanceParamsToJSON(
+  latestStarsArenaBalanceParams: LatestStarsArenaBalanceParams,
+): string {
+  return JSON.stringify(
+    LatestStarsArenaBalanceParams$outboundSchema.parse(
+      latestStarsArenaBalanceParams,
+    ),
+  );
+}
+
+export function latestStarsArenaBalanceParamsFromJSON(
+  jsonString: string,
+): SafeParseResult<LatestStarsArenaBalanceParams, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LatestStarsArenaBalanceParams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LatestStarsArenaBalanceParams' from JSON`,
+  );
 }

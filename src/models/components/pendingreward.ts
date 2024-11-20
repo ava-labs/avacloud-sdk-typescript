@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AssetAmount,
   AssetAmount$inboundSchema,
@@ -91,4 +94,18 @@ export namespace PendingReward$ {
   export const outboundSchema = PendingReward$outboundSchema;
   /** @deprecated use `PendingReward$Outbound` instead. */
   export type Outbound = PendingReward$Outbound;
+}
+
+export function pendingRewardToJSON(pendingReward: PendingReward): string {
+  return JSON.stringify(PendingReward$outboundSchema.parse(pendingReward));
+}
+
+export function pendingRewardFromJSON(
+  jsonString: string,
+): SafeParseResult<PendingReward, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PendingReward$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PendingReward' from JSON`,
+  );
 }

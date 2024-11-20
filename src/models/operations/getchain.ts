@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetChainServerList = [
   "https://metrics.avax.network",
@@ -58,6 +61,22 @@ export namespace GetChainGlobals$ {
   export type Outbound = GetChainGlobals$Outbound;
 }
 
+export function getChainGlobalsToJSON(
+  getChainGlobals: GetChainGlobals,
+): string {
+  return JSON.stringify(GetChainGlobals$outboundSchema.parse(getChainGlobals));
+}
+
+export function getChainGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetChainGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetChainGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetChainGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetChainRequest$inboundSchema: z.ZodType<
   GetChainRequest,
@@ -92,4 +111,20 @@ export namespace GetChainRequest$ {
   export const outboundSchema = GetChainRequest$outboundSchema;
   /** @deprecated use `GetChainRequest$Outbound` instead. */
   export type Outbound = GetChainRequest$Outbound;
+}
+
+export function getChainRequestToJSON(
+  getChainRequest: GetChainRequest,
+): string {
+  return JSON.stringify(GetChainRequest$outboundSchema.parse(getChainRequest));
+}
+
+export function getChainRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetChainRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetChainRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetChainRequest' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListActivePrimaryNetworkStakingTransactionsServerList = [
   "https://glacier-api.avax.network",
@@ -101,6 +104,33 @@ export namespace ListActivePrimaryNetworkStakingTransactionsGlobals$ {
     ListActivePrimaryNetworkStakingTransactionsGlobals$Outbound;
 }
 
+export function listActivePrimaryNetworkStakingTransactionsGlobalsToJSON(
+  listActivePrimaryNetworkStakingTransactionsGlobals:
+    ListActivePrimaryNetworkStakingTransactionsGlobals,
+): string {
+  return JSON.stringify(
+    ListActivePrimaryNetworkStakingTransactionsGlobals$outboundSchema.parse(
+      listActivePrimaryNetworkStakingTransactionsGlobals,
+    ),
+  );
+}
+
+export function listActivePrimaryNetworkStakingTransactionsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListActivePrimaryNetworkStakingTransactionsGlobals,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListActivePrimaryNetworkStakingTransactionsGlobals$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListActivePrimaryNetworkStakingTransactionsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListActivePrimaryNetworkStakingTransactionsRequest$inboundSchema:
   z.ZodType<
@@ -166,6 +196,33 @@ export namespace ListActivePrimaryNetworkStakingTransactionsRequest$ {
     ListActivePrimaryNetworkStakingTransactionsRequest$Outbound;
 }
 
+export function listActivePrimaryNetworkStakingTransactionsRequestToJSON(
+  listActivePrimaryNetworkStakingTransactionsRequest:
+    ListActivePrimaryNetworkStakingTransactionsRequest,
+): string {
+  return JSON.stringify(
+    ListActivePrimaryNetworkStakingTransactionsRequest$outboundSchema.parse(
+      listActivePrimaryNetworkStakingTransactionsRequest,
+    ),
+  );
+}
+
+export function listActivePrimaryNetworkStakingTransactionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListActivePrimaryNetworkStakingTransactionsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListActivePrimaryNetworkStakingTransactionsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListActivePrimaryNetworkStakingTransactionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListActivePrimaryNetworkStakingTransactionsResponse$inboundSchema:
   z.ZodType<
@@ -213,4 +270,31 @@ export namespace ListActivePrimaryNetworkStakingTransactionsResponse$ {
   /** @deprecated use `ListActivePrimaryNetworkStakingTransactionsResponse$Outbound` instead. */
   export type Outbound =
     ListActivePrimaryNetworkStakingTransactionsResponse$Outbound;
+}
+
+export function listActivePrimaryNetworkStakingTransactionsResponseToJSON(
+  listActivePrimaryNetworkStakingTransactionsResponse:
+    ListActivePrimaryNetworkStakingTransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListActivePrimaryNetworkStakingTransactionsResponse$outboundSchema.parse(
+      listActivePrimaryNetworkStakingTransactionsResponse,
+    ),
+  );
+}
+
+export function listActivePrimaryNetworkStakingTransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListActivePrimaryNetworkStakingTransactionsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListActivePrimaryNetworkStakingTransactionsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListActivePrimaryNetworkStakingTransactionsResponse' from JSON`,
+  );
 }

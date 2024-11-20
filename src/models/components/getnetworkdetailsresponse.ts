@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DelegatorsDetails,
   DelegatorsDetails$inboundSchema,
@@ -58,4 +61,22 @@ export namespace GetNetworkDetailsResponse$ {
   export const outboundSchema = GetNetworkDetailsResponse$outboundSchema;
   /** @deprecated use `GetNetworkDetailsResponse$Outbound` instead. */
   export type Outbound = GetNetworkDetailsResponse$Outbound;
+}
+
+export function getNetworkDetailsResponseToJSON(
+  getNetworkDetailsResponse: GetNetworkDetailsResponse,
+): string {
+  return JSON.stringify(
+    GetNetworkDetailsResponse$outboundSchema.parse(getNetworkDetailsResponse),
+  );
+}
+
+export function getNetworkDetailsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetNetworkDetailsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetNetworkDetailsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetNetworkDetailsResponse' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Blockchain,
   Blockchain$inboundSchema,
@@ -55,4 +58,22 @@ export namespace ListBlockchainsResponse$ {
   export const outboundSchema = ListBlockchainsResponse$outboundSchema;
   /** @deprecated use `ListBlockchainsResponse$Outbound` instead. */
   export type Outbound = ListBlockchainsResponse$Outbound;
+}
+
+export function listBlockchainsResponseToJSON(
+  listBlockchainsResponse: ListBlockchainsResponse,
+): string {
+  return JSON.stringify(
+    ListBlockchainsResponse$outboundSchema.parse(listBlockchainsResponse),
+  );
+}
+
+export function listBlockchainsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListBlockchainsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListBlockchainsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListBlockchainsResponse' from JSON`,
+  );
 }

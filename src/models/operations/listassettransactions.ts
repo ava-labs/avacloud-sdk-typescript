@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListAssetTransactionsServerList = [
   "https://glacier-api.avax.network",
@@ -92,6 +95,26 @@ export namespace ListAssetTransactionsGlobals$ {
   export type Outbound = ListAssetTransactionsGlobals$Outbound;
 }
 
+export function listAssetTransactionsGlobalsToJSON(
+  listAssetTransactionsGlobals: ListAssetTransactionsGlobals,
+): string {
+  return JSON.stringify(
+    ListAssetTransactionsGlobals$outboundSchema.parse(
+      listAssetTransactionsGlobals,
+    ),
+  );
+}
+
+export function listAssetTransactionsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAssetTransactionsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAssetTransactionsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAssetTransactionsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAssetTransactionsRequest$inboundSchema: z.ZodType<
   ListAssetTransactionsRequest,
@@ -149,6 +172,26 @@ export namespace ListAssetTransactionsRequest$ {
   export type Outbound = ListAssetTransactionsRequest$Outbound;
 }
 
+export function listAssetTransactionsRequestToJSON(
+  listAssetTransactionsRequest: ListAssetTransactionsRequest,
+): string {
+  return JSON.stringify(
+    ListAssetTransactionsRequest$outboundSchema.parse(
+      listAssetTransactionsRequest,
+    ),
+  );
+}
+
+export function listAssetTransactionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAssetTransactionsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAssetTransactionsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAssetTransactionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAssetTransactionsResponse$inboundSchema: z.ZodType<
   ListAssetTransactionsResponse,
@@ -191,4 +234,24 @@ export namespace ListAssetTransactionsResponse$ {
   export const outboundSchema = ListAssetTransactionsResponse$outboundSchema;
   /** @deprecated use `ListAssetTransactionsResponse$Outbound` instead. */
   export type Outbound = ListAssetTransactionsResponse$Outbound;
+}
+
+export function listAssetTransactionsResponseToJSON(
+  listAssetTransactionsResponse: ListAssetTransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListAssetTransactionsResponse$outboundSchema.parse(
+      listAssetTransactionsResponse,
+    ),
+  );
+}
+
+export function listAssetTransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAssetTransactionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAssetTransactionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAssetTransactionsResponse' from JSON`,
+  );
 }

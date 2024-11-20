@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetContractMetadataServerList = [
   "https://glacier-api.avax.network",
@@ -72,6 +75,24 @@ export namespace GetContractMetadataGlobals$ {
   export type Outbound = GetContractMetadataGlobals$Outbound;
 }
 
+export function getContractMetadataGlobalsToJSON(
+  getContractMetadataGlobals: GetContractMetadataGlobals,
+): string {
+  return JSON.stringify(
+    GetContractMetadataGlobals$outboundSchema.parse(getContractMetadataGlobals),
+  );
+}
+
+export function getContractMetadataGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetContractMetadataGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetContractMetadataGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetContractMetadataGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetContractMetadataRequest$inboundSchema: z.ZodType<
   GetContractMetadataRequest,
@@ -109,6 +130,24 @@ export namespace GetContractMetadataRequest$ {
   export const outboundSchema = GetContractMetadataRequest$outboundSchema;
   /** @deprecated use `GetContractMetadataRequest$Outbound` instead. */
   export type Outbound = GetContractMetadataRequest$Outbound;
+}
+
+export function getContractMetadataRequestToJSON(
+  getContractMetadataRequest: GetContractMetadataRequest,
+): string {
+  return JSON.stringify(
+    GetContractMetadataRequest$outboundSchema.parse(getContractMetadataRequest),
+  );
+}
+
+export function getContractMetadataRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetContractMetadataRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetContractMetadataRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetContractMetadataRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -185,4 +224,24 @@ export namespace GetContractMetadataResponseBody$ {
   export const outboundSchema = GetContractMetadataResponseBody$outboundSchema;
   /** @deprecated use `GetContractMetadataResponseBody$Outbound` instead. */
   export type Outbound = GetContractMetadataResponseBody$Outbound;
+}
+
+export function getContractMetadataResponseBodyToJSON(
+  getContractMetadataResponseBody: GetContractMetadataResponseBody,
+): string {
+  return JSON.stringify(
+    GetContractMetadataResponseBody$outboundSchema.parse(
+      getContractMetadataResponseBody,
+    ),
+  );
+}
+
+export function getContractMetadataResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetContractMetadataResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetContractMetadataResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetContractMetadataResponseBody' from JSON`,
+  );
 }

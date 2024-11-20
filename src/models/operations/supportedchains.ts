@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const SupportedChainsServerList = [
   "https://glacier-api.avax.network",
@@ -57,4 +60,22 @@ export namespace SupportedChainsRequest$ {
   export const outboundSchema = SupportedChainsRequest$outboundSchema;
   /** @deprecated use `SupportedChainsRequest$Outbound` instead. */
   export type Outbound = SupportedChainsRequest$Outbound;
+}
+
+export function supportedChainsRequestToJSON(
+  supportedChainsRequest: SupportedChainsRequest,
+): string {
+  return JSON.stringify(
+    SupportedChainsRequest$outboundSchema.parse(supportedChainsRequest),
+  );
+}
+
+export function supportedChainsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<SupportedChainsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SupportedChainsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SupportedChainsRequest' from JSON`,
+  );
 }

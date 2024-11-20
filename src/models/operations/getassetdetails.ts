@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetAssetDetailsServerList = [
   "https://glacier-api.avax.network",
@@ -67,6 +70,24 @@ export namespace GetAssetDetailsGlobals$ {
   export type Outbound = GetAssetDetailsGlobals$Outbound;
 }
 
+export function getAssetDetailsGlobalsToJSON(
+  getAssetDetailsGlobals: GetAssetDetailsGlobals,
+): string {
+  return JSON.stringify(
+    GetAssetDetailsGlobals$outboundSchema.parse(getAssetDetailsGlobals),
+  );
+}
+
+export function getAssetDetailsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAssetDetailsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAssetDetailsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAssetDetailsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAssetDetailsRequest$inboundSchema: z.ZodType<
   GetAssetDetailsRequest,
@@ -107,4 +128,22 @@ export namespace GetAssetDetailsRequest$ {
   export const outboundSchema = GetAssetDetailsRequest$outboundSchema;
   /** @deprecated use `GetAssetDetailsRequest$Outbound` instead. */
   export type Outbound = GetAssetDetailsRequest$Outbound;
+}
+
+export function getAssetDetailsRequestToJSON(
+  getAssetDetailsRequest: GetAssetDetailsRequest,
+): string {
+  return JSON.stringify(
+    GetAssetDetailsRequest$outboundSchema.parse(getAssetDetailsRequest),
+  );
+}
+
+export function getAssetDetailsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAssetDetailsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAssetDetailsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAssetDetailsRequest' from JSON`,
+  );
 }

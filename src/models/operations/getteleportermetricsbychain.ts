@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetTeleporterMetricsByChainServerList = [
   "https://metrics.avax.network",
@@ -64,6 +67,27 @@ export namespace GetTeleporterMetricsByChainGlobals$ {
   export type Outbound = GetTeleporterMetricsByChainGlobals$Outbound;
 }
 
+export function getTeleporterMetricsByChainGlobalsToJSON(
+  getTeleporterMetricsByChainGlobals: GetTeleporterMetricsByChainGlobals,
+): string {
+  return JSON.stringify(
+    GetTeleporterMetricsByChainGlobals$outboundSchema.parse(
+      getTeleporterMetricsByChainGlobals,
+    ),
+  );
+}
+
+export function getTeleporterMetricsByChainGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTeleporterMetricsByChainGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetTeleporterMetricsByChainGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTeleporterMetricsByChainGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetTeleporterMetricsByChainRequest$inboundSchema: z.ZodType<
   GetTeleporterMetricsByChainRequest,
@@ -102,4 +126,25 @@ export namespace GetTeleporterMetricsByChainRequest$ {
     GetTeleporterMetricsByChainRequest$outboundSchema;
   /** @deprecated use `GetTeleporterMetricsByChainRequest$Outbound` instead. */
   export type Outbound = GetTeleporterMetricsByChainRequest$Outbound;
+}
+
+export function getTeleporterMetricsByChainRequestToJSON(
+  getTeleporterMetricsByChainRequest: GetTeleporterMetricsByChainRequest,
+): string {
+  return JSON.stringify(
+    GetTeleporterMetricsByChainRequest$outboundSchema.parse(
+      getTeleporterMetricsByChainRequest,
+    ),
+  );
+}
+
+export function getTeleporterMetricsByChainRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTeleporterMetricsByChainRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetTeleporterMetricsByChainRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTeleporterMetricsByChainRequest' from JSON`,
+  );
 }

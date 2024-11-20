@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type TeleporterReceipt = {
   receivedMessageNonce: string;
@@ -46,4 +49,22 @@ export namespace TeleporterReceipt$ {
   export const outboundSchema = TeleporterReceipt$outboundSchema;
   /** @deprecated use `TeleporterReceipt$Outbound` instead. */
   export type Outbound = TeleporterReceipt$Outbound;
+}
+
+export function teleporterReceiptToJSON(
+  teleporterReceipt: TeleporterReceipt,
+): string {
+  return JSON.stringify(
+    TeleporterReceipt$outboundSchema.parse(teleporterReceipt),
+  );
+}
+
+export function teleporterReceiptFromJSON(
+  jsonString: string,
+): SafeParseResult<TeleporterReceipt, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TeleporterReceipt$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeleporterReceipt' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetValidatorsByDateRangeServerList = [
   "https://metrics.avax.network",
@@ -92,6 +95,26 @@ export namespace GetValidatorsByDateRangeRequest$ {
   export type Outbound = GetValidatorsByDateRangeRequest$Outbound;
 }
 
+export function getValidatorsByDateRangeRequestToJSON(
+  getValidatorsByDateRangeRequest: GetValidatorsByDateRangeRequest,
+): string {
+  return JSON.stringify(
+    GetValidatorsByDateRangeRequest$outboundSchema.parse(
+      getValidatorsByDateRangeRequest,
+    ),
+  );
+}
+
+export function getValidatorsByDateRangeRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetValidatorsByDateRangeRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetValidatorsByDateRangeRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetValidatorsByDateRangeRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetValidatorsByDateRangeResponse$inboundSchema: z.ZodType<
   GetValidatorsByDateRangeResponse,
@@ -134,4 +157,24 @@ export namespace GetValidatorsByDateRangeResponse$ {
   export const outboundSchema = GetValidatorsByDateRangeResponse$outboundSchema;
   /** @deprecated use `GetValidatorsByDateRangeResponse$Outbound` instead. */
   export type Outbound = GetValidatorsByDateRangeResponse$Outbound;
+}
+
+export function getValidatorsByDateRangeResponseToJSON(
+  getValidatorsByDateRangeResponse: GetValidatorsByDateRangeResponse,
+): string {
+  return JSON.stringify(
+    GetValidatorsByDateRangeResponse$outboundSchema.parse(
+      getValidatorsByDateRangeResponse,
+    ),
+  );
+}
+
+export function getValidatorsByDateRangeResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetValidatorsByDateRangeResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetValidatorsByDateRangeResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetValidatorsByDateRangeResponse' from JSON`,
+  );
 }

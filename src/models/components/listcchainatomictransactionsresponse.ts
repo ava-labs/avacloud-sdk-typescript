@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CChainExportTransaction,
   CChainExportTransaction$inboundSchema,
@@ -78,6 +81,33 @@ export namespace ListCChainAtomicTransactionsResponseTransactions$ {
     ListCChainAtomicTransactionsResponseTransactions$Outbound;
 }
 
+export function listCChainAtomicTransactionsResponseTransactionsToJSON(
+  listCChainAtomicTransactionsResponseTransactions:
+    ListCChainAtomicTransactionsResponseTransactions,
+): string {
+  return JSON.stringify(
+    ListCChainAtomicTransactionsResponseTransactions$outboundSchema.parse(
+      listCChainAtomicTransactionsResponseTransactions,
+    ),
+  );
+}
+
+export function listCChainAtomicTransactionsResponseTransactionsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListCChainAtomicTransactionsResponseTransactions,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListCChainAtomicTransactionsResponseTransactions$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListCChainAtomicTransactionsResponseTransactions' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListCChainAtomicTransactionsResponse$inboundSchema: z.ZodType<
   ListCChainAtomicTransactionsResponse,
@@ -132,4 +162,25 @@ export namespace ListCChainAtomicTransactionsResponse$ {
     ListCChainAtomicTransactionsResponse$outboundSchema;
   /** @deprecated use `ListCChainAtomicTransactionsResponse$Outbound` instead. */
   export type Outbound = ListCChainAtomicTransactionsResponse$Outbound;
+}
+
+export function listCChainAtomicTransactionsResponseToJSON(
+  listCChainAtomicTransactionsResponse: ListCChainAtomicTransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListCChainAtomicTransactionsResponse$outboundSchema.parse(
+      listCChainAtomicTransactionsResponse,
+    ),
+  );
+}
+
+export function listCChainAtomicTransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCChainAtomicTransactionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListCChainAtomicTransactionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCChainAtomicTransactionsResponse' from JSON`,
+  );
 }

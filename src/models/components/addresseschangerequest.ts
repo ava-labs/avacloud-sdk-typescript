@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AddressesChangeRequest = {
   /**
@@ -45,4 +48,22 @@ export namespace AddressesChangeRequest$ {
   export const outboundSchema = AddressesChangeRequest$outboundSchema;
   /** @deprecated use `AddressesChangeRequest$Outbound` instead. */
   export type Outbound = AddressesChangeRequest$Outbound;
+}
+
+export function addressesChangeRequestToJSON(
+  addressesChangeRequest: AddressesChangeRequest,
+): string {
+  return JSON.stringify(
+    AddressesChangeRequest$outboundSchema.parse(addressesChangeRequest),
+  );
+}
+
+export function addressesChangeRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AddressesChangeRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AddressesChangeRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AddressesChangeRequest' from JSON`,
+  );
 }

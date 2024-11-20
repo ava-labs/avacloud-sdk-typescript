@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListSubnetsServerList = [
   "https://glacier-api.avax.network",
@@ -76,6 +79,24 @@ export namespace ListSubnetsGlobals$ {
   export type Outbound = ListSubnetsGlobals$Outbound;
 }
 
+export function listSubnetsGlobalsToJSON(
+  listSubnetsGlobals: ListSubnetsGlobals,
+): string {
+  return JSON.stringify(
+    ListSubnetsGlobals$outboundSchema.parse(listSubnetsGlobals),
+  );
+}
+
+export function listSubnetsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListSubnetsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListSubnetsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSubnetsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListSubnetsRequest$inboundSchema: z.ZodType<
   ListSubnetsRequest,
@@ -121,6 +142,24 @@ export namespace ListSubnetsRequest$ {
   export type Outbound = ListSubnetsRequest$Outbound;
 }
 
+export function listSubnetsRequestToJSON(
+  listSubnetsRequest: ListSubnetsRequest,
+): string {
+  return JSON.stringify(
+    ListSubnetsRequest$outboundSchema.parse(listSubnetsRequest),
+  );
+}
+
+export function listSubnetsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListSubnetsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListSubnetsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSubnetsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListSubnetsResponse$inboundSchema: z.ZodType<
   ListSubnetsResponse,
@@ -163,4 +202,22 @@ export namespace ListSubnetsResponse$ {
   export const outboundSchema = ListSubnetsResponse$outboundSchema;
   /** @deprecated use `ListSubnetsResponse$Outbound` instead. */
   export type Outbound = ListSubnetsResponse$Outbound;
+}
+
+export function listSubnetsResponseToJSON(
+  listSubnetsResponse: ListSubnetsResponse,
+): string {
+  return JSON.stringify(
+    ListSubnetsResponse$outboundSchema.parse(listSubnetsResponse),
+  );
+}
+
+export function listSubnetsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListSubnetsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListSubnetsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSubnetsResponse' from JSON`,
+  );
 }

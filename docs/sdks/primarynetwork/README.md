@@ -14,7 +14,7 @@
 * [listValidators](#listvalidators) - List validators
 * [getSingleValidatorDetails](#getsinglevalidatordetails) - Get single validator details
 * [listDelegators](#listdelegators) - List delegators
-* [listSubnetOnlyValidators](#listsubnetonlyvalidators) - List subnet-only validators
+* [listL1Validators](#listl1validators) - List L1 validators
 
 ## getAssetDetails
 
@@ -877,9 +877,9 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listSubnetOnlyValidators
+## listL1Validators
 
-Lists details for subnet only validators. By default, returns details for all active subnet only validators. Filterable by validator node ids, subnet id, and validation id.
+Lists details for L1 validators. By default, returns details for all active L1 validators. Filterable by validator node ids, subnet id, and validation id.
 
 ### Example Usage
 
@@ -893,9 +893,9 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.listSubnetOnlyValidators({
+  const result = await avaCloudSDK.data.primaryNetwork.listL1Validators({
     pageSize: 10,
-    sovValidationId: "BsSpTd1SDvdhaoYAuKJvRj1WnoRyu8mAuMZeuz9g7brGj6KhX",
+    l1ValidationId: "BsSpTd1SDvdhaoYAuKJvRj1WnoRyu8mAuMZeuz9g7brGj6KhX",
     nodeId: "NodeID-111111111111111111116DBWJs",
     subnetId: "11111111111111111111111111111111LpoYY",
   });
@@ -915,7 +915,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkListSubnetOnlyValidators } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkListSubnetOnlyValidators.js";
+import { dataPrimaryNetworkListL1Validators } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkListL1Validators.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -926,9 +926,9 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkListSubnetOnlyValidators(avaCloudSDK, {
+  const res = await dataPrimaryNetworkListL1Validators(avaCloudSDK, {
     pageSize: 10,
-    sovValidationId: "BsSpTd1SDvdhaoYAuKJvRj1WnoRyu8mAuMZeuz9g7brGj6KhX",
+    l1ValidationId: "BsSpTd1SDvdhaoYAuKJvRj1WnoRyu8mAuMZeuz9g7brGj6KhX",
     nodeId: "NodeID-111111111111111111116DBWJs",
     subnetId: "11111111111111111111111111111111LpoYY",
   });
@@ -952,7 +952,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListSubnetOnlyValidatorsRequest](../../models/operations/listsubnetonlyvalidatorsrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListL1ValidatorsRequest](../../models/operations/listl1validatorsrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -960,7 +960,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListSubnetOnlyValidatorsResponse](../../models/operations/listsubnetonlyvalidatorsresponse.md)\>**
+**Promise\<[operations.ListL1ValidatorsResponse](../../models/operations/listl1validatorsresponse.md)\>**
 
 ### Errors
 

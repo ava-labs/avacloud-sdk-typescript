@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PrimaryNetworkChainInfo,
   PrimaryNetworkChainInfo$inboundSchema,
@@ -71,6 +74,20 @@ export namespace Transactions$ {
   export type Outbound = Transactions$Outbound;
 }
 
+export function transactionsToJSON(transactions: Transactions): string {
+  return JSON.stringify(Transactions$outboundSchema.parse(transactions));
+}
+
+export function transactionsFromJSON(
+  jsonString: string,
+): SafeParseResult<Transactions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Transactions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Transactions' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListXChainTransactionsResponse$inboundSchema: z.ZodType<
   ListXChainTransactionsResponse,
@@ -123,4 +140,24 @@ export namespace ListXChainTransactionsResponse$ {
   export const outboundSchema = ListXChainTransactionsResponse$outboundSchema;
   /** @deprecated use `ListXChainTransactionsResponse$Outbound` instead. */
   export type Outbound = ListXChainTransactionsResponse$Outbound;
+}
+
+export function listXChainTransactionsResponseToJSON(
+  listXChainTransactionsResponse: ListXChainTransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListXChainTransactionsResponse$outboundSchema.parse(
+      listXChainTransactionsResponse,
+    ),
+  );
+}
+
+export function listXChainTransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListXChainTransactionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListXChainTransactionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListXChainTransactionsResponse' from JSON`,
+  );
 }

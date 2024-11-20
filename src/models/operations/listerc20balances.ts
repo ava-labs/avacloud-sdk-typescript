@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListErc20BalancesServerList = [
   "https://glacier-api.avax.network",
@@ -92,6 +95,24 @@ export namespace ListErc20BalancesGlobals$ {
   export type Outbound = ListErc20BalancesGlobals$Outbound;
 }
 
+export function listErc20BalancesGlobalsToJSON(
+  listErc20BalancesGlobals: ListErc20BalancesGlobals,
+): string {
+  return JSON.stringify(
+    ListErc20BalancesGlobals$outboundSchema.parse(listErc20BalancesGlobals),
+  );
+}
+
+export function listErc20BalancesGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListErc20BalancesGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListErc20BalancesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListErc20BalancesGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListErc20BalancesRequest$inboundSchema: z.ZodType<
   ListErc20BalancesRequest,
@@ -149,6 +170,24 @@ export namespace ListErc20BalancesRequest$ {
   export type Outbound = ListErc20BalancesRequest$Outbound;
 }
 
+export function listErc20BalancesRequestToJSON(
+  listErc20BalancesRequest: ListErc20BalancesRequest,
+): string {
+  return JSON.stringify(
+    ListErc20BalancesRequest$outboundSchema.parse(listErc20BalancesRequest),
+  );
+}
+
+export function listErc20BalancesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListErc20BalancesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListErc20BalancesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListErc20BalancesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListErc20BalancesResponse$inboundSchema: z.ZodType<
   ListErc20BalancesResponse,
@@ -191,4 +230,22 @@ export namespace ListErc20BalancesResponse$ {
   export const outboundSchema = ListErc20BalancesResponse$outboundSchema;
   /** @deprecated use `ListErc20BalancesResponse$Outbound` instead. */
   export type Outbound = ListErc20BalancesResponse$Outbound;
+}
+
+export function listErc20BalancesResponseToJSON(
+  listErc20BalancesResponse: ListErc20BalancesResponse,
+): string {
+  return JSON.stringify(
+    ListErc20BalancesResponse$outboundSchema.parse(listErc20BalancesResponse),
+  );
+}
+
+export function listErc20BalancesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListErc20BalancesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListErc20BalancesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListErc20BalancesResponse' from JSON`,
+  );
 }

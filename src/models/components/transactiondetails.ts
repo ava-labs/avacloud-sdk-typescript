@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Erc1155TransferDetails,
   Erc1155TransferDetails$inboundSchema,
@@ -105,4 +108,22 @@ export namespace TransactionDetails$ {
   export const outboundSchema = TransactionDetails$outboundSchema;
   /** @deprecated use `TransactionDetails$Outbound` instead. */
   export type Outbound = TransactionDetails$Outbound;
+}
+
+export function transactionDetailsToJSON(
+  transactionDetails: TransactionDetails,
+): string {
+  return JSON.stringify(
+    TransactionDetails$outboundSchema.parse(transactionDetails),
+  );
+}
+
+export function transactionDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<TransactionDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransactionDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransactionDetails' from JSON`,
+  );
 }

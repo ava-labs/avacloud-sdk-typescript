@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetEvmChainRollingWindowMetricsServerList = [
   "https://metrics.avax.network",
@@ -65,6 +68,28 @@ export namespace GetEvmChainRollingWindowMetricsGlobals$ {
   export type Outbound = GetEvmChainRollingWindowMetricsGlobals$Outbound;
 }
 
+export function getEvmChainRollingWindowMetricsGlobalsToJSON(
+  getEvmChainRollingWindowMetricsGlobals:
+    GetEvmChainRollingWindowMetricsGlobals,
+): string {
+  return JSON.stringify(
+    GetEvmChainRollingWindowMetricsGlobals$outboundSchema.parse(
+      getEvmChainRollingWindowMetricsGlobals,
+    ),
+  );
+}
+
+export function getEvmChainRollingWindowMetricsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetEvmChainRollingWindowMetricsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetEvmChainRollingWindowMetricsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetEvmChainRollingWindowMetricsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetEvmChainRollingWindowMetricsRequest$inboundSchema: z.ZodType<
   GetEvmChainRollingWindowMetricsRequest,
@@ -104,4 +129,26 @@ export namespace GetEvmChainRollingWindowMetricsRequest$ {
     GetEvmChainRollingWindowMetricsRequest$outboundSchema;
   /** @deprecated use `GetEvmChainRollingWindowMetricsRequest$Outbound` instead. */
   export type Outbound = GetEvmChainRollingWindowMetricsRequest$Outbound;
+}
+
+export function getEvmChainRollingWindowMetricsRequestToJSON(
+  getEvmChainRollingWindowMetricsRequest:
+    GetEvmChainRollingWindowMetricsRequest,
+): string {
+  return JSON.stringify(
+    GetEvmChainRollingWindowMetricsRequest$outboundSchema.parse(
+      getEvmChainRollingWindowMetricsRequest,
+    ),
+  );
+}
+
+export function getEvmChainRollingWindowMetricsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetEvmChainRollingWindowMetricsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetEvmChainRollingWindowMetricsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetEvmChainRollingWindowMetricsRequest' from JSON`,
+  );
 }

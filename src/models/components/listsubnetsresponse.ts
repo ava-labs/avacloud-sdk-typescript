@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Subnet,
   Subnet$inboundSchema,
@@ -55,4 +58,22 @@ export namespace ListSubnetsResponse$ {
   export const outboundSchema = ListSubnetsResponse$outboundSchema;
   /** @deprecated use `ListSubnetsResponse$Outbound` instead. */
   export type Outbound = ListSubnetsResponse$Outbound;
+}
+
+export function listSubnetsResponseToJSON(
+  listSubnetsResponse: ListSubnetsResponse,
+): string {
+  return JSON.stringify(
+    ListSubnetsResponse$outboundSchema.parse(listSubnetsResponse),
+  );
+}
+
+export function listSubnetsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListSubnetsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListSubnetsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSubnetsResponse' from JSON`,
+  );
 }

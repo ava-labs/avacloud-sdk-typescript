@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   StakingDistribution,
   StakingDistribution$inboundSchema,
@@ -64,4 +67,22 @@ export namespace ValidatorsDetails$ {
   export const outboundSchema = ValidatorsDetails$outboundSchema;
   /** @deprecated use `ValidatorsDetails$Outbound` instead. */
   export type Outbound = ValidatorsDetails$Outbound;
+}
+
+export function validatorsDetailsToJSON(
+  validatorsDetails: ValidatorsDetails,
+): string {
+  return JSON.stringify(
+    ValidatorsDetails$outboundSchema.parse(validatorsDetails),
+  );
+}
+
+export function validatorsDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<ValidatorsDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ValidatorsDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ValidatorsDetails' from JSON`,
+  );
 }

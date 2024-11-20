@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type L1ValidatorManagerDetails = {
   blockchainId: string;
@@ -46,4 +49,22 @@ export namespace L1ValidatorManagerDetails$ {
   export const outboundSchema = L1ValidatorManagerDetails$outboundSchema;
   /** @deprecated use `L1ValidatorManagerDetails$Outbound` instead. */
   export type Outbound = L1ValidatorManagerDetails$Outbound;
+}
+
+export function l1ValidatorManagerDetailsToJSON(
+  l1ValidatorManagerDetails: L1ValidatorManagerDetails,
+): string {
+  return JSON.stringify(
+    L1ValidatorManagerDetails$outboundSchema.parse(l1ValidatorManagerDetails),
+  );
+}
+
+export function l1ValidatorManagerDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<L1ValidatorManagerDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => L1ValidatorManagerDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'L1ValidatorManagerDetails' from JSON`,
+  );
 }

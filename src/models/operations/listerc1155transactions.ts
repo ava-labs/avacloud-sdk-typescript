@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListErc1155TransactionsServerList = [
   "https://glacier-api.avax.network",
@@ -84,6 +87,26 @@ export namespace ListErc1155TransactionsGlobals$ {
   export type Outbound = ListErc1155TransactionsGlobals$Outbound;
 }
 
+export function listErc1155TransactionsGlobalsToJSON(
+  listErc1155TransactionsGlobals: ListErc1155TransactionsGlobals,
+): string {
+  return JSON.stringify(
+    ListErc1155TransactionsGlobals$outboundSchema.parse(
+      listErc1155TransactionsGlobals,
+    ),
+  );
+}
+
+export function listErc1155TransactionsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListErc1155TransactionsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListErc1155TransactionsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListErc1155TransactionsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListErc1155TransactionsRequest$inboundSchema: z.ZodType<
   ListErc1155TransactionsRequest,
@@ -135,6 +158,26 @@ export namespace ListErc1155TransactionsRequest$ {
   export type Outbound = ListErc1155TransactionsRequest$Outbound;
 }
 
+export function listErc1155TransactionsRequestToJSON(
+  listErc1155TransactionsRequest: ListErc1155TransactionsRequest,
+): string {
+  return JSON.stringify(
+    ListErc1155TransactionsRequest$outboundSchema.parse(
+      listErc1155TransactionsRequest,
+    ),
+  );
+}
+
+export function listErc1155TransactionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListErc1155TransactionsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListErc1155TransactionsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListErc1155TransactionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListErc1155TransactionsResponse$inboundSchema: z.ZodType<
   ListErc1155TransactionsResponse,
@@ -177,4 +220,24 @@ export namespace ListErc1155TransactionsResponse$ {
   export const outboundSchema = ListErc1155TransactionsResponse$outboundSchema;
   /** @deprecated use `ListErc1155TransactionsResponse$Outbound` instead. */
   export type Outbound = ListErc1155TransactionsResponse$Outbound;
+}
+
+export function listErc1155TransactionsResponseToJSON(
+  listErc1155TransactionsResponse: ListErc1155TransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListErc1155TransactionsResponse$outboundSchema.parse(
+      listErc1155TransactionsResponse,
+    ),
+  );
+}
+
+export function listErc1155TransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListErc1155TransactionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListErc1155TransactionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListErc1155TransactionsResponse' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetSingleValidatorDetailsServerList = [
   "https://glacier-api.avax.network",
@@ -84,6 +87,26 @@ export namespace GetSingleValidatorDetailsGlobals$ {
   export type Outbound = GetSingleValidatorDetailsGlobals$Outbound;
 }
 
+export function getSingleValidatorDetailsGlobalsToJSON(
+  getSingleValidatorDetailsGlobals: GetSingleValidatorDetailsGlobals,
+): string {
+  return JSON.stringify(
+    GetSingleValidatorDetailsGlobals$outboundSchema.parse(
+      getSingleValidatorDetailsGlobals,
+    ),
+  );
+}
+
+export function getSingleValidatorDetailsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetSingleValidatorDetailsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetSingleValidatorDetailsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetSingleValidatorDetailsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetSingleValidatorDetailsRequest$inboundSchema: z.ZodType<
   GetSingleValidatorDetailsRequest,
@@ -135,6 +158,26 @@ export namespace GetSingleValidatorDetailsRequest$ {
   export type Outbound = GetSingleValidatorDetailsRequest$Outbound;
 }
 
+export function getSingleValidatorDetailsRequestToJSON(
+  getSingleValidatorDetailsRequest: GetSingleValidatorDetailsRequest,
+): string {
+  return JSON.stringify(
+    GetSingleValidatorDetailsRequest$outboundSchema.parse(
+      getSingleValidatorDetailsRequest,
+    ),
+  );
+}
+
+export function getSingleValidatorDetailsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetSingleValidatorDetailsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetSingleValidatorDetailsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetSingleValidatorDetailsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetSingleValidatorDetailsResponse$inboundSchema: z.ZodType<
   GetSingleValidatorDetailsResponse,
@@ -178,4 +221,24 @@ export namespace GetSingleValidatorDetailsResponse$ {
     GetSingleValidatorDetailsResponse$outboundSchema;
   /** @deprecated use `GetSingleValidatorDetailsResponse$Outbound` instead. */
   export type Outbound = GetSingleValidatorDetailsResponse$Outbound;
+}
+
+export function getSingleValidatorDetailsResponseToJSON(
+  getSingleValidatorDetailsResponse: GetSingleValidatorDetailsResponse,
+): string {
+  return JSON.stringify(
+    GetSingleValidatorDetailsResponse$outboundSchema.parse(
+      getSingleValidatorDetailsResponse,
+    ),
+  );
+}
+
+export function getSingleValidatorDetailsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetSingleValidatorDetailsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetSingleValidatorDetailsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetSingleValidatorDetailsResponse' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   OperationStatusCode,
   OperationStatusCode$inboundSchema,
@@ -61,4 +64,22 @@ export namespace TransactionExportMetadata$ {
   export const outboundSchema = TransactionExportMetadata$outboundSchema;
   /** @deprecated use `TransactionExportMetadata$Outbound` instead. */
   export type Outbound = TransactionExportMetadata$Outbound;
+}
+
+export function transactionExportMetadataToJSON(
+  transactionExportMetadata: TransactionExportMetadata,
+): string {
+  return JSON.stringify(
+    TransactionExportMetadata$outboundSchema.parse(transactionExportMetadata),
+  );
+}
+
+export function transactionExportMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<TransactionExportMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransactionExportMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransactionExportMetadata' from JSON`,
+  );
 }

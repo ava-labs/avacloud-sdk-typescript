@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   OperationStatus,
   OperationStatus$inboundSchema,
@@ -62,6 +65,20 @@ export namespace Metadata$ {
   export type Outbound = Metadata$Outbound;
 }
 
+export function metadataToJSON(metadata: Metadata): string {
+  return JSON.stringify(Metadata$outboundSchema.parse(metadata));
+}
+
+export function metadataFromJSON(
+  jsonString: string,
+): SafeParseResult<Metadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Metadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Metadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const OperationStatusResponse$inboundSchema: z.ZodType<
   OperationStatusResponse,
@@ -114,4 +131,22 @@ export namespace OperationStatusResponse$ {
   export const outboundSchema = OperationStatusResponse$outboundSchema;
   /** @deprecated use `OperationStatusResponse$Outbound` instead. */
   export type Outbound = OperationStatusResponse$Outbound;
+}
+
+export function operationStatusResponseToJSON(
+  operationStatusResponse: OperationStatusResponse,
+): string {
+  return JSON.stringify(
+    OperationStatusResponse$outboundSchema.parse(operationStatusResponse),
+  );
+}
+
+export function operationStatusResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<OperationStatusResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OperationStatusResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OperationStatusResponse' from JSON`,
+  );
 }

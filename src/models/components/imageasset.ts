@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ImageAsset = {
   assetId?: string | undefined;
@@ -49,4 +52,18 @@ export namespace ImageAsset$ {
   export const outboundSchema = ImageAsset$outboundSchema;
   /** @deprecated use `ImageAsset$Outbound` instead. */
   export type Outbound = ImageAsset$Outbound;
+}
+
+export function imageAssetToJSON(imageAsset: ImageAsset): string {
+  return JSON.stringify(ImageAsset$outboundSchema.parse(imageAsset));
+}
+
+export function imageAssetFromJSON(
+  jsonString: string,
+): SafeParseResult<ImageAsset, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ImageAsset$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImageAsset' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const DeactivateWebhookServerList = [
   "https://glacier-api.avax.network",
@@ -49,4 +52,22 @@ export namespace DeactivateWebhookRequest$ {
   export const outboundSchema = DeactivateWebhookRequest$outboundSchema;
   /** @deprecated use `DeactivateWebhookRequest$Outbound` instead. */
   export type Outbound = DeactivateWebhookRequest$Outbound;
+}
+
+export function deactivateWebhookRequestToJSON(
+  deactivateWebhookRequest: DeactivateWebhookRequest,
+): string {
+  return JSON.stringify(
+    DeactivateWebhookRequest$outboundSchema.parse(deactivateWebhookRequest),
+  );
+}
+
+export function deactivateWebhookRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeactivateWebhookRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeactivateWebhookRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeactivateWebhookRequest' from JSON`,
+  );
 }

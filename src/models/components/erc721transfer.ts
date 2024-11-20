@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Erc721Token,
   Erc721Token$inboundSchema,
@@ -94,4 +97,18 @@ export namespace Erc721Transfer$ {
   export const outboundSchema = Erc721Transfer$outboundSchema;
   /** @deprecated use `Erc721Transfer$Outbound` instead. */
   export type Outbound = Erc721Transfer$Outbound;
+}
+
+export function erc721TransferToJSON(erc721Transfer: Erc721Transfer): string {
+  return JSON.stringify(Erc721Transfer$outboundSchema.parse(erc721Transfer));
+}
+
+export function erc721TransferFromJSON(
+  jsonString: string,
+): SafeParseResult<Erc721Transfer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Erc721Transfer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Erc721Transfer' from JSON`,
+  );
 }

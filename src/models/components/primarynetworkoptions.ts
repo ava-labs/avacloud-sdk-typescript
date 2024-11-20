@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const IncludeChains = {
   ElevenNonillionOneHundredAndElevenOctillionOneHundredAndElevenSeptillionOneHundredAndElevenSextillionOneHundredAndElevenQuintillionOneHundredAndElevenQuadrillionOneHundredAndElevenTrillionOneHundredAndElevenBillionOneHundredAndElevenMillionOneHundredAndElevenThousandOneHundredAndElevenLpoYY:
@@ -93,4 +96,22 @@ export namespace PrimaryNetworkOptions$ {
   export const outboundSchema = PrimaryNetworkOptions$outboundSchema;
   /** @deprecated use `PrimaryNetworkOptions$Outbound` instead. */
   export type Outbound = PrimaryNetworkOptions$Outbound;
+}
+
+export function primaryNetworkOptionsToJSON(
+  primaryNetworkOptions: PrimaryNetworkOptions,
+): string {
+  return JSON.stringify(
+    PrimaryNetworkOptions$outboundSchema.parse(primaryNetworkOptions),
+  );
+}
+
+export function primaryNetworkOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<PrimaryNetworkOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PrimaryNetworkOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PrimaryNetworkOptions' from JSON`,
+  );
 }

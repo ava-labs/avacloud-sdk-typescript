@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetTokenDetailsServerList = [
   "https://glacier-api.avax.network",
@@ -74,6 +77,24 @@ export namespace GetTokenDetailsGlobals$ {
   export type Outbound = GetTokenDetailsGlobals$Outbound;
 }
 
+export function getTokenDetailsGlobalsToJSON(
+  getTokenDetailsGlobals: GetTokenDetailsGlobals,
+): string {
+  return JSON.stringify(
+    GetTokenDetailsGlobals$outboundSchema.parse(getTokenDetailsGlobals),
+  );
+}
+
+export function getTokenDetailsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTokenDetailsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTokenDetailsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTokenDetailsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetTokenDetailsRequest$inboundSchema: z.ZodType<
   GetTokenDetailsRequest,
@@ -114,6 +135,24 @@ export namespace GetTokenDetailsRequest$ {
   export const outboundSchema = GetTokenDetailsRequest$outboundSchema;
   /** @deprecated use `GetTokenDetailsRequest$Outbound` instead. */
   export type Outbound = GetTokenDetailsRequest$Outbound;
+}
+
+export function getTokenDetailsRequestToJSON(
+  getTokenDetailsRequest: GetTokenDetailsRequest,
+): string {
+  return JSON.stringify(
+    GetTokenDetailsRequest$outboundSchema.parse(getTokenDetailsRequest),
+  );
+}
+
+export function getTokenDetailsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTokenDetailsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTokenDetailsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTokenDetailsRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -168,4 +207,24 @@ export namespace GetTokenDetailsResponseBody$ {
   export const outboundSchema = GetTokenDetailsResponseBody$outboundSchema;
   /** @deprecated use `GetTokenDetailsResponseBody$Outbound` instead. */
   export type Outbound = GetTokenDetailsResponseBody$Outbound;
+}
+
+export function getTokenDetailsResponseBodyToJSON(
+  getTokenDetailsResponseBody: GetTokenDetailsResponseBody,
+): string {
+  return JSON.stringify(
+    GetTokenDetailsResponseBody$outboundSchema.parse(
+      getTokenDetailsResponseBody,
+    ),
+  );
+}
+
+export function getTokenDetailsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTokenDetailsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTokenDetailsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTokenDetailsResponseBody' from JSON`,
+  );
 }

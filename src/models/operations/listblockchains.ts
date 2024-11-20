@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListBlockchainsServerList = [
   "https://glacier-api.avax.network",
@@ -76,6 +79,24 @@ export namespace ListBlockchainsGlobals$ {
   export type Outbound = ListBlockchainsGlobals$Outbound;
 }
 
+export function listBlockchainsGlobalsToJSON(
+  listBlockchainsGlobals: ListBlockchainsGlobals,
+): string {
+  return JSON.stringify(
+    ListBlockchainsGlobals$outboundSchema.parse(listBlockchainsGlobals),
+  );
+}
+
+export function listBlockchainsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListBlockchainsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListBlockchainsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListBlockchainsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListBlockchainsRequest$inboundSchema: z.ZodType<
   ListBlockchainsRequest,
@@ -121,6 +142,24 @@ export namespace ListBlockchainsRequest$ {
   export type Outbound = ListBlockchainsRequest$Outbound;
 }
 
+export function listBlockchainsRequestToJSON(
+  listBlockchainsRequest: ListBlockchainsRequest,
+): string {
+  return JSON.stringify(
+    ListBlockchainsRequest$outboundSchema.parse(listBlockchainsRequest),
+  );
+}
+
+export function listBlockchainsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListBlockchainsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListBlockchainsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListBlockchainsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListBlockchainsResponse$inboundSchema: z.ZodType<
   ListBlockchainsResponse,
@@ -163,4 +202,22 @@ export namespace ListBlockchainsResponse$ {
   export const outboundSchema = ListBlockchainsResponse$outboundSchema;
   /** @deprecated use `ListBlockchainsResponse$Outbound` instead. */
   export type Outbound = ListBlockchainsResponse$Outbound;
+}
+
+export function listBlockchainsResponseToJSON(
+  listBlockchainsResponse: ListBlockchainsResponse,
+): string {
+  return JSON.stringify(
+    ListBlockchainsResponse$outboundSchema.parse(listBlockchainsResponse),
+  );
+}
+
+export function listBlockchainsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListBlockchainsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListBlockchainsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListBlockchainsResponse' from JSON`,
+  );
 }

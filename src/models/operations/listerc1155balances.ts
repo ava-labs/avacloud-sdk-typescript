@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListErc1155BalancesServerList = [
   "https://glacier-api.avax.network",
@@ -84,6 +87,24 @@ export namespace ListErc1155BalancesGlobals$ {
   export type Outbound = ListErc1155BalancesGlobals$Outbound;
 }
 
+export function listErc1155BalancesGlobalsToJSON(
+  listErc1155BalancesGlobals: ListErc1155BalancesGlobals,
+): string {
+  return JSON.stringify(
+    ListErc1155BalancesGlobals$outboundSchema.parse(listErc1155BalancesGlobals),
+  );
+}
+
+export function listErc1155BalancesGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListErc1155BalancesGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListErc1155BalancesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListErc1155BalancesGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListErc1155BalancesRequest$inboundSchema: z.ZodType<
   ListErc1155BalancesRequest,
@@ -135,6 +156,24 @@ export namespace ListErc1155BalancesRequest$ {
   export type Outbound = ListErc1155BalancesRequest$Outbound;
 }
 
+export function listErc1155BalancesRequestToJSON(
+  listErc1155BalancesRequest: ListErc1155BalancesRequest,
+): string {
+  return JSON.stringify(
+    ListErc1155BalancesRequest$outboundSchema.parse(listErc1155BalancesRequest),
+  );
+}
+
+export function listErc1155BalancesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListErc1155BalancesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListErc1155BalancesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListErc1155BalancesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListErc1155BalancesResponse$inboundSchema: z.ZodType<
   ListErc1155BalancesResponse,
@@ -177,4 +216,24 @@ export namespace ListErc1155BalancesResponse$ {
   export const outboundSchema = ListErc1155BalancesResponse$outboundSchema;
   /** @deprecated use `ListErc1155BalancesResponse$Outbound` instead. */
   export type Outbound = ListErc1155BalancesResponse$Outbound;
+}
+
+export function listErc1155BalancesResponseToJSON(
+  listErc1155BalancesResponse: ListErc1155BalancesResponse,
+): string {
+  return JSON.stringify(
+    ListErc1155BalancesResponse$outboundSchema.parse(
+      listErc1155BalancesResponse,
+    ),
+  );
+}
+
+export function listErc1155BalancesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListErc1155BalancesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListErc1155BalancesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListErc1155BalancesResponse' from JSON`,
+  );
 }

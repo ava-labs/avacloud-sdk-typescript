@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListLatestXChainVerticesServerList = [
   "https://glacier-api.avax.network",
@@ -76,6 +79,26 @@ export namespace ListLatestXChainVerticesGlobals$ {
   export type Outbound = ListLatestXChainVerticesGlobals$Outbound;
 }
 
+export function listLatestXChainVerticesGlobalsToJSON(
+  listLatestXChainVerticesGlobals: ListLatestXChainVerticesGlobals,
+): string {
+  return JSON.stringify(
+    ListLatestXChainVerticesGlobals$outboundSchema.parse(
+      listLatestXChainVerticesGlobals,
+    ),
+  );
+}
+
+export function listLatestXChainVerticesGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListLatestXChainVerticesGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListLatestXChainVerticesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListLatestXChainVerticesGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListLatestXChainVerticesRequest$inboundSchema: z.ZodType<
   ListLatestXChainVerticesRequest,
@@ -121,6 +144,26 @@ export namespace ListLatestXChainVerticesRequest$ {
   export type Outbound = ListLatestXChainVerticesRequest$Outbound;
 }
 
+export function listLatestXChainVerticesRequestToJSON(
+  listLatestXChainVerticesRequest: ListLatestXChainVerticesRequest,
+): string {
+  return JSON.stringify(
+    ListLatestXChainVerticesRequest$outboundSchema.parse(
+      listLatestXChainVerticesRequest,
+    ),
+  );
+}
+
+export function listLatestXChainVerticesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListLatestXChainVerticesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListLatestXChainVerticesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListLatestXChainVerticesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListLatestXChainVerticesResponse$inboundSchema: z.ZodType<
   ListLatestXChainVerticesResponse,
@@ -163,4 +206,24 @@ export namespace ListLatestXChainVerticesResponse$ {
   export const outboundSchema = ListLatestXChainVerticesResponse$outboundSchema;
   /** @deprecated use `ListLatestXChainVerticesResponse$Outbound` instead. */
   export type Outbound = ListLatestXChainVerticesResponse$Outbound;
+}
+
+export function listLatestXChainVerticesResponseToJSON(
+  listLatestXChainVerticesResponse: ListLatestXChainVerticesResponse,
+): string {
+  return JSON.stringify(
+    ListLatestXChainVerticesResponse$outboundSchema.parse(
+      listLatestXChainVerticesResponse,
+    ),
+  );
+}
+
+export function listLatestXChainVerticesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListLatestXChainVerticesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListLatestXChainVerticesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListLatestXChainVerticesResponse' from JSON`,
+  );
 }

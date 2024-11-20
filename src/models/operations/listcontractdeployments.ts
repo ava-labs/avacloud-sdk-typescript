@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListContractDeploymentsServerList = [
   "https://glacier-api.avax.network",
@@ -76,6 +79,26 @@ export namespace ListContractDeploymentsGlobals$ {
   export type Outbound = ListContractDeploymentsGlobals$Outbound;
 }
 
+export function listContractDeploymentsGlobalsToJSON(
+  listContractDeploymentsGlobals: ListContractDeploymentsGlobals,
+): string {
+  return JSON.stringify(
+    ListContractDeploymentsGlobals$outboundSchema.parse(
+      listContractDeploymentsGlobals,
+    ),
+  );
+}
+
+export function listContractDeploymentsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListContractDeploymentsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListContractDeploymentsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListContractDeploymentsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListContractDeploymentsRequest$inboundSchema: z.ZodType<
   ListContractDeploymentsRequest,
@@ -121,6 +144,26 @@ export namespace ListContractDeploymentsRequest$ {
   export type Outbound = ListContractDeploymentsRequest$Outbound;
 }
 
+export function listContractDeploymentsRequestToJSON(
+  listContractDeploymentsRequest: ListContractDeploymentsRequest,
+): string {
+  return JSON.stringify(
+    ListContractDeploymentsRequest$outboundSchema.parse(
+      listContractDeploymentsRequest,
+    ),
+  );
+}
+
+export function listContractDeploymentsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListContractDeploymentsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListContractDeploymentsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListContractDeploymentsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListContractDeploymentsResponse$inboundSchema: z.ZodType<
   ListContractDeploymentsResponse,
@@ -163,4 +206,24 @@ export namespace ListContractDeploymentsResponse$ {
   export const outboundSchema = ListContractDeploymentsResponse$outboundSchema;
   /** @deprecated use `ListContractDeploymentsResponse$Outbound` instead. */
   export type Outbound = ListContractDeploymentsResponse$Outbound;
+}
+
+export function listContractDeploymentsResponseToJSON(
+  listContractDeploymentsResponse: ListContractDeploymentsResponse,
+): string {
+  return JSON.stringify(
+    ListContractDeploymentsResponse$outboundSchema.parse(
+      listContractDeploymentsResponse,
+    ),
+  );
+}
+
+export function listContractDeploymentsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListContractDeploymentsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListContractDeploymentsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListContractDeploymentsResponse' from JSON`,
+  );
 }

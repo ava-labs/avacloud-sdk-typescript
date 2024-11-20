@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PricingProviders = {
   coingeckoCoinId?: string | undefined;
@@ -42,4 +45,22 @@ export namespace PricingProviders$ {
   export const outboundSchema = PricingProviders$outboundSchema;
   /** @deprecated use `PricingProviders$Outbound` instead. */
   export type Outbound = PricingProviders$Outbound;
+}
+
+export function pricingProvidersToJSON(
+  pricingProviders: PricingProviders,
+): string {
+  return JSON.stringify(
+    PricingProviders$outboundSchema.parse(pricingProviders),
+  );
+}
+
+export function pricingProvidersFromJSON(
+  jsonString: string,
+): SafeParseResult<PricingProviders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PricingProviders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PricingProviders' from JSON`,
+  );
 }

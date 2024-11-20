@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Erc1155TokenMetadata,
   Erc1155TokenMetadata$inboundSchema,
@@ -110,4 +113,22 @@ export namespace Erc1155TokenBalance$ {
   export const outboundSchema = Erc1155TokenBalance$outboundSchema;
   /** @deprecated use `Erc1155TokenBalance$Outbound` instead. */
   export type Outbound = Erc1155TokenBalance$Outbound;
+}
+
+export function erc1155TokenBalanceToJSON(
+  erc1155TokenBalance: Erc1155TokenBalance,
+): string {
+  return JSON.stringify(
+    Erc1155TokenBalance$outboundSchema.parse(erc1155TokenBalance),
+  );
+}
+
+export function erc1155TokenBalanceFromJSON(
+  jsonString: string,
+): SafeParseResult<Erc1155TokenBalance, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Erc1155TokenBalance$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Erc1155TokenBalance' from JSON`,
+  );
 }

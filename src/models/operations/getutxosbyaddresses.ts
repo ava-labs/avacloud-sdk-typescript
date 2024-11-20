@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetUtxosByAddressesServerList = [
   "https://glacier-api.avax.network",
@@ -99,6 +102,24 @@ export namespace GetUtxosByAddressesGlobals$ {
   export type Outbound = GetUtxosByAddressesGlobals$Outbound;
 }
 
+export function getUtxosByAddressesGlobalsToJSON(
+  getUtxosByAddressesGlobals: GetUtxosByAddressesGlobals,
+): string {
+  return JSON.stringify(
+    GetUtxosByAddressesGlobals$outboundSchema.parse(getUtxosByAddressesGlobals),
+  );
+}
+
+export function getUtxosByAddressesGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetUtxosByAddressesGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetUtxosByAddressesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetUtxosByAddressesGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetUtxosByAddressesRequest$inboundSchema: z.ZodType<
   GetUtxosByAddressesRequest,
@@ -156,6 +177,24 @@ export namespace GetUtxosByAddressesRequest$ {
   export type Outbound = GetUtxosByAddressesRequest$Outbound;
 }
 
+export function getUtxosByAddressesRequestToJSON(
+  getUtxosByAddressesRequest: GetUtxosByAddressesRequest,
+): string {
+  return JSON.stringify(
+    GetUtxosByAddressesRequest$outboundSchema.parse(getUtxosByAddressesRequest),
+  );
+}
+
+export function getUtxosByAddressesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetUtxosByAddressesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetUtxosByAddressesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetUtxosByAddressesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetUtxosByAddressesResponseBody$inboundSchema: z.ZodType<
   GetUtxosByAddressesResponseBody,
@@ -192,6 +231,26 @@ export namespace GetUtxosByAddressesResponseBody$ {
   export const outboundSchema = GetUtxosByAddressesResponseBody$outboundSchema;
   /** @deprecated use `GetUtxosByAddressesResponseBody$Outbound` instead. */
   export type Outbound = GetUtxosByAddressesResponseBody$Outbound;
+}
+
+export function getUtxosByAddressesResponseBodyToJSON(
+  getUtxosByAddressesResponseBody: GetUtxosByAddressesResponseBody,
+): string {
+  return JSON.stringify(
+    GetUtxosByAddressesResponseBody$outboundSchema.parse(
+      getUtxosByAddressesResponseBody,
+    ),
+  );
+}
+
+export function getUtxosByAddressesResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetUtxosByAddressesResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetUtxosByAddressesResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetUtxosByAddressesResponseBody' from JSON`,
+  );
 }
 
 /** @internal */
@@ -244,4 +303,24 @@ export namespace GetUtxosByAddressesResponse$ {
   export const outboundSchema = GetUtxosByAddressesResponse$outboundSchema;
   /** @deprecated use `GetUtxosByAddressesResponse$Outbound` instead. */
   export type Outbound = GetUtxosByAddressesResponse$Outbound;
+}
+
+export function getUtxosByAddressesResponseToJSON(
+  getUtxosByAddressesResponse: GetUtxosByAddressesResponse,
+): string {
+  return JSON.stringify(
+    GetUtxosByAddressesResponse$outboundSchema.parse(
+      getUtxosByAddressesResponse,
+    ),
+  );
+}
+
+export function getUtxosByAddressesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetUtxosByAddressesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetUtxosByAddressesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetUtxosByAddressesResponse' from JSON`,
+  );
 }

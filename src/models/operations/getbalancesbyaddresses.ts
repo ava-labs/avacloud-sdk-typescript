@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetBalancesByAddressesServerList = [
   "https://glacier-api.avax.network",
@@ -79,6 +82,26 @@ export namespace GetBalancesByAddressesGlobals$ {
   export type Outbound = GetBalancesByAddressesGlobals$Outbound;
 }
 
+export function getBalancesByAddressesGlobalsToJSON(
+  getBalancesByAddressesGlobals: GetBalancesByAddressesGlobals,
+): string {
+  return JSON.stringify(
+    GetBalancesByAddressesGlobals$outboundSchema.parse(
+      getBalancesByAddressesGlobals,
+    ),
+  );
+}
+
+export function getBalancesByAddressesGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBalancesByAddressesGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBalancesByAddressesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBalancesByAddressesGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetBalancesByAddressesRequest$inboundSchema: z.ZodType<
   GetBalancesByAddressesRequest,
@@ -124,6 +147,26 @@ export namespace GetBalancesByAddressesRequest$ {
   export type Outbound = GetBalancesByAddressesRequest$Outbound;
 }
 
+export function getBalancesByAddressesRequestToJSON(
+  getBalancesByAddressesRequest: GetBalancesByAddressesRequest,
+): string {
+  return JSON.stringify(
+    GetBalancesByAddressesRequest$outboundSchema.parse(
+      getBalancesByAddressesRequest,
+    ),
+  );
+}
+
+export function getBalancesByAddressesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBalancesByAddressesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBalancesByAddressesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBalancesByAddressesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetBalancesByAddressesResponseBody$inboundSchema: z.ZodType<
   GetBalancesByAddressesResponseBody,
@@ -164,4 +207,25 @@ export namespace GetBalancesByAddressesResponseBody$ {
     GetBalancesByAddressesResponseBody$outboundSchema;
   /** @deprecated use `GetBalancesByAddressesResponseBody$Outbound` instead. */
   export type Outbound = GetBalancesByAddressesResponseBody$Outbound;
+}
+
+export function getBalancesByAddressesResponseBodyToJSON(
+  getBalancesByAddressesResponseBody: GetBalancesByAddressesResponseBody,
+): string {
+  return JSON.stringify(
+    GetBalancesByAddressesResponseBody$outboundSchema.parse(
+      getBalancesByAddressesResponseBody,
+    ),
+  );
+}
+
+export function getBalancesByAddressesResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBalancesByAddressesResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetBalancesByAddressesResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBalancesByAddressesResponseBody' from JSON`,
+  );
 }

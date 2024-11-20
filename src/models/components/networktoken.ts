@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type NetworkToken = {
   /**
@@ -70,4 +73,18 @@ export namespace NetworkToken$ {
   export const outboundSchema = NetworkToken$outboundSchema;
   /** @deprecated use `NetworkToken$Outbound` instead. */
   export type Outbound = NetworkToken$Outbound;
+}
+
+export function networkTokenToJSON(networkToken: NetworkToken): string {
+  return JSON.stringify(NetworkToken$outboundSchema.parse(networkToken));
+}
+
+export function networkTokenFromJSON(
+  jsonString: string,
+): SafeParseResult<NetworkToken, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NetworkToken$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NetworkToken' from JSON`,
+  );
 }

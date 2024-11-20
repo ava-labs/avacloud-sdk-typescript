@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   NativeTransaction,
   NativeTransaction$inboundSchema,
@@ -55,4 +58,24 @@ export namespace ListNativeTransactionsResponse$ {
   export const outboundSchema = ListNativeTransactionsResponse$outboundSchema;
   /** @deprecated use `ListNativeTransactionsResponse$Outbound` instead. */
   export type Outbound = ListNativeTransactionsResponse$Outbound;
+}
+
+export function listNativeTransactionsResponseToJSON(
+  listNativeTransactionsResponse: ListNativeTransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListNativeTransactionsResponse$outboundSchema.parse(
+      listNativeTransactionsResponse,
+    ),
+  );
+}
+
+export function listNativeTransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListNativeTransactionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListNativeTransactionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListNativeTransactionsResponse' from JSON`,
+  );
 }

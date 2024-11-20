@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Erc1155Token,
   Erc1155Token$inboundSchema,
@@ -70,4 +73,22 @@ export namespace Erc1155TransferDetails$ {
   export const outboundSchema = Erc1155TransferDetails$outboundSchema;
   /** @deprecated use `Erc1155TransferDetails$Outbound` instead. */
   export type Outbound = Erc1155TransferDetails$Outbound;
+}
+
+export function erc1155TransferDetailsToJSON(
+  erc1155TransferDetails: Erc1155TransferDetails,
+): string {
+  return JSON.stringify(
+    Erc1155TransferDetails$outboundSchema.parse(erc1155TransferDetails),
+  );
+}
+
+export function erc1155TransferDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<Erc1155TransferDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Erc1155TransferDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Erc1155TransferDetails' from JSON`,
+  );
 }

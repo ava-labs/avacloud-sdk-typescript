@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListDelegatorsServerList = [
   "https://glacier-api.avax.network",
@@ -88,6 +91,24 @@ export namespace ListDelegatorsGlobals$ {
   export type Outbound = ListDelegatorsGlobals$Outbound;
 }
 
+export function listDelegatorsGlobalsToJSON(
+  listDelegatorsGlobals: ListDelegatorsGlobals,
+): string {
+  return JSON.stringify(
+    ListDelegatorsGlobals$outboundSchema.parse(listDelegatorsGlobals),
+  );
+}
+
+export function listDelegatorsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListDelegatorsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListDelegatorsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListDelegatorsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListDelegatorsRequest$inboundSchema: z.ZodType<
   ListDelegatorsRequest,
@@ -142,6 +163,24 @@ export namespace ListDelegatorsRequest$ {
   export type Outbound = ListDelegatorsRequest$Outbound;
 }
 
+export function listDelegatorsRequestToJSON(
+  listDelegatorsRequest: ListDelegatorsRequest,
+): string {
+  return JSON.stringify(
+    ListDelegatorsRequest$outboundSchema.parse(listDelegatorsRequest),
+  );
+}
+
+export function listDelegatorsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListDelegatorsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListDelegatorsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListDelegatorsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListDelegatorsResponse$inboundSchema: z.ZodType<
   ListDelegatorsResponse,
@@ -184,4 +223,22 @@ export namespace ListDelegatorsResponse$ {
   export const outboundSchema = ListDelegatorsResponse$outboundSchema;
   /** @deprecated use `ListDelegatorsResponse$Outbound` instead. */
   export type Outbound = ListDelegatorsResponse$Outbound;
+}
+
+export function listDelegatorsResponseToJSON(
+  listDelegatorsResponse: ListDelegatorsResponse,
+): string {
+  return JSON.stringify(
+    ListDelegatorsResponse$outboundSchema.parse(listDelegatorsResponse),
+  );
+}
+
+export function listDelegatorsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListDelegatorsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListDelegatorsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListDelegatorsResponse' from JSON`,
+  );
 }

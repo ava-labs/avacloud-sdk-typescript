@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetStakingMetricsServerList = [
   "https://metrics.avax.network",
@@ -88,6 +91,24 @@ export namespace GetStakingMetricsGlobals$ {
   export type Outbound = GetStakingMetricsGlobals$Outbound;
 }
 
+export function getStakingMetricsGlobalsToJSON(
+  getStakingMetricsGlobals: GetStakingMetricsGlobals,
+): string {
+  return JSON.stringify(
+    GetStakingMetricsGlobals$outboundSchema.parse(getStakingMetricsGlobals),
+  );
+}
+
+export function getStakingMetricsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetStakingMetricsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetStakingMetricsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetStakingMetricsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetStakingMetricsRequest$inboundSchema: z.ZodType<
   GetStakingMetricsRequest,
@@ -142,6 +163,24 @@ export namespace GetStakingMetricsRequest$ {
   export type Outbound = GetStakingMetricsRequest$Outbound;
 }
 
+export function getStakingMetricsRequestToJSON(
+  getStakingMetricsRequest: GetStakingMetricsRequest,
+): string {
+  return JSON.stringify(
+    GetStakingMetricsRequest$outboundSchema.parse(getStakingMetricsRequest),
+  );
+}
+
+export function getStakingMetricsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetStakingMetricsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetStakingMetricsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetStakingMetricsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetStakingMetricsResponse$inboundSchema: z.ZodType<
   GetStakingMetricsResponse,
@@ -184,4 +223,22 @@ export namespace GetStakingMetricsResponse$ {
   export const outboundSchema = GetStakingMetricsResponse$outboundSchema;
   /** @deprecated use `GetStakingMetricsResponse$Outbound` instead. */
   export type Outbound = GetStakingMetricsResponse$Outbound;
+}
+
+export function getStakingMetricsResponseToJSON(
+  getStakingMetricsResponse: GetStakingMetricsResponse,
+): string {
+  return JSON.stringify(
+    GetStakingMetricsResponse$outboundSchema.parse(getStakingMetricsResponse),
+  );
+}
+
+export function getStakingMetricsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetStakingMetricsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetStakingMetricsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetStakingMetricsResponse' from JSON`,
+  );
 }

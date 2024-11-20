@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DateRangeMinBalanceParam = {
   firstDate: string;
@@ -54,4 +57,22 @@ export namespace DateRangeMinBalanceParam$ {
   export const outboundSchema = DateRangeMinBalanceParam$outboundSchema;
   /** @deprecated use `DateRangeMinBalanceParam$Outbound` instead. */
   export type Outbound = DateRangeMinBalanceParam$Outbound;
+}
+
+export function dateRangeMinBalanceParamToJSON(
+  dateRangeMinBalanceParam: DateRangeMinBalanceParam,
+): string {
+  return JSON.stringify(
+    DateRangeMinBalanceParam$outboundSchema.parse(dateRangeMinBalanceParam),
+  );
+}
+
+export function dateRangeMinBalanceParamFromJSON(
+  jsonString: string,
+): SafeParseResult<DateRangeMinBalanceParam, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DateRangeMinBalanceParam$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DateRangeMinBalanceParam' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetChainInfoServerList = [
   "https://glacier-api.avax.network",
@@ -58,6 +61,24 @@ export namespace GetChainInfoGlobals$ {
   export type Outbound = GetChainInfoGlobals$Outbound;
 }
 
+export function getChainInfoGlobalsToJSON(
+  getChainInfoGlobals: GetChainInfoGlobals,
+): string {
+  return JSON.stringify(
+    GetChainInfoGlobals$outboundSchema.parse(getChainInfoGlobals),
+  );
+}
+
+export function getChainInfoGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetChainInfoGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetChainInfoGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetChainInfoGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetChainInfoRequest$inboundSchema: z.ZodType<
   GetChainInfoRequest,
@@ -92,4 +113,22 @@ export namespace GetChainInfoRequest$ {
   export const outboundSchema = GetChainInfoRequest$outboundSchema;
   /** @deprecated use `GetChainInfoRequest$Outbound` instead. */
   export type Outbound = GetChainInfoRequest$Outbound;
+}
+
+export function getChainInfoRequestToJSON(
+  getChainInfoRequest: GetChainInfoRequest,
+): string {
+  return JSON.stringify(
+    GetChainInfoRequest$outboundSchema.parse(getChainInfoRequest),
+  );
+}
+
+export function getChainInfoRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetChainInfoRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetChainInfoRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetChainInfoRequest' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListLatestPrimaryNetworkBlocksServerList = [
   "https://glacier-api.avax.network",
@@ -78,6 +81,27 @@ export namespace ListLatestPrimaryNetworkBlocksGlobals$ {
   export type Outbound = ListLatestPrimaryNetworkBlocksGlobals$Outbound;
 }
 
+export function listLatestPrimaryNetworkBlocksGlobalsToJSON(
+  listLatestPrimaryNetworkBlocksGlobals: ListLatestPrimaryNetworkBlocksGlobals,
+): string {
+  return JSON.stringify(
+    ListLatestPrimaryNetworkBlocksGlobals$outboundSchema.parse(
+      listLatestPrimaryNetworkBlocksGlobals,
+    ),
+  );
+}
+
+export function listLatestPrimaryNetworkBlocksGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListLatestPrimaryNetworkBlocksGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListLatestPrimaryNetworkBlocksGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListLatestPrimaryNetworkBlocksGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListLatestPrimaryNetworkBlocksRequest$inboundSchema: z.ZodType<
   ListLatestPrimaryNetworkBlocksRequest,
@@ -125,6 +149,27 @@ export namespace ListLatestPrimaryNetworkBlocksRequest$ {
   export type Outbound = ListLatestPrimaryNetworkBlocksRequest$Outbound;
 }
 
+export function listLatestPrimaryNetworkBlocksRequestToJSON(
+  listLatestPrimaryNetworkBlocksRequest: ListLatestPrimaryNetworkBlocksRequest,
+): string {
+  return JSON.stringify(
+    ListLatestPrimaryNetworkBlocksRequest$outboundSchema.parse(
+      listLatestPrimaryNetworkBlocksRequest,
+    ),
+  );
+}
+
+export function listLatestPrimaryNetworkBlocksRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListLatestPrimaryNetworkBlocksRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListLatestPrimaryNetworkBlocksRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListLatestPrimaryNetworkBlocksRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListLatestPrimaryNetworkBlocksResponse$inboundSchema: z.ZodType<
   ListLatestPrimaryNetworkBlocksResponse,
@@ -169,4 +214,26 @@ export namespace ListLatestPrimaryNetworkBlocksResponse$ {
     ListLatestPrimaryNetworkBlocksResponse$outboundSchema;
   /** @deprecated use `ListLatestPrimaryNetworkBlocksResponse$Outbound` instead. */
   export type Outbound = ListLatestPrimaryNetworkBlocksResponse$Outbound;
+}
+
+export function listLatestPrimaryNetworkBlocksResponseToJSON(
+  listLatestPrimaryNetworkBlocksResponse:
+    ListLatestPrimaryNetworkBlocksResponse,
+): string {
+  return JSON.stringify(
+    ListLatestPrimaryNetworkBlocksResponse$outboundSchema.parse(
+      listLatestPrimaryNetworkBlocksResponse,
+    ),
+  );
+}
+
+export function listLatestPrimaryNetworkBlocksResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListLatestPrimaryNetworkBlocksResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListLatestPrimaryNetworkBlocksResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListLatestPrimaryNetworkBlocksResponse' from JSON`,
+  );
 }

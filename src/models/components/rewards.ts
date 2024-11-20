@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Rewards = {
   validationRewardAmount: string;
@@ -51,4 +54,18 @@ export namespace Rewards$ {
   export const outboundSchema = Rewards$outboundSchema;
   /** @deprecated use `Rewards$Outbound` instead. */
   export type Outbound = Rewards$Outbound;
+}
+
+export function rewardsToJSON(rewards: Rewards): string {
+  return JSON.stringify(Rewards$outboundSchema.parse(rewards));
+}
+
+export function rewardsFromJSON(
+  jsonString: string,
+): SafeParseResult<Rewards, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Rewards$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Rewards' from JSON`,
+  );
 }

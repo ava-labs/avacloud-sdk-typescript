@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ProposerDetails,
   ProposerDetails$inboundSchema,
@@ -19,8 +22,8 @@ export type PrimaryNetworkBlock = {
   txCount: number;
   transactions: Array<string>;
   blockSizeBytes: number;
-  subnetOnlyValidatorsAccruedFees?: number | undefined;
-  activeSubnetOnlyValidators?: number | undefined;
+  l1ValidatorsAccruedFees?: number | undefined;
+  activeL1Validators?: number | undefined;
   currentSupply?: string | undefined;
   proposerDetails?: ProposerDetails | undefined;
 };
@@ -39,8 +42,8 @@ export const PrimaryNetworkBlock$inboundSchema: z.ZodType<
   txCount: z.number(),
   transactions: z.array(z.string()),
   blockSizeBytes: z.number(),
-  subnetOnlyValidatorsAccruedFees: z.number().optional(),
-  activeSubnetOnlyValidators: z.number().optional(),
+  l1ValidatorsAccruedFees: z.number().optional(),
+  activeL1Validators: z.number().optional(),
   currentSupply: z.string().optional(),
   proposerDetails: ProposerDetails$inboundSchema.optional(),
 });
@@ -55,8 +58,8 @@ export type PrimaryNetworkBlock$Outbound = {
   txCount: number;
   transactions: Array<string>;
   blockSizeBytes: number;
-  subnetOnlyValidatorsAccruedFees?: number | undefined;
-  activeSubnetOnlyValidators?: number | undefined;
+  l1ValidatorsAccruedFees?: number | undefined;
+  activeL1Validators?: number | undefined;
   currentSupply?: string | undefined;
   proposerDetails?: ProposerDetails$Outbound | undefined;
 };
@@ -75,8 +78,8 @@ export const PrimaryNetworkBlock$outboundSchema: z.ZodType<
   txCount: z.number(),
   transactions: z.array(z.string()),
   blockSizeBytes: z.number(),
-  subnetOnlyValidatorsAccruedFees: z.number().optional(),
-  activeSubnetOnlyValidators: z.number().optional(),
+  l1ValidatorsAccruedFees: z.number().optional(),
+  activeL1Validators: z.number().optional(),
   currentSupply: z.string().optional(),
   proposerDetails: ProposerDetails$outboundSchema.optional(),
 });
@@ -92,4 +95,22 @@ export namespace PrimaryNetworkBlock$ {
   export const outboundSchema = PrimaryNetworkBlock$outboundSchema;
   /** @deprecated use `PrimaryNetworkBlock$Outbound` instead. */
   export type Outbound = PrimaryNetworkBlock$Outbound;
+}
+
+export function primaryNetworkBlockToJSON(
+  primaryNetworkBlock: PrimaryNetworkBlock,
+): string {
+  return JSON.stringify(
+    PrimaryNetworkBlock$outboundSchema.parse(primaryNetworkBlock),
+  );
+}
+
+export function primaryNetworkBlockFromJSON(
+  jsonString: string,
+): SafeParseResult<PrimaryNetworkBlock, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PrimaryNetworkBlock$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PrimaryNetworkBlock' from JSON`,
+  );
 }

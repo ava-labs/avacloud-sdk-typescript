@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * The error message describing the reason for the exception
@@ -79,6 +82,24 @@ export namespace BadGatewayMessage$ {
   export const outboundSchema = BadGatewayMessage$outboundSchema;
   /** @deprecated use `BadGatewayMessage$Outbound` instead. */
   export type Outbound = BadGatewayMessage$Outbound;
+}
+
+export function badGatewayMessageToJSON(
+  badGatewayMessage: BadGatewayMessage,
+): string {
+  return JSON.stringify(
+    BadGatewayMessage$outboundSchema.parse(badGatewayMessage),
+  );
+}
+
+export function badGatewayMessageFromJSON(
+  jsonString: string,
+): SafeParseResult<BadGatewayMessage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BadGatewayMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BadGatewayMessage' from JSON`,
+  );
 }
 
 /** @internal */

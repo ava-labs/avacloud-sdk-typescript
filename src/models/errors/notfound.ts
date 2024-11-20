@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * The error message describing the reason for the exception
@@ -79,6 +82,22 @@ export namespace NotFoundMessage$ {
   export const outboundSchema = NotFoundMessage$outboundSchema;
   /** @deprecated use `NotFoundMessage$Outbound` instead. */
   export type Outbound = NotFoundMessage$Outbound;
+}
+
+export function notFoundMessageToJSON(
+  notFoundMessage: NotFoundMessage,
+): string {
+  return JSON.stringify(NotFoundMessage$outboundSchema.parse(notFoundMessage));
+}
+
+export function notFoundMessageFromJSON(
+  jsonString: string,
+): SafeParseResult<NotFoundMessage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NotFoundMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NotFoundMessage' from JSON`,
+  );
 }
 
 /** @internal */

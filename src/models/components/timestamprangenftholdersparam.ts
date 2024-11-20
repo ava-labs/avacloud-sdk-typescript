@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type TimestampRangeNftHoldersParam = {
   evmChainId: string;
@@ -54,4 +57,24 @@ export namespace TimestampRangeNftHoldersParam$ {
   export const outboundSchema = TimestampRangeNftHoldersParam$outboundSchema;
   /** @deprecated use `TimestampRangeNftHoldersParam$Outbound` instead. */
   export type Outbound = TimestampRangeNftHoldersParam$Outbound;
+}
+
+export function timestampRangeNftHoldersParamToJSON(
+  timestampRangeNftHoldersParam: TimestampRangeNftHoldersParam,
+): string {
+  return JSON.stringify(
+    TimestampRangeNftHoldersParam$outboundSchema.parse(
+      timestampRangeNftHoldersParam,
+    ),
+  );
+}
+
+export function timestampRangeNftHoldersParamFromJSON(
+  jsonString: string,
+): SafeParseResult<TimestampRangeNftHoldersParam, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimestampRangeNftHoldersParam$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimestampRangeNftHoldersParam' from JSON`,
+  );
 }

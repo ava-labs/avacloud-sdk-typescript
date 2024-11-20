@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListTokensServerList = [
   "https://glacier-api.avax.network",
@@ -76,6 +79,24 @@ export namespace ListTokensGlobals$ {
   export type Outbound = ListTokensGlobals$Outbound;
 }
 
+export function listTokensGlobalsToJSON(
+  listTokensGlobals: ListTokensGlobals,
+): string {
+  return JSON.stringify(
+    ListTokensGlobals$outboundSchema.parse(listTokensGlobals),
+  );
+}
+
+export function listTokensGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTokensGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTokensGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTokensGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListTokensRequest$inboundSchema: z.ZodType<
   ListTokensRequest,
@@ -121,6 +142,24 @@ export namespace ListTokensRequest$ {
   export type Outbound = ListTokensRequest$Outbound;
 }
 
+export function listTokensRequestToJSON(
+  listTokensRequest: ListTokensRequest,
+): string {
+  return JSON.stringify(
+    ListTokensRequest$outboundSchema.parse(listTokensRequest),
+  );
+}
+
+export function listTokensRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTokensRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTokensRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTokensRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListTokensResponse$inboundSchema: z.ZodType<
   ListTokensResponse,
@@ -163,4 +202,22 @@ export namespace ListTokensResponse$ {
   export const outboundSchema = ListTokensResponse$outboundSchema;
   /** @deprecated use `ListTokensResponse$Outbound` instead. */
   export type Outbound = ListTokensResponse$Outbound;
+}
+
+export function listTokensResponseToJSON(
+  listTokensResponse: ListTokensResponse,
+): string {
+  return JSON.stringify(
+    ListTokensResponse$outboundSchema.parse(listTokensResponse),
+  );
+}
+
+export function listTokensResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTokensResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTokensResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTokensResponse' from JSON`,
+  );
 }

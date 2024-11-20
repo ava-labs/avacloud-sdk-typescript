@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListWebhookAddressesResponse = {
   /**
@@ -53,4 +56,24 @@ export namespace ListWebhookAddressesResponse$ {
   export const outboundSchema = ListWebhookAddressesResponse$outboundSchema;
   /** @deprecated use `ListWebhookAddressesResponse$Outbound` instead. */
   export type Outbound = ListWebhookAddressesResponse$Outbound;
+}
+
+export function listWebhookAddressesResponseToJSON(
+  listWebhookAddressesResponse: ListWebhookAddressesResponse,
+): string {
+  return JSON.stringify(
+    ListWebhookAddressesResponse$outboundSchema.parse(
+      listWebhookAddressesResponse,
+    ),
+  );
+}
+
+export function listWebhookAddressesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListWebhookAddressesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListWebhookAddressesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListWebhookAddressesResponse' from JSON`,
+  );
 }

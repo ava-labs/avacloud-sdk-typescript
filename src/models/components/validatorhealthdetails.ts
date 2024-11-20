@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ValidatorHealthDetails = {
   /**
@@ -66,4 +69,22 @@ export namespace ValidatorHealthDetails$ {
   export const outboundSchema = ValidatorHealthDetails$outboundSchema;
   /** @deprecated use `ValidatorHealthDetails$Outbound` instead. */
   export type Outbound = ValidatorHealthDetails$Outbound;
+}
+
+export function validatorHealthDetailsToJSON(
+  validatorHealthDetails: ValidatorHealthDetails,
+): string {
+  return JSON.stringify(
+    ValidatorHealthDetails$outboundSchema.parse(validatorHealthDetails),
+  );
+}
+
+export function validatorHealthDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<ValidatorHealthDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ValidatorHealthDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ValidatorHealthDetails' from JSON`,
+  );
 }

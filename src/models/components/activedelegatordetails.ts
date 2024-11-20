@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ActiveDelegatorDetailsDelegationStatus = {
   Active: "active",
@@ -110,4 +113,22 @@ export namespace ActiveDelegatorDetails$ {
   export const outboundSchema = ActiveDelegatorDetails$outboundSchema;
   /** @deprecated use `ActiveDelegatorDetails$Outbound` instead. */
   export type Outbound = ActiveDelegatorDetails$Outbound;
+}
+
+export function activeDelegatorDetailsToJSON(
+  activeDelegatorDetails: ActiveDelegatorDetails,
+): string {
+  return JSON.stringify(
+    ActiveDelegatorDetails$outboundSchema.parse(activeDelegatorDetails),
+  );
+}
+
+export function activeDelegatorDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<ActiveDelegatorDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ActiveDelegatorDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ActiveDelegatorDetails' from JSON`,
+  );
 }

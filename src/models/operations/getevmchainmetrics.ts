@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetEvmChainMetricsServerList = [
   "https://metrics.avax.network",
@@ -92,6 +95,24 @@ export namespace GetEvmChainMetricsGlobals$ {
   export type Outbound = GetEvmChainMetricsGlobals$Outbound;
 }
 
+export function getEvmChainMetricsGlobalsToJSON(
+  getEvmChainMetricsGlobals: GetEvmChainMetricsGlobals,
+): string {
+  return JSON.stringify(
+    GetEvmChainMetricsGlobals$outboundSchema.parse(getEvmChainMetricsGlobals),
+  );
+}
+
+export function getEvmChainMetricsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetEvmChainMetricsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetEvmChainMetricsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetEvmChainMetricsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetEvmChainMetricsRequest$inboundSchema: z.ZodType<
   GetEvmChainMetricsRequest,
@@ -146,6 +167,24 @@ export namespace GetEvmChainMetricsRequest$ {
   export type Outbound = GetEvmChainMetricsRequest$Outbound;
 }
 
+export function getEvmChainMetricsRequestToJSON(
+  getEvmChainMetricsRequest: GetEvmChainMetricsRequest,
+): string {
+  return JSON.stringify(
+    GetEvmChainMetricsRequest$outboundSchema.parse(getEvmChainMetricsRequest),
+  );
+}
+
+export function getEvmChainMetricsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetEvmChainMetricsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetEvmChainMetricsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetEvmChainMetricsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetEvmChainMetricsResponse$inboundSchema: z.ZodType<
   GetEvmChainMetricsResponse,
@@ -188,4 +227,22 @@ export namespace GetEvmChainMetricsResponse$ {
   export const outboundSchema = GetEvmChainMetricsResponse$outboundSchema;
   /** @deprecated use `GetEvmChainMetricsResponse$Outbound` instead. */
   export type Outbound = GetEvmChainMetricsResponse$Outbound;
+}
+
+export function getEvmChainMetricsResponseToJSON(
+  getEvmChainMetricsResponse: GetEvmChainMetricsResponse,
+): string {
+  return JSON.stringify(
+    GetEvmChainMetricsResponse$outboundSchema.parse(getEvmChainMetricsResponse),
+  );
+}
+
+export function getEvmChainMetricsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetEvmChainMetricsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetEvmChainMetricsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetEvmChainMetricsResponse' from JSON`,
+  );
 }

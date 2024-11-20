@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PrimaryNetworkChainInfo,
   PrimaryNetworkChainInfo$inboundSchema,
@@ -65,4 +68,22 @@ export namespace ListXChainVerticesResponse$ {
   export const outboundSchema = ListXChainVerticesResponse$outboundSchema;
   /** @deprecated use `ListXChainVerticesResponse$Outbound` instead. */
   export type Outbound = ListXChainVerticesResponse$Outbound;
+}
+
+export function listXChainVerticesResponseToJSON(
+  listXChainVerticesResponse: ListXChainVerticesResponse,
+): string {
+  return JSON.stringify(
+    ListXChainVerticesResponse$outboundSchema.parse(listXChainVerticesResponse),
+  );
+}
+
+export function listXChainVerticesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListXChainVerticesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListXChainVerticesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListXChainVerticesResponse' from JSON`,
+  );
 }

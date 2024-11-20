@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type TeleporterMetricsValue = {
   /**
@@ -45,4 +48,22 @@ export namespace TeleporterMetricsValue$ {
   export const outboundSchema = TeleporterMetricsValue$outboundSchema;
   /** @deprecated use `TeleporterMetricsValue$Outbound` instead. */
   export type Outbound = TeleporterMetricsValue$Outbound;
+}
+
+export function teleporterMetricsValueToJSON(
+  teleporterMetricsValue: TeleporterMetricsValue,
+): string {
+  return JSON.stringify(
+    TeleporterMetricsValue$outboundSchema.parse(teleporterMetricsValue),
+  );
+}
+
+export function teleporterMetricsValueFromJSON(
+  jsonString: string,
+): SafeParseResult<TeleporterMetricsValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TeleporterMetricsValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeleporterMetricsValue' from JSON`,
+  );
 }

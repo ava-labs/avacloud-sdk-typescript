@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type TransactionVertexDetail = {
   /**
@@ -59,4 +62,22 @@ export namespace TransactionVertexDetail$ {
   export const outboundSchema = TransactionVertexDetail$outboundSchema;
   /** @deprecated use `TransactionVertexDetail$Outbound` instead. */
   export type Outbound = TransactionVertexDetail$Outbound;
+}
+
+export function transactionVertexDetailToJSON(
+  transactionVertexDetail: TransactionVertexDetail,
+): string {
+  return JSON.stringify(
+    TransactionVertexDetail$outboundSchema.parse(transactionVertexDetail),
+  );
+}
+
+export function transactionVertexDetailFromJSON(
+  jsonString: string,
+): SafeParseResult<TransactionVertexDetail, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransactionVertexDetail$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransactionVertexDetail' from JSON`,
+  );
 }
