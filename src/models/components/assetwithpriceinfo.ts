@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Money,
   Money$inboundSchema,
@@ -98,4 +101,22 @@ export namespace AssetWithPriceInfo$ {
   export const outboundSchema = AssetWithPriceInfo$outboundSchema;
   /** @deprecated use `AssetWithPriceInfo$Outbound` instead. */
   export type Outbound = AssetWithPriceInfo$Outbound;
+}
+
+export function assetWithPriceInfoToJSON(
+  assetWithPriceInfo: AssetWithPriceInfo,
+): string {
+  return JSON.stringify(
+    AssetWithPriceInfo$outboundSchema.parse(assetWithPriceInfo),
+  );
+}
+
+export function assetWithPriceInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<AssetWithPriceInfo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssetWithPriceInfo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssetWithPriceInfo' from JSON`,
+  );
 }

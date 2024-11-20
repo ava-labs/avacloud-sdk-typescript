@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Erc721TokenMetadata,
   Erc721TokenMetadata$inboundSchema,
@@ -124,4 +127,22 @@ export namespace Erc721TokenBalance$ {
   export const outboundSchema = Erc721TokenBalance$outboundSchema;
   /** @deprecated use `Erc721TokenBalance$Outbound` instead. */
   export type Outbound = Erc721TokenBalance$Outbound;
+}
+
+export function erc721TokenBalanceToJSON(
+  erc721TokenBalance: Erc721TokenBalance,
+): string {
+  return JSON.stringify(
+    Erc721TokenBalance$outboundSchema.parse(erc721TokenBalance),
+  );
+}
+
+export function erc721TokenBalanceFromJSON(
+  jsonString: string,
+): SafeParseResult<Erc721TokenBalance, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Erc721TokenBalance$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Erc721TokenBalance' from JSON`,
+  );
 }

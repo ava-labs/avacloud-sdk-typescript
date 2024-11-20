@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetApiUsageMetricsServerList = [
   "https://glacier-api.avax.network",
@@ -147,4 +150,22 @@ export namespace GetApiUsageMetricsRequest$ {
   export const outboundSchema = GetApiUsageMetricsRequest$outboundSchema;
   /** @deprecated use `GetApiUsageMetricsRequest$Outbound` instead. */
   export type Outbound = GetApiUsageMetricsRequest$Outbound;
+}
+
+export function getApiUsageMetricsRequestToJSON(
+  getApiUsageMetricsRequest: GetApiUsageMetricsRequest,
+): string {
+  return JSON.stringify(
+    GetApiUsageMetricsRequest$outboundSchema.parse(getApiUsageMetricsRequest),
+  );
+}
+
+export function getApiUsageMetricsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetApiUsageMetricsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetApiUsageMetricsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetApiUsageMetricsRequest' from JSON`,
+  );
 }

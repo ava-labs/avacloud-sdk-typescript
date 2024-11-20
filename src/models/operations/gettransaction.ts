@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetTransactionServerList = [
   "https://glacier-api.avax.network",
@@ -62,6 +65,24 @@ export namespace GetTransactionGlobals$ {
   export type Outbound = GetTransactionGlobals$Outbound;
 }
 
+export function getTransactionGlobalsToJSON(
+  getTransactionGlobals: GetTransactionGlobals,
+): string {
+  return JSON.stringify(
+    GetTransactionGlobals$outboundSchema.parse(getTransactionGlobals),
+  );
+}
+
+export function getTransactionGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTransactionGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTransactionGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTransactionGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetTransactionRequest$inboundSchema: z.ZodType<
   GetTransactionRequest,
@@ -99,4 +120,22 @@ export namespace GetTransactionRequest$ {
   export const outboundSchema = GetTransactionRequest$outboundSchema;
   /** @deprecated use `GetTransactionRequest$Outbound` instead. */
   export type Outbound = GetTransactionRequest$Outbound;
+}
+
+export function getTransactionRequestToJSON(
+  getTransactionRequest: GetTransactionRequest,
+): string {
+  return JSON.stringify(
+    GetTransactionRequest$outboundSchema.parse(getTransactionRequest),
+  );
+}
+
+export function getTransactionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTransactionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTransactionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTransactionRequest' from JSON`,
+  );
 }

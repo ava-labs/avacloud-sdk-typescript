@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UtilityAddresses = {
   multicall?: string | undefined;
@@ -42,4 +45,22 @@ export namespace UtilityAddresses$ {
   export const outboundSchema = UtilityAddresses$outboundSchema;
   /** @deprecated use `UtilityAddresses$Outbound` instead. */
   export type Outbound = UtilityAddresses$Outbound;
+}
+
+export function utilityAddressesToJSON(
+  utilityAddresses: UtilityAddresses,
+): string {
+  return JSON.stringify(
+    UtilityAddresses$outboundSchema.parse(utilityAddresses),
+  );
+}
+
+export function utilityAddressesFromJSON(
+  jsonString: string,
+): SafeParseResult<UtilityAddresses, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UtilityAddresses$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UtilityAddresses' from JSON`,
+  );
 }

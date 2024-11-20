@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TeleporterMetricsValue,
   TeleporterMetricsValue$inboundSchema,
@@ -52,4 +55,24 @@ export namespace TeleporterChainMetricsApiResponse$ {
     TeleporterChainMetricsApiResponse$outboundSchema;
   /** @deprecated use `TeleporterChainMetricsApiResponse$Outbound` instead. */
   export type Outbound = TeleporterChainMetricsApiResponse$Outbound;
+}
+
+export function teleporterChainMetricsApiResponseToJSON(
+  teleporterChainMetricsApiResponse: TeleporterChainMetricsApiResponse,
+): string {
+  return JSON.stringify(
+    TeleporterChainMetricsApiResponse$outboundSchema.parse(
+      teleporterChainMetricsApiResponse,
+    ),
+  );
+}
+
+export function teleporterChainMetricsApiResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<TeleporterChainMetricsApiResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TeleporterChainMetricsApiResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeleporterChainMetricsApiResponse' from JSON`,
+  );
 }

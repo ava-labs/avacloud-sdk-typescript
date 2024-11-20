@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Chain,
   Chain$inboundSchema,
@@ -58,4 +61,22 @@ export namespace MetricsListChainsResponse$ {
   export const outboundSchema = MetricsListChainsResponse$outboundSchema;
   /** @deprecated use `MetricsListChainsResponse$Outbound` instead. */
   export type Outbound = MetricsListChainsResponse$Outbound;
+}
+
+export function metricsListChainsResponseToJSON(
+  metricsListChainsResponse: MetricsListChainsResponse,
+): string {
+  return JSON.stringify(
+    MetricsListChainsResponse$outboundSchema.parse(metricsListChainsResponse),
+  );
+}
+
+export function metricsListChainsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<MetricsListChainsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MetricsListChainsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MetricsListChainsResponse' from JSON`,
+  );
 }

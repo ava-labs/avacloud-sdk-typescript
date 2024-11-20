@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetSubnetByIdServerList = [
   "https://glacier-api.avax.network",
@@ -63,6 +66,24 @@ export namespace GetSubnetByIdGlobals$ {
   export type Outbound = GetSubnetByIdGlobals$Outbound;
 }
 
+export function getSubnetByIdGlobalsToJSON(
+  getSubnetByIdGlobals: GetSubnetByIdGlobals,
+): string {
+  return JSON.stringify(
+    GetSubnetByIdGlobals$outboundSchema.parse(getSubnetByIdGlobals),
+  );
+}
+
+export function getSubnetByIdGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetSubnetByIdGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetSubnetByIdGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetSubnetByIdGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetSubnetByIdRequest$inboundSchema: z.ZodType<
   GetSubnetByIdRequest,
@@ -100,4 +121,22 @@ export namespace GetSubnetByIdRequest$ {
   export const outboundSchema = GetSubnetByIdRequest$outboundSchema;
   /** @deprecated use `GetSubnetByIdRequest$Outbound` instead. */
   export type Outbound = GetSubnetByIdRequest$Outbound;
+}
+
+export function getSubnetByIdRequestToJSON(
+  getSubnetByIdRequest: GetSubnetByIdRequest,
+): string {
+  return JSON.stringify(
+    GetSubnetByIdRequest$outboundSchema.parse(getSubnetByIdRequest),
+  );
+}
+
+export function getSubnetByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetSubnetByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetSubnetByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetSubnetByIdRequest' from JSON`,
+  );
 }

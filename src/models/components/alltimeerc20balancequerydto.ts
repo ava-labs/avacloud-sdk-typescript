@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DateRangeErc20MinBalanceParam,
   DateRangeErc20MinBalanceParam$inboundSchema,
@@ -85,4 +88,24 @@ export namespace AllTimeErc20BalanceQueryDto$ {
   export const outboundSchema = AllTimeErc20BalanceQueryDto$outboundSchema;
   /** @deprecated use `AllTimeErc20BalanceQueryDto$Outbound` instead. */
   export type Outbound = AllTimeErc20BalanceQueryDto$Outbound;
+}
+
+export function allTimeErc20BalanceQueryDtoToJSON(
+  allTimeErc20BalanceQueryDto: AllTimeErc20BalanceQueryDto,
+): string {
+  return JSON.stringify(
+    AllTimeErc20BalanceQueryDto$outboundSchema.parse(
+      allTimeErc20BalanceQueryDto,
+    ),
+  );
+}
+
+export function allTimeErc20BalanceQueryDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<AllTimeErc20BalanceQueryDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AllTimeErc20BalanceQueryDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AllTimeErc20BalanceQueryDto' from JSON`,
+  );
 }

@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DateRangeStarsArenaMinBalanceParam,
   DateRangeStarsArenaMinBalanceParam$inboundSchema,
@@ -88,4 +91,24 @@ export namespace AllTimeStarsArenaBalanceQueryDto$ {
   export const outboundSchema = AllTimeStarsArenaBalanceQueryDto$outboundSchema;
   /** @deprecated use `AllTimeStarsArenaBalanceQueryDto$Outbound` instead. */
   export type Outbound = AllTimeStarsArenaBalanceQueryDto$Outbound;
+}
+
+export function allTimeStarsArenaBalanceQueryDtoToJSON(
+  allTimeStarsArenaBalanceQueryDto: AllTimeStarsArenaBalanceQueryDto,
+): string {
+  return JSON.stringify(
+    AllTimeStarsArenaBalanceQueryDto$outboundSchema.parse(
+      allTimeStarsArenaBalanceQueryDto,
+    ),
+  );
+}
+
+export function allTimeStarsArenaBalanceQueryDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<AllTimeStarsArenaBalanceQueryDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AllTimeStarsArenaBalanceQueryDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AllTimeStarsArenaBalanceQueryDto' from JSON`,
+  );
 }

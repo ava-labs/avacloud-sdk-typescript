@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ActiveValidatorDetails,
   ActiveValidatorDetails$inboundSchema,
@@ -126,6 +129,20 @@ export namespace Validators$ {
   export type Outbound = Validators$Outbound;
 }
 
+export function validatorsToJSON(validators: Validators): string {
+  return JSON.stringify(Validators$outboundSchema.parse(validators));
+}
+
+export function validatorsFromJSON(
+  jsonString: string,
+): SafeParseResult<Validators, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Validators$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Validators' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListValidatorDetailsResponse$inboundSchema: z.ZodType<
   ListValidatorDetailsResponse,
@@ -214,4 +231,24 @@ export namespace ListValidatorDetailsResponse$ {
   export const outboundSchema = ListValidatorDetailsResponse$outboundSchema;
   /** @deprecated use `ListValidatorDetailsResponse$Outbound` instead. */
   export type Outbound = ListValidatorDetailsResponse$Outbound;
+}
+
+export function listValidatorDetailsResponseToJSON(
+  listValidatorDetailsResponse: ListValidatorDetailsResponse,
+): string {
+  return JSON.stringify(
+    ListValidatorDetailsResponse$outboundSchema.parse(
+      listValidatorDetailsResponse,
+    ),
+  );
+}
+
+export function listValidatorDetailsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListValidatorDetailsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListValidatorDetailsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListValidatorDetailsResponse' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type TeleporterDestinationTransaction = {
   txHash: string;
@@ -58,4 +61,24 @@ export namespace TeleporterDestinationTransaction$ {
   export const outboundSchema = TeleporterDestinationTransaction$outboundSchema;
   /** @deprecated use `TeleporterDestinationTransaction$Outbound` instead. */
   export type Outbound = TeleporterDestinationTransaction$Outbound;
+}
+
+export function teleporterDestinationTransactionToJSON(
+  teleporterDestinationTransaction: TeleporterDestinationTransaction,
+): string {
+  return JSON.stringify(
+    TeleporterDestinationTransaction$outboundSchema.parse(
+      teleporterDestinationTransaction,
+    ),
+  );
+}
+
+export function teleporterDestinationTransactionFromJSON(
+  jsonString: string,
+): SafeParseResult<TeleporterDestinationTransaction, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TeleporterDestinationTransaction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TeleporterDestinationTransaction' from JSON`,
+  );
 }

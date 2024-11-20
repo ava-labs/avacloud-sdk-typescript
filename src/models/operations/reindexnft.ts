@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ReindexNftServerList = [
   "https://glacier-api.avax.network",
@@ -66,6 +69,24 @@ export namespace ReindexNftGlobals$ {
   export type Outbound = ReindexNftGlobals$Outbound;
 }
 
+export function reindexNftGlobalsToJSON(
+  reindexNftGlobals: ReindexNftGlobals,
+): string {
+  return JSON.stringify(
+    ReindexNftGlobals$outboundSchema.parse(reindexNftGlobals),
+  );
+}
+
+export function reindexNftGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ReindexNftGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReindexNftGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReindexNftGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ReindexNftRequest$inboundSchema: z.ZodType<
   ReindexNftRequest,
@@ -106,4 +127,22 @@ export namespace ReindexNftRequest$ {
   export const outboundSchema = ReindexNftRequest$outboundSchema;
   /** @deprecated use `ReindexNftRequest$Outbound` instead. */
   export type Outbound = ReindexNftRequest$Outbound;
+}
+
+export function reindexNftRequestToJSON(
+  reindexNftRequest: ReindexNftRequest,
+): string {
+  return JSON.stringify(
+    ReindexNftRequest$outboundSchema.parse(reindexNftRequest),
+  );
+}
+
+export function reindexNftRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ReindexNftRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReindexNftRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReindexNftRequest' from JSON`,
+  );
 }

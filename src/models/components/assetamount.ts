@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PrimaryNetworkAssetType,
   PrimaryNetworkAssetType$inboundSchema,
@@ -85,4 +88,18 @@ export namespace AssetAmount$ {
   export const outboundSchema = AssetAmount$outboundSchema;
   /** @deprecated use `AssetAmount$Outbound` instead. */
   export type Outbound = AssetAmount$Outbound;
+}
+
+export function assetAmountToJSON(assetAmount: AssetAmount): string {
+  return JSON.stringify(AssetAmount$outboundSchema.parse(assetAmount));
+}
+
+export function assetAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<AssetAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssetAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssetAmount' from JSON`,
+  );
 }

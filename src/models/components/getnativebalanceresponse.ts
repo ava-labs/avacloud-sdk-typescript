@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   NativeTokenBalance,
   NativeTokenBalance$inboundSchema,
@@ -51,4 +54,22 @@ export namespace GetNativeBalanceResponse$ {
   export const outboundSchema = GetNativeBalanceResponse$outboundSchema;
   /** @deprecated use `GetNativeBalanceResponse$Outbound` instead. */
   export type Outbound = GetNativeBalanceResponse$Outbound;
+}
+
+export function getNativeBalanceResponseToJSON(
+  getNativeBalanceResponse: GetNativeBalanceResponse,
+): string {
+  return JSON.stringify(
+    GetNativeBalanceResponse$outboundSchema.parse(getNativeBalanceResponse),
+  );
+}
+
+export function getNativeBalanceResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetNativeBalanceResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetNativeBalanceResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetNativeBalanceResponse' from JSON`,
+  );
 }

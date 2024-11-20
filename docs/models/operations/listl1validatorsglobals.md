@@ -1,11 +1,11 @@
-# ListSubnetOnlyValidatorsGlobals
+# ListL1ValidatorsGlobals
 
 ## Example Usage
 
 ```typescript
-import { ListSubnetOnlyValidatorsGlobals } from "@avalabs/avacloud-sdk/models/operations";
+import { ListL1ValidatorsGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListSubnetOnlyValidatorsGlobals = {};
+let value: ListL1ValidatorsGlobals = {};
 ```
 
 ## Fields

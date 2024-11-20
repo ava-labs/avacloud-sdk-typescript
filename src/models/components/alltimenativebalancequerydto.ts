@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DateRangeMinBalanceParam,
   DateRangeMinBalanceParam$inboundSchema,
@@ -82,4 +85,24 @@ export namespace AllTimeNativeBalanceQueryDto$ {
   export const outboundSchema = AllTimeNativeBalanceQueryDto$outboundSchema;
   /** @deprecated use `AllTimeNativeBalanceQueryDto$Outbound` instead. */
   export type Outbound = AllTimeNativeBalanceQueryDto$Outbound;
+}
+
+export function allTimeNativeBalanceQueryDtoToJSON(
+  allTimeNativeBalanceQueryDto: AllTimeNativeBalanceQueryDto,
+): string {
+  return JSON.stringify(
+    AllTimeNativeBalanceQueryDto$outboundSchema.parse(
+      allTimeNativeBalanceQueryDto,
+    ),
+  );
+}
+
+export function allTimeNativeBalanceQueryDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<AllTimeNativeBalanceQueryDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AllTimeNativeBalanceQueryDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AllTimeNativeBalanceQueryDto' from JSON`,
+  );
 }

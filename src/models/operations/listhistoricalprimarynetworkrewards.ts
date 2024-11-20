@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListHistoricalPrimaryNetworkRewardsServerList = [
   "https://glacier-api.avax.network",
@@ -89,6 +92,33 @@ export namespace ListHistoricalPrimaryNetworkRewardsGlobals$ {
   export type Outbound = ListHistoricalPrimaryNetworkRewardsGlobals$Outbound;
 }
 
+export function listHistoricalPrimaryNetworkRewardsGlobalsToJSON(
+  listHistoricalPrimaryNetworkRewardsGlobals:
+    ListHistoricalPrimaryNetworkRewardsGlobals,
+): string {
+  return JSON.stringify(
+    ListHistoricalPrimaryNetworkRewardsGlobals$outboundSchema.parse(
+      listHistoricalPrimaryNetworkRewardsGlobals,
+    ),
+  );
+}
+
+export function listHistoricalPrimaryNetworkRewardsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListHistoricalPrimaryNetworkRewardsGlobals,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListHistoricalPrimaryNetworkRewardsGlobals$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListHistoricalPrimaryNetworkRewardsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListHistoricalPrimaryNetworkRewardsRequest$inboundSchema:
   z.ZodType<ListHistoricalPrimaryNetworkRewardsRequest, z.ZodTypeDef, unknown> =
@@ -144,6 +174,33 @@ export namespace ListHistoricalPrimaryNetworkRewardsRequest$ {
   export type Outbound = ListHistoricalPrimaryNetworkRewardsRequest$Outbound;
 }
 
+export function listHistoricalPrimaryNetworkRewardsRequestToJSON(
+  listHistoricalPrimaryNetworkRewardsRequest:
+    ListHistoricalPrimaryNetworkRewardsRequest,
+): string {
+  return JSON.stringify(
+    ListHistoricalPrimaryNetworkRewardsRequest$outboundSchema.parse(
+      listHistoricalPrimaryNetworkRewardsRequest,
+    ),
+  );
+}
+
+export function listHistoricalPrimaryNetworkRewardsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListHistoricalPrimaryNetworkRewardsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListHistoricalPrimaryNetworkRewardsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListHistoricalPrimaryNetworkRewardsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListHistoricalPrimaryNetworkRewardsResponse$inboundSchema:
   z.ZodType<
@@ -190,4 +247,31 @@ export namespace ListHistoricalPrimaryNetworkRewardsResponse$ {
     ListHistoricalPrimaryNetworkRewardsResponse$outboundSchema;
   /** @deprecated use `ListHistoricalPrimaryNetworkRewardsResponse$Outbound` instead. */
   export type Outbound = ListHistoricalPrimaryNetworkRewardsResponse$Outbound;
+}
+
+export function listHistoricalPrimaryNetworkRewardsResponseToJSON(
+  listHistoricalPrimaryNetworkRewardsResponse:
+    ListHistoricalPrimaryNetworkRewardsResponse,
+): string {
+  return JSON.stringify(
+    ListHistoricalPrimaryNetworkRewardsResponse$outboundSchema.parse(
+      listHistoricalPrimaryNetworkRewardsResponse,
+    ),
+  );
+}
+
+export function listHistoricalPrimaryNetworkRewardsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListHistoricalPrimaryNetworkRewardsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListHistoricalPrimaryNetworkRewardsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListHistoricalPrimaryNetworkRewardsResponse' from JSON`,
+  );
 }

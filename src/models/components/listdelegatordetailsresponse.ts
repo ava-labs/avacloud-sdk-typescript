@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ActiveDelegatorDetails,
   ActiveDelegatorDetails$inboundSchema,
@@ -107,6 +110,20 @@ export namespace Delegators$ {
   export type Outbound = Delegators$Outbound;
 }
 
+export function delegatorsToJSON(delegators: Delegators): string {
+  return JSON.stringify(Delegators$outboundSchema.parse(delegators));
+}
+
+export function delegatorsFromJSON(
+  jsonString: string,
+): SafeParseResult<Delegators, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Delegators$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Delegators' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListDelegatorDetailsResponse$inboundSchema: z.ZodType<
   ListDelegatorDetailsResponse,
@@ -184,4 +201,24 @@ export namespace ListDelegatorDetailsResponse$ {
   export const outboundSchema = ListDelegatorDetailsResponse$outboundSchema;
   /** @deprecated use `ListDelegatorDetailsResponse$Outbound` instead. */
   export type Outbound = ListDelegatorDetailsResponse$Outbound;
+}
+
+export function listDelegatorDetailsResponseToJSON(
+  listDelegatorDetailsResponse: ListDelegatorDetailsResponse,
+): string {
+  return JSON.stringify(
+    ListDelegatorDetailsResponse$outboundSchema.parse(
+      listDelegatorDetailsResponse,
+    ),
+  );
+}
+
+export function listDelegatorDetailsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListDelegatorDetailsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListDelegatorDetailsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListDelegatorDetailsResponse' from JSON`,
+  );
 }

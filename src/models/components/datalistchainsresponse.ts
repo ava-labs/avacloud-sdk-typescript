@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ChainInfo,
   ChainInfo$inboundSchema,
@@ -48,4 +51,22 @@ export namespace DataListChainsResponse$ {
   export const outboundSchema = DataListChainsResponse$outboundSchema;
   /** @deprecated use `DataListChainsResponse$Outbound` instead. */
   export type Outbound = DataListChainsResponse$Outbound;
+}
+
+export function dataListChainsResponseToJSON(
+  dataListChainsResponse: DataListChainsResponse,
+): string {
+  return JSON.stringify(
+    DataListChainsResponse$outboundSchema.parse(dataListChainsResponse),
+  );
+}
+
+export function dataListChainsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<DataListChainsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DataListChainsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DataListChainsResponse' from JSON`,
+  );
 }

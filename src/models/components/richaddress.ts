@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RichAddress = {
   /**
@@ -73,4 +76,18 @@ export namespace RichAddress$ {
   export const outboundSchema = RichAddress$outboundSchema;
   /** @deprecated use `RichAddress$Outbound` instead. */
   export type Outbound = RichAddress$Outbound;
+}
+
+export function richAddressToJSON(richAddress: RichAddress): string {
+  return JSON.stringify(RichAddress$outboundSchema.parse(richAddress));
+}
+
+export function richAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<RichAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RichAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RichAddress' from JSON`,
+  );
 }

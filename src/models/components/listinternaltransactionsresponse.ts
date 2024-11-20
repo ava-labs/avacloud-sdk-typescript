@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   InternalTransaction,
   InternalTransaction$inboundSchema,
@@ -55,4 +58,24 @@ export namespace ListInternalTransactionsResponse$ {
   export const outboundSchema = ListInternalTransactionsResponse$outboundSchema;
   /** @deprecated use `ListInternalTransactionsResponse$Outbound` instead. */
   export type Outbound = ListInternalTransactionsResponse$Outbound;
+}
+
+export function listInternalTransactionsResponseToJSON(
+  listInternalTransactionsResponse: ListInternalTransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListInternalTransactionsResponse$outboundSchema.parse(
+      listInternalTransactionsResponse,
+    ),
+  );
+}
+
+export function listInternalTransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListInternalTransactionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListInternalTransactionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListInternalTransactionsResponse' from JSON`,
+  );
 }

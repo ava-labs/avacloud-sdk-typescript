@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CompositeQueryResponse = {
   /**
@@ -63,4 +66,22 @@ export namespace CompositeQueryResponse$ {
   export const outboundSchema = CompositeQueryResponse$outboundSchema;
   /** @deprecated use `CompositeQueryResponse$Outbound` instead. */
   export type Outbound = CompositeQueryResponse$Outbound;
+}
+
+export function compositeQueryResponseToJSON(
+  compositeQueryResponse: CompositeQueryResponse,
+): string {
+  return JSON.stringify(
+    CompositeQueryResponse$outboundSchema.parse(compositeQueryResponse),
+  );
+}
+
+export function compositeQueryResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CompositeQueryResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompositeQueryResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompositeQueryResponse' from JSON`,
+  );
 }

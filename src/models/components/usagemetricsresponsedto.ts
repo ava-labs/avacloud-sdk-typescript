@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Metric,
   Metric$inboundSchema,
@@ -65,4 +68,22 @@ export namespace UsageMetricsResponseDTO$ {
   export const outboundSchema = UsageMetricsResponseDTO$outboundSchema;
   /** @deprecated use `UsageMetricsResponseDTO$Outbound` instead. */
   export type Outbound = UsageMetricsResponseDTO$Outbound;
+}
+
+export function usageMetricsResponseDTOToJSON(
+  usageMetricsResponseDTO: UsageMetricsResponseDTO,
+): string {
+  return JSON.stringify(
+    UsageMetricsResponseDTO$outboundSchema.parse(usageMetricsResponseDTO),
+  );
+}
+
+export function usageMetricsResponseDTOFromJSON(
+  jsonString: string,
+): SafeParseResult<UsageMetricsResponseDTO, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UsageMetricsResponseDTO$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UsageMetricsResponseDTO' from JSON`,
+  );
 }

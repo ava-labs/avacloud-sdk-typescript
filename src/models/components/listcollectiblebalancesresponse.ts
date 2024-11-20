@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Erc1155TokenBalance,
   Erc1155TokenBalance$inboundSchema,
@@ -67,6 +70,24 @@ export namespace CollectibleBalances$ {
   export type Outbound = CollectibleBalances$Outbound;
 }
 
+export function collectibleBalancesToJSON(
+  collectibleBalances: CollectibleBalances,
+): string {
+  return JSON.stringify(
+    CollectibleBalances$outboundSchema.parse(collectibleBalances),
+  );
+}
+
+export function collectibleBalancesFromJSON(
+  jsonString: string,
+): SafeParseResult<CollectibleBalances, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CollectibleBalances$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CollectibleBalances' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListCollectibleBalancesResponse$inboundSchema: z.ZodType<
   ListCollectibleBalancesResponse,
@@ -116,4 +137,24 @@ export namespace ListCollectibleBalancesResponse$ {
   export const outboundSchema = ListCollectibleBalancesResponse$outboundSchema;
   /** @deprecated use `ListCollectibleBalancesResponse$Outbound` instead. */
   export type Outbound = ListCollectibleBalancesResponse$Outbound;
+}
+
+export function listCollectibleBalancesResponseToJSON(
+  listCollectibleBalancesResponse: ListCollectibleBalancesResponse,
+): string {
+  return JSON.stringify(
+    ListCollectibleBalancesResponse$outboundSchema.parse(
+      listCollectibleBalancesResponse,
+    ),
+  );
+}
+
+export function listCollectibleBalancesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCollectibleBalancesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCollectibleBalancesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCollectibleBalancesResponse' from JSON`,
+  );
 }

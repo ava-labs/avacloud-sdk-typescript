@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListInternalTransactionsServerList = [
   "https://glacier-api.avax.network",
@@ -84,6 +87,26 @@ export namespace ListInternalTransactionsGlobals$ {
   export type Outbound = ListInternalTransactionsGlobals$Outbound;
 }
 
+export function listInternalTransactionsGlobalsToJSON(
+  listInternalTransactionsGlobals: ListInternalTransactionsGlobals,
+): string {
+  return JSON.stringify(
+    ListInternalTransactionsGlobals$outboundSchema.parse(
+      listInternalTransactionsGlobals,
+    ),
+  );
+}
+
+export function listInternalTransactionsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListInternalTransactionsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListInternalTransactionsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListInternalTransactionsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListInternalTransactionsRequest$inboundSchema: z.ZodType<
   ListInternalTransactionsRequest,
@@ -135,6 +158,26 @@ export namespace ListInternalTransactionsRequest$ {
   export type Outbound = ListInternalTransactionsRequest$Outbound;
 }
 
+export function listInternalTransactionsRequestToJSON(
+  listInternalTransactionsRequest: ListInternalTransactionsRequest,
+): string {
+  return JSON.stringify(
+    ListInternalTransactionsRequest$outboundSchema.parse(
+      listInternalTransactionsRequest,
+    ),
+  );
+}
+
+export function listInternalTransactionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListInternalTransactionsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListInternalTransactionsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListInternalTransactionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListInternalTransactionsResponse$inboundSchema: z.ZodType<
   ListInternalTransactionsResponse,
@@ -177,4 +220,24 @@ export namespace ListInternalTransactionsResponse$ {
   export const outboundSchema = ListInternalTransactionsResponse$outboundSchema;
   /** @deprecated use `ListInternalTransactionsResponse$Outbound` instead. */
   export type Outbound = ListInternalTransactionsResponse$Outbound;
+}
+
+export function listInternalTransactionsResponseToJSON(
+  listInternalTransactionsResponse: ListInternalTransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListInternalTransactionsResponse$outboundSchema.parse(
+      listInternalTransactionsResponse,
+    ),
+  );
+}
+
+export function listInternalTransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListInternalTransactionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListInternalTransactionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListInternalTransactionsResponse' from JSON`,
+  );
 }

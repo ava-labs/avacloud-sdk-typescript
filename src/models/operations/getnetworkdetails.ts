@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetNetworkDetailsServerList = [
   "https://glacier-api.avax.network",
@@ -59,6 +62,24 @@ export namespace GetNetworkDetailsGlobals$ {
   export type Outbound = GetNetworkDetailsGlobals$Outbound;
 }
 
+export function getNetworkDetailsGlobalsToJSON(
+  getNetworkDetailsGlobals: GetNetworkDetailsGlobals,
+): string {
+  return JSON.stringify(
+    GetNetworkDetailsGlobals$outboundSchema.parse(getNetworkDetailsGlobals),
+  );
+}
+
+export function getNetworkDetailsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetNetworkDetailsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetNetworkDetailsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetNetworkDetailsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetNetworkDetailsRequest$inboundSchema: z.ZodType<
   GetNetworkDetailsRequest,
@@ -93,4 +114,22 @@ export namespace GetNetworkDetailsRequest$ {
   export const outboundSchema = GetNetworkDetailsRequest$outboundSchema;
   /** @deprecated use `GetNetworkDetailsRequest$Outbound` instead. */
   export type Outbound = GetNetworkDetailsRequest$Outbound;
+}
+
+export function getNetworkDetailsRequestToJSON(
+  getNetworkDetailsRequest: GetNetworkDetailsRequest,
+): string {
+  return JSON.stringify(
+    GetNetworkDetailsRequest$outboundSchema.parse(getNetworkDetailsRequest),
+  );
+}
+
+export function getNetworkDetailsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetNetworkDetailsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetNetworkDetailsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetNetworkDetailsRequest' from JSON`,
+  );
 }

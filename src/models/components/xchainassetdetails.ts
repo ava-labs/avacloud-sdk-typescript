@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PrimaryNetworkAssetCap,
   PrimaryNetworkAssetCap$inboundSchema,
@@ -97,4 +100,22 @@ export namespace XChainAssetDetails$ {
   export const outboundSchema = XChainAssetDetails$outboundSchema;
   /** @deprecated use `XChainAssetDetails$Outbound` instead. */
   export type Outbound = XChainAssetDetails$Outbound;
+}
+
+export function xChainAssetDetailsToJSON(
+  xChainAssetDetails: XChainAssetDetails,
+): string {
+  return JSON.stringify(
+    XChainAssetDetails$outboundSchema.parse(xChainAssetDetails),
+  );
+}
+
+export function xChainAssetDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<XChainAssetDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => XChainAssetDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'XChainAssetDetails' from JSON`,
+  );
 }

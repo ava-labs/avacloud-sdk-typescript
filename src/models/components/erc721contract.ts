@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ContractDeploymentDetails,
   ContractDeploymentDetails$inboundSchema,
@@ -144,4 +147,18 @@ export namespace Erc721Contract$ {
   export const outboundSchema = Erc721Contract$outboundSchema;
   /** @deprecated use `Erc721Contract$Outbound` instead. */
   export type Outbound = Erc721Contract$Outbound;
+}
+
+export function erc721ContractToJSON(erc721Contract: Erc721Contract): string {
+  return JSON.stringify(Erc721Contract$outboundSchema.parse(erc721Contract));
+}
+
+export function erc721ContractFromJSON(
+  jsonString: string,
+): SafeParseResult<Erc721Contract, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Erc721Contract$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Erc721Contract' from JSON`,
+  );
 }

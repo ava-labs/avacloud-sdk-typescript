@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetBlockServerList = [
   "https://glacier-api.avax.network",
@@ -62,6 +65,22 @@ export namespace GetBlockGlobals$ {
   export type Outbound = GetBlockGlobals$Outbound;
 }
 
+export function getBlockGlobalsToJSON(
+  getBlockGlobals: GetBlockGlobals,
+): string {
+  return JSON.stringify(GetBlockGlobals$outboundSchema.parse(getBlockGlobals));
+}
+
+export function getBlockGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBlockGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBlockGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBlockGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetBlockRequest$inboundSchema: z.ZodType<
   GetBlockRequest,
@@ -99,4 +118,20 @@ export namespace GetBlockRequest$ {
   export const outboundSchema = GetBlockRequest$outboundSchema;
   /** @deprecated use `GetBlockRequest$Outbound` instead. */
   export type Outbound = GetBlockRequest$Outbound;
+}
+
+export function getBlockRequestToJSON(
+  getBlockRequest: GetBlockRequest,
+): string {
+  return JSON.stringify(GetBlockRequest$outboundSchema.parse(getBlockRequest));
+}
+
+export function getBlockRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBlockRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBlockRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBlockRequest' from JSON`,
+  );
 }

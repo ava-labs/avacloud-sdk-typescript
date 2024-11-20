@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AssetAmount,
   AssetAmount$inboundSchema,
@@ -71,4 +74,18 @@ export namespace EVMInput$ {
   export const outboundSchema = EVMInput$outboundSchema;
   /** @deprecated use `EVMInput$Outbound` instead. */
   export type Outbound = EVMInput$Outbound;
+}
+
+export function evmInputToJSON(evmInput: EVMInput): string {
+  return JSON.stringify(EVMInput$outboundSchema.parse(evmInput));
+}
+
+export function evmInputFromJSON(
+  jsonString: string,
+): SafeParseResult<EVMInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EVMInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EVMInput' from JSON`,
+  );
 }

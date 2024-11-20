@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListCollectibleBalancesServerList = [
   "https://glacier-api.avax.network",
@@ -80,6 +83,26 @@ export namespace ListCollectibleBalancesGlobals$ {
   export type Outbound = ListCollectibleBalancesGlobals$Outbound;
 }
 
+export function listCollectibleBalancesGlobalsToJSON(
+  listCollectibleBalancesGlobals: ListCollectibleBalancesGlobals,
+): string {
+  return JSON.stringify(
+    ListCollectibleBalancesGlobals$outboundSchema.parse(
+      listCollectibleBalancesGlobals,
+    ),
+  );
+}
+
+export function listCollectibleBalancesGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCollectibleBalancesGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCollectibleBalancesGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCollectibleBalancesGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListCollectibleBalancesRequest$inboundSchema: z.ZodType<
   ListCollectibleBalancesRequest,
@@ -128,6 +151,26 @@ export namespace ListCollectibleBalancesRequest$ {
   export type Outbound = ListCollectibleBalancesRequest$Outbound;
 }
 
+export function listCollectibleBalancesRequestToJSON(
+  listCollectibleBalancesRequest: ListCollectibleBalancesRequest,
+): string {
+  return JSON.stringify(
+    ListCollectibleBalancesRequest$outboundSchema.parse(
+      listCollectibleBalancesRequest,
+    ),
+  );
+}
+
+export function listCollectibleBalancesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCollectibleBalancesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCollectibleBalancesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCollectibleBalancesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListCollectibleBalancesResponse$inboundSchema: z.ZodType<
   ListCollectibleBalancesResponse,
@@ -170,4 +213,24 @@ export namespace ListCollectibleBalancesResponse$ {
   export const outboundSchema = ListCollectibleBalancesResponse$outboundSchema;
   /** @deprecated use `ListCollectibleBalancesResponse$Outbound` instead. */
   export type Outbound = ListCollectibleBalancesResponse$Outbound;
+}
+
+export function listCollectibleBalancesResponseToJSON(
+  listCollectibleBalancesResponse: ListCollectibleBalancesResponse,
+): string {
+  return JSON.stringify(
+    ListCollectibleBalancesResponse$outboundSchema.parse(
+      listCollectibleBalancesResponse,
+    ),
+  );
+}
+
+export function listCollectibleBalancesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCollectibleBalancesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCollectibleBalancesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCollectibleBalancesResponse' from JSON`,
+  );
 }

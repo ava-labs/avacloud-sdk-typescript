@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListTransactionsServerList = [
   "https://glacier-api.avax.network",
@@ -88,6 +91,24 @@ export namespace ListTransactionsGlobals$ {
   export type Outbound = ListTransactionsGlobals$Outbound;
 }
 
+export function listTransactionsGlobalsToJSON(
+  listTransactionsGlobals: ListTransactionsGlobals,
+): string {
+  return JSON.stringify(
+    ListTransactionsGlobals$outboundSchema.parse(listTransactionsGlobals),
+  );
+}
+
+export function listTransactionsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTransactionsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTransactionsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTransactionsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListTransactionsRequest$inboundSchema: z.ZodType<
   ListTransactionsRequest,
@@ -142,6 +163,24 @@ export namespace ListTransactionsRequest$ {
   export type Outbound = ListTransactionsRequest$Outbound;
 }
 
+export function listTransactionsRequestToJSON(
+  listTransactionsRequest: ListTransactionsRequest,
+): string {
+  return JSON.stringify(
+    ListTransactionsRequest$outboundSchema.parse(listTransactionsRequest),
+  );
+}
+
+export function listTransactionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTransactionsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTransactionsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTransactionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListTransactionsResponse$inboundSchema: z.ZodType<
   ListTransactionsResponse,
@@ -184,4 +223,22 @@ export namespace ListTransactionsResponse$ {
   export const outboundSchema = ListTransactionsResponse$outboundSchema;
   /** @deprecated use `ListTransactionsResponse$Outbound` instead. */
   export type Outbound = ListTransactionsResponse$Outbound;
+}
+
+export function listTransactionsResponseToJSON(
+  listTransactionsResponse: ListTransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListTransactionsResponse$outboundSchema.parse(listTransactionsResponse),
+  );
+}
+
+export function listTransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTransactionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTransactionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTransactionsResponse' from JSON`,
+  );
 }

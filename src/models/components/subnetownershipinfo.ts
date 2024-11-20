@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SubnetOwnershipInfo = {
   /**
@@ -59,4 +62,22 @@ export namespace SubnetOwnershipInfo$ {
   export const outboundSchema = SubnetOwnershipInfo$outboundSchema;
   /** @deprecated use `SubnetOwnershipInfo$Outbound` instead. */
   export type Outbound = SubnetOwnershipInfo$Outbound;
+}
+
+export function subnetOwnershipInfoToJSON(
+  subnetOwnershipInfo: SubnetOwnershipInfo,
+): string {
+  return JSON.stringify(
+    SubnetOwnershipInfo$outboundSchema.parse(subnetOwnershipInfo),
+  );
+}
+
+export function subnetOwnershipInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<SubnetOwnershipInfo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SubnetOwnershipInfo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SubnetOwnershipInfo' from JSON`,
+  );
 }

@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AssetAmount,
   AssetAmount$inboundSchema,
@@ -190,4 +193,22 @@ export namespace XChainLinearTransaction$ {
   export const outboundSchema = XChainLinearTransaction$outboundSchema;
   /** @deprecated use `XChainLinearTransaction$Outbound` instead. */
   export type Outbound = XChainLinearTransaction$Outbound;
+}
+
+export function xChainLinearTransactionToJSON(
+  xChainLinearTransaction: XChainLinearTransaction,
+): string {
+  return JSON.stringify(
+    XChainLinearTransaction$outboundSchema.parse(xChainLinearTransaction),
+  );
+}
+
+export function xChainLinearTransactionFromJSON(
+  jsonString: string,
+): SafeParseResult<XChainLinearTransaction, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => XChainLinearTransaction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'XChainLinearTransaction' from JSON`,
+  );
 }

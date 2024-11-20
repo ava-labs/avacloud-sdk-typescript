@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetLatestBlocksServerList = [
   "https://glacier-api.avax.network",
@@ -72,6 +75,24 @@ export namespace GetLatestBlocksGlobals$ {
   export type Outbound = GetLatestBlocksGlobals$Outbound;
 }
 
+export function getLatestBlocksGlobalsToJSON(
+  getLatestBlocksGlobals: GetLatestBlocksGlobals,
+): string {
+  return JSON.stringify(
+    GetLatestBlocksGlobals$outboundSchema.parse(getLatestBlocksGlobals),
+  );
+}
+
+export function getLatestBlocksGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLatestBlocksGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLatestBlocksGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLatestBlocksGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetLatestBlocksRequest$inboundSchema: z.ZodType<
   GetLatestBlocksRequest,
@@ -112,6 +133,24 @@ export namespace GetLatestBlocksRequest$ {
   export const outboundSchema = GetLatestBlocksRequest$outboundSchema;
   /** @deprecated use `GetLatestBlocksRequest$Outbound` instead. */
   export type Outbound = GetLatestBlocksRequest$Outbound;
+}
+
+export function getLatestBlocksRequestToJSON(
+  getLatestBlocksRequest: GetLatestBlocksRequest,
+): string {
+  return JSON.stringify(
+    GetLatestBlocksRequest$outboundSchema.parse(getLatestBlocksRequest),
+  );
+}
+
+export function getLatestBlocksRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLatestBlocksRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLatestBlocksRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLatestBlocksRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -156,4 +195,22 @@ export namespace GetLatestBlocksResponse$ {
   export const outboundSchema = GetLatestBlocksResponse$outboundSchema;
   /** @deprecated use `GetLatestBlocksResponse$Outbound` instead. */
   export type Outbound = GetLatestBlocksResponse$Outbound;
+}
+
+export function getLatestBlocksResponseToJSON(
+  getLatestBlocksResponse: GetLatestBlocksResponse,
+): string {
+  return JSON.stringify(
+    GetLatestBlocksResponse$outboundSchema.parse(getLatestBlocksResponse),
+  );
+}
+
+export function getLatestBlocksResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetLatestBlocksResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetLatestBlocksResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetLatestBlocksResponse' from JSON`,
+  );
 }

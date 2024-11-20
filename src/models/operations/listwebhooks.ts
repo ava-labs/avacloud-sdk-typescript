@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListWebhooksServerList = [
   "https://glacier-api.avax.network",
@@ -71,6 +74,24 @@ export namespace ListWebhooksRequest$ {
   export type Outbound = ListWebhooksRequest$Outbound;
 }
 
+export function listWebhooksRequestToJSON(
+  listWebhooksRequest: ListWebhooksRequest,
+): string {
+  return JSON.stringify(
+    ListWebhooksRequest$outboundSchema.parse(listWebhooksRequest),
+  );
+}
+
+export function listWebhooksRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListWebhooksRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListWebhooksRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListWebhooksRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListWebhooksResponse$inboundSchema: z.ZodType<
   ListWebhooksResponse,
@@ -113,4 +134,22 @@ export namespace ListWebhooksResponse$ {
   export const outboundSchema = ListWebhooksResponse$outboundSchema;
   /** @deprecated use `ListWebhooksResponse$Outbound` instead. */
   export type Outbound = ListWebhooksResponse$Outbound;
+}
+
+export function listWebhooksResponseToJSON(
+  listWebhooksResponse: ListWebhooksResponse,
+): string {
+  return JSON.stringify(
+    ListWebhooksResponse$outboundSchema.parse(listWebhooksResponse),
+  );
+}
+
+export function listWebhooksResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListWebhooksResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListWebhooksResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListWebhooksResponse' from JSON`,
+  );
 }

@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ChainStatus,
   ChainStatus$inboundSchema,
@@ -160,4 +163,18 @@ export namespace ChainInfo$ {
   export const outboundSchema = ChainInfo$outboundSchema;
   /** @deprecated use `ChainInfo$Outbound` instead. */
   export type Outbound = ChainInfo$Outbound;
+}
+
+export function chainInfoToJSON(chainInfo: ChainInfo): string {
+  return JSON.stringify(ChainInfo$outboundSchema.parse(chainInfo));
+}
+
+export function chainInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<ChainInfo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ChainInfo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChainInfo' from JSON`,
+  );
 }

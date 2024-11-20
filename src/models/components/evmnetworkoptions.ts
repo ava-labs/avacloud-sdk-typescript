@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type EvmNetworkOptions = {
   addresses: Array<string>;
@@ -46,4 +49,22 @@ export namespace EvmNetworkOptions$ {
   export const outboundSchema = EvmNetworkOptions$outboundSchema;
   /** @deprecated use `EvmNetworkOptions$Outbound` instead. */
   export type Outbound = EvmNetworkOptions$Outbound;
+}
+
+export function evmNetworkOptionsToJSON(
+  evmNetworkOptions: EvmNetworkOptions,
+): string {
+  return JSON.stringify(
+    EvmNetworkOptions$outboundSchema.parse(evmNetworkOptions),
+  );
+}
+
+export function evmNetworkOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<EvmNetworkOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EvmNetworkOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EvmNetworkOptions' from JSON`,
+  );
 }

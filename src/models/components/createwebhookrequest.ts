@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AddressActivityMetadata,
   AddressActivityMetadata$inboundSchema,
@@ -65,6 +68,26 @@ export namespace CreateWebhookRequestMetadata$ {
   export type Outbound = CreateWebhookRequestMetadata$Outbound;
 }
 
+export function createWebhookRequestMetadataToJSON(
+  createWebhookRequestMetadata: CreateWebhookRequestMetadata,
+): string {
+  return JSON.stringify(
+    CreateWebhookRequestMetadata$outboundSchema.parse(
+      createWebhookRequestMetadata,
+    ),
+  );
+}
+
+export function createWebhookRequestMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateWebhookRequestMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateWebhookRequestMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateWebhookRequestMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateWebhookRequest$inboundSchema: z.ZodType<
   CreateWebhookRequest,
@@ -120,4 +143,22 @@ export namespace CreateWebhookRequest$ {
   export const outboundSchema = CreateWebhookRequest$outboundSchema;
   /** @deprecated use `CreateWebhookRequest$Outbound` instead. */
   export type Outbound = CreateWebhookRequest$Outbound;
+}
+
+export function createWebhookRequestToJSON(
+  createWebhookRequest: CreateWebhookRequest,
+): string {
+  return JSON.stringify(
+    CreateWebhookRequest$outboundSchema.parse(createWebhookRequest),
+  );
+}
+
+export function createWebhookRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateWebhookRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateWebhookRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateWebhookRequest' from JSON`,
+  );
 }

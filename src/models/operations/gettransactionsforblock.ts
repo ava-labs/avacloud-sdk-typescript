@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetTransactionsForBlockServerList = [
   "https://glacier-api.avax.network",
@@ -62,6 +65,26 @@ export namespace GetTransactionsForBlockGlobals$ {
   export type Outbound = GetTransactionsForBlockGlobals$Outbound;
 }
 
+export function getTransactionsForBlockGlobalsToJSON(
+  getTransactionsForBlockGlobals: GetTransactionsForBlockGlobals,
+): string {
+  return JSON.stringify(
+    GetTransactionsForBlockGlobals$outboundSchema.parse(
+      getTransactionsForBlockGlobals,
+    ),
+  );
+}
+
+export function getTransactionsForBlockGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTransactionsForBlockGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTransactionsForBlockGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTransactionsForBlockGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetTransactionsForBlockRequest$inboundSchema: z.ZodType<
   GetTransactionsForBlockRequest,
@@ -99,4 +122,24 @@ export namespace GetTransactionsForBlockRequest$ {
   export const outboundSchema = GetTransactionsForBlockRequest$outboundSchema;
   /** @deprecated use `GetTransactionsForBlockRequest$Outbound` instead. */
   export type Outbound = GetTransactionsForBlockRequest$Outbound;
+}
+
+export function getTransactionsForBlockRequestToJSON(
+  getTransactionsForBlockRequest: GetTransactionsForBlockRequest,
+): string {
+  return JSON.stringify(
+    GetTransactionsForBlockRequest$outboundSchema.parse(
+      getTransactionsForBlockRequest,
+    ),
+  );
+}
+
+export function getTransactionsForBlockRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTransactionsForBlockRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTransactionsForBlockRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTransactionsForBlockRequest' from JSON`,
+  );
 }

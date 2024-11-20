@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SharedSecretsResponse = {
   secret: string;
@@ -42,4 +45,22 @@ export namespace SharedSecretsResponse$ {
   export const outboundSchema = SharedSecretsResponse$outboundSchema;
   /** @deprecated use `SharedSecretsResponse$Outbound` instead. */
   export type Outbound = SharedSecretsResponse$Outbound;
+}
+
+export function sharedSecretsResponseToJSON(
+  sharedSecretsResponse: SharedSecretsResponse,
+): string {
+  return JSON.stringify(
+    SharedSecretsResponse$outboundSchema.parse(sharedSecretsResponse),
+  );
+}
+
+export function sharedSecretsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<SharedSecretsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SharedSecretsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SharedSecretsResponse' from JSON`,
+  );
 }

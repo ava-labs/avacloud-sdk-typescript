@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AggregatedAssetAmount,
   AggregatedAssetAmount$inboundSchema,
@@ -72,4 +75,18 @@ export namespace XChainBalances$ {
   export const outboundSchema = XChainBalances$outboundSchema;
   /** @deprecated use `XChainBalances$Outbound` instead. */
   export type Outbound = XChainBalances$Outbound;
+}
+
+export function xChainBalancesToJSON(xChainBalances: XChainBalances): string {
+  return JSON.stringify(XChainBalances$outboundSchema.parse(xChainBalances));
+}
+
+export function xChainBalancesFromJSON(
+  jsonString: string,
+): SafeParseResult<XChainBalances, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => XChainBalances$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'XChainBalances' from JSON`,
+  );
 }

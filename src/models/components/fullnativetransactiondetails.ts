@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Method,
   Method$inboundSchema,
@@ -162,4 +165,24 @@ export namespace FullNativeTransactionDetails$ {
   export const outboundSchema = FullNativeTransactionDetails$outboundSchema;
   /** @deprecated use `FullNativeTransactionDetails$Outbound` instead. */
   export type Outbound = FullNativeTransactionDetails$Outbound;
+}
+
+export function fullNativeTransactionDetailsToJSON(
+  fullNativeTransactionDetails: FullNativeTransactionDetails,
+): string {
+  return JSON.stringify(
+    FullNativeTransactionDetails$outboundSchema.parse(
+      fullNativeTransactionDetails,
+    ),
+  );
+}
+
+export function fullNativeTransactionDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<FullNativeTransactionDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FullNativeTransactionDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FullNativeTransactionDetails' from JSON`,
+  );
 }

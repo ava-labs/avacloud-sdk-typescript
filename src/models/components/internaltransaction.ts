@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   InternalTransactionOpCall,
   InternalTransactionOpCall$inboundSchema,
@@ -108,4 +111,22 @@ export namespace InternalTransaction$ {
   export const outboundSchema = InternalTransaction$outboundSchema;
   /** @deprecated use `InternalTransaction$Outbound` instead. */
   export type Outbound = InternalTransaction$Outbound;
+}
+
+export function internalTransactionToJSON(
+  internalTransaction: InternalTransaction,
+): string {
+  return JSON.stringify(
+    InternalTransaction$outboundSchema.parse(internalTransaction),
+  );
+}
+
+export function internalTransactionFromJSON(
+  jsonString: string,
+): SafeParseResult<InternalTransaction, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InternalTransaction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InternalTransaction' from JSON`,
+  );
 }

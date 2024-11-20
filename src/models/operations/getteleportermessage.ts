@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetTeleporterMessageServerList = [
   "https://glacier-api.avax.network",
@@ -60,6 +63,26 @@ export namespace GetTeleporterMessageRequest$ {
   export const outboundSchema = GetTeleporterMessageRequest$outboundSchema;
   /** @deprecated use `GetTeleporterMessageRequest$Outbound` instead. */
   export type Outbound = GetTeleporterMessageRequest$Outbound;
+}
+
+export function getTeleporterMessageRequestToJSON(
+  getTeleporterMessageRequest: GetTeleporterMessageRequest,
+): string {
+  return JSON.stringify(
+    GetTeleporterMessageRequest$outboundSchema.parse(
+      getTeleporterMessageRequest,
+    ),
+  );
+}
+
+export function getTeleporterMessageRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTeleporterMessageRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTeleporterMessageRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTeleporterMessageRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -127,4 +150,24 @@ export namespace GetTeleporterMessageResponseBody$ {
   export const outboundSchema = GetTeleporterMessageResponseBody$outboundSchema;
   /** @deprecated use `GetTeleporterMessageResponseBody$Outbound` instead. */
   export type Outbound = GetTeleporterMessageResponseBody$Outbound;
+}
+
+export function getTeleporterMessageResponseBodyToJSON(
+  getTeleporterMessageResponseBody: GetTeleporterMessageResponseBody,
+): string {
+  return JSON.stringify(
+    GetTeleporterMessageResponseBody$outboundSchema.parse(
+      getTeleporterMessageResponseBody,
+    ),
+  );
+}
+
+export function getTeleporterMessageResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTeleporterMessageResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTeleporterMessageResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTeleporterMessageResponseBody' from JSON`,
+  );
 }

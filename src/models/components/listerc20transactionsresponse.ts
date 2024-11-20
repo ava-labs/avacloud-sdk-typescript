@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Erc20Transfer,
   Erc20Transfer$inboundSchema,
@@ -55,4 +58,24 @@ export namespace ListErc20TransactionsResponse$ {
   export const outboundSchema = ListErc20TransactionsResponse$outboundSchema;
   /** @deprecated use `ListErc20TransactionsResponse$Outbound` instead. */
   export type Outbound = ListErc20TransactionsResponse$Outbound;
+}
+
+export function listErc20TransactionsResponseToJSON(
+  listErc20TransactionsResponse: ListErc20TransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListErc20TransactionsResponse$outboundSchema.parse(
+      listErc20TransactionsResponse,
+    ),
+  );
+}
+
+export function listErc20TransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListErc20TransactionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListErc20TransactionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListErc20TransactionsResponse' from JSON`,
+  );
 }

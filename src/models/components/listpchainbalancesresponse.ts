@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PChainBalance,
   PChainBalance$inboundSchema,
@@ -58,4 +61,22 @@ export namespace ListPChainBalancesResponse$ {
   export const outboundSchema = ListPChainBalancesResponse$outboundSchema;
   /** @deprecated use `ListPChainBalancesResponse$Outbound` instead. */
   export type Outbound = ListPChainBalancesResponse$Outbound;
+}
+
+export function listPChainBalancesResponseToJSON(
+  listPChainBalancesResponse: ListPChainBalancesResponse,
+): string {
+  return JSON.stringify(
+    ListPChainBalancesResponse$outboundSchema.parse(listPChainBalancesResponse),
+  );
+}
+
+export function listPChainBalancesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPChainBalancesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPChainBalancesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPChainBalancesResponse' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AssetAmount,
   AssetAmount$inboundSchema,
@@ -15,6 +18,12 @@ import {
   BlsCredentials$Outbound,
   BlsCredentials$outboundSchema,
 } from "./blscredentials.js";
+import {
+  L1ValidatorDetailsTransaction,
+  L1ValidatorDetailsTransaction$inboundSchema,
+  L1ValidatorDetailsTransaction$Outbound,
+  L1ValidatorDetailsTransaction$outboundSchema,
+} from "./l1validatordetailstransaction.js";
 import {
   L1ValidatorManagerDetails,
   L1ValidatorManagerDetails$inboundSchema,
@@ -32,12 +41,6 @@ import {
   PChainUtxo$Outbound,
   PChainUtxo$outboundSchema,
 } from "./pchainutxo.js";
-import {
-  SoVDetailsTransaction,
-  SoVDetailsTransaction$inboundSchema,
-  SoVDetailsTransaction$Outbound,
-  SoVDetailsTransaction$outboundSchema,
-} from "./sovdetailstransaction.js";
 import {
   SubnetOwnershipInfo,
   SubnetOwnershipInfo$inboundSchema,
@@ -82,7 +85,7 @@ export type PChainTransaction = {
   /**
    * A list of objects containing P-chain Asset basic info and the amount of that Asset ID.
    */
-  amountSovBalanceBurned: Array<AssetAmount>;
+  amountL1ValidatorBalanceBurned: Array<AssetAmount>;
   /**
    * Present for AddValidatorTx, AddSubnetValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx
    */
@@ -104,13 +107,13 @@ export type PChainTransaction = {
    */
   subnetId?: string | undefined;
   /**
-   * Details of the L1's validator manager contract and blockchain. Present for the ConvertSubnetTx which transforms a subnet into L1
+   * Details of the L1's validator manager contract and blockchain. Present for the ConvertSubnetToL1Tx which transforms a subnet into L1
    */
   l1ValidatorManagerDetails?: L1ValidatorManagerDetails | undefined;
   /**
-   * Details of Subnet-only-Validators registered or changed in the current transaction. The details reflect the state at the time of the transaction, not in real-time
+   * Details of L1 validators registered or changed in the current transaction. The details reflect the state at the time of the transaction, not in real-time
    */
-  l1ValidatorDetails?: Array<SoVDetailsTransaction> | undefined;
+  l1ValidatorDetails?: Array<L1ValidatorDetailsTransaction> | undefined;
   /**
    * Present for AddValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx
    */
@@ -150,14 +153,15 @@ export const PChainTransaction$inboundSchema: z.ZodType<
   value: z.array(AssetAmount$inboundSchema),
   amountBurned: z.array(AssetAmount$inboundSchema),
   amountStaked: z.array(AssetAmount$inboundSchema),
-  amountSovBalanceBurned: z.array(AssetAmount$inboundSchema),
+  amountL1ValidatorBalanceBurned: z.array(AssetAmount$inboundSchema),
   startTimestamp: z.number().optional(),
   endTimestamp: z.number().optional(),
   delegationFeePercent: z.string().optional(),
   nodeId: z.string().optional(),
   subnetId: z.string().optional(),
   l1ValidatorManagerDetails: L1ValidatorManagerDetails$inboundSchema.optional(),
-  l1ValidatorDetails: z.array(SoVDetailsTransaction$inboundSchema).optional(),
+  l1ValidatorDetails: z.array(L1ValidatorDetailsTransaction$inboundSchema)
+    .optional(),
   estimatedReward: z.string().optional(),
   rewardTxHash: z.string().optional(),
   rewardAddresses: z.array(z.string()).optional(),
@@ -181,14 +185,16 @@ export type PChainTransaction$Outbound = {
   value: Array<AssetAmount$Outbound>;
   amountBurned: Array<AssetAmount$Outbound>;
   amountStaked: Array<AssetAmount$Outbound>;
-  amountSovBalanceBurned: Array<AssetAmount$Outbound>;
+  amountL1ValidatorBalanceBurned: Array<AssetAmount$Outbound>;
   startTimestamp?: number | undefined;
   endTimestamp?: number | undefined;
   delegationFeePercent?: string | undefined;
   nodeId?: string | undefined;
   subnetId?: string | undefined;
   l1ValidatorManagerDetails?: L1ValidatorManagerDetails$Outbound | undefined;
-  l1ValidatorDetails?: Array<SoVDetailsTransaction$Outbound> | undefined;
+  l1ValidatorDetails?:
+    | Array<L1ValidatorDetailsTransaction$Outbound>
+    | undefined;
   estimatedReward?: string | undefined;
   rewardTxHash?: string | undefined;
   rewardAddresses?: Array<string> | undefined;
@@ -216,7 +222,7 @@ export const PChainTransaction$outboundSchema: z.ZodType<
   value: z.array(AssetAmount$outboundSchema),
   amountBurned: z.array(AssetAmount$outboundSchema),
   amountStaked: z.array(AssetAmount$outboundSchema),
-  amountSovBalanceBurned: z.array(AssetAmount$outboundSchema),
+  amountL1ValidatorBalanceBurned: z.array(AssetAmount$outboundSchema),
   startTimestamp: z.number().optional(),
   endTimestamp: z.number().optional(),
   delegationFeePercent: z.string().optional(),
@@ -224,7 +230,8 @@ export const PChainTransaction$outboundSchema: z.ZodType<
   subnetId: z.string().optional(),
   l1ValidatorManagerDetails: L1ValidatorManagerDetails$outboundSchema
     .optional(),
-  l1ValidatorDetails: z.array(SoVDetailsTransaction$outboundSchema).optional(),
+  l1ValidatorDetails: z.array(L1ValidatorDetailsTransaction$outboundSchema)
+    .optional(),
   estimatedReward: z.string().optional(),
   rewardTxHash: z.string().optional(),
   rewardAddresses: z.array(z.string()).optional(),
@@ -245,4 +252,22 @@ export namespace PChainTransaction$ {
   export const outboundSchema = PChainTransaction$outboundSchema;
   /** @deprecated use `PChainTransaction$Outbound` instead. */
   export type Outbound = PChainTransaction$Outbound;
+}
+
+export function pChainTransactionToJSON(
+  pChainTransaction: PChainTransaction,
+): string {
+  return JSON.stringify(
+    PChainTransaction$outboundSchema.parse(pChainTransaction),
+  );
+}
+
+export function pChainTransactionFromJSON(
+  jsonString: string,
+): SafeParseResult<PChainTransaction, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PChainTransaction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PChainTransaction' from JSON`,
+  );
 }

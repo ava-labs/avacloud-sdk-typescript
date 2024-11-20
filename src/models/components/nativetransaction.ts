@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Method,
   Method$inboundSchema,
@@ -143,4 +146,22 @@ export namespace NativeTransaction$ {
   export const outboundSchema = NativeTransaction$outboundSchema;
   /** @deprecated use `NativeTransaction$Outbound` instead. */
   export type Outbound = NativeTransaction$Outbound;
+}
+
+export function nativeTransactionToJSON(
+  nativeTransaction: NativeTransaction,
+): string {
+  return JSON.stringify(
+    NativeTransaction$outboundSchema.parse(nativeTransaction),
+  );
+}
+
+export function nativeTransactionFromJSON(
+  jsonString: string,
+): SafeParseResult<NativeTransaction, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NativeTransaction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NativeTransaction' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TokenType,
   TokenType$inboundSchema,
@@ -59,4 +62,22 @@ export namespace LatestBalanceParams$ {
   export const outboundSchema = LatestBalanceParams$outboundSchema;
   /** @deprecated use `LatestBalanceParams$Outbound` instead. */
   export type Outbound = LatestBalanceParams$Outbound;
+}
+
+export function latestBalanceParamsToJSON(
+  latestBalanceParams: LatestBalanceParams,
+): string {
+  return JSON.stringify(
+    LatestBalanceParams$outboundSchema.parse(latestBalanceParams),
+  );
+}
+
+export function latestBalanceParamsFromJSON(
+  jsonString: string,
+): SafeParseResult<LatestBalanceParams, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LatestBalanceParams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LatestBalanceParams' from JSON`,
+  );
 }

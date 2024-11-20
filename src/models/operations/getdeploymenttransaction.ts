@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetDeploymentTransactionServerList = [
   "https://glacier-api.avax.network",
@@ -67,6 +70,26 @@ export namespace GetDeploymentTransactionGlobals$ {
   export type Outbound = GetDeploymentTransactionGlobals$Outbound;
 }
 
+export function getDeploymentTransactionGlobalsToJSON(
+  getDeploymentTransactionGlobals: GetDeploymentTransactionGlobals,
+): string {
+  return JSON.stringify(
+    GetDeploymentTransactionGlobals$outboundSchema.parse(
+      getDeploymentTransactionGlobals,
+    ),
+  );
+}
+
+export function getDeploymentTransactionGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentTransactionGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentTransactionGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentTransactionGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetDeploymentTransactionRequest$inboundSchema: z.ZodType<
   GetDeploymentTransactionRequest,
@@ -107,4 +130,24 @@ export namespace GetDeploymentTransactionRequest$ {
   export const outboundSchema = GetDeploymentTransactionRequest$outboundSchema;
   /** @deprecated use `GetDeploymentTransactionRequest$Outbound` instead. */
   export type Outbound = GetDeploymentTransactionRequest$Outbound;
+}
+
+export function getDeploymentTransactionRequestToJSON(
+  getDeploymentTransactionRequest: GetDeploymentTransactionRequest,
+): string {
+  return JSON.stringify(
+    GetDeploymentTransactionRequest$outboundSchema.parse(
+      getDeploymentTransactionRequest,
+    ),
+  );
+}
+
+export function getDeploymentTransactionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentTransactionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentTransactionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentTransactionRequest' from JSON`,
+  );
 }

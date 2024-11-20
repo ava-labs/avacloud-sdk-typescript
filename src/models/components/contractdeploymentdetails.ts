@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ContractDeploymentDetails = {
   txHash: string;
@@ -56,4 +59,22 @@ export namespace ContractDeploymentDetails$ {
   export const outboundSchema = ContractDeploymentDetails$outboundSchema;
   /** @deprecated use `ContractDeploymentDetails$Outbound` instead. */
   export type Outbound = ContractDeploymentDetails$Outbound;
+}
+
+export function contractDeploymentDetailsToJSON(
+  contractDeploymentDetails: ContractDeploymentDetails,
+): string {
+  return JSON.stringify(
+    ContractDeploymentDetails$outboundSchema.parse(contractDeploymentDetails),
+  );
+}
+
+export function contractDeploymentDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<ContractDeploymentDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContractDeploymentDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContractDeploymentDetails' from JSON`,
+  );
 }

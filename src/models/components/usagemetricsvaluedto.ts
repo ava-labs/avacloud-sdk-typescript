@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Column name used for data aggregation
@@ -114,6 +117,20 @@ export namespace GroupValue$ {
   export type Outbound = GroupValue$Outbound;
 }
 
+export function groupValueToJSON(groupValue: GroupValue): string {
+  return JSON.stringify(GroupValue$outboundSchema.parse(groupValue));
+}
+
+export function groupValueFromJSON(
+  jsonString: string,
+): SafeParseResult<GroupValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GroupValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GroupValue' from JSON`,
+  );
+}
+
 /** @internal */
 export const UsageMetricsValueDTO$inboundSchema: z.ZodType<
   UsageMetricsValueDTO,
@@ -172,4 +189,22 @@ export namespace UsageMetricsValueDTO$ {
   export const outboundSchema = UsageMetricsValueDTO$outboundSchema;
   /** @deprecated use `UsageMetricsValueDTO$Outbound` instead. */
   export type Outbound = UsageMetricsValueDTO$Outbound;
+}
+
+export function usageMetricsValueDTOToJSON(
+  usageMetricsValueDTO: UsageMetricsValueDTO,
+): string {
+  return JSON.stringify(
+    UsageMetricsValueDTO$outboundSchema.parse(usageMetricsValueDTO),
+  );
+}
+
+export function usageMetricsValueDTOFromJSON(
+  jsonString: string,
+): SafeParseResult<UsageMetricsValueDTO, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UsageMetricsValueDTO$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UsageMetricsValueDTO' from JSON`,
+  );
 }

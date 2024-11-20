@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LatestStarsArenaBalanceParams,
   LatestStarsArenaBalanceParams$inboundSchema,
@@ -87,4 +90,24 @@ export namespace LatestStarsArenaBalanceQueryDto$ {
   export const outboundSchema = LatestStarsArenaBalanceQueryDto$outboundSchema;
   /** @deprecated use `LatestStarsArenaBalanceQueryDto$Outbound` instead. */
   export type Outbound = LatestStarsArenaBalanceQueryDto$Outbound;
+}
+
+export function latestStarsArenaBalanceQueryDtoToJSON(
+  latestStarsArenaBalanceQueryDto: LatestStarsArenaBalanceQueryDto,
+): string {
+  return JSON.stringify(
+    LatestStarsArenaBalanceQueryDto$outboundSchema.parse(
+      latestStarsArenaBalanceQueryDto,
+    ),
+  );
+}
+
+export function latestStarsArenaBalanceQueryDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<LatestStarsArenaBalanceQueryDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LatestStarsArenaBalanceQueryDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LatestStarsArenaBalanceQueryDto' from JSON`,
+  );
 }

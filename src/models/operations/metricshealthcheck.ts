@@ -4,7 +4,12 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { collectExtraKeys as collectExtraKeys$ } from "../../lib/schemas.js";
+import {
+  collectExtraKeys as collectExtraKeys$,
+  safeParse,
+} from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const MetricsHealthCheckServerList = [
   "https://metrics.avax.network",
@@ -77,6 +82,20 @@ export namespace Info$ {
   export type Outbound = Info$Outbound;
 }
 
+export function infoToJSON(info: Info): string {
+  return JSON.stringify(Info$outboundSchema.parse(info));
+}
+
+export function infoFromJSON(
+  jsonString: string,
+): SafeParseResult<Info, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Info$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Info' from JSON`,
+  );
+}
+
 /** @internal */
 export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> =
   collectExtraKeys$(
@@ -120,6 +139,20 @@ export namespace ErrorT$ {
   export const outboundSchema = ErrorT$outboundSchema;
   /** @deprecated use `ErrorT$Outbound` instead. */
   export type Outbound = ErrorT$Outbound;
+}
+
+export function errorTToJSON(errorT: ErrorT): string {
+  return JSON.stringify(ErrorT$outboundSchema.parse(errorT));
+}
+
+export function errorTFromJSON(
+  jsonString: string,
+): SafeParseResult<ErrorT, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ErrorT$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ErrorT' from JSON`,
+  );
 }
 
 /** @internal */
@@ -167,6 +200,20 @@ export namespace Details$ {
   export type Outbound = Details$Outbound;
 }
 
+export function detailsToJSON(details: Details): string {
+  return JSON.stringify(Details$outboundSchema.parse(details));
+}
+
+export function detailsFromJSON(
+  jsonString: string,
+): SafeParseResult<Details, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Details$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Details' from JSON`,
+  );
+}
+
 /** @internal */
 export const MetricsHealthCheckResponseBody$inboundSchema: z.ZodType<
   MetricsHealthCheckResponseBody,
@@ -210,4 +257,24 @@ export namespace MetricsHealthCheckResponseBody$ {
   export const outboundSchema = MetricsHealthCheckResponseBody$outboundSchema;
   /** @deprecated use `MetricsHealthCheckResponseBody$Outbound` instead. */
   export type Outbound = MetricsHealthCheckResponseBody$Outbound;
+}
+
+export function metricsHealthCheckResponseBodyToJSON(
+  metricsHealthCheckResponseBody: MetricsHealthCheckResponseBody,
+): string {
+  return JSON.stringify(
+    MetricsHealthCheckResponseBody$outboundSchema.parse(
+      metricsHealthCheckResponseBody,
+    ),
+  );
+}
+
+export function metricsHealthCheckResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<MetricsHealthCheckResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MetricsHealthCheckResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MetricsHealthCheckResponseBody' from JSON`,
+  );
 }

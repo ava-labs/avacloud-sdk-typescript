@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   NetworkType,
   NetworkType$inboundSchema,
@@ -75,4 +78,18 @@ export namespace Chain$ {
   export const outboundSchema = Chain$outboundSchema;
   /** @deprecated use `Chain$Outbound` instead. */
   export type Outbound = Chain$Outbound;
+}
+
+export function chainToJSON(chain: Chain): string {
+  return JSON.stringify(Chain$outboundSchema.parse(chain));
+}
+
+export function chainFromJSON(
+  jsonString: string,
+): SafeParseResult<Chain, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Chain$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Chain' from JSON`,
+  );
 }

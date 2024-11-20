@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DeliveredTeleporterMessage,
   DeliveredTeleporterMessage$inboundSchema,
@@ -85,6 +88,20 @@ export namespace Messages$ {
   export type Outbound = Messages$Outbound;
 }
 
+export function messagesToJSON(messages: Messages): string {
+  return JSON.stringify(Messages$outboundSchema.parse(messages));
+}
+
+export function messagesFromJSON(
+  jsonString: string,
+): SafeParseResult<Messages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Messages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Messages' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListTeleporterMessagesResponse$inboundSchema: z.ZodType<
   ListTeleporterMessagesResponse,
@@ -151,4 +168,24 @@ export namespace ListTeleporterMessagesResponse$ {
   export const outboundSchema = ListTeleporterMessagesResponse$outboundSchema;
   /** @deprecated use `ListTeleporterMessagesResponse$Outbound` instead. */
   export type Outbound = ListTeleporterMessagesResponse$Outbound;
+}
+
+export function listTeleporterMessagesResponseToJSON(
+  listTeleporterMessagesResponse: ListTeleporterMessagesResponse,
+): string {
+  return JSON.stringify(
+    ListTeleporterMessagesResponse$outboundSchema.parse(
+      listTeleporterMessagesResponse,
+    ),
+  );
+}
+
+export function listTeleporterMessagesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTeleporterMessagesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTeleporterMessagesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTeleporterMessagesResponse' from JSON`,
+  );
 }

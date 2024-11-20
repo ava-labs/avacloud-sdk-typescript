@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TeleporterReceipt,
   TeleporterReceipt$inboundSchema,
@@ -145,4 +148,22 @@ export namespace PendingTeleporterMessage$ {
   export const outboundSchema = PendingTeleporterMessage$outboundSchema;
   /** @deprecated use `PendingTeleporterMessage$Outbound` instead. */
   export type Outbound = PendingTeleporterMessage$Outbound;
+}
+
+export function pendingTeleporterMessageToJSON(
+  pendingTeleporterMessage: PendingTeleporterMessage,
+): string {
+  return JSON.stringify(
+    PendingTeleporterMessage$outboundSchema.parse(pendingTeleporterMessage),
+  );
+}
+
+export function pendingTeleporterMessageFromJSON(
+  jsonString: string,
+): SafeParseResult<PendingTeleporterMessage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PendingTeleporterMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PendingTeleporterMessage' from JSON`,
+  );
 }

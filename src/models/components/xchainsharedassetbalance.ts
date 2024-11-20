@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PrimaryNetworkAssetType,
   PrimaryNetworkAssetType$inboundSchema,
@@ -93,4 +96,22 @@ export namespace XChainSharedAssetBalance$ {
   export const outboundSchema = XChainSharedAssetBalance$outboundSchema;
   /** @deprecated use `XChainSharedAssetBalance$Outbound` instead. */
   export type Outbound = XChainSharedAssetBalance$Outbound;
+}
+
+export function xChainSharedAssetBalanceToJSON(
+  xChainSharedAssetBalance: XChainSharedAssetBalance,
+): string {
+  return JSON.stringify(
+    XChainSharedAssetBalance$outboundSchema.parse(xChainSharedAssetBalance),
+  );
+}
+
+export function xChainSharedAssetBalanceFromJSON(
+  jsonString: string,
+): SafeParseResult<XChainSharedAssetBalance, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => XChainSharedAssetBalance$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'XChainSharedAssetBalance' from JSON`,
+  );
 }

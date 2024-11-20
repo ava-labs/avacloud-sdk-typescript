@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PChainAddressDetails,
   PChainAddressDetails$inboundSchema,
@@ -58,4 +61,22 @@ export namespace PChainLookingGlassResponse$ {
   export const outboundSchema = PChainLookingGlassResponse$outboundSchema;
   /** @deprecated use `PChainLookingGlassResponse$Outbound` instead. */
   export type Outbound = PChainLookingGlassResponse$Outbound;
+}
+
+export function pChainLookingGlassResponseToJSON(
+  pChainLookingGlassResponse: PChainLookingGlassResponse,
+): string {
+  return JSON.stringify(
+    PChainLookingGlassResponse$outboundSchema.parse(pChainLookingGlassResponse),
+  );
+}
+
+export function pChainLookingGlassResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<PChainLookingGlassResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PChainLookingGlassResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PChainLookingGlassResponse' from JSON`,
+  );
 }

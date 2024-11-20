@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListErc20TransactionsServerList = [
   "https://glacier-api.avax.network",
@@ -84,6 +87,26 @@ export namespace ListErc20TransactionsGlobals$ {
   export type Outbound = ListErc20TransactionsGlobals$Outbound;
 }
 
+export function listErc20TransactionsGlobalsToJSON(
+  listErc20TransactionsGlobals: ListErc20TransactionsGlobals,
+): string {
+  return JSON.stringify(
+    ListErc20TransactionsGlobals$outboundSchema.parse(
+      listErc20TransactionsGlobals,
+    ),
+  );
+}
+
+export function listErc20TransactionsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListErc20TransactionsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListErc20TransactionsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListErc20TransactionsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListErc20TransactionsRequest$inboundSchema: z.ZodType<
   ListErc20TransactionsRequest,
@@ -135,6 +158,26 @@ export namespace ListErc20TransactionsRequest$ {
   export type Outbound = ListErc20TransactionsRequest$Outbound;
 }
 
+export function listErc20TransactionsRequestToJSON(
+  listErc20TransactionsRequest: ListErc20TransactionsRequest,
+): string {
+  return JSON.stringify(
+    ListErc20TransactionsRequest$outboundSchema.parse(
+      listErc20TransactionsRequest,
+    ),
+  );
+}
+
+export function listErc20TransactionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListErc20TransactionsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListErc20TransactionsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListErc20TransactionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListErc20TransactionsResponse$inboundSchema: z.ZodType<
   ListErc20TransactionsResponse,
@@ -177,4 +220,24 @@ export namespace ListErc20TransactionsResponse$ {
   export const outboundSchema = ListErc20TransactionsResponse$outboundSchema;
   /** @deprecated use `ListErc20TransactionsResponse$Outbound` instead. */
   export type Outbound = ListErc20TransactionsResponse$Outbound;
+}
+
+export function listErc20TransactionsResponseToJSON(
+  listErc20TransactionsResponse: ListErc20TransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListErc20TransactionsResponse$outboundSchema.parse(
+      listErc20TransactionsResponse,
+    ),
+  );
+}
+
+export function listErc20TransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListErc20TransactionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListErc20TransactionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListErc20TransactionsResponse' from JSON`,
+  );
 }

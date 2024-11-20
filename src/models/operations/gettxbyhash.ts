@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetTxByHashServerList = [
   "https://glacier-api.avax.network",
@@ -77,6 +80,24 @@ export namespace GetTxByHashGlobals$ {
   export type Outbound = GetTxByHashGlobals$Outbound;
 }
 
+export function getTxByHashGlobalsToJSON(
+  getTxByHashGlobals: GetTxByHashGlobals,
+): string {
+  return JSON.stringify(
+    GetTxByHashGlobals$outboundSchema.parse(getTxByHashGlobals),
+  );
+}
+
+export function getTxByHashGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTxByHashGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTxByHashGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTxByHashGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetTxByHashRequest$inboundSchema: z.ZodType<
   GetTxByHashRequest,
@@ -117,6 +138,24 @@ export namespace GetTxByHashRequest$ {
   export const outboundSchema = GetTxByHashRequest$outboundSchema;
   /** @deprecated use `GetTxByHashRequest$Outbound` instead. */
   export type Outbound = GetTxByHashRequest$Outbound;
+}
+
+export function getTxByHashRequestToJSON(
+  getTxByHashRequest: GetTxByHashRequest,
+): string {
+  return JSON.stringify(
+    GetTxByHashRequest$outboundSchema.parse(getTxByHashRequest),
+  );
+}
+
+export function getTxByHashRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTxByHashRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTxByHashRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTxByHashRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -164,4 +203,22 @@ export namespace GetTxByHashResponseBody$ {
   export const outboundSchema = GetTxByHashResponseBody$outboundSchema;
   /** @deprecated use `GetTxByHashResponseBody$Outbound` instead. */
   export type Outbound = GetTxByHashResponseBody$Outbound;
+}
+
+export function getTxByHashResponseBodyToJSON(
+  getTxByHashResponseBody: GetTxByHashResponseBody,
+): string {
+  return JSON.stringify(
+    GetTxByHashResponseBody$outboundSchema.parse(getTxByHashResponseBody),
+  );
+}
+
+export function getTxByHashResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTxByHashResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTxByHashResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTxByHashResponseBody' from JSON`,
+  );
 }

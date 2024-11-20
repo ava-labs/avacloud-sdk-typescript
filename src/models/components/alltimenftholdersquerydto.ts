@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DateRangeNftHoldersParam,
   DateRangeNftHoldersParam$inboundSchema,
@@ -88,6 +91,20 @@ export namespace Params$ {
   export type Outbound = Params$Outbound;
 }
 
+export function paramsToJSON(params: Params): string {
+  return JSON.stringify(Params$outboundSchema.parse(params));
+}
+
+export function paramsFromJSON(
+  jsonString: string,
+): SafeParseResult<Params, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Params$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Params' from JSON`,
+  );
+}
+
 /** @internal */
 export const AllTimeNftHoldersQueryDto$inboundSchema: z.ZodType<
   AllTimeNftHoldersQueryDto,
@@ -136,4 +153,22 @@ export namespace AllTimeNftHoldersQueryDto$ {
   export const outboundSchema = AllTimeNftHoldersQueryDto$outboundSchema;
   /** @deprecated use `AllTimeNftHoldersQueryDto$Outbound` instead. */
   export type Outbound = AllTimeNftHoldersQueryDto$Outbound;
+}
+
+export function allTimeNftHoldersQueryDtoToJSON(
+  allTimeNftHoldersQueryDto: AllTimeNftHoldersQueryDto,
+): string {
+  return JSON.stringify(
+    AllTimeNftHoldersQueryDto$outboundSchema.parse(allTimeNftHoldersQueryDto),
+  );
+}
+
+export function allTimeNftHoldersQueryDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<AllTimeNftHoldersQueryDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AllTimeNftHoldersQueryDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AllTimeNftHoldersQueryDto' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetVertexByHeightServerList = [
   "https://glacier-api.avax.network",
@@ -84,6 +87,24 @@ export namespace GetVertexByHeightGlobals$ {
   export type Outbound = GetVertexByHeightGlobals$Outbound;
 }
 
+export function getVertexByHeightGlobalsToJSON(
+  getVertexByHeightGlobals: GetVertexByHeightGlobals,
+): string {
+  return JSON.stringify(
+    GetVertexByHeightGlobals$outboundSchema.parse(getVertexByHeightGlobals),
+  );
+}
+
+export function getVertexByHeightGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetVertexByHeightGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetVertexByHeightGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetVertexByHeightGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetVertexByHeightRequest$inboundSchema: z.ZodType<
   GetVertexByHeightRequest,
@@ -135,6 +156,24 @@ export namespace GetVertexByHeightRequest$ {
   export type Outbound = GetVertexByHeightRequest$Outbound;
 }
 
+export function getVertexByHeightRequestToJSON(
+  getVertexByHeightRequest: GetVertexByHeightRequest,
+): string {
+  return JSON.stringify(
+    GetVertexByHeightRequest$outboundSchema.parse(getVertexByHeightRequest),
+  );
+}
+
+export function getVertexByHeightRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetVertexByHeightRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetVertexByHeightRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetVertexByHeightRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetVertexByHeightResponse$inboundSchema: z.ZodType<
   GetVertexByHeightResponse,
@@ -177,4 +216,22 @@ export namespace GetVertexByHeightResponse$ {
   export const outboundSchema = GetVertexByHeightResponse$outboundSchema;
   /** @deprecated use `GetVertexByHeightResponse$Outbound` instead. */
   export type Outbound = GetVertexByHeightResponse$Outbound;
+}
+
+export function getVertexByHeightResponseToJSON(
+  getVertexByHeightResponse: GetVertexByHeightResponse,
+): string {
+  return JSON.stringify(
+    GetVertexByHeightResponse$outboundSchema.parse(getVertexByHeightResponse),
+  );
+}
+
+export function getVertexByHeightResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetVertexByHeightResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetVertexByHeightResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetVertexByHeightResponse' from JSON`,
+  );
 }

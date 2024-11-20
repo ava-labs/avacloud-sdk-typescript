@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Erc1155Transfer,
   Erc1155Transfer$inboundSchema,
@@ -73,6 +76,20 @@ export namespace Transfers$ {
   export type Outbound = Transfers$Outbound;
 }
 
+export function transfersToJSON(transfers: Transfers): string {
+  return JSON.stringify(Transfers$outboundSchema.parse(transfers));
+}
+
+export function transfersFromJSON(
+  jsonString: string,
+): SafeParseResult<Transfers, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Transfers$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Transfers' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListTransfersResponse$inboundSchema: z.ZodType<
   ListTransfersResponse,
@@ -124,4 +141,22 @@ export namespace ListTransfersResponse$ {
   export const outboundSchema = ListTransfersResponse$outboundSchema;
   /** @deprecated use `ListTransfersResponse$Outbound` instead. */
   export type Outbound = ListTransfersResponse$Outbound;
+}
+
+export function listTransfersResponseToJSON(
+  listTransfersResponse: ListTransfersResponse,
+): string {
+  return JSON.stringify(
+    ListTransfersResponse$outboundSchema.parse(listTransfersResponse),
+  );
+}
+
+export function listTransfersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTransfersResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTransfersResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTransfersResponse' from JSON`,
+  );
 }

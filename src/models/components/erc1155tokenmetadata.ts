@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   NftTokenMetadataStatus,
   NftTokenMetadataStatus$inboundSchema,
@@ -90,4 +93,22 @@ export namespace Erc1155TokenMetadata$ {
   export const outboundSchema = Erc1155TokenMetadata$outboundSchema;
   /** @deprecated use `Erc1155TokenMetadata$Outbound` instead. */
   export type Outbound = Erc1155TokenMetadata$Outbound;
+}
+
+export function erc1155TokenMetadataToJSON(
+  erc1155TokenMetadata: Erc1155TokenMetadata,
+): string {
+  return JSON.stringify(
+    Erc1155TokenMetadata$outboundSchema.parse(erc1155TokenMetadata),
+  );
+}
+
+export function erc1155TokenMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<Erc1155TokenMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Erc1155TokenMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Erc1155TokenMetadata' from JSON`,
+  );
 }

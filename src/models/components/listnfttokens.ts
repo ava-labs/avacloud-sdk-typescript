@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Erc1155Token,
   Erc1155Token$inboundSchema,
@@ -53,6 +56,20 @@ export namespace Tokens$ {
   export type Outbound = Tokens$Outbound;
 }
 
+export function tokensToJSON(tokens: Tokens): string {
+  return JSON.stringify(Tokens$outboundSchema.parse(tokens));
+}
+
+export function tokensFromJSON(
+  jsonString: string,
+): SafeParseResult<Tokens, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Tokens$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Tokens' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListNftTokens$inboundSchema: z.ZodType<
   ListNftTokens,
@@ -94,4 +111,18 @@ export namespace ListNftTokens$ {
   export const outboundSchema = ListNftTokens$outboundSchema;
   /** @deprecated use `ListNftTokens$Outbound` instead. */
   export type Outbound = ListNftTokens$Outbound;
+}
+
+export function listNftTokensToJSON(listNftTokens: ListNftTokens): string {
+  return JSON.stringify(ListNftTokens$outboundSchema.parse(listNftTokens));
+}
+
+export function listNftTokensFromJSON(
+  jsonString: string,
+): SafeParseResult<ListNftTokens, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListNftTokens$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListNftTokens' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetOperationResultServerList = [
   "https://glacier-api.avax.network",
@@ -49,4 +52,22 @@ export namespace GetOperationResultRequest$ {
   export const outboundSchema = GetOperationResultRequest$outboundSchema;
   /** @deprecated use `GetOperationResultRequest$Outbound` instead. */
   export type Outbound = GetOperationResultRequest$Outbound;
+}
+
+export function getOperationResultRequestToJSON(
+  getOperationResultRequest: GetOperationResultRequest,
+): string {
+  return JSON.stringify(
+    GetOperationResultRequest$outboundSchema.parse(getOperationResultRequest),
+  );
+}
+
+export function getOperationResultRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetOperationResultRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetOperationResultRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetOperationResultRequest' from JSON`,
+  );
 }

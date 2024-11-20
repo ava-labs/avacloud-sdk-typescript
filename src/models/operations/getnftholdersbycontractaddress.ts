@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetNftHoldersByContractAddressServerList = [
   "https://metrics.avax.network",
@@ -78,6 +81,27 @@ export namespace GetNftHoldersByContractAddressGlobals$ {
   export type Outbound = GetNftHoldersByContractAddressGlobals$Outbound;
 }
 
+export function getNftHoldersByContractAddressGlobalsToJSON(
+  getNftHoldersByContractAddressGlobals: GetNftHoldersByContractAddressGlobals,
+): string {
+  return JSON.stringify(
+    GetNftHoldersByContractAddressGlobals$outboundSchema.parse(
+      getNftHoldersByContractAddressGlobals,
+    ),
+  );
+}
+
+export function getNftHoldersByContractAddressGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetNftHoldersByContractAddressGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetNftHoldersByContractAddressGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetNftHoldersByContractAddressGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetNftHoldersByContractAddressRequest$inboundSchema: z.ZodType<
   GetNftHoldersByContractAddressRequest,
@@ -125,6 +149,27 @@ export namespace GetNftHoldersByContractAddressRequest$ {
   export type Outbound = GetNftHoldersByContractAddressRequest$Outbound;
 }
 
+export function getNftHoldersByContractAddressRequestToJSON(
+  getNftHoldersByContractAddressRequest: GetNftHoldersByContractAddressRequest,
+): string {
+  return JSON.stringify(
+    GetNftHoldersByContractAddressRequest$outboundSchema.parse(
+      getNftHoldersByContractAddressRequest,
+    ),
+  );
+}
+
+export function getNftHoldersByContractAddressRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetNftHoldersByContractAddressRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetNftHoldersByContractAddressRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetNftHoldersByContractAddressRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetNftHoldersByContractAddressResponse$inboundSchema: z.ZodType<
   GetNftHoldersByContractAddressResponse,
@@ -169,4 +214,26 @@ export namespace GetNftHoldersByContractAddressResponse$ {
     GetNftHoldersByContractAddressResponse$outboundSchema;
   /** @deprecated use `GetNftHoldersByContractAddressResponse$Outbound` instead. */
   export type Outbound = GetNftHoldersByContractAddressResponse$Outbound;
+}
+
+export function getNftHoldersByContractAddressResponseToJSON(
+  getNftHoldersByContractAddressResponse:
+    GetNftHoldersByContractAddressResponse,
+): string {
+  return JSON.stringify(
+    GetNftHoldersByContractAddressResponse$outboundSchema.parse(
+      getNftHoldersByContractAddressResponse,
+    ),
+  );
+}
+
+export function getNftHoldersByContractAddressResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetNftHoldersByContractAddressResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetNftHoldersByContractAddressResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetNftHoldersByContractAddressResponse' from JSON`,
+  );
 }

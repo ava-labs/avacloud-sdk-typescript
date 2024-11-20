@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const AddAddressesToWebhookServerList = [
   "https://glacier-api.avax.network",
@@ -63,4 +66,24 @@ export namespace AddAddressesToWebhookRequest$ {
   export const outboundSchema = AddAddressesToWebhookRequest$outboundSchema;
   /** @deprecated use `AddAddressesToWebhookRequest$Outbound` instead. */
   export type Outbound = AddAddressesToWebhookRequest$Outbound;
+}
+
+export function addAddressesToWebhookRequestToJSON(
+  addAddressesToWebhookRequest: AddAddressesToWebhookRequest,
+): string {
+  return JSON.stringify(
+    AddAddressesToWebhookRequest$outboundSchema.parse(
+      addAddressesToWebhookRequest,
+    ),
+  );
+}
+
+export function addAddressesToWebhookRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AddAddressesToWebhookRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AddAddressesToWebhookRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AddAddressesToWebhookRequest' from JSON`,
+  );
 }

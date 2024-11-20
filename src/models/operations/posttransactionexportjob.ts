@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const PostTransactionExportJobServerList = [
   "https://glacier-api.avax.network",
@@ -51,4 +54,25 @@ export namespace PostTransactionExportJobRequestBody$ {
     PostTransactionExportJobRequestBody$outboundSchema;
   /** @deprecated use `PostTransactionExportJobRequestBody$Outbound` instead. */
   export type Outbound = PostTransactionExportJobRequestBody$Outbound;
+}
+
+export function postTransactionExportJobRequestBodyToJSON(
+  postTransactionExportJobRequestBody: PostTransactionExportJobRequestBody,
+): string {
+  return JSON.stringify(
+    PostTransactionExportJobRequestBody$outboundSchema.parse(
+      postTransactionExportJobRequestBody,
+    ),
+  );
+}
+
+export function postTransactionExportJobRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<PostTransactionExportJobRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostTransactionExportJobRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostTransactionExportJobRequestBody' from JSON`,
+  );
 }

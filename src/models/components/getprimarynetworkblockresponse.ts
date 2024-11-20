@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ProposerDetails,
   ProposerDetails$inboundSchema,
@@ -19,8 +22,8 @@ export type GetPrimaryNetworkBlockResponse = {
   txCount: number;
   transactions: Array<string>;
   blockSizeBytes: number;
-  subnetOnlyValidatorsAccruedFees?: number | undefined;
-  activeSubnetOnlyValidators?: number | undefined;
+  l1ValidatorsAccruedFees?: number | undefined;
+  activeL1Validators?: number | undefined;
   currentSupply?: string | undefined;
   proposerDetails?: ProposerDetails | undefined;
 };
@@ -39,8 +42,8 @@ export const GetPrimaryNetworkBlockResponse$inboundSchema: z.ZodType<
   txCount: z.number(),
   transactions: z.array(z.string()),
   blockSizeBytes: z.number(),
-  subnetOnlyValidatorsAccruedFees: z.number().optional(),
-  activeSubnetOnlyValidators: z.number().optional(),
+  l1ValidatorsAccruedFees: z.number().optional(),
+  activeL1Validators: z.number().optional(),
   currentSupply: z.string().optional(),
   proposerDetails: ProposerDetails$inboundSchema.optional(),
 });
@@ -55,8 +58,8 @@ export type GetPrimaryNetworkBlockResponse$Outbound = {
   txCount: number;
   transactions: Array<string>;
   blockSizeBytes: number;
-  subnetOnlyValidatorsAccruedFees?: number | undefined;
-  activeSubnetOnlyValidators?: number | undefined;
+  l1ValidatorsAccruedFees?: number | undefined;
+  activeL1Validators?: number | undefined;
   currentSupply?: string | undefined;
   proposerDetails?: ProposerDetails$Outbound | undefined;
 };
@@ -75,8 +78,8 @@ export const GetPrimaryNetworkBlockResponse$outboundSchema: z.ZodType<
   txCount: z.number(),
   transactions: z.array(z.string()),
   blockSizeBytes: z.number(),
-  subnetOnlyValidatorsAccruedFees: z.number().optional(),
-  activeSubnetOnlyValidators: z.number().optional(),
+  l1ValidatorsAccruedFees: z.number().optional(),
+  activeL1Validators: z.number().optional(),
   currentSupply: z.string().optional(),
   proposerDetails: ProposerDetails$outboundSchema.optional(),
 });
@@ -92,4 +95,24 @@ export namespace GetPrimaryNetworkBlockResponse$ {
   export const outboundSchema = GetPrimaryNetworkBlockResponse$outboundSchema;
   /** @deprecated use `GetPrimaryNetworkBlockResponse$Outbound` instead. */
   export type Outbound = GetPrimaryNetworkBlockResponse$Outbound;
+}
+
+export function getPrimaryNetworkBlockResponseToJSON(
+  getPrimaryNetworkBlockResponse: GetPrimaryNetworkBlockResponse,
+): string {
+  return JSON.stringify(
+    GetPrimaryNetworkBlockResponse$outboundSchema.parse(
+      getPrimaryNetworkBlockResponse,
+    ),
+  );
+}
+
+export function getPrimaryNetworkBlockResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetPrimaryNetworkBlockResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetPrimaryNetworkBlockResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetPrimaryNetworkBlockResponse' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TransactionMethodType,
   TransactionMethodType$inboundSchema,
@@ -61,4 +64,18 @@ export namespace Method$ {
   export const outboundSchema = Method$outboundSchema;
   /** @deprecated use `Method$Outbound` instead. */
   export type Outbound = Method$Outbound;
+}
+
+export function methodToJSON(method: Method): string {
+  return JSON.stringify(Method$outboundSchema.parse(method));
+}
+
+export function methodFromJSON(
+  jsonString: string,
+): SafeParseResult<Method, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Method$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Method' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListLatestTransactionsServerList = [
   "https://glacier-api.avax.network",
@@ -76,6 +79,26 @@ export namespace ListLatestTransactionsGlobals$ {
   export type Outbound = ListLatestTransactionsGlobals$Outbound;
 }
 
+export function listLatestTransactionsGlobalsToJSON(
+  listLatestTransactionsGlobals: ListLatestTransactionsGlobals,
+): string {
+  return JSON.stringify(
+    ListLatestTransactionsGlobals$outboundSchema.parse(
+      listLatestTransactionsGlobals,
+    ),
+  );
+}
+
+export function listLatestTransactionsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<ListLatestTransactionsGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListLatestTransactionsGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListLatestTransactionsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListLatestTransactionsRequest$inboundSchema: z.ZodType<
   ListLatestTransactionsRequest,
@@ -121,6 +144,26 @@ export namespace ListLatestTransactionsRequest$ {
   export type Outbound = ListLatestTransactionsRequest$Outbound;
 }
 
+export function listLatestTransactionsRequestToJSON(
+  listLatestTransactionsRequest: ListLatestTransactionsRequest,
+): string {
+  return JSON.stringify(
+    ListLatestTransactionsRequest$outboundSchema.parse(
+      listLatestTransactionsRequest,
+    ),
+  );
+}
+
+export function listLatestTransactionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListLatestTransactionsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListLatestTransactionsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListLatestTransactionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListLatestTransactionsResponse$inboundSchema: z.ZodType<
   ListLatestTransactionsResponse,
@@ -163,4 +206,24 @@ export namespace ListLatestTransactionsResponse$ {
   export const outboundSchema = ListLatestTransactionsResponse$outboundSchema;
   /** @deprecated use `ListLatestTransactionsResponse$Outbound` instead. */
   export type Outbound = ListLatestTransactionsResponse$Outbound;
+}
+
+export function listLatestTransactionsResponseToJSON(
+  listLatestTransactionsResponse: ListLatestTransactionsResponse,
+): string {
+  return JSON.stringify(
+    ListLatestTransactionsResponse$outboundSchema.parse(
+      listLatestTransactionsResponse,
+    ),
+  );
+}
+
+export function listLatestTransactionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListLatestTransactionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListLatestTransactionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListLatestTransactionsResponse' from JSON`,
+  );
 }

@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DateRangeNftHoldersParam,
   DateRangeNftHoldersParam$inboundSchema,
@@ -93,6 +96,26 @@ export namespace AnyTimeNftHoldersQueryDtoParams$ {
   export type Outbound = AnyTimeNftHoldersQueryDtoParams$Outbound;
 }
 
+export function anyTimeNftHoldersQueryDtoParamsToJSON(
+  anyTimeNftHoldersQueryDtoParams: AnyTimeNftHoldersQueryDtoParams,
+): string {
+  return JSON.stringify(
+    AnyTimeNftHoldersQueryDtoParams$outboundSchema.parse(
+      anyTimeNftHoldersQueryDtoParams,
+    ),
+  );
+}
+
+export function anyTimeNftHoldersQueryDtoParamsFromJSON(
+  jsonString: string,
+): SafeParseResult<AnyTimeNftHoldersQueryDtoParams, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AnyTimeNftHoldersQueryDtoParams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AnyTimeNftHoldersQueryDtoParams' from JSON`,
+  );
+}
+
 /** @internal */
 export const AnyTimeNftHoldersQueryDto$inboundSchema: z.ZodType<
   AnyTimeNftHoldersQueryDto,
@@ -141,4 +164,22 @@ export namespace AnyTimeNftHoldersQueryDto$ {
   export const outboundSchema = AnyTimeNftHoldersQueryDto$outboundSchema;
   /** @deprecated use `AnyTimeNftHoldersQueryDto$Outbound` instead. */
   export type Outbound = AnyTimeNftHoldersQueryDto$Outbound;
+}
+
+export function anyTimeNftHoldersQueryDtoToJSON(
+  anyTimeNftHoldersQueryDto: AnyTimeNftHoldersQueryDto,
+): string {
+  return JSON.stringify(
+    AnyTimeNftHoldersQueryDto$outboundSchema.parse(anyTimeNftHoldersQueryDto),
+  );
+}
+
+export function anyTimeNftHoldersQueryDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<AnyTimeNftHoldersQueryDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AnyTimeNftHoldersQueryDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AnyTimeNftHoldersQueryDto' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AddressActivityMetadata = {
   /**
@@ -52,4 +55,22 @@ export namespace AddressActivityMetadata$ {
   export const outboundSchema = AddressActivityMetadata$outboundSchema;
   /** @deprecated use `AddressActivityMetadata$Outbound` instead. */
   export type Outbound = AddressActivityMetadata$Outbound;
+}
+
+export function addressActivityMetadataToJSON(
+  addressActivityMetadata: AddressActivityMetadata,
+): string {
+  return JSON.stringify(
+    AddressActivityMetadata$outboundSchema.parse(addressActivityMetadata),
+  );
+}
+
+export function addressActivityMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<AddressActivityMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AddressActivityMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AddressActivityMetadata' from JSON`,
+  );
 }

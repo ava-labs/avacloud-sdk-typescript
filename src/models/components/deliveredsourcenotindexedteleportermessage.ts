@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TeleporterDestinationTransaction,
   TeleporterDestinationTransaction$inboundSchema,
@@ -152,4 +155,31 @@ export namespace DeliveredSourceNotIndexedTeleporterMessage$ {
     DeliveredSourceNotIndexedTeleporterMessage$outboundSchema;
   /** @deprecated use `DeliveredSourceNotIndexedTeleporterMessage$Outbound` instead. */
   export type Outbound = DeliveredSourceNotIndexedTeleporterMessage$Outbound;
+}
+
+export function deliveredSourceNotIndexedTeleporterMessageToJSON(
+  deliveredSourceNotIndexedTeleporterMessage:
+    DeliveredSourceNotIndexedTeleporterMessage,
+): string {
+  return JSON.stringify(
+    DeliveredSourceNotIndexedTeleporterMessage$outboundSchema.parse(
+      deliveredSourceNotIndexedTeleporterMessage,
+    ),
+  );
+}
+
+export function deliveredSourceNotIndexedTeleporterMessageFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeliveredSourceNotIndexedTeleporterMessage,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeliveredSourceNotIndexedTeleporterMessage$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeliveredSourceNotIndexedTeleporterMessage' from JSON`,
+  );
 }

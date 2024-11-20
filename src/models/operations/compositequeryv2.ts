@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const CompositeQueryV2ServerList = [
   "https://metrics.avax.network",
@@ -56,4 +59,22 @@ export namespace CompositeQueryV2Response$ {
   export const outboundSchema = CompositeQueryV2Response$outboundSchema;
   /** @deprecated use `CompositeQueryV2Response$Outbound` instead. */
   export type Outbound = CompositeQueryV2Response$Outbound;
+}
+
+export function compositeQueryV2ResponseToJSON(
+  compositeQueryV2Response: CompositeQueryV2Response,
+): string {
+  return JSON.stringify(
+    CompositeQueryV2Response$outboundSchema.parse(compositeQueryV2Response),
+  );
+}
+
+export function compositeQueryV2ResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CompositeQueryV2Response, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompositeQueryV2Response$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompositeQueryV2Response' from JSON`,
+  );
 }

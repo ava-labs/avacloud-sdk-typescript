@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Erc1155TransferDetails,
   Erc1155TransferDetails$inboundSchema,
@@ -125,4 +128,22 @@ export namespace GetTransactionResponse$ {
   export const outboundSchema = GetTransactionResponse$outboundSchema;
   /** @deprecated use `GetTransactionResponse$Outbound` instead. */
   export type Outbound = GetTransactionResponse$Outbound;
+}
+
+export function getTransactionResponseToJSON(
+  getTransactionResponse: GetTransactionResponse,
+): string {
+  return JSON.stringify(
+    GetTransactionResponse$outboundSchema.parse(getTransactionResponse),
+  );
+}
+
+export function getTransactionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetTransactionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTransactionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTransactionResponse' from JSON`,
+  );
 }

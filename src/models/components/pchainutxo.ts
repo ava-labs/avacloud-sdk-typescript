@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AssetAmount,
   AssetAmount$inboundSchema,
@@ -163,4 +166,18 @@ export namespace PChainUtxo$ {
   export const outboundSchema = PChainUtxo$outboundSchema;
   /** @deprecated use `PChainUtxo$Outbound` instead. */
   export type Outbound = PChainUtxo$Outbound;
+}
+
+export function pChainUtxoToJSON(pChainUtxo: PChainUtxo): string {
+  return JSON.stringify(PChainUtxo$outboundSchema.parse(pChainUtxo));
+}
+
+export function pChainUtxoFromJSON(
+  jsonString: string,
+): SafeParseResult<PChainUtxo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PChainUtxo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PChainUtxo' from JSON`,
+  );
 }

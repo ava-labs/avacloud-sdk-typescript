@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UtxoCredential = {
   /**
@@ -52,4 +55,18 @@ export namespace UtxoCredential$ {
   export const outboundSchema = UtxoCredential$outboundSchema;
   /** @deprecated use `UtxoCredential$Outbound` instead. */
   export type Outbound = UtxoCredential$Outbound;
+}
+
+export function utxoCredentialToJSON(utxoCredential: UtxoCredential): string {
+  return JSON.stringify(UtxoCredential$outboundSchema.parse(utxoCredential));
+}
+
+export function utxoCredentialFromJSON(
+  jsonString: string,
+): SafeParseResult<UtxoCredential, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UtxoCredential$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UtxoCredential' from JSON`,
+  );
 }

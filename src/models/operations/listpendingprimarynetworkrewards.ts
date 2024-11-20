@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListPendingPrimaryNetworkRewardsServerList = [
   "https://glacier-api.avax.network",
@@ -86,6 +89,33 @@ export namespace ListPendingPrimaryNetworkRewardsGlobals$ {
   export type Outbound = ListPendingPrimaryNetworkRewardsGlobals$Outbound;
 }
 
+export function listPendingPrimaryNetworkRewardsGlobalsToJSON(
+  listPendingPrimaryNetworkRewardsGlobals:
+    ListPendingPrimaryNetworkRewardsGlobals,
+): string {
+  return JSON.stringify(
+    ListPendingPrimaryNetworkRewardsGlobals$outboundSchema.parse(
+      listPendingPrimaryNetworkRewardsGlobals,
+    ),
+  );
+}
+
+export function listPendingPrimaryNetworkRewardsGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListPendingPrimaryNetworkRewardsGlobals,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListPendingPrimaryNetworkRewardsGlobals$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListPendingPrimaryNetworkRewardsGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListPendingPrimaryNetworkRewardsRequest$inboundSchema: z.ZodType<
   ListPendingPrimaryNetworkRewardsRequest,
@@ -139,6 +169,33 @@ export namespace ListPendingPrimaryNetworkRewardsRequest$ {
   export type Outbound = ListPendingPrimaryNetworkRewardsRequest$Outbound;
 }
 
+export function listPendingPrimaryNetworkRewardsRequestToJSON(
+  listPendingPrimaryNetworkRewardsRequest:
+    ListPendingPrimaryNetworkRewardsRequest,
+): string {
+  return JSON.stringify(
+    ListPendingPrimaryNetworkRewardsRequest$outboundSchema.parse(
+      listPendingPrimaryNetworkRewardsRequest,
+    ),
+  );
+}
+
+export function listPendingPrimaryNetworkRewardsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListPendingPrimaryNetworkRewardsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListPendingPrimaryNetworkRewardsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListPendingPrimaryNetworkRewardsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListPendingPrimaryNetworkRewardsResponse$inboundSchema: z.ZodType<
   ListPendingPrimaryNetworkRewardsResponse,
@@ -183,4 +240,31 @@ export namespace ListPendingPrimaryNetworkRewardsResponse$ {
     ListPendingPrimaryNetworkRewardsResponse$outboundSchema;
   /** @deprecated use `ListPendingPrimaryNetworkRewardsResponse$Outbound` instead. */
   export type Outbound = ListPendingPrimaryNetworkRewardsResponse$Outbound;
+}
+
+export function listPendingPrimaryNetworkRewardsResponseToJSON(
+  listPendingPrimaryNetworkRewardsResponse:
+    ListPendingPrimaryNetworkRewardsResponse,
+): string {
+  return JSON.stringify(
+    ListPendingPrimaryNetworkRewardsResponse$outboundSchema.parse(
+      listPendingPrimaryNetworkRewardsResponse,
+    ),
+  );
+}
+
+export function listPendingPrimaryNetworkRewardsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListPendingPrimaryNetworkRewardsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListPendingPrimaryNetworkRewardsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListPendingPrimaryNetworkRewardsResponse' from JSON`,
+  );
 }

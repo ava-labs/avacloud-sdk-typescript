@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const PendingDelegatorDetailsDelegationStatus = {
   Pending: "pending",
@@ -109,4 +112,22 @@ export namespace PendingDelegatorDetails$ {
   export const outboundSchema = PendingDelegatorDetails$outboundSchema;
   /** @deprecated use `PendingDelegatorDetails$Outbound` instead. */
   export type Outbound = PendingDelegatorDetails$Outbound;
+}
+
+export function pendingDelegatorDetailsToJSON(
+  pendingDelegatorDetails: PendingDelegatorDetails,
+): string {
+  return JSON.stringify(
+    PendingDelegatorDetails$outboundSchema.parse(pendingDelegatorDetails),
+  );
+}
+
+export function pendingDelegatorDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<PendingDelegatorDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PendingDelegatorDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PendingDelegatorDetails' from JSON`,
+  );
 }

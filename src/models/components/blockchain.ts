@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Blockchain = {
   createBlockTimestamp: number;
@@ -62,4 +65,18 @@ export namespace Blockchain$ {
   export const outboundSchema = Blockchain$outboundSchema;
   /** @deprecated use `Blockchain$Outbound` instead. */
   export type Outbound = Blockchain$Outbound;
+}
+
+export function blockchainToJSON(blockchain: Blockchain): string {
+  return JSON.stringify(Blockchain$outboundSchema.parse(blockchain));
+}
+
+export function blockchainFromJSON(
+  jsonString: string,
+): SafeParseResult<Blockchain, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Blockchain$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Blockchain' from JSON`,
+  );
 }

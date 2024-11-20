@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ResourceLinkType,
   ResourceLinkType$inboundSchema,
@@ -51,4 +54,18 @@ export namespace ResourceLink$ {
   export const outboundSchema = ResourceLink$outboundSchema;
   /** @deprecated use `ResourceLink$Outbound` instead. */
   export type Outbound = ResourceLink$Outbound;
+}
+
+export function resourceLinkToJSON(resourceLink: ResourceLink): string {
+  return JSON.stringify(ResourceLink$outboundSchema.parse(resourceLink));
+}
+
+export function resourceLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<ResourceLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResourceLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResourceLink' from JSON`,
+  );
 }

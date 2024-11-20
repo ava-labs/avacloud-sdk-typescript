@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DelegatorsDetails = {
   delegatorCount: number;
@@ -46,4 +49,22 @@ export namespace DelegatorsDetails$ {
   export const outboundSchema = DelegatorsDetails$outboundSchema;
   /** @deprecated use `DelegatorsDetails$Outbound` instead. */
   export type Outbound = DelegatorsDetails$Outbound;
+}
+
+export function delegatorsDetailsToJSON(
+  delegatorsDetails: DelegatorsDetails,
+): string {
+  return JSON.stringify(
+    DelegatorsDetails$outboundSchema.parse(delegatorsDetails),
+  );
+}
+
+export function delegatorsDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<DelegatorsDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DelegatorsDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DelegatorsDetails' from JSON`,
+  );
 }

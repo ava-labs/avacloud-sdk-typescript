@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListChainsServerList = [
   "https://metrics.avax.network",
@@ -64,6 +67,24 @@ export namespace ListChainsRequest$ {
   export type Outbound = ListChainsRequest$Outbound;
 }
 
+export function listChainsRequestToJSON(
+  listChainsRequest: ListChainsRequest,
+): string {
+  return JSON.stringify(
+    ListChainsRequest$outboundSchema.parse(listChainsRequest),
+  );
+}
+
+export function listChainsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListChainsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListChainsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListChainsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListChainsResponse$inboundSchema: z.ZodType<
   ListChainsResponse,
@@ -106,4 +127,22 @@ export namespace ListChainsResponse$ {
   export const outboundSchema = ListChainsResponse$outboundSchema;
   /** @deprecated use `ListChainsResponse$Outbound` instead. */
   export type Outbound = ListChainsResponse$Outbound;
+}
+
+export function listChainsResponseToJSON(
+  listChainsResponse: ListChainsResponse,
+): string {
+  return JSON.stringify(
+    ListChainsResponse$outboundSchema.parse(listChainsResponse),
+  );
+}
+
+export function listChainsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListChainsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListChainsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListChainsResponse' from JSON`,
+  );
 }

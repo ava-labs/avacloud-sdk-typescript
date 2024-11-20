@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ContractDeploymentDetails,
   ContractDeploymentDetails$inboundSchema,
@@ -137,4 +140,20 @@ export namespace UnknownContract$ {
   export const outboundSchema = UnknownContract$outboundSchema;
   /** @deprecated use `UnknownContract$Outbound` instead. */
   export type Outbound = UnknownContract$Outbound;
+}
+
+export function unknownContractToJSON(
+  unknownContract: UnknownContract,
+): string {
+  return JSON.stringify(UnknownContract$outboundSchema.parse(unknownContract));
+}
+
+export function unknownContractFromJSON(
+  jsonString: string,
+): SafeParseResult<UnknownContract, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnknownContract$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnknownContract' from JSON`,
+  );
 }

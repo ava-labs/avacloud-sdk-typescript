@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListTeleporterMessagesByAddressServerList = [
   "https://glacier-api.avax.network",
@@ -73,4 +76,26 @@ export namespace ListTeleporterMessagesByAddressRequest$ {
     ListTeleporterMessagesByAddressRequest$outboundSchema;
   /** @deprecated use `ListTeleporterMessagesByAddressRequest$Outbound` instead. */
   export type Outbound = ListTeleporterMessagesByAddressRequest$Outbound;
+}
+
+export function listTeleporterMessagesByAddressRequestToJSON(
+  listTeleporterMessagesByAddressRequest:
+    ListTeleporterMessagesByAddressRequest,
+): string {
+  return JSON.stringify(
+    ListTeleporterMessagesByAddressRequest$outboundSchema.parse(
+      listTeleporterMessagesByAddressRequest,
+    ),
+  );
+}
+
+export function listTeleporterMessagesByAddressRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTeleporterMessagesByAddressRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListTeleporterMessagesByAddressRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTeleporterMessagesByAddressRequest' from JSON`,
+  );
 }

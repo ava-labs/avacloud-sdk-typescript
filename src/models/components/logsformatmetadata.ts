@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LogsFormatMetadata = {
   /**
@@ -59,4 +62,22 @@ export namespace LogsFormatMetadata$ {
   export const outboundSchema = LogsFormatMetadata$outboundSchema;
   /** @deprecated use `LogsFormatMetadata$Outbound` instead. */
   export type Outbound = LogsFormatMetadata$Outbound;
+}
+
+export function logsFormatMetadataToJSON(
+  logsFormatMetadata: LogsFormatMetadata,
+): string {
+  return JSON.stringify(
+    LogsFormatMetadata$outboundSchema.parse(logsFormatMetadata),
+  );
+}
+
+export function logsFormatMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<LogsFormatMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LogsFormatMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LogsFormatMetadata' from JSON`,
+  );
 }

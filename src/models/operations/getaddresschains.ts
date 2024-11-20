@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetAddressChainsServerList = [
   "https://glacier-api.avax.network",
@@ -49,4 +52,22 @@ export namespace GetAddressChainsRequest$ {
   export const outboundSchema = GetAddressChainsRequest$outboundSchema;
   /** @deprecated use `GetAddressChainsRequest$Outbound` instead. */
   export type Outbound = GetAddressChainsRequest$Outbound;
+}
+
+export function getAddressChainsRequestToJSON(
+  getAddressChainsRequest: GetAddressChainsRequest,
+): string {
+  return JSON.stringify(
+    GetAddressChainsRequest$outboundSchema.parse(getAddressChainsRequest),
+  );
+}
+
+export function getAddressChainsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAddressChainsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAddressChainsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAddressChainsRequest' from JSON`,
+  );
 }

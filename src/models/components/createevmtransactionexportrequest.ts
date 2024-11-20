@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EvmNetworkOptions,
   EvmNetworkOptions$inboundSchema,
@@ -80,4 +83,24 @@ export namespace CreateEvmTransactionExportRequest$ {
     CreateEvmTransactionExportRequest$outboundSchema;
   /** @deprecated use `CreateEvmTransactionExportRequest$Outbound` instead. */
   export type Outbound = CreateEvmTransactionExportRequest$Outbound;
+}
+
+export function createEvmTransactionExportRequestToJSON(
+  createEvmTransactionExportRequest: CreateEvmTransactionExportRequest,
+): string {
+  return JSON.stringify(
+    CreateEvmTransactionExportRequest$outboundSchema.parse(
+      createEvmTransactionExportRequest,
+    ),
+  );
+}
+
+export function createEvmTransactionExportRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateEvmTransactionExportRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateEvmTransactionExportRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateEvmTransactionExportRequest' from JSON`,
+  );
 }

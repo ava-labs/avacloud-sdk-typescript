@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type XChainVertex = {
   vertexHash: string;
@@ -70,4 +73,18 @@ export namespace XChainVertex$ {
   export const outboundSchema = XChainVertex$outboundSchema;
   /** @deprecated use `XChainVertex$Outbound` instead. */
   export type Outbound = XChainVertex$Outbound;
+}
+
+export function xChainVertexToJSON(xChainVertex: XChainVertex): string {
+  return JSON.stringify(XChainVertex$outboundSchema.parse(xChainVertex));
+}
+
+export function xChainVertexFromJSON(
+  jsonString: string,
+): SafeParseResult<XChainVertex, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => XChainVertex$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'XChainVertex' from JSON`,
+  );
 }

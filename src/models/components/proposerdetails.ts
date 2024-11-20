@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ProposerDetails = {
   proposerId?: string | undefined;
@@ -58,4 +61,20 @@ export namespace ProposerDetails$ {
   export const outboundSchema = ProposerDetails$outboundSchema;
   /** @deprecated use `ProposerDetails$Outbound` instead. */
   export type Outbound = ProposerDetails$Outbound;
+}
+
+export function proposerDetailsToJSON(
+  proposerDetails: ProposerDetails,
+): string {
+  return JSON.stringify(ProposerDetails$outboundSchema.parse(proposerDetails));
+}
+
+export function proposerDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<ProposerDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProposerDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProposerDetails' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * The error message describing the reason for the exception
@@ -79,6 +82,24 @@ export namespace TooManyRequestsMessage$ {
   export const outboundSchema = TooManyRequestsMessage$outboundSchema;
   /** @deprecated use `TooManyRequestsMessage$Outbound` instead. */
   export type Outbound = TooManyRequestsMessage$Outbound;
+}
+
+export function tooManyRequestsMessageToJSON(
+  tooManyRequestsMessage: TooManyRequestsMessage,
+): string {
+  return JSON.stringify(
+    TooManyRequestsMessage$outboundSchema.parse(tooManyRequestsMessage),
+  );
+}
+
+export function tooManyRequestsMessageFromJSON(
+  jsonString: string,
+): SafeParseResult<TooManyRequestsMessage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TooManyRequestsMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TooManyRequestsMessage' from JSON`,
+  );
 }
 
 /** @internal */

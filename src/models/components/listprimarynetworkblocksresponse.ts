@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PrimaryNetworkBlock,
   PrimaryNetworkBlock$inboundSchema,
@@ -65,4 +68,24 @@ export namespace ListPrimaryNetworkBlocksResponse$ {
   export const outboundSchema = ListPrimaryNetworkBlocksResponse$outboundSchema;
   /** @deprecated use `ListPrimaryNetworkBlocksResponse$Outbound` instead. */
   export type Outbound = ListPrimaryNetworkBlocksResponse$Outbound;
+}
+
+export function listPrimaryNetworkBlocksResponseToJSON(
+  listPrimaryNetworkBlocksResponse: ListPrimaryNetworkBlocksResponse,
+): string {
+  return JSON.stringify(
+    ListPrimaryNetworkBlocksResponse$outboundSchema.parse(
+      listPrimaryNetworkBlocksResponse,
+    ),
+  );
+}
+
+export function listPrimaryNetworkBlocksResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPrimaryNetworkBlocksResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListPrimaryNetworkBlocksResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPrimaryNetworkBlocksResponse' from JSON`,
+  );
 }

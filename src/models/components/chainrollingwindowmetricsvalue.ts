@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ChainRollingWindowMetricsValue = {
   /**
@@ -73,4 +76,24 @@ export namespace ChainRollingWindowMetricsValue$ {
   export const outboundSchema = ChainRollingWindowMetricsValue$outboundSchema;
   /** @deprecated use `ChainRollingWindowMetricsValue$Outbound` instead. */
   export type Outbound = ChainRollingWindowMetricsValue$Outbound;
+}
+
+export function chainRollingWindowMetricsValueToJSON(
+  chainRollingWindowMetricsValue: ChainRollingWindowMetricsValue,
+): string {
+  return JSON.stringify(
+    ChainRollingWindowMetricsValue$outboundSchema.parse(
+      chainRollingWindowMetricsValue,
+    ),
+  );
+}
+
+export function chainRollingWindowMetricsValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ChainRollingWindowMetricsValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ChainRollingWindowMetricsValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChainRollingWindowMetricsValue' from JSON`,
+  );
 }

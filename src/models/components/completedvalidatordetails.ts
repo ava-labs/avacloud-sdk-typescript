@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BlsCredentials,
   BlsCredentials$inboundSchema,
@@ -128,4 +131,22 @@ export namespace CompletedValidatorDetails$ {
   export const outboundSchema = CompletedValidatorDetails$outboundSchema;
   /** @deprecated use `CompletedValidatorDetails$Outbound` instead. */
   export type Outbound = CompletedValidatorDetails$Outbound;
+}
+
+export function completedValidatorDetailsToJSON(
+  completedValidatorDetails: CompletedValidatorDetails,
+): string {
+  return JSON.stringify(
+    CompletedValidatorDetails$outboundSchema.parse(completedValidatorDetails),
+  );
+}
+
+export function completedValidatorDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<CompletedValidatorDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompletedValidatorDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompletedValidatorDetails' from JSON`,
+  );
 }

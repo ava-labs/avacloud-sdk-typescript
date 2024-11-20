@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PChainAddressDetails = {
   /**
@@ -52,4 +55,22 @@ export namespace PChainAddressDetails$ {
   export const outboundSchema = PChainAddressDetails$outboundSchema;
   /** @deprecated use `PChainAddressDetails$Outbound` instead. */
   export type Outbound = PChainAddressDetails$Outbound;
+}
+
+export function pChainAddressDetailsToJSON(
+  pChainAddressDetails: PChainAddressDetails,
+): string {
+  return JSON.stringify(
+    PChainAddressDetails$outboundSchema.parse(pChainAddressDetails),
+  );
+}
+
+export function pChainAddressDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<PChainAddressDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PChainAddressDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PChainAddressDetails' from JSON`,
+  );
 }

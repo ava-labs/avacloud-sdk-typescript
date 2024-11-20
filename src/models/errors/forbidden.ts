@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * The error message describing the reason for the exception
@@ -79,6 +82,24 @@ export namespace ForbiddenMessage$ {
   export const outboundSchema = ForbiddenMessage$outboundSchema;
   /** @deprecated use `ForbiddenMessage$Outbound` instead. */
   export type Outbound = ForbiddenMessage$Outbound;
+}
+
+export function forbiddenMessageToJSON(
+  forbiddenMessage: ForbiddenMessage,
+): string {
+  return JSON.stringify(
+    ForbiddenMessage$outboundSchema.parse(forbiddenMessage),
+  );
+}
+
+export function forbiddenMessageFromJSON(
+  jsonString: string,
+): SafeParseResult<ForbiddenMessage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ForbiddenMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ForbiddenMessage' from JSON`,
+  );
 }
 
 /** @internal */

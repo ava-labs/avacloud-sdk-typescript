@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const ListTeleporterMessagesServerList = [
   "https://glacier-api.avax.network",
@@ -106,6 +109,26 @@ export namespace ListTeleporterMessagesRequest$ {
   export type Outbound = ListTeleporterMessagesRequest$Outbound;
 }
 
+export function listTeleporterMessagesRequestToJSON(
+  listTeleporterMessagesRequest: ListTeleporterMessagesRequest,
+): string {
+  return JSON.stringify(
+    ListTeleporterMessagesRequest$outboundSchema.parse(
+      listTeleporterMessagesRequest,
+    ),
+  );
+}
+
+export function listTeleporterMessagesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTeleporterMessagesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTeleporterMessagesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTeleporterMessagesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListTeleporterMessagesResponse$inboundSchema: z.ZodType<
   ListTeleporterMessagesResponse,
@@ -148,4 +171,24 @@ export namespace ListTeleporterMessagesResponse$ {
   export const outboundSchema = ListTeleporterMessagesResponse$outboundSchema;
   /** @deprecated use `ListTeleporterMessagesResponse$Outbound` instead. */
   export type Outbound = ListTeleporterMessagesResponse$Outbound;
+}
+
+export function listTeleporterMessagesResponseToJSON(
+  listTeleporterMessagesResponse: ListTeleporterMessagesResponse,
+): string {
+  return JSON.stringify(
+    ListTeleporterMessagesResponse$outboundSchema.parse(
+      listTeleporterMessagesResponse,
+    ),
+  );
+}
+
+export function listTeleporterMessagesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTeleporterMessagesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTeleporterMessagesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTeleporterMessagesResponse' from JSON`,
+  );
 }

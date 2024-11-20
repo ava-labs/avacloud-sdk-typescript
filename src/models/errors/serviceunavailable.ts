@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * The error message describing the reason for the exception
@@ -79,6 +82,24 @@ export namespace ServiceUnavailableMessage$ {
   export const outboundSchema = ServiceUnavailableMessage$outboundSchema;
   /** @deprecated use `ServiceUnavailableMessage$Outbound` instead. */
   export type Outbound = ServiceUnavailableMessage$Outbound;
+}
+
+export function serviceUnavailableMessageToJSON(
+  serviceUnavailableMessage: ServiceUnavailableMessage,
+): string {
+  return JSON.stringify(
+    ServiceUnavailableMessage$outboundSchema.parse(serviceUnavailableMessage),
+  );
+}
+
+export function serviceUnavailableMessageFromJSON(
+  jsonString: string,
+): SafeParseResult<ServiceUnavailableMessage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ServiceUnavailableMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServiceUnavailableMessage' from JSON`,
+  );
 }
 
 /** @internal */

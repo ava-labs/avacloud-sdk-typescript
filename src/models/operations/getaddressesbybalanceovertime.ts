@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetAddressesByBalanceOverTimeServerList = [
   "https://metrics.avax.network",
@@ -90,6 +93,27 @@ export namespace GetAddressesByBalanceOverTimeGlobals$ {
   export type Outbound = GetAddressesByBalanceOverTimeGlobals$Outbound;
 }
 
+export function getAddressesByBalanceOverTimeGlobalsToJSON(
+  getAddressesByBalanceOverTimeGlobals: GetAddressesByBalanceOverTimeGlobals,
+): string {
+  return JSON.stringify(
+    GetAddressesByBalanceOverTimeGlobals$outboundSchema.parse(
+      getAddressesByBalanceOverTimeGlobals,
+    ),
+  );
+}
+
+export function getAddressesByBalanceOverTimeGlobalsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAddressesByBalanceOverTimeGlobals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAddressesByBalanceOverTimeGlobals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAddressesByBalanceOverTimeGlobals' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAddressesByBalanceOverTimeRequest$inboundSchema: z.ZodType<
   GetAddressesByBalanceOverTimeRequest,
@@ -146,6 +170,27 @@ export namespace GetAddressesByBalanceOverTimeRequest$ {
   export type Outbound = GetAddressesByBalanceOverTimeRequest$Outbound;
 }
 
+export function getAddressesByBalanceOverTimeRequestToJSON(
+  getAddressesByBalanceOverTimeRequest: GetAddressesByBalanceOverTimeRequest,
+): string {
+  return JSON.stringify(
+    GetAddressesByBalanceOverTimeRequest$outboundSchema.parse(
+      getAddressesByBalanceOverTimeRequest,
+    ),
+  );
+}
+
+export function getAddressesByBalanceOverTimeRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAddressesByBalanceOverTimeRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAddressesByBalanceOverTimeRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAddressesByBalanceOverTimeRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetAddressesByBalanceOverTimeResponse$inboundSchema: z.ZodType<
   GetAddressesByBalanceOverTimeResponse,
@@ -190,4 +235,25 @@ export namespace GetAddressesByBalanceOverTimeResponse$ {
     GetAddressesByBalanceOverTimeResponse$outboundSchema;
   /** @deprecated use `GetAddressesByBalanceOverTimeResponse$Outbound` instead. */
   export type Outbound = GetAddressesByBalanceOverTimeResponse$Outbound;
+}
+
+export function getAddressesByBalanceOverTimeResponseToJSON(
+  getAddressesByBalanceOverTimeResponse: GetAddressesByBalanceOverTimeResponse,
+): string {
+  return JSON.stringify(
+    GetAddressesByBalanceOverTimeResponse$outboundSchema.parse(
+      getAddressesByBalanceOverTimeResponse,
+    ),
+  );
+}
+
+export function getAddressesByBalanceOverTimeResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAddressesByBalanceOverTimeResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAddressesByBalanceOverTimeResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAddressesByBalanceOverTimeResponse' from JSON`,
+  );
 }

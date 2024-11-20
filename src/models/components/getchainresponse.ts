@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ChainStatus,
   ChainStatus$inboundSchema,
@@ -164,4 +167,22 @@ export namespace GetChainResponse$ {
   export const outboundSchema = GetChainResponse$outboundSchema;
   /** @deprecated use `GetChainResponse$Outbound` instead. */
   export type Outbound = GetChainResponse$Outbound;
+}
+
+export function getChainResponseToJSON(
+  getChainResponse: GetChainResponse,
+): string {
+  return JSON.stringify(
+    GetChainResponse$outboundSchema.parse(getChainResponse),
+  );
+}
+
+export function getChainResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetChainResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetChainResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetChainResponse' from JSON`,
+  );
 }
