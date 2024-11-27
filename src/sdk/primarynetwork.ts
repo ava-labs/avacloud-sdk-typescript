@@ -115,7 +115,9 @@ export class PrimaryNetwork extends ClientSDK {
   async listBlockchains(
     request: operations.ListBlockchainsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListBlockchainsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListBlockchainsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataPrimaryNetworkListBlockchains(
       this,
       request,
@@ -132,7 +134,7 @@ export class PrimaryNetwork extends ClientSDK {
   async listSubnets(
     request: operations.ListSubnetsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListSubnetsResponse>> {
+  ): Promise<PageIterator<operations.ListSubnetsResponse, { cursor: string }>> {
     return unwrapResultIterator(dataPrimaryNetworkListSubnets(
       this,
       request,
@@ -166,7 +168,9 @@ export class PrimaryNetwork extends ClientSDK {
   async listValidators(
     request: operations.ListValidatorsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListValidatorsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListValidatorsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataPrimaryNetworkListValidators(
       this,
       request,
@@ -183,7 +187,12 @@ export class PrimaryNetwork extends ClientSDK {
   async getSingleValidatorDetails(
     request: operations.GetSingleValidatorDetailsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.GetSingleValidatorDetailsResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.GetSingleValidatorDetailsResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(dataPrimaryNetworkGetSingleValidatorDetails(
       this,
       request,
@@ -200,7 +209,9 @@ export class PrimaryNetwork extends ClientSDK {
   async listDelegators(
     request: operations.ListDelegatorsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListDelegatorsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListDelegatorsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataPrimaryNetworkListDelegators(
       this,
       request,
@@ -217,7 +228,9 @@ export class PrimaryNetwork extends ClientSDK {
   async listL1Validators(
     request: operations.ListL1ValidatorsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListL1ValidatorsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListL1ValidatorsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataPrimaryNetworkListL1Validators(
       this,
       request,

@@ -59,7 +59,8 @@ export async function dataEvmTransactionsListErc721Transactions(
       | RequestAbortedError
       | RequestTimeoutError
       | ConnectionError
-    >
+    >,
+    { cursor: string }
   >
 > {
   const parsed = safeParse(
@@ -211,32 +212,35 @@ export async function dataEvmTransactionsListErc721Transactions(
 
   const nextFunc = (
     responseData: unknown,
-  ): Paginator<
-    Result<
-      operations.ListErc721TransactionsResponse,
-      | errors.BadRequest
-      | errors.Unauthorized
-      | errors.Forbidden
-      | errors.NotFound
-      | errors.TooManyRequests
-      | errors.InternalServerError
-      | errors.BadGateway
-      | errors.ServiceUnavailable
-      | SDKError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | ConnectionError
-    >
-  > => {
+  ): {
+    next: Paginator<
+      Result<
+        operations.ListErc721TransactionsResponse,
+        | errors.BadRequest
+        | errors.Unauthorized
+        | errors.Forbidden
+        | errors.NotFound
+        | errors.TooManyRequests
+        | errors.InternalServerError
+        | errors.BadGateway
+        | errors.ServiceUnavailable
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >
+    >;
+    "~next"?: { cursor: string };
+  } => {
     const nextCursor = dlv(responseData, "nextPageToken");
     if (nextCursor == null) {
-      return () => null;
+      return { next: () => null };
     }
 
-    return () =>
+    const nextVal = () =>
       dataEvmTransactionsListErc721Transactions(
         client,
         {
@@ -245,8 +249,10 @@ export async function dataEvmTransactionsListErc721Transactions(
         },
         options,
       );
+
+    return { next: nextVal, "~next": { cursor: nextCursor } };
   };
 
-  const page = { ...result, next: nextFunc(raw) };
+  const page = { ...result, ...nextFunc(raw) };
   return { ...page, ...createPageIterator(page, (v) => !v.ok) };
 }

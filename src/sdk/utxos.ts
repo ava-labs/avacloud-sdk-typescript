@@ -17,7 +17,9 @@ export class Utxos extends ClientSDK {
   async getUtxosByAddresses(
     request: operations.GetUtxosByAddressesRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.GetUtxosByAddressesResponse>> {
+  ): Promise<
+    PageIterator<operations.GetUtxosByAddressesResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataPrimaryNetworkUtxosGetUtxosByAddresses(
       this,
       request,

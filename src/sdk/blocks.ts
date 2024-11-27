@@ -39,7 +39,10 @@ export class Blocks extends ClientSDK {
     request: operations.ListPrimaryNetworkBlocksByNodeIdRequest,
     options?: RequestOptions & { serverURL?: string },
   ): Promise<
-    PageIterator<operations.ListPrimaryNetworkBlocksByNodeIdResponse>
+    PageIterator<
+      operations.ListPrimaryNetworkBlocksByNodeIdResponse,
+      { cursor: string }
+    >
   > {
     return unwrapResultIterator(
       dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId(
@@ -59,7 +62,12 @@ export class Blocks extends ClientSDK {
   async listLatestPrimaryNetworkBlocks(
     request: operations.ListLatestPrimaryNetworkBlocksRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListLatestPrimaryNetworkBlocksResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListLatestPrimaryNetworkBlocksResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(
       dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks(
         this,

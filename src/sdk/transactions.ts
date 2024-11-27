@@ -45,7 +45,10 @@ export class Transactions extends ClientSDK {
     request: operations.ListLatestPrimaryNetworkTransactionsRequest,
     options?: RequestOptions & { serverURL?: string },
   ): Promise<
-    PageIterator<operations.ListLatestPrimaryNetworkTransactionsResponse>
+    PageIterator<
+      operations.ListLatestPrimaryNetworkTransactionsResponse,
+      { cursor: string }
+    >
   > {
     return unwrapResultIterator(
       dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions(
@@ -66,7 +69,10 @@ export class Transactions extends ClientSDK {
     request: operations.ListActivePrimaryNetworkStakingTransactionsRequest,
     options?: RequestOptions & { serverURL?: string },
   ): Promise<
-    PageIterator<operations.ListActivePrimaryNetworkStakingTransactionsResponse>
+    PageIterator<
+      operations.ListActivePrimaryNetworkStakingTransactionsResponse,
+      { cursor: string }
+    >
   > {
     return unwrapResultIterator(
       dataPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions(
@@ -86,7 +92,9 @@ export class Transactions extends ClientSDK {
   async listAssetTransactions(
     request: operations.ListAssetTransactionsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListAssetTransactionsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListAssetTransactionsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(
       dataPrimaryNetworkTransactionsListAssetTransactions(
         this,

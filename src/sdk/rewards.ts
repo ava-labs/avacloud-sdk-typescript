@@ -19,7 +19,10 @@ export class Rewards extends ClientSDK {
     request: operations.ListPendingPrimaryNetworkRewardsRequest,
     options?: RequestOptions & { serverURL?: string },
   ): Promise<
-    PageIterator<operations.ListPendingPrimaryNetworkRewardsResponse>
+    PageIterator<
+      operations.ListPendingPrimaryNetworkRewardsResponse,
+      { cursor: string }
+    >
   > {
     return unwrapResultIterator(
       dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards(
@@ -40,7 +43,10 @@ export class Rewards extends ClientSDK {
     request: operations.ListHistoricalPrimaryNetworkRewardsRequest,
     options?: RequestOptions & { serverURL?: string },
   ): Promise<
-    PageIterator<operations.ListHistoricalPrimaryNetworkRewardsResponse>
+    PageIterator<
+      operations.ListHistoricalPrimaryNetworkRewardsResponse,
+      { cursor: string }
+    >
   > {
     return unwrapResultIterator(
       dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards(

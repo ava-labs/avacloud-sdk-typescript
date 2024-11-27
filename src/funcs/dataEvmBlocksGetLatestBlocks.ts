@@ -59,7 +59,8 @@ export async function dataEvmBlocksGetLatestBlocks(
       | RequestAbortedError
       | RequestTimeoutError
       | ConnectionError
-    >
+    >,
+    { cursor: string }
   >
 > {
   const parsed = safeParse(
@@ -200,32 +201,35 @@ export async function dataEvmBlocksGetLatestBlocks(
 
   const nextFunc = (
     responseData: unknown,
-  ): Paginator<
-    Result<
-      operations.GetLatestBlocksResponse,
-      | errors.BadRequest
-      | errors.Unauthorized
-      | errors.Forbidden
-      | errors.NotFound
-      | errors.TooManyRequests
-      | errors.InternalServerError
-      | errors.BadGateway
-      | errors.ServiceUnavailable
-      | SDKError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | ConnectionError
-    >
-  > => {
+  ): {
+    next: Paginator<
+      Result<
+        operations.GetLatestBlocksResponse,
+        | errors.BadRequest
+        | errors.Unauthorized
+        | errors.Forbidden
+        | errors.NotFound
+        | errors.TooManyRequests
+        | errors.InternalServerError
+        | errors.BadGateway
+        | errors.ServiceUnavailable
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >
+    >;
+    "~next"?: { cursor: string };
+  } => {
     const nextCursor = dlv(responseData, "nextPageToken");
     if (nextCursor == null) {
-      return () => null;
+      return { next: () => null };
     }
 
-    return () =>
+    const nextVal = () =>
       dataEvmBlocksGetLatestBlocks(
         client,
         {
@@ -234,8 +238,10 @@ export async function dataEvmBlocksGetLatestBlocks(
         },
         options,
       );
+
+    return { next: nextVal, "~next": { cursor: nextCursor } };
   };
 
-  const page = { ...result, next: nextFunc(raw) };
+  const page = { ...result, ...nextFunc(raw) };
   return { ...page, ...createPageIterator(page, (v) => !v.ok) };
 }

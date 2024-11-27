@@ -20,7 +20,7 @@ export class Chains extends ClientSDK {
   async listChains(
     request: operations.ListChainsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListChainsResponse>> {
+  ): Promise<PageIterator<operations.ListChainsResponse, { cursor: string }>> {
     return unwrapResultIterator(metricsEvmChainsListChains(
       this,
       request,

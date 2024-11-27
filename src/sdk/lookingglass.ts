@@ -22,7 +22,12 @@ export class LookingGlass extends ClientSDK {
   async getNftHoldersByContractAddress(
     request: operations.GetNftHoldersByContractAddressRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.GetNftHoldersByContractAddressResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.GetNftHoldersByContractAddressResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(
       metricsLookingGlassGetNftHoldersByContractAddress(
         this,
@@ -41,7 +46,12 @@ export class LookingGlass extends ClientSDK {
   async getAddressesByBalanceOverTime(
     request: operations.GetAddressesByBalanceOverTimeRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.GetAddressesByBalanceOverTimeResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.GetAddressesByBalanceOverTimeResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(
       metricsLookingGlassGetAddressesByBalanceOverTime(
         this,
@@ -60,7 +70,12 @@ export class LookingGlass extends ClientSDK {
   async getAddressesByBtcbBridged(
     request: operations.GetAddressesByBtcbBridgedRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.GetAddressesByBtcbBridgedResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.GetAddressesByBtcbBridgedResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(metricsLookingGlassGetAddressesByBtcbBridged(
       this,
       request,
@@ -77,7 +92,12 @@ export class LookingGlass extends ClientSDK {
   async getValidatorsByDateRange(
     request: operations.GetValidatorsByDateRangeRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.GetValidatorsByDateRangeResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.GetValidatorsByDateRangeResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(metricsLookingGlassGetValidatorsByDateRange(
       this,
       request,
@@ -94,7 +114,9 @@ export class LookingGlass extends ClientSDK {
   async compositeQuery(
     request: components.CompositeQueryRequestDto,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.CompositeQueryV2Response>> {
+  ): Promise<
+    PageIterator<operations.CompositeQueryV2Response, { cursor: string }>
+  > {
     return unwrapResultIterator(metricsLookingGlassCompositeQuery(
       this,
       request,

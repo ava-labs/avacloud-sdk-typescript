@@ -37,7 +37,7 @@ export class Nfts extends ClientSDK {
   async listTokens(
     request: operations.ListTokensRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListTokensResponse>> {
+  ): Promise<PageIterator<operations.ListTokensResponse, { cursor: string }>> {
     return unwrapResultIterator(dataNftsListTokens(
       this,
       request,

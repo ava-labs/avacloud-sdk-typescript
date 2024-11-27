@@ -22,7 +22,9 @@ export class AvaCloudSDKMetrics extends ClientSDK {
   async getEvmChainMetrics(
     request: operations.GetEvmChainMetricsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.GetEvmChainMetricsResponse>> {
+  ): Promise<
+    PageIterator<operations.GetEvmChainMetricsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(metricsChainMetricsGetEvmChainMetrics(
       this,
       request,
@@ -73,7 +75,9 @@ export class AvaCloudSDKMetrics extends ClientSDK {
   async getStakingMetrics(
     request: operations.GetStakingMetricsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.GetStakingMetricsResponse>> {
+  ): Promise<
+    PageIterator<operations.GetStakingMetricsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(metricsChainMetricsGetStakingMetrics(
       this,
       request,

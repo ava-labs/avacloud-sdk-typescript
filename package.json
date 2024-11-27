@@ -1,6 +1,6 @@
 {
   "name": "@avalabs/avacloud-sdk",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "author": "AvaCloud",
   "homepage": "https://developer.avacloud.io/avacloud-sdk/getting-started",
   "license": "SEE LICENSE",
@@ -16,6 +16,8 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19",
     "zod": ">= 3"
   },
   "devDependencies": {
