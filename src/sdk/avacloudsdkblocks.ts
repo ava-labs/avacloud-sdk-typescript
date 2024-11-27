@@ -20,7 +20,9 @@ export class AvaCloudSDKBlocks extends ClientSDK {
   async getLatestBlocks(
     request: operations.GetLatestBlocksRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.GetLatestBlocksResponse>> {
+  ): Promise<
+    PageIterator<operations.GetLatestBlocksResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataEvmBlocksGetLatestBlocks(
       this,
       request,

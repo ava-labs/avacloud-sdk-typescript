@@ -37,7 +37,7 @@ export class UsageMetrics extends ClientSDK {
   async getApiLogs(
     request: operations.GetApiLogsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.GetApiLogsResponse>> {
+  ): Promise<PageIterator<operations.GetApiLogsResponse, { cursor: string }>> {
     return unwrapResultIterator(dataUsageMetricsGetApiLogs(
       this,
       request,

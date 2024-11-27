@@ -47,7 +47,9 @@ export class AvaCloudSDKTransactions extends ClientSDK {
   async listContractDeployments(
     request: operations.ListContractDeploymentsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListContractDeploymentsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListContractDeploymentsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataEvmTransactionsListContractDeployments(
       this,
       request,
@@ -64,7 +66,9 @@ export class AvaCloudSDKTransactions extends ClientSDK {
   async listTransfers(
     request: operations.ListTransfersRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListTransfersResponse>> {
+  ): Promise<
+    PageIterator<operations.ListTransfersResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataEvmTransactionsListTransfers(
       this,
       request,
@@ -83,7 +87,9 @@ export class AvaCloudSDKTransactions extends ClientSDK {
   async listTransactions(
     request: operations.ListTransactionsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListTransactionsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListTransactionsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataEvmTransactionsListTransactions(
       this,
       request,
@@ -100,7 +106,9 @@ export class AvaCloudSDKTransactions extends ClientSDK {
   async listNativeTransactions(
     request: operations.ListNativeTransactionsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListNativeTransactionsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListNativeTransactionsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataEvmTransactionsListNativeTransactions(
       this,
       request,
@@ -117,7 +125,9 @@ export class AvaCloudSDKTransactions extends ClientSDK {
   async listErc20Transactions(
     request: operations.ListErc20TransactionsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListErc20TransactionsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListErc20TransactionsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataEvmTransactionsListErc20Transactions(
       this,
       request,
@@ -134,7 +144,9 @@ export class AvaCloudSDKTransactions extends ClientSDK {
   async listErc721Transactions(
     request: operations.ListErc721TransactionsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListErc721TransactionsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListErc721TransactionsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataEvmTransactionsListErc721Transactions(
       this,
       request,
@@ -151,7 +163,9 @@ export class AvaCloudSDKTransactions extends ClientSDK {
   async listErc1155Transactions(
     request: operations.ListErc1155TransactionsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListErc1155TransactionsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListErc1155TransactionsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataEvmTransactionsListErc1155Transactions(
       this,
       request,
@@ -170,7 +184,12 @@ export class AvaCloudSDKTransactions extends ClientSDK {
   async listInternalTransactions(
     request: operations.ListInternalTransactionsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListInternalTransactionsResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListInternalTransactionsResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(dataEvmTransactionsListInternalTransactions(
       this,
       request,
@@ -221,7 +240,9 @@ export class AvaCloudSDKTransactions extends ClientSDK {
   async listLatestTransactions(
     request: operations.ListLatestTransactionsRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListLatestTransactionsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListLatestTransactionsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataEvmTransactionsListLatestTransactions(
       this,
       request,

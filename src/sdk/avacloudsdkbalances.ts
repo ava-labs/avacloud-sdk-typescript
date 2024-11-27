@@ -46,7 +46,9 @@ export class AvaCloudSDKBalances extends ClientSDK {
   async listErc20Balances(
     request: operations.ListErc20BalancesRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListErc20BalancesResponse>> {
+  ): Promise<
+    PageIterator<operations.ListErc20BalancesResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataEvmBalancesListErc20Balances(
       this,
       request,
@@ -65,7 +67,9 @@ export class AvaCloudSDKBalances extends ClientSDK {
   async listErc721Balances(
     request: operations.ListErc721BalancesRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListErc721BalancesResponse>> {
+  ): Promise<
+    PageIterator<operations.ListErc721BalancesResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataEvmBalancesListErc721Balances(
       this,
       request,
@@ -86,7 +90,9 @@ export class AvaCloudSDKBalances extends ClientSDK {
   async listErc1155Balances(
     request: operations.ListErc1155BalancesRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListErc1155BalancesResponse>> {
+  ): Promise<
+    PageIterator<operations.ListErc1155BalancesResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataEvmBalancesListErc1155Balances(
       this,
       request,
@@ -105,7 +111,9 @@ export class AvaCloudSDKBalances extends ClientSDK {
   async listCollectibleBalances(
     request: operations.ListCollectibleBalancesRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListCollectibleBalancesResponse>> {
+  ): Promise<
+    PageIterator<operations.ListCollectibleBalancesResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataEvmBalancesListCollectibleBalances(
       this,
       request,

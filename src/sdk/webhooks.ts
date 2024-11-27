@@ -28,7 +28,9 @@ export class Webhooks extends ClientSDK {
   async listWebhooks(
     request: operations.ListWebhooksRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListWebhooksResponse>> {
+  ): Promise<
+    PageIterator<operations.ListWebhooksResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataWebhooksListWebhooks(
       this,
       request,
@@ -143,7 +145,9 @@ export class Webhooks extends ClientSDK {
   async getAddressesFromWebhook(
     request: operations.GetAddressesFromWebhookRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.GetAddressesFromWebhookResponse>> {
+  ): Promise<
+    PageIterator<operations.GetAddressesFromWebhookResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataWebhooksGetAddressesFromWebhook(
       this,
       request,

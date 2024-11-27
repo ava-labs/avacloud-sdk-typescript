@@ -38,7 +38,9 @@ export class Teleporter extends ClientSDK {
   async listTeleporterMessages(
     request: operations.ListTeleporterMessagesRequest,
     options?: RequestOptions & { serverURL?: string },
-  ): Promise<PageIterator<operations.ListTeleporterMessagesResponse>> {
+  ): Promise<
+    PageIterator<operations.ListTeleporterMessagesResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(dataTeleporterListTeleporterMessages(
       this,
       request,

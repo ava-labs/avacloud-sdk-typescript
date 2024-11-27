@@ -28,7 +28,7 @@ export type CreateWebhookRequest = {
   name?: string | undefined;
   description?: string | undefined;
   /**
-   * Whether to include traces in the webhook payload.
+   * Whether to include traces in the webhook payload. Traces are only available for C-Chain on chainId 43113 and 43114.
    */
   includeInternalTxs?: boolean | undefined;
   /**

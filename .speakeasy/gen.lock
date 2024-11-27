@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: 658df9e8d89b2e78deb8808af92c1042
+  docChecksum: db9613f0219a885fc1ba8605273a9769
   docVersion: Beta
-  speakeasyVersion: 1.441.0
-  generationVersion: 2.460.1
-  releaseVersion: 0.7.1
-  configChecksum: 99cc0c95dbc5ebb0652fb2efc8a2962b
+  speakeasyVersion: 1.448.0
+  generationVersion: 2.466.0
+  releaseVersion: 0.8.0
+  configChecksum: 394a61bb4e0cbd1d13af471e37d4926a
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.18.5
+    core: 3.18.7
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -35,7 +35,6 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
-    tests: 0.7.0
     unions: 2.85.8
 generatedFiles:
   - .devcontainer/README.md
@@ -3223,3 +3222,4 @@ examples:
           application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+generatedTests: {}
