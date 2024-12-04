@@ -28,7 +28,7 @@ const value: components.Erc20Transfer = {
       "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
-  logIndex: 4317.60,
+  logIndex: 3803.35,
   value: "10000000000000000000",
   erc20Token: {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
@@ -71,14 +71,14 @@ const value: components.Erc721Transfer = {
       "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
-  logIndex: 6145.28,
+  logIndex: 1478.09,
   erc721Token: {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     name: "Wrapped AVAX",
     symbol: "WAVAX",
     ercType: "ERC-721",
     tokenId: "<id>",
-    tokenUri: "https://super-pendant.net/",
+    tokenUri: "https://querulous-stump.com",
     metadata: {
       indexStatus: "THROTTLED_TOKEN_URI",
     },
@@ -112,15 +112,15 @@ const value: components.Erc1155Transfer = {
       "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
-  logIndex: 1104.77,
+  logIndex: 5810.82,
   value: "10000000000000000000",
   erc1155Token: {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     ercType: "ERC-1155",
     tokenId: "<id>",
-    tokenUri: "https://impressive-feather.com/",
+    tokenUri: "https://deafening-stranger.com/",
     metadata: {
-      indexStatus: "INVALID_METADATA_JSON",
+      indexStatus: "THROTTLED_TOKEN_URI",
     },
   },
 };

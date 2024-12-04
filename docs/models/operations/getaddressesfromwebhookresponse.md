@@ -10,7 +10,7 @@ let value: GetAddressesFromWebhookResponse = {
     addresses: [
       "<value>",
     ],
-    totalAddresses: 7935.67,
+    totalAddresses: 357.43,
   },
 };
 ```

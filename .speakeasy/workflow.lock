@@ -1,12 +1,12 @@
-speakeasyVersion: 1.448.0
+speakeasyVersion: 1.451.1
 sources:
     AvaCloudSDK-OAS:
         sourceNamespace: avacloud-sdk-oas
-        sourceRevisionDigest: sha256:3d6f6261030689e4ea51be4612a984123002cd86fe5436abf7f1bb398ade2be8
-        sourceBlobDigest: sha256:97f80b223504129a544573a596a41c6ab8e64a83e4286312e5940a9560ee400d
+        sourceRevisionDigest: sha256:1f942016dfabea1e41163dbbfe389620b4bb95c11e68e6a655b5acb0f5531746
+        sourceBlobDigest: sha256:66a75a454cf8c86f7cf220a62f1d786b2a40433aa18923ad069828b48419b1ef
         tags:
             - latest
-            - speakeasy-sdk-regen-1732667008
+            - speakeasy-sdk-regen-1732753430
             - Beta
     AvalancheSDK-OAS:
         sourceNamespace: avalanche-sdk-oas
@@ -19,10 +19,10 @@ targets:
     avacloud-sdk:
         source: AvaCloudSDK-OAS
         sourceNamespace: avacloud-sdk-oas
-        sourceRevisionDigest: sha256:3d6f6261030689e4ea51be4612a984123002cd86fe5436abf7f1bb398ade2be8
-        sourceBlobDigest: sha256:97f80b223504129a544573a596a41c6ab8e64a83e4286312e5940a9560ee400d
+        sourceRevisionDigest: sha256:1f942016dfabea1e41163dbbfe389620b4bb95c11e68e6a655b5acb0f5531746
+        sourceBlobDigest: sha256:66a75a454cf8c86f7cf220a62f1d786b2a40433aa18923ad069828b48419b1ef
         codeSamplesNamespace: avacloud-sdk-ts-code-samples
-        codeSamplesRevisionDigest: sha256:ad0872cc07df7c0e3558a3190294c472c446a5dca17511125d0ee803ae73d34c
+        codeSamplesRevisionDigest: sha256:95b4ca8b385a623e6aa6ff02b883fc89534ef34e0915d5e80947c20cef153dde
     avalanche-sdk:
         source: AvalancheSDK-OAS
         sourceNamespace: avalanche-sdk-oas
