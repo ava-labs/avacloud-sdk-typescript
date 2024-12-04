@@ -12,9 +12,9 @@ let value: ListAddressChainsResponse = {
       status: "OK",
       chainName: "<value>",
       description:
-        "apprehensive legitimize geez mmm forearm before substantiate mosh",
+        "inside sternly uh-huh bathrobe submissive meh nor mmm elevator",
       vmName: "EVM",
-      rpcUrl: "https://palatable-toothpick.net/",
+      rpcUrl: "https://utilized-shark.net",
       isTestnet: false,
       networkToken: {
         name: "Wrapped AVAX",

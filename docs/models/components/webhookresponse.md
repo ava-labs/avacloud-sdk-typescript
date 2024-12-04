@@ -16,12 +16,12 @@ let value: WebhookResponse = {
       "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64",
     ],
   },
-  url: "https://rubbery-silk.name/",
+  url: "https://downright-flight.net",
   chainId: "<id>",
-  status: "active",
-  createdAt: 7908.40,
+  status: "inactive",
+  createdAt: 5436.78,
   name: "<value>",
-  description: "questioningly topsail diligently",
+  description: "against captain supposing fidget faithfully",
 };
 ```
 

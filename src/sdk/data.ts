@@ -33,6 +33,11 @@ export class Data extends ClientSDK {
     return (this._primaryNetwork ??= new PrimaryNetwork(this._options));
   }
 
+  private _teleporter?: Teleporter;
+  get teleporter(): Teleporter {
+    return (this._teleporter ??= new Teleporter(this._options));
+  }
+
   private _usageMetrics?: UsageMetrics;
   get usageMetrics(): UsageMetrics {
     return (this._usageMetrics ??= new UsageMetrics(this._options));
@@ -41,11 +46,6 @@ export class Data extends ClientSDK {
   private _webhooks?: Webhooks;
   get webhooks(): Webhooks {
     return (this._webhooks ??= new Webhooks(this._options));
-  }
-
-  private _teleporter?: Teleporter;
-  get teleporter(): Teleporter {
-    return (this._teleporter ??= new Teleporter(this._options));
   }
 
   private _evm?: AvaCloudSDKEvm;

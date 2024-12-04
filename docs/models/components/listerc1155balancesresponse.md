@@ -11,9 +11,9 @@ let value: ListErc1155BalancesResponse = {
       address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
       ercType: "ERC-1155",
       tokenId: "<id>",
-      tokenUri: "https://good-natured-platypus.com/",
+      tokenUri: "https://well-groomed-eternity.com/",
       metadata: {
-        indexStatus: "METADATA_CONTENT_TOO_LARGE",
+        indexStatus: "INDEXED",
       },
       chainId: "43114",
       balance: "2000000000000000000",
