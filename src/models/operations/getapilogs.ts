@@ -44,10 +44,6 @@ export type GetApiLogsRequest = {
    */
   chainId?: string | undefined;
   /**
-   * Filter data by request path.
-   */
-  requestPath?: string | undefined;
-  /**
    * Filter data by response status code.
    */
   responseCode?: string | undefined;
@@ -59,6 +55,10 @@ export type GetApiLogsRequest = {
    * Filter data by API key ID.
    */
   apiKeyId?: string | undefined;
+  /**
+   * Filter data by request path.
+   */
+  requestPath?: string | undefined;
   /**
    * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
    */
@@ -104,10 +104,10 @@ export const GetApiLogsRequest$inboundSchema: z.ZodType<
   startTimestamp: z.number().int().optional(),
   endTimestamp: z.number().int().optional(),
   chainId: z.string().optional(),
-  requestPath: z.string().optional(),
   responseCode: z.string().optional(),
   requestType: QueryParamRequestType$inboundSchema.optional(),
   apiKeyId: z.string().optional(),
+  requestPath: z.string().optional(),
   pageToken: z.string().optional(),
   pageSize: z.number().int().default(10),
 });
@@ -118,10 +118,10 @@ export type GetApiLogsRequest$Outbound = {
   startTimestamp?: number | undefined;
   endTimestamp?: number | undefined;
   chainId?: string | undefined;
-  requestPath?: string | undefined;
   responseCode?: string | undefined;
   requestType?: string | undefined;
   apiKeyId?: string | undefined;
+  requestPath?: string | undefined;
   pageToken?: string | undefined;
   pageSize: number;
 };
@@ -136,10 +136,10 @@ export const GetApiLogsRequest$outboundSchema: z.ZodType<
   startTimestamp: z.number().int().optional(),
   endTimestamp: z.number().int().optional(),
   chainId: z.string().optional(),
-  requestPath: z.string().optional(),
   responseCode: z.string().optional(),
   requestType: QueryParamRequestType$outboundSchema.optional(),
   apiKeyId: z.string().optional(),
+  requestPath: z.string().optional(),
   pageToken: z.string().optional(),
   pageSize: z.number().int().default(10),
 });
