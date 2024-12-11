@@ -117,6 +117,8 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.blocks.listPrimaryNetworkBlocksByNodeId({
+    startTimestamp: 1689541049,
+    endTimestamp: 1689800249,
     pageSize: 10,
     blockchainId: "p-chain",
     nodeId: "NodeID-111111111111111111116DBWJs",
@@ -149,6 +151,8 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId(avaCloudSDK, {
+    startTimestamp: 1689541049,
+    endTimestamp: 1689800249,
     pageSize: 10,
     blockchainId: "p-chain",
     nodeId: "NodeID-111111111111111111116DBWJs",
@@ -214,6 +218,8 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.blocks.listLatestPrimaryNetworkBlocks({
+    startTimestamp: 1689541049,
+    endTimestamp: 1689800249,
     pageSize: 10,
     blockchainId: "p-chain",
   });
@@ -245,6 +251,8 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks(avaCloudSDK, {
+    startTimestamp: 1689541049,
+    endTimestamp: 1689800249,
     pageSize: 10,
     blockchainId: "p-chain",
   });

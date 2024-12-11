@@ -99,8 +99,10 @@ export async function dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks(
   )(pathParams);
 
   const query = encodeFormQuery({
+    "endTimestamp": payload.endTimestamp,
     "pageSize": payload.pageSize,
     "pageToken": payload.pageToken,
+    "startTimestamp": payload.startTimestamp,
   });
 
   const headers = new Headers({
