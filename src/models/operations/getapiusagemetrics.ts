@@ -51,10 +51,6 @@ export type GetApiUsageMetricsRequest = {
    */
   chainId?: string | undefined;
   /**
-   * Filter data by request path.
-   */
-  requestPath?: string | undefined;
-  /**
    * Filter data by response status code.
    */
   responseCode?: string | undefined;
@@ -66,6 +62,10 @@ export type GetApiUsageMetricsRequest = {
    * Filter data by API key ID.
    */
   apiKeyId?: string | undefined;
+  /**
+   * Filter data by request path.
+   */
+  requestPath?: string | undefined;
 };
 
 /** @internal */
@@ -100,10 +100,10 @@ export const GetApiUsageMetricsRequest$inboundSchema: z.ZodType<
     .optional(),
   groupBy: components.UsageMetricsGroupByEnum$inboundSchema.optional(),
   chainId: z.string().optional(),
-  requestPath: z.string().optional(),
   responseCode: z.string().optional(),
   requestType: RequestType$inboundSchema.optional(),
   apiKeyId: z.string().optional(),
+  requestPath: z.string().optional(),
 });
 
 /** @internal */
@@ -114,10 +114,10 @@ export type GetApiUsageMetricsRequest$Outbound = {
   timeInterval?: string | undefined;
   groupBy?: string | undefined;
   chainId?: string | undefined;
-  requestPath?: string | undefined;
   responseCode?: string | undefined;
   requestType?: string | undefined;
   apiKeyId?: string | undefined;
+  requestPath?: string | undefined;
 };
 
 /** @internal */
@@ -133,10 +133,10 @@ export const GetApiUsageMetricsRequest$outboundSchema: z.ZodType<
     .optional(),
   groupBy: components.UsageMetricsGroupByEnum$outboundSchema.optional(),
   chainId: z.string().optional(),
-  requestPath: z.string().optional(),
   responseCode: z.string().optional(),
   requestType: RequestType$outboundSchema.optional(),
   apiKeyId: z.string().optional(),
+  requestPath: z.string().optional(),
 });
 
 /**

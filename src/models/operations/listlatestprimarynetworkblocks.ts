@@ -22,6 +22,14 @@ export type ListLatestPrimaryNetworkBlocksGlobals = {
 
 export type ListLatestPrimaryNetworkBlocksRequest = {
   /**
+   * Query param for retrieving items after a specific timestamp.
+   */
+  startTimestamp?: number | undefined;
+  /**
+   * Query param for retrieving items before a specific timestamp.
+   */
+  endTimestamp?: number | undefined;
+  /**
    * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
    */
   pageToken?: string | undefined;
@@ -108,6 +116,8 @@ export const ListLatestPrimaryNetworkBlocksRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  startTimestamp: z.number().int().optional(),
+  endTimestamp: z.number().int().optional(),
   pageToken: z.string().optional(),
   pageSize: z.number().int().default(10),
   blockchainId: components.BlockchainId$inboundSchema,
@@ -116,6 +126,8 @@ export const ListLatestPrimaryNetworkBlocksRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListLatestPrimaryNetworkBlocksRequest$Outbound = {
+  startTimestamp?: number | undefined;
+  endTimestamp?: number | undefined;
   pageToken?: string | undefined;
   pageSize: number;
   blockchainId: string;
@@ -128,6 +140,8 @@ export const ListLatestPrimaryNetworkBlocksRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListLatestPrimaryNetworkBlocksRequest
 > = z.object({
+  startTimestamp: z.number().int().optional(),
+  endTimestamp: z.number().int().optional(),
   pageToken: z.string().optional(),
   pageSize: z.number().int().default(10),
   blockchainId: components.BlockchainId$outboundSchema,
