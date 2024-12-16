@@ -3,7 +3,7 @@
  */
 
 import { AvaCloudSDKCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
@@ -20,23 +20,22 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import { GetAddressChainsServerList } from "../models/operations/getaddresschains.js";
-import * as operations from "../models/operations/index.js";
+import { AggregateSignaturesServerList } from "../models/operations/aggregatesignatures.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get chains for address
+ * Aggregate Signatures
  *
  * @remarks
- * Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
+ * Aggregates Signatures for a Warp message from Subnet validators.
  */
-export async function dataEvmChainsGetAddressChains(
+export async function dataSignatureAggregatorAggregateSignatures(
   client: AvaCloudSDKCore,
-  request: operations.GetAddressChainsRequest,
+  request: components.SignatureAggregatorRequest,
   options?: RequestOptions & { serverURL?: string },
 ): Promise<
   Result<
-    components.ListAddressChainsResponse,
+    components.SignatureAggregationResponse,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -56,28 +55,25 @@ export async function dataEvmChainsGetAddressChains(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.GetAddressChainsRequest$outboundSchema.parse(value),
+    (value) =>
+      components.SignatureAggregatorRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return parsed;
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload, { explode: true });
 
   const baseURL = options?.serverURL
-    || pathToFunc(GetAddressChainsServerList[0], { charEncoding: "percent" })();
-
-  const pathParams = {
-    address: encodeSimple("address", payload.address, {
-      explode: false,
+    || pathToFunc(AggregateSignaturesServerList[0], {
       charEncoding: "percent",
-    }),
-  };
+    })();
 
-  const path = pathToFunc("/v1/chains/address/{address}")(pathParams);
+  const path = pathToFunc("/v1/signatureAggregator/aggregateSignatures")();
 
   const headers = new Headers({
+    "Content-Type": "application/json",
     Accept: "application/json",
   });
 
@@ -86,7 +82,7 @@ export async function dataEvmChainsGetAddressChains(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    operationID: "getAddressChains",
+    operationID: "aggregateSignatures",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -110,7 +106,7 @@ export async function dataEvmChainsGetAddressChains(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "GET",
+    method: "POST",
     baseURL: baseURL,
     path: path,
     headers: headers,
@@ -149,7 +145,7 @@ export async function dataEvmChainsGetAddressChains(
   };
 
   const [result] = await M.match<
-    components.ListAddressChainsResponse,
+    components.SignatureAggregationResponse,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -166,7 +162,7 @@ export async function dataEvmChainsGetAddressChains(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ListAddressChainsResponse$inboundSchema),
+    M.json(201, components.SignatureAggregationResponse$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

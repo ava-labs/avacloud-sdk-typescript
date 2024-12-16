@@ -187,7 +187,7 @@ run();
 
 ## getAddressChains
 
-Gets the list of chains an address has interacted with.
+Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
 
 ### Example Usage
 

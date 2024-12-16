@@ -189,6 +189,8 @@ export * from "./richaddress.js";
 export * from "./rollingwindowmetricsapiresponse.js";
 export * from "./security.js";
 export * from "./sharedsecretsresponse.js";
+export * from "./signatureaggregationresponse.js";
+export * from "./signatureaggregatorrequest.js";
 export * from "./sortbyoption.js";
 export * from "./sortorder.js";
 export * from "./stakingdistribution.js";
