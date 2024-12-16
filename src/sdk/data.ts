@@ -8,6 +8,7 @@ import { AvaCloudSDKHealthCheck } from "./avacloudsdkhealthcheck.js";
 import { Nfts } from "./nfts.js";
 import { Operations } from "./operations.js";
 import { PrimaryNetwork } from "./primarynetwork.js";
+import { SignatureAggregator } from "./signatureaggregator.js";
 import { Teleporter } from "./teleporter.js";
 import { UsageMetrics } from "./usagemetrics.js";
 import { Webhooks } from "./webhooks.js";
@@ -46,6 +47,13 @@ export class Data extends ClientSDK {
   private _webhooks?: Webhooks;
   get webhooks(): Webhooks {
     return (this._webhooks ??= new Webhooks(this._options));
+  }
+
+  private _signatureAggregator?: SignatureAggregator;
+  get signatureAggregator(): SignatureAggregator {
+    return (this._signatureAggregator ??= new SignatureAggregator(
+      this._options,
+    ));
   }
 
   private _evm?: AvaCloudSDKEvm;
