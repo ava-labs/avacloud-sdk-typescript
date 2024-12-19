@@ -39,7 +39,7 @@ import {
 export async function dataPrimaryNetworkTransactionsListAssetTransactions(
   client: AvaCloudSDKCore,
   request: operations.ListAssetTransactionsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

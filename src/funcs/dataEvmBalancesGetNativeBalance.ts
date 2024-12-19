@@ -35,7 +35,7 @@ import { Result } from "../types/fp.js";
 export async function dataEvmBalancesGetNativeBalance(
   client: AvaCloudSDKCore,
   request: operations.GetNativeBalanceRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.GetNativeBalanceResponse,

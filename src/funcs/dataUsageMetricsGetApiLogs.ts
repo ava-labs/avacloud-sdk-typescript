@@ -39,7 +39,7 @@ import {
 export async function dataUsageMetricsGetApiLogs(
   client: AvaCloudSDKCore,
   request: operations.GetApiLogsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

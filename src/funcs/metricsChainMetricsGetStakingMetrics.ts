@@ -39,7 +39,7 @@ import {
 export async function metricsChainMetricsGetStakingMetrics(
   client: AvaCloudSDKCore,
   request: operations.GetStakingMetricsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

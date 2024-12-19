@@ -39,7 +39,7 @@ import {
 export async function metricsLookingGlassGetAddressesByBalanceOverTime(
   client: AvaCloudSDKCore,
   request: operations.GetAddressesByBalanceOverTimeRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

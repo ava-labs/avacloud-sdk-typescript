@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function dataNftsReindexNft(
   client: AvaCloudSDKCore,
   request: operations.ReindexNftRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     void,

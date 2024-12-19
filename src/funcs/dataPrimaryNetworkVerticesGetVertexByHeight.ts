@@ -39,7 +39,7 @@ import {
 export async function dataPrimaryNetworkVerticesGetVertexByHeight(
   client: AvaCloudSDKCore,
   request: operations.GetVertexByHeightRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

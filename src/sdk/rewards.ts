@@ -17,7 +17,7 @@ export class Rewards extends ClientSDK {
    */
   async listPendingPrimaryNetworkRewards(
     request: operations.ListPendingPrimaryNetworkRewardsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<
       operations.ListPendingPrimaryNetworkRewardsResponse,
@@ -41,7 +41,7 @@ export class Rewards extends ClientSDK {
    */
   async listHistoricalPrimaryNetworkRewards(
     request: operations.ListHistoricalPrimaryNetworkRewardsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<
       operations.ListHistoricalPrimaryNetworkRewardsResponse,

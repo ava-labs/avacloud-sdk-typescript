@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function metricsEvmChainsGetChain(
   client: AvaCloudSDKCore,
   request: operations.GetChainRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.Chain,

@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
 export async function dataPrimaryNetworkTransactionsGetTxByHash(
   client: AvaCloudSDKCore,
   request: operations.GetTxByHashRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     operations.GetTxByHashResponseBody,

@@ -41,7 +41,7 @@ import {
 export async function dataEvmTransactionsListInternalTransactions(
   client: AvaCloudSDKCore,
   request: operations.ListInternalTransactionsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

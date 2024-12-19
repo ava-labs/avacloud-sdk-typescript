@@ -39,7 +39,7 @@ import {
 export async function dataPrimaryNetworkListBlockchains(
   client: AvaCloudSDKCore,
   request: operations.ListBlockchainsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

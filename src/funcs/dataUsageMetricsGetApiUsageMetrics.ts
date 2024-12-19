@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function dataUsageMetricsGetApiUsageMetrics(
   client: AvaCloudSDKCore,
   request: operations.GetApiUsageMetricsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.UsageMetricsResponseDTO,

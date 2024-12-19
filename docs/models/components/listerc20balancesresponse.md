@@ -25,6 +25,7 @@ let value: ListErc20BalancesResponse = {
         currencyCode: "usd",
         value: 42.42,
       },
+      tokenStatus: {},
     },
   ],
 };

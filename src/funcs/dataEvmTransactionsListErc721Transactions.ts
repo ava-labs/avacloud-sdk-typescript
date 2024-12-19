@@ -39,7 +39,7 @@ import {
 export async function dataEvmTransactionsListErc721Transactions(
   client: AvaCloudSDKCore,
   request: operations.ListErc721TransactionsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

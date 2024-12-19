@@ -39,7 +39,7 @@ import {
 export async function dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards(
   client: AvaCloudSDKCore,
   request: operations.ListPendingPrimaryNetworkRewardsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<
