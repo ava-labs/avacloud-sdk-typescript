@@ -20,7 +20,7 @@ export class Blocks extends ClientSDK {
    */
   async getBlockById(
     request: operations.GetBlockByIdRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.GetPrimaryNetworkBlockResponse> {
     return unwrapAsync(dataPrimaryNetworkBlocksGetBlockById(
       this,
@@ -37,7 +37,7 @@ export class Blocks extends ClientSDK {
    */
   async listPrimaryNetworkBlocksByNodeId(
     request: operations.ListPrimaryNetworkBlocksByNodeIdRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<
       operations.ListPrimaryNetworkBlocksByNodeIdResponse,
@@ -61,7 +61,7 @@ export class Blocks extends ClientSDK {
    */
   async listLatestPrimaryNetworkBlocks(
     request: operations.ListLatestPrimaryNetworkBlocksRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<
       operations.ListLatestPrimaryNetworkBlocksResponse,

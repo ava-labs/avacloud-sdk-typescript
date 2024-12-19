@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function dataOperationsGetOperationResult(
   client: AvaCloudSDKCore,
   request: operations.GetOperationResultRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.OperationStatusResponse,

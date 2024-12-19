@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function dataPrimaryNetworkBlocksGetBlockById(
   client: AvaCloudSDKCore,
   request: operations.GetBlockByIdRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.GetPrimaryNetworkBlockResponse,

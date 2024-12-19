@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function dataEvmBlocksGetBlock(
   client: AvaCloudSDKCore,
   request: operations.GetBlockRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.GetEvmBlockResponse,

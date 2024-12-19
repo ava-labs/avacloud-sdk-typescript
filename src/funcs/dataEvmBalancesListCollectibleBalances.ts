@@ -41,7 +41,7 @@ import {
 export async function dataEvmBalancesListCollectibleBalances(
   client: AvaCloudSDKCore,
   request: operations.ListCollectibleBalancesRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

@@ -39,7 +39,7 @@ import {
 export async function dataPrimaryNetworkListDelegators(
   client: AvaCloudSDKCore,
   request: operations.ListDelegatorsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

@@ -27,7 +27,7 @@ export class Webhooks extends ClientSDK {
    */
   async listWebhooks(
     request: operations.ListWebhooksRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<operations.ListWebhooksResponse, { cursor: string }>
   > {
@@ -46,7 +46,7 @@ export class Webhooks extends ClientSDK {
    */
   async createWebhook(
     request: components.CreateWebhookRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.WebhookResponse> {
     return unwrapAsync(dataWebhooksCreateWebhook(
       this,
@@ -63,7 +63,7 @@ export class Webhooks extends ClientSDK {
    */
   async getWebhook(
     request: operations.GetWebhookRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.WebhookResponse> {
     return unwrapAsync(dataWebhooksGetWebhook(
       this,
@@ -80,7 +80,7 @@ export class Webhooks extends ClientSDK {
    */
   async deactivateWebhook(
     request: operations.DeactivateWebhookRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.WebhookResponse> {
     return unwrapAsync(dataWebhooksDeactivateWebhook(
       this,
@@ -97,7 +97,7 @@ export class Webhooks extends ClientSDK {
    */
   async updateWebhook(
     request: operations.UpdateWebhookRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.WebhookResponse> {
     return unwrapAsync(dataWebhooksUpdateWebhook(
       this,
@@ -113,7 +113,7 @@ export class Webhooks extends ClientSDK {
    * Generates a new shared secret.
    */
   async generateSharedSecret(
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.SharedSecretsResponse> {
     return unwrapAsync(dataWebhooksGenerateSharedSecret(
       this,
@@ -128,7 +128,7 @@ export class Webhooks extends ClientSDK {
    * Get a previously generated shared secret.
    */
   async getSharedSecret(
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.SharedSecretsResponse> {
     return unwrapAsync(dataWebhooksGetSharedSecret(
       this,
@@ -144,7 +144,7 @@ export class Webhooks extends ClientSDK {
    */
   async getAddressesFromWebhook(
     request: operations.GetAddressesFromWebhookRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<operations.GetAddressesFromWebhookResponse, { cursor: string }>
   > {
@@ -163,7 +163,7 @@ export class Webhooks extends ClientSDK {
    */
   async removeAddressesFromWebhook(
     request: operations.RemoveAddressesFromWebhookRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.WebhookResponse> {
     return unwrapAsync(dataWebhooksRemoveAddressesFromWebhook(
       this,
@@ -180,7 +180,7 @@ export class Webhooks extends ClientSDK {
    */
   async addAddressesToWebhook(
     request: operations.AddAddressesToWebhookRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.WebhookResponse> {
     return unwrapAsync(dataWebhooksAddAddressesToWebhook(
       this,

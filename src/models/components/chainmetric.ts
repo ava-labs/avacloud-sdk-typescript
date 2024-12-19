@@ -20,6 +20,7 @@ export const ChainMetric = {
   MaxTps: "maxTps",
   AvgGasPrice: "avgGasPrice",
   MaxGasPrice: "maxGasPrice",
+  FeesPaid: "feesPaid",
 } as const;
 export type ChainMetric = ClosedEnum<typeof ChainMetric>;
 

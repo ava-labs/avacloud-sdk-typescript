@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
 export async function dataSignatureAggregatorAggregateSignatures(
   client: AvaCloudSDKCore,
   request: components.SignatureAggregatorRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.SignatureAggregationResponse,

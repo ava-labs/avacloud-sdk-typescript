@@ -39,7 +39,7 @@ import {
 export async function dataPrimaryNetworkListSubnets(
   client: AvaCloudSDKCore,
   request: operations.ListSubnetsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

@@ -39,7 +39,7 @@ import {
 export async function metricsLookingGlassGetAddressesByBtcbBridged(
   client: AvaCloudSDKCore,
   request: operations.GetAddressesByBtcbBridgedRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

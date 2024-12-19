@@ -39,7 +39,7 @@ import {
 export async function dataWebhooksGetAddressesFromWebhook(
   client: AvaCloudSDKCore,
   request: operations.GetAddressesFromWebhookRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function dataPrimaryNetworkGetNetworkDetails(
   client: AvaCloudSDKCore,
   request: operations.GetNetworkDetailsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.GetNetworkDetailsResponse,

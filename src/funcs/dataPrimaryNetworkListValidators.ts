@@ -39,7 +39,7 @@ import {
 export async function dataPrimaryNetworkListValidators(
   client: AvaCloudSDKCore,
   request: operations.ListValidatorsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

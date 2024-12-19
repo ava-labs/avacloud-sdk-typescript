@@ -39,7 +39,7 @@ import {
 export async function dataWebhooksListWebhooks(
   client: AvaCloudSDKCore,
   request: operations.ListWebhooksRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

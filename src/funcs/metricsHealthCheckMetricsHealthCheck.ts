@@ -26,7 +26,7 @@ import { Result } from "../types/fp.js";
  */
 export async function metricsHealthCheckMetricsHealthCheck(
   client: AvaCloudSDKCore,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     operations.MetricsHealthCheckResponseBody,
