@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: 131a10a41700fd631d49a44f585a1ec1
+  docChecksum: 28e6058365feaf515e62682b72e19bcc
   docVersion: Beta
   speakeasyVersion: 1.456.1
   generationVersion: 2.481.0
-  releaseVersion: 0.8.4
-  configChecksum: cf8e7f857f95610fd25bd7f02a8481d4
+  releaseVersion: 0.8.5
+  configChecksum: 743405fa666098d1cd9a589420dc7e4b
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -303,7 +303,6 @@ generatedFiles:
   - docs/models/components/timeintervalgranularityextended.md
   - docs/models/components/timestamprangenftholdersparam.md
   - docs/models/components/tokens.md
-  - docs/models/components/tokenstatus.md
   - docs/models/components/tokentype.md
   - docs/models/components/transactiondetails.md
   - docs/models/components/transactiondirectiontype.md

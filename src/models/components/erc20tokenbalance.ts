@@ -21,8 +21,6 @@ export type Erc20TokenBalanceErcType = ClosedEnum<
   typeof Erc20TokenBalanceErcType
 >;
 
-export type TokenStatus = {};
-
 export type Erc20TokenBalance = {
   /**
    * A wallet or contract address in mixed-case checksum encoding.
@@ -61,7 +59,7 @@ export type Erc20TokenBalance = {
    * The monetary value of the balance, if a price is available for the token.
    */
   balanceValue?: Money | undefined;
-  tokenStatus: TokenStatus;
+  tokenStatus: string | null;
 };
 
 /** @internal */
@@ -86,50 +84,6 @@ export namespace Erc20TokenBalanceErcType$ {
 }
 
 /** @internal */
-export const TokenStatus$inboundSchema: z.ZodType<
-  TokenStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type TokenStatus$Outbound = {};
-
-/** @internal */
-export const TokenStatus$outboundSchema: z.ZodType<
-  TokenStatus$Outbound,
-  z.ZodTypeDef,
-  TokenStatus
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TokenStatus$ {
-  /** @deprecated use `TokenStatus$inboundSchema` instead. */
-  export const inboundSchema = TokenStatus$inboundSchema;
-  /** @deprecated use `TokenStatus$outboundSchema` instead. */
-  export const outboundSchema = TokenStatus$outboundSchema;
-  /** @deprecated use `TokenStatus$Outbound` instead. */
-  export type Outbound = TokenStatus$Outbound;
-}
-
-export function tokenStatusToJSON(tokenStatus: TokenStatus): string {
-  return JSON.stringify(TokenStatus$outboundSchema.parse(tokenStatus));
-}
-
-export function tokenStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<TokenStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TokenStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TokenStatus' from JSON`,
-  );
-}
-
-/** @internal */
 export const Erc20TokenBalance$inboundSchema: z.ZodType<
   Erc20TokenBalance,
   z.ZodTypeDef,
@@ -145,7 +99,7 @@ export const Erc20TokenBalance$inboundSchema: z.ZodType<
   chainId: z.string(),
   balance: z.string(),
   balanceValue: Money$inboundSchema.optional(),
-  tokenStatus: z.lazy(() => TokenStatus$inboundSchema),
+  tokenStatus: z.nullable(z.string()),
 });
 
 /** @internal */
@@ -160,7 +114,7 @@ export type Erc20TokenBalance$Outbound = {
   chainId: string;
   balance: string;
   balanceValue?: Money$Outbound | undefined;
-  tokenStatus: TokenStatus$Outbound;
+  tokenStatus: string | null;
 };
 
 /** @internal */
@@ -179,7 +133,7 @@ export const Erc20TokenBalance$outboundSchema: z.ZodType<
   chainId: z.string(),
   balance: z.string(),
   balanceValue: Money$outboundSchema.optional(),
-  tokenStatus: z.lazy(() => TokenStatus$outboundSchema),
+  tokenStatus: z.nullable(z.string()),
 });
 
 /**
