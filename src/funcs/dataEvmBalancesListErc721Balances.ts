@@ -41,7 +41,7 @@ import {
 export async function dataEvmBalancesListErc721Balances(
   client: AvaCloudSDKCore,
   request: operations.ListErc721BalancesRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function dataWebhooksAddAddressesToWebhook(
   client: AvaCloudSDKCore,
   request: operations.AddAddressesToWebhookRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.WebhookResponse,

@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function dataEvmChainsGetAddressChains(
   client: AvaCloudSDKCore,
   request: operations.GetAddressChainsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.ListAddressChainsResponse,

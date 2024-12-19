@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function metricsChainMetricsGetTeleporterMetricsByChain(
   client: AvaCloudSDKCore,
   request: operations.GetTeleporterMetricsByChainRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.TeleporterChainMetricsApiResponse,

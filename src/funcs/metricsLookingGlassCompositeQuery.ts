@@ -40,7 +40,7 @@ import {
 export async function metricsLookingGlassCompositeQuery(
   client: AvaCloudSDKCore,
   request: components.CompositeQueryRequestDto,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

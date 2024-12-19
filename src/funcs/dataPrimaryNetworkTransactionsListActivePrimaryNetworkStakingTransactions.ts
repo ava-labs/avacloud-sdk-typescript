@@ -39,7 +39,7 @@ import {
 export async function dataPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions(
   client: AvaCloudSDKCore,
   request: operations.ListActivePrimaryNetworkStakingTransactionsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

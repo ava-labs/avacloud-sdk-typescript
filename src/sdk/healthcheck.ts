@@ -12,7 +12,7 @@ export class HealthCheck extends ClientSDK {
    * Get the health of the service
    */
   async metricsHealthCheck(
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<operations.MetricsHealthCheckResponseBody> {
     return unwrapAsync(metricsHealthCheckMetricsHealthCheck(
       this,

@@ -21,7 +21,7 @@ export class AvaCloudSDKMetrics extends ClientSDK {
    */
   async getEvmChainMetrics(
     request: operations.GetEvmChainMetricsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<operations.GetEvmChainMetricsResponse, { cursor: string }>
   > {
@@ -40,7 +40,7 @@ export class AvaCloudSDKMetrics extends ClientSDK {
    */
   async getTeleporterMetricsByChain(
     request: operations.GetTeleporterMetricsByChainRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.TeleporterChainMetricsApiResponse> {
     return unwrapAsync(metricsChainMetricsGetTeleporterMetricsByChain(
       this,
@@ -57,7 +57,7 @@ export class AvaCloudSDKMetrics extends ClientSDK {
    */
   async getEvmChainRollingWindowMetrics(
     request: operations.GetEvmChainRollingWindowMetricsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.RollingWindowMetricsApiResponse> {
     return unwrapAsync(metricsChainMetricsGetEvmChainRollingWindowMetrics(
       this,
@@ -74,7 +74,7 @@ export class AvaCloudSDKMetrics extends ClientSDK {
    */
   async getStakingMetrics(
     request: operations.GetStakingMetricsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<operations.GetStakingMetricsResponse, { cursor: string }>
   > {

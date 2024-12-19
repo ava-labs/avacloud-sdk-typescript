@@ -19,7 +19,7 @@ export class AvaCloudSDKChains extends ClientSDK {
    */
   async supportedChains(
     request: operations.SupportedChainsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.DataListChainsResponse> {
     return unwrapAsync(dataEvmChainsSupportedChains(
       this,
@@ -36,7 +36,7 @@ export class AvaCloudSDKChains extends ClientSDK {
    */
   async getChainInfo(
     request: operations.GetChainInfoRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.GetChainResponse> {
     return unwrapAsync(dataEvmChainsGetChainInfo(
       this,
@@ -53,7 +53,7 @@ export class AvaCloudSDKChains extends ClientSDK {
    */
   async getAddressChains(
     request: operations.GetAddressChainsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.ListAddressChainsResponse> {
     return unwrapAsync(dataEvmChainsGetAddressChains(
       this,

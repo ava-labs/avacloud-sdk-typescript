@@ -39,7 +39,7 @@ import {
 export async function metricsEvmChainsListChains(
   client: AvaCloudSDKCore,
   request: operations.ListChainsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

@@ -19,7 +19,7 @@ export class UsageMetrics extends ClientSDK {
    */
   async getApiUsageMetrics(
     request: operations.GetApiUsageMetricsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.UsageMetricsResponseDTO> {
     return unwrapAsync(dataUsageMetricsGetApiUsageMetrics(
       this,
@@ -36,7 +36,7 @@ export class UsageMetrics extends ClientSDK {
    */
   async getApiLogs(
     request: operations.GetApiLogsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<PageIterator<operations.GetApiLogsResponse, { cursor: string }>> {
     return unwrapResultIterator(dataUsageMetricsGetApiLogs(
       this,

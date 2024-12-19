@@ -12,7 +12,7 @@ export class AvaCloudSDKHealthCheck extends ClientSDK {
    * Get the health of the service
    */
   async dataHealthCheck(
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<operations.DataHealthCheckResponseBody> {
     return unwrapAsync(dataHealthCheckDataHealthCheck(
       this,

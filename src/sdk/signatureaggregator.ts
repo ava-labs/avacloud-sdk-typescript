@@ -16,7 +16,7 @@ export class SignatureAggregator extends ClientSDK {
    */
   async aggregateSignatures(
     request: components.SignatureAggregatorRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.SignatureAggregationResponse> {
     return unwrapAsync(dataSignatureAggregatorAggregateSignatures(
       this,

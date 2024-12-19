@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function dataPrimaryNetworkGetChainIdsForAddresses(
   client: AvaCloudSDKCore,
   request: operations.GetChainIdsForAddressesRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.ChainAddressChainIdMapListResponse,

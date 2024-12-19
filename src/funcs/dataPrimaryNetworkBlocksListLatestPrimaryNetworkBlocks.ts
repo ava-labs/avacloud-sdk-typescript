@@ -39,7 +39,7 @@ import {
 export async function dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks(
   client: AvaCloudSDKCore,
   request: operations.ListLatestPrimaryNetworkBlocksRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

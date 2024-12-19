@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function dataPrimaryNetworkGetSubnetById(
   client: AvaCloudSDKCore,
   request: operations.GetSubnetByIdRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.Subnet,

@@ -21,7 +21,7 @@ export class LookingGlass extends ClientSDK {
    */
   async getNftHoldersByContractAddress(
     request: operations.GetNftHoldersByContractAddressRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<
       operations.GetNftHoldersByContractAddressResponse,
@@ -45,7 +45,7 @@ export class LookingGlass extends ClientSDK {
    */
   async getAddressesByBalanceOverTime(
     request: operations.GetAddressesByBalanceOverTimeRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<
       operations.GetAddressesByBalanceOverTimeResponse,
@@ -69,7 +69,7 @@ export class LookingGlass extends ClientSDK {
    */
   async getAddressesByBtcbBridged(
     request: operations.GetAddressesByBtcbBridgedRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<
       operations.GetAddressesByBtcbBridgedResponse,
@@ -91,7 +91,7 @@ export class LookingGlass extends ClientSDK {
    */
   async getValidatorsByDateRange(
     request: operations.GetValidatorsByDateRangeRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<
       operations.GetValidatorsByDateRangeResponse,
@@ -113,7 +113,7 @@ export class LookingGlass extends ClientSDK {
    */
   async compositeQuery(
     request: components.CompositeQueryRequestDto,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<operations.CompositeQueryV2Response, { cursor: string }>
   > {

@@ -11,5 +11,5 @@ let value: ChainRollingWindowMetric = "txCount";
 ## Values
 
 ```typescript
-"gasUsed" | "txCount" | "avgGps" | "maxGps" | "avgTps" | "maxTps" | "avgGasPrice" | "maxGasPrice"
+"gasUsed" | "txCount" | "avgGps" | "maxGps" | "avgTps" | "maxTps" | "avgGasPrice" | "maxGasPrice" | "feesPaid"
 ```

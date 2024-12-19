@@ -39,7 +39,7 @@ import {
 export async function metricsLookingGlassGetValidatorsByDateRange(
   client: AvaCloudSDKCore,
   request: operations.GetValidatorsByDateRangeRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

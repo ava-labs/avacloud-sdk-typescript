@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function dataEvmTransactionsGetTransaction(
   client: AvaCloudSDKCore,
   request: operations.GetTransactionRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.GetTransactionResponse,
