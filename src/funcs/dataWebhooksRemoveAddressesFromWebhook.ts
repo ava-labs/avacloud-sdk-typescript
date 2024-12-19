@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function dataWebhooksRemoveAddressesFromWebhook(
   client: AvaCloudSDKCore,
   request: operations.RemoveAddressesFromWebhookRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.WebhookResponse,

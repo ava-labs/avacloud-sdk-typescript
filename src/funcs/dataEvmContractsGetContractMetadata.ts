@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
 export async function dataEvmContractsGetContractMetadata(
   client: AvaCloudSDKCore,
   request: operations.GetContractMetadataRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     operations.GetContractMetadataResponseBody,

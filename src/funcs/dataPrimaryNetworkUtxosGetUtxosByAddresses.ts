@@ -39,7 +39,7 @@ import {
 export async function dataPrimaryNetworkUtxosGetUtxosByAddresses(
   client: AvaCloudSDKCore,
   request: operations.GetUtxosByAddressesRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

@@ -63,7 +63,7 @@ export class PrimaryNetwork extends ClientSDK {
    */
   async getAssetDetails(
     request: operations.GetAssetDetailsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.XChainAssetDetails> {
     return unwrapAsync(dataPrimaryNetworkGetAssetDetails(
       this,
@@ -80,7 +80,7 @@ export class PrimaryNetwork extends ClientSDK {
    */
   async getChainIdsForAddresses(
     request: operations.GetChainIdsForAddressesRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.ChainAddressChainIdMapListResponse> {
     return unwrapAsync(dataPrimaryNetworkGetChainIdsForAddresses(
       this,
@@ -97,7 +97,7 @@ export class PrimaryNetwork extends ClientSDK {
    */
   async getNetworkDetails(
     request: operations.GetNetworkDetailsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.GetNetworkDetailsResponse> {
     return unwrapAsync(dataPrimaryNetworkGetNetworkDetails(
       this,
@@ -114,7 +114,7 @@ export class PrimaryNetwork extends ClientSDK {
    */
   async listBlockchains(
     request: operations.ListBlockchainsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<operations.ListBlockchainsResponse, { cursor: string }>
   > {
@@ -133,7 +133,7 @@ export class PrimaryNetwork extends ClientSDK {
    */
   async listSubnets(
     request: operations.ListSubnetsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<PageIterator<operations.ListSubnetsResponse, { cursor: string }>> {
     return unwrapResultIterator(dataPrimaryNetworkListSubnets(
       this,
@@ -150,7 +150,7 @@ export class PrimaryNetwork extends ClientSDK {
    */
   async getSubnetById(
     request: operations.GetSubnetByIdRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<components.Subnet> {
     return unwrapAsync(dataPrimaryNetworkGetSubnetById(
       this,
@@ -167,7 +167,7 @@ export class PrimaryNetwork extends ClientSDK {
    */
   async listValidators(
     request: operations.ListValidatorsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<operations.ListValidatorsResponse, { cursor: string }>
   > {
@@ -186,7 +186,7 @@ export class PrimaryNetwork extends ClientSDK {
    */
   async getSingleValidatorDetails(
     request: operations.GetSingleValidatorDetailsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<
       operations.GetSingleValidatorDetailsResponse,
@@ -208,7 +208,7 @@ export class PrimaryNetwork extends ClientSDK {
    */
   async listDelegators(
     request: operations.ListDelegatorsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<operations.ListDelegatorsResponse, { cursor: string }>
   > {
@@ -227,7 +227,7 @@ export class PrimaryNetwork extends ClientSDK {
    */
   async listL1Validators(
     request: operations.ListL1ValidatorsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<operations.ListL1ValidatorsResponse, { cursor: string }>
   > {

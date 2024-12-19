@@ -39,7 +39,7 @@ import {
 export async function dataPrimaryNetworkVerticesListLatestXChainVertices(
   client: AvaCloudSDKCore,
   request: operations.ListLatestXChainVerticesRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

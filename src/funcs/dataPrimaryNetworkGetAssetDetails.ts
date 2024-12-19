@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function dataPrimaryNetworkGetAssetDetails(
   client: AvaCloudSDKCore,
   request: operations.GetAssetDetailsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.XChainAssetDetails,

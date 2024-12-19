@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
 export async function dataTeleporterGetTeleporterMessage(
   client: AvaCloudSDKCore,
   request: operations.GetTeleporterMessageRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     operations.GetTeleporterMessageResponseBody,

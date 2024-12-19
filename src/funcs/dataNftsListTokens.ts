@@ -39,7 +39,7 @@ import {
 export async function dataNftsListTokens(
   client: AvaCloudSDKCore,
   request: operations.ListTokensRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
 export async function dataNftsGetTokenDetails(
   client: AvaCloudSDKCore,
   request: operations.GetTokenDetailsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     operations.GetTokenDetailsResponseBody,

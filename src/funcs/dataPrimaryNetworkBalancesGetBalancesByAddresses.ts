@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
 export async function dataPrimaryNetworkBalancesGetBalancesByAddresses(
   client: AvaCloudSDKCore,
   request: operations.GetBalancesByAddressesRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     operations.GetBalancesByAddressesResponseBody,

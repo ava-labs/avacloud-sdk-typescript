@@ -18,7 +18,7 @@ export class Balances extends ClientSDK {
    */
   async getBalancesByAddresses(
     request: operations.GetBalancesByAddressesRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<operations.GetBalancesByAddressesResponseBody> {
     return unwrapAsync(dataPrimaryNetworkBalancesGetBalancesByAddresses(
       this,

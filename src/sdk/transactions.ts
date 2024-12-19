@@ -20,7 +20,7 @@ export class Transactions extends ClientSDK {
    */
   async getTxByHash(
     request: operations.GetTxByHashRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<operations.GetTxByHashResponseBody> {
     return unwrapAsync(dataPrimaryNetworkTransactionsGetTxByHash(
       this,
@@ -43,7 +43,7 @@ export class Transactions extends ClientSDK {
    */
   async listLatestPrimaryNetworkTransactions(
     request: operations.ListLatestPrimaryNetworkTransactionsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<
       operations.ListLatestPrimaryNetworkTransactionsResponse,
@@ -67,7 +67,7 @@ export class Transactions extends ClientSDK {
    */
   async listActivePrimaryNetworkStakingTransactions(
     request: operations.ListActivePrimaryNetworkStakingTransactionsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<
       operations.ListActivePrimaryNetworkStakingTransactionsResponse,
@@ -91,7 +91,7 @@ export class Transactions extends ClientSDK {
    */
   async listAssetTransactions(
     request: operations.ListAssetTransactionsRequest,
-    options?: RequestOptions & { serverURL?: string },
+    options?: RequestOptions,
   ): Promise<
     PageIterator<operations.ListAssetTransactionsResponse, { cursor: string }>
   > {

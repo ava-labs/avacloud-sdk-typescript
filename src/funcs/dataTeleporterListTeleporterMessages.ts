@@ -39,7 +39,7 @@ import {
 export async function dataTeleporterListTeleporterMessages(
   client: AvaCloudSDKCore,
   request: operations.ListTeleporterMessagesRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

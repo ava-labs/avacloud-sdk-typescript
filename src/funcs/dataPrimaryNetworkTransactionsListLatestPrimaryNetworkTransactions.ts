@@ -45,7 +45,7 @@ import {
 export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions(
   client: AvaCloudSDKCore,
   request: operations.ListLatestPrimaryNetworkTransactionsRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<

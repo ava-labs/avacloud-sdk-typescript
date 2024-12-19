@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
 export async function dataPrimaryNetworkVerticesGetVertexByHash(
   client: AvaCloudSDKCore,
   request: operations.GetVertexByHashRequest,
-  options?: RequestOptions & { serverURL?: string },
+  options?: RequestOptions,
 ): Promise<
   Result<
     components.XChainVertex,
