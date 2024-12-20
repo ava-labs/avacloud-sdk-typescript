@@ -31,15 +31,15 @@ let value: ListErc1155TransactionsResponse = {
             "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
           address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
         },
-        logIndex: 7005.29,
+        logIndex: 9926.67,
         value: "10000000000000000000",
         erc1155Token: {
           address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
           ercType: "ERC-1155",
           tokenId: "<id>",
-          tokenUri: "https://wide-sand.org",
+          tokenUri: "https://warmhearted-developing.info/",
           metadata: {
-            indexStatus: "METADATA_CONTENT_TOO_LARGE",
+            indexStatus: "INVALID_METADATA_JSON",
           },
         },
       },

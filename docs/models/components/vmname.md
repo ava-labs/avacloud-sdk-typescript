@@ -5,7 +5,7 @@
 ```typescript
 import { VmName } from "@avalabs/avacloud-sdk/models/components";
 
-let value: VmName = "BITCOIN";
+let value: VmName = "ETHEREUM";
 ```
 
 ## Values

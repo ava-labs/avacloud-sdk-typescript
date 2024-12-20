@@ -21,6 +21,18 @@ export type Erc20TokenBalanceErcType = ClosedEnum<
   typeof Erc20TokenBalanceErcType
 >;
 
+/**
+ * Indicates the reputation of the token based on a security analysis. 'Benign' suggests the token is likely safe, while 'Malicious' indicates potential security risks. This field is nullable and is only populated for tokens on the C-Chain. Possible values are 'Benign', 'Malicious', or null if the reputation is unknown.
+ */
+export const TokenReputation = {
+  Malicious: "Malicious",
+  Benign: "Benign",
+} as const;
+/**
+ * Indicates the reputation of the token based on a security analysis. 'Benign' suggests the token is likely safe, while 'Malicious' indicates potential security risks. This field is nullable and is only populated for tokens on the C-Chain. Possible values are 'Benign', 'Malicious', or null if the reputation is unknown.
+ */
+export type TokenReputation = ClosedEnum<typeof TokenReputation>;
+
 export type Erc20TokenBalance = {
   /**
    * A wallet or contract address in mixed-case checksum encoding.
@@ -59,7 +71,10 @@ export type Erc20TokenBalance = {
    * The monetary value of the balance, if a price is available for the token.
    */
   balanceValue?: Money | undefined;
-  tokenStatus: string | null;
+  /**
+   * Indicates the reputation of the token based on a security analysis. 'Benign' suggests the token is likely safe, while 'Malicious' indicates potential security risks. This field is nullable and is only populated for tokens on the C-Chain. Possible values are 'Benign', 'Malicious', or null if the reputation is unknown.
+   */
+  tokenReputation: TokenReputation | null;
 };
 
 /** @internal */
@@ -84,6 +99,27 @@ export namespace Erc20TokenBalanceErcType$ {
 }
 
 /** @internal */
+export const TokenReputation$inboundSchema: z.ZodNativeEnum<
+  typeof TokenReputation
+> = z.nativeEnum(TokenReputation);
+
+/** @internal */
+export const TokenReputation$outboundSchema: z.ZodNativeEnum<
+  typeof TokenReputation
+> = TokenReputation$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TokenReputation$ {
+  /** @deprecated use `TokenReputation$inboundSchema` instead. */
+  export const inboundSchema = TokenReputation$inboundSchema;
+  /** @deprecated use `TokenReputation$outboundSchema` instead. */
+  export const outboundSchema = TokenReputation$outboundSchema;
+}
+
+/** @internal */
 export const Erc20TokenBalance$inboundSchema: z.ZodType<
   Erc20TokenBalance,
   z.ZodTypeDef,
@@ -99,7 +135,7 @@ export const Erc20TokenBalance$inboundSchema: z.ZodType<
   chainId: z.string(),
   balance: z.string(),
   balanceValue: Money$inboundSchema.optional(),
-  tokenStatus: z.nullable(z.string()),
+  tokenReputation: z.nullable(TokenReputation$inboundSchema),
 });
 
 /** @internal */
@@ -114,7 +150,7 @@ export type Erc20TokenBalance$Outbound = {
   chainId: string;
   balance: string;
   balanceValue?: Money$Outbound | undefined;
-  tokenStatus: string | null;
+  tokenReputation: string | null;
 };
 
 /** @internal */
@@ -133,7 +169,7 @@ export const Erc20TokenBalance$outboundSchema: z.ZodType<
   chainId: z.string(),
   balance: z.string(),
   balanceValue: Money$outboundSchema.optional(),
-  tokenStatus: z.nullable(z.string()),
+  tokenReputation: z.nullable(TokenReputation$outboundSchema),
 });
 
 /**

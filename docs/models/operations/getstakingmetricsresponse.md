@@ -9,8 +9,8 @@ let value: GetStakingMetricsResponse = {
   result: {
     results: [
       {
-        value: 8738.32,
-        timestamp: 8339.82,
+        value: 5777.09,
+        timestamp: 7791.79,
       },
     ],
   },

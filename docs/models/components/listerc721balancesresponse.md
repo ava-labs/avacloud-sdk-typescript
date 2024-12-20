@@ -13,7 +13,7 @@ let value: ListErc721BalancesResponse = {
       symbol: "WAVAX",
       ercType: "ERC-721",
       tokenId: "<id>",
-      tokenUri: "https://meager-topsail.name",
+      tokenUri: "https://vague-someplace.org",
       metadata: {
         indexStatus: "UNINDEXED",
       },
