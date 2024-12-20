@@ -10,15 +10,12 @@ let value: ListTokensResponse = {
     tokens: [
       {
         address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-        name: "Wrapped AVAX",
-        symbol: "WAVAX",
-        ercType: "ERC-721",
+        ercType: "ERC-1155",
         tokenId: "<id>",
-        tokenUri: "https://affectionate-fedora.biz",
+        tokenUri: "https://somber-receptor.com/",
         metadata: {
-          indexStatus: "THROTTLED_TOKEN_URI",
+          indexStatus: "INDEXED",
         },
-        ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
       },
     ],
   },

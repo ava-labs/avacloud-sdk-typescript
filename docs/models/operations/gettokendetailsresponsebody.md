@@ -14,9 +14,9 @@ const value: components.Erc721Token = {
   symbol: "WAVAX",
   ercType: "ERC-721",
   tokenId: "<id>",
-  tokenUri: "https://busy-lawmaker.org",
+  tokenUri: "https://low-hygienic.name/",
   metadata: {
-    indexStatus: "INVALID_TOKEN_URI",
+    indexStatus: "METADATA_CONTENT_TOO_LARGE",
   },
   ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
 };
@@ -29,9 +29,9 @@ const value: components.Erc1155Token = {
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   ercType: "ERC-1155",
   tokenId: "<id>",
-  tokenUri: "https://pale-adaptation.info",
+  tokenUri: "https://tricky-order.info/",
   metadata: {
-    indexStatus: "INVALID_METADATA",
+    indexStatus: "UNREACHABLE_TOKEN_URI",
   },
 };
 ```

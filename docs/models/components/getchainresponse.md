@@ -9,9 +9,9 @@ let value: GetChainResponse = {
   chainId: "<id>",
   status: "UNAVAILABLE",
   chainName: "<value>",
-  description: "crossly whole aw shameful scotch since uh-huh beyond",
-  vmName: "EVM",
-  rpcUrl: "https://unripe-babushka.org/",
+  description: "down cross-contamination before enrage upside-down",
+  vmName: "ETHEREUM",
+  rpcUrl: "https://hopeful-lay.org/",
   isTestnet: false,
   networkToken: {
     name: "Wrapped AVAX",

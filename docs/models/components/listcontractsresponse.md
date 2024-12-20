@@ -14,8 +14,7 @@ let value: ListContractsResponse = {
         txHash: "<value>",
         deployerAddress: "<value>",
       },
-      ercType: "ERC-721",
-      symbol: "WAVAX",
+      ercType: "UNKNOWN",
     },
   ],
 };
