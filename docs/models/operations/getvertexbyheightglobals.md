@@ -5,7 +5,9 @@
 ```typescript
 import { GetVertexByHeightGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetVertexByHeightGlobals = {};
+let value: GetVertexByHeightGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

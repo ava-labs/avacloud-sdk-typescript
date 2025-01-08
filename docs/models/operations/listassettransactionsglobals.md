@@ -5,7 +5,9 @@
 ```typescript
 import { ListAssetTransactionsGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListAssetTransactionsGlobals = {};
+let value: ListAssetTransactionsGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

@@ -5,7 +5,9 @@
 ```typescript
 import { ReindexNftGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ReindexNftGlobals = {};
+let value: ReindexNftGlobals = {
+  chainId: "43114",
+};
 ```
 
 ## Fields

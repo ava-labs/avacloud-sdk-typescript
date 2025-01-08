@@ -5,7 +5,9 @@
 ```typescript
 import { GetTxByHashGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetTxByHashGlobals = {};
+let value: GetTxByHashGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

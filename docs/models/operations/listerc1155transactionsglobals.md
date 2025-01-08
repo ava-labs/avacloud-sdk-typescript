@@ -5,7 +5,9 @@
 ```typescript
 import { ListErc1155TransactionsGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListErc1155TransactionsGlobals = {};
+let value: ListErc1155TransactionsGlobals = {
+  chainId: "43114",
+};
 ```
 
 ## Fields

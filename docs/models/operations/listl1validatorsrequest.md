@@ -8,6 +8,7 @@ import { ListL1ValidatorsRequest } from "@avalabs/avacloud-sdk/models/operations
 let value: ListL1ValidatorsRequest = {
   pageSize: 10,
   l1ValidationId: "BsSpTd1SDvdhaoYAuKJvRj1WnoRyu8mAuMZeuz9g7brGj6KhX",
+  network: "mainnet",
   nodeId: "NodeID-111111111111111111116DBWJs",
   subnetId: "11111111111111111111111111111111LpoYY",
 };

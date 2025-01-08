@@ -11,6 +11,7 @@ let value: TransactionDetails = {
     blockTimestamp: 1648672486,
     blockHash:
       "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
+    chainId: "43114",
     blockIndex: 0,
     txHash:
       "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4",

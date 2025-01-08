@@ -11,6 +11,7 @@ let value: GetEvmChainMetricsRequest = {
   endTimestamp: 1689800249,
   timeInterval: "day",
   pageSize: 10,
+  chainId: "43114",
 };
 ```
 

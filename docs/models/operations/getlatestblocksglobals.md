@@ -5,7 +5,9 @@
 ```typescript
 import { GetLatestBlocksGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetLatestBlocksGlobals = {};
+let value: GetLatestBlocksGlobals = {
+  chainId: "43114",
+};
 ```
 
 ## Fields

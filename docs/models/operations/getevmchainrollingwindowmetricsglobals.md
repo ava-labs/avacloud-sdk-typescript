@@ -5,7 +5,9 @@
 ```typescript
 import { GetEvmChainRollingWindowMetricsGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetEvmChainRollingWindowMetricsGlobals = {};
+let value: GetEvmChainRollingWindowMetricsGlobals = {
+  chainId: "43114",
+};
 ```
 
 ## Fields

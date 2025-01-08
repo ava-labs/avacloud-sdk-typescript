@@ -5,7 +5,9 @@
 ```typescript
 import { GetBalancesByAddressesGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetBalancesByAddressesGlobals = {};
+let value: GetBalancesByAddressesGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

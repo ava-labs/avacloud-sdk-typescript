@@ -6,6 +6,7 @@
 import { EvmBlock } from "@avalabs/avacloud-sdk/models/components";
 
 let value: EvmBlock = {
+  chainId: "43114",
   blockNumber: "339",
   blockTimestamp: 1648672486,
   blockHash:
@@ -25,6 +26,7 @@ let value: EvmBlock = {
 
 | Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `chainId`                                                                 | *string*                                                                  | :heavy_check_mark:                                                        | The EVM chain ID on which the block was created.                          | 43114                                                                     |
 | `blockNumber`                                                             | *string*                                                                  | :heavy_check_mark:                                                        | The block number on the chain.                                            | 339                                                                       |
 | `blockTimestamp`                                                          | *number*                                                                  | :heavy_check_mark:                                                        | The block finality timestamp.                                             | 1648672486                                                                |
 | `blockHash`                                                               | *string*                                                                  | :heavy_check_mark:                                                        | The block hash identifier.                                                | 0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c        |

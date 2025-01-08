@@ -31,6 +31,7 @@ const avaCloudSDK = new AvaCloudSDK({
 async function run() {
   const result = await avaCloudSDK.data.evm.balances.getNativeBalance({
     blockNumber: "6479329",
+    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     currency: "usd",
   });
@@ -61,6 +62,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 async function run() {
   const res = await dataEvmBalancesGetNativeBalance(avaCloudSDK, {
     blockNumber: "6479329",
+    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     currency: "usd",
   });
@@ -129,6 +131,7 @@ async function run() {
   const result = await avaCloudSDK.data.evm.balances.listErc20Balances({
     blockNumber: "6479329",
     pageSize: 10,
+    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddresses: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7, 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
     currency: "usd",
@@ -163,6 +166,7 @@ async function run() {
   const res = await dataEvmBalancesListErc20Balances(avaCloudSDK, {
     blockNumber: "6479329",
     pageSize: 10,
+    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddresses: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7, 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
     currency: "usd",
@@ -231,6 +235,7 @@ const avaCloudSDK = new AvaCloudSDK({
 async function run() {
   const result = await avaCloudSDK.data.evm.balances.listErc721Balances({
     pageSize: 10,
+    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });
@@ -263,6 +268,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 async function run() {
   const res = await dataEvmBalancesListErc721Balances(avaCloudSDK, {
     pageSize: 10,
+    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });
@@ -333,6 +339,7 @@ async function run() {
   const result = await avaCloudSDK.data.evm.balances.listErc1155Balances({
     blockNumber: "6479329",
     pageSize: 10,
+    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });
@@ -366,6 +373,7 @@ async function run() {
   const res = await dataEvmBalancesListErc1155Balances(avaCloudSDK, {
     blockNumber: "6479329",
     pageSize: 10,
+    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });
@@ -433,6 +441,7 @@ const avaCloudSDK = new AvaCloudSDK({
 async function run() {
   const result = await avaCloudSDK.data.evm.balances.listCollectibleBalances({
     pageSize: 10,
+    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });
@@ -465,6 +474,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 async function run() {
   const res = await dataEvmBalancesListCollectibleBalances(avaCloudSDK, {
     pageSize: 10,
+    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
   });

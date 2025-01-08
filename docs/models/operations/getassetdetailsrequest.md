@@ -7,6 +7,7 @@ import { GetAssetDetailsRequest } from "@avalabs/avacloud-sdk/models/operations"
 
 let value: GetAssetDetailsRequest = {
   blockchainId: "x-chain",
+  network: "mainnet",
   assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
 };
 ```

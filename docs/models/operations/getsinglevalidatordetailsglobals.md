@@ -5,7 +5,9 @@
 ```typescript
 import { GetSingleValidatorDetailsGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetSingleValidatorDetailsGlobals = {};
+let value: GetSingleValidatorDetailsGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

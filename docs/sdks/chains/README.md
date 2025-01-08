@@ -117,7 +117,9 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.metrics.evm.chains.getChain({});
+  const result = await avaCloudSDK.metrics.evm.chains.getChain({
+    chainId: "43114",
+  });
 
   // Handle the result
   console.log(result);
@@ -143,7 +145,9 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await metricsEvmChainsGetChain(avaCloudSDK, {});
+  const res = await metricsEvmChainsGetChain(avaCloudSDK, {
+    chainId: "43114",
+  });
 
   if (!res.ok) {
     throw res.error;

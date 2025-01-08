@@ -5,7 +5,9 @@
 ```typescript
 import { GetStakingMetricsGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetStakingMetricsGlobals = {};
+let value: GetStakingMetricsGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

@@ -47,6 +47,8 @@ export * from "./getvertexbyhash.js";
 export * from "./getvertexbyheight.js";
 export * from "./getwebhook.js";
 export * from "./listactiveprimarynetworkstakingtransactions.js";
+export * from "./listalllatestblocks.js";
+export * from "./listalllatesttransactions.js";
 export * from "./listassettransactions.js";
 export * from "./listblockchains.js";
 export * from "./listchains.js";

@@ -5,7 +5,9 @@
 ```typescript
 import { ListDelegatorsGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListDelegatorsGlobals = {};
+let value: ListDelegatorsGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

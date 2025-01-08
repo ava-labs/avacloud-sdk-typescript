@@ -5,7 +5,9 @@
 ```typescript
 import { GetAddressesByBalanceOverTimeGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetAddressesByBalanceOverTimeGlobals = {};
+let value: GetAddressesByBalanceOverTimeGlobals = {
+  chainId: "43114",
+};
 ```
 
 ## Fields

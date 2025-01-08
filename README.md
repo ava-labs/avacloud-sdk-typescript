@@ -106,6 +106,8 @@ run();
 * [supportedChains](docs/sdks/avacloudsdkchains/README.md#supportedchains) - List chains
 * [getChainInfo](docs/sdks/avacloudsdkchains/README.md#getchaininfo) - Get chain information
 * [getAddressChains](docs/sdks/avacloudsdkchains/README.md#getaddresschains) - Get chains for address
+* [listAllLatestTransactions](docs/sdks/avacloudsdkchains/README.md#listalllatesttransactions) - List latest transactions for all supported EVM chains
+* [listAllLatestBlocks](docs/sdks/avacloudsdkchains/README.md#listalllatestblocks) - List latest blocks for all supported EVM chains
 
 #### [data.evm.contracts](docs/sdks/contracts/README.md)
 
@@ -274,6 +276,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataEvmBlocksGetLatestBlocks`](docs/sdks/avacloudsdkblocks/README.md#getlatestblocks) - List latest blocks
 - [`dataEvmChainsGetAddressChains`](docs/sdks/avacloudsdkchains/README.md#getaddresschains) - Get chains for address
 - [`dataEvmChainsGetChainInfo`](docs/sdks/avacloudsdkchains/README.md#getchaininfo) - Get chain information
+- [`dataEvmChainsListAllLatestBlocks`](docs/sdks/avacloudsdkchains/README.md#listalllatestblocks) - List latest blocks for all supported EVM chains
+- [`dataEvmChainsListAllLatestTransactions`](docs/sdks/avacloudsdkchains/README.md#listalllatesttransactions) - List latest transactions for all supported EVM chains
 - [`dataEvmChainsSupportedChains`](docs/sdks/avacloudsdkchains/README.md#supportedchains) - List chains
 - [`dataEvmContractsGetContractMetadata`](docs/sdks/contracts/README.md#getcontractmetadata) - Get contract metadata
 - [`dataEvmTransactionsGetDeploymentTransaction`](docs/sdks/avacloudsdktransactions/README.md#getdeploymenttransaction) - Get deployment transaction
@@ -542,6 +546,7 @@ const avaCloudSDK = new AvaCloudSDK({
 async function run() {
   try {
     await avaCloudSDK.data.nfts.reindexNft({
+      chainId: "43114",
       address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
       tokenId: "145",
     });
