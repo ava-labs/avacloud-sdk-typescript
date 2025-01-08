@@ -5,7 +5,9 @@
 ```typescript
 import { GetNftHoldersByContractAddressGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetNftHoldersByContractAddressGlobals = {};
+let value: GetNftHoldersByContractAddressGlobals = {
+  chainId: "43114",
+};
 ```
 
 ## Fields

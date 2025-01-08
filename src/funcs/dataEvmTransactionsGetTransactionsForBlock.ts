@@ -3,7 +3,7 @@
  */
 
 import { AvaCloudSDKCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
@@ -87,6 +87,11 @@ export async function dataEvmTransactionsGetTransactionsForBlock(
     pathParams,
   );
 
+  const query = encodeFormQuery({
+    "pageSize": payload.pageSize,
+    "pageToken": payload.pageToken,
+  });
+
   const headers = new Headers({
     Accept: "application/json",
   });
@@ -124,6 +129,7 @@ export async function dataEvmTransactionsGetTransactionsForBlock(
     baseURL: baseURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);

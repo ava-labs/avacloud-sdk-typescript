@@ -5,7 +5,9 @@
 ```typescript
 import { GetChainInfoGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetChainInfoGlobals = {};
+let value: GetChainInfoGlobals = {
+  chainId: "43114",
+};
 ```
 
 ## Fields

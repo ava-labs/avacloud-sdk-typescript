@@ -5,7 +5,9 @@
 ```typescript
 import { GetNativeBalanceGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetNativeBalanceGlobals = {};
+let value: GetNativeBalanceGlobals = {
+  chainId: "43114",
+};
 ```
 
 ## Fields

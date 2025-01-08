@@ -8,6 +8,7 @@ import { ListEvmBlocksResponse } from "@avalabs/avacloud-sdk/models/components";
 let value: ListEvmBlocksResponse = {
   blocks: [
     {
+      chainId: "43114",
       blockNumber: "339",
       blockTimestamp: 1648672486,
       blockHash:

@@ -28,6 +28,7 @@ const avaCloudSDK = new AvaCloudSDK({
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.transactions.getTxByHash({
     blockchainId: "p-chain",
+    network: "mainnet",
     txHash: "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP",
   });
 
@@ -57,6 +58,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 async function run() {
   const res = await dataPrimaryNetworkTransactionsGetTxByHash(avaCloudSDK, {
     blockchainId: "p-chain",
+    network: "mainnet",
     txHash: "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP",
   });
 
@@ -132,6 +134,7 @@ async function run() {
     endTimestamp: 1689800249,
     pageSize: 10,
     blockchainId: "p-chain",
+    network: "mainnet",
     sortOrder: "asc",
   });
 
@@ -170,6 +173,7 @@ async function run() {
     endTimestamp: 1689800249,
     pageSize: 10,
     blockchainId: "p-chain",
+    network: "mainnet",
     sortOrder: "asc",
   });
 
@@ -241,6 +245,7 @@ async function run() {
     endTimestamp: 1689800249,
     pageSize: 10,
     blockchainId: "p-chain",
+    network: "mainnet",
     sortOrder: "asc",
   });
 
@@ -279,6 +284,7 @@ async function run() {
     endTimestamp: 1689800249,
     pageSize: 10,
     blockchainId: "p-chain",
+    network: "mainnet",
     sortOrder: "asc",
   });
 
@@ -349,6 +355,7 @@ async function run() {
     endTimestamp: 1689800249,
     pageSize: 10,
     blockchainId: "x-chain",
+    network: "mainnet",
     assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
   });
 
@@ -386,6 +393,7 @@ async function run() {
     endTimestamp: 1689800249,
     pageSize: 10,
     blockchainId: "x-chain",
+    network: "mainnet",
     assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
   });
 

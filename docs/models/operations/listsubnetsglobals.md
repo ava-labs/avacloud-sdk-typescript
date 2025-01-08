@@ -5,7 +5,9 @@
 ```typescript
 import { ListSubnetsGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListSubnetsGlobals = {};
+let value: ListSubnetsGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

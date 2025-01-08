@@ -28,6 +28,7 @@ async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.vertices.listLatestXChainVertices({
     pageSize: 10,
     blockchainId: "x-chain",
+    network: "mainnet",
   });
 
   for await (const page of result) {
@@ -59,6 +60,7 @@ async function run() {
   const res = await dataPrimaryNetworkVerticesListLatestXChainVertices(avaCloudSDK, {
     pageSize: 10,
     blockchainId: "x-chain",
+    network: "mainnet",
   });
 
   if (!res.ok) {
@@ -123,6 +125,7 @@ async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.vertices.getVertexByHash({
     vertexHash: "haP1CW56cspZY7aEuqHNrtpvhqCaMTxQaYe6j5u2Mbn4L2Gqr",
     blockchainId: "x-chain",
+    network: "mainnet",
   });
 
   // Handle the result
@@ -152,6 +155,7 @@ async function run() {
   const res = await dataPrimaryNetworkVerticesGetVertexByHash(avaCloudSDK, {
     vertexHash: "haP1CW56cspZY7aEuqHNrtpvhqCaMTxQaYe6j5u2Mbn4L2Gqr",
     blockchainId: "x-chain",
+    network: "mainnet",
   });
 
   if (!res.ok) {
@@ -215,6 +219,7 @@ async function run() {
     vertexHeight: 123,
     pageSize: 10,
     blockchainId: "x-chain",
+    network: "mainnet",
     sortOrder: "asc",
   });
 
@@ -248,6 +253,7 @@ async function run() {
     vertexHeight: 123,
     pageSize: 10,
     blockchainId: "x-chain",
+    network: "mainnet",
     sortOrder: "asc",
   });
 

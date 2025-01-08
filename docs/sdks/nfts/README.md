@@ -26,6 +26,7 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   await avaCloudSDK.data.nfts.reindexNft({
+    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
@@ -54,6 +55,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataNftsReindexNft(avaCloudSDK, {
+    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
@@ -116,6 +118,7 @@ const avaCloudSDK = new AvaCloudSDK({
 async function run() {
   const result = await avaCloudSDK.data.nfts.listTokens({
     pageSize: 10,
+    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
 
@@ -147,6 +150,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 async function run() {
   const res = await dataNftsListTokens(avaCloudSDK, {
     pageSize: 10,
+    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
 
@@ -210,6 +214,7 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.nfts.getTokenDetails({
+    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
@@ -239,6 +244,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataNftsGetTokenDetails(avaCloudSDK, {
+    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });

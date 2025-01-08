@@ -33,6 +33,10 @@ export type NativeTransaction = {
    */
   blockHash: string;
   /**
+   * The EVM chain ID on which the transaction occured.
+   */
+  chainId: string;
+  /**
    * The index at which the transaction occured in the block (0-indexed).
    */
   blockIndex: number;
@@ -79,6 +83,7 @@ export const NativeTransaction$inboundSchema: z.ZodType<
   blockNumber: z.string(),
   blockTimestamp: z.number(),
   blockHash: z.string(),
+  chainId: z.string(),
   blockIndex: z.number(),
   txHash: z.string(),
   txStatus: z.string(),
@@ -98,6 +103,7 @@ export type NativeTransaction$Outbound = {
   blockNumber: string;
   blockTimestamp: number;
   blockHash: string;
+  chainId: string;
   blockIndex: number;
   txHash: string;
   txStatus: string;
@@ -121,6 +127,7 @@ export const NativeTransaction$outboundSchema: z.ZodType<
   blockNumber: z.string(),
   blockTimestamp: z.number(),
   blockHash: z.string(),
+  chainId: z.string(),
   blockIndex: z.number(),
   txHash: z.string(),
   txStatus: z.string(),

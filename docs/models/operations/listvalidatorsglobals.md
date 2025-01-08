@@ -5,7 +5,9 @@
 ```typescript
 import { ListValidatorsGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListValidatorsGlobals = {};
+let value: ListValidatorsGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

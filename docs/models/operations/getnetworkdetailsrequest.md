@@ -5,7 +5,9 @@
 ```typescript
 import { GetNetworkDetailsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetNetworkDetailsRequest = {};
+let value: GetNetworkDetailsRequest = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

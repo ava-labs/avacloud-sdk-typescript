@@ -9,6 +9,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetEvmBlockResponse = {
   /**
+   * The EVM chain ID on which the block was created.
+   */
+  chainId: string;
+  /**
    * The block number on the chain.
    */
   blockNumber: string;
@@ -57,6 +61,7 @@ export const GetEvmBlockResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  chainId: z.string(),
   blockNumber: z.string(),
   blockTimestamp: z.number(),
   blockHash: z.string(),
@@ -72,6 +77,7 @@ export const GetEvmBlockResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetEvmBlockResponse$Outbound = {
+  chainId: string;
   blockNumber: string;
   blockTimestamp: number;
   blockHash: string;
@@ -91,6 +97,7 @@ export const GetEvmBlockResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetEvmBlockResponse
 > = z.object({
+  chainId: z.string(),
   blockNumber: z.string(),
   blockTimestamp: z.number(),
   blockHash: z.string(),

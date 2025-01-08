@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: 8ec8861097ec8d6cd28fdec2ebc5b2df
+  docChecksum: c13575544c539ec2c3e1fd1fef52d55f
   docVersion: Beta
-  speakeasyVersion: 1.456.1
-  generationVersion: 2.481.0
-  releaseVersion: 0.8.6
-  configChecksum: 7eda4c7bd3dcf8f649354bb5c9b592f0
+  speakeasyVersion: 1.465.0
+  generationVersion: 2.486.6
+  releaseVersion: 0.8.7
+  configChecksum: c204f7eb8b545e72e1eaf281645ddc39
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -15,14 +15,14 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.18.11
+    core: 3.18.12
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     examples: 2.81.4
-    globalSecurity: 2.82.11
+    globalSecurity: 2.82.12
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globals: 2.82.1
@@ -31,7 +31,7 @@ features:
     methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
     nullables: 0.1.0
-    pagination: 2.82.7
+    pagination: 2.82.8
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
@@ -462,6 +462,10 @@ generatedFiles:
   - docs/models/operations/listactiveprimarynetworkstakingtransactionsglobals.md
   - docs/models/operations/listactiveprimarynetworkstakingtransactionsrequest.md
   - docs/models/operations/listactiveprimarynetworkstakingtransactionsresponse.md
+  - docs/models/operations/listalllatestblocksrequest.md
+  - docs/models/operations/listalllatestblocksresponse.md
+  - docs/models/operations/listalllatesttransactionsrequest.md
+  - docs/models/operations/listalllatesttransactionsresponse.md
   - docs/models/operations/listassettransactionsglobals.md
   - docs/models/operations/listassettransactionsrequest.md
   - docs/models/operations/listassettransactionsresponse.md
@@ -597,6 +601,8 @@ generatedFiles:
   - src/funcs/dataEvmBlocksGetLatestBlocks.ts
   - src/funcs/dataEvmChainsGetAddressChains.ts
   - src/funcs/dataEvmChainsGetChainInfo.ts
+  - src/funcs/dataEvmChainsListAllLatestBlocks.ts
+  - src/funcs/dataEvmChainsListAllLatestTransactions.ts
   - src/funcs/dataEvmChainsSupportedChains.ts
   - src/funcs/dataEvmContractsGetContractMetadata.ts
   - src/funcs/dataEvmTransactionsGetDeploymentTransaction.ts
@@ -985,6 +991,8 @@ generatedFiles:
   - src/models/operations/getwebhook.ts
   - src/models/operations/index.ts
   - src/models/operations/listactiveprimarynetworkstakingtransactions.ts
+  - src/models/operations/listalllatestblocks.ts
+  - src/models/operations/listalllatesttransactions.ts
   - src/models/operations/listassettransactions.ts
   - src/models/operations/listblockchains.ts
   - src/models/operations/listchains.ts
@@ -2650,7 +2658,7 @@ examples:
           blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c"
       responses:
         "200":
-          application/json: {"blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "txCount": "2892.38", "baseFee": "<value>", "gasUsed": "<value>", "gasLimit": "<value>", "gasCost": "<value>", "parentHash": "<value>", "feesSpent": "<value>", "cumulativeTransactions": "<value>"}
+          application/json: {"chainId": "43114", "blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "txCount": "2892.38", "baseFee": "<value>", "gasUsed": "<value>", "gasLimit": "<value>", "gasCost": "<value>", "parentHash": "<value>", "feesSpent": "<value>", "cumulativeTransactions": "<value>"}
         "400":
           application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
         "401":
@@ -2677,7 +2685,7 @@ examples:
           currency: "usd"
       responses:
         "200":
-          application/json: {"erc20Transfers": [], "erc721Transfers": [], "erc1155Transfers": [], "internalTransactions": [], "networkTokenDetails": {"networkToken": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg"}, "currentPrice": {"currencyCode": "usd", "value": "42.42"}, "historicalPrice": {"currencyCode": "usd", "value": "42.42"}}, "nativeTransaction": {"blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "blockIndex": 0, "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4", "txStatus": "1", "txType": 1, "gasLimit": "51373", "gasUsed": "51373", "gasPrice": "470000000000", "nonce": "1", "from": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "to": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "method": {"callType": "CONTRACT_CALL", "methodHash": "0xa9059cbb", "methodName": "transfer(address,uint256)"}, "value": "10000000000000000000", "input": "<value>", "baseFeePerGas": "<value>"}}
+          application/json: {"erc20Transfers": [], "erc721Transfers": [], "erc1155Transfers": [], "internalTransactions": [], "networkTokenDetails": {"networkToken": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg"}, "currentPrice": {"currencyCode": "usd", "value": "42.42"}, "historicalPrice": {"currencyCode": "usd", "value": "42.42"}}, "nativeTransaction": {"blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "chainId": "43114", "blockIndex": 0, "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4", "txStatus": "1", "txType": 1, "gasLimit": "51373", "gasUsed": "51373", "gasPrice": "470000000000", "nonce": "1", "from": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "to": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "method": {"callType": "CONTRACT_CALL", "methodHash": "0xa9059cbb", "methodName": "transfer(address,uint256)"}, "value": "10000000000000000000", "input": "<value>", "baseFeePerGas": "<value>"}}
         "400":
           application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
         "401":
@@ -2933,7 +2941,7 @@ examples:
           txHash: "0x8bf584d7b14b92a32a339872a66b134a70ba3ba7c305823f348db6f860253f45"
       responses:
         "200":
-          application/json: {"erc20Transfers": [], "erc721Transfers": [], "erc1155Transfers": [], "internalTransactions": [], "networkTokenDetails": {"networkToken": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg"}, "currentPrice": {"currencyCode": "usd", "value": "42.42"}, "historicalPrice": {"currencyCode": "usd", "value": "42.42"}}, "nativeTransaction": {"blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "blockIndex": 0, "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4", "txStatus": "1", "txType": 1, "gasLimit": "51373", "gasUsed": "51373", "gasPrice": "470000000000", "nonce": "1", "from": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "to": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "method": {"callType": "CONTRACT_CALL", "methodHash": "0xa9059cbb", "methodName": "transfer(address,uint256)"}, "value": "10000000000000000000", "input": "<value>", "baseFeePerGas": "<value>"}}
+          application/json: {"erc20Transfers": [], "erc721Transfers": [], "erc1155Transfers": [], "internalTransactions": [], "networkTokenDetails": {"networkToken": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg"}, "currentPrice": {"currencyCode": "usd", "value": "42.42"}, "historicalPrice": {"currencyCode": "usd", "value": "42.42"}}, "nativeTransaction": {"blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "chainId": "43114", "blockIndex": 0, "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4", "txStatus": "1", "txType": 1, "gasLimit": "51373", "gasUsed": "51373", "gasPrice": "470000000000", "nonce": "1", "from": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "to": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "method": {"callType": "CONTRACT_CALL", "methodHash": "0xa9059cbb", "methodName": "transfer(address,uint256)"}, "value": "10000000000000000000", "input": "<value>", "baseFeePerGas": "<value>"}}
         "400":
           application/json: {"message": [], "statusCode": 400, "error": "Bad Request"}
         "401":
@@ -2956,6 +2964,8 @@ examples:
         path:
           chainId: "43114"
           blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c"
+        query:
+          pageSize: "10"
       responses:
         "200":
           application/json: {"transactions": []}
@@ -3258,4 +3268,54 @@ examples:
           application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+  listAllLatestTransactions:
+    "":
+      parameters:
+        query:
+          pageSize: "10"
+          network: "mainnet"
+      responses:
+        "200":
+          application/json: {"transactions": [{"blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "chainId": "43114", "blockIndex": 0, "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4", "txStatus": "1", "txType": 1, "gasLimit": "51373", "gasUsed": "51373", "gasPrice": "470000000000", "nonce": "1", "from": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "to": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "method": {"callType": "NATIVE_TRANSFER", "methodHash": "0xa9059cbb", "methodName": "transfer(address,uint256)"}, "value": "10000000000000000000"}, {"blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "chainId": "43114", "blockIndex": 0, "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4", "txStatus": "1", "txType": 1, "gasLimit": "51373", "gasUsed": "51373", "gasPrice": "470000000000", "nonce": "1", "from": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "to": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "method": {"callType": "CONTRACT_CREATION", "methodHash": "0xa9059cbb", "methodName": "transfer(address,uint256)"}, "value": "10000000000000000000"}, {"blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "chainId": "43114", "blockIndex": 0, "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4", "txStatus": "1", "txType": 1, "gasLimit": "51373", "gasUsed": "51373", "gasPrice": "470000000000", "nonce": "1", "from": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "to": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "method": {"callType": "NATIVE_TRANSFER", "methodHash": "0xa9059cbb", "methodName": "transfer(address,uint256)"}, "value": "10000000000000000000"}]}
+        "400":
+          application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": ["<value>"], "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": "<value>", "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": ["<value>"], "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": ["<value>", "<value>", "<value>"], "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": ["<value>"], "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+  listAllLatestBlocks:
+    "":
+      parameters:
+        query:
+          pageSize: "10"
+          network: "mainnet"
+      responses:
+        "200":
+          application/json: {"blocks": []}
+        "400":
+          application/json: {"message": [], "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": "<value>", "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": "<value>", "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": [], "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": "<value>", "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": ["<value>"], "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
 generatedTests: {}

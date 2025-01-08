@@ -29,6 +29,7 @@ async function run() {
     blockTimestamp: 1599696000,
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     blockchainId: "p-chain",
+    network: "mainnet",
   });
 
   // Handle the result
@@ -59,6 +60,7 @@ async function run() {
     blockTimestamp: 1599696000,
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     blockchainId: "p-chain",
+    network: "mainnet",
   });
 
   if (!res.ok) {

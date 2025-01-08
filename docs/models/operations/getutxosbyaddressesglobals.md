@@ -5,7 +5,9 @@
 ```typescript
 import { GetUtxosByAddressesGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetUtxosByAddressesGlobals = {};
+let value: GetUtxosByAddressesGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

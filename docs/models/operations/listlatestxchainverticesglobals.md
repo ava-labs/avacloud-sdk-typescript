@@ -5,7 +5,9 @@
 ```typescript
 import { ListLatestXChainVerticesGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListLatestXChainVerticesGlobals = {};
+let value: ListLatestXChainVerticesGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

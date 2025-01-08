@@ -9,6 +9,7 @@ let value: GetLatestBlocksResponse = {
   result: {
     blocks: [
       {
+        chainId: "43114",
         blockNumber: "339",
         blockTimestamp: 1648672486,
         blockHash:

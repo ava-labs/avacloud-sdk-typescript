@@ -32,6 +32,7 @@ async function run() {
     endTimestamp: 1689800249,
     timeInterval: "day",
     pageSize: 10,
+    chainId: "43114",
   });
 
   for await (const page of result) {
@@ -66,6 +67,7 @@ async function run() {
     endTimestamp: 1689800249,
     timeInterval: "day",
     pageSize: 10,
+    chainId: "43114",
   });
 
   if (!res.ok) {
@@ -129,6 +131,7 @@ const avaCloudSDK = new AvaCloudSDK({
 async function run() {
   const result = await avaCloudSDK.metrics.chain.metrics.getTeleporterMetricsByChain({
     metric: "teleporterSourceTxnCount",
+    chainId: "43114",
   });
 
   // Handle the result
@@ -157,6 +160,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 async function run() {
   const res = await metricsChainMetricsGetTeleporterMetricsByChain(avaCloudSDK, {
     metric: "teleporterSourceTxnCount",
+    chainId: "43114",
   });
 
   if (!res.ok) {
@@ -218,6 +222,7 @@ const avaCloudSDK = new AvaCloudSDK({
 async function run() {
   const result = await avaCloudSDK.metrics.chain.metrics.getEvmChainRollingWindowMetrics({
     metric: "txCount",
+    chainId: "43114",
   });
 
   // Handle the result
@@ -246,6 +251,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 async function run() {
   const res = await metricsChainMetricsGetEvmChainRollingWindowMetrics(avaCloudSDK, {
     metric: "txCount",
+    chainId: "43114",
   });
 
   if (!res.ok) {
@@ -310,6 +316,7 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     pageSize: 10,
+    network: "mainnet",
     subnetId: "11111111111111111111111111111111LpoYY",
   });
 
@@ -344,6 +351,7 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     pageSize: 10,
+    network: "mainnet",
     subnetId: "11111111111111111111111111111111LpoYY",
   });
 

@@ -5,7 +5,9 @@
 ```typescript
 import { ListActivePrimaryNetworkStakingTransactionsGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListActivePrimaryNetworkStakingTransactionsGlobals = {};
+let value: ListActivePrimaryNetworkStakingTransactionsGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

@@ -10,6 +10,7 @@ let value: ListPrimaryNetworkBlocksByNodeIdRequest = {
   endTimestamp: 1689800249,
   pageSize: 10,
   blockchainId: "p-chain",
+  network: "mainnet",
   nodeId: "NodeID-111111111111111111116DBWJs",
 };
 ```

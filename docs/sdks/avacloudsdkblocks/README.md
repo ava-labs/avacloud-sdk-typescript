@@ -26,6 +26,7 @@ const avaCloudSDK = new AvaCloudSDK({
 async function run() {
   const result = await avaCloudSDK.data.evm.blocks.getLatestBlocks({
     pageSize: 10,
+    chainId: "43114",
   });
 
   for await (const page of result) {
@@ -56,6 +57,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 async function run() {
   const res = await dataEvmBlocksGetLatestBlocks(avaCloudSDK, {
     pageSize: 10,
+    chainId: "43114",
   });
 
   if (!res.ok) {
@@ -118,6 +120,7 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.evm.blocks.getBlock({
+    chainId: "43114",
     blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });
 
@@ -146,6 +149,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataEvmBlocksGetBlock(avaCloudSDK, {
+    chainId: "43114",
     blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });
 

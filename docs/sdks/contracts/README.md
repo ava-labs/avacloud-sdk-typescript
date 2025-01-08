@@ -24,6 +24,7 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.evm.contracts.getContractMetadata({
+    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
 
@@ -52,6 +53,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataEvmContractsGetContractMetadata(avaCloudSDK, {
+    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
 

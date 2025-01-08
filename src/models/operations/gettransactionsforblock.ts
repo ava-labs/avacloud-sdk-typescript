@@ -20,6 +20,14 @@ export type GetTransactionsForBlockGlobals = {
 
 export type GetTransactionsForBlockRequest = {
   /**
+   * A page token, received from a previous list call. Provide this to retrieve the subsequent page.
+   */
+  pageToken?: string | undefined;
+  /**
+   * The maximum number of items to return. The minimum page size is 0. The maximum pageSize is 100.
+   */
+  pageSize?: number | undefined;
+  /**
    * A supported evm chain id or blockchain id. Use the `/chains` endpoint to get a list of supported chain ids.
    */
   chainId?: string | undefined;
@@ -91,12 +99,16 @@ export const GetTransactionsForBlockRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  pageToken: z.string().optional(),
+  pageSize: z.number().int().default(0),
   chainId: z.string().optional(),
   blockId: z.string(),
 });
 
 /** @internal */
 export type GetTransactionsForBlockRequest$Outbound = {
+  pageToken?: string | undefined;
+  pageSize: number;
   chainId?: string | undefined;
   blockId: string;
 };
@@ -107,6 +119,8 @@ export const GetTransactionsForBlockRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetTransactionsForBlockRequest
 > = z.object({
+  pageToken: z.string().optional(),
+  pageSize: z.number().int().default(0),
   chainId: z.string().optional(),
   blockId: z.string(),
 });

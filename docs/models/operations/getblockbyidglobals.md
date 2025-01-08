@@ -5,7 +5,9 @@
 ```typescript
 import { GetBlockByIdGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetBlockByIdGlobals = {};
+let value: GetBlockByIdGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

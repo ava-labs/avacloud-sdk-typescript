@@ -5,7 +5,9 @@
 ```typescript
 import { GetChainIdsForAddressesGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetChainIdsForAddressesGlobals = {};
+let value: GetChainIdsForAddressesGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

@@ -5,7 +5,9 @@
 ```typescript
 import { GetContractMetadataGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetContractMetadataGlobals = {};
+let value: GetContractMetadataGlobals = {
+  chainId: "43114",
+};
 ```
 
 ## Fields

@@ -5,7 +5,9 @@
 ```typescript
 import { ListHistoricalPrimaryNetworkRewardsGlobals } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListHistoricalPrimaryNetworkRewardsGlobals = {};
+let value: ListHistoricalPrimaryNetworkRewardsGlobals = {
+  network: "mainnet",
+};
 ```
 
 ## Fields

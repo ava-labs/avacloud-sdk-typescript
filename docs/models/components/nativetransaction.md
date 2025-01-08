@@ -10,6 +10,7 @@ let value: NativeTransaction = {
   blockTimestamp: 1648672486,
   blockHash:
     "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
+  chainId: "43114",
   blockIndex: 0,
   txHash: "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4",
   txStatus: "1",
@@ -50,6 +51,7 @@ let value: NativeTransaction = {
 | `blockNumber`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | The block number on the chain.                                           | 339                                                                      |
 | `blockTimestamp`                                                         | *number*                                                                 | :heavy_check_mark:                                                       | The block finality timestamp.                                            | 1648672486                                                               |
 | `blockHash`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | The block hash identifier.                                               | 0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c       |
+| `chainId`                                                                | *string*                                                                 | :heavy_check_mark:                                                       | The EVM chain ID on which the transaction occured.                       | 43114                                                                    |
 | `blockIndex`                                                             | *number*                                                                 | :heavy_check_mark:                                                       | The index at which the transaction occured in the block (0-indexed).     | 0                                                                        |
 | `txHash`                                                                 | *string*                                                                 | :heavy_check_mark:                                                       | The transaction hash identifier.                                         | 0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4       |
 | `txStatus`                                                               | *string*                                                                 | :heavy_check_mark:                                                       | The transaction status, which is either 0 (failed) or 1 (successful).    | 1                                                                        |

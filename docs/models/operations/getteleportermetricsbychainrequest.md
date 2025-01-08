@@ -7,6 +7,7 @@ import { GetTeleporterMetricsByChainRequest } from "@avalabs/avacloud-sdk/models
 
 let value: GetTeleporterMetricsByChainRequest = {
   metric: "teleporterSourceTxnCount",
+  chainId: "43114",
 };
 ```
 

@@ -7,6 +7,7 @@ import { GetNftHoldersByContractAddressRequest } from "@avalabs/avacloud-sdk/mod
 
 let value: GetNftHoldersByContractAddressRequest = {
   pageSize: 10,
+  chainId: "43114",
   address: "0x7a420AEFF902AAa2c85a190D7B91Ce8BEFffFE14",
 };
 ```
