@@ -20,5 +20,5 @@ actions:
   - target: $["paths"]["/v1/primaryNetworkRpcUsageMetrics"]["get"][?(@['servers'][0]['url'] == 'https://glacier-api.avax.network')]["parameters"][?(@.name == "network")]
     description: Change the network parameter from query to path (remove once glacier is released)
     update:
-      in: "path"
+      in: "query"
       required: true
