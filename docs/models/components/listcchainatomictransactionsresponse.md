@@ -20,7 +20,7 @@ let value: ListCChainAtomicTransactionsResponse = {
           name: "Avalanche",
           symbol: "AVAX",
           denomination: 9,
-          type: "nft",
+          type: "secp256k1",
           amount: "5001000",
         },
       ],
@@ -30,7 +30,7 @@ let value: ListCChainAtomicTransactionsResponse = {
           name: "Avalanche",
           symbol: "AVAX",
           denomination: 9,
-          type: "secp256k1",
+          type: "nft",
           amount: "5001000",
         },
       ],
@@ -95,7 +95,7 @@ let value: ListCChainAtomicTransactionsResponse = {
     },
   ],
   chainInfo: {
-    chainName: "x-chain",
+    chainName: "p-chain",
     network: "mainnet",
   },
 };

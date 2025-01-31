@@ -12,12 +12,22 @@ import {
   Erc20TokenBalance$Outbound,
   Erc20TokenBalance$outboundSchema,
 } from "./erc20tokenbalance.js";
+import {
+  NativeTokenBalance,
+  NativeTokenBalance$inboundSchema,
+  NativeTokenBalance$Outbound,
+  NativeTokenBalance$outboundSchema,
+} from "./nativetokenbalance.js";
 
 export type ListErc20BalancesResponse = {
   /**
    * A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
    */
   nextPageToken?: string | undefined;
+  /**
+   * The native token balance for the address.
+   */
+  nativeTokenBalance: NativeTokenBalance;
   /**
    * The list of ERC-20 token balances for the address.
    */
@@ -31,12 +41,14 @@ export const ListErc20BalancesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   nextPageToken: z.string().optional(),
+  nativeTokenBalance: NativeTokenBalance$inboundSchema,
   erc20TokenBalances: z.array(Erc20TokenBalance$inboundSchema),
 });
 
 /** @internal */
 export type ListErc20BalancesResponse$Outbound = {
   nextPageToken?: string | undefined;
+  nativeTokenBalance: NativeTokenBalance$Outbound;
   erc20TokenBalances: Array<Erc20TokenBalance$Outbound>;
 };
 
@@ -47,6 +59,7 @@ export const ListErc20BalancesResponse$outboundSchema: z.ZodType<
   ListErc20BalancesResponse
 > = z.object({
   nextPageToken: z.string().optional(),
+  nativeTokenBalance: NativeTokenBalance$outboundSchema,
   erc20TokenBalances: z.array(Erc20TokenBalance$outboundSchema),
 });
 

@@ -128,7 +128,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.evm.transactions.listContractDeployments({
-    pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
@@ -160,7 +159,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataEvmTransactionsListContractDeployments(avaCloudSDK, {
-    pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
@@ -227,7 +225,6 @@ async function run() {
   const result = await avaCloudSDK.data.evm.transactions.listTransfers({
     startBlock: 6479329,
     endBlock: 6479330,
-    pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
@@ -261,7 +258,6 @@ async function run() {
   const res = await dataEvmTransactionsListTransfers(avaCloudSDK, {
     startBlock: 6479329,
     endBlock: 6479330,
-    pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
@@ -328,7 +324,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.evm.transactions.listTransactions({
-    pageSize: 10,
     startBlock: 6479329,
     endBlock: 6479330,
     chainId: "43114",
@@ -363,7 +358,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataEvmTransactionsListTransactions(avaCloudSDK, {
-    pageSize: 10,
     startBlock: 6479329,
     endBlock: 6479330,
     chainId: "43114",
@@ -433,7 +427,6 @@ async function run() {
   const result = await avaCloudSDK.data.evm.transactions.listNativeTransactions({
     startBlock: 6479329,
     endBlock: 6479330,
-    pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
@@ -467,7 +460,6 @@ async function run() {
   const res = await dataEvmTransactionsListNativeTransactions(avaCloudSDK, {
     startBlock: 6479329,
     endBlock: 6479330,
-    pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
@@ -534,7 +526,6 @@ async function run() {
   const result = await avaCloudSDK.data.evm.transactions.listErc20Transactions({
     startBlock: 6479329,
     endBlock: 6479330,
-    pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
@@ -568,7 +559,6 @@ async function run() {
   const res = await dataEvmTransactionsListErc20Transactions(avaCloudSDK, {
     startBlock: 6479329,
     endBlock: 6479330,
-    pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
@@ -635,7 +625,6 @@ async function run() {
   const result = await avaCloudSDK.data.evm.transactions.listErc721Transactions({
     startBlock: 6479329,
     endBlock: 6479330,
-    pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
@@ -669,7 +658,6 @@ async function run() {
   const res = await dataEvmTransactionsListErc721Transactions(avaCloudSDK, {
     startBlock: 6479329,
     endBlock: 6479330,
-    pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
@@ -736,7 +724,6 @@ async function run() {
   const result = await avaCloudSDK.data.evm.transactions.listErc1155Transactions({
     startBlock: 6479329,
     endBlock: 6479330,
-    pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
@@ -770,7 +757,6 @@ async function run() {
   const res = await dataEvmTransactionsListErc1155Transactions(avaCloudSDK, {
     startBlock: 6479329,
     endBlock: 6479330,
-    pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
@@ -839,7 +825,6 @@ async function run() {
   const result = await avaCloudSDK.data.evm.transactions.listInternalTransactions({
     startBlock: 6479329,
     endBlock: 6479330,
-    pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
@@ -873,7 +858,6 @@ async function run() {
   const res = await dataEvmTransactionsListInternalTransactions(avaCloudSDK, {
     startBlock: 6479329,
     endBlock: 6479330,
-    pageSize: 10,
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
@@ -1029,7 +1013,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.evm.transactions.getTransactionsForBlock({
-    pageSize: 10,
     chainId: "43114",
     blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });
@@ -1059,7 +1042,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataEvmTransactionsGetTransactionsForBlock(avaCloudSDK, {
-    pageSize: 10,
     chainId: "43114",
     blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });
@@ -1122,7 +1104,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.evm.transactions.listLatestTransactions({
-    pageSize: 10,
     chainId: "43114",
   });
 
@@ -1153,7 +1134,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataEvmTransactionsListLatestTransactions(avaCloudSDK, {
-    pageSize: 10,
     chainId: "43114",
   });
 

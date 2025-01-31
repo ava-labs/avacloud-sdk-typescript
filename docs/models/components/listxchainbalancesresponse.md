@@ -55,7 +55,7 @@ let value: ListXChainBalancesResponse = {
     ],
   },
   chainInfo: {
-    chainName: "c-chain",
+    chainName: "x-chain",
     network: "mainnet",
   },
 };

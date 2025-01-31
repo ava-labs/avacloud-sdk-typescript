@@ -5,7 +5,7 @@
 ```typescript
 import { PChainTransactionType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: PChainTransactionType = "DisableL1ValidatorTx";
+let value: PChainTransactionType = "RegisterL1ValidatorTx";
 ```
 
 ## Values

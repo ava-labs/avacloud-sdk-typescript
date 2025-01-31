@@ -11,9 +11,10 @@ let value: DataListChainsResponse = {
       chainId: "<id>",
       status: "UNAVAILABLE",
       chainName: "<value>",
-      description: "flawless doubtfully beneath abscond which",
-      vmName: "ETHEREUM",
-      rpcUrl: "https://huge-vibration.net",
+      description:
+        "from psst toothpick tall what abaft furthermore lest paintwork but",
+      vmName: "BITCOIN",
+      rpcUrl: "https://wavy-viability.net/",
       isTestnet: false,
       networkToken: {
         name: "Wrapped AVAX",

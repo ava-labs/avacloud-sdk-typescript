@@ -6,7 +6,6 @@
 import { ListAllLatestBlocksRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListAllLatestBlocksRequest = {
-  pageSize: 10,
   network: "mainnet",
 };
 ```

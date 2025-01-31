@@ -6,7 +6,6 @@
 import { ListDelegatorsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListDelegatorsRequest = {
-  pageSize: 10,
   rewardAddresses:
     "P-avax1679zrp3z9mf7z4an42ddq47qzj36zv6ga20vwl,P-avax1s7kd0kfndlz6mh3l0etrrcmkg5y366k8e0s6cc",
   network: "mainnet",

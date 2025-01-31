@@ -17,17 +17,17 @@ export const MetricsHealthCheckServerList = [
 
 export type Info = {
   status?: string | undefined;
-  additionalProperties: { [k: string]: string };
+  additionalProperties?: { [k: string]: string };
 };
 
 export type ErrorT = {
   status?: string | undefined;
-  additionalProperties: { [k: string]: string };
+  additionalProperties?: { [k: string]: string };
 };
 
 export type Details = {
   status?: string | undefined;
-  additionalProperties: { [k: string]: string };
+  additionalProperties?: { [k: string]: string };
 };
 
 /**
@@ -47,6 +47,7 @@ export const Info$inboundSchema: z.ZodType<Info, z.ZodTypeDef, unknown> =
       status: z.string().optional(),
     }).catchall(z.string()),
     "additionalProperties",
+    true,
   );
 
 /** @internal */
@@ -103,6 +104,7 @@ export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> =
       status: z.string().optional(),
     }).catchall(z.string()),
     "additionalProperties",
+    true,
   );
 
 /** @internal */
@@ -162,6 +164,7 @@ export const Details$inboundSchema: z.ZodType<Details, z.ZodTypeDef, unknown> =
       status: z.string().optional(),
     }).catchall(z.string()),
     "additionalProperties",
+    true,
   );
 
 /** @internal */

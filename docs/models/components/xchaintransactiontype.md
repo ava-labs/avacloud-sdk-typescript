@@ -7,7 +7,7 @@ Type of transaction.
 ```typescript
 import { XChainTransactionType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: XChainTransactionType = "ImportTx";
+let value: XChainTransactionType = "UNKNOWN";
 ```
 
 ## Values

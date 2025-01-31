@@ -49,10 +49,9 @@ export class AvaCloudSDKChains extends ClientSDK {
   }
 
   /**
-   * Get chains for address
-   *
-   * @remarks
    * Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getAddressChains(
     request: operations.GetAddressChainsRequest,
@@ -66,10 +65,9 @@ export class AvaCloudSDKChains extends ClientSDK {
   }
 
   /**
-   * List latest transactions for all supported EVM chains
-   *
-   * @remarks
    * Lists the latest transactions for all supported EVM chains. Filterable by status.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async listAllLatestTransactions(
     request: operations.ListAllLatestTransactionsRequest,
@@ -88,10 +86,9 @@ export class AvaCloudSDKChains extends ClientSDK {
   }
 
   /**
-   * List latest blocks for all supported EVM chains
-   *
-   * @remarks
    * Lists the latest blocks for all supported EVM chains. Filterable by network.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async listAllLatestBlocks(
     request: operations.ListAllLatestBlocksRequest,

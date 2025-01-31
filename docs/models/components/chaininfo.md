@@ -9,9 +9,10 @@ let value: ChainInfo = {
   chainId: "<id>",
   status: "OK",
   chainName: "<value>",
-  description: "tepid gratefully whoa antelope",
+  description:
+    "proud plait opposite strict unnecessarily hamburger splosh around apologise lest",
   vmName: "BITCOIN",
-  rpcUrl: "https://humble-sideboard.net/",
+  rpcUrl: "https://general-guacamole.biz",
   isTestnet: false,
   networkToken: {
     name: "Wrapped AVAX",

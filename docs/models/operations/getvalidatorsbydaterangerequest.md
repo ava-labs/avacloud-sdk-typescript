@@ -8,7 +8,6 @@ import { GetValidatorsByDateRangeRequest } from "@avalabs/avacloud-sdk/models/op
 let value: GetValidatorsByDateRangeRequest = {
   startTimestamp: 1689541049,
   endTimestamp: 1689800249,
-  pageSize: 10,
   subnetId: "11111111111111111111111111111111LpoYY",
   network: "mainnet",
 };

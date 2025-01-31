@@ -40,7 +40,7 @@ const value: components.PendingTeleporterMessage = {
   },
   sourceTransaction: {
     txHash: "<value>",
-    timestamp: 5757.51,
+    timestamp: 7908.4,
     gasSpent: "<value>",
   },
   status: "pending",
@@ -84,12 +84,12 @@ const value: components.DeliveredTeleporterMessage = {
   },
   sourceTransaction: {
     txHash: "<value>",
-    timestamp: 8207.67,
+    timestamp: 972.43,
     gasSpent: "<value>",
   },
   destinationTransaction: {
     txHash: "<value>",
-    timestamp: 9088.44,
+    timestamp: 4420.36,
     gasSpent: "<value>",
     rewardRedeemer: "<value>",
     delivererAddress: "<value>",

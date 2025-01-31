@@ -12,39 +12,11 @@ const value: components.ListPChainTransactionsResponse = {
   transactions: [
     {
       txHash: "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP",
-      txType: "ExportTx",
+      txType: "AddValidatorTx",
       blockTimestamp: 1648672486,
       blockNumber: "<value>",
       blockHash: "<value>",
       consumedUtxos: [
-        {
-          addresses: [
-            "avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw",
-          ],
-          asset: {
-            assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
-            name: "Avalanche",
-            symbol: "AVAX",
-            denomination: 9,
-            type: "secp256k1",
-            amount: "5001000",
-          },
-          consumedOnChainId:
-            "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
-          consumingTxHash: "3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c",
-          createdOnChainId:
-            "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
-          utxoId: "68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC",
-          amount: "482.58",
-          assetId: "<id>",
-          blockNumber: "<value>",
-          blockTimestamp: 7298.28,
-          outputIndex: 691.83,
-          txHash: "<value>",
-          utxoType: "TRANSFER",
-        },
-      ],
-      emittedUtxos: [
         {
           addresses: [
             "avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw",
@@ -63,11 +35,39 @@ const value: components.ListPChainTransactionsResponse = {
           createdOnChainId:
             "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
           utxoId: "68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC",
-          amount: "176.50",
+          amount: "435.53",
           assetId: "<id>",
           blockNumber: "<value>",
-          blockTimestamp: 9391.61,
-          outputIndex: 5063.12,
+          blockTimestamp: 7986.9,
+          outputIndex: 9234.56,
+          txHash: "<value>",
+          utxoType: "STAKE",
+        },
+      ],
+      emittedUtxos: [
+        {
+          addresses: [
+            "avax1qm2a25eytsrj235hxg6jc0mwk99tss64eqevsw",
+          ],
+          asset: {
+            assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
+            name: "Avalanche",
+            symbol: "AVAX",
+            denomination: 9,
+            type: "secp256k1",
+            amount: "5001000",
+          },
+          consumedOnChainId:
+            "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
+          consumingTxHash: "3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c",
+          createdOnChainId:
+            "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
+          utxoId: "68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC",
+          amount: "486.27",
+          assetId: "<id>",
+          blockNumber: "<value>",
+          blockTimestamp: 5881.52,
+          outputIndex: 9838.54,
           txHash: "<value>",
           utxoType: "TRANSFER",
         },
@@ -90,7 +90,7 @@ const value: components.ListPChainTransactionsResponse = {
           name: "Avalanche",
           symbol: "AVAX",
           denomination: 9,
-          type: "nft",
+          type: "secp256k1",
           amount: "5001000",
         },
       ],
@@ -100,7 +100,7 @@ const value: components.ListPChainTransactionsResponse = {
           name: "Avalanche",
           symbol: "AVAX",
           denomination: 9,
-          type: "secp256k1",
+          type: "nft",
           amount: "5001000",
         },
       ],
@@ -124,7 +124,7 @@ const value: components.ListPChainTransactionsResponse = {
     },
   ],
   chainInfo: {
-    chainName: "x-chain",
+    chainName: "c-chain",
     network: "mainnet",
   },
 };
@@ -139,7 +139,7 @@ const value: components.ListXChainTransactionsResponse = {
       txHash: "3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c",
       chainFormat: "non-linear",
       timestamp: 1600762738,
-      txType: "ExportTx",
+      txType: "ImportTx",
       memo: "0x546865204176616c616e6368652050726f6a656374",
       consumedUtxos: [
         {
@@ -151,7 +151,7 @@ const value: components.ListXChainTransactionsResponse = {
             name: "Avalanche",
             symbol: "AVAX",
             denomination: 9,
-            type: "nft",
+            type: "secp256k1",
             amount: "5001000",
           },
           consumedOnChainId:
@@ -186,7 +186,7 @@ const value: components.ListXChainTransactionsResponse = {
             name: "Avalanche",
             symbol: "AVAX",
             denomination: 9,
-            type: "nft",
+            type: "secp256k1",
             amount: "5001000",
           },
           consumedOnChainId:
@@ -217,7 +217,7 @@ const value: components.ListXChainTransactionsResponse = {
           name: "Avalanche",
           symbol: "AVAX",
           denomination: 9,
-          type: "nft",
+          type: "secp256k1",
           amount: "5001000",
         },
       ],
@@ -227,7 +227,7 @@ const value: components.ListXChainTransactionsResponse = {
           name: "Avalanche",
           symbol: "AVAX",
           denomination: 9,
-          type: "secp256k1",
+          type: "nft",
           amount: "5001000",
         },
       ],
@@ -247,7 +247,7 @@ const value: components.ListXChainTransactionsResponse = {
     },
   ],
   chainInfo: {
-    chainName: "p-chain",
+    chainName: "c-chain",
     network: "mainnet",
   },
 };
@@ -271,7 +271,7 @@ const value: components.ListCChainAtomicTransactionsResponse = {
           name: "Avalanche",
           symbol: "AVAX",
           denomination: 9,
-          type: "secp256k1",
+          type: "nft",
           amount: "5001000",
         },
       ],
@@ -311,7 +311,7 @@ const value: components.ListCChainAtomicTransactionsResponse = {
             name: "Avalanche",
             symbol: "AVAX",
             denomination: 9,
-            type: "nft",
+            type: "secp256k1",
             amount: "5001000",
           },
           consumedOnChainId:
@@ -339,7 +339,7 @@ const value: components.ListCChainAtomicTransactionsResponse = {
     },
   ],
   chainInfo: {
-    chainName: "c-chain",
+    chainName: "x-chain",
     network: "mainnet",
   },
 };

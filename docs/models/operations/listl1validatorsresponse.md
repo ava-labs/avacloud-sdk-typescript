@@ -12,21 +12,21 @@ let value: ListL1ValidatorsResponse = {
         validationId: "<id>",
         nodeId: "<id>",
         subnetId: "<id>",
-        weight: 4849.66,
-        remainingBalance: 9011.62,
-        creationTimestamp: 5546.45,
+        weight: 1105.22,
+        remainingBalance: 6308.32,
+        creationTimestamp: 9979.94,
         blsCredentials: {},
         remainingBalanceOwner: {
           addresses: [
             "<value>",
           ],
-          threshold: 8268.62,
+          threshold: 9878.9,
         },
         deactivationOwner: {
           addresses: [
             "<value>",
           ],
-          threshold: 7255.74,
+          threshold: 6033.23,
         },
       },
     ],

@@ -56,6 +56,10 @@ export type Subnet = {
    */
   isL1: boolean;
   /**
+   * Transaction hash of ConvertSubnetToL1Tx which converted this Subnet to L1.
+   */
+  l1ConversionTransactionHash?: string | undefined;
+  /**
    * L1 validator manager details.
    */
   l1ValidatorManagerDetails?: L1ValidatorManagerDetails | undefined;
@@ -73,6 +77,7 @@ export const Subnet$inboundSchema: z.ZodType<Subnet, z.ZodTypeDef, unknown> = z
     locktime: z.number(),
     subnetOwnershipInfo: SubnetOwnershipInfo$inboundSchema,
     isL1: z.boolean(),
+    l1ConversionTransactionHash: z.string().optional(),
     l1ValidatorManagerDetails: L1ValidatorManagerDetails$inboundSchema
       .optional(),
     blockchains: z.array(BlockchainInfo$inboundSchema),
@@ -88,6 +93,7 @@ export type Subnet$Outbound = {
   locktime: number;
   subnetOwnershipInfo: SubnetOwnershipInfo$Outbound;
   isL1: boolean;
+  l1ConversionTransactionHash?: string | undefined;
   l1ValidatorManagerDetails?: L1ValidatorManagerDetails$Outbound | undefined;
   blockchains: Array<BlockchainInfo$Outbound>;
 };
@@ -106,6 +112,7 @@ export const Subnet$outboundSchema: z.ZodType<
   locktime: z.number(),
   subnetOwnershipInfo: SubnetOwnershipInfo$outboundSchema,
   isL1: z.boolean(),
+  l1ConversionTransactionHash: z.string().optional(),
   l1ValidatorManagerDetails: L1ValidatorManagerDetails$outboundSchema
     .optional(),
   blockchains: z.array(BlockchainInfo$outboundSchema),

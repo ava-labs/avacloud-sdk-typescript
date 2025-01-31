@@ -12,14 +12,12 @@ let value: DataHealthCheckResponseBody = {
   info: {
     "database": {
       status: "up",
-      additionalProperties: {},
     },
   },
   error: {},
   details: {
     "database": {
       status: "up",
-      additionalProperties: {},
     },
   },
 };

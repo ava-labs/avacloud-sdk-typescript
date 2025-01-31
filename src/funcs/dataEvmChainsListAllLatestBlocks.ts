@@ -6,6 +6,7 @@ import { AvaCloudSDKCore } from "../core.js";
 import { dlv } from "../lib/dlv.js";
 import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -31,10 +32,9 @@ import {
 } from "../types/operations.js";
 
 /**
- * List latest blocks for all supported EVM chains
- *
- * @remarks
  * Lists the latest blocks for all supported EVM chains. Filterable by network.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function dataEvmChainsListAllLatestBlocks(
   client: AvaCloudSDKCore,
@@ -88,9 +88,9 @@ export async function dataEvmChainsListAllLatestBlocks(
     "pageToken": payload.pageToken,
   });
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.apiKey);
   const securityInput = secConfig == null ? {} : { apiKey: secConfig };
@@ -189,7 +189,8 @@ export async function dataEvmChainsListAllLatestBlocks(
     M.jsonErr(500, errors.InternalServerError$inboundSchema),
     M.jsonErr(502, errors.BadGateway$inboundSchema),
     M.jsonErr(503, errors.ServiceUnavailable$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return haltIterator(result);

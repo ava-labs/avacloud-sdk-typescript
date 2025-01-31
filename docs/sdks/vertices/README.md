@@ -26,7 +26,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.vertices.listLatestXChainVertices({
-    pageSize: 10,
     blockchainId: "x-chain",
     network: "mainnet",
   });
@@ -58,7 +57,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataPrimaryNetworkVerticesListLatestXChainVertices(avaCloudSDK, {
-    pageSize: 10,
     blockchainId: "x-chain",
     network: "mainnet",
   });
@@ -217,7 +215,6 @@ const avaCloudSDK = new AvaCloudSDK({
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.vertices.getVertexByHeight({
     vertexHeight: 123,
-    pageSize: 10,
     blockchainId: "x-chain",
     network: "mainnet",
     sortOrder: "asc",
@@ -251,7 +248,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 async function run() {
   const res = await dataPrimaryNetworkVerticesGetVertexByHeight(avaCloudSDK, {
     vertexHeight: 123,
-    pageSize: 10,
     blockchainId: "x-chain",
     network: "mainnet",
     sortOrder: "asc",

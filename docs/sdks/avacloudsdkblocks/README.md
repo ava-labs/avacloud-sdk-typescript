@@ -25,7 +25,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.evm.blocks.getLatestBlocks({
-    pageSize: 10,
     chainId: "43114",
   });
 
@@ -56,7 +55,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataEvmBlocksGetLatestBlocks(avaCloudSDK, {
-    pageSize: 10,
     chainId: "43114",
   });
 

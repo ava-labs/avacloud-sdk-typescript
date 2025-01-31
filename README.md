@@ -105,9 +105,9 @@ run();
 
 * [supportedChains](docs/sdks/avacloudsdkchains/README.md#supportedchains) - List chains
 * [getChainInfo](docs/sdks/avacloudsdkchains/README.md#getchaininfo) - Get chain information
-* [getAddressChains](docs/sdks/avacloudsdkchains/README.md#getaddresschains) - Get chains for address
-* [listAllLatestTransactions](docs/sdks/avacloudsdkchains/README.md#listalllatesttransactions) - List latest transactions for all supported EVM chains
-* [listAllLatestBlocks](docs/sdks/avacloudsdkchains/README.md#listalllatestblocks) - List latest blocks for all supported EVM chains
+* [~~getAddressChains~~](docs/sdks/avacloudsdkchains/README.md#getaddresschains) - Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes. :warning: **Deprecated**
+* [~~listAllLatestTransactions~~](docs/sdks/avacloudsdkchains/README.md#listalllatesttransactions) - Lists the latest transactions for all supported EVM chains. Filterable by status. :warning: **Deprecated**
+* [~~listAllLatestBlocks~~](docs/sdks/avacloudsdkchains/README.md#listalllatestblocks) - Lists the latest blocks for all supported EVM chains. Filterable by network. :warning: **Deprecated**
 
 #### [data.evm.contracts](docs/sdks/contracts/README.md)
 
@@ -131,6 +131,12 @@ run();
 #### [data.healthCheck](docs/sdks/avacloudsdkhealthcheck/README.md)
 
 * [dataHealthCheck](docs/sdks/avacloudsdkhealthcheck/README.md#datahealthcheck) - Get the health of the service
+
+#### [data.multiChain](docs/sdks/multichain/README.md)
+
+* [listAddressChains](docs/sdks/multichain/README.md#listaddresschains) - Get chains for address
+* [listAllLatestTransactions](docs/sdks/multichain/README.md#listalllatesttransactions) - List latest transactions for all supported EVM chains
+* [listAllLatestBlocks](docs/sdks/multichain/README.md#listalllatestblocks) - List latest blocks for all supported EVM chains
 
 #### [data.nfts](docs/sdks/nfts/README.md)
 
@@ -274,10 +280,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataEvmBalancesListErc721Balances`](docs/sdks/avacloudsdkbalances/README.md#listerc721balances) - List ERC-721 balances
 - [`dataEvmBlocksGetBlock`](docs/sdks/avacloudsdkblocks/README.md#getblock) - Get block
 - [`dataEvmBlocksGetLatestBlocks`](docs/sdks/avacloudsdkblocks/README.md#getlatestblocks) - List latest blocks
-- [`dataEvmChainsGetAddressChains`](docs/sdks/avacloudsdkchains/README.md#getaddresschains) - Get chains for address
 - [`dataEvmChainsGetChainInfo`](docs/sdks/avacloudsdkchains/README.md#getchaininfo) - Get chain information
-- [`dataEvmChainsListAllLatestBlocks`](docs/sdks/avacloudsdkchains/README.md#listalllatestblocks) - List latest blocks for all supported EVM chains
-- [`dataEvmChainsListAllLatestTransactions`](docs/sdks/avacloudsdkchains/README.md#listalllatesttransactions) - List latest transactions for all supported EVM chains
 - [`dataEvmChainsSupportedChains`](docs/sdks/avacloudsdkchains/README.md#supportedchains) - List chains
 - [`dataEvmContractsGetContractMetadata`](docs/sdks/contracts/README.md#getcontractmetadata) - Get contract metadata
 - [`dataEvmTransactionsGetDeploymentTransaction`](docs/sdks/avacloudsdktransactions/README.md#getdeploymenttransaction) - Get deployment transaction
@@ -293,6 +296,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataEvmTransactionsListTransactions`](docs/sdks/avacloudsdktransactions/README.md#listtransactions) - List transactions
 - [`dataEvmTransactionsListTransfers`](docs/sdks/avacloudsdktransactions/README.md#listtransfers) - List ERC transfers
 - [`dataHealthCheckDataHealthCheck`](docs/sdks/avacloudsdkhealthcheck/README.md#datahealthcheck) - Get the health of the service
+- [`dataMultiChainListAddressChains`](docs/sdks/multichain/README.md#listaddresschains) - Get chains for address
+- [`dataMultiChainListAllLatestBlocks`](docs/sdks/multichain/README.md#listalllatestblocks) - List latest blocks for all supported EVM chains
+- [`dataMultiChainListAllLatestTransactions`](docs/sdks/multichain/README.md#listalllatesttransactions) - List latest transactions for all supported EVM chains
 - [`dataNftsGetTokenDetails`](docs/sdks/nfts/README.md#gettokendetails) - Get token details
 - [`dataNftsListTokens`](docs/sdks/nfts/README.md#listtokens) - List tokens
 - [`dataNftsReindexNft`](docs/sdks/nfts/README.md#reindexnft) - Reindex NFT metadata
@@ -350,6 +356,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`metricsLookingGlassGetAddressesByBtcbBridged`](docs/sdks/lookingglass/README.md#getaddressesbybtcbbridged) - Get addresses by BTCb bridged balance
 - [`metricsLookingGlassGetNftHoldersByContractAddress`](docs/sdks/lookingglass/README.md#getnftholdersbycontractaddress) - Get NFT holders by contract address
 - [`metricsLookingGlassGetValidatorsByDateRange`](docs/sdks/lookingglass/README.md#getvalidatorsbydaterange) - Get addresses running validators during a given time frame
+- ~~[`dataEvmChainsGetAddressChains`](docs/sdks/avacloudsdkchains/README.md#getaddresschains)~~ - Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes. :warning: **Deprecated**
+- ~~[`dataEvmChainsListAllLatestBlocks`](docs/sdks/avacloudsdkchains/README.md#listalllatestblocks)~~ - Lists the latest blocks for all supported EVM chains. Filterable by network. :warning: **Deprecated**
+- ~~[`dataEvmChainsListAllLatestTransactions`](docs/sdks/avacloudsdkchains/README.md#listalllatesttransactions)~~ - Lists the latest transactions for all supported EVM chains. Filterable by status. :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

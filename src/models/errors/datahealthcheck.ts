@@ -13,17 +13,17 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DataHealthCheckInfo = {
   status?: string | undefined;
-  additionalProperties: { [k: string]: string };
+  additionalProperties?: { [k: string]: string };
 };
 
 export type DataHealthCheckError = {
   status?: string | undefined;
-  additionalProperties: { [k: string]: string };
+  additionalProperties?: { [k: string]: string };
 };
 
 export type DataHealthCheckDetails = {
   status?: string | undefined;
-  additionalProperties: { [k: string]: string };
+  additionalProperties?: { [k: string]: string };
 };
 
 /**
@@ -74,6 +74,7 @@ export const DataHealthCheckInfo$inboundSchema: z.ZodType<
     status: z.string().optional(),
   }).catchall(z.string()),
   "additionalProperties",
+  true,
 );
 
 /** @internal */
@@ -140,6 +141,7 @@ export const DataHealthCheckError$inboundSchema: z.ZodType<
     status: z.string().optional(),
   }).catchall(z.string()),
   "additionalProperties",
+  true,
 );
 
 /** @internal */
@@ -206,6 +208,7 @@ export const DataHealthCheckDetails$inboundSchema: z.ZodType<
     status: z.string().optional(),
   }).catchall(z.string()),
   "additionalProperties",
+  true,
 );
 
 /** @internal */

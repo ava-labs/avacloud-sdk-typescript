@@ -6,14 +6,14 @@
 import { Subnet } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Subnet = {
-  createBlockTimestamp: 2974.37,
+  createBlockTimestamp: 9615.71,
   createBlockIndex: "<value>",
   subnetId: "<id>",
   ownerAddresses: [
     "<value>",
   ],
-  threshold: 8137.98,
-  locktime: 3965.06,
+  threshold: 2317.01,
+  locktime: 9493.19,
   subnetOwnershipInfo: {
     locktime: 0,
     threshold: 1,
@@ -42,5 +42,6 @@ let value: Subnet = {
 | ~~`locktime`~~                                                                                                                                                                      | *number*                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                  | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>This field is deprecated. Use subnetOwnershipInfo instead. |
 | `subnetOwnershipInfo`                                                                                                                                                               | [components.SubnetOwnershipInfo](../../models/components/subnetownershipinfo.md)                                                                                                    | :heavy_check_mark:                                                                                                                                                                  | Latest subnet owner details for this Subnet.                                                                                                                                        |
 | `isL1`                                                                                                                                                                              | *boolean*                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                  | Whether the subnet is an L1 or not.                                                                                                                                                 |
+| `l1ConversionTransactionHash`                                                                                                                                                       | *string*                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                  | Transaction hash of ConvertSubnetToL1Tx which converted this Subnet to L1.                                                                                                          |
 | `l1ValidatorManagerDetails`                                                                                                                                                         | [components.L1ValidatorManagerDetails](../../models/components/l1validatormanagerdetails.md)                                                                                        | :heavy_minus_sign:                                                                                                                                                                  | L1 validator manager details.                                                                                                                                                       |
 | `blockchains`                                                                                                                                                                       | [components.BlockchainInfo](../../models/components/blockchaininfo.md)[]                                                                                                            | :heavy_check_mark:                                                                                                                                                                  | N/A                                                                                                                                                                                 |

@@ -7,7 +7,7 @@ The metadata indexing status of the nft.
 ```typescript
 import { NftTokenMetadataStatus } from "@avalabs/avacloud-sdk/models/components";
 
-let value: NftTokenMetadataStatus = "INVALID_TOKEN_URI";
+let value: NftTokenMetadataStatus = "INVALID_METADATA_JSON";
 ```
 
 ## Values

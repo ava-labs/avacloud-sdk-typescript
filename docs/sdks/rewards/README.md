@@ -26,7 +26,6 @@ const avaCloudSDK = new AvaCloudSDK({
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.rewards.listPendingPrimaryNetworkRewards({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
-    pageSize: 10,
     network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
     sortOrder: "asc",
@@ -60,7 +59,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 async function run() {
   const res = await dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards(avaCloudSDK, {
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
-    pageSize: 10,
     network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
     sortOrder: "asc",
@@ -127,7 +125,6 @@ const avaCloudSDK = new AvaCloudSDK({
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.rewards.listHistoricalPrimaryNetworkRewards({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
-    pageSize: 10,
     network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
     sortOrder: "asc",
@@ -162,7 +159,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 async function run() {
   const res = await dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards(avaCloudSDK, {
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
-    pageSize: 10,
     network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
     sortOrder: "asc",

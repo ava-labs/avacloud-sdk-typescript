@@ -5,6 +5,7 @@
 import { AvaCloudSDKCore } from "../core.js";
 import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -25,10 +26,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get chains for address
- *
- * @remarks
  * Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function dataEvmChainsGetAddressChains(
   client: AvaCloudSDKCore,
@@ -77,9 +77,9 @@ export async function dataEvmChainsGetAddressChains(
 
   const path = pathToFunc("/v1/chains/address/{address}")(pathParams);
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.apiKey);
   const securityInput = secConfig == null ? {} : { apiKey: secConfig };
@@ -175,7 +175,8 @@ export async function dataEvmChainsGetAddressChains(
     M.jsonErr(500, errors.InternalServerError$inboundSchema),
     M.jsonErr(502, errors.BadGateway$inboundSchema),
     M.jsonErr(503, errors.ServiceUnavailable$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

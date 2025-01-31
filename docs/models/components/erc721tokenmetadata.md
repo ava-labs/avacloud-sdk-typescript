@@ -6,7 +6,7 @@
 import { Erc721TokenMetadata } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Erc721TokenMetadata = {
-  indexStatus: "THROTTLED_TOKEN_URI",
+  indexStatus: "INVALID_TOKEN_URI_SCHEME",
 };
 ```
 

@@ -7,7 +7,7 @@ The contract call type. NATIVE_TRANSFER indicates a transfer of the native token
 ```typescript
 import { TransactionMethodType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: TransactionMethodType = "CONTRACT_CREATION";
+let value: TransactionMethodType = "NATIVE_TRANSFER";
 ```
 
 ## Values
