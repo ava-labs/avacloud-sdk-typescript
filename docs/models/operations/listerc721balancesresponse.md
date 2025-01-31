@@ -7,6 +7,23 @@ import { ListErc721BalancesResponse } from "@avalabs/avacloud-sdk/models/operati
 
 let value: ListErc721BalancesResponse = {
   result: {
+    nativeTokenBalance: {
+      name: "Wrapped AVAX",
+      symbol: "WAVAX",
+      decimals: 18,
+      logoUri:
+        "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+      chainId: "43114",
+      price: {
+        currencyCode: "usd",
+        value: 42.42,
+      },
+      balance: "2000000000000000000",
+      balanceValue: {
+        currencyCode: "usd",
+        value: 42.42,
+      },
+    },
     erc721TokenBalances: [
       {
         address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
@@ -14,7 +31,7 @@ let value: ListErc721BalancesResponse = {
         symbol: "WAVAX",
         ercType: "ERC-721",
         tokenId: "<id>",
-        tokenUri: "https://self-reliant-translation.name/",
+        tokenUri: "https://specific-colonialism.info",
         metadata: {
           indexStatus: "UNREACHABLE_TOKEN_URI",
         },

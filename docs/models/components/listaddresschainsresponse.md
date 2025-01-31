@@ -11,9 +11,10 @@ let value: ListAddressChainsResponse = {
       chainId: "<id>",
       status: "UNAVAILABLE",
       chainName: "<value>",
-      description: "indeed crazy ferret",
-      vmName: "EVM",
-      rpcUrl: "https://irresponsible-formation.org/",
+      description:
+        "gadzooks yet athwart skateboard newsstand farm bourgeoisie ah how elliptical",
+      vmName: "ETHEREUM",
+      rpcUrl: "https://that-premeditation.biz/",
       isTestnet: false,
       networkToken: {
         name: "Wrapped AVAX",

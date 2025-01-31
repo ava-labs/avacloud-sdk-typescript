@@ -11,7 +11,7 @@ let value: Erc721TokenBalance = {
   symbol: "WAVAX",
   ercType: "ERC-721",
   tokenId: "<id>",
-  tokenUri: "https://defenseless-gradient.org/",
+  tokenUri: "https://soggy-formation.name",
   metadata: {
     indexStatus: "INVALID_TOKEN_URI_SCHEME",
   },

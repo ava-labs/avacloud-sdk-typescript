@@ -6,7 +6,7 @@
 import { Erc1155TokenMetadata } from "@avalabs/avacloud-sdk/models/components";
 
 let value: Erc1155TokenMetadata = {
-  indexStatus: "UNREACHABLE_TOKEN_URI",
+  indexStatus: "INVALID_METADATA_JSON",
 };
 ```
 

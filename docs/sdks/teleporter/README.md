@@ -115,7 +115,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.teleporter.listTeleporterMessages({
-    pageSize: 10,
     sourceBlockchainId: "2D8RG4UpSXbPbvPCAWppNJyqTG2i2CAXSkTgmTBBvs7GKNZjsY",
     destinationBlockchainId: "yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp",
     to: "0x664A4Be5Af2cFc824F9C0914CbAc4703396Da2DC",
@@ -150,7 +149,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataTeleporterListTeleporterMessages(avaCloudSDK, {
-    pageSize: 10,
     sourceBlockchainId: "2D8RG4UpSXbPbvPCAWppNJyqTG2i2CAXSkTgmTBBvs7GKNZjsY",
     destinationBlockchainId: "yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp",
     to: "0x664A4Be5Af2cFc824F9C0914CbAc4703396Da2DC",
@@ -218,7 +216,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.teleporter.listTeleporterMessagesByAddress({
-    pageSize: 10,
     address: "0x8578AE7723751446B196bD5124e1bF57B40EB7Bc",
     network: "mainnet",
   });
@@ -248,7 +245,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataTeleporterListTeleporterMessagesByAddress(avaCloudSDK, {
-    pageSize: 10,
     address: "0x8578AE7723751446B196bD5124e1bF57B40EB7Bc",
     network: "mainnet",
   });

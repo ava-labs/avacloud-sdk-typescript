@@ -6,7 +6,6 @@
 import { ListTeleporterMessagesByAddressRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListTeleporterMessagesByAddressRequest = {
-  pageSize: 10,
   address: "0x8578AE7723751446B196bD5124e1bF57B40EB7Bc",
   network: "mainnet",
 };

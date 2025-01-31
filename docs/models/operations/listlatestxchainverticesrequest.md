@@ -6,7 +6,6 @@
 import { ListLatestXChainVerticesRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListLatestXChainVerticesRequest = {
-  pageSize: 10,
   blockchainId: "x-chain",
   network: "mainnet",
 };

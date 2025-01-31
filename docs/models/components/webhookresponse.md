@@ -16,12 +16,13 @@ let value: WebhookResponse = {
       "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64",
     ],
   },
-  url: "https://downright-flight.net",
+  url: "https://gullible-scale.net",
   chainId: "<id>",
   status: "inactive",
-  createdAt: 5436.78,
+  createdAt: 289.52,
   name: "<value>",
-  description: "against captain supposing fidget faithfully",
+  description:
+    "mostly aw quarrelsomely since hence weary exactly tepid gratefully whoa",
 };
 ```
 

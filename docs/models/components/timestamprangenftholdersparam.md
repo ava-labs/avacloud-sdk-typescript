@@ -9,7 +9,7 @@ let value: TimestampRangeNftHoldersParam = {
   evmChainId: "<id>",
   contractAddress: "<value>",
   startTs: 4146.62,
-  endTs: 2645.56,
+  endTs: 2645.55,
 };
 ```
 

@@ -5,7 +5,7 @@
 ```typescript
 import { TransactionStatus } from "@avalabs/avacloud-sdk/models/components";
 
-let value: TransactionStatus = "success";
+let value: TransactionStatus = "failed";
 ```
 
 ## Values

@@ -18,13 +18,12 @@ let value: ListWebhooksResponse = {
           "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64",
         ],
       },
-      url: "https://cautious-unit.biz/",
+      url: "https://severe-loyalty.com",
       chainId: "<id>",
-      status: "inactive",
-      createdAt: 583.56,
+      status: "active",
+      createdAt: 4053.73,
       name: "<value>",
-      description:
-        "huzzah print known instead improbable experience authentic onset",
+      description: "vice fuel birdbath hmph hospitalization",
     },
   ],
 };

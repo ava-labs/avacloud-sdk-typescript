@@ -7,7 +7,6 @@ import { GetUtxosByAddressesRequest } from "@avalabs/avacloud-sdk/models/operati
 
 let value: GetUtxosByAddressesRequest = {
   addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
-  pageSize: 10,
   blockchainId: "p-chain",
   network: "mainnet",
   sortOrder: "asc",

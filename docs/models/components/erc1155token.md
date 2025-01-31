@@ -9,9 +9,9 @@ let value: Erc1155Token = {
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   ercType: "ERC-1155",
   tokenId: "<id>",
-  tokenUri: "https://cheerful-peony.com/",
+  tokenUri: "https://well-groomed-poetry.biz/",
   metadata: {
-    indexStatus: "INVALID_TOKEN_URI",
+    indexStatus: "UNINDEXED",
   },
 };
 ```

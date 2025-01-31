@@ -9,7 +9,7 @@ let value: ChainRollingWindowMetricsValue = {
   lastHour: 710.36,
   lastDay: 871.29,
   lastMonth: 202.18,
-  lastYear: 8326.20,
+  lastYear: 8326.2,
   allTime: 7781.57,
 };
 ```

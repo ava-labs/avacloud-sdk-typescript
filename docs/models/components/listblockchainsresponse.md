@@ -8,7 +8,7 @@ import { ListBlockchainsResponse } from "@avalabs/avacloud-sdk/models/components
 let value: ListBlockchainsResponse = {
   blockchains: [
     {
-      createBlockTimestamp: 2230.82,
+      createBlockTimestamp: 639.55,
       createBlockNumber: "<value>",
       blockchainId: "<id>",
       vmId: "<id>",

@@ -6,7 +6,6 @@
 import { ListTransactionsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListTransactionsRequest = {
-  pageSize: 10,
   startBlock: 6479329,
   endBlock: 6479330,
   chainId: "43114",

@@ -7,9 +7,9 @@
 
 * [supportedChains](#supportedchains) - List chains
 * [getChainInfo](#getchaininfo) - Get chain information
-* [getAddressChains](#getaddresschains) - Get chains for address
-* [listAllLatestTransactions](#listalllatesttransactions) - List latest transactions for all supported EVM chains
-* [listAllLatestBlocks](#listalllatestblocks) - List latest blocks for all supported EVM chains
+* [~~getAddressChains~~](#getaddresschains) - Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes. :warning: **Deprecated**
+* [~~listAllLatestTransactions~~](#listalllatesttransactions) - Lists the latest transactions for all supported EVM chains. Filterable by status. :warning: **Deprecated**
+* [~~listAllLatestBlocks~~](#listalllatestblocks) - Lists the latest blocks for all supported EVM chains. Filterable by network. :warning: **Deprecated**
 
 ## supportedChains
 
@@ -191,9 +191,11 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## getAddressChains
+## ~~getAddressChains~~
 
 Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -280,9 +282,11 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listAllLatestTransactions
+## ~~listAllLatestTransactions~~
 
 Lists the latest transactions for all supported EVM chains. Filterable by status.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -297,7 +301,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.evm.chains.listAllLatestTransactions({
-    pageSize: 10,
     network: "mainnet",
   });
 
@@ -328,7 +331,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataEvmChainsListAllLatestTransactions(avaCloudSDK, {
-    pageSize: 10,
     network: "mainnet",
   });
 
@@ -375,9 +377,11 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listAllLatestBlocks
+## ~~listAllLatestBlocks~~
 
 Lists the latest blocks for all supported EVM chains. Filterable by network.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -392,7 +396,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.evm.chains.listAllLatestBlocks({
-    pageSize: 10,
     network: "mainnet",
   });
 
@@ -423,7 +426,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataEvmChainsListAllLatestBlocks(avaCloudSDK, {
-    pageSize: 10,
     network: "mainnet",
   });
 

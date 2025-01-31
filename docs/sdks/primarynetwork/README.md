@@ -306,7 +306,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.listBlockchains({
-    pageSize: 10,
     network: "mainnet",
     sortOrder: "asc",
   });
@@ -338,7 +337,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataPrimaryNetworkListBlockchains(avaCloudSDK, {
-    pageSize: 10,
     network: "mainnet",
     sortOrder: "asc",
   });
@@ -403,7 +401,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.listSubnets({
-    pageSize: 10,
     network: "mainnet",
     sortOrder: "asc",
   });
@@ -435,7 +432,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataPrimaryNetworkListSubnets(avaCloudSDK, {
-    pageSize: 10,
     network: "mainnet",
     sortOrder: "asc",
   });
@@ -591,7 +587,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.listValidators({
-    pageSize: 10,
     network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
     sortOrder: "asc",
@@ -634,7 +629,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataPrimaryNetworkListValidators(avaCloudSDK, {
-    pageSize: 10,
     network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
     sortOrder: "asc",
@@ -710,7 +704,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.getSingleValidatorDetails({
-    pageSize: 10,
     network: "mainnet",
     nodeId: "NodeID-111111111111111111116DBWJs",
     validationStatus: "completed",
@@ -744,7 +737,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataPrimaryNetworkGetSingleValidatorDetails(avaCloudSDK, {
-    pageSize: 10,
     network: "mainnet",
     nodeId: "NodeID-111111111111111111116DBWJs",
     validationStatus: "completed",
@@ -811,7 +803,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.listDelegators({
-    pageSize: 10,
     rewardAddresses: "P-avax1679zrp3z9mf7z4an42ddq47qzj36zv6ga20vwl,P-avax1s7kd0kfndlz6mh3l0etrrcmkg5y366k8e0s6cc",
     network: "mainnet",
     sortOrder: "asc",
@@ -846,7 +837,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataPrimaryNetworkListDelegators(avaCloudSDK, {
-    pageSize: 10,
     rewardAddresses: "P-avax1679zrp3z9mf7z4an42ddq47qzj36zv6ga20vwl,P-avax1s7kd0kfndlz6mh3l0etrrcmkg5y366k8e0s6cc",
     network: "mainnet",
     sortOrder: "asc",
@@ -914,7 +904,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.listL1Validators({
-    pageSize: 10,
     l1ValidationId: "BsSpTd1SDvdhaoYAuKJvRj1WnoRyu8mAuMZeuz9g7brGj6KhX",
     network: "mainnet",
     nodeId: "NodeID-111111111111111111116DBWJs",
@@ -948,7 +937,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataPrimaryNetworkListL1Validators(avaCloudSDK, {
-    pageSize: 10,
     l1ValidationId: "BsSpTd1SDvdhaoYAuKJvRj1WnoRyu8mAuMZeuz9g7brGj6KhX",
     network: "mainnet",
     nodeId: "NodeID-111111111111111111116DBWJs",

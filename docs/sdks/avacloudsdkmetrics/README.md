@@ -31,7 +31,6 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     timeInterval: "day",
-    pageSize: 10,
     chainId: "43114",
   });
 
@@ -66,7 +65,6 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     timeInterval: "day",
-    pageSize: 10,
     chainId: "43114",
   });
 
@@ -315,9 +313,7 @@ async function run() {
     metric: "validatorCount",
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
-    pageSize: 10,
     network: "mainnet",
-    subnetId: "11111111111111111111111111111111LpoYY",
   });
 
   for await (const page of result) {
@@ -350,9 +346,7 @@ async function run() {
     metric: "validatorCount",
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
-    pageSize: 10,
     network: "mainnet",
-    subnetId: "11111111111111111111111111111111LpoYY",
   });
 
   if (!res.ok) {

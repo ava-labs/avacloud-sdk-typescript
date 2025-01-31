@@ -12,7 +12,6 @@ let value: ListLatestPrimaryNetworkTransactionsRequest = {
   ],
   startTimestamp: 1689541049,
   endTimestamp: 1689800249,
-  pageSize: 10,
   blockchainId: "p-chain",
   network: "mainnet",
   sortOrder: "asc",

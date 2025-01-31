@@ -25,7 +25,6 @@ const avaCloudSDK = new AvaCloudSDK({
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.utxos.getUtxosByAddresses({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
-    pageSize: 10,
     blockchainId: "p-chain",
     network: "mainnet",
     sortOrder: "asc",
@@ -59,7 +58,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 async function run() {
   const res = await dataPrimaryNetworkUtxosGetUtxosByAddresses(avaCloudSDK, {
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
-    pageSize: 10,
     blockchainId: "p-chain",
     network: "mainnet",
     sortOrder: "asc",

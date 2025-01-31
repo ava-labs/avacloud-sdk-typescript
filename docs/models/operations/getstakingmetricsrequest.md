@@ -9,9 +9,7 @@ let value: GetStakingMetricsRequest = {
   metric: "validatorCount",
   startTimestamp: 1689541049,
   endTimestamp: 1689800249,
-  pageSize: 10,
   network: "mainnet",
-  subnetId: "11111111111111111111111111111111LpoYY",
 };
 ```
 

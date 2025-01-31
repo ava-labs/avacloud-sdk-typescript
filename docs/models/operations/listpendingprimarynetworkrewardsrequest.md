@@ -7,7 +7,6 @@ import { ListPendingPrimaryNetworkRewardsRequest } from "@avalabs/avacloud-sdk/m
 
 let value: ListPendingPrimaryNetworkRewardsRequest = {
   addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
-  pageSize: 10,
   network: "mainnet",
   nodeIds:
     "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",

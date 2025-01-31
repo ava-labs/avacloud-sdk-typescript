@@ -33,7 +33,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.webhooks.listWebhooks({
-    pageSize: 10,
     status: "active",
   });
 
@@ -64,7 +63,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataWebhooksListWebhooks(avaCloudSDK, {
-    pageSize: 10,
     status: "active",
   });
 
@@ -128,8 +126,8 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.webhooks.createWebhook({
-    url: "https://unrealistic-well-being.name",
-    chainId: "<value>",
+    url: "https://woeful-yin.biz",
+    chainId: "<id>",
     eventType: "address_activity",
     metadata: {
       addresses: [
@@ -166,8 +164,8 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataWebhooksCreateWebhook(avaCloudSDK, {
-    url: "https://unrealistic-well-being.name",
-    chainId: "<value>",
+    url: "https://woeful-yin.biz",
+    chainId: "<id>",
     eventType: "address_activity",
     metadata: {
       addresses: [
@@ -674,7 +672,6 @@ const avaCloudSDK = new AvaCloudSDK({
 
 async function run() {
   const result = await avaCloudSDK.data.webhooks.getAddressesFromWebhook({
-    pageSize: 10,
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 
@@ -705,7 +702,6 @@ const avaCloudSDK = new AvaCloudSDKCore({
 
 async function run() {
   const res = await dataWebhooksGetAddressesFromWebhook(avaCloudSDK, {
-    pageSize: 10,
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 

@@ -6,7 +6,6 @@
 import { ListAllLatestTransactionsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListAllLatestTransactionsRequest = {
-  pageSize: 10,
   network: "mainnet",
 };
 ```

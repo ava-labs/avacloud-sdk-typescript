@@ -12,9 +12,9 @@ const value: components.Erc721TokenBalance = {
   symbol: "WAVAX",
   ercType: "ERC-721",
   tokenId: "<id>",
-  tokenUri: "https://bare-bar.org/",
+  tokenUri: "https://dual-tribe.biz/",
   metadata: {
-    indexStatus: "INVALID_METADATA_JSON",
+    indexStatus: "INDEXED",
   },
   ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   chainId: "43114",
@@ -28,9 +28,9 @@ const value: components.Erc1155TokenBalance = {
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   ercType: "ERC-1155",
   tokenId: "<id>",
-  tokenUri: "https://rectangular-litter.biz",
+  tokenUri: "https://curly-nightlife.com",
   metadata: {
-    indexStatus: "UNINDEXED",
+    indexStatus: "INVALID_METADATA_JSON",
   },
   chainId: "43114",
   balance: "2000000000000000000",

@@ -8,7 +8,6 @@ import { ListLatestPrimaryNetworkBlocksRequest } from "@avalabs/avacloud-sdk/mod
 let value: ListLatestPrimaryNetworkBlocksRequest = {
   startTimestamp: 1689541049,
   endTimestamp: 1689800249,
-  pageSize: 10,
   blockchainId: "p-chain",
   network: "mainnet",
 };

@@ -6,7 +6,6 @@
 import { ListLatestTransactionsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListLatestTransactionsRequest = {
-  pageSize: 10,
   chainId: "43114",
 };
 ```

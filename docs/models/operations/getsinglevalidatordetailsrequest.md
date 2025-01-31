@@ -6,7 +6,6 @@
 import { GetSingleValidatorDetailsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: GetSingleValidatorDetailsRequest = {
-  pageSize: 10,
   network: "mainnet",
   nodeId: "NodeID-111111111111111111116DBWJs",
   validationStatus: "completed",
