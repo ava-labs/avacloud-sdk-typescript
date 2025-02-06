@@ -11,9 +11,9 @@ let value: Erc721Token = {
   symbol: "WAVAX",
   ercType: "ERC-721",
   tokenId: "<id>",
-  tokenUri: "https://oval-sonata.name/",
+  tokenUri: "https://homely-couch.info/",
   metadata: {
-    indexStatus: "INDEXED",
+    indexStatus: "UNKNOWN",
   },
   ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
 };

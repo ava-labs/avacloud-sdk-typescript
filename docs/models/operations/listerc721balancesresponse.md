@@ -31,9 +31,9 @@ let value: ListErc721BalancesResponse = {
         symbol: "WAVAX",
         ercType: "ERC-721",
         tokenId: "<id>",
-        tokenUri: "https://specific-colonialism.info",
+        tokenUri: "https://acceptable-council.org",
         metadata: {
-          indexStatus: "UNREACHABLE_TOKEN_URI",
+          indexStatus: "INVALID_TOKEN_URI_SCHEME",
         },
         ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
         chainId: "43114",

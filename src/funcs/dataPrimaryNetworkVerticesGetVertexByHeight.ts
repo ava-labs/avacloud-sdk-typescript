@@ -9,7 +9,6 @@ import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
-import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
   ConnectionError,
@@ -107,17 +106,13 @@ export async function dataPrimaryNetworkVerticesGetVertexByHeight(
     Accept: "application/json",
   }));
 
-  const secConfig = await extractSecurity(client._options.apiKey);
-  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
-
   const context = {
     operationID: "getVertexByHeight",
     oAuth2Scopes: [],
 
-    resolvedSecurity: requestSecurity,
+    resolvedSecurity: null,
 
-    securitySource: client._options.apiKey,
+    securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
       || {
@@ -135,7 +130,6 @@ export async function dataPrimaryNetworkVerticesGetVertexByHeight(
   };
 
   const requestRes = client._createRequest(context, {
-    security: requestSecurity,
     method: "GET",
     baseURL: baseURL,
     path: path,
