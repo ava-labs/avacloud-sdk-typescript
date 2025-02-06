@@ -3,12 +3,11 @@
  */
 
 import { AvaCloudSDKCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
-import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import * as components from "../models/components/index.js";
 import {
@@ -21,23 +20,23 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetRpcUsageMetricsServerList } from "../models/operations/getrpcusagemetrics.js";
 import * as operations from "../models/operations/index.js";
-import { ListAddressChainsServerList } from "../models/operations/listaddresschains.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get chains for address
+ * Get usage metrics for the Subnet RPC
  *
  * @remarks
- * Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
+ * Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
  */
-export async function dataMultiChainListAddressChains(
+export async function dataUsageMetricsGetRpcUsageMetrics(
   client: AvaCloudSDKCore,
-  request: operations.ListAddressChainsRequest,
+  request: operations.GetRpcUsageMetricsRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.ListAddressChainsResponse,
+    components.SubnetRpcUsageMetricsResponseDTO,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -57,7 +56,7 @@ export async function dataMultiChainListAddressChains(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.ListAddressChainsRequest$outboundSchema.parse(value),
+    (value) => operations.GetRpcUsageMetricsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -67,34 +66,34 @@ export async function dataMultiChainListAddressChains(
   const body = null;
 
   const baseURL = options?.serverURL
-    || pathToFunc(ListAddressChainsServerList[0], {
+    || pathToFunc(GetRpcUsageMetricsServerList[0], {
       charEncoding: "percent",
     })();
 
-  const pathParams = {
-    address: encodeSimple("address", payload.address, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
+  const path = pathToFunc("/v1/rpcUsageMetrics")();
 
-  const path = pathToFunc("/v1/address/{address}")(pathParams);
+  const query = encodeFormQuery({
+    "chainId": payload.chainId,
+    "endTimestamp": payload.endTimestamp,
+    "groupBy": payload.groupBy,
+    "responseCode": payload.responseCode,
+    "rlBypassApiToken": payload.rlBypassApiToken,
+    "rpcMethod": payload.rpcMethod,
+    "startTimestamp": payload.startTimestamp,
+    "timeInterval": payload.timeInterval,
+  });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
   }));
 
-  const secConfig = await extractSecurity(client._options.apiKey);
-  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
-
   const context = {
-    operationID: "listAddressChains",
+    operationID: "getRpcUsageMetrics",
     oAuth2Scopes: [],
 
-    resolvedSecurity: requestSecurity,
+    resolvedSecurity: null,
 
-    securitySource: client._options.apiKey,
+    securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
       || {
@@ -112,11 +111,11 @@ export async function dataMultiChainListAddressChains(
   };
 
   const requestRes = client._createRequest(context, {
-    security: requestSecurity,
     method: "GET",
     baseURL: baseURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
@@ -152,7 +151,7 @@ export async function dataMultiChainListAddressChains(
   };
 
   const [result] = await M.match<
-    components.ListAddressChainsResponse,
+    components.SubnetRpcUsageMetricsResponseDTO,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -169,7 +168,7 @@ export async function dataMultiChainListAddressChains(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ListAddressChainsResponse$inboundSchema),
+    M.json(200, components.SubnetRpcUsageMetricsResponseDTO$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

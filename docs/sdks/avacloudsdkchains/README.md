@@ -5,11 +5,105 @@
 
 ### Available Operations
 
+* [listAddressChains](#listaddresschains) - List all chains associated with a given address
 * [supportedChains](#supportedchains) - List chains
 * [getChainInfo](#getchaininfo) - Get chain information
-* [~~getAddressChains~~](#getaddresschains) - Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes. :warning: **Deprecated**
-* [~~listAllLatestTransactions~~](#listalllatesttransactions) - Lists the latest transactions for all supported EVM chains. Filterable by status. :warning: **Deprecated**
-* [~~listAllLatestBlocks~~](#listalllatestblocks) - Lists the latest blocks for all supported EVM chains. Filterable by network. :warning: **Deprecated**
+* [~~getAddressChains~~](#getaddresschains) - **[Deprecated]** Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/address/:address/chains endpoint instead** . :warning: **Deprecated**
+* [~~listAllLatestTransactions~~](#listalllatesttransactions) - **[Deprecated]** Lists the latest transactions for all supported EVM chains. Filterable by status.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/transactions endpoint instead** . :warning: **Deprecated**
+* [~~listAllLatestBlocks~~](#listalllatestblocks) - **[Deprecated]** Lists the latest blocks for all supported EVM chains. Filterable by network.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/blocks endpoint instead** . :warning: **Deprecated**
+
+## listAddressChains
+
+Lists the chains where the specified address has  participated in transactions or ERC token transfers,  either as a sender or receiver. The data is refreshed every 15  minutes.
+
+### Example Usage
+
+```typescript
+import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
+
+const avaCloudSDK = new AvaCloudSDK({
+  chainId: "43114",
+  network: "mainnet",
+});
+
+async function run() {
+  const result = await avaCloudSDK.data.evm.chains.listAddressChains({
+    address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
+import { dataEvmChainsListAddressChains } from "@avalabs/avacloud-sdk/funcs/dataEvmChainsListAddressChains.js";
+
+// Use `AvaCloudSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const avaCloudSDK = new AvaCloudSDKCore({
+  chainId: "43114",
+  network: "mainnet",
+});
+
+async function run() {
+  const res = await dataEvmChainsListAddressChains(avaCloudSDK, {
+    address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListAddressChainsRequest](../../models/operations/listaddresschainsrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
+
+### Response
+
+**Promise\<[components.ListAddressChainsResponse](../../models/components/listaddresschainsresponse.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.TooManyRequests     | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.BadGateway          | 502                        | application/json           |
+| errors.ServiceUnavailable  | 503                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## supportedChains
 
@@ -21,7 +115,6 @@ Lists the supported EVM-compatible chains. Filterable by network.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -50,7 +143,6 @@ import { dataEvmChainsSupportedChains } from "@avalabs/avacloud-sdk/funcs/dataEv
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -112,7 +204,6 @@ Gets chain information for the EVM-compatible chain if supported by the api.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -140,7 +231,6 @@ import { dataEvmChainsGetChainInfo } from "@avalabs/avacloud-sdk/funcs/dataEvmCh
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -193,7 +283,9 @@ run();
 
 ## ~~getAddressChains~~
 
-Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
+**[Deprecated]** Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/address/:address/chains endpoint instead** .
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
@@ -203,7 +295,6 @@ Gets a list of all chains where the address was either a sender or receiver in a
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -231,7 +322,6 @@ import { dataEvmChainsGetAddressChains } from "@avalabs/avacloud-sdk/funcs/dataE
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -284,7 +374,9 @@ run();
 
 ## ~~listAllLatestTransactions~~
 
-Lists the latest transactions for all supported EVM chains. Filterable by status.
+**[Deprecated]** Lists the latest transactions for all supported EVM chains. Filterable by status.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/transactions endpoint instead** .
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
@@ -294,7 +386,6 @@ Lists the latest transactions for all supported EVM chains. Filterable by status
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -324,7 +415,6 @@ import { dataEvmChainsListAllLatestTransactions } from "@avalabs/avacloud-sdk/fu
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -379,7 +469,9 @@ run();
 
 ## ~~listAllLatestBlocks~~
 
-Lists the latest blocks for all supported EVM chains. Filterable by network.
+**[Deprecated]** Lists the latest blocks for all supported EVM chains. Filterable by network.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/blocks endpoint instead** .
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
@@ -389,7 +481,6 @@ Lists the latest blocks for all supported EVM chains. Filterable by network.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -419,7 +510,6 @@ import { dataEvmChainsListAllLatestBlocks } from "@avalabs/avacloud-sdk/funcs/da
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });

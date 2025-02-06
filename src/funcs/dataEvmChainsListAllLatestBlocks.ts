@@ -9,7 +9,6 @@ import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
-import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
   ConnectionError,
@@ -32,7 +31,9 @@ import {
 } from "../types/operations.js";
 
 /**
- * Lists the latest blocks for all supported EVM chains. Filterable by network.
+ * **[Deprecated]** Lists the latest blocks for all supported EVM chains. Filterable by network.
+ *
+ * ⚠️ **This operation will be removed in a future release.  Please use /v1/blocks endpoint instead** .
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
@@ -92,17 +93,13 @@ export async function dataEvmChainsListAllLatestBlocks(
     Accept: "application/json",
   }));
 
-  const secConfig = await extractSecurity(client._options.apiKey);
-  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
-
   const context = {
     operationID: "listAllLatestBlocks",
     oAuth2Scopes: [],
 
-    resolvedSecurity: requestSecurity,
+    resolvedSecurity: null,
 
-    securitySource: client._options.apiKey,
+    securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
       || {
@@ -120,7 +117,6 @@ export async function dataEvmChainsListAllLatestBlocks(
   };
 
   const requestRes = client._createRequest(context, {
-    security: requestSecurity,
     method: "GET",
     baseURL: baseURL,
     path: path,

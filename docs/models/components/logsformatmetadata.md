@@ -6,8 +6,8 @@
 import { LogsFormatMetadata } from "@avalabs/avacloud-sdk/models/components";
 
 let value: LogsFormatMetadata = {
-  ipAddress: "acef:883f:ec2a:c53c:1a2a:f9c2:588e:7fe8",
-  host: "intrepid-obesity.com",
+  ipAddress: "d89b:741d:e273:2d1f:2cc8:7a6e:badc:cf0b",
+  host: "edible-teriyaki.com",
   userAgent: "<value>",
 };
 ```
