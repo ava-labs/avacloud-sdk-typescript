@@ -58,7 +58,6 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -96,47 +95,50 @@ run();
 * [listErc1155Balances](docs/sdks/avacloudsdkbalances/README.md#listerc1155balances) - List ERC-1155 balances
 * [listCollectibleBalances](docs/sdks/avacloudsdkbalances/README.md#listcollectiblebalances) - List collectible (ERC-721/ERC-1155) balances
 
-#### [data.evm.blocks](docs/sdks/avacloudsdkblocks/README.md)
+#### [data.evm.blocks](docs/sdks/blocks/README.md)
 
-* [getLatestBlocks](docs/sdks/avacloudsdkblocks/README.md#getlatestblocks) - List latest blocks
-* [getBlock](docs/sdks/avacloudsdkblocks/README.md#getblock) - Get block
+* [listLatestBlocksAllChains](docs/sdks/blocks/README.md#listlatestblocksallchains) - List latest blocks across all supported EVM chains
+* [getLatestBlocks](docs/sdks/blocks/README.md#getlatestblocks) - List latest blocks
+* [getBlock](docs/sdks/blocks/README.md#getblock) - Get block
 
 #### [data.evm.chains](docs/sdks/avacloudsdkchains/README.md)
 
+* [listAddressChains](docs/sdks/avacloudsdkchains/README.md#listaddresschains) - List all chains associated with a given address
 * [supportedChains](docs/sdks/avacloudsdkchains/README.md#supportedchains) - List chains
 * [getChainInfo](docs/sdks/avacloudsdkchains/README.md#getchaininfo) - Get chain information
-* [~~getAddressChains~~](docs/sdks/avacloudsdkchains/README.md#getaddresschains) - Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes. :warning: **Deprecated**
-* [~~listAllLatestTransactions~~](docs/sdks/avacloudsdkchains/README.md#listalllatesttransactions) - Lists the latest transactions for all supported EVM chains. Filterable by status. :warning: **Deprecated**
-* [~~listAllLatestBlocks~~](docs/sdks/avacloudsdkchains/README.md#listalllatestblocks) - Lists the latest blocks for all supported EVM chains. Filterable by network. :warning: **Deprecated**
+* [~~getAddressChains~~](docs/sdks/avacloudsdkchains/README.md#getaddresschains) - **[Deprecated]** Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/address/:address/chains endpoint instead** . :warning: **Deprecated**
+* [~~listAllLatestTransactions~~](docs/sdks/avacloudsdkchains/README.md#listalllatesttransactions) - **[Deprecated]** Lists the latest transactions for all supported EVM chains. Filterable by status.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/transactions endpoint instead** . :warning: **Deprecated**
+* [~~listAllLatestBlocks~~](docs/sdks/avacloudsdkchains/README.md#listalllatestblocks) - **[Deprecated]** Lists the latest blocks for all supported EVM chains. Filterable by network.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/blocks endpoint instead** . :warning: **Deprecated**
 
 #### [data.evm.contracts](docs/sdks/contracts/README.md)
 
 * [getContractMetadata](docs/sdks/contracts/README.md#getcontractmetadata) - Get contract metadata
 
-#### [data.evm.transactions](docs/sdks/avacloudsdktransactions/README.md)
+#### [data.evm.transactions](docs/sdks/transactions/README.md)
 
-* [getDeploymentTransaction](docs/sdks/avacloudsdktransactions/README.md#getdeploymenttransaction) - Get deployment transaction
-* [listContractDeployments](docs/sdks/avacloudsdktransactions/README.md#listcontractdeployments) - List deployed contracts
-* [listTransfers](docs/sdks/avacloudsdktransactions/README.md#listtransfers) - List ERC transfers
-* [listTransactions](docs/sdks/avacloudsdktransactions/README.md#listtransactions) - List transactions
-* [listNativeTransactions](docs/sdks/avacloudsdktransactions/README.md#listnativetransactions) - List native transactions
-* [listErc20Transactions](docs/sdks/avacloudsdktransactions/README.md#listerc20transactions) - List ERC-20 transfers
-* [listErc721Transactions](docs/sdks/avacloudsdktransactions/README.md#listerc721transactions) - List ERC-721 transfers
-* [listErc1155Transactions](docs/sdks/avacloudsdktransactions/README.md#listerc1155transactions) - List ERC-1155 transfers
-* [listInternalTransactions](docs/sdks/avacloudsdktransactions/README.md#listinternaltransactions) - List internal transactions
-* [getTransaction](docs/sdks/avacloudsdktransactions/README.md#gettransaction) - Get transaction
-* [getTransactionsForBlock](docs/sdks/avacloudsdktransactions/README.md#gettransactionsforblock) - List transactions for a block
-* [listLatestTransactions](docs/sdks/avacloudsdktransactions/README.md#listlatesttransactions) - List latest transactions
+* [listLatestTransactionsAllChains](docs/sdks/transactions/README.md#listlatesttransactionsallchains) - List the latest transactions across all supported EVM chains
+* [getDeploymentTransaction](docs/sdks/transactions/README.md#getdeploymenttransaction) - Get deployment transaction
+* [listContractDeployments](docs/sdks/transactions/README.md#listcontractdeployments) - List deployed contracts
+* [listTransfers](docs/sdks/transactions/README.md#listtransfers) - List ERC transfers
+* [listTransactions](docs/sdks/transactions/README.md#listtransactions) - List transactions
+* [listNativeTransactions](docs/sdks/transactions/README.md#listnativetransactions) - List native transactions
+* [listErc20Transactions](docs/sdks/transactions/README.md#listerc20transactions) - List ERC-20 transfers
+* [listErc721Transactions](docs/sdks/transactions/README.md#listerc721transactions) - List ERC-721 transfers
+* [listErc1155Transactions](docs/sdks/transactions/README.md#listerc1155transactions) - List ERC-1155 transfers
+* [listInternalTransactions](docs/sdks/transactions/README.md#listinternaltransactions) - List internal transactions
+* [getTransaction](docs/sdks/transactions/README.md#gettransaction) - Get transaction
+* [getTransactionsForBlock](docs/sdks/transactions/README.md#gettransactionsforblock) - List transactions for a block
+* [listLatestTransactions](docs/sdks/transactions/README.md#listlatesttransactions) - List latest transactions
 
 #### [data.healthCheck](docs/sdks/avacloudsdkhealthcheck/README.md)
 
 * [dataHealthCheck](docs/sdks/avacloudsdkhealthcheck/README.md#datahealthcheck) - Get the health of the service
-
-#### [data.multiChain](docs/sdks/multichain/README.md)
-
-* [listAddressChains](docs/sdks/multichain/README.md#listaddresschains) - Get chains for address
-* [listAllLatestTransactions](docs/sdks/multichain/README.md#listalllatesttransactions) - List latest transactions for all supported EVM chains
-* [listAllLatestBlocks](docs/sdks/multichain/README.md#listalllatestblocks) - List latest blocks for all supported EVM chains
 
 #### [data.nfts](docs/sdks/nfts/README.md)
 
@@ -166,23 +168,23 @@ run();
 
 * [getBalancesByAddresses](docs/sdks/balances/README.md#getbalancesbyaddresses) - Get balances
 
-#### [data.primaryNetwork.blocks](docs/sdks/blocks/README.md)
+#### [data.primaryNetwork.blocks](docs/sdks/avacloudsdkblocks/README.md)
 
-* [getBlockById](docs/sdks/blocks/README.md#getblockbyid) - Get block
-* [listPrimaryNetworkBlocksByNodeId](docs/sdks/blocks/README.md#listprimarynetworkblocksbynodeid) - List blocks proposed by node
-* [listLatestPrimaryNetworkBlocks](docs/sdks/blocks/README.md#listlatestprimarynetworkblocks) - List latest blocks
+* [getBlockById](docs/sdks/avacloudsdkblocks/README.md#getblockbyid) - Get block
+* [listPrimaryNetworkBlocksByNodeId](docs/sdks/avacloudsdkblocks/README.md#listprimarynetworkblocksbynodeid) - List blocks proposed by node
+* [listLatestPrimaryNetworkBlocks](docs/sdks/avacloudsdkblocks/README.md#listlatestprimarynetworkblocks) - List latest blocks
 
 #### [data.primaryNetwork.rewards](docs/sdks/rewards/README.md)
 
 * [listPendingPrimaryNetworkRewards](docs/sdks/rewards/README.md#listpendingprimarynetworkrewards) - List pending rewards
 * [listHistoricalPrimaryNetworkRewards](docs/sdks/rewards/README.md#listhistoricalprimarynetworkrewards) - List historical rewards
 
-#### [data.primaryNetwork.transactions](docs/sdks/transactions/README.md)
+#### [data.primaryNetwork.transactions](docs/sdks/avacloudsdktransactions/README.md)
 
-* [getTxByHash](docs/sdks/transactions/README.md#gettxbyhash) - Get transaction
-* [listLatestPrimaryNetworkTransactions](docs/sdks/transactions/README.md#listlatestprimarynetworktransactions) - List latest transactions
-* [listActivePrimaryNetworkStakingTransactions](docs/sdks/transactions/README.md#listactiveprimarynetworkstakingtransactions) - List staking transactions
-* [listAssetTransactions](docs/sdks/transactions/README.md#listassettransactions) - List asset transactions
+* [getTxByHash](docs/sdks/avacloudsdktransactions/README.md#gettxbyhash) - Get transaction
+* [listLatestPrimaryNetworkTransactions](docs/sdks/avacloudsdktransactions/README.md#listlatestprimarynetworktransactions) - List latest transactions
+* [listActivePrimaryNetworkStakingTransactions](docs/sdks/avacloudsdktransactions/README.md#listactiveprimarynetworkstakingtransactions) - List staking transactions
+* [listAssetTransactions](docs/sdks/avacloudsdktransactions/README.md#listassettransactions) - List asset transactions
 
 #### [data.primaryNetwork.utxos](docs/sdks/utxos/README.md)
 
@@ -208,6 +210,7 @@ run();
 
 * [getApiUsageMetrics](docs/sdks/usagemetrics/README.md#getapiusagemetrics) - Get usage metrics for the Data API
 * [getApiLogs](docs/sdks/usagemetrics/README.md#getapilogs) - Get logs for requests made by client
+* [getRpcUsageMetrics](docs/sdks/usagemetrics/README.md#getrpcusagemetrics) - Get usage metrics for the Subnet RPC
 
 #### [data.webhooks](docs/sdks/webhooks/README.md)
 
@@ -278,36 +281,36 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataEvmBalancesListErc1155Balances`](docs/sdks/avacloudsdkbalances/README.md#listerc1155balances) - List ERC-1155 balances
 - [`dataEvmBalancesListErc20Balances`](docs/sdks/avacloudsdkbalances/README.md#listerc20balances) - List ERC-20 balances
 - [`dataEvmBalancesListErc721Balances`](docs/sdks/avacloudsdkbalances/README.md#listerc721balances) - List ERC-721 balances
-- [`dataEvmBlocksGetBlock`](docs/sdks/avacloudsdkblocks/README.md#getblock) - Get block
-- [`dataEvmBlocksGetLatestBlocks`](docs/sdks/avacloudsdkblocks/README.md#getlatestblocks) - List latest blocks
+- [`dataEvmBlocksGetBlock`](docs/sdks/blocks/README.md#getblock) - Get block
+- [`dataEvmBlocksGetLatestBlocks`](docs/sdks/blocks/README.md#getlatestblocks) - List latest blocks
+- [`dataEvmBlocksListLatestBlocksAllChains`](docs/sdks/blocks/README.md#listlatestblocksallchains) - List latest blocks across all supported EVM chains
 - [`dataEvmChainsGetChainInfo`](docs/sdks/avacloudsdkchains/README.md#getchaininfo) - Get chain information
+- [`dataEvmChainsListAddressChains`](docs/sdks/avacloudsdkchains/README.md#listaddresschains) - List all chains associated with a given address
 - [`dataEvmChainsSupportedChains`](docs/sdks/avacloudsdkchains/README.md#supportedchains) - List chains
 - [`dataEvmContractsGetContractMetadata`](docs/sdks/contracts/README.md#getcontractmetadata) - Get contract metadata
-- [`dataEvmTransactionsGetDeploymentTransaction`](docs/sdks/avacloudsdktransactions/README.md#getdeploymenttransaction) - Get deployment transaction
-- [`dataEvmTransactionsGetTransaction`](docs/sdks/avacloudsdktransactions/README.md#gettransaction) - Get transaction
-- [`dataEvmTransactionsGetTransactionsForBlock`](docs/sdks/avacloudsdktransactions/README.md#gettransactionsforblock) - List transactions for a block
-- [`dataEvmTransactionsListContractDeployments`](docs/sdks/avacloudsdktransactions/README.md#listcontractdeployments) - List deployed contracts
-- [`dataEvmTransactionsListErc1155Transactions`](docs/sdks/avacloudsdktransactions/README.md#listerc1155transactions) - List ERC-1155 transfers
-- [`dataEvmTransactionsListErc20Transactions`](docs/sdks/avacloudsdktransactions/README.md#listerc20transactions) - List ERC-20 transfers
-- [`dataEvmTransactionsListErc721Transactions`](docs/sdks/avacloudsdktransactions/README.md#listerc721transactions) - List ERC-721 transfers
-- [`dataEvmTransactionsListInternalTransactions`](docs/sdks/avacloudsdktransactions/README.md#listinternaltransactions) - List internal transactions
-- [`dataEvmTransactionsListLatestTransactions`](docs/sdks/avacloudsdktransactions/README.md#listlatesttransactions) - List latest transactions
-- [`dataEvmTransactionsListNativeTransactions`](docs/sdks/avacloudsdktransactions/README.md#listnativetransactions) - List native transactions
-- [`dataEvmTransactionsListTransactions`](docs/sdks/avacloudsdktransactions/README.md#listtransactions) - List transactions
-- [`dataEvmTransactionsListTransfers`](docs/sdks/avacloudsdktransactions/README.md#listtransfers) - List ERC transfers
+- [`dataEvmTransactionsGetDeploymentTransaction`](docs/sdks/transactions/README.md#getdeploymenttransaction) - Get deployment transaction
+- [`dataEvmTransactionsGetTransaction`](docs/sdks/transactions/README.md#gettransaction) - Get transaction
+- [`dataEvmTransactionsGetTransactionsForBlock`](docs/sdks/transactions/README.md#gettransactionsforblock) - List transactions for a block
+- [`dataEvmTransactionsListContractDeployments`](docs/sdks/transactions/README.md#listcontractdeployments) - List deployed contracts
+- [`dataEvmTransactionsListErc1155Transactions`](docs/sdks/transactions/README.md#listerc1155transactions) - List ERC-1155 transfers
+- [`dataEvmTransactionsListErc20Transactions`](docs/sdks/transactions/README.md#listerc20transactions) - List ERC-20 transfers
+- [`dataEvmTransactionsListErc721Transactions`](docs/sdks/transactions/README.md#listerc721transactions) - List ERC-721 transfers
+- [`dataEvmTransactionsListInternalTransactions`](docs/sdks/transactions/README.md#listinternaltransactions) - List internal transactions
+- [`dataEvmTransactionsListLatestTransactions`](docs/sdks/transactions/README.md#listlatesttransactions) - List latest transactions
+- [`dataEvmTransactionsListLatestTransactionsAllChains`](docs/sdks/transactions/README.md#listlatesttransactionsallchains) - List the latest transactions across all supported EVM chains
+- [`dataEvmTransactionsListNativeTransactions`](docs/sdks/transactions/README.md#listnativetransactions) - List native transactions
+- [`dataEvmTransactionsListTransactions`](docs/sdks/transactions/README.md#listtransactions) - List transactions
+- [`dataEvmTransactionsListTransfers`](docs/sdks/transactions/README.md#listtransfers) - List ERC transfers
 - [`dataHealthCheckDataHealthCheck`](docs/sdks/avacloudsdkhealthcheck/README.md#datahealthcheck) - Get the health of the service
-- [`dataMultiChainListAddressChains`](docs/sdks/multichain/README.md#listaddresschains) - Get chains for address
-- [`dataMultiChainListAllLatestBlocks`](docs/sdks/multichain/README.md#listalllatestblocks) - List latest blocks for all supported EVM chains
-- [`dataMultiChainListAllLatestTransactions`](docs/sdks/multichain/README.md#listalllatesttransactions) - List latest transactions for all supported EVM chains
 - [`dataNftsGetTokenDetails`](docs/sdks/nfts/README.md#gettokendetails) - Get token details
 - [`dataNftsListTokens`](docs/sdks/nfts/README.md#listtokens) - List tokens
 - [`dataNftsReindexNft`](docs/sdks/nfts/README.md#reindexnft) - Reindex NFT metadata
 - [`dataOperationsGetOperationResult`](docs/sdks/operations/README.md#getoperationresult) - Get operation
 - [`dataOperationsPostTransactionExportJob`](docs/sdks/operations/README.md#posttransactionexportjob) - Create transaction export operation
 - [`dataPrimaryNetworkBalancesGetBalancesByAddresses`](docs/sdks/balances/README.md#getbalancesbyaddresses) - Get balances
-- [`dataPrimaryNetworkBlocksGetBlockById`](docs/sdks/blocks/README.md#getblockbyid) - Get block
-- [`dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks`](docs/sdks/blocks/README.md#listlatestprimarynetworkblocks) - List latest blocks
-- [`dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId`](docs/sdks/blocks/README.md#listprimarynetworkblocksbynodeid) - List blocks proposed by node
+- [`dataPrimaryNetworkBlocksGetBlockById`](docs/sdks/avacloudsdkblocks/README.md#getblockbyid) - Get block
+- [`dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks`](docs/sdks/avacloudsdkblocks/README.md#listlatestprimarynetworkblocks) - List latest blocks
+- [`dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId`](docs/sdks/avacloudsdkblocks/README.md#listprimarynetworkblocksbynodeid) - List blocks proposed by node
 - [`dataPrimaryNetworkGetAssetDetails`](docs/sdks/primarynetwork/README.md#getassetdetails) - Get asset details
 - [`dataPrimaryNetworkGetChainIdsForAddresses`](docs/sdks/primarynetwork/README.md#getchainidsforaddresses) - Get chain interactions for addresses
 - [`dataPrimaryNetworkGetNetworkDetails`](docs/sdks/primarynetwork/README.md#getnetworkdetails) - Get network details
@@ -320,10 +323,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataPrimaryNetworkListValidators`](docs/sdks/primarynetwork/README.md#listvalidators) - List validators
 - [`dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards`](docs/sdks/rewards/README.md#listhistoricalprimarynetworkrewards) - List historical rewards
 - [`dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards`](docs/sdks/rewards/README.md#listpendingprimarynetworkrewards) - List pending rewards
-- [`dataPrimaryNetworkTransactionsGetTxByHash`](docs/sdks/transactions/README.md#gettxbyhash) - Get transaction
-- [`dataPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions`](docs/sdks/transactions/README.md#listactiveprimarynetworkstakingtransactions) - List staking transactions
-- [`dataPrimaryNetworkTransactionsListAssetTransactions`](docs/sdks/transactions/README.md#listassettransactions) - List asset transactions
-- [`dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions`](docs/sdks/transactions/README.md#listlatestprimarynetworktransactions) - List latest transactions
+- [`dataPrimaryNetworkTransactionsGetTxByHash`](docs/sdks/avacloudsdktransactions/README.md#gettxbyhash) - Get transaction
+- [`dataPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions`](docs/sdks/avacloudsdktransactions/README.md#listactiveprimarynetworkstakingtransactions) - List staking transactions
+- [`dataPrimaryNetworkTransactionsListAssetTransactions`](docs/sdks/avacloudsdktransactions/README.md#listassettransactions) - List asset transactions
+- [`dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions`](docs/sdks/avacloudsdktransactions/README.md#listlatestprimarynetworktransactions) - List latest transactions
 - [`dataPrimaryNetworkUtxosGetUtxosByAddresses`](docs/sdks/utxos/README.md#getutxosbyaddresses) - List UTXOs
 - [`dataPrimaryNetworkVerticesGetVertexByHash`](docs/sdks/vertices/README.md#getvertexbyhash) - Get vertex
 - [`dataPrimaryNetworkVerticesGetVertexByHeight`](docs/sdks/vertices/README.md#getvertexbyheight) - List vertices by height
@@ -334,6 +337,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataTeleporterListTeleporterMessagesByAddress`](docs/sdks/teleporter/README.md#listteleportermessagesbyaddress) - List teleporter messages by address
 - [`dataUsageMetricsGetApiLogs`](docs/sdks/usagemetrics/README.md#getapilogs) - Get logs for requests made by client
 - [`dataUsageMetricsGetApiUsageMetrics`](docs/sdks/usagemetrics/README.md#getapiusagemetrics) - Get usage metrics for the Data API
+- [`dataUsageMetricsGetRpcUsageMetrics`](docs/sdks/usagemetrics/README.md#getrpcusagemetrics) - Get usage metrics for the Subnet RPC
 - [`dataWebhooksAddAddressesToWebhook`](docs/sdks/webhooks/README.md#addaddressestowebhook) - Add addresses to webhook
 - [`dataWebhooksCreateWebhook`](docs/sdks/webhooks/README.md#createwebhook) - Create a webhook
 - [`dataWebhooksDeactivateWebhook`](docs/sdks/webhooks/README.md#deactivatewebhook) - Deactivate a webhook
@@ -356,9 +360,15 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`metricsLookingGlassGetAddressesByBtcbBridged`](docs/sdks/lookingglass/README.md#getaddressesbybtcbbridged) - Get addresses by BTCb bridged balance
 - [`metricsLookingGlassGetNftHoldersByContractAddress`](docs/sdks/lookingglass/README.md#getnftholdersbycontractaddress) - Get NFT holders by contract address
 - [`metricsLookingGlassGetValidatorsByDateRange`](docs/sdks/lookingglass/README.md#getvalidatorsbydaterange) - Get addresses running validators during a given time frame
-- ~~[`dataEvmChainsGetAddressChains`](docs/sdks/avacloudsdkchains/README.md#getaddresschains)~~ - Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes. :warning: **Deprecated**
-- ~~[`dataEvmChainsListAllLatestBlocks`](docs/sdks/avacloudsdkchains/README.md#listalllatestblocks)~~ - Lists the latest blocks for all supported EVM chains. Filterable by network. :warning: **Deprecated**
-- ~~[`dataEvmChainsListAllLatestTransactions`](docs/sdks/avacloudsdkchains/README.md#listalllatesttransactions)~~ - Lists the latest transactions for all supported EVM chains. Filterable by status. :warning: **Deprecated**
+- ~~[`dataEvmChainsGetAddressChains`](docs/sdks/avacloudsdkchains/README.md#getaddresschains)~~ - **[Deprecated]** Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/address/:address/chains endpoint instead** . :warning: **Deprecated**
+- ~~[`dataEvmChainsListAllLatestBlocks`](docs/sdks/avacloudsdkchains/README.md#listalllatestblocks)~~ - **[Deprecated]** Lists the latest blocks for all supported EVM chains. Filterable by network.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/blocks endpoint instead** . :warning: **Deprecated**
+- ~~[`dataEvmChainsListAllLatestTransactions`](docs/sdks/avacloudsdkchains/README.md#listalllatesttransactions)~~ - **[Deprecated]** Lists the latest transactions for all supported EVM chains. Filterable by status.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/transactions endpoint instead** . :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -386,7 +396,6 @@ The following global parameters are available.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -423,7 +432,6 @@ Here's an example of one such pagination call:
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -454,7 +462,6 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -496,7 +503,6 @@ const avaCloudSDK = new AvaCloudSDK({
     },
     retryConnectionErrors: false,
   },
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -547,7 +553,6 @@ import {
 } from "@avalabs/avacloud-sdk/models/errors";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });

@@ -15,10 +15,10 @@ let value: ListPendingPrimaryNetworkRewardsResponse = {
         txHash: "<value>",
         amountStaked: "<value>",
         nodeId: "<id>",
-        startTimestamp: 2036.21,
-        endTimestamp: 5663.12,
+        startTimestamp: 2921.77,
+        endTimestamp: 9829.91,
         rewardType: "VALIDATOR",
-        progress: 1047.36,
+        progress: 3305.96,
         estimatedReward: {
           assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
           name: "Avalanche",

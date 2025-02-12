@@ -111,6 +111,7 @@ export async function metricsChainMetricsGetEvmChainMetrics(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getEvmChainMetrics",
     oAuth2Scopes: [],
 

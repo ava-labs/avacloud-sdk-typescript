@@ -101,6 +101,7 @@ export async function dataEvmBalancesGetNativeBalance(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getNativeBalance",
     oAuth2Scopes: [],
 

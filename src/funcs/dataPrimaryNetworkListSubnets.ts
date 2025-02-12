@@ -103,6 +103,7 @@ export async function dataPrimaryNetworkListSubnets(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listSubnets",
     oAuth2Scopes: [],
 

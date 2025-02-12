@@ -118,6 +118,7 @@ export async function dataPrimaryNetworkTransactionsListAssetTransactions(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listAssetTransactions",
     oAuth2Scopes: [],
 

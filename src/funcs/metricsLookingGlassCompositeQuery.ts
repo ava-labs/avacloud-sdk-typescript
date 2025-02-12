@@ -91,6 +91,7 @@ export async function metricsLookingGlassCompositeQuery(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "compositeQueryV2",
     oAuth2Scopes: [],
 

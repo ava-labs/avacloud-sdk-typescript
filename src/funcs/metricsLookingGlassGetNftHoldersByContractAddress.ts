@@ -113,6 +113,7 @@ export async function metricsLookingGlassGetNftHoldersByContractAddress(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getNftHoldersByContractAddress",
     oAuth2Scopes: [],
 

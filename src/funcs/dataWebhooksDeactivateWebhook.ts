@@ -89,6 +89,7 @@ export async function dataWebhooksDeactivateWebhook(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "deactivateWebhook",
     oAuth2Scopes: [],
 

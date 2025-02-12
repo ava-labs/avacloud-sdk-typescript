@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: 2c389648622d1c01c403a853d2aa21b4
+  docChecksum: b49c7322449c4c4962d7f2120bea3b01
   docVersion: Beta
-  speakeasyVersion: 1.481.1
-  generationVersion: 2.500.5
-  releaseVersion: 0.8.8
-  configChecksum: 54b970ee721fdb3cd292b4c61d8f9cf3
+  speakeasyVersion: 1.490.0
+  generationVersion: 2.512.0
+  releaseVersion: 0.9.0
+  configChecksum: 6e0b1c95e717cdc971a59ba7c872f14e
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -15,14 +15,14 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.18.22
+    core: 3.19.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     examples: 2.81.5
-    globalSecurity: 2.82.12
+    globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globals: 2.82.2
@@ -277,6 +277,11 @@ generatedFiles:
   - docs/models/components/rewardtype.md
   - docs/models/components/richaddress.md
   - docs/models/components/rollingwindowmetricsapiresponse.md
+  - docs/models/components/rpcmetrics.md
+  - docs/models/components/rpcusagemetricsgroupbyenum.md
+  - docs/models/components/rpcusagemetricsvalueaggregated.md
+  - docs/models/components/rpcusagemetricsvalueaggregatedgroupedby.md
+  - docs/models/components/rpcusagemetricsvalueaggregatedgroupvalue.md
   - docs/models/components/security.md
   - docs/models/components/sharedsecretsresponse.md
   - docs/models/components/signatureaggregationresponse.md
@@ -288,6 +293,8 @@ generatedFiles:
   - docs/models/components/status.md
   - docs/models/components/subnet.md
   - docs/models/components/subnetownershipinfo.md
+  - docs/models/components/subnetrpctimeintervalgranularity.md
+  - docs/models/components/subnetrpcusagemetricsresponsedto.md
   - docs/models/components/teleporterchainmetricsapiresponse.md
   - docs/models/components/teleporterdestinationtransaction.md
   - docs/models/components/teleportermessageinfo.md
@@ -367,6 +374,8 @@ generatedFiles:
   - docs/models/errors/unauthorized.md
   - docs/models/errors/unauthorizedmessage.md
   - docs/models/operations/addaddressestowebhookrequest.md
+  - docs/models/operations/aggregatesignaturesglobals.md
+  - docs/models/operations/aggregatesignaturesrequest.md
   - docs/models/operations/compositequeryv2response.md
   - docs/models/operations/datahealthcheckdetails.md
   - docs/models/operations/datahealthcheckerror.md
@@ -422,6 +431,7 @@ generatedFiles:
   - docs/models/operations/getnftholdersbycontractaddressrequest.md
   - docs/models/operations/getnftholdersbycontractaddressresponse.md
   - docs/models/operations/getoperationresultrequest.md
+  - docs/models/operations/getrpcusagemetricsrequest.md
   - docs/models/operations/getsinglevalidatordetailsglobals.md
   - docs/models/operations/getsinglevalidatordetailsrequest.md
   - docs/models/operations/getsinglevalidatordetailsresponse.md
@@ -461,10 +471,6 @@ generatedFiles:
   - docs/models/operations/listactiveprimarynetworkstakingtransactionsrequest.md
   - docs/models/operations/listactiveprimarynetworkstakingtransactionsresponse.md
   - docs/models/operations/listaddresschainsrequest.md
-  - docs/models/operations/listallchainslatestblocksrequest.md
-  - docs/models/operations/listallchainslatestblocksresponse.md
-  - docs/models/operations/listallchainslatesttransactionsrequest.md
-  - docs/models/operations/listallchainslatesttransactionsresponse.md
   - docs/models/operations/listalllatestblocksrequest.md
   - docs/models/operations/listalllatestblocksresponse.md
   - docs/models/operations/listalllatesttransactionsrequest.md
@@ -513,6 +519,8 @@ generatedFiles:
   - docs/models/operations/listl1validatorsglobals.md
   - docs/models/operations/listl1validatorsrequest.md
   - docs/models/operations/listl1validatorsresponse.md
+  - docs/models/operations/listlatestblocksallchainsrequest.md
+  - docs/models/operations/listlatestblocksallchainsresponse.md
   - docs/models/operations/listlatestprimarynetworkblocksglobals.md
   - docs/models/operations/listlatestprimarynetworkblocksrequest.md
   - docs/models/operations/listlatestprimarynetworkblocksresponse.md
@@ -520,6 +528,8 @@ generatedFiles:
   - docs/models/operations/listlatestprimarynetworktransactionsrequest.md
   - docs/models/operations/listlatestprimarynetworktransactionsresponse.md
   - docs/models/operations/listlatestprimarynetworktransactionsresponsebody.md
+  - docs/models/operations/listlatesttransactionsallchainsrequest.md
+  - docs/models/operations/listlatesttransactionsallchainsresponse.md
   - docs/models/operations/listlatesttransactionsglobals.md
   - docs/models/operations/listlatesttransactionsrequest.md
   - docs/models/operations/listlatesttransactionsresponse.md
@@ -582,7 +592,6 @@ generatedFiles:
   - docs/sdks/healthcheck/README.md
   - docs/sdks/lookingglass/README.md
   - docs/sdks/metrics/README.md
-  - docs/sdks/multichain/README.md
   - docs/sdks/nfts/README.md
   - docs/sdks/operations/README.md
   - docs/sdks/primarynetwork/README.md
@@ -604,8 +613,10 @@ generatedFiles:
   - src/funcs/dataEvmBalancesListErc721Balances.ts
   - src/funcs/dataEvmBlocksGetBlock.ts
   - src/funcs/dataEvmBlocksGetLatestBlocks.ts
+  - src/funcs/dataEvmBlocksListLatestBlocksAllChains.ts
   - src/funcs/dataEvmChainsGetAddressChains.ts
   - src/funcs/dataEvmChainsGetChainInfo.ts
+  - src/funcs/dataEvmChainsListAddressChains.ts
   - src/funcs/dataEvmChainsListAllLatestBlocks.ts
   - src/funcs/dataEvmChainsListAllLatestTransactions.ts
   - src/funcs/dataEvmChainsSupportedChains.ts
@@ -619,13 +630,11 @@ generatedFiles:
   - src/funcs/dataEvmTransactionsListErc721Transactions.ts
   - src/funcs/dataEvmTransactionsListInternalTransactions.ts
   - src/funcs/dataEvmTransactionsListLatestTransactions.ts
+  - src/funcs/dataEvmTransactionsListLatestTransactionsAllChains.ts
   - src/funcs/dataEvmTransactionsListNativeTransactions.ts
   - src/funcs/dataEvmTransactionsListTransactions.ts
   - src/funcs/dataEvmTransactionsListTransfers.ts
   - src/funcs/dataHealthCheckDataHealthCheck.ts
-  - src/funcs/dataMultiChainListAddressChains.ts
-  - src/funcs/dataMultiChainListAllLatestBlocks.ts
-  - src/funcs/dataMultiChainListAllLatestTransactions.ts
   - src/funcs/dataNftsGetTokenDetails.ts
   - src/funcs/dataNftsListTokens.ts
   - src/funcs/dataNftsReindexNft.ts
@@ -661,6 +670,7 @@ generatedFiles:
   - src/funcs/dataTeleporterListTeleporterMessagesByAddress.ts
   - src/funcs/dataUsageMetricsGetApiLogs.ts
   - src/funcs/dataUsageMetricsGetApiUsageMetrics.ts
+  - src/funcs/dataUsageMetricsGetRpcUsageMetrics.ts
   - src/funcs/dataWebhooksAddAddressesToWebhook.ts
   - src/funcs/dataWebhooksCreateWebhook.ts
   - src/funcs/dataWebhooksDeactivateWebhook.ts
@@ -888,6 +898,9 @@ generatedFiles:
   - src/models/components/rewardtype.ts
   - src/models/components/richaddress.ts
   - src/models/components/rollingwindowmetricsapiresponse.ts
+  - src/models/components/rpcmetrics.ts
+  - src/models/components/rpcusagemetricsgroupbyenum.ts
+  - src/models/components/rpcusagemetricsvalueaggregated.ts
   - src/models/components/security.ts
   - src/models/components/sharedsecretsresponse.ts
   - src/models/components/signatureaggregationresponse.ts
@@ -897,6 +910,8 @@ generatedFiles:
   - src/models/components/stakingdistribution.ts
   - src/models/components/subnet.ts
   - src/models/components/subnetownershipinfo.ts
+  - src/models/components/subnetrpctimeintervalgranularity.ts
+  - src/models/components/subnetrpcusagemetricsresponsedto.ts
   - src/models/components/teleporterchainmetricsapiresponse.ts
   - src/models/components/teleporterdestinationtransaction.ts
   - src/models/components/teleportermessageinfo.ts
@@ -982,6 +997,7 @@ generatedFiles:
   - src/models/operations/getnetworkdetails.ts
   - src/models/operations/getnftholdersbycontractaddress.ts
   - src/models/operations/getoperationresult.ts
+  - src/models/operations/getrpcusagemetrics.ts
   - src/models/operations/getsharedsecret.ts
   - src/models/operations/getsinglevalidatordetails.ts
   - src/models/operations/getstakingmetrics.ts
@@ -1000,8 +1016,6 @@ generatedFiles:
   - src/models/operations/index.ts
   - src/models/operations/listactiveprimarynetworkstakingtransactions.ts
   - src/models/operations/listaddresschains.ts
-  - src/models/operations/listallchainslatestblocks.ts
-  - src/models/operations/listallchainslatesttransactions.ts
   - src/models/operations/listalllatestblocks.ts
   - src/models/operations/listalllatesttransactions.ts
   - src/models/operations/listassettransactions.ts
@@ -1019,9 +1033,11 @@ generatedFiles:
   - src/models/operations/listhistoricalprimarynetworkrewards.ts
   - src/models/operations/listinternaltransactions.ts
   - src/models/operations/listl1validators.ts
+  - src/models/operations/listlatestblocksallchains.ts
   - src/models/operations/listlatestprimarynetworkblocks.ts
   - src/models/operations/listlatestprimarynetworktransactions.ts
   - src/models/operations/listlatesttransactions.ts
+  - src/models/operations/listlatesttransactionsallchains.ts
   - src/models/operations/listlatestxchainvertices.ts
   - src/models/operations/listnativetransactions.ts
   - src/models/operations/listpendingprimarynetworkrewards.ts
@@ -1058,7 +1074,6 @@ generatedFiles:
   - src/sdk/index.ts
   - src/sdk/lookingglass.ts
   - src/sdk/metrics.ts
-  - src/sdk/multichain.ts
   - src/sdk/nfts.ts
   - src/sdk/operations.ts
   - src/sdk/primarynetwork.ts
@@ -2668,6 +2683,31 @@ examples:
           application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+    "":
+      parameters:
+        path:
+          network: "mainnet"
+      requestBody:
+        application/json: {"message": "000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000003cc0000000000059f3be606497285d0ffbb5ac9ba24aa60346a9b1812479ed66cb329f394a4b1c7000003a200000000000100000014253b2784c75e510dd0ff1da844684a1ac0aa5fcf00000380000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000001150000000000000000000000008578ae7723751446b196bd5124e1bf57b40eb7bc7fc93d85c6d62c5b2ac0b519c87010ea5294012d1e407030d6acd0021cac10d50000000000000000000000009660ed66aef60dfba5467afe865f612edbfb5c710000000000000000000000000000000000000000000000000000000000014c080000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000012000000000000000000000000000000000000000000000000000000000000002800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000500000000000000000000000000000000000000000000000000000000000011a00000000000000000000000007ec2afb0a06a73666adc24983ebdbf2b6f1d708200000000000000000000000000000000000000000000000000000000000011a20000000000000000000000007ec2afb0a06a73666adc24983ebdbf2b6f1d708200000000000000000000000000000000000000000000000000000000000011b50000000000000000000000007ec2afb0a06a73666adc24983ebdbf2b6f1d708200000000000000000000000000000000000000000000000000000000000011e80000000000000000000000007ec2afb0a06a73666adc24983ebdbf2b6f1d708200000000000000000000000000000000000000000000000000000000000011e90000000000000000000000007ec2afb0a06a73666adc24983ebdbf2b6f1d708200000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000400000000000000000000000001c07f66981b45056e5024eb6d51f9f30aa0d28fd00000000000000000000000000000000000000000000000000038d7ea4c680000000000000000000000000000000000000000000", "justification": "0001abcdabcfff", "signingSubnetId": "7WtoAMPhrmh5KosDUsFL9yTcvw7YSxiKHPpdfs4JsgW47oZT5", "quorumPercentage": 50}
+      responses:
+        "201":
+          application/json: {"signedMessage": "0000000000059f3be606497285d0ffbb5ac9ba24aa60346a9b1812479ed66cb329f394a4b1c7000003a200000000000100000014253b2784c75e510dd0ff1da844684a1ac0aa5fcf00000380000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000001150000000000000000000000008578ae7723751446b196bd5124e1bf57b40eb7bc7fc93d85c6d62c5b2ac0b519c87010ea5294012d1e407030d6acd0021cac10d50000000000000000000000009660ed66aef60dfba5467afe865f612edbfb5c710000000000000000000000000000000000000000000000000000000000014c080000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000012000000000000000000000000000000000000000000000000000000000000002800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000500000000000000000000000000000000000000000000000000000000000011a00000000000000000000000007ec2afb0a06a73666adc24983ebdbf2b6f1d708200000000000000000000000000000000000000000000000000000000000011a20000000000000000000000007ec2afb0a06a73666adc24983ebdbf2b6f1d708200000000000000000000000000000000000000000000000000000000000011b50000000000000000000000007ec2afb0a06a73666adc24983ebdbf2b6f1d708200000000000000000000000000000000000000000000000000000000000011e80000000000000000000000007ec2afb0a06a73666adc24983ebdbf2b6f1d708200000000000000000000000000000000000000000000000000000000000011e90000000000000000000000007ec2afb0a06a73666adc24983ebdbf2b6f1d708200000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000400000000000000000000000001c07f66981b45056e5024eb6d51f9f30aa0d28fd00000000000000000000000000000000000000000000000000038d7ea4c68000000000000000000103807355b21dd497ecc9f560dfbdefc64aeec72b226c70d3793273db01d1a0c0bfd74d095d6a9e0b4db2dc652245fd28ac032c0f1f6b7f761b912ad58c93cde2e337bef4a4e8175af69f226520cd1baedd2dd7db79bb5752cb50a465531e46e8af"}
+        "400":
+          application/json: {"message": [], "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": "<value>", "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": ["<value>"], "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": ["<value>"], "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": "<value>", "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
   getNativeBalance:
     "":
       parameters:
@@ -2929,7 +2969,7 @@ examples:
           pageSize: "10"
       responses:
         "200":
-          application/json: {"transfers": [{"blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4", "from": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "to": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "logIndex": 7085.05, "erc721Token": {"address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F", "name": "Wrapped AVAX", "symbol": "WAVAX", "ercType": "ERC-721", "tokenId": "<id>", "tokenUri": "https://expensive-daddy.org/", "metadata": {"indexStatus": "INVALID_TOKEN_URI_SCHEME"}, "ownerAddress": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}}, {"blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4", "from": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "to": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "logIndex": 2357.03, "value": "10000000000000000000", "erc20Token": {"address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F", "name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "ercType": "ERC-20", "price": {"currencyCode": "usd", "value": "42.42"}}}]}
+          application/json: {"transfers": [{"blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4", "from": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "to": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "logIndex": 7085.05, "erc721Token": {"address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F", "name": "Wrapped AVAX", "symbol": "WAVAX", "ercType": "ERC-721", "tokenId": "<id>", "tokenUri": "https://expensive-daddy.org/", "metadata": {"indexStatus": "INVALID_TOKEN_URI_SCHEME"}, "ownerAddress": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}}, {"blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4", "from": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "to": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "logIndex": 4602.18, "erc721Token": {"address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F", "name": "Wrapped AVAX", "symbol": "WAVAX", "ercType": "ERC-721", "tokenId": "<id>", "tokenUri": "https://fixed-devil.biz", "metadata": {"indexStatus": "UNINDEXED"}, "ownerAddress": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}}]}
         "400":
           application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
         "401":
@@ -3347,5 +3387,80 @@ examples:
           application/json: {"message": ["<value>"], "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+  listLatestTransactionsAllChains:
+    "":
+      parameters:
+        query:
+          pageSize: "10"
+          network: "mainnet"
+      responses:
+        "200":
+          application/json: {"transactions": [{"blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "chainId": "43114", "blockIndex": 0, "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4", "txStatus": "1", "txType": 1, "gasLimit": "51373", "gasUsed": "51373", "gasPrice": "470000000000", "nonce": "1", "from": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "to": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "method": {"callType": "CONTRACT_CALL", "methodHash": "0xa9059cbb", "methodName": "transfer(address,uint256)"}, "value": "10000000000000000000"}, {"blockNumber": "339", "blockTimestamp": 1648672486, "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c", "chainId": "43114", "blockIndex": 0, "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4", "txStatus": "1", "txType": 1, "gasLimit": "51373", "gasUsed": "51373", "gasPrice": "470000000000", "nonce": "1", "from": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "to": {"name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"}, "method": {"callType": "NATIVE_TRANSFER", "methodHash": "0xa9059cbb", "methodName": "transfer(address,uint256)"}, "value": "10000000000000000000"}]}
+        "400":
+          application/json: {"message": ["<value>"], "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": ["<value>", "<value>", "<value>"], "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": "<value>", "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": ["<value>"], "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": ["<value>"], "statusCode": 503, "error": "Service Unavailable"}
+  listLatestBlocksAllChains:
+    "":
+      parameters:
+        query:
+          pageSize: "10"
+          network: "mainnet"
+      responses:
+        "200":
+          application/json: {"blocks": []}
+        "400":
+          application/json: {"message": ["<value>", "<value>", "<value>"], "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": "<value>", "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": "<value>", "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": "<value>", "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": ["<value>", "<value>", "<value>"], "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 503, "error": "Service Unavailable"}
+  getRpcUsageMetrics:
+    "":
+      parameters:
+        query:
+          timeInterval: "daily"
+          startTimestamp: 1698100000
+          endTimestamp: 1698300000
+          groupBy: "rpcMethod"
+      responses:
+        "400":
+          application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": "<value>", "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": "<value>", "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": [], "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": ["<value>", "<value>", "<value>"], "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
 examplesVersion: 1.0.0
 generatedTests: {}

@@ -115,6 +115,7 @@ export async function dataPrimaryNetworkUtxosGetUtxosByAddresses(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getUtxosByAddresses",
     oAuth2Scopes: [],
 

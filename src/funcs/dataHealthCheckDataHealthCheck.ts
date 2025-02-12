@@ -55,6 +55,7 @@ export async function dataHealthCheckDataHealthCheck(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "data-health-check",
     oAuth2Scopes: [],
 

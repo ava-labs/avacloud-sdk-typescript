@@ -32,7 +32,9 @@ import {
 } from "../types/operations.js";
 
 /**
- * Lists the latest blocks for all supported EVM chains. Filterable by network.
+ * **[Deprecated]** Lists the latest blocks for all supported EVM chains. Filterable by network.
+ *
+ * ⚠️ **This operation will be removed in a future release.  Please use /v1/blocks endpoint instead** .
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
@@ -97,6 +99,7 @@ export async function dataEvmChainsListAllLatestBlocks(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listAllLatestBlocks",
     oAuth2Scopes: [],
 

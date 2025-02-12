@@ -104,6 +104,7 @@ export async function dataWebhooksGetAddressesFromWebhook(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getAddressesFromWebhook",
     oAuth2Scopes: [],
 

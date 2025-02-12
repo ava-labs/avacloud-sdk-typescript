@@ -19,7 +19,6 @@ Gets a teleporter message by message ID.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -47,7 +46,6 @@ import { dataTeleporterGetTeleporterMessage } from "@avalabs/avacloud-sdk/funcs/
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -108,7 +106,6 @@ Lists teleporter messages. Ordered by timestamp in descending order.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -142,7 +139,6 @@ import { dataTeleporterListTeleporterMessages } from "@avalabs/avacloud-sdk/func
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -209,7 +205,6 @@ Lists teleporter messages by address. Ordered by timestamp in descending order.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -238,7 +233,6 @@ import { dataTeleporterListTeleporterMessagesByAddress } from "@avalabs/avacloud
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });

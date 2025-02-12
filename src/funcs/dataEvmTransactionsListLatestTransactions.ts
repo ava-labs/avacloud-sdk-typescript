@@ -106,6 +106,7 @@ export async function dataEvmTransactionsListLatestTransactions(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listLatestTransactions",
     oAuth2Scopes: [],
 

@@ -8,9 +8,9 @@ import { ChainAddressChainIdMapListResponse } from "@avalabs/avacloud-sdk/models
 let value: ChainAddressChainIdMapListResponse = {
   addresses: [
     {
-      address: "451 Jefferey Harbor",
+      address: "5739 Ash Grove",
       blockchainIds: [
-        "vV3cui1DsEPC3nLCGH9rorwo8s6BYxM2Hz4QFE5gEYjwTqAu",
+        "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
       ],
     },
   ],

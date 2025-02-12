@@ -3,14 +3,14 @@
  */
 
 import { AvaCloudSDKCore } from "../core.js";
-import { dlv } from "../lib/dlv.js";
-import { encodeFormQuery } from "../lib/encodings.js";
+import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
+import * as components from "../models/components/index.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -22,75 +22,63 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
-import { ListAllChainsLatestTransactionsServerList } from "../models/operations/listallchainslatesttransactions.js";
+import { ListAddressChainsServerList } from "../models/operations/listaddresschains.js";
 import { Result } from "../types/fp.js";
-import {
-  createPageIterator,
-  haltIterator,
-  PageIterator,
-  Paginator,
-} from "../types/operations.js";
 
 /**
- * List latest transactions for all supported EVM chains
+ * List all chains associated with a given address
  *
  * @remarks
- * Lists the latest transactions for all supported EVM chains. Filterable by status.
+ * Lists the chains where the specified address has  participated in transactions or ERC token transfers,  either as a sender or receiver. The data is refreshed every 15  minutes.
  */
-export async function dataMultiChainListAllLatestTransactions(
+export async function dataEvmChainsListAddressChains(
   client: AvaCloudSDKCore,
-  request: operations.ListAllChainsLatestTransactionsRequest,
+  request: operations.ListAddressChainsRequest,
   options?: RequestOptions,
 ): Promise<
-  PageIterator<
-    Result<
-      operations.ListAllChainsLatestTransactionsResponse,
-      | errors.BadRequest
-      | errors.Unauthorized
-      | errors.Forbidden
-      | errors.NotFound
-      | errors.TooManyRequests
-      | errors.InternalServerError
-      | errors.BadGateway
-      | errors.ServiceUnavailable
-      | SDKError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | ConnectionError
-    >,
-    { cursor: string }
+  Result<
+    components.ListAddressChainsResponse,
+    | errors.BadRequest
+    | errors.Unauthorized
+    | errors.Forbidden
+    | errors.NotFound
+    | errors.TooManyRequests
+    | errors.InternalServerError
+    | errors.BadGateway
+    | errors.ServiceUnavailable
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
   >
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.ListAllChainsLatestTransactionsRequest$outboundSchema.parse(
-        value,
-      ),
+    (value) => operations.ListAddressChainsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return haltIterator(parsed);
+    return parsed;
   }
   const payload = parsed.value;
   const body = null;
 
   const baseURL = options?.serverURL
-    || pathToFunc(ListAllChainsLatestTransactionsServerList[0], {
+    || pathToFunc(ListAddressChainsServerList[0], {
       charEncoding: "percent",
     })();
 
-  const path = pathToFunc("/v1/allTransactions")();
+  const pathParams = {
+    address: encodeSimple("address", payload.address, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
 
-  const query = encodeFormQuery({
-    "network": payload.network,
-    "pageSize": payload.pageSize,
-    "pageToken": payload.pageToken,
-    "status": payload.status,
-  });
+  const path = pathToFunc("/v1/address/{address}/chains")(pathParams);
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -101,7 +89,8 @@ export async function dataMultiChainListAllLatestTransactions(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    operationID: "listAllChainsLatestTransactions",
+    baseURL: baseURL ?? "",
+    operationID: "listAddressChains",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -129,12 +118,11 @@ export async function dataMultiChainListAllLatestTransactions(
     baseURL: baseURL,
     path: path,
     headers: headers,
-    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return haltIterator(requestRes);
+    return requestRes;
   }
   const req = requestRes.value;
 
@@ -156,7 +144,7 @@ export async function dataMultiChainListAllLatestTransactions(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return haltIterator(doResult);
+    return doResult;
   }
   const response = doResult.value;
 
@@ -164,8 +152,8 @@ export async function dataMultiChainListAllLatestTransactions(
     HttpMeta: { Response: response, Request: req },
   };
 
-  const [result, raw] = await M.match<
-    operations.ListAllChainsLatestTransactionsResponse,
+  const [result] = await M.match<
+    components.ListAddressChainsResponse,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -182,11 +170,7 @@ export async function dataMultiChainListAllLatestTransactions(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(
-      200,
-      operations.ListAllChainsLatestTransactionsResponse$inboundSchema,
-      { key: "Result" },
-    ),
+    M.json(200, components.ListAddressChainsResponse$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),
@@ -199,52 +183,8 @@ export async function dataMultiChainListAllLatestTransactions(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return haltIterator(result);
+    return result;
   }
 
-  const nextFunc = (
-    responseData: unknown,
-  ): {
-    next: Paginator<
-      Result<
-        operations.ListAllChainsLatestTransactionsResponse,
-        | errors.BadRequest
-        | errors.Unauthorized
-        | errors.Forbidden
-        | errors.NotFound
-        | errors.TooManyRequests
-        | errors.InternalServerError
-        | errors.BadGateway
-        | errors.ServiceUnavailable
-        | SDKError
-        | SDKValidationError
-        | UnexpectedClientError
-        | InvalidRequestError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | ConnectionError
-      >
-    >;
-    "~next"?: { cursor: string };
-  } => {
-    const nextCursor = dlv(responseData, "nextPageToken");
-    if (nextCursor == null) {
-      return { next: () => null };
-    }
-
-    const nextVal = () =>
-      dataMultiChainListAllLatestTransactions(
-        client,
-        {
-          ...request,
-          pageToken: nextCursor,
-        },
-        options,
-      );
-
-    return { next: nextVal, "~next": { cursor: nextCursor } };
-  };
-
-  const page = { ...result, ...nextFunc(raw) };
-  return { ...page, ...createPageIterator(page, (v) => !v.ok) };
+  return result;
 }

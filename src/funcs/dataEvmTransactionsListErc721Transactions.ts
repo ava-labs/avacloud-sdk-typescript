@@ -113,6 +113,7 @@ export async function dataEvmTransactionsListErc721Transactions(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listErc721Transactions",
     oAuth2Scopes: [],
 

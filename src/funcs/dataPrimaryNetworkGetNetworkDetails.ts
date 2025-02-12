@@ -90,6 +90,7 @@ export async function dataPrimaryNetworkGetNetworkDetails(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getNetworkDetails",
     oAuth2Scopes: [],
 

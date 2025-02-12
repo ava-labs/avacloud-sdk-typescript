@@ -5,6 +5,7 @@
 import { dataSignatureAggregatorAggregateSignatures } from "../funcs/dataSignatureAggregatorAggregateSignatures.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class SignatureAggregator extends ClientSDK {
@@ -15,7 +16,7 @@ export class SignatureAggregator extends ClientSDK {
    * Aggregates Signatures for a Warp message from Subnet validators.
    */
   async aggregateSignatures(
-    request: components.SignatureAggregatorRequest,
+    request: operations.AggregateSignaturesRequest,
     options?: RequestOptions,
   ): Promise<components.SignatureAggregationResponse> {
     return unwrapAsync(dataSignatureAggregatorAggregateSignatures(

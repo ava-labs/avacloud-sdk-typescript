@@ -110,6 +110,7 @@ export async function dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewar
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listHistoricalPrimaryNetworkRewards",
     oAuth2Scopes: [],
 

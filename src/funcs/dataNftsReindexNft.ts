@@ -98,6 +98,7 @@ export async function dataNftsReindexNft(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "reindexNft",
     oAuth2Scopes: [],
 

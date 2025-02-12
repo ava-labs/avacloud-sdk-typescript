@@ -88,6 +88,7 @@ export async function dataOperationsPostTransactionExportJob(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "postTransactionExportJob",
     oAuth2Scopes: [],
 

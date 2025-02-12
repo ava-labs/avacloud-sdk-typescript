@@ -18,7 +18,6 @@ Get a list of Metrics API supported blockchains.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -48,7 +47,6 @@ import { metricsEvmChainsListChains } from "@avalabs/avacloud-sdk/funcs/metricsE
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -111,7 +109,6 @@ Get chain information for Metrics API supported blockchain.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -139,7 +136,6 @@ import { metricsEvmChainsGetChain } from "@avalabs/avacloud-sdk/funcs/metricsEvm
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });

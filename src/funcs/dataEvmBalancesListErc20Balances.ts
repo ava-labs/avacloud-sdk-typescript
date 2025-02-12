@@ -118,6 +118,7 @@ export async function dataEvmBalancesListErc20Balances(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listErc20Balances",
     oAuth2Scopes: [],
 

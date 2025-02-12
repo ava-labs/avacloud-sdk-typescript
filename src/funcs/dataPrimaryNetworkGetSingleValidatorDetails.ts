@@ -113,6 +113,7 @@ export async function dataPrimaryNetworkGetSingleValidatorDetails(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getSingleValidatorDetails",
     oAuth2Scopes: [],
 

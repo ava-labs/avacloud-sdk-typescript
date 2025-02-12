@@ -98,6 +98,7 @@ export async function metricsLookingGlassGetAddressesByBtcbBridged(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getAddressesByBtcbBridged",
     oAuth2Scopes: [],
 

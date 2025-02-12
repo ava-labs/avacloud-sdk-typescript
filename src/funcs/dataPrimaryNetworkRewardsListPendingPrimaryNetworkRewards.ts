@@ -112,6 +112,7 @@ export async function dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listPendingPrimaryNetworkRewards",
     oAuth2Scopes: [],
 

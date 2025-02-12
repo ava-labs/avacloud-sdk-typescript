@@ -100,6 +100,7 @@ export async function dataTeleporterListTeleporterMessagesByAddress(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listTeleporterMessagesByAddress",
     oAuth2Scopes: [],
 

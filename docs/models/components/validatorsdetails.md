@@ -6,14 +6,14 @@
 import { ValidatorsDetails } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ValidatorsDetails = {
-  validatorCount: 7851.53,
+  validatorCount: 7103.37,
   totalAmountStaked: "<value>",
   estimatedAnnualStakingReward: "<value>",
   stakingDistributionByVersion: [
     {
       version: "<value>",
       amountStaked: "<value>",
-      validatorCount: 2817.3,
+      validatorCount: 78.84,
     },
   ],
   stakingRatio: "<value>",

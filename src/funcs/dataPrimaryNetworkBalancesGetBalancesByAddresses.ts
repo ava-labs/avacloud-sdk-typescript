@@ -103,6 +103,7 @@ export async function dataPrimaryNetworkBalancesGetBalancesByAddresses(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getBalancesByAddresses",
     oAuth2Scopes: [],
 

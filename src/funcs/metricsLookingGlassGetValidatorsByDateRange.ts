@@ -109,6 +109,7 @@ export async function metricsLookingGlassGetValidatorsByDateRange(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getValidatorsByDateRange",
     oAuth2Scopes: [],
 

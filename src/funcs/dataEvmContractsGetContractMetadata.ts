@@ -96,6 +96,7 @@ export async function dataEvmContractsGetContractMetadata(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getContractMetadata",
     oAuth2Scopes: [],
 

@@ -115,6 +115,7 @@ export async function dataPrimaryNetworkListValidators(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listValidators",
     oAuth2Scopes: [],
 

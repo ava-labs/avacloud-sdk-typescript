@@ -112,6 +112,7 @@ export async function dataPrimaryNetworkVerticesGetVertexByHeight(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getVertexByHeight",
     oAuth2Scopes: [],
 

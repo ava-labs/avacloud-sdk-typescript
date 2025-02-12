@@ -101,6 +101,7 @@ export async function dataEvmTransactionsGetDeploymentTransaction(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getDeploymentTransaction",
     oAuth2Scopes: [],
 

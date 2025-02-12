@@ -111,6 +111,7 @@ export async function dataPrimaryNetworkVerticesListLatestXChainVertices(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listLatestXChainVertices",
     oAuth2Scopes: [],
 

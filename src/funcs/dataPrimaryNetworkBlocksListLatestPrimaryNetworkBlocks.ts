@@ -115,6 +115,7 @@ export async function dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listLatestPrimaryNetworkBlocks",
     oAuth2Scopes: [],
 

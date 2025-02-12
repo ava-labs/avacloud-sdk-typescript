@@ -97,6 +97,7 @@ export async function metricsChainMetricsGetTeleporterMetricsByChain(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getTeleporterMetricsByChain",
     oAuth2Scopes: [],
 
