@@ -9,8 +9,6 @@ import { RetryConfig } from "./retries.js";
 import { pathToFunc } from "./url.js";
 
 export type SDKOptions = {
-  apiKey?: string | (() => Promise<string>);
-
   /**
    * Allows setting the chainId parameter for all supported operations
    */
@@ -50,8 +48,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "Beta",
-  sdkVersion: "0.8.8",
-  genVersion: "2.500.5",
+  sdkVersion: "0.9.0",
+  genVersion: "2.506.0",
   userAgent:
-    "speakeasy-sdk/typescript 0.8.8 2.500.5 Beta @avalabs/avacloud-sdk",
+    "speakeasy-sdk/typescript 0.9.0 2.506.0 Beta @avalabs/avacloud-sdk",
 } as const;

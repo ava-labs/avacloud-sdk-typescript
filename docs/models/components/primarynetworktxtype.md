@@ -5,7 +5,7 @@
 ```typescript
 import { PrimaryNetworkTxType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: PrimaryNetworkTxType = "RegisterL1ValidatorTx";
+let value: PrimaryNetworkTxType = "RemoveSubnetValidatorTx";
 ```
 
 ## Values

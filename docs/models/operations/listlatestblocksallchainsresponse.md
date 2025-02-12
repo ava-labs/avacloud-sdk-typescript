@@ -1,11 +1,11 @@
-# ListAllChainsLatestBlocksResponse
+# ListLatestBlocksAllChainsResponse
 
 ## Example Usage
 
 ```typescript
-import { ListAllChainsLatestBlocksResponse } from "@avalabs/avacloud-sdk/models/operations";
+import { ListLatestBlocksAllChainsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListAllChainsLatestBlocksResponse = {
+let value: ListLatestBlocksAllChainsResponse = {
   result: {
     blocks: [
       {
@@ -14,7 +14,7 @@ let value: ListAllChainsLatestBlocksResponse = {
         blockTimestamp: 1648672486,
         blockHash:
           "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
-        txCount: 8611.23,
+        txCount: 9878.9,
         baseFee: "<value>",
         gasUsed: "<value>",
         gasLimit: "<value>",

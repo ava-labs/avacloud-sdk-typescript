@@ -4,6 +4,7 @@
 
 import { dataEvmChainsGetAddressChains } from "../funcs/dataEvmChainsGetAddressChains.js";
 import { dataEvmChainsGetChainInfo } from "../funcs/dataEvmChainsGetChainInfo.js";
+import { dataEvmChainsListAddressChains } from "../funcs/dataEvmChainsListAddressChains.js";
 import { dataEvmChainsListAllLatestBlocks } from "../funcs/dataEvmChainsListAllLatestBlocks.js";
 import { dataEvmChainsListAllLatestTransactions } from "../funcs/dataEvmChainsListAllLatestTransactions.js";
 import { dataEvmChainsSupportedChains } from "../funcs/dataEvmChainsSupportedChains.js";
@@ -14,6 +15,23 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class AvaCloudSDKChains extends ClientSDK {
+  /**
+   * List all chains associated with a given address
+   *
+   * @remarks
+   * Lists the chains where the specified address has  participated in transactions or ERC token transfers,  either as a sender or receiver. The data is refreshed every 15  minutes.
+   */
+  async listAddressChains(
+    request: operations.ListAddressChainsRequest,
+    options?: RequestOptions,
+  ): Promise<components.ListAddressChainsResponse> {
+    return unwrapAsync(dataEvmChainsListAddressChains(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * List chains
    *
@@ -49,7 +67,9 @@ export class AvaCloudSDKChains extends ClientSDK {
   }
 
   /**
-   * Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
+   * **[Deprecated]** Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
+   *
+   * ⚠️ **This operation will be removed in a future release.  Please use /v1/address/:address/chains endpoint instead** .
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
@@ -65,7 +85,9 @@ export class AvaCloudSDKChains extends ClientSDK {
   }
 
   /**
-   * Lists the latest transactions for all supported EVM chains. Filterable by status.
+   * **[Deprecated]** Lists the latest transactions for all supported EVM chains. Filterable by status.
+   *
+   * ⚠️ **This operation will be removed in a future release.  Please use /v1/transactions endpoint instead** .
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
@@ -86,7 +108,9 @@ export class AvaCloudSDKChains extends ClientSDK {
   }
 
   /**
-   * Lists the latest blocks for all supported EVM chains. Filterable by network.
+   * **[Deprecated]** Lists the latest blocks for all supported EVM chains. Filterable by network.
+   *
+   * ⚠️ **This operation will be removed in a future release.  Please use /v1/blocks endpoint instead** .
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
