@@ -90,6 +90,7 @@ export async function dataWebhooksUpdateWebhook(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "updateWebhook",
     oAuth2Scopes: [],
 

@@ -26,7 +26,9 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
+ * **[Deprecated]** Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
+ *
+ * ⚠️ **This operation will be removed in a future release.  Please use /v1/address/:address/chains endpoint instead** .
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
@@ -86,6 +88,7 @@ export async function dataEvmChainsGetAddressChains(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getAddressChains",
     oAuth2Scopes: [],
 

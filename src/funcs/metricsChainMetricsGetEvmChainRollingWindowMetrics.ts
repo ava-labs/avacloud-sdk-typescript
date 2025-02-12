@@ -99,6 +99,7 @@ export async function metricsChainMetricsGetEvmChainRollingWindowMetrics(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getEvmChainRollingWindowMetrics",
     oAuth2Scopes: [],
 

@@ -119,6 +119,7 @@ export async function dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listPrimaryNetworkBlocksByNodeId",
     oAuth2Scopes: [],
 

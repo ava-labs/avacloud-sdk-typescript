@@ -67,6 +67,7 @@ export async function dataWebhooksGenerateSharedSecret(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "generateSharedSecret",
     oAuth2Scopes: [],
 

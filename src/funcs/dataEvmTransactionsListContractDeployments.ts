@@ -111,6 +111,7 @@ export async function dataEvmTransactionsListContractDeployments(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listContractDeployments",
     oAuth2Scopes: [],
 

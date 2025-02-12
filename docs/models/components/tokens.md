@@ -12,9 +12,9 @@ const value: components.Erc721Token = {
   symbol: "WAVAX",
   ercType: "ERC-721",
   tokenId: "<id>",
-  tokenUri: "https://humble-confusion.com",
+  tokenUri: "https://pricey-suitcase.org",
   metadata: {
-    indexStatus: "UNKNOWN",
+    indexStatus: "INVALID_METADATA_JSON",
   },
   ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
 };
@@ -27,9 +27,9 @@ const value: components.Erc1155Token = {
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   ercType: "ERC-1155",
   tokenId: "<id>",
-  tokenUri: "https://kosher-loyalty.org",
+  tokenUri: "https://wide-eyed-yarmulke.info",
   metadata: {
-    indexStatus: "UNINDEXED",
+    indexStatus: "UNKNOWN",
   },
 };
 ```

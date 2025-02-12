@@ -114,6 +114,7 @@ export async function dataEvmBalancesListCollectibleBalances(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listCollectibleBalances",
     oAuth2Scopes: [],
 

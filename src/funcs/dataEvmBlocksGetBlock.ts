@@ -92,6 +92,7 @@ export async function dataEvmBlocksGetBlock(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getBlock",
     oAuth2Scopes: [],
 

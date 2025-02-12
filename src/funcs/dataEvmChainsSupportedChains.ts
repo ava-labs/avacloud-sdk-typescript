@@ -85,6 +85,7 @@ export async function dataEvmChainsSupportedChains(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "supportedChains",
     oAuth2Scopes: [],
 

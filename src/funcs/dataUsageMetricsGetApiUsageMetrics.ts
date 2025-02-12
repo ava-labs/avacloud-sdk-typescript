@@ -95,6 +95,7 @@ export async function dataUsageMetricsGetApiUsageMetrics(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getApiUsageMetrics",
     oAuth2Scopes: [],
 

@@ -97,6 +97,7 @@ export async function dataNftsGetTokenDetails(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getTokenDetails",
     oAuth2Scopes: [],
 

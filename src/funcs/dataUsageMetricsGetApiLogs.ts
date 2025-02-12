@@ -102,6 +102,7 @@ export async function dataUsageMetricsGetApiLogs(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getApiLogs",
     oAuth2Scopes: [],
 

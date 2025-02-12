@@ -97,6 +97,7 @@ export async function dataPrimaryNetworkGetChainIdsForAddresses(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getChainIdsForAddresses",
     oAuth2Scopes: [],
 

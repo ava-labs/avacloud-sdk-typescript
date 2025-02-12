@@ -93,6 +93,7 @@ export async function dataWebhooksRemoveAddressesFromWebhook(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "removeAddressesFromWebhook",
     oAuth2Scopes: [],
 

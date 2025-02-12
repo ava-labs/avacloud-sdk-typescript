@@ -102,6 +102,7 @@ export async function dataEvmTransactionsGetTransactionsForBlock(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getTransactionsForBlock",
     oAuth2Scopes: [],
 

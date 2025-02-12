@@ -3,7 +3,7 @@
  */
 
 import { AvaCloudSDKCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -22,6 +22,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { AggregateSignaturesServerList } from "../models/operations/aggregatesignatures.js";
+import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -32,7 +33,7 @@ import { Result } from "../types/fp.js";
  */
 export async function dataSignatureAggregatorAggregateSignatures(
   client: AvaCloudSDKCore,
-  request: components.SignatureAggregatorRequest,
+  request: operations.AggregateSignaturesRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -57,21 +58,33 @@ export async function dataSignatureAggregatorAggregateSignatures(
   const parsed = safeParse(
     request,
     (value) =>
-      components.SignatureAggregatorRequest$outboundSchema.parse(value),
+      operations.AggregateSignaturesRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return parsed;
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload.SignatureAggregatorRequest, {
+    explode: true,
+  });
 
   const baseURL = options?.serverURL
     || pathToFunc(AggregateSignaturesServerList[0], {
       charEncoding: "percent",
     })();
 
-  const path = pathToFunc("/v1/signatureAggregator/aggregateSignatures")();
+  const pathParams = {
+    network: encodeSimple(
+      "network",
+      payload.network ?? client._options.network,
+      { explode: false, charEncoding: "percent" },
+    ),
+  };
+
+  const path = pathToFunc(
+    "/v1/signatureAggregator/{network}/aggregateSignatures",
+  )(pathParams);
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -83,6 +96,7 @@ export async function dataSignatureAggregatorAggregateSignatures(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "aggregateSignatures",
     oAuth2Scopes: [],
 

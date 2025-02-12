@@ -22,7 +22,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
-import { ListAllChainsLatestBlocksServerList } from "../models/operations/listallchainslatestblocks.js";
+import { ListLatestBlocksAllChainsServerList } from "../models/operations/listlatestblocksallchains.js";
 import { Result } from "../types/fp.js";
 import {
   createPageIterator,
@@ -32,19 +32,19 @@ import {
 } from "../types/operations.js";
 
 /**
- * List latest blocks for all supported EVM chains
+ * List latest blocks across all supported EVM chains
  *
  * @remarks
- * Lists the latest blocks for all supported EVM chains. Filterable by network.
+ * Lists the most recent blocks from all supported  EVM-compatible chains. The results can be filtered by network.
  */
-export async function dataMultiChainListAllLatestBlocks(
+export async function dataEvmBlocksListLatestBlocksAllChains(
   client: AvaCloudSDKCore,
-  request: operations.ListAllChainsLatestBlocksRequest,
+  request: operations.ListLatestBlocksAllChainsRequest,
   options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<
-      operations.ListAllChainsLatestBlocksResponse,
+      operations.ListLatestBlocksAllChainsResponse,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -67,7 +67,7 @@ export async function dataMultiChainListAllLatestBlocks(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.ListAllChainsLatestBlocksRequest$outboundSchema.parse(value),
+      operations.ListLatestBlocksAllChainsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -77,11 +77,11 @@ export async function dataMultiChainListAllLatestBlocks(
   const body = null;
 
   const baseURL = options?.serverURL
-    || pathToFunc(ListAllChainsLatestBlocksServerList[0], {
+    || pathToFunc(ListLatestBlocksAllChainsServerList[0], {
       charEncoding: "percent",
     })();
 
-  const path = pathToFunc("/v1/allBlocks")();
+  const path = pathToFunc("/v1/blocks")();
 
   const query = encodeFormQuery({
     "network": payload.network,
@@ -98,7 +98,8 @@ export async function dataMultiChainListAllLatestBlocks(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    operationID: "listAllChainsLatestBlocks",
+    baseURL: baseURL ?? "",
+    operationID: "listLatestBlocksAllChains",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -162,7 +163,7 @@ export async function dataMultiChainListAllLatestBlocks(
   };
 
   const [result, raw] = await M.match<
-    operations.ListAllChainsLatestBlocksResponse,
+    operations.ListLatestBlocksAllChainsResponse,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -179,7 +180,7 @@ export async function dataMultiChainListAllLatestBlocks(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.ListAllChainsLatestBlocksResponse$inboundSchema, {
+    M.json(200, operations.ListLatestBlocksAllChainsResponse$inboundSchema, {
       key: "Result",
     }),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
@@ -202,7 +203,7 @@ export async function dataMultiChainListAllLatestBlocks(
   ): {
     next: Paginator<
       Result<
-        operations.ListAllChainsLatestBlocksResponse,
+        operations.ListLatestBlocksAllChainsResponse,
         | errors.BadRequest
         | errors.Unauthorized
         | errors.Forbidden
@@ -228,7 +229,7 @@ export async function dataMultiChainListAllLatestBlocks(
     }
 
     const nextVal = () =>
-      dataMultiChainListAllLatestBlocks(
+      dataEvmBlocksListLatestBlocksAllChains(
         client,
         {
           ...request,

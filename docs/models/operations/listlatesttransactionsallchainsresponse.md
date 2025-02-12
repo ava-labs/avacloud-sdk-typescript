@@ -1,11 +1,11 @@
-# ListAllChainsLatestTransactionsResponse
+# ListLatestTransactionsAllChainsResponse
 
 ## Example Usage
 
 ```typescript
-import { ListAllChainsLatestTransactionsResponse } from "@avalabs/avacloud-sdk/models/operations";
+import { ListLatestTransactionsAllChainsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListAllChainsLatestTransactionsResponse = {
+let value: ListLatestTransactionsAllChainsResponse = {
   result: {
     transactions: [
       {
@@ -40,7 +40,7 @@ let value: ListAllChainsLatestTransactionsResponse = {
           address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
         },
         method: {
-          callType: "CONTRACT_CREATION",
+          callType: "NATIVE_TRANSFER",
           methodHash: "0xa9059cbb",
           methodName: "transfer(address,uint256)",
         },

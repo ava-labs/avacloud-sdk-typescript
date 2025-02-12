@@ -98,6 +98,7 @@ export async function dataPrimaryNetworkVerticesGetVertexByHash(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getVertexByHash",
     oAuth2Scopes: [],
 

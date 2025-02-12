@@ -97,6 +97,7 @@ export async function dataPrimaryNetworkTransactionsGetTxByHash(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getTxByHash",
     oAuth2Scopes: [],
 

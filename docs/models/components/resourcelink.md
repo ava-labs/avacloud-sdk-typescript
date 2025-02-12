@@ -7,7 +7,7 @@ import { ResourceLink } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ResourceLink = {
   type: "Facebook",
-  url: "https://irresponsible-formation.org/",
+  url: "https://whimsical-parsnip.com",
 };
 ```
 

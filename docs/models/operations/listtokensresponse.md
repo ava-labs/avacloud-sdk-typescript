@@ -10,12 +10,15 @@ let value: ListTokensResponse = {
     tokens: [
       {
         address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-        ercType: "ERC-1155",
+        name: "Wrapped AVAX",
+        symbol: "WAVAX",
+        ercType: "ERC-721",
         tokenId: "<id>",
-        tokenUri: "https://rural-tinderbox.name/",
+        tokenUri: "https://meaty-following.net/",
         metadata: {
-          indexStatus: "INVALID_TOKEN_URI_SCHEME",
+          indexStatus: "UNKNOWN",
         },
+        ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
       },
     ],
   },

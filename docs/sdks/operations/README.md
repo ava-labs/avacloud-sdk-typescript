@@ -18,7 +18,6 @@ Gets operation details for the given operation id.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -46,7 +45,6 @@ import { dataOperationsGetOperationResult } from "@avalabs/avacloud-sdk/funcs/da
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -109,7 +107,6 @@ The transaction export operation runs asynchronously in the background. The stat
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -144,7 +141,6 @@ import { dataOperationsPostTransactionExportJob } from "@avalabs/avacloud-sdk/fu
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });

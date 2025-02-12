@@ -98,6 +98,7 @@ export async function dataPrimaryNetworkGetAssetDetails(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getAssetDetails",
     oAuth2Scopes: [],
 

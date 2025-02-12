@@ -94,6 +94,7 @@ export async function dataPrimaryNetworkGetSubnetById(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getSubnetById",
     oAuth2Scopes: [],
 

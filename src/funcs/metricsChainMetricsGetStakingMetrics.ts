@@ -113,6 +113,7 @@ export async function metricsChainMetricsGetStakingMetrics(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getStakingMetrics",
     oAuth2Scopes: [],
 

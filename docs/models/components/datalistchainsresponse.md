@@ -12,9 +12,9 @@ let value: DataListChainsResponse = {
       status: "UNAVAILABLE",
       chainName: "<value>",
       description:
-        "from psst toothpick tall what abaft furthermore lest paintwork but",
-      vmName: "BITCOIN",
-      rpcUrl: "https://wavy-viability.net/",
+        "instead technician inasmuch sympathetically disappointment nor",
+      vmName: "EVM",
+      rpcUrl: "https://tragic-carboxyl.name",
       isTestnet: false,
       networkToken: {
         name: "Wrapped AVAX",

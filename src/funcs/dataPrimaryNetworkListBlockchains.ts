@@ -103,6 +103,7 @@ export async function dataPrimaryNetworkListBlockchains(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listBlockchains",
     oAuth2Scopes: [],
 

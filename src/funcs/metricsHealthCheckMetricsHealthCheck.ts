@@ -57,6 +57,7 @@ export async function metricsHealthCheckMetricsHealthCheck(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "metrics-health-check",
     oAuth2Scopes: [],
 

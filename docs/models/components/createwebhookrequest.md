@@ -6,7 +6,7 @@
 import { CreateWebhookRequest } from "@avalabs/avacloud-sdk/models/components";
 
 let value: CreateWebhookRequest = {
-  url: "https://imaginary-detective.biz",
+  url: "https://charming-divine.org",
   chainId: "<id>",
   eventType: "address_activity",
   metadata: {

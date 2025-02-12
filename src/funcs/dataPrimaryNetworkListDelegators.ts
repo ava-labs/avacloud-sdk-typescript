@@ -106,6 +106,7 @@ export async function dataPrimaryNetworkListDelegators(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listDelegators",
     oAuth2Scopes: [],
 

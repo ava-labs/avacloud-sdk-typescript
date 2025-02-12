@@ -89,6 +89,7 @@ export async function dataOperationsGetOperationResult(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getOperationResult",
     oAuth2Scopes: [],
 

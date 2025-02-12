@@ -5,7 +5,6 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { AvaCloudSDKEvm } from "./avacloudsdkevm.js";
 import { AvaCloudSDKHealthCheck } from "./avacloudsdkhealthcheck.js";
-import { MultiChain } from "./multichain.js";
 import { Nfts } from "./nfts.js";
 import { Operations } from "./operations.js";
 import { PrimaryNetwork } from "./primarynetwork.js";
@@ -20,9 +19,9 @@ export class Data extends ClientSDK {
     return (this._healthCheck ??= new AvaCloudSDKHealthCheck(this._options));
   }
 
-  private _multiChain?: MultiChain;
-  get multiChain(): MultiChain {
-    return (this._multiChain ??= new MultiChain(this._options));
+  private _evm?: AvaCloudSDKEvm;
+  get evm(): AvaCloudSDKEvm {
+    return (this._evm ??= new AvaCloudSDKEvm(this._options));
   }
 
   private _nfts?: Nfts;
@@ -60,10 +59,5 @@ export class Data extends ClientSDK {
     return (this._signatureAggregator ??= new SignatureAggregator(
       this._options,
     ));
-  }
-
-  private _evm?: AvaCloudSDKEvm;
-  get evm(): AvaCloudSDKEvm {
-    return (this._evm ??= new AvaCloudSDKEvm(this._options));
   }
 }

@@ -116,6 +116,7 @@ export async function metricsLookingGlassGetAddressesByBalanceOverTime(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "getAddressesByBalanceOverTime",
     oAuth2Scopes: [],
 

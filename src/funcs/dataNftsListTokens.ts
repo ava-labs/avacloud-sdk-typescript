@@ -108,6 +108,7 @@ export async function dataNftsListTokens(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "listTokens",
     oAuth2Scopes: [],
 
