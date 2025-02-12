@@ -9,7 +9,6 @@ import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
-import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
   ConnectionError,
@@ -22,7 +21,7 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
-import { ListAllChainsLatestTransactionsServerList } from "../models/operations/listallchainslatesttransactions.js";
+import { ListLatestBlocksAllChainsServerList } from "../models/operations/listlatestblocksallchains.js";
 import { Result } from "../types/fp.js";
 import {
   createPageIterator,
@@ -32,19 +31,19 @@ import {
 } from "../types/operations.js";
 
 /**
- * List latest transactions for all supported EVM chains
+ * List latest blocks across all supported EVM chains
  *
  * @remarks
- * Lists the latest transactions for all supported EVM chains. Filterable by status.
+ * Lists the most recent blocks from all supported  EVM-compatible chains. The results can be filtered by network.
  */
-export async function dataMultiChainListAllLatestTransactions(
+export async function dataEvmBlocksListLatestBlocksAllChains(
   client: AvaCloudSDKCore,
-  request: operations.ListAllChainsLatestTransactionsRequest,
+  request: operations.ListLatestBlocksAllChainsRequest,
   options?: RequestOptions,
 ): Promise<
   PageIterator<
     Result<
-      operations.ListAllChainsLatestTransactionsResponse,
+      operations.ListLatestBlocksAllChainsResponse,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -67,9 +66,7 @@ export async function dataMultiChainListAllLatestTransactions(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.ListAllChainsLatestTransactionsRequest$outboundSchema.parse(
-        value,
-      ),
+      operations.ListLatestBlocksAllChainsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -79,34 +76,29 @@ export async function dataMultiChainListAllLatestTransactions(
   const body = null;
 
   const baseURL = options?.serverURL
-    || pathToFunc(ListAllChainsLatestTransactionsServerList[0], {
+    || pathToFunc(ListLatestBlocksAllChainsServerList[0], {
       charEncoding: "percent",
     })();
 
-  const path = pathToFunc("/v1/allTransactions")();
+  const path = pathToFunc("/v1/blocks")();
 
   const query = encodeFormQuery({
     "network": payload.network,
     "pageSize": payload.pageSize,
     "pageToken": payload.pageToken,
-    "status": payload.status,
   });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
   }));
 
-  const secConfig = await extractSecurity(client._options.apiKey);
-  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
-
   const context = {
-    operationID: "listAllChainsLatestTransactions",
+    operationID: "listLatestBlocksAllChains",
     oAuth2Scopes: [],
 
-    resolvedSecurity: requestSecurity,
+    resolvedSecurity: null,
 
-    securitySource: client._options.apiKey,
+    securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
       || {
@@ -124,7 +116,6 @@ export async function dataMultiChainListAllLatestTransactions(
   };
 
   const requestRes = client._createRequest(context, {
-    security: requestSecurity,
     method: "GET",
     baseURL: baseURL,
     path: path,
@@ -165,7 +156,7 @@ export async function dataMultiChainListAllLatestTransactions(
   };
 
   const [result, raw] = await M.match<
-    operations.ListAllChainsLatestTransactionsResponse,
+    operations.ListLatestBlocksAllChainsResponse,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -182,11 +173,9 @@ export async function dataMultiChainListAllLatestTransactions(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(
-      200,
-      operations.ListAllChainsLatestTransactionsResponse$inboundSchema,
-      { key: "Result" },
-    ),
+    M.json(200, operations.ListLatestBlocksAllChainsResponse$inboundSchema, {
+      key: "Result",
+    }),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),
@@ -207,7 +196,7 @@ export async function dataMultiChainListAllLatestTransactions(
   ): {
     next: Paginator<
       Result<
-        operations.ListAllChainsLatestTransactionsResponse,
+        operations.ListLatestBlocksAllChainsResponse,
         | errors.BadRequest
         | errors.Unauthorized
         | errors.Forbidden
@@ -233,7 +222,7 @@ export async function dataMultiChainListAllLatestTransactions(
     }
 
     const nextVal = () =>
-      dataMultiChainListAllLatestTransactions(
+      dataEvmBlocksListLatestBlocksAllChains(
         client,
         {
           ...request,

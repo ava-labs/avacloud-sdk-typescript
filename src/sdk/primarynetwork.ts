@@ -17,17 +17,17 @@ import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
+import { AvaCloudSDKBlocks } from "./avacloudsdkblocks.js";
+import { AvaCloudSDKTransactions } from "./avacloudsdktransactions.js";
 import { Balances } from "./balances.js";
-import { Blocks } from "./blocks.js";
 import { Rewards } from "./rewards.js";
-import { Transactions } from "./transactions.js";
 import { Utxos } from "./utxos.js";
 import { Vertices } from "./vertices.js";
 
 export class PrimaryNetwork extends ClientSDK {
-  private _transactions?: Transactions;
-  get transactions(): Transactions {
-    return (this._transactions ??= new Transactions(this._options));
+  private _transactions?: AvaCloudSDKTransactions;
+  get transactions(): AvaCloudSDKTransactions {
+    return (this._transactions ??= new AvaCloudSDKTransactions(this._options));
   }
 
   private _rewards?: Rewards;
@@ -45,9 +45,9 @@ export class PrimaryNetwork extends ClientSDK {
     return (this._balances ??= new Balances(this._options));
   }
 
-  private _blocks?: Blocks;
-  get blocks(): Blocks {
-    return (this._blocks ??= new Blocks(this._options));
+  private _blocks?: AvaCloudSDKBlocks;
+  get blocks(): AvaCloudSDKBlocks {
+    return (this._blocks ??= new AvaCloudSDKBlocks(this._options));
   }
 
   private _vertices?: Vertices;

@@ -17,7 +17,6 @@ Aggregates Signatures for a Warp message from Subnet validators.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
@@ -48,7 +47,6 @@ import { dataSignatureAggregatorAggregateSignatures } from "@avalabs/avacloud-sd
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });

@@ -5,7 +5,7 @@
 ```typescript
 import { RewardType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: RewardType = "VALIDATOR";
+let value: RewardType = "DELEGATOR";
 ```
 
 ## Values

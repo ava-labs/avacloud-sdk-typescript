@@ -1,17 +1,17 @@
 # Blocks
-(*data.primaryNetwork.blocks*)
+(*data.evm.blocks*)
 
 ## Overview
 
 ### Available Operations
 
-* [getBlockById](#getblockbyid) - Get block
-* [listPrimaryNetworkBlocksByNodeId](#listprimarynetworkblocksbynodeid) - List blocks proposed by node
-* [listLatestPrimaryNetworkBlocks](#listlatestprimarynetworkblocks) - List latest blocks
+* [listLatestBlocksAllChains](#listlatestblocksallchains) - List latest blocks across all supported EVM chains
+* [getLatestBlocks](#getlatestblocks) - List latest blocks
+* [getBlock](#getblock) - Get block
 
-## getBlockById
+## listLatestBlocksAllChains
 
-Gets a block by block height or block hash on one of the Primary Network chains.
+Lists the most recent blocks from all supported  EVM-compatible chains. The results can be filtered by network.
 
 ### Example Usage
 
@@ -19,20 +19,19 @@ Gets a block by block height or block hash on one of the Primary Network chains.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.blocks.getBlockById({
-    blockchainId: "p-chain",
+  const result = await avaCloudSDK.data.evm.blocks.listLatestBlocksAllChains({
     network: "mainnet",
-    blockId: "5615di9ytxujackzaXNrVuWQy5y8Yrt8chPCscMr5Ku9YxJ1S",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -44,21 +43,18 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkBlocksGetBlockById } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksGetBlockById.js";
+import { dataEvmBlocksListLatestBlocksAllChains } from "@avalabs/avacloud-sdk/funcs/dataEvmBlocksListLatestBlocksAllChains.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkBlocksGetBlockById(avaCloudSDK, {
-    blockchainId: "p-chain",
+  const res = await dataEvmBlocksListLatestBlocksAllChains(avaCloudSDK, {
     network: "mainnet",
-    blockId: "5615di9ytxujackzaXNrVuWQy5y8Yrt8chPCscMr5Ku9YxJ1S",
   });
 
   if (!res.ok) {
@@ -67,8 +63,10 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result);
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -78,7 +76,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetBlockByIdRequest](../../models/operations/getblockbyidrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListLatestBlocksAllChainsRequest](../../models/operations/listlatestblocksallchainsrequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -86,7 +84,7 @@ run();
 
 ### Response
 
-**Promise\<[components.GetPrimaryNetworkBlockResponse](../../models/components/getprimarynetworkblockresponse.md)\>**
+**Promise\<[operations.ListLatestBlocksAllChainsResponse](../../models/operations/listlatestblocksallchainsresponse.md)\>**
 
 ### Errors
 
@@ -102,9 +100,9 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listPrimaryNetworkBlocksByNodeId
+## getLatestBlocks
 
-Lists the latest blocks proposed by a given NodeID on one of the Primary Network chains.
+Lists the latest indexed blocks on the EVM-compatible chain sorted in descending order by block timestamp.
 
 ### Example Usage
 
@@ -112,18 +110,13 @@ Lists the latest blocks proposed by a given NodeID on one of the Primary Network
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.blocks.listPrimaryNetworkBlocksByNodeId({
-    startTimestamp: 1689541049,
-    endTimestamp: 1689800249,
-    blockchainId: "p-chain",
-    network: "mainnet",
-    nodeId: "NodeID-111111111111111111116DBWJs",
+  const result = await avaCloudSDK.data.evm.blocks.getLatestBlocks({
+    chainId: "43114",
   });
 
   for await (const page of result) {
@@ -141,23 +134,18 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId.js";
+import { dataEvmBlocksGetLatestBlocks } from "@avalabs/avacloud-sdk/funcs/dataEvmBlocksGetLatestBlocks.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId(avaCloudSDK, {
-    startTimestamp: 1689541049,
-    endTimestamp: 1689800249,
-    blockchainId: "p-chain",
-    network: "mainnet",
-    nodeId: "NodeID-111111111111111111116DBWJs",
+  const res = await dataEvmBlocksGetLatestBlocks(avaCloudSDK, {
+    chainId: "43114",
   });
 
   if (!res.ok) {
@@ -179,7 +167,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListPrimaryNetworkBlocksByNodeIdRequest](../../models/operations/listprimarynetworkblocksbynodeidrequest.md)                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetLatestBlocksRequest](../../models/operations/getlatestblocksrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -187,7 +175,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListPrimaryNetworkBlocksByNodeIdResponse](../../models/operations/listprimarynetworkblocksbynodeidresponse.md)\>**
+**Promise\<[operations.GetLatestBlocksResponse](../../models/operations/getlatestblocksresponse.md)\>**
 
 ### Errors
 
@@ -203,9 +191,9 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listLatestPrimaryNetworkBlocks
+## getBlock
 
-Lists latest blocks on one of the Primary Network chains.
+Gets the details of an individual block on the EVM-compatible chain.
 
 ### Example Usage
 
@@ -213,23 +201,18 @@ Lists latest blocks on one of the Primary Network chains.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.blocks.listLatestPrimaryNetworkBlocks({
-    startTimestamp: 1689541049,
-    endTimestamp: 1689800249,
-    blockchainId: "p-chain",
-    network: "mainnet",
+  const result = await avaCloudSDK.data.evm.blocks.getBlock({
+    chainId: "43114",
+    blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });
 
-  for await (const page of result) {
-    // Handle the page
-    console.log(page);
-  }
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -241,22 +224,19 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks.js";
+import { dataEvmBlocksGetBlock } from "@avalabs/avacloud-sdk/funcs/dataEvmBlocksGetBlock.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
-  apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks(avaCloudSDK, {
-    startTimestamp: 1689541049,
-    endTimestamp: 1689800249,
-    blockchainId: "p-chain",
-    network: "mainnet",
+  const res = await dataEvmBlocksGetBlock(avaCloudSDK, {
+    chainId: "43114",
+    blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });
 
   if (!res.ok) {
@@ -265,10 +245,8 @@ async function run() {
 
   const { value: result } = res;
 
-  for await (const page of result) {
-    // Handle the page
-    console.log(page);
-  }
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -278,7 +256,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListLatestPrimaryNetworkBlocksRequest](../../models/operations/listlatestprimarynetworkblocksrequest.md)                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetBlockRequest](../../models/operations/getblockrequest.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -286,7 +264,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListLatestPrimaryNetworkBlocksResponse](../../models/operations/listlatestprimarynetworkblocksresponse.md)\>**
+**Promise\<[components.GetEvmBlockResponse](../../models/components/getevmblockresponse.md)\>**
 
 ### Errors
 

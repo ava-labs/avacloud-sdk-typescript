@@ -6,10 +6,10 @@
 import { ValidatorHealthDetails } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ValidatorHealthDetails = {
-  reachabilityPercent: 2453.67,
-  benchedPChainRequestsPercent: 4205.39,
-  benchedXChainRequestsPercent: 5573.69,
-  benchedCChainRequestsPercent: 8605.52,
+  reachabilityPercent: 3891.35,
+  benchedPChainRequestsPercent: 9521.43,
+  benchedXChainRequestsPercent: 3000.29,
+  benchedCChainRequestsPercent: 1604.67,
 };
 ```
 

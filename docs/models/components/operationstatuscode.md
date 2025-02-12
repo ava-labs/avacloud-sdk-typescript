@@ -5,7 +5,7 @@
 ```typescript
 import { OperationStatusCode } from "@avalabs/avacloud-sdk/models/components";
 
-let value: OperationStatusCode = "ErrInvalidRequest";
+let value: OperationStatusCode = "ErrInternal";
 ```
 
 ## Values
