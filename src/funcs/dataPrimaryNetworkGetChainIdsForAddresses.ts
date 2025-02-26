@@ -23,6 +23,7 @@ import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { GetChainIdsForAddressesServerList } from "../models/operations/getchainidsforaddresses.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -31,11 +32,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Returns Primary Network chains that each address has touched in the form of an address mapped array. If an address has had any on-chain interaction for a chain, that chain's chain id will be returned.
  */
-export async function dataPrimaryNetworkGetChainIdsForAddresses(
+export function dataPrimaryNetworkGetChainIdsForAddresses(
   client: AvaCloudSDKCore,
   request: operations.GetChainIdsForAddressesRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.ChainAddressChainIdMapListResponse,
     | errors.BadRequest
@@ -55,6 +56,40 @@ export async function dataPrimaryNetworkGetChainIdsForAddresses(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: AvaCloudSDKCore,
+  request: operations.GetChainIdsForAddressesRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.ChainAddressChainIdMapListResponse,
+      | errors.BadRequest
+      | errors.Unauthorized
+      | errors.Forbidden
+      | errors.NotFound
+      | errors.TooManyRequests
+      | errors.InternalServerError
+      | errors.BadGateway
+      | errors.ServiceUnavailable
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) =>
@@ -62,7 +97,7 @@ export async function dataPrimaryNetworkGetChainIdsForAddresses(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -131,7 +166,7 @@ export async function dataPrimaryNetworkGetChainIdsForAddresses(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -153,7 +188,7 @@ export async function dataPrimaryNetworkGetChainIdsForAddresses(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -192,8 +227,8 @@ export async function dataPrimaryNetworkGetChainIdsForAddresses(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

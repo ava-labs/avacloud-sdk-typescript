@@ -26,6 +26,9 @@ export type PendingValidatorDetails = {
   nodeId: string;
   subnetId: string;
   amountStaked: string;
+  /**
+   * The percentage of total estimated delegator rewards allocated to validator nodes for supporting delegations.
+   */
   delegationFee?: string | undefined;
   startTimestamp: number;
   endTimestamp: number;

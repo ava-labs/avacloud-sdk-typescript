@@ -38,6 +38,9 @@ export type ActiveValidatorDetails = {
   nodeId: string;
   subnetId: string;
   amountStaked: string;
+  /**
+   * The percentage of total estimated delegator rewards allocated to validator nodes for supporting delegations.
+   */
   delegationFee?: string | undefined;
   startTimestamp: number;
   endTimestamp: number;
@@ -45,12 +48,30 @@ export type ActiveValidatorDetails = {
    * Present for AddPermissionlessValidatorTx
    */
   blsCredentials?: BlsCredentials | undefined;
+  /**
+   * The percentage of this validator's stake amount to the total active stake.
+   */
   stakePercentage: number;
+  /**
+   * The number of delegators linked to the validator.
+   */
   delegatorCount: number;
+  /**
+   * The total amount in nAVAX delegated to the validator.
+   */
   amountDelegated?: string | undefined;
+  /**
+   * The validator's uptime percentage, as observed by our internal node and measured over time.
+   */
   uptimePerformance: number;
   avalancheGoVersion?: string | undefined;
+  /**
+   * The amount of stake in nAVAX that can be delegated to this validator.
+   */
   delegationCapacity?: string | undefined;
+  /**
+   * Estimated rewards for the validator if the validation is successful.
+   */
   potentialRewards: Rewards;
   validationStatus: ActiveValidatorDetailsValidationStatus;
   validatorHealth: ValidatorHealthDetails;

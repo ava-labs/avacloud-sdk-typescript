@@ -23,7 +23,13 @@ export type PendingDelegatorDetails = {
   delegationFee: string;
   startTimestamp: number;
   endTimestamp: number;
+  /**
+   * Estimated total rewards that will be distributed for the successful delegation.
+   */
   estimatedGrossReward: string;
+  /**
+   * Estimated net rewards that will be distributed to the delegator after deducting delegation fee from the gross reward for the successful delegation.
+   */
   estimatedNetReward: string;
   delegationStatus: PendingDelegatorDetailsDelegationStatus;
 };

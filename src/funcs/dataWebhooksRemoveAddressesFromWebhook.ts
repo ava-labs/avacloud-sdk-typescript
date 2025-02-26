@@ -23,6 +23,7 @@ import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { RemoveAddressesFromWebhookServerList } from "../models/operations/removeaddressesfromwebhook.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -31,11 +32,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Remove addresses from webhook.
  */
-export async function dataWebhooksRemoveAddressesFromWebhook(
+export function dataWebhooksRemoveAddressesFromWebhook(
   client: AvaCloudSDKCore,
   request: operations.RemoveAddressesFromWebhookRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.WebhookResponse,
     | errors.BadRequest
@@ -55,6 +56,40 @@ export async function dataWebhooksRemoveAddressesFromWebhook(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: AvaCloudSDKCore,
+  request: operations.RemoveAddressesFromWebhookRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.WebhookResponse,
+      | errors.BadRequest
+      | errors.Unauthorized
+      | errors.Forbidden
+      | errors.NotFound
+      | errors.TooManyRequests
+      | errors.InternalServerError
+      | errors.BadGateway
+      | errors.ServiceUnavailable
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) =>
@@ -62,7 +97,7 @@ export async function dataWebhooksRemoveAddressesFromWebhook(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.AddressesChangeRequest, {
@@ -126,7 +161,7 @@ export async function dataWebhooksRemoveAddressesFromWebhook(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -148,7 +183,7 @@ export async function dataWebhooksRemoveAddressesFromWebhook(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -187,8 +222,8 @@ export async function dataWebhooksRemoveAddressesFromWebhook(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

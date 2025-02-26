@@ -16,8 +16,14 @@ import {
 export type ValidatorsDetails = {
   validatorCount: number;
   totalAmountStaked: string;
+  /**
+   * Total potential rewards from currently active validations and delegations.
+   */
   estimatedAnnualStakingReward: string;
   stakingDistributionByVersion: Array<StakingDistribution>;
+  /**
+   * Ratio of total active stake amount to the current supply.
+   */
   stakingRatio: string;
 };
 

@@ -19,6 +19,7 @@ C-Chain balances returned are only the shared atomic memory balance. For EVM bal
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -49,6 +50,7 @@ import { dataPrimaryNetworkBalancesGetBalancesByAddresses } from "@avalabs/avacl
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });

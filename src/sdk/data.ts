@@ -5,6 +5,7 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { AvaCloudSDKEvm } from "./avacloudsdkevm.js";
 import { AvaCloudSDKHealthCheck } from "./avacloudsdkhealthcheck.js";
+import { Icm } from "./icm.js";
 import { Nfts } from "./nfts.js";
 import { Operations } from "./operations.js";
 import { PrimaryNetwork } from "./primarynetwork.js";
@@ -42,6 +43,11 @@ export class Data extends ClientSDK {
   private _teleporter?: Teleporter;
   get teleporter(): Teleporter {
     return (this._teleporter ??= new Teleporter(this._options));
+  }
+
+  private _icm?: Icm;
+  get icm(): Icm {
+    return (this._icm ??= new Icm(this._options));
   }
 
   private _usageMetrics?: UsageMetrics;

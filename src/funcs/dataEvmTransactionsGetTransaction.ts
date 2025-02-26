@@ -23,6 +23,7 @@ import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { GetTransactionServerList } from "../models/operations/gettransaction.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -31,11 +32,11 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Gets the details of a single transaction.
  */
-export async function dataEvmTransactionsGetTransaction(
+export function dataEvmTransactionsGetTransaction(
   client: AvaCloudSDKCore,
   request: operations.GetTransactionRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.GetTransactionResponse,
     | errors.BadRequest
@@ -55,13 +56,47 @@ export async function dataEvmTransactionsGetTransaction(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: AvaCloudSDKCore,
+  request: operations.GetTransactionRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.GetTransactionResponse,
+      | errors.BadRequest
+      | errors.Unauthorized
+      | errors.Forbidden
+      | errors.NotFound
+      | errors.TooManyRequests
+      | errors.InternalServerError
+      | errors.BadGateway
+      | errors.ServiceUnavailable
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => operations.GetTransactionRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -127,7 +162,7 @@ export async function dataEvmTransactionsGetTransaction(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -149,7 +184,7 @@ export async function dataEvmTransactionsGetTransaction(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -188,8 +223,8 @@ export async function dataEvmTransactionsGetTransaction(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

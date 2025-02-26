@@ -25,7 +25,7 @@ export type L1ValidatorDetailsTransaction = {
    */
   remainingBalance: number;
   /**
-   * The increase in L1 validator balance in the current transaction. When the balance is returned after the L1 validator is disabled or removed, this value is negative
+   * The increase in L1 validator balance (nAVAX) in the current transaction. When the balance is returned after the L1 validator is disabled or removed, this value is negative
    */
   balanceChange?: number | undefined;
   blsCredentials?: L1ValidatorDetailsTransactionBlsCredentials | undefined;

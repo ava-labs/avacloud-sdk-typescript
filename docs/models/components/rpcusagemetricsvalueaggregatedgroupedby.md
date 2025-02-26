@@ -7,7 +7,7 @@ Column name used for data aggregation
 ```typescript
 import { RpcUsageMetricsValueAggregatedGroupedBy } from "@avalabs/avacloud-sdk/models/components";
 
-let value: RpcUsageMetricsValueAggregatedGroupedBy = "None";
+let value: RpcUsageMetricsValueAggregatedGroupedBy = "responseCode";
 ```
 
 ## Values

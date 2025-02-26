@@ -58,9 +58,18 @@ export type PChainTransaction = {
    * The block finality timestamp.
    */
   blockTimestamp: number;
+  /**
+   * The height of the block in which the transaction was included
+   */
   blockNumber: string;
   blockHash: string;
+  /**
+   * The consumed UTXOs of the transaction
+   */
   consumedUtxos: Array<PChainUtxo>;
+  /**
+   * The newly created UTXOs of the transaction
+   */
   emittedUtxos: Array<PChainUtxo>;
   /**
    * Source chain for an atomic transaction.
@@ -71,11 +80,11 @@ export type PChainTransaction = {
    */
   destinationChain?: string | undefined;
   /**
-   * A list of objects containing P-chain Asset basic info and the amount of that Asset ID.
+   * A list of objects containing P-chain Asset basic info and the amount of that Asset ID. The amount of nAVAX present in the newly created UTXOs of the transaction
    */
   value: Array<AssetAmount>;
   /**
-   * A list of objects containing P-chain Asset basic info and the amount of that Asset ID.
+   * A list of objects containing P-chain Asset basic info and the amount of that Asset ID. The nAVAX amount burned in a transaction, partially or fully contributing to the transaction fee
    */
   amountBurned: Array<AssetAmount>;
   /**
@@ -83,7 +92,7 @@ export type PChainTransaction = {
    */
   amountStaked: Array<AssetAmount>;
   /**
-   * A list of objects containing P-chain Asset basic info and the amount of that Asset ID.
+   * A list of objects containing P-chain Asset basic info and the amount of that Asset ID. The amount of nAVAX locked for pay-as-you-go continuous fees to sustain L1 validation.
    */
   amountL1ValidatorBalanceBurned: Array<AssetAmount>;
   /**
@@ -95,11 +104,11 @@ export type PChainTransaction = {
    */
   endTimestamp?: number | undefined;
   /**
-   * Present for AddValidatorTx, AddPermissionlessValidatorTx
+   * The percentage of total estimated delegator rewards allocated to validator nodes for supporting delegations. Present for AddValidatorTx, AddPermissionlessValidatorTx
    */
   delegationFeePercent?: string | undefined;
   /**
-   * Present for AddValidatorTx, AddSubnetValidatorTx, RemoveSubnetValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx
+   * The NodeID of the validator node linked to the stake transaction. Present for AddValidatorTx, AddSubnetValidatorTx, RemoveSubnetValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx
    */
   nodeId?: string | undefined;
   /**
@@ -115,14 +124,17 @@ export type PChainTransaction = {
    */
   l1ValidatorDetails?: Array<L1ValidatorDetailsTransaction> | undefined;
   /**
-   * Present for AddValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx
+   * Estimated reward from the staking transaction, if successful. Present for AddValidatorTx, AddPermissionlessValidatorTx, AddDelegatorTx
    */
   estimatedReward?: string | undefined;
+  /**
+   * Reward transaction hash for the completed validations or delegations
+   */
   rewardTxHash?: string | undefined;
   rewardAddresses?: Array<string> | undefined;
   memo?: string | undefined;
   /**
-   * Present for RewardValidatorTx
+   * Staking transaction corresponding to the RewardValidatorTx
    */
   stakingTxHash?: string | undefined;
   /**
@@ -130,7 +142,7 @@ export type PChainTransaction = {
    */
   subnetOwnershipInfo?: SubnetOwnershipInfo | undefined;
   /**
-   * Present for AddPermissionlessValidatorTx
+   * Public Key and PoP of new validator registrations. Present for AddPermissionlessValidatorTx
    */
   blsCredentials?: BlsCredentials | undefined;
 };

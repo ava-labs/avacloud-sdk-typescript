@@ -13,10 +13,11 @@ import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Teleporter extends ClientSDK {
   /**
-   * Get a teleporter message
+   * **[Deprecated]** Gets a teleporter message by message ID.
    *
-   * @remarks
-   * Gets a teleporter message by message ID.
+   * ⚠️ **This operation will be removed in a future release.  Please use /v1/icm/messages/:messageId endpoint instead** .
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getTeleporterMessage(
     request: operations.GetTeleporterMessageRequest,
@@ -30,10 +31,11 @@ export class Teleporter extends ClientSDK {
   }
 
   /**
-   * List teleporter messages
+   * **[Deprecated]** Lists teleporter messages. Ordered by timestamp in  descending order.
    *
-   * @remarks
-   * Lists teleporter messages. Ordered by timestamp in descending order.
+   * ⚠️ **This operation will be removed in a future release.  Please use /v1/icm/messages endpoint instead** .
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async listTeleporterMessages(
     request: operations.ListTeleporterMessagesRequest,
@@ -49,10 +51,11 @@ export class Teleporter extends ClientSDK {
   }
 
   /**
-   * List teleporter messages by address
+   * **[Deprecated]** Lists teleporter messages by address. Ordered by  timestamp in descending order.
    *
-   * @remarks
-   * Lists teleporter messages by address. Ordered by timestamp in descending order.
+   * ⚠️ **This operation will be removed in a future release.  Please use /v1/icm/addresses/:address/messages endpoint instead** .
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async listTeleporterMessagesByAddress(
     request: operations.ListTeleporterMessagesByAddressRequest,

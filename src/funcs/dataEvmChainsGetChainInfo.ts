@@ -23,19 +23,20 @@ import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { GetChainInfoServerList } from "../models/operations/getchaininfo.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
  * Get chain information
  *
  * @remarks
- * Gets chain information for the EVM-compatible chain if supported by the api.
+ * Gets chain information for the EVM-compatible chain if supported by AvaCloud.
  */
-export async function dataEvmChainsGetChainInfo(
+export function dataEvmChainsGetChainInfo(
   client: AvaCloudSDKCore,
   request: operations.GetChainInfoRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.GetChainResponse,
     | errors.BadRequest
@@ -55,13 +56,47 @@ export async function dataEvmChainsGetChainInfo(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: AvaCloudSDKCore,
+  request: operations.GetChainInfoRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.GetChainResponse,
+      | errors.BadRequest
+      | errors.Unauthorized
+      | errors.Forbidden
+      | errors.NotFound
+      | errors.TooManyRequests
+      | errors.InternalServerError
+      | errors.BadGateway
+      | errors.ServiceUnavailable
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => operations.GetChainInfoRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -121,7 +156,7 @@ export async function dataEvmChainsGetChainInfo(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -143,7 +178,7 @@ export async function dataEvmChainsGetChainInfo(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -182,8 +217,8 @@ export async function dataEvmChainsGetChainInfo(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

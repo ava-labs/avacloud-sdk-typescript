@@ -55,17 +55,47 @@ export type PChainUtxo = {
   assetId: string;
   blockNumber: string;
   blockTimestamp: number;
+  /**
+   * Block height in which the transaction consuming this UTXO was included
+   */
   consumingBlockNumber?: string | undefined;
+  /**
+   * Timestamp in seconds at which this UTXO is used in a consuming transaction
+   */
   consumingBlockTimestamp?: number | undefined;
+  /**
+   * Timestamp in seconds after which this UTXO can be consumed
+   */
   platformLocktime?: number | undefined;
+  /**
+   * The index of the UTXO in the transaction
+   */
   outputIndex: number;
   rewardType?: RewardType | undefined;
+  /**
+   * Timestamp in seconds before which a UTXO can only be used for staking transactions. After stakeable locktime, a UTXO can be used for anything
+   */
   stakeableLocktime?: number | undefined;
   staked?: boolean | undefined;
+  /**
+   * The minimum number of signatures required to spend this UTXO
+   */
   threshold?: number | undefined;
+  /**
+   * The hash of the transaction that created this UTXO
+   */
   txHash: string;
+  /**
+   * Timestamp in seconds after which the staked UTXO will be unlocked.
+   */
   utxoEndTimestamp?: number | undefined;
+  /**
+   * Timestamp in seconds at which the staked UTXO was locked.
+   */
   utxoStartTimestamp?: number | undefined;
+  /**
+   * Indicates whether the UTXO is staked or transferable
+   */
   utxoType: UtxoType;
 };
 

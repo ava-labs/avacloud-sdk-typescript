@@ -28,6 +28,7 @@ Lists the chains where the specified address has  participated in transactions o
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -55,6 +56,7 @@ import { dataEvmChainsListAddressChains } from "@avalabs/avacloud-sdk/funcs/data
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -107,7 +109,7 @@ run();
 
 ## supportedChains
 
-Lists the supported EVM-compatible chains. Filterable by network.
+Lists the AvaCloud supported EVM-compatible chains. Filterable by network.
 
 ### Example Usage
 
@@ -115,6 +117,7 @@ Lists the supported EVM-compatible chains. Filterable by network.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -143,6 +146,7 @@ import { dataEvmChainsSupportedChains } from "@avalabs/avacloud-sdk/funcs/dataEv
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -196,7 +200,7 @@ run();
 
 ## getChainInfo
 
-Gets chain information for the EVM-compatible chain if supported by the api.
+Gets chain information for the EVM-compatible chain if supported by AvaCloud.
 
 ### Example Usage
 
@@ -204,6 +208,7 @@ Gets chain information for the EVM-compatible chain if supported by the api.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -231,6 +236,7 @@ import { dataEvmChainsGetChainInfo } from "@avalabs/avacloud-sdk/funcs/dataEvmCh
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -295,6 +301,7 @@ run();
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -322,6 +329,7 @@ import { dataEvmChainsGetAddressChains } from "@avalabs/avacloud-sdk/funcs/dataE
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -386,6 +394,7 @@ run();
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -415,6 +424,7 @@ import { dataEvmChainsListAllLatestTransactions } from "@avalabs/avacloud-sdk/fu
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -481,6 +491,7 @@ run();
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -510,6 +521,7 @@ import { dataEvmChainsListAllLatestBlocks } from "@avalabs/avacloud-sdk/funcs/da
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });

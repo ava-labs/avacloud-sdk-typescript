@@ -1,5 +1,7 @@
 # UtxoType
 
+Indicates whether the UTXO is staked or transferable
+
 ## Example Usage
 
 ```typescript
