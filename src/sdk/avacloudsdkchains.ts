@@ -36,7 +36,7 @@ export class AvaCloudSDKChains extends ClientSDK {
    * List chains
    *
    * @remarks
-   * Lists the supported EVM-compatible chains. Filterable by network.
+   * Lists the AvaCloud supported EVM-compatible chains. Filterable by network.
    */
   async supportedChains(
     request: operations.SupportedChainsRequest,
@@ -53,7 +53,7 @@ export class AvaCloudSDKChains extends ClientSDK {
    * Get chain information
    *
    * @remarks
-   * Gets chain information for the EVM-compatible chain if supported by the api.
+   * Gets chain information for the EVM-compatible chain if supported by AvaCloud.
    */
   async getChainInfo(
     request: operations.GetChainInfoRequest,

@@ -19,6 +19,7 @@ Lists the most recent blocks from all supported  EVM-compatible chains. The resu
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -48,6 +49,7 @@ import { dataEvmBlocksListLatestBlocksAllChains } from "@avalabs/avacloud-sdk/fu
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -110,6 +112,7 @@ Lists the latest indexed blocks on the EVM-compatible chain sorted in descending
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -139,6 +142,7 @@ import { dataEvmBlocksGetLatestBlocks } from "@avalabs/avacloud-sdk/funcs/dataEv
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -201,6 +205,7 @@ Gets the details of an individual block on the EVM-compatible chain.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -229,6 +234,7 @@ import { dataEvmBlocksGetBlock } from "@avalabs/avacloud-sdk/funcs/dataEvmBlocks
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });

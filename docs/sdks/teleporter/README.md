@@ -5,13 +5,23 @@
 
 ### Available Operations
 
-* [getTeleporterMessage](#getteleportermessage) - Get a teleporter message
-* [listTeleporterMessages](#listteleportermessages) - List teleporter messages
-* [listTeleporterMessagesByAddress](#listteleportermessagesbyaddress) - List teleporter messages by address
+* [~~getTeleporterMessage~~](#getteleportermessage) - **[Deprecated]** Gets a teleporter message by message ID.
 
-## getTeleporterMessage
+⚠️ **This operation will be removed in a future release.  Please use /v1/icm/messages/:messageId endpoint instead** . :warning: **Deprecated**
+* [~~listTeleporterMessages~~](#listteleportermessages) - **[Deprecated]** Lists teleporter messages. Ordered by timestamp in  descending order.
 
-Gets a teleporter message by message ID.
+⚠️ **This operation will be removed in a future release.  Please use /v1/icm/messages endpoint instead** . :warning: **Deprecated**
+* [~~listTeleporterMessagesByAddress~~](#listteleportermessagesbyaddress) - **[Deprecated]** Lists teleporter messages by address. Ordered by  timestamp in descending order.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/icm/addresses/:address/messages endpoint instead** . :warning: **Deprecated**
+
+## ~~getTeleporterMessage~~
+
+**[Deprecated]** Gets a teleporter message by message ID.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/icm/messages/:messageId endpoint instead** .
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -19,6 +29,7 @@ Gets a teleporter message by message ID.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -46,6 +57,7 @@ import { dataTeleporterGetTeleporterMessage } from "@avalabs/avacloud-sdk/funcs/
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -96,9 +108,13 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listTeleporterMessages
+## ~~listTeleporterMessages~~
 
-Lists teleporter messages. Ordered by timestamp in descending order.
+**[Deprecated]** Lists teleporter messages. Ordered by timestamp in  descending order.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/icm/messages endpoint instead** .
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -106,6 +122,7 @@ Lists teleporter messages. Ordered by timestamp in descending order.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -139,6 +156,7 @@ import { dataTeleporterListTeleporterMessages } from "@avalabs/avacloud-sdk/func
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -195,9 +213,13 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listTeleporterMessagesByAddress
+## ~~listTeleporterMessagesByAddress~~
 
-Lists teleporter messages by address. Ordered by timestamp in descending order.
+**[Deprecated]** Lists teleporter messages by address. Ordered by  timestamp in descending order.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/icm/addresses/:address/messages endpoint instead** .
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -205,6 +227,7 @@ Lists teleporter messages by address. Ordered by timestamp in descending order.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -233,6 +256,7 @@ import { dataTeleporterListTeleporterMessagesByAddress } from "@avalabs/avacloud
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });

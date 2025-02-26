@@ -250,3 +250,13 @@ Based on:
 - [typescript v0.9.0] .
 ### Releases
 - [NPM v0.9.0] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.9.0 - .
+
+## 2025-02-26 00:22:37
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.504.1 (2.529.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.10.0] .
+### Releases
+- [NPM v0.10.0] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.10.0 - .

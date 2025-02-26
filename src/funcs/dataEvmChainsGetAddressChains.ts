@@ -23,6 +23,7 @@ import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { GetAddressChainsServerList } from "../models/operations/getaddresschains.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -32,11 +33,11 @@ import { Result } from "../types/fp.js";
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
-export async function dataEvmChainsGetAddressChains(
+export function dataEvmChainsGetAddressChains(
   client: AvaCloudSDKCore,
   request: operations.GetAddressChainsRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.ListAddressChainsResponse,
     | errors.BadRequest
@@ -56,13 +57,47 @@ export async function dataEvmChainsGetAddressChains(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: AvaCloudSDKCore,
+  request: operations.GetAddressChainsRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.ListAddressChainsResponse,
+      | errors.BadRequest
+      | errors.Unauthorized
+      | errors.Forbidden
+      | errors.NotFound
+      | errors.TooManyRequests
+      | errors.InternalServerError
+      | errors.BadGateway
+      | errors.ServiceUnavailable
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => operations.GetAddressChainsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -121,7 +156,7 @@ export async function dataEvmChainsGetAddressChains(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -143,7 +178,7 @@ export async function dataEvmChainsGetAddressChains(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -182,8 +217,8 @@ export async function dataEvmChainsGetAddressChains(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

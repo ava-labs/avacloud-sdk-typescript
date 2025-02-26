@@ -23,6 +23,7 @@ import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { ListLatestPrimaryNetworkTransactionsServerList } from "../models/operations/listlatestprimarynetworktransactions.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 import {
   createPageIterator,
@@ -43,11 +44,11 @@ import {
  *
  * Given that each transaction may return a large number of UTXO objects, bounded only by the maximum transaction size, the query may return less transactions than the provided page size. The result will contain less results than the page size if the number of utxos contained in the resulting transactions reach a performance threshold.
  */
-export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions(
+export function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions(
   client: AvaCloudSDKCore,
   request: operations.ListLatestPrimaryNetworkTransactionsRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   PageIterator<
     Result<
       operations.ListLatestPrimaryNetworkTransactionsResponse,
@@ -70,6 +71,43 @@ export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTran
     { cursor: string }
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: AvaCloudSDKCore,
+  request: operations.ListLatestPrimaryNetworkTransactionsRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    PageIterator<
+      Result<
+        operations.ListLatestPrimaryNetworkTransactionsResponse,
+        | errors.BadRequest
+        | errors.Unauthorized
+        | errors.Forbidden
+        | errors.NotFound
+        | errors.TooManyRequests
+        | errors.InternalServerError
+        | errors.BadGateway
+        | errors.ServiceUnavailable
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >,
+      { cursor: string }
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) =>
@@ -78,7 +116,7 @@ export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTran
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return haltIterator(parsed);
+    return [haltIterator(parsed), { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -158,7 +196,7 @@ export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTran
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return haltIterator(requestRes);
+    return [haltIterator(requestRes), { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -180,7 +218,7 @@ export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTran
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return haltIterator(doResult);
+    return [haltIterator(doResult), { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -223,7 +261,11 @@ export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTran
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return haltIterator(result);
+    return [haltIterator(result), {
+      status: "complete",
+      request: req,
+      response,
+    }];
   }
 
   const nextFunc = (
@@ -270,5 +312,9 @@ export async function dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTran
   };
 
   const page = { ...result, ...nextFunc(raw) };
-  return { ...page, ...createPageIterator(page, (v) => !v.ok) };
+  return [{ ...page, ...createPageIterator(page, (v) => !v.ok) }, {
+    status: "complete",
+    request: req,
+    response,
+  }];
 }

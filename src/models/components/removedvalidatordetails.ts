@@ -26,6 +26,9 @@ export type RemovedValidatorDetails = {
   nodeId: string;
   subnetId: string;
   amountStaked: string;
+  /**
+   * The percentage of total estimated delegator rewards allocated to validator nodes for supporting delegations.
+   */
   delegationFee?: string | undefined;
   startTimestamp: number;
   endTimestamp: number;
@@ -33,7 +36,13 @@ export type RemovedValidatorDetails = {
    * Present for AddPermissionlessValidatorTx
    */
   blsCredentials?: BlsCredentials | undefined;
+  /**
+   * The transaction hash that removed the permissioned subnet validator.
+   */
   removeTxHash: string;
+  /**
+   * The timestamp of the transaction that removed the permissioned subnet validator.
+   */
   removeTimestamp: number;
   validationStatus: RemovedValidatorDetailsValidationStatus;
 };

@@ -20,6 +20,7 @@ Gets the details of a single transaction on one of the Primary Network chains.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -49,6 +50,7 @@ import { dataPrimaryNetworkTransactionsGetTxByHash } from "@avalabs/avacloud-sdk
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -117,6 +119,7 @@ Given that each transaction may return a large number of UTXO objects, bounded o
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -154,6 +157,7 @@ import { dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions } fr
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -224,6 +228,7 @@ Lists active staking transactions on the P-Chain for the supplied addresses.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -261,6 +266,7 @@ import { dataPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactio
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -331,6 +337,7 @@ Lists asset transactions corresponding to the given asset id on the X-Chain.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -367,6 +374,7 @@ import { dataPrimaryNetworkTransactionsListAssetTransactions } from "@avalabs/av
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });

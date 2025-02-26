@@ -6,16 +6,16 @@
 import { RpcMetrics } from "@avalabs/avacloud-sdk/models/components";
 
 let value: RpcMetrics = {
-  timestamp: 688.52,
+  timestamp: 8268.62,
   values: [
     {
-      totalRequests: 7057.1,
-      apiCreditsUsed: 3952.33,
-      requestsPerSecond: 3108.4,
-      successRatePercent: 7186.27,
-      medianResponseTimeMsecs: 3359.77,
-      invalidRequests: 7277.72,
-      apiCreditsWasted: 8152,
+      totalRequests: 7255.74,
+      apiCreditsUsed: 385.57,
+      requestsPerSecond: 7731.1,
+      successRatePercent: 2168.7,
+      medianResponseTimeMsecs: 9031.5,
+      invalidRequests: 429.24,
+      apiCreditsWasted: 3330.72,
       groupedBy: "rpcMethod",
     },
   ],

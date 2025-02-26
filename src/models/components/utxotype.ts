@@ -5,10 +5,16 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Indicates whether the UTXO is staked or transferable
+ */
 export const UtxoType = {
   Stake: "STAKE",
   Transfer: "TRANSFER",
 } as const;
+/**
+ * Indicates whether the UTXO is staked or transferable
+ */
 export type UtxoType = ClosedEnum<typeof UtxoType>;
 
 /** @internal */

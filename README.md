@@ -41,6 +41,61 @@ yarn add @avalabs/avacloud-sdk zod
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
 ```
+
+
+
+### Model Context Protocol (MCP) Server
+
+This SDK is also an installable MCP server where the various SDK methods are
+exposed as tools that can be invoked by AI applications.
+
+> Node.js v20 or greater is required to run the MCP server.
+
+<details>
+<summary>Claude installation steps</summary>
+
+Add the following server definition to your `claude_desktop_config.json` file:
+
+```json
+{
+  "mcpServers": {
+    "AvaCloudSDK": {
+      "command": "npx",
+      "args": [
+        "-y", "--package", "@avalabs/avacloud-sdk",
+        "--",
+        "mcp", "start",
+        "--server-url", "...",
+        "--api-key", "...",
+        "--chain-id", "...",
+        "--network", "..."
+      ]
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>Cursor installation steps</summary>
+
+Go to `Cursor Settings > Features > MCP Servers > Add new MCP server` and use the following settings:
+
+- Name: AvaCloudSDK
+- Type: `command`
+- Command:
+```sh
+npx -y --package @avalabs/avacloud-sdk -- mcp start --server-url ... --api-key ... --chain-id ... --network ... 
+```
+
+</details>
+
+For a full list of server arguments, run:
+
+```sh
+npx -y --package @avalabs/avacloud-sdk -- mcp start --help
+```
 <!-- End SDK Installation [installation] -->
 
 <!-- Start Requirements [requirements] -->
@@ -58,6 +113,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -140,6 +196,12 @@ run();
 
 * [dataHealthCheck](docs/sdks/avacloudsdkhealthcheck/README.md#datahealthcheck) - Get the health of the service
 
+#### [data.icm](docs/sdks/icm/README.md)
+
+* [getIcmMessage](docs/sdks/icm/README.md#geticmmessage) - Get an ICM message
+* [listIcmMessages](docs/sdks/icm/README.md#listicmmessages) - List ICM messages
+* [listIcmMessagesByAddress](docs/sdks/icm/README.md#listicmmessagesbyaddress) - List ICM messages by address
+
 #### [data.nfts](docs/sdks/nfts/README.md)
 
 * [reindexNft](docs/sdks/nfts/README.md#reindexnft) - Reindex NFT metadata
@@ -200,11 +262,17 @@ run();
 
 * [aggregateSignatures](docs/sdks/signatureaggregator/README.md#aggregatesignatures) - Aggregate Signatures
 
-#### [data.teleporter](docs/sdks/teleporter/README.md)
+#### [~~data.teleporter~~](docs/sdks/teleporter/README.md)
 
-* [getTeleporterMessage](docs/sdks/teleporter/README.md#getteleportermessage) - Get a teleporter message
-* [listTeleporterMessages](docs/sdks/teleporter/README.md#listteleportermessages) - List teleporter messages
-* [listTeleporterMessagesByAddress](docs/sdks/teleporter/README.md#listteleportermessagesbyaddress) - List teleporter messages by address
+* [~~getTeleporterMessage~~](docs/sdks/teleporter/README.md#getteleportermessage) - **[Deprecated]** Gets a teleporter message by message ID.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/icm/messages/:messageId endpoint instead** . :warning: **Deprecated**
+* [~~listTeleporterMessages~~](docs/sdks/teleporter/README.md#listteleportermessages) - **[Deprecated]** Lists teleporter messages. Ordered by timestamp in  descending order.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/icm/messages endpoint instead** . :warning: **Deprecated**
+* [~~listTeleporterMessagesByAddress~~](docs/sdks/teleporter/README.md#listteleportermessagesbyaddress) - **[Deprecated]** Lists teleporter messages by address. Ordered by  timestamp in descending order.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/icm/addresses/:address/messages endpoint instead** . :warning: **Deprecated**
 
 #### [data.usageMetrics](docs/sdks/usagemetrics/README.md)
 
@@ -302,6 +370,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataEvmTransactionsListTransactions`](docs/sdks/transactions/README.md#listtransactions) - List transactions
 - [`dataEvmTransactionsListTransfers`](docs/sdks/transactions/README.md#listtransfers) - List ERC transfers
 - [`dataHealthCheckDataHealthCheck`](docs/sdks/avacloudsdkhealthcheck/README.md#datahealthcheck) - Get the health of the service
+- [`dataIcmGetIcmMessage`](docs/sdks/icm/README.md#geticmmessage) - Get an ICM message
+- [`dataIcmListIcmMessages`](docs/sdks/icm/README.md#listicmmessages) - List ICM messages
+- [`dataIcmListIcmMessagesByAddress`](docs/sdks/icm/README.md#listicmmessagesbyaddress) - List ICM messages by address
 - [`dataNftsGetTokenDetails`](docs/sdks/nfts/README.md#gettokendetails) - Get token details
 - [`dataNftsListTokens`](docs/sdks/nfts/README.md#listtokens) - List tokens
 - [`dataNftsReindexNft`](docs/sdks/nfts/README.md#reindexnft) - Reindex NFT metadata
@@ -332,9 +403,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataPrimaryNetworkVerticesGetVertexByHeight`](docs/sdks/vertices/README.md#getvertexbyheight) - List vertices by height
 - [`dataPrimaryNetworkVerticesListLatestXChainVertices`](docs/sdks/vertices/README.md#listlatestxchainvertices) - List vertices
 - [`dataSignatureAggregatorAggregateSignatures`](docs/sdks/signatureaggregator/README.md#aggregatesignatures) - Aggregate Signatures
-- [`dataTeleporterGetTeleporterMessage`](docs/sdks/teleporter/README.md#getteleportermessage) - Get a teleporter message
-- [`dataTeleporterListTeleporterMessages`](docs/sdks/teleporter/README.md#listteleportermessages) - List teleporter messages
-- [`dataTeleporterListTeleporterMessagesByAddress`](docs/sdks/teleporter/README.md#listteleportermessagesbyaddress) - List teleporter messages by address
 - [`dataUsageMetricsGetApiLogs`](docs/sdks/usagemetrics/README.md#getapilogs) - Get logs for requests made by client
 - [`dataUsageMetricsGetApiUsageMetrics`](docs/sdks/usagemetrics/README.md#getapiusagemetrics) - Get usage metrics for the Data API
 - [`dataUsageMetricsGetRpcUsageMetrics`](docs/sdks/usagemetrics/README.md#getrpcusagemetrics) - Get usage metrics for the Subnet RPC
@@ -369,6 +437,15 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - ~~[`dataEvmChainsListAllLatestTransactions`](docs/sdks/avacloudsdkchains/README.md#listalllatesttransactions)~~ - **[Deprecated]** Lists the latest transactions for all supported EVM chains. Filterable by status.
 
 ⚠️ **This operation will be removed in a future release.  Please use /v1/transactions endpoint instead** . :warning: **Deprecated**
+- ~~[`dataTeleporterGetTeleporterMessage`](docs/sdks/teleporter/README.md#getteleportermessage)~~ - **[Deprecated]** Gets a teleporter message by message ID.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/icm/messages/:messageId endpoint instead** . :warning: **Deprecated**
+- ~~[`dataTeleporterListTeleporterMessages`](docs/sdks/teleporter/README.md#listteleportermessages)~~ - **[Deprecated]** Lists teleporter messages. Ordered by timestamp in  descending order.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/icm/messages endpoint instead** . :warning: **Deprecated**
+- ~~[`dataTeleporterListTeleporterMessagesByAddress`](docs/sdks/teleporter/README.md#listteleportermessagesbyaddress)~~ - **[Deprecated]** Lists teleporter messages by address. Ordered by  timestamp in descending order.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/icm/addresses/:address/messages endpoint instead** . :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -396,6 +473,7 @@ The following global parameters are available.
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -432,6 +510,7 @@ Here's an example of one such pagination call:
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -462,6 +541,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -493,6 +573,7 @@ If you'd like to override the default retry strategy for all operations that sup
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   retryConfig: {
     strategy: "backoff",
     backoff: {
@@ -553,6 +634,7 @@ import {
 } from "@avalabs/avacloud-sdk/models/errors";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -639,12 +721,6 @@ In some rare cases, the SDK can fail to get a response from the server or even m
 | UnexpectedClientError                                | Unrecognised or unexpected error                     |
 <!-- End Error Handling [errors] -->
 
-<!-- Start Server Selection [server] -->
-## Server Selection
-
-
-<!-- End Server Selection [server] -->
-
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
@@ -710,6 +786,7 @@ To authenticate with the API the `apiKey` parameter must be set when initializin
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
@@ -762,7 +839,6 @@ Data API: The Data API provides web3 application developers with multi-chain dat
   * [Pagination](#pagination)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
-  * [Server Selection](#server-selection)
   * [Custom HTTP Client](#custom-http-client)
   * [Authentication](#authentication)
   * [Debugging](#debugging)

@@ -19,6 +19,7 @@ Gets metrics for Data API usage over a specified time interval aggregated at the
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -49,6 +50,7 @@ import { dataUsageMetricsGetApiUsageMetrics } from "@avalabs/avacloud-sdk/funcs/
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -112,6 +114,7 @@ Gets logs for requests made by client over a specified time interval for a speci
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -142,6 +145,7 @@ import { dataUsageMetricsGetApiLogs } from "@avalabs/avacloud-sdk/funcs/dataUsag
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -205,6 +209,7 @@ Gets metrics for public Subnet RPC usage over a specified time interval aggregat
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });
@@ -235,6 +240,7 @@ import { dataUsageMetricsGetRpcUsageMetrics } from "@avalabs/avacloud-sdk/funcs/
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
   chainId: "43114",
   network: "mainnet",
 });

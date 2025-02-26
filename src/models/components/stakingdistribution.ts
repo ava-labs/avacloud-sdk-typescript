@@ -8,8 +8,17 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type StakingDistribution = {
+  /**
+   * AvalancheGo version for the validator node.
+   */
   version: string;
+  /**
+   * The total amount staked by validators using this version.
+   */
   amountStaked: string;
+  /**
+   * The number of validators using this version.
+   */
   validatorCount: number;
 };
 

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: b49c7322449c4c4962d7f2120bea3b01
+  docChecksum: b89ef0eae03b554e9d058a1be7818a89
   docVersion: Beta
-  speakeasyVersion: 1.490.0
-  generationVersion: 2.512.0
-  releaseVersion: 0.9.0
-  configChecksum: 6e0b1c95e717cdc971a59ba7c872f14e
+  speakeasyVersion: 1.504.1
+  generationVersion: 2.529.2
+  releaseVersion: 0.10.0
+  configChecksum: d7055518a817be04564393e1945f4dc5
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.19.0
+    core: 3.21.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -28,9 +28,10 @@ features:
     globals: 2.82.2
     groups: 2.81.2
     ignores: 2.81.1
+    mcpServer: 0.3.0
     methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
-    nullables: 0.1.0
+    nullables: 0.1.1
     pagination: 2.82.8
     responseFormat: 0.2.3
     retries: 2.83.0
@@ -114,6 +115,10 @@ generatedFiles:
   - docs/models/components/delegationstatustype.md
   - docs/models/components/delegators.md
   - docs/models/components/delegatorsdetails.md
+  - docs/models/components/deliveredicmmessage.md
+  - docs/models/components/deliveredicmmessagestatus.md
+  - docs/models/components/deliveredsourcenotindexedicmmessage.md
+  - docs/models/components/deliveredsourcenotindexedicmmessagestatus.md
   - docs/models/components/deliveredsourcenotindexedteleportermessage.md
   - docs/models/components/deliveredsourcenotindexedteleportermessagestatus.md
   - docs/models/components/deliveredteleportermessage.md
@@ -164,6 +169,11 @@ generatedFiles:
   - docs/models/components/groupedby.md
   - docs/models/components/groupvalue.md
   - docs/models/components/historicalreward.md
+  - docs/models/components/icmdestinationtransaction.md
+  - docs/models/components/icmreceipt.md
+  - docs/models/components/icmrewarddetails.md
+  - docs/models/components/icmrewarddetailserctype.md
+  - docs/models/components/icmsourcetransaction.md
   - docs/models/components/imageasset.md
   - docs/models/components/includechains.md
   - docs/models/components/internaltransaction.md
@@ -196,6 +206,8 @@ generatedFiles:
   - docs/models/components/listerc721transactionsresponse.md
   - docs/models/components/listevmblocksresponse.md
   - docs/models/components/listhistoricalrewardsresponse.md
+  - docs/models/components/listicmmessagesresponse.md
+  - docs/models/components/listicmmessagesresponsemessages.md
   - docs/models/components/listinternaltransactionsresponse.md
   - docs/models/components/listl1validatorsresponse.md
   - docs/models/components/listnativetransactionsresponse.md
@@ -253,6 +265,8 @@ generatedFiles:
   - docs/models/components/pchainutxo.md
   - docs/models/components/pendingdelegatordetails.md
   - docs/models/components/pendingdelegatordetailsdelegationstatus.md
+  - docs/models/components/pendingicmmessage.md
+  - docs/models/components/pendingicmmessagestatus.md
   - docs/models/components/pendingreward.md
   - docs/models/components/pendingteleportermessage.md
   - docs/models/components/pendingvalidatordetails.md
@@ -420,6 +434,8 @@ generatedFiles:
   - docs/models/operations/getevmchainmetricsresponse.md
   - docs/models/operations/getevmchainrollingwindowmetricsglobals.md
   - docs/models/operations/getevmchainrollingwindowmetricsrequest.md
+  - docs/models/operations/geticmmessagerequest.md
+  - docs/models/operations/geticmmessageresponsebody.md
   - docs/models/operations/getlatestblocksglobals.md
   - docs/models/operations/getlatestblocksrequest.md
   - docs/models/operations/getlatestblocksresponse.md
@@ -513,6 +529,9 @@ generatedFiles:
   - docs/models/operations/listhistoricalprimarynetworkrewardsglobals.md
   - docs/models/operations/listhistoricalprimarynetworkrewardsrequest.md
   - docs/models/operations/listhistoricalprimarynetworkrewardsresponse.md
+  - docs/models/operations/listicmmessagesbyaddressrequest.md
+  - docs/models/operations/listicmmessagesrequest.md
+  - docs/models/operations/listicmmessagesresponse.md
   - docs/models/operations/listinternaltransactionsglobals.md
   - docs/models/operations/listinternaltransactionsrequest.md
   - docs/models/operations/listinternaltransactionsresponse.md
@@ -590,6 +609,7 @@ generatedFiles:
   - docs/sdks/data/README.md
   - docs/sdks/evm/README.md
   - docs/sdks/healthcheck/README.md
+  - docs/sdks/icm/README.md
   - docs/sdks/lookingglass/README.md
   - docs/sdks/metrics/README.md
   - docs/sdks/nfts/README.md
@@ -635,6 +655,9 @@ generatedFiles:
   - src/funcs/dataEvmTransactionsListTransactions.ts
   - src/funcs/dataEvmTransactionsListTransfers.ts
   - src/funcs/dataHealthCheckDataHealthCheck.ts
+  - src/funcs/dataIcmGetIcmMessage.ts
+  - src/funcs/dataIcmListIcmMessages.ts
+  - src/funcs/dataIcmListIcmMessagesByAddress.ts
   - src/funcs/dataNftsGetTokenDetails.ts
   - src/funcs/dataNftsListTokens.ts
   - src/funcs/dataNftsReindexNft.ts
@@ -712,6 +735,107 @@ generatedFiles:
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
+  - src/mcp-server/build.mts
+  - src/mcp-server/cli.ts
+  - src/mcp-server/cli/start/command.ts
+  - src/mcp-server/cli/start/impl.ts
+  - src/mcp-server/console-logger.ts
+  - src/mcp-server/mcp-server.ts
+  - src/mcp-server/resources.ts
+  - src/mcp-server/scopes.ts
+  - src/mcp-server/server.ts
+  - src/mcp-server/shared.ts
+  - src/mcp-server/tools.ts
+  - src/mcp-server/tools/dataEvmBalancesGetNativeBalance.ts
+  - src/mcp-server/tools/dataEvmBalancesListCollectibleBalances.ts
+  - src/mcp-server/tools/dataEvmBalancesListErc1155Balances.ts
+  - src/mcp-server/tools/dataEvmBalancesListErc20Balances.ts
+  - src/mcp-server/tools/dataEvmBalancesListErc721Balances.ts
+  - src/mcp-server/tools/dataEvmBlocksGetBlock.ts
+  - src/mcp-server/tools/dataEvmBlocksGetLatestBlocks.ts
+  - src/mcp-server/tools/dataEvmBlocksListLatestBlocksAllChains.ts
+  - src/mcp-server/tools/dataEvmChainsGetAddressChains.ts
+  - src/mcp-server/tools/dataEvmChainsGetChainInfo.ts
+  - src/mcp-server/tools/dataEvmChainsListAddressChains.ts
+  - src/mcp-server/tools/dataEvmChainsListAllLatestBlocks.ts
+  - src/mcp-server/tools/dataEvmChainsListAllLatestTransactions.ts
+  - src/mcp-server/tools/dataEvmChainsSupportedChains.ts
+  - src/mcp-server/tools/dataEvmContractsGetContractMetadata.ts
+  - src/mcp-server/tools/dataEvmTransactionsGetDeploymentTransaction.ts
+  - src/mcp-server/tools/dataEvmTransactionsGetTransaction.ts
+  - src/mcp-server/tools/dataEvmTransactionsGetTransactionsForBlock.ts
+  - src/mcp-server/tools/dataEvmTransactionsListContractDeployments.ts
+  - src/mcp-server/tools/dataEvmTransactionsListErc1155Transactions.ts
+  - src/mcp-server/tools/dataEvmTransactionsListErc20Transactions.ts
+  - src/mcp-server/tools/dataEvmTransactionsListErc721Transactions.ts
+  - src/mcp-server/tools/dataEvmTransactionsListInternalTransactions.ts
+  - src/mcp-server/tools/dataEvmTransactionsListLatestTransactions.ts
+  - src/mcp-server/tools/dataEvmTransactionsListLatestTransactionsAllChains.ts
+  - src/mcp-server/tools/dataEvmTransactionsListNativeTransactions.ts
+  - src/mcp-server/tools/dataEvmTransactionsListTransactions.ts
+  - src/mcp-server/tools/dataEvmTransactionsListTransfers.ts
+  - src/mcp-server/tools/dataHealthCheckDataHealthCheck.ts
+  - src/mcp-server/tools/dataIcmGetIcmMessage.ts
+  - src/mcp-server/tools/dataIcmListIcmMessages.ts
+  - src/mcp-server/tools/dataIcmListIcmMessagesByAddress.ts
+  - src/mcp-server/tools/dataNftsGetTokenDetails.ts
+  - src/mcp-server/tools/dataNftsListTokens.ts
+  - src/mcp-server/tools/dataNftsReindexNft.ts
+  - src/mcp-server/tools/dataOperationsGetOperationResult.ts
+  - src/mcp-server/tools/dataOperationsPostTransactionExportJob.ts
+  - src/mcp-server/tools/dataPrimaryNetworkBalancesGetBalancesByAddresses.ts
+  - src/mcp-server/tools/dataPrimaryNetworkBlocksGetBlockById.ts
+  - src/mcp-server/tools/dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks.ts
+  - src/mcp-server/tools/dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId.ts
+  - src/mcp-server/tools/dataPrimaryNetworkGetAssetDetails.ts
+  - src/mcp-server/tools/dataPrimaryNetworkGetChainIdsForAddresses.ts
+  - src/mcp-server/tools/dataPrimaryNetworkGetNetworkDetails.ts
+  - src/mcp-server/tools/dataPrimaryNetworkGetSingleValidatorDetails.ts
+  - src/mcp-server/tools/dataPrimaryNetworkGetSubnetById.ts
+  - src/mcp-server/tools/dataPrimaryNetworkListBlockchains.ts
+  - src/mcp-server/tools/dataPrimaryNetworkListDelegators.ts
+  - src/mcp-server/tools/dataPrimaryNetworkListL1Validators.ts
+  - src/mcp-server/tools/dataPrimaryNetworkListSubnets.ts
+  - src/mcp-server/tools/dataPrimaryNetworkListValidators.ts
+  - src/mcp-server/tools/dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards.ts
+  - src/mcp-server/tools/dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards.ts
+  - src/mcp-server/tools/dataPrimaryNetworkTransactionsGetTxByHash.ts
+  - src/mcp-server/tools/dataPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions.ts
+  - src/mcp-server/tools/dataPrimaryNetworkTransactionsListAssetTransactions.ts
+  - src/mcp-server/tools/dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions.ts
+  - src/mcp-server/tools/dataPrimaryNetworkUtxosGetUtxosByAddresses.ts
+  - src/mcp-server/tools/dataPrimaryNetworkVerticesGetVertexByHash.ts
+  - src/mcp-server/tools/dataPrimaryNetworkVerticesGetVertexByHeight.ts
+  - src/mcp-server/tools/dataPrimaryNetworkVerticesListLatestXChainVertices.ts
+  - src/mcp-server/tools/dataSignatureAggregatorAggregateSignatures.ts
+  - src/mcp-server/tools/dataTeleporterGetTeleporterMessage.ts
+  - src/mcp-server/tools/dataTeleporterListTeleporterMessages.ts
+  - src/mcp-server/tools/dataTeleporterListTeleporterMessagesByAddress.ts
+  - src/mcp-server/tools/dataUsageMetricsGetApiLogs.ts
+  - src/mcp-server/tools/dataUsageMetricsGetApiUsageMetrics.ts
+  - src/mcp-server/tools/dataUsageMetricsGetRpcUsageMetrics.ts
+  - src/mcp-server/tools/dataWebhooksAddAddressesToWebhook.ts
+  - src/mcp-server/tools/dataWebhooksCreateWebhook.ts
+  - src/mcp-server/tools/dataWebhooksDeactivateWebhook.ts
+  - src/mcp-server/tools/dataWebhooksGenerateSharedSecret.ts
+  - src/mcp-server/tools/dataWebhooksGetAddressesFromWebhook.ts
+  - src/mcp-server/tools/dataWebhooksGetSharedSecret.ts
+  - src/mcp-server/tools/dataWebhooksGetWebhook.ts
+  - src/mcp-server/tools/dataWebhooksListWebhooks.ts
+  - src/mcp-server/tools/dataWebhooksRemoveAddressesFromWebhook.ts
+  - src/mcp-server/tools/dataWebhooksUpdateWebhook.ts
+  - src/mcp-server/tools/metricsChainMetricsGetEvmChainMetrics.ts
+  - src/mcp-server/tools/metricsChainMetricsGetEvmChainRollingWindowMetrics.ts
+  - src/mcp-server/tools/metricsChainMetricsGetStakingMetrics.ts
+  - src/mcp-server/tools/metricsChainMetricsGetTeleporterMetricsByChain.ts
+  - src/mcp-server/tools/metricsEvmChainsGetChain.ts
+  - src/mcp-server/tools/metricsEvmChainsListChains.ts
+  - src/mcp-server/tools/metricsHealthCheckMetricsHealthCheck.ts
+  - src/mcp-server/tools/metricsLookingGlassCompositeQuery.ts
+  - src/mcp-server/tools/metricsLookingGlassGetAddressesByBalanceOverTime.ts
+  - src/mcp-server/tools/metricsLookingGlassGetAddressesByBtcbBridged.ts
+  - src/mcp-server/tools/metricsLookingGlassGetNftHoldersByContractAddress.ts
+  - src/mcp-server/tools/metricsLookingGlassGetValidatorsByDateRange.ts
   - src/models/components/activedelegatordetails.ts
   - src/models/components/activevalidatordetails.ts
   - src/models/components/addressactivitymetadata.ts
@@ -763,6 +887,8 @@ generatedFiles:
   - src/models/components/daterangestarsarenaminbalanceparam.ts
   - src/models/components/delegationstatustype.ts
   - src/models/components/delegatorsdetails.ts
+  - src/models/components/deliveredicmmessage.ts
+  - src/models/components/deliveredsourcenotindexedicmmessage.ts
   - src/models/components/deliveredsourcenotindexedteleportermessage.ts
   - src/models/components/deliveredteleportermessage.ts
   - src/models/components/erc1155contract.ts
@@ -797,6 +923,10 @@ generatedFiles:
   - src/models/components/gettransactionresponse.ts
   - src/models/components/globalparamnetwork.ts
   - src/models/components/historicalreward.ts
+  - src/models/components/icmdestinationtransaction.ts
+  - src/models/components/icmreceipt.ts
+  - src/models/components/icmrewarddetails.ts
+  - src/models/components/icmsourcetransaction.ts
   - src/models/components/imageasset.ts
   - src/models/components/index.ts
   - src/models/components/internaltransaction.ts
@@ -824,6 +954,7 @@ generatedFiles:
   - src/models/components/listerc721transactionsresponse.ts
   - src/models/components/listevmblocksresponse.ts
   - src/models/components/listhistoricalrewardsresponse.ts
+  - src/models/components/listicmmessagesresponse.ts
   - src/models/components/listinternaltransactionsresponse.ts
   - src/models/components/listl1validatorsresponse.ts
   - src/models/components/listnativetransactionsresponse.ts
@@ -877,6 +1008,7 @@ generatedFiles:
   - src/models/components/pchaintransactiontype.ts
   - src/models/components/pchainutxo.ts
   - src/models/components/pendingdelegatordetails.ts
+  - src/models/components/pendingicmmessage.ts
   - src/models/components/pendingreward.ts
   - src/models/components/pendingteleportermessage.ts
   - src/models/components/pendingvalidatordetails.ts
@@ -992,6 +1124,7 @@ generatedFiles:
   - src/models/operations/getdeploymenttransaction.ts
   - src/models/operations/getevmchainmetrics.ts
   - src/models/operations/getevmchainrollingwindowmetrics.ts
+  - src/models/operations/geticmmessage.ts
   - src/models/operations/getlatestblocks.ts
   - src/models/operations/getnativebalance.ts
   - src/models/operations/getnetworkdetails.ts
@@ -1031,6 +1164,8 @@ generatedFiles:
   - src/models/operations/listerc721balances.ts
   - src/models/operations/listerc721transactions.ts
   - src/models/operations/listhistoricalprimarynetworkrewards.ts
+  - src/models/operations/listicmmessages.ts
+  - src/models/operations/listicmmessagesbyaddress.ts
   - src/models/operations/listinternaltransactions.ts
   - src/models/operations/listl1validators.ts
   - src/models/operations/listlatestblocksallchains.ts
@@ -1071,6 +1206,7 @@ generatedFiles:
   - src/sdk/data.ts
   - src/sdk/evm.ts
   - src/sdk/healthcheck.ts
+  - src/sdk/icm.ts
   - src/sdk/index.ts
   - src/sdk/lookingglass.ts
   - src/sdk/metrics.ts
@@ -1086,6 +1222,7 @@ generatedFiles:
   - src/sdk/utxos.ts
   - src/sdk/vertices.ts
   - src/sdk/webhooks.ts
+  - src/types/async.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts
   - src/types/enums.ts
@@ -3460,6 +3597,87 @@ examples:
           application/json: {"message": ["<value>", "<value>", "<value>"], "statusCode": 500, "error": "Internal Server Error"}
         "502":
           application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+        "200": {}
+  getIcmMessage:
+    "":
+      parameters:
+        path:
+          messageId: "acf1c8b06f9aec48e9fcbefbbe576ae8a7ca3b327fcae111396e7cc99956674d"
+      responses:
+        "200":
+          application/json: {"messageId": "<id>", "icmContractAddress": "<value>", "sourceBlockchainId": "<id>", "destinationBlockchainId": "<id>", "sourceEvmChainId": "<id>", "destinationEvmChainId": "<id>", "messageNonce": "<value>", "from": "<value>", "to": "<value>", "messageExecuted": false, "receipts": [{"receivedMessageNonce": "<value>", "relayerRewardAddress": "<value>"}], "receiptDelivered": true, "rewardDetails": {"address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F", "name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "ercType": "ERC-20", "price": {"currencyCode": "usd", "value": "42.42"}, "value": "<value>"}, "sourceTransaction": {"txHash": "<value>", "timestamp": 7196.24, "gasSpent": "<value>"}, "status": "pending"}
+        "400":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": ["<value>", "<value>", "<value>"], "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": "<value>", "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": "<value>", "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": "<value>", "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": ["<value>", "<value>", "<value>"], "statusCode": 503, "error": "Service Unavailable"}
+  listIcmMessages:
+    "":
+      parameters:
+        query:
+          pageSize: "10"
+          sourceBlockchainId: "2D8RG4UpSXbPbvPCAWppNJyqTG2i2CAXSkTgmTBBvs7GKNZjsY"
+          destinationBlockchainId: "yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp"
+          to: "0x664A4Be5Af2cFc824F9C0914CbAc4703396Da2DC"
+          from: "0x321eDA69247566D662178feE695C7026c604Cd94"
+          network: "mainnet"
+      responses:
+        "200":
+          application/json: {"messages": [{"messageId": "<id>", "icmContractAddress": "<value>", "sourceBlockchainId": "<id>", "destinationBlockchainId": "<id>", "sourceEvmChainId": "<id>", "destinationEvmChainId": "<id>", "messageNonce": "<value>", "from": "<value>", "to": "<value>", "messageExecuted": false, "receipts": [], "receiptDelivered": true, "rewardDetails": {"address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F", "name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "ercType": "ERC-20", "price": {"currencyCode": "usd", "value": "42.42"}, "value": "<value>"}, "sourceTransaction": {"txHash": "<value>", "timestamp": 743.91, "gasSpent": "<value>"}, "destinationTransaction": {"txHash": "<value>", "timestamp": 9468.86, "gasSpent": "<value>", "rewardRedeemer": "<value>", "delivererAddress": "<value>"}, "status": "delivered"}, {"messageId": "<id>", "icmContractAddress": "<value>", "sourceBlockchainId": "<id>", "destinationBlockchainId": "<id>", "sourceEvmChainId": "<id>", "destinationEvmChainId": "<id>", "messageNonce": "<value>", "from": "<value>", "to": "<value>", "messageExecuted": true, "receipts": [{"receivedMessageNonce": "<value>", "relayerRewardAddress": "<value>"}, {"receivedMessageNonce": "<value>", "relayerRewardAddress": "<value>"}, {"receivedMessageNonce": "<value>", "relayerRewardAddress": "<value>"}], "receiptDelivered": true, "rewardDetails": {"address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F", "name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "ercType": "ERC-20", "price": {"currencyCode": "usd", "value": "42.42"}, "value": "<value>"}, "sourceTransaction": {"txHash": "<value>", "timestamp": 2750.55, "gasSpent": "<value>"}, "status": "pending"}, {"messageId": "<id>", "icmContractAddress": "<value>", "sourceBlockchainId": "<id>", "destinationBlockchainId": "<id>", "sourceEvmChainId": "<id>", "destinationEvmChainId": "<id>", "messageNonce": "<value>", "from": "<value>", "to": "<value>", "messageExecuted": true, "receipts": [{"receivedMessageNonce": "<value>", "relayerRewardAddress": "<value>"}, {"receivedMessageNonce": "<value>", "relayerRewardAddress": "<value>"}, {"receivedMessageNonce": "<value>", "relayerRewardAddress": "<value>"}], "receiptDelivered": true, "rewardDetails": {"address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F", "name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "ercType": "ERC-20", "price": {"currencyCode": "usd", "value": "42.42"}, "value": "<value>"}, "sourceTransaction": {"txHash": "<value>", "timestamp": 7526.7, "gasSpent": "<value>"}, "status": "pending"}]}
+        "400":
+          application/json: {"message": [], "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": [], "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": ["<value>"], "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": "<value>", "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": "<value>", "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": ["<value>"], "statusCode": 503, "error": "Service Unavailable"}
+  listIcmMessagesByAddress:
+    "":
+      parameters:
+        path:
+          address: "0x8578AE7723751446B196bD5124e1bF57B40EB7Bc"
+        query:
+          pageSize: "10"
+          network: "mainnet"
+      responses:
+        "200":
+          application/json: {"messages": [{"messageId": "<id>", "icmContractAddress": "<value>", "sourceBlockchainId": "<id>", "destinationBlockchainId": "<id>", "sourceEvmChainId": "<id>", "destinationEvmChainId": "<id>", "messageNonce": "<value>", "from": "<value>", "to": "<value>", "messageExecuted": true, "receipts": [{"receivedMessageNonce": "<value>", "relayerRewardAddress": "<value>"}], "receiptDelivered": true, "rewardDetails": {"address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F", "name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "ercType": "ERC-20", "price": {"currencyCode": "usd", "value": "42.42"}, "value": "<value>"}, "sourceTransaction": {"txHash": "<value>", "timestamp": 8846.5, "gasSpent": "<value>"}, "destinationTransaction": {"txHash": "<value>", "timestamp": 1913.77, "gasSpent": "<value>", "rewardRedeemer": "<value>", "delivererAddress": "<value>"}, "status": "delivered"}, {"messageId": "<id>", "icmContractAddress": "<value>", "sourceBlockchainId": "<id>", "destinationBlockchainId": "<id>", "sourceEvmChainId": "<id>", "destinationEvmChainId": "<id>", "messageNonce": "<value>", "from": "<value>", "to": "<value>", "messageExecuted": false, "receipts": [{"receivedMessageNonce": "<value>", "relayerRewardAddress": "<value>"}], "receiptDelivered": true, "rewardDetails": {"address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F", "name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "ercType": "ERC-20", "price": {"currencyCode": "usd", "value": "42.42"}, "value": "<value>"}, "sourceTransaction": {"txHash": "<value>", "timestamp": 4392.61, "gasSpent": "<value>"}, "destinationTransaction": {"txHash": "<value>", "timestamp": 1058.51, "gasSpent": "<value>", "rewardRedeemer": "<value>", "delivererAddress": "<value>"}, "status": "delivered"}, {"messageId": "<id>", "icmContractAddress": "<value>", "sourceBlockchainId": "<id>", "destinationBlockchainId": "<id>", "sourceEvmChainId": "<id>", "destinationEvmChainId": "<id>", "messageNonce": "<value>", "from": "<value>", "to": "<value>", "messageExecuted": true, "receipts": [], "receiptDelivered": true, "rewardDetails": {"address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F", "name": "Wrapped AVAX", "symbol": "WAVAX", "decimals": 18, "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg", "ercType": "ERC-20", "price": {"currencyCode": "usd", "value": "42.42"}, "value": "<value>"}, "sourceTransaction": {"txHash": "<value>", "timestamp": 6082.2, "gasSpent": "<value>"}, "destinationTransaction": {"txHash": "<value>", "timestamp": 2387.61, "gasSpent": "<value>", "rewardRedeemer": "<value>", "delivererAddress": "<value>"}, "status": "delivered"}]}
+        "400":
+          application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": "<value>", "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": "<value>", "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": "<value>", "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": "<value>", "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
 examplesVersion: 1.0.0

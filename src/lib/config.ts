@@ -9,7 +9,7 @@ import { RetryConfig } from "./retries.js";
 import { pathToFunc } from "./url.js";
 
 export type SDKOptions = {
-  apiKey?: string | (() => Promise<string>);
+  apiKey?: string | (() => Promise<string>) | undefined;
 
   /**
    * Allows setting the chainId parameter for all supported operations
@@ -23,9 +23,9 @@ export type SDKOptions = {
 
   httpClient?: HTTPClient;
   /**
-   * Allows overriding the default server URL used by the SDK
+   * Specifies the server URL to be used by the SDK
    */
-  serverURL?: string;
+  serverURL: string;
   /**
    * Allows overriding the default retry config used by the SDK
    */
@@ -50,8 +50,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "Beta",
-  sdkVersion: "0.9.0",
-  genVersion: "2.512.0",
+  sdkVersion: "0.10.0",
+  genVersion: "2.529.2",
   userAgent:
-    "speakeasy-sdk/typescript 0.9.0 2.512.0 Beta @avalabs/avacloud-sdk",
+    "speakeasy-sdk/typescript 0.10.0 2.529.2 Beta @avalabs/avacloud-sdk",
 } as const;

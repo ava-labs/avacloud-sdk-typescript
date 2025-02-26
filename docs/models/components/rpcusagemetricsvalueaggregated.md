@@ -6,14 +6,14 @@
 import { RpcUsageMetricsValueAggregated } from "@avalabs/avacloud-sdk/models/components";
 
 let value: RpcUsageMetricsValueAggregated = {
-  totalRequests: 2908.41,
-  apiCreditsUsed: 1797.95,
-  requestsPerSecond: 3455.06,
-  successRatePercent: 4800.61,
-  medianResponseTimeMsecs: 5221.76,
-  invalidRequests: 8536.06,
-  apiCreditsWasted: 8894.48,
-  groupedBy: "rpcMethod",
+  totalRequests: 2981.87,
+  apiCreditsUsed: 1509.35,
+  requestsPerSecond: 3302.67,
+  successRatePercent: 8138.8,
+  medianResponseTimeMsecs: 1403.84,
+  invalidRequests: 2273.62,
+  apiCreditsWasted: 688.52,
+  groupedBy: "rlBypassToken",
 };
 ```
 

@@ -23,19 +23,21 @@ import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { ListTeleporterMessagesByAddressServerList } from "../models/operations/listteleportermessagesbyaddress.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * List teleporter messages by address
+ * **[Deprecated]** Lists teleporter messages by address. Ordered by  timestamp in descending order.
  *
- * @remarks
- * Lists teleporter messages by address. Ordered by timestamp in descending order.
+ * ⚠️ **This operation will be removed in a future release.  Please use /v1/icm/addresses/:address/messages endpoint instead** .
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
-export async function dataTeleporterListTeleporterMessagesByAddress(
+export function dataTeleporterListTeleporterMessagesByAddress(
   client: AvaCloudSDKCore,
   request: operations.ListTeleporterMessagesByAddressRequest,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.ListTeleporterMessagesResponse,
     | errors.BadRequest
@@ -55,6 +57,40 @@ export async function dataTeleporterListTeleporterMessagesByAddress(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: AvaCloudSDKCore,
+  request: operations.ListTeleporterMessagesByAddressRequest,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.ListTeleporterMessagesResponse,
+      | errors.BadRequest
+      | errors.Unauthorized
+      | errors.Forbidden
+      | errors.NotFound
+      | errors.TooManyRequests
+      | errors.InternalServerError
+      | errors.BadGateway
+      | errors.ServiceUnavailable
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) =>
@@ -64,7 +100,7 @@ export async function dataTeleporterListTeleporterMessagesByAddress(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
@@ -134,7 +170,7 @@ export async function dataTeleporterListTeleporterMessagesByAddress(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -156,7 +192,7 @@ export async function dataTeleporterListTeleporterMessagesByAddress(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -195,8 +231,8 @@ export async function dataTeleporterListTeleporterMessagesByAddress(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

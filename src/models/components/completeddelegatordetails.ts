@@ -21,7 +21,13 @@ export type CompletedDelegatorDetails = {
   delegationFee: string;
   startTimestamp: number;
   endTimestamp: number;
+  /**
+   * Total rewards distributed for the successful delegation.
+   */
   grossReward: string;
+  /**
+   * Net rewards distributed to the delegator after deducting delegation fee from the gross reward for the successful delegation.
+   */
   netReward: string;
   delegationStatus: DelegationStatus;
 };

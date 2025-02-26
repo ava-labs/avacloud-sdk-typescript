@@ -20,15 +20,16 @@ import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { DataHealthCheckServerList } from "../models/operations/datahealthcheck.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
  * Get the health of the service
  */
-export async function dataHealthCheckDataHealthCheck(
+export function dataHealthCheckDataHealthCheck(
   client: AvaCloudSDKCore,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     operations.DataHealthCheckResponseBody,
     | errors.DataHealthCheckResponseBody
@@ -40,6 +41,31 @@ export async function dataHealthCheckDataHealthCheck(
     | RequestTimeoutError
     | ConnectionError
   >
+> {
+  return new APIPromise($do(
+    client,
+    options,
+  ));
+}
+
+async function $do(
+  client: AvaCloudSDKCore,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      operations.DataHealthCheckResponseBody,
+      | errors.DataHealthCheckResponseBody
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
 > {
   const baseURL = options?.serverURL
     || pathToFunc(DataHealthCheckServerList[0], { charEncoding: "percent" })();
@@ -87,7 +113,7 @@ export async function dataHealthCheckDataHealthCheck(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -98,7 +124,7 @@ export async function dataHealthCheckDataHealthCheck(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -123,8 +149,8 @@ export async function dataHealthCheckDataHealthCheck(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }
