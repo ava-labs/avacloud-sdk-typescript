@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: b89ef0eae03b554e9d058a1be7818a89
+  docChecksum: d3ba913e4a807f431f9fd48e1bf1e730
   docVersion: Beta
-  speakeasyVersion: 1.504.1
-  generationVersion: 2.529.2
-  releaseVersion: 0.10.0
-  configChecksum: d7055518a817be04564393e1945f4dc5
+  speakeasyVersion: 1.509.0
+  generationVersion: 2.539.0
+  releaseVersion: 0.11.0
+  configChecksum: 0d1472b1c5ef3e63349aeb20ddb6c505
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.21.2
+    core: 3.21.3
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -28,11 +28,11 @@ features:
     globals: 2.82.2
     groups: 2.81.2
     ignores: 2.81.1
-    mcpServer: 0.3.0
+    mcpServer: 0.4.1
     methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
     nullables: 0.1.1
-    pagination: 2.82.8
+    pagination: 2.83.0
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
@@ -456,6 +456,7 @@ generatedFiles:
   - docs/models/operations/getstakingmetricsresponse.md
   - docs/models/operations/getsubnetbyidglobals.md
   - docs/models/operations/getsubnetbyidrequest.md
+  - docs/models/operations/getsubnetrpcusagemetricsrequest.md
   - docs/models/operations/getteleportermessagerequest.md
   - docs/models/operations/getteleportermessageresponsebody.md
   - docs/models/operations/getteleportermetricsbychainglobals.md
@@ -694,6 +695,7 @@ generatedFiles:
   - src/funcs/dataUsageMetricsGetApiLogs.ts
   - src/funcs/dataUsageMetricsGetApiUsageMetrics.ts
   - src/funcs/dataUsageMetricsGetRpcUsageMetrics.ts
+  - src/funcs/dataUsageMetricsGetSubnetRpcUsageMetrics.ts
   - src/funcs/dataWebhooksAddAddressesToWebhook.ts
   - src/funcs/dataWebhooksCreateWebhook.ts
   - src/funcs/dataWebhooksDeactivateWebhook.ts
@@ -814,6 +816,7 @@ generatedFiles:
   - src/mcp-server/tools/dataUsageMetricsGetApiLogs.ts
   - src/mcp-server/tools/dataUsageMetricsGetApiUsageMetrics.ts
   - src/mcp-server/tools/dataUsageMetricsGetRpcUsageMetrics.ts
+  - src/mcp-server/tools/dataUsageMetricsGetSubnetRpcUsageMetrics.ts
   - src/mcp-server/tools/dataWebhooksAddAddressesToWebhook.ts
   - src/mcp-server/tools/dataWebhooksCreateWebhook.ts
   - src/mcp-server/tools/dataWebhooksDeactivateWebhook.ts
@@ -1135,6 +1138,7 @@ generatedFiles:
   - src/models/operations/getsinglevalidatordetails.ts
   - src/models/operations/getstakingmetrics.ts
   - src/models/operations/getsubnetbyid.ts
+  - src/models/operations/getsubnetrpcusagemetrics.ts
   - src/models/operations/getteleportermessage.ts
   - src/models/operations/getteleportermetricsbychain.ts
   - src/models/operations/gettokendetails.ts
@@ -2506,8 +2510,8 @@ examples:
     "":
       parameters:
         query:
-          startTimestamp: 1698100000
-          endTimestamp: 1698300000
+          startTimestamp: 1739507200
+          endTimestamp: 1739664000
           timeInterval: "daily"
           groupBy: "requestPath"
       responses:
@@ -2533,8 +2537,8 @@ examples:
     "":
       parameters:
         query:
-          startTimestamp: 1698100000
-          endTimestamp: 1698300000
+          startTimestamp: 1739507200
+          endTimestamp: 1739664000
           pageSize: 10
       responses:
         "200":
@@ -3579,8 +3583,8 @@ examples:
       parameters:
         query:
           timeInterval: "daily"
-          startTimestamp: 1698100000
-          endTimestamp: 1698300000
+          startTimestamp: 1739507200
+          endTimestamp: 1739664000
           groupBy: "rpcMethod"
       responses:
         "400":
@@ -3599,7 +3603,8 @@ examples:
           application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
-        "200": {}
+        "200":
+          application/json: {"aggregateDuration": "<value>", "metrics": [{"timestamp": 507.42, "values": []}], "chainId": "<id>"}
   getIcmMessage:
     "":
       parameters:
@@ -3678,6 +3683,33 @@ examples:
           application/json: {"message": ["<value>", "<value>"], "statusCode": 500, "error": "Internal Server Error"}
         "502":
           application/json: {"message": ["<value>", "<value>"], "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+  getSubnetRpcUsageMetrics:
+    "":
+      parameters:
+        query:
+          timeInterval: "daily"
+          startTimestamp: 1739507200
+          endTimestamp: 1739664000
+          groupBy: "rpcMethod"
+      responses:
+        "200":
+          application/json: {"aggregateDuration": "<value>", "metrics": [{"timestamp": 7145.4, "values": [{"totalRequests": 3035.03, "apiCreditsUsed": 4011.75, "requestsPerSecond": 1437.28, "successRatePercent": 7277.6, "medianResponseTimeMsecs": 5583.29, "invalidRequests": 718.21, "apiCreditsWasted": 4673.34, "groupedBy": "continent"}]}, {"timestamp": 7589.09, "values": [{"totalRequests": 580.17, "apiCreditsUsed": 9410.32, "requestsPerSecond": 2742.83, "successRatePercent": 8474.4, "medianResponseTimeMsecs": 6064.88, "invalidRequests": 1785.91, "apiCreditsWasted": 2615.03, "groupedBy": "rpcMethod"}, {"totalRequests": 5454.8, "apiCreditsUsed": 2809.84, "requestsPerSecond": 644.85, "successRatePercent": 9272.79, "medianResponseTimeMsecs": 6905.73, "invalidRequests": 7187.35, "apiCreditsWasted": 639.88, "groupedBy": "rlBypassToken"}]}], "chainId": "<id>"}
+        "400":
+          application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": "<value>", "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": "<value>", "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": "<value>", "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": "<value>", "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
 examplesVersion: 1.0.0

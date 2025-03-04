@@ -294,7 +294,7 @@ async function $do(
     "~next"?: { cursor: string };
   } => {
     const nextCursor = dlv(responseData, "nextPageToken");
-    if (nextCursor == null) {
+    if (typeof nextCursor !== "string") {
       return { next: () => null };
     }
 

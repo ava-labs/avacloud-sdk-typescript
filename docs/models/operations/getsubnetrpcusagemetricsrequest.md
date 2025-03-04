@@ -1,11 +1,11 @@
-# GetRpcUsageMetricsRequest
+# GetSubnetRpcUsageMetricsRequest
 
 ## Example Usage
 
 ```typescript
-import { GetRpcUsageMetricsRequest } from "@avalabs/avacloud-sdk/models/operations";
+import { GetSubnetRpcUsageMetricsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetRpcUsageMetricsRequest = {
+let value: GetSubnetRpcUsageMetricsRequest = {
   timeInterval: "daily",
   startTimestamp: 1739507200,
   endTimestamp: 1739664000,

@@ -76,6 +76,7 @@ import { tool$dataTeleporterListTeleporterMessagesByAddress } from "./tools/data
 import { tool$dataUsageMetricsGetApiLogs } from "./tools/dataUsageMetricsGetApiLogs.js";
 import { tool$dataUsageMetricsGetApiUsageMetrics } from "./tools/dataUsageMetricsGetApiUsageMetrics.js";
 import { tool$dataUsageMetricsGetRpcUsageMetrics } from "./tools/dataUsageMetricsGetRpcUsageMetrics.js";
+import { tool$dataUsageMetricsGetSubnetRpcUsageMetrics } from "./tools/dataUsageMetricsGetSubnetRpcUsageMetrics.js";
 import { tool$dataWebhooksAddAddressesToWebhook } from "./tools/dataWebhooksAddAddressesToWebhook.js";
 import { tool$dataWebhooksCreateWebhook } from "./tools/dataWebhooksCreateWebhook.js";
 import { tool$dataWebhooksDeactivateWebhook } from "./tools/dataWebhooksDeactivateWebhook.js";
@@ -101,6 +102,7 @@ import { tool$metricsLookingGlassGetValidatorsByDateRange } from "./tools/metric
 
 export function createMCPServer(deps: {
   logger: ConsoleLogger;
+  allowedTools?: string[] | undefined;
   scopes?: MCPScope[] | undefined;
   serverURL: string;
   apiKey?: SDKOptions["apiKey"] | undefined;
@@ -109,7 +111,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "AvaCloudSDK",
-    version: "0.10.0",
+    version: "0.11.0",
   });
 
   const client = new AvaCloudSDKCore({
@@ -119,7 +121,14 @@ export function createMCPServer(deps: {
     serverURL: deps.serverURL,
   });
   const scopes = new Set(deps.scopes ?? mcpScopes);
-  const tool = createRegisterTool(deps.logger, server, client, scopes);
+  const allowedTools = deps.allowedTools && new Set(deps.allowedTools);
+  const tool = createRegisterTool(
+    deps.logger,
+    server,
+    client,
+    scopes,
+    allowedTools,
+  );
 
   tool(tool$metricsHealthCheckMetricsHealthCheck);
   tool(tool$metricsLookingGlassGetNftHoldersByContractAddress);
@@ -151,6 +160,7 @@ export function createMCPServer(deps: {
   tool(tool$dataIcmListIcmMessagesByAddress);
   tool(tool$dataUsageMetricsGetApiUsageMetrics);
   tool(tool$dataUsageMetricsGetApiLogs);
+  tool(tool$dataUsageMetricsGetSubnetRpcUsageMetrics);
   tool(tool$dataUsageMetricsGetRpcUsageMetrics);
   tool(tool$dataWebhooksListWebhooks);
   tool(tool$dataWebhooksCreateWebhook);
