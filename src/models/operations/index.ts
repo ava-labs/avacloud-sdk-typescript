@@ -37,6 +37,7 @@ export * from "./getsharedsecret.js";
 export * from "./getsinglevalidatordetails.js";
 export * from "./getstakingmetrics.js";
 export * from "./getsubnetbyid.js";
+export * from "./getsubnetrpcusagemetrics.js";
 export * from "./getteleportermessage.js";
 export * from "./getteleportermetricsbychain.js";
 export * from "./gettokendetails.js";

@@ -13,7 +13,7 @@ let value: RpcUsageMetricsValueAggregated = {
   medianResponseTimeMsecs: 1403.84,
   invalidRequests: 2273.62,
   apiCreditsWasted: 688.52,
-  groupedBy: "rlBypassToken",
+  groupedBy: "continent",
 };
 ```
 

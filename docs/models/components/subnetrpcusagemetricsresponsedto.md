@@ -19,7 +19,7 @@ let value: SubnetRpcUsageMetricsResponseDTO = {
           medianResponseTimeMsecs: 5173.26,
           invalidRequests: 4849.66,
           apiCreditsWasted: 9011.63,
-          groupedBy: "rlBypassToken",
+          groupedBy: "country",
         },
       ],
     },

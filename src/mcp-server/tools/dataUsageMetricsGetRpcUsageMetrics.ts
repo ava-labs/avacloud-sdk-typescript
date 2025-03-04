@@ -14,9 +14,10 @@ export const tool$dataUsageMetricsGetRpcUsageMetrics: ToolDefinition<
   typeof args
 > = {
   name: "data-usage-metrics_get-rpc-usage-metrics",
-  description: `Get usage metrics for the Subnet RPC
+  description:
+    `**[Deprecated]**  Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
 
-Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.`,
+⚠️ **This operation will be removed in a future release.  Please use /v1/subnetRpcUsageMetrics endpoint instead**.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await dataUsageMetricsGetRpcUsageMetrics(

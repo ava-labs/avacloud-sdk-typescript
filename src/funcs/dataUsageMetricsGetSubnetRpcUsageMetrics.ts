@@ -3,14 +3,14 @@
  */
 
 import { AvaCloudSDKCore } from "../core.js";
-import { dlv } from "../lib/dlv.js";
-import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
+import * as components from "../models/components/index.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -21,31 +21,56 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetSubnetRpcUsageMetricsServerList } from "../models/operations/getsubnetrpcusagemetrics.js";
 import * as operations from "../models/operations/index.js";
-import { ListTokensServerList } from "../models/operations/listtokens.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
-import {
-  createPageIterator,
-  haltIterator,
-  PageIterator,
-  Paginator,
-} from "../types/operations.js";
 
 /**
- * List tokens
+ * Get usage metrics for the Subnet RPC
  *
  * @remarks
- * Lists tokens for an NFT contract.
+ * Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
  */
-export function dataNftsListTokens(
+export function dataUsageMetricsGetSubnetRpcUsageMetrics(
   client: AvaCloudSDKCore,
-  request: operations.ListTokensRequest,
+  request: operations.GetSubnetRpcUsageMetricsRequest,
   options?: RequestOptions,
 ): APIPromise<
-  PageIterator<
+  Result<
+    components.SubnetRpcUsageMetricsResponseDTO,
+    | errors.BadRequest
+    | errors.Unauthorized
+    | errors.Forbidden
+    | errors.NotFound
+    | errors.TooManyRequests
+    | errors.InternalServerError
+    | errors.BadGateway
+    | errors.ServiceUnavailable
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
+  >
+> {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: AvaCloudSDKCore,
+  request: operations.GetSubnetRpcUsageMetricsRequest,
+  options?: RequestOptions,
+): Promise<
+  [
     Result<
-      operations.ListTokensResponse,
+      components.SubnetRpcUsageMetricsResponseDTO,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -62,79 +87,37 @@ export function dataNftsListTokens(
       | RequestTimeoutError
       | ConnectionError
     >,
-    { cursor: string }
-  >
-> {
-  return new APIPromise($do(
-    client,
-    request,
-    options,
-  ));
-}
-
-async function $do(
-  client: AvaCloudSDKCore,
-  request: operations.ListTokensRequest,
-  options?: RequestOptions,
-): Promise<
-  [
-    PageIterator<
-      Result<
-        operations.ListTokensResponse,
-        | errors.BadRequest
-        | errors.Unauthorized
-        | errors.Forbidden
-        | errors.NotFound
-        | errors.TooManyRequests
-        | errors.InternalServerError
-        | errors.BadGateway
-        | errors.ServiceUnavailable
-        | SDKError
-        | SDKValidationError
-        | UnexpectedClientError
-        | InvalidRequestError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | ConnectionError
-      >,
-      { cursor: string }
-    >,
     APICall,
   ]
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.ListTokensRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.GetSubnetRpcUsageMetricsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return [haltIterator(parsed), { status: "invalid" }];
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = null;
 
   const baseURL = options?.serverURL
-    || pathToFunc(ListTokensServerList[0], { charEncoding: "percent" })();
-
-  const pathParams = {
-    address: encodeSimple("address", payload.address, {
-      explode: false,
+    || pathToFunc(GetSubnetRpcUsageMetricsServerList[0], {
       charEncoding: "percent",
-    }),
-    chainId: encodeSimple(
-      "chainId",
-      payload.chainId ?? client._options.chainId,
-      { explode: false, charEncoding: "percent" },
-    ),
-  };
+    })();
 
-  const path = pathToFunc(
-    "/v1/chains/{chainId}/nfts/collections/{address}/tokens",
-  )(pathParams);
+  const path = pathToFunc("/v1/subnetRpcUsageMetrics")();
 
   const query = encodeFormQuery({
-    "pageSize": payload.pageSize,
-    "pageToken": payload.pageToken,
+    "chainId": payload.chainId,
+    "endTimestamp": payload.endTimestamp,
+    "groupBy": payload.groupBy,
+    "responseCode": payload.responseCode,
+    "rlBypassApiToken": payload.rlBypassApiToken,
+    "rpcMethod": payload.rpcMethod,
+    "startTimestamp": payload.startTimestamp,
+    "timeInterval": payload.timeInterval,
   });
 
   const headers = new Headers(compactMap({
@@ -147,7 +130,7 @@ async function $do(
 
   const context = {
     baseURL: baseURL ?? "",
-    operationID: "listTokens",
+    operationID: "getSubnetRpcUsageMetrics",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -180,7 +163,7 @@ async function $do(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return [haltIterator(requestRes), { status: "invalid" }];
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -202,7 +185,7 @@ async function $do(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return [haltIterator(doResult), { status: "request-error", request: req }];
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -210,8 +193,8 @@ async function $do(
     HttpMeta: { Response: response, Request: req },
   };
 
-  const [result, raw] = await M.match<
-    operations.ListTokensResponse,
+  const [result] = await M.match<
+    components.SubnetRpcUsageMetricsResponseDTO,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -228,7 +211,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.ListTokensResponse$inboundSchema, { key: "Result" }),
+    M.json(200, components.SubnetRpcUsageMetricsResponseDTO$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),
@@ -241,60 +224,8 @@ async function $do(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return [haltIterator(result), {
-      status: "complete",
-      request: req,
-      response,
-    }];
+    return [result, { status: "complete", request: req, response }];
   }
 
-  const nextFunc = (
-    responseData: unknown,
-  ): {
-    next: Paginator<
-      Result<
-        operations.ListTokensResponse,
-        | errors.BadRequest
-        | errors.Unauthorized
-        | errors.Forbidden
-        | errors.NotFound
-        | errors.TooManyRequests
-        | errors.InternalServerError
-        | errors.BadGateway
-        | errors.ServiceUnavailable
-        | SDKError
-        | SDKValidationError
-        | UnexpectedClientError
-        | InvalidRequestError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | ConnectionError
-      >
-    >;
-    "~next"?: { cursor: string };
-  } => {
-    const nextCursor = dlv(responseData, "nextPageToken");
-    if (typeof nextCursor !== "string") {
-      return { next: () => null };
-    }
-
-    const nextVal = () =>
-      dataNftsListTokens(
-        client,
-        {
-          ...request,
-          pageToken: nextCursor,
-        },
-        options,
-      );
-
-    return { next: nextVal, "~next": { cursor: nextCursor } };
-  };
-
-  const page = { ...result, ...nextFunc(raw) };
-  return [{ ...page, ...createPageIterator(page, (v) => !v.ok) }, {
-    status: "complete",
-    request: req,
-    response,
-  }];
+  return [result, { status: "complete", request: req, response }];
 }
