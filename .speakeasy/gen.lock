@@ -1,21 +1,20 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: b89ef0eae03b554e9d058a1be7818a89
+  docChecksum: 905a8493acd6c5ab4a2cdecbf0824d5a
   docVersion: Beta
-  speakeasyVersion: 1.504.1
-  generationVersion: 2.529.2
-  releaseVersion: 0.10.0
-  configChecksum: d7055518a817be04564393e1945f4dc5
+  speakeasyVersion: 1.510.0
+  generationVersion: 2.541.0
+  releaseVersion: 0.11.0
+  configChecksum: 0d1472b1c5ef3e63349aeb20ddb6c505
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    additionalProperties: 0.1.1
     constsAndDefaults: 0.1.11
-    core: 3.21.2
+    core: 3.21.3
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -25,14 +24,15 @@ features:
     globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
+    globalServerURLs: 2.82.4
     globals: 2.82.2
     groups: 2.81.2
     ignores: 2.81.1
-    mcpServer: 0.3.0
+    mcpServer: 0.4.1
     methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
     nullables: 0.1.1
-    pagination: 2.82.8
+    pagination: 2.83.0
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
@@ -168,6 +168,9 @@ generatedFiles:
   - docs/models/components/globalparamnetwork.md
   - docs/models/components/groupedby.md
   - docs/models/components/groupvalue.md
+  - docs/models/components/healthcheckresultdto.md
+  - docs/models/components/healthindicatorresultdto.md
+  - docs/models/components/healthindicatorresultdtostatus.md
   - docs/models/components/historicalreward.md
   - docs/models/components/icmdestinationtransaction.md
   - docs/models/components/icmreceipt.md
@@ -269,6 +272,7 @@ generatedFiles:
   - docs/models/components/pendingicmmessagestatus.md
   - docs/models/components/pendingreward.md
   - docs/models/components/pendingteleportermessage.md
+  - docs/models/components/pendingteleportermessagestatus.md
   - docs/models/components/pendingvalidatordetails.md
   - docs/models/components/pendingvalidatordetailsvalidationstatus.md
   - docs/models/components/pricingproviders.md
@@ -366,19 +370,11 @@ generatedFiles:
   - docs/models/errors/badgateway.md
   - docs/models/errors/badgatewaymessage.md
   - docs/models/errors/badrequest.md
-  - docs/models/errors/datahealthcheckdetails.md
-  - docs/models/errors/datahealthcheckerror.md
-  - docs/models/errors/datahealthcheckinfo.md
-  - docs/models/errors/datahealthcheckresponsebody.md
-  - docs/models/errors/details.md
-  - docs/models/errors/errort.md
   - docs/models/errors/forbidden.md
   - docs/models/errors/forbiddenmessage.md
-  - docs/models/errors/info.md
   - docs/models/errors/internalservererror.md
   - docs/models/errors/internalservererrormessage.md
   - docs/models/errors/message.md
-  - docs/models/errors/metricshealthcheckresponsebody.md
   - docs/models/errors/notfound.md
   - docs/models/errors/notfoundmessage.md
   - docs/models/errors/serviceunavailable.md
@@ -391,13 +387,7 @@ generatedFiles:
   - docs/models/operations/aggregatesignaturesglobals.md
   - docs/models/operations/aggregatesignaturesrequest.md
   - docs/models/operations/compositequeryv2response.md
-  - docs/models/operations/datahealthcheckdetails.md
-  - docs/models/operations/datahealthcheckerror.md
-  - docs/models/operations/datahealthcheckinfo.md
-  - docs/models/operations/datahealthcheckresponsebody.md
   - docs/models/operations/deactivatewebhookrequest.md
-  - docs/models/operations/details.md
-  - docs/models/operations/errort.md
   - docs/models/operations/getaddresschainsrequest.md
   - docs/models/operations/getaddressesbybalanceovertimeglobals.md
   - docs/models/operations/getaddressesbybalanceovertimerequest.md
@@ -456,6 +446,7 @@ generatedFiles:
   - docs/models/operations/getstakingmetricsresponse.md
   - docs/models/operations/getsubnetbyidglobals.md
   - docs/models/operations/getsubnetbyidrequest.md
+  - docs/models/operations/getsubnetrpcusagemetricsrequest.md
   - docs/models/operations/getteleportermessagerequest.md
   - docs/models/operations/getteleportermessageresponsebody.md
   - docs/models/operations/getteleportermetricsbychainglobals.md
@@ -482,7 +473,6 @@ generatedFiles:
   - docs/models/operations/getvertexbyheightrequest.md
   - docs/models/operations/getvertexbyheightresponse.md
   - docs/models/operations/getwebhookrequest.md
-  - docs/models/operations/info.md
   - docs/models/operations/listactiveprimarynetworkstakingtransactionsglobals.md
   - docs/models/operations/listactiveprimarynetworkstakingtransactionsrequest.md
   - docs/models/operations/listactiveprimarynetworkstakingtransactionsresponse.md
@@ -584,7 +574,6 @@ generatedFiles:
   - docs/models/operations/listvalidatorsresponse.md
   - docs/models/operations/listwebhooksrequest.md
   - docs/models/operations/listwebhooksresponse.md
-  - docs/models/operations/metricshealthcheckresponsebody.md
   - docs/models/operations/posttransactionexportjobrequestbody.md
   - docs/models/operations/queryparamrequesttype.md
   - docs/models/operations/reindexnftglobals.md
@@ -694,10 +683,11 @@ generatedFiles:
   - src/funcs/dataUsageMetricsGetApiLogs.ts
   - src/funcs/dataUsageMetricsGetApiUsageMetrics.ts
   - src/funcs/dataUsageMetricsGetRpcUsageMetrics.ts
+  - src/funcs/dataUsageMetricsGetSubnetRpcUsageMetrics.ts
   - src/funcs/dataWebhooksAddAddressesToWebhook.ts
   - src/funcs/dataWebhooksCreateWebhook.ts
   - src/funcs/dataWebhooksDeactivateWebhook.ts
-  - src/funcs/dataWebhooksGenerateSharedSecret.ts
+  - src/funcs/dataWebhooksGenerateOrRotateSharedSecret.ts
   - src/funcs/dataWebhooksGetAddressesFromWebhook.ts
   - src/funcs/dataWebhooksGetSharedSecret.ts
   - src/funcs/dataWebhooksGetWebhook.ts
@@ -814,10 +804,11 @@ generatedFiles:
   - src/mcp-server/tools/dataUsageMetricsGetApiLogs.ts
   - src/mcp-server/tools/dataUsageMetricsGetApiUsageMetrics.ts
   - src/mcp-server/tools/dataUsageMetricsGetRpcUsageMetrics.ts
+  - src/mcp-server/tools/dataUsageMetricsGetSubnetRpcUsageMetrics.ts
   - src/mcp-server/tools/dataWebhooksAddAddressesToWebhook.ts
   - src/mcp-server/tools/dataWebhooksCreateWebhook.ts
   - src/mcp-server/tools/dataWebhooksDeactivateWebhook.ts
-  - src/mcp-server/tools/dataWebhooksGenerateSharedSecret.ts
+  - src/mcp-server/tools/dataWebhooksGenerateOrRotateSharedSecret.ts
   - src/mcp-server/tools/dataWebhooksGetAddressesFromWebhook.ts
   - src/mcp-server/tools/dataWebhooksGetSharedSecret.ts
   - src/mcp-server/tools/dataWebhooksGetWebhook.ts
@@ -922,6 +913,8 @@ generatedFiles:
   - src/models/components/getprimarynetworkblockresponse.ts
   - src/models/components/gettransactionresponse.ts
   - src/models/components/globalparamnetwork.ts
+  - src/models/components/healthcheckresultdto.ts
+  - src/models/components/healthindicatorresultdto.ts
   - src/models/components/historicalreward.ts
   - src/models/components/icmdestinationtransaction.ts
   - src/models/components/icmreceipt.ts
@@ -1088,12 +1081,10 @@ generatedFiles:
   - src/models/components/xchainvertex.ts
   - src/models/errors/badgateway.ts
   - src/models/errors/badrequest.ts
-  - src/models/errors/datahealthcheck.ts
   - src/models/errors/forbidden.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/index.ts
   - src/models/errors/internalservererror.ts
-  - src/models/errors/metricshealthcheck.ts
   - src/models/errors/notfound.ts
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
@@ -1106,7 +1097,7 @@ generatedFiles:
   - src/models/operations/createwebhook.ts
   - src/models/operations/datahealthcheck.ts
   - src/models/operations/deactivatewebhook.ts
-  - src/models/operations/generatesharedsecret.ts
+  - src/models/operations/generateorrotatesharedsecret.ts
   - src/models/operations/getaddresschains.ts
   - src/models/operations/getaddressesbybalanceovertime.ts
   - src/models/operations/getaddressesbybtcbbridged.ts
@@ -1135,6 +1126,7 @@ generatedFiles:
   - src/models/operations/getsinglevalidatordetails.ts
   - src/models/operations/getstakingmetrics.ts
   - src/models/operations/getsubnetbyid.ts
+  - src/models/operations/getsubnetrpcusagemetrics.ts
   - src/models/operations/getteleportermessage.ts
   - src/models/operations/getteleportermetricsbychain.ts
   - src/models/operations/gettokendetails.ts
@@ -1239,7 +1231,21 @@ examples:
         "200":
           application/json: {"status": "ok", "info": {"database": {"status": "up"}}, "details": {"database": {"status": "up"}}}
         "503":
-          application/json: {"status": "error", "info": {"database": {"status": "up"}}, "error": {"redis": {"status": "down", "message": "Could not connect"}}, "details": {"database": {"status": "up"}, "redis": {"status": "down", "message": "Could not connect"}}}
+          application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+        "400":
+          application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": "<value>", "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": "<value>", "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": [], "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": ["<value>", "<value>", "<value>"], "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
   listChains:
     "":
       parameters:
@@ -1408,7 +1414,7 @@ examples:
           pageSize: "10"
       responses:
         "200":
-          application/json: {"addresses": [{"address": "0x1234567890abcdef1234567890abcdef123456789", "sortKey": "123"}], "nftCollectionName": "NFT Project", "nftSymbol": "NFTPROJ", "totalHolders": 10, "totalTokens": 10}
+          application/json: {"addresses": [{"address": "0x1234567890abcdef1234567890abcdef123456789", "sortKey": "123"}], "nftCollectionName": ["NFT Project"], "nftSymbol": ["NFTPROJ"], "totalHolders": 10, "totalTokens": 10}
         "400":
           application/json: {"message": ["<value>", "<value>", "<value>"], "statusCode": 400, "error": "Bad Request"}
         "401":
@@ -1538,7 +1544,21 @@ examples:
         "200":
           application/json: {"status": "ok", "info": {"database": {"status": "up"}}, "details": {"database": {"status": "up"}}}
         "503":
-          application/json: {"status": "error", "info": {"database": {"status": "up"}}, "error": {"redis": {"status": "down", "message": "Could not connect"}}, "details": {"database": {"status": "up"}, "redis": {"status": "down", "message": "Could not connect"}}}
+          application/json: {"message": [], "statusCode": 503, "error": "Service Unavailable"}
+        "400":
+          application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": "<value>", "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": "<value>", "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": "<value>", "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": "<value>", "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": ["<value>", "<value>", "<value>"], "statusCode": 502, "error": "Bad Gateway"}
   listAddressChains:
     "":
       parameters:
@@ -2506,8 +2526,8 @@ examples:
     "":
       parameters:
         query:
-          startTimestamp: 1698100000
-          endTimestamp: 1698300000
+          startTimestamp: 1739507200
+          endTimestamp: 1739664000
           timeInterval: "daily"
           groupBy: "requestPath"
       responses:
@@ -2533,8 +2553,8 @@ examples:
     "":
       parameters:
         query:
-          startTimestamp: 1698100000
-          endTimestamp: 1698300000
+          startTimestamp: 1739507200
+          endTimestamp: 1739664000
           pageSize: 10
       responses:
         "200":
@@ -3579,8 +3599,8 @@ examples:
       parameters:
         query:
           timeInterval: "daily"
-          startTimestamp: 1698100000
-          endTimestamp: 1698300000
+          startTimestamp: 1739507200
+          endTimestamp: 1739664000
           groupBy: "rpcMethod"
       responses:
         "400":
@@ -3599,7 +3619,8 @@ examples:
           application/json: {"message": [], "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
-        "200": {}
+        "200":
+          application/json: {"aggregateDuration": "<value>", "metrics": [{"timestamp": 507.42, "values": []}], "chainId": "<id>"}
   getIcmMessage:
     "":
       parameters:
@@ -3678,6 +3699,54 @@ examples:
           application/json: {"message": ["<value>", "<value>"], "statusCode": 500, "error": "Internal Server Error"}
         "502":
           application/json: {"message": ["<value>", "<value>"], "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+  getSubnetRpcUsageMetrics:
+    "":
+      parameters:
+        query:
+          timeInterval: "daily"
+          startTimestamp: 1739507200
+          endTimestamp: 1739664000
+          groupBy: "rpcMethod"
+      responses:
+        "200":
+          application/json: {"aggregateDuration": "<value>", "metrics": [{"timestamp": 7145.4, "values": [{"totalRequests": 3035.03, "apiCreditsUsed": 4011.75, "requestsPerSecond": 1437.28, "successRatePercent": 7277.6, "medianResponseTimeMsecs": 5583.29, "invalidRequests": 718.21, "apiCreditsWasted": 4673.34, "groupedBy": "continent"}]}, {"timestamp": 7589.09, "values": [{"totalRequests": 580.17, "apiCreditsUsed": 9410.32, "requestsPerSecond": 2742.83, "successRatePercent": 8474.4, "medianResponseTimeMsecs": 6064.88, "invalidRequests": 1785.91, "apiCreditsWasted": 2615.03, "groupedBy": "rpcMethod"}, {"totalRequests": 5454.8, "apiCreditsUsed": 2809.84, "requestsPerSecond": 644.85, "successRatePercent": 9272.79, "medianResponseTimeMsecs": 6905.73, "invalidRequests": 7187.35, "apiCreditsWasted": 639.88, "groupedBy": "rlBypassToken"}]}], "chainId": "<id>"}
+        "400":
+          application/json: {"message": "<value>", "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": "<value>", "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": "<value>", "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": "<value>", "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": "<value>", "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
+        "503":
+          application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
+  generateOrRotateSharedSecret:
+    speakeasy-default-generate-or-rotate-shared-secret:
+      responses:
+        "201":
+          application/json: {"secret": "<value>"}
+        "400":
+          application/json: {"message": ["<value>", "<value>"], "statusCode": 400, "error": "Bad Request"}
+        "401":
+          application/json: {"message": ["<value>", "<value>", "<value>"], "statusCode": 401, "error": "Unauthorized"}
+        "403":
+          application/json: {"message": "<value>", "statusCode": 403, "error": "Forbidden"}
+        "404":
+          application/json: {"message": "<value>", "statusCode": 404, "error": "Not Found"}
+        "429":
+          application/json: {"message": "<value>", "statusCode": 429, "error": "Too Many Requests"}
+        "500":
+          application/json: {"message": ["<value>"], "statusCode": 500, "error": "Internal Server Error"}
+        "502":
+          application/json: {"message": "<value>", "statusCode": 502, "error": "Bad Gateway"}
         "503":
           application/json: {"message": "<value>", "statusCode": 503, "error": "Service Unavailable"}
 examplesVersion: 1.0.0

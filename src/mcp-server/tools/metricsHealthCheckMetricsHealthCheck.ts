@@ -7,7 +7,9 @@ import { formatResult, ToolDefinition } from "../tools.js";
 
 export const tool$metricsHealthCheckMetricsHealthCheck: ToolDefinition = {
   name: "metrics-health-check_metrics-health-check",
-  description: `Get the health of the service`,
+  description: `Get the health of the service
+
+Check the health of the service.`,
   tool: async (client, ctx) => {
     const [result, apiCall] = await metricsHealthCheckMetricsHealthCheck(
       client,

@@ -39,12 +39,12 @@ let value: DeliveredIcmMessage = {
   },
   sourceTransaction: {
     txHash: "<value>",
-    timestamp: 1830.33,
+    timestamp: 4939.58,
     gasSpent: "<value>",
   },
   destinationTransaction: {
     txHash: "<value>",
-    timestamp: 4030.26,
+    timestamp: 7781.72,
     gasSpent: "<value>",
     rewardRedeemer: "<value>",
     delivererAddress: "<value>",

@@ -278,7 +278,10 @@ run();
 
 * [getApiUsageMetrics](docs/sdks/usagemetrics/README.md#getapiusagemetrics) - Get usage metrics for the Data API
 * [getApiLogs](docs/sdks/usagemetrics/README.md#getapilogs) - Get logs for requests made by client
-* [getRpcUsageMetrics](docs/sdks/usagemetrics/README.md#getrpcusagemetrics) - Get usage metrics for the Subnet RPC
+* [getSubnetRpcUsageMetrics](docs/sdks/usagemetrics/README.md#getsubnetrpcusagemetrics) - Get usage metrics for the Subnet RPC
+* [~~getRpcUsageMetrics~~](docs/sdks/usagemetrics/README.md#getrpcusagemetrics) - **[Deprecated]**  Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/subnetRpcUsageMetrics endpoint instead**. :warning: **Deprecated**
 
 #### [data.webhooks](docs/sdks/webhooks/README.md)
 
@@ -287,7 +290,7 @@ run();
 * [getWebhook](docs/sdks/webhooks/README.md#getwebhook) - Get a webhook by ID
 * [deactivateWebhook](docs/sdks/webhooks/README.md#deactivatewebhook) - Deactivate a webhook
 * [updateWebhook](docs/sdks/webhooks/README.md#updatewebhook) - Update a webhook
-* [generateSharedSecret](docs/sdks/webhooks/README.md#generatesharedsecret) - Generate a shared secret
+* [generateOrRotateSharedSecret](docs/sdks/webhooks/README.md#generateorrotatesharedsecret) - Generate or rotate a shared secret
 * [getSharedSecret](docs/sdks/webhooks/README.md#getsharedsecret) - Get a shared secret
 * [getAddressesFromWebhook](docs/sdks/webhooks/README.md#getaddressesfromwebhook) - List adresses by webhook
 * [removeAddressesFromWebhook](docs/sdks/webhooks/README.md#removeaddressesfromwebhook) - Remove addresses from webhook
@@ -405,11 +408,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataSignatureAggregatorAggregateSignatures`](docs/sdks/signatureaggregator/README.md#aggregatesignatures) - Aggregate Signatures
 - [`dataUsageMetricsGetApiLogs`](docs/sdks/usagemetrics/README.md#getapilogs) - Get logs for requests made by client
 - [`dataUsageMetricsGetApiUsageMetrics`](docs/sdks/usagemetrics/README.md#getapiusagemetrics) - Get usage metrics for the Data API
-- [`dataUsageMetricsGetRpcUsageMetrics`](docs/sdks/usagemetrics/README.md#getrpcusagemetrics) - Get usage metrics for the Subnet RPC
+- [`dataUsageMetricsGetSubnetRpcUsageMetrics`](docs/sdks/usagemetrics/README.md#getsubnetrpcusagemetrics) - Get usage metrics for the Subnet RPC
 - [`dataWebhooksAddAddressesToWebhook`](docs/sdks/webhooks/README.md#addaddressestowebhook) - Add addresses to webhook
 - [`dataWebhooksCreateWebhook`](docs/sdks/webhooks/README.md#createwebhook) - Create a webhook
 - [`dataWebhooksDeactivateWebhook`](docs/sdks/webhooks/README.md#deactivatewebhook) - Deactivate a webhook
-- [`dataWebhooksGenerateSharedSecret`](docs/sdks/webhooks/README.md#generatesharedsecret) - Generate a shared secret
+- [`dataWebhooksGenerateOrRotateSharedSecret`](docs/sdks/webhooks/README.md#generateorrotatesharedsecret) - Generate or rotate a shared secret
 - [`dataWebhooksGetAddressesFromWebhook`](docs/sdks/webhooks/README.md#getaddressesfromwebhook) - List adresses by webhook
 - [`dataWebhooksGetSharedSecret`](docs/sdks/webhooks/README.md#getsharedsecret) - Get a shared secret
 - [`dataWebhooksGetWebhook`](docs/sdks/webhooks/README.md#getwebhook) - Get a webhook by ID
@@ -446,6 +449,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - ~~[`dataTeleporterListTeleporterMessagesByAddress`](docs/sdks/teleporter/README.md#listteleportermessagesbyaddress)~~ - **[Deprecated]** Lists teleporter messages by address. Ordered by  timestamp in descending order.
 
 ⚠️ **This operation will be removed in a future release.  Please use /v1/icm/addresses/:address/messages endpoint instead** . :warning: **Deprecated**
+- ~~[`dataUsageMetricsGetRpcUsageMetrics`](docs/sdks/usagemetrics/README.md#getrpcusagemetrics)~~ - **[Deprecated]**  Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
+
+⚠️ **This operation will be removed in a future release.  Please use /v1/subnetRpcUsageMetrics endpoint instead**. :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

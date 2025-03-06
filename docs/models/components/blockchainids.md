@@ -5,7 +5,7 @@
 ```typescript
 import { BlockchainIds } from "@avalabs/avacloud-sdk/models/components";
 
-let value: BlockchainIds = "2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5";
+let value: BlockchainIds = "2JVSBoinj9C2J33VntvzYtVJNZdN2NKiwwKjcumHUWEb5DbBrm";
 ```
 
 ## Values

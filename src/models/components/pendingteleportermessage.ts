@@ -26,10 +26,12 @@ import {
   TeleporterSourceTransaction$outboundSchema,
 } from "./teleportersourcetransaction.js";
 
-export const Status = {
+export const PendingTeleporterMessageStatus = {
   Pending: "pending",
 } as const;
-export type Status = ClosedEnum<typeof Status>;
+export type PendingTeleporterMessageStatus = ClosedEnum<
+  typeof PendingTeleporterMessageStatus
+>;
 
 export type PendingTeleporterMessage = {
   messageId: string;
@@ -47,26 +49,28 @@ export type PendingTeleporterMessage = {
   receiptDelivered: boolean;
   rewardDetails: TeleporterRewardDetails;
   sourceTransaction: TeleporterSourceTransaction;
-  status: Status;
+  status: PendingTeleporterMessageStatus;
 };
 
 /** @internal */
-export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
-  .nativeEnum(Status);
+export const PendingTeleporterMessageStatus$inboundSchema: z.ZodNativeEnum<
+  typeof PendingTeleporterMessageStatus
+> = z.nativeEnum(PendingTeleporterMessageStatus);
 
 /** @internal */
-export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
-  Status$inboundSchema;
+export const PendingTeleporterMessageStatus$outboundSchema: z.ZodNativeEnum<
+  typeof PendingTeleporterMessageStatus
+> = PendingTeleporterMessageStatus$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Status$ {
-  /** @deprecated use `Status$inboundSchema` instead. */
-  export const inboundSchema = Status$inboundSchema;
-  /** @deprecated use `Status$outboundSchema` instead. */
-  export const outboundSchema = Status$outboundSchema;
+export namespace PendingTeleporterMessageStatus$ {
+  /** @deprecated use `PendingTeleporterMessageStatus$inboundSchema` instead. */
+  export const inboundSchema = PendingTeleporterMessageStatus$inboundSchema;
+  /** @deprecated use `PendingTeleporterMessageStatus$outboundSchema` instead. */
+  export const outboundSchema = PendingTeleporterMessageStatus$outboundSchema;
 }
 
 /** @internal */
@@ -90,7 +94,7 @@ export const PendingTeleporterMessage$inboundSchema: z.ZodType<
   receiptDelivered: z.boolean(),
   rewardDetails: TeleporterRewardDetails$inboundSchema,
   sourceTransaction: TeleporterSourceTransaction$inboundSchema,
-  status: Status$inboundSchema,
+  status: PendingTeleporterMessageStatus$inboundSchema,
 });
 
 /** @internal */
@@ -134,7 +138,7 @@ export const PendingTeleporterMessage$outboundSchema: z.ZodType<
   receiptDelivered: z.boolean(),
   rewardDetails: TeleporterRewardDetails$outboundSchema,
   sourceTransaction: TeleporterSourceTransaction$outboundSchema,
-  status: Status$outboundSchema,
+  status: PendingTeleporterMessageStatus$outboundSchema,
 });
 
 /**

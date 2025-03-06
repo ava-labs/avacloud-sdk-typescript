@@ -5,7 +5,7 @@
 ```typescript
 import { OperationStatus } from "@avalabs/avacloud-sdk/models/components";
 
-let value: OperationStatus = "FAILED";
+let value: OperationStatus = "COMPLETED";
 ```
 
 ## Values

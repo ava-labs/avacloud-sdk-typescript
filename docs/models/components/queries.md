@@ -87,10 +87,10 @@ const value: components.AnyTimeNftHoldersQueryDto = {
   id: "<id>",
   type: "AnyTimeNftHolders",
   params: {
-    firstDate: "<value>",
-    lastDate: "<value>",
     evmChainId: "<id>",
     contractAddress: "<value>",
+    startTs: 7805.29,
+    endTs: 1182.74,
   },
 };
 ```

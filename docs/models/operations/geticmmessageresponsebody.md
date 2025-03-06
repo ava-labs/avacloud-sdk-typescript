@@ -42,7 +42,7 @@ const value: components.PendingIcmMessage = {
   },
   sourceTransaction: {
     txHash: "<value>",
-    timestamp: 6775.09,
+    timestamp: 3558.89,
     gasSpent: "<value>",
   },
   status: "pending",
@@ -86,12 +86,12 @@ const value: components.DeliveredIcmMessage = {
   },
   sourceTransaction: {
     txHash: "<value>",
-    timestamp: 9378.65,
+    timestamp: 8103.02,
     gasSpent: "<value>",
   },
   destinationTransaction: {
     txHash: "<value>",
-    timestamp: 6211.4,
+    timestamp: 5775.9,
     gasSpent: "<value>",
     rewardRedeemer: "<value>",
     delivererAddress: "<value>",
@@ -137,7 +137,7 @@ const value: components.DeliveredSourceNotIndexedIcmMessage = {
   },
   destinationTransaction: {
     txHash: "<value>",
-    timestamp: 978.1,
+    timestamp: 752.77,
     gasSpent: "<value>",
     rewardRedeemer: "<value>",
     delivererAddress: "<value>",

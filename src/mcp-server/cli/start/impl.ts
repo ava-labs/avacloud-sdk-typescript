@@ -17,11 +17,13 @@ import { createMCPServer } from "../../server.js";
 interface StartCommandFlags {
   readonly transport: "stdio" | "sse";
   readonly port: number;
+  readonly tool?: string[];
   readonly scope?: MCPScope[];
   readonly "api-key"?: string | undefined;
   readonly "chain-id"?: SDKOptions["chainId"] | undefined;
   readonly network?: SDKOptions["network"] | undefined;
   readonly "server-url": string;
+  readonly "server-index"?: SDKOptions["serverIdx"];
   readonly "log-level": ConsoleLoggerLevel;
   readonly env?: [string, string][];
 }
@@ -48,11 +50,13 @@ async function startStdio(flags: StartCommandFlags) {
   const transport = new StdioServerTransport();
   const server = createMCPServer({
     logger,
+    allowedTools: flags.tool,
     scopes: flags.scope,
     ...{ apiKey: flags["api-key"] },
     chainId: flags["chain-id"],
     network: flags.network,
     serverURL: flags["server-url"],
+    serverIdx: flags["server-index"],
   });
   await server.connect(transport);
 
@@ -69,11 +73,13 @@ async function startSSE(flags: StartCommandFlags) {
   const app = express();
   const mcpServer = createMCPServer({
     logger,
+    allowedTools: flags.tool,
     scopes: flags.scope,
     ...{ apiKey: flags["api-key"] },
     chainId: flags["chain-id"],
     network: flags.network,
     serverURL: flags["server-url"],
+    serverIdx: flags["server-index"],
   });
   let transport: SSEServerTransport | undefined;
   const controller = new AbortController();

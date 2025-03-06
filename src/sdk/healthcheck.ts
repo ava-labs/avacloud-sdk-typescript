@@ -4,16 +4,19 @@
 
 import { metricsHealthCheckMetricsHealthCheck } from "../funcs/metricsHealthCheckMetricsHealthCheck.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class HealthCheck extends ClientSDK {
   /**
    * Get the health of the service
+   *
+   * @remarks
+   * Check the health of the service.
    */
   async metricsHealthCheck(
     options?: RequestOptions,
-  ): Promise<operations.MetricsHealthCheckResponseBody> {
+  ): Promise<components.HealthCheckResultDto> {
     return unwrapAsync(metricsHealthCheckMetricsHealthCheck(
       this,
       options,

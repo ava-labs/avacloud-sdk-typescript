@@ -30,15 +30,15 @@ let value: ListErc1155TransactionsResponse = {
           "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
         address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
       },
-      logIndex: 1629.54,
+      logIndex: 4240.32,
       value: "10000000000000000000",
       erc1155Token: {
         address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
         ercType: "ERC-1155",
         tokenId: "<id>",
-        tokenUri: "https://lustrous-wombat.com",
+        tokenUri: "https://thin-almighty.org/",
         metadata: {
-          indexStatus: "INVALID_METADATA_JSON",
+          indexStatus: "INVALID_TOKEN_URI_SCHEME",
         },
       },
     },

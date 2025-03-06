@@ -21,13 +21,13 @@ let value: PChainUtxo = {
   consumingTxHash: "3j9JpF1aGuQtLLbo3YkvvKkWrCZViXZjdeJQWUSEY5hcqUn2c",
   createdOnChainId: "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
   utxoId: "68vLva9kfKUsX88ZPM8jdbf8qHUZRoZSFH6NdpAVTspkfrXDC",
-  amount: "335.50",
+  amount: "739.89",
   assetId: "<id>",
   blockNumber: "<value>",
-  blockTimestamp: 1476.85,
-  outputIndex: 626.36,
+  blockTimestamp: 8980.63,
+  outputIndex: 6725.82,
   txHash: "<value>",
-  utxoType: "STAKE",
+  utxoType: "TRANSFER",
 };
 ```
 

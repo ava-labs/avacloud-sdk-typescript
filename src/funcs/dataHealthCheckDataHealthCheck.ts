@@ -8,6 +8,7 @@ import { compactMap } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
+import * as components from "../models/components/index.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -19,20 +20,29 @@ import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { DataHealthCheckServerList } from "../models/operations/datahealthcheck.js";
-import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
  * Get the health of the service
+ *
+ * @remarks
+ * Check the health of the service.
  */
 export function dataHealthCheckDataHealthCheck(
   client: AvaCloudSDKCore,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.DataHealthCheckResponseBody,
-    | errors.DataHealthCheckResponseBody
+    components.HealthCheckResultDto,
+    | errors.BadRequest
+    | errors.Unauthorized
+    | errors.Forbidden
+    | errors.NotFound
+    | errors.TooManyRequests
+    | errors.InternalServerError
+    | errors.BadGateway
+    | errors.ServiceUnavailable
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -54,8 +64,15 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.DataHealthCheckResponseBody,
-      | errors.DataHealthCheckResponseBody
+      components.HealthCheckResultDto,
+      | errors.BadRequest
+      | errors.Unauthorized
+      | errors.Forbidden
+      | errors.NotFound
+      | errors.TooManyRequests
+      | errors.InternalServerError
+      | errors.BadGateway
+      | errors.ServiceUnavailable
       | SDKError
       | SDKValidationError
       | UnexpectedClientError
@@ -119,7 +136,18 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["4XX", "503", "5XX"],
+    errorCodes: [
+      "400",
+      "401",
+      "403",
+      "404",
+      "429",
+      "4XX",
+      "500",
+      "502",
+      "503",
+      "5XX",
+    ],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -133,8 +161,15 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.DataHealthCheckResponseBody,
-    | errors.DataHealthCheckResponseBody
+    components.HealthCheckResultDto,
+    | errors.BadRequest
+    | errors.Unauthorized
+    | errors.Forbidden
+    | errors.NotFound
+    | errors.TooManyRequests
+    | errors.InternalServerError
+    | errors.BadGateway
+    | errors.ServiceUnavailable
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -143,8 +178,15 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.DataHealthCheckResponseBody$inboundSchema),
-    M.jsonErr(503, errors.DataHealthCheckResponseBody$inboundSchema),
+    M.json(200, components.HealthCheckResultDto$inboundSchema),
+    M.jsonErr(400, errors.BadRequest$inboundSchema),
+    M.jsonErr(401, errors.Unauthorized$inboundSchema),
+    M.jsonErr(403, errors.Forbidden$inboundSchema),
+    M.jsonErr(404, errors.NotFound$inboundSchema),
+    M.jsonErr(429, errors.TooManyRequests$inboundSchema),
+    M.jsonErr(500, errors.InternalServerError$inboundSchema),
+    M.jsonErr(502, errors.BadGateway$inboundSchema),
+    M.jsonErr(503, errors.ServiceUnavailable$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

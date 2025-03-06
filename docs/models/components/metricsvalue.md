@@ -6,8 +6,8 @@
 import { MetricsValue } from "@avalabs/avacloud-sdk/models/components";
 
 let value: MetricsValue = {
-  value: 6458.94,
-  timestamp: 4375.87,
+  value: 8917.73,
+  timestamp: 9636.63,
 };
 ```
 

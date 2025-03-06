@@ -9,9 +9,9 @@ let value: Erc1155TokenBalance = {
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   ercType: "ERC-1155",
   tokenId: "<id>",
-  tokenUri: "https://yellow-digit.com/",
+  tokenUri: "https://polished-wafer.org/",
   metadata: {
-    indexStatus: "UNINDEXED",
+    indexStatus: "UNREACHABLE_TOKEN_URI",
   },
   chainId: "43114",
   balance: "2000000000000000000",

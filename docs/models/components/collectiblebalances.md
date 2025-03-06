@@ -12,9 +12,9 @@ const value: components.Erc721TokenBalance = {
   symbol: "WAVAX",
   ercType: "ERC-721",
   tokenId: "<id>",
-  tokenUri: "https://rosy-backburn.net/",
+  tokenUri: "https://probable-jungle.org/",
   metadata: {
-    indexStatus: "INDEXED",
+    indexStatus: "UNKNOWN",
   },
   ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   chainId: "43114",
@@ -28,7 +28,7 @@ const value: components.Erc1155TokenBalance = {
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   ercType: "ERC-1155",
   tokenId: "<id>",
-  tokenUri: "https://hungry-gerbil.net/",
+  tokenUri: "https://formal-desk.name",
   metadata: {
     indexStatus: "INVALID_TOKEN_URI",
   },

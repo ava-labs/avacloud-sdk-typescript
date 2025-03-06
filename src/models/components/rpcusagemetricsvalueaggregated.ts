@@ -15,6 +15,10 @@ export const RpcUsageMetricsValueAggregatedGroupedBy = {
   RpcMethod: "rpcMethod",
   ResponseCode: "responseCode",
   RlBypassToken: "rlBypassToken",
+  RequestPath: "requestPath",
+  Country: "country",
+  Continent: "continent",
+  UserAgent: "userAgent",
   None: "None",
 } as const;
 /**

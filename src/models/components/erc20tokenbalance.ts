@@ -22,14 +22,14 @@ export type Erc20TokenBalanceErcType = ClosedEnum<
 >;
 
 /**
- * Indicates the reputation of the token based on a security analysis. 'Benign' suggests the token is likely safe, while 'Malicious' indicates potential security risks. This field is nullable and is only populated for tokens on the C-Chain. Possible values are 'Benign', 'Malicious', or null if the reputation is unknown.
+ * Indicates the reputation of the token based on a security analysis. 'Benign' suggests the token is likely safe, while 'Malicious'  indicates potential security risks. This field is nullable and is only populated for tokens on the C-Chain. Possible values are 'Benign', 'Malicious', or null if the  reputation is unknown.
  */
 export const TokenReputation = {
   Malicious: "Malicious",
   Benign: "Benign",
 } as const;
 /**
- * Indicates the reputation of the token based on a security analysis. 'Benign' suggests the token is likely safe, while 'Malicious' indicates potential security risks. This field is nullable and is only populated for tokens on the C-Chain. Possible values are 'Benign', 'Malicious', or null if the reputation is unknown.
+ * Indicates the reputation of the token based on a security analysis. 'Benign' suggests the token is likely safe, while 'Malicious'  indicates potential security risks. This field is nullable and is only populated for tokens on the C-Chain. Possible values are 'Benign', 'Malicious', or null if the  reputation is unknown.
  */
 export type TokenReputation = ClosedEnum<typeof TokenReputation>;
 
@@ -72,7 +72,7 @@ export type Erc20TokenBalance = {
    */
   balanceValue?: Money | undefined;
   /**
-   * Indicates the reputation of the token based on a security analysis. 'Benign' suggests the token is likely safe, while 'Malicious' indicates potential security risks. This field is nullable and is only populated for tokens on the C-Chain. Possible values are 'Benign', 'Malicious', or null if the reputation is unknown.
+   * Indicates the reputation of the token based on a security analysis. 'Benign' suggests the token is likely safe, while 'Malicious'  indicates potential security risks. This field is nullable and is only populated for tokens on the C-Chain. Possible values are 'Benign', 'Malicious', or null if the  reputation is unknown.
    */
   tokenReputation: TokenReputation | null;
 };

@@ -16,12 +16,12 @@ let value: WebhookResponse = {
       "0x61cbb2a3dee0b6064c2e681aadd61677fb4ef319f0b547508d495626f5a62f64",
     ],
   },
-  url: "https://utilized-shark.net",
+  url: "https://thick-jungle.biz",
   chainId: "<id>",
   status: "inactive",
-  createdAt: 9222.99,
+  createdAt: 1293.55,
   name: "<value>",
-  description: "deer rightfully psst following geez easily",
+  description: "ew airmail abaft until against however",
 };
 ```
 

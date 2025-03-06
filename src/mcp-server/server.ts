@@ -76,10 +76,11 @@ import { tool$dataTeleporterListTeleporterMessagesByAddress } from "./tools/data
 import { tool$dataUsageMetricsGetApiLogs } from "./tools/dataUsageMetricsGetApiLogs.js";
 import { tool$dataUsageMetricsGetApiUsageMetrics } from "./tools/dataUsageMetricsGetApiUsageMetrics.js";
 import { tool$dataUsageMetricsGetRpcUsageMetrics } from "./tools/dataUsageMetricsGetRpcUsageMetrics.js";
+import { tool$dataUsageMetricsGetSubnetRpcUsageMetrics } from "./tools/dataUsageMetricsGetSubnetRpcUsageMetrics.js";
 import { tool$dataWebhooksAddAddressesToWebhook } from "./tools/dataWebhooksAddAddressesToWebhook.js";
 import { tool$dataWebhooksCreateWebhook } from "./tools/dataWebhooksCreateWebhook.js";
 import { tool$dataWebhooksDeactivateWebhook } from "./tools/dataWebhooksDeactivateWebhook.js";
-import { tool$dataWebhooksGenerateSharedSecret } from "./tools/dataWebhooksGenerateSharedSecret.js";
+import { tool$dataWebhooksGenerateOrRotateSharedSecret } from "./tools/dataWebhooksGenerateOrRotateSharedSecret.js";
 import { tool$dataWebhooksGetAddressesFromWebhook } from "./tools/dataWebhooksGetAddressesFromWebhook.js";
 import { tool$dataWebhooksGetSharedSecret } from "./tools/dataWebhooksGetSharedSecret.js";
 import { tool$dataWebhooksGetWebhook } from "./tools/dataWebhooksGetWebhook.js";
@@ -101,15 +102,17 @@ import { tool$metricsLookingGlassGetValidatorsByDateRange } from "./tools/metric
 
 export function createMCPServer(deps: {
   logger: ConsoleLogger;
+  allowedTools?: string[] | undefined;
   scopes?: MCPScope[] | undefined;
   serverURL: string;
   apiKey?: SDKOptions["apiKey"] | undefined;
   chainId?: SDKOptions["chainId"] | undefined;
   network?: SDKOptions["network"] | undefined;
+  serverIdx?: SDKOptions["serverIdx"] | undefined;
 }) {
   const server = new McpServer({
     name: "AvaCloudSDK",
-    version: "0.10.0",
+    version: "0.11.0",
   });
 
   const client = new AvaCloudSDKCore({
@@ -117,9 +120,17 @@ export function createMCPServer(deps: {
     chainId: deps.chainId,
     network: deps.network,
     serverURL: deps.serverURL,
+    serverIdx: deps.serverIdx,
   });
   const scopes = new Set(deps.scopes ?? mcpScopes);
-  const tool = createRegisterTool(deps.logger, server, client, scopes);
+  const allowedTools = deps.allowedTools && new Set(deps.allowedTools);
+  const tool = createRegisterTool(
+    deps.logger,
+    server,
+    client,
+    scopes,
+    allowedTools,
+  );
 
   tool(tool$metricsHealthCheckMetricsHealthCheck);
   tool(tool$metricsLookingGlassGetNftHoldersByContractAddress);
@@ -151,13 +162,14 @@ export function createMCPServer(deps: {
   tool(tool$dataIcmListIcmMessagesByAddress);
   tool(tool$dataUsageMetricsGetApiUsageMetrics);
   tool(tool$dataUsageMetricsGetApiLogs);
+  tool(tool$dataUsageMetricsGetSubnetRpcUsageMetrics);
   tool(tool$dataUsageMetricsGetRpcUsageMetrics);
   tool(tool$dataWebhooksListWebhooks);
   tool(tool$dataWebhooksCreateWebhook);
   tool(tool$dataWebhooksGetWebhook);
   tool(tool$dataWebhooksDeactivateWebhook);
   tool(tool$dataWebhooksUpdateWebhook);
-  tool(tool$dataWebhooksGenerateSharedSecret);
+  tool(tool$dataWebhooksGenerateOrRotateSharedSecret);
   tool(tool$dataWebhooksGetSharedSecret);
   tool(tool$dataWebhooksGetAddressesFromWebhook);
   tool(tool$dataWebhooksRemoveAddressesFromWebhook);
