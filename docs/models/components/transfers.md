@@ -28,7 +28,7 @@ const value: components.Erc20Transfer = {
       "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
-  logIndex: 5100.17,
+  logIndex: 1314.82,
   value: "10000000000000000000",
   erc20Token: {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
@@ -71,16 +71,16 @@ const value: components.Erc721Transfer = {
       "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
-  logIndex: 5361.78,
+  logIndex: 553.74,
   erc721Token: {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     name: "Wrapped AVAX",
     symbol: "WAVAX",
     ercType: "ERC-721",
     tokenId: "<id>",
-    tokenUri: "https://flawless-cellar.info",
+    tokenUri: "https://fatal-import.net/",
     metadata: {
-      indexStatus: "UNINDEXED",
+      indexStatus: "INVALID_METADATA",
     },
     ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
@@ -112,15 +112,15 @@ const value: components.Erc1155Transfer = {
       "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   },
-  logIndex: 1871.31,
+  logIndex: 2835.19,
   value: "10000000000000000000",
   erc1155Token: {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     ercType: "ERC-1155",
     tokenId: "<id>",
-    tokenUri: "https://neat-import.org",
+    tokenUri: "https://delirious-scorpion.com/",
     metadata: {
-      indexStatus: "THROTTLED_TOKEN_URI",
+      indexStatus: "INVALID_METADATA",
     },
   },
 };

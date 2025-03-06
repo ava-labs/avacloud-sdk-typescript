@@ -5,6 +5,7 @@
 import { dataUsageMetricsGetApiLogs } from "../funcs/dataUsageMetricsGetApiLogs.js";
 import { dataUsageMetricsGetApiUsageMetrics } from "../funcs/dataUsageMetricsGetApiUsageMetrics.js";
 import { dataUsageMetricsGetRpcUsageMetrics } from "../funcs/dataUsageMetricsGetRpcUsageMetrics.js";
+import { dataUsageMetricsGetSubnetRpcUsageMetrics } from "../funcs/dataUsageMetricsGetSubnetRpcUsageMetrics.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -51,6 +52,24 @@ export class UsageMetrics extends ClientSDK {
    *
    * @remarks
    * Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
+   */
+  async getSubnetRpcUsageMetrics(
+    request: operations.GetSubnetRpcUsageMetricsRequest,
+    options?: RequestOptions,
+  ): Promise<components.SubnetRpcUsageMetricsResponseDTO> {
+    return unwrapAsync(dataUsageMetricsGetSubnetRpcUsageMetrics(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * **[Deprecated]**  Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
+   *
+   * ⚠️ **This operation will be removed in a future release.  Please use /v1/subnetRpcUsageMetrics endpoint instead**.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getRpcUsageMetrics(
     request: operations.GetRpcUsageMetricsRequest,

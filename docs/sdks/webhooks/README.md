@@ -10,7 +10,7 @@
 * [getWebhook](#getwebhook) - Get a webhook by ID
 * [deactivateWebhook](#deactivatewebhook) - Deactivate a webhook
 * [updateWebhook](#updatewebhook) - Update a webhook
-* [generateSharedSecret](#generatesharedsecret) - Generate a shared secret
+* [generateOrRotateSharedSecret](#generateorrotatesharedsecret) - Generate or rotate a shared secret
 * [getSharedSecret](#getsharedsecret) - Get a shared secret
 * [getAddressesFromWebhook](#getaddressesfromwebhook) - List adresses by webhook
 * [removeAddressesFromWebhook](#removeaddressesfromwebhook) - Remove addresses from webhook
@@ -487,9 +487,9 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## generateSharedSecret
+## generateOrRotateSharedSecret
 
-Generates a new shared secret.
+Generates a new shared secret or rotate an existing one.
 
 ### Example Usage
 
@@ -503,7 +503,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.webhooks.generateSharedSecret();
+  const result = await avaCloudSDK.data.webhooks.generateOrRotateSharedSecret();
 
   // Handle the result
   console.log(result);
@@ -518,7 +518,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataWebhooksGenerateSharedSecret } from "@avalabs/avacloud-sdk/funcs/dataWebhooksGenerateSharedSecret.js";
+import { dataWebhooksGenerateOrRotateSharedSecret } from "@avalabs/avacloud-sdk/funcs/dataWebhooksGenerateOrRotateSharedSecret.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -529,7 +529,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataWebhooksGenerateSharedSecret(avaCloudSDK);
+  const res = await dataWebhooksGenerateOrRotateSharedSecret(avaCloudSDK);
 
   if (!res.ok) {
     throw res.error;

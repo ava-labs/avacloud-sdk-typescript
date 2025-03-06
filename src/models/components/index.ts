@@ -88,6 +88,8 @@ export * from "./getnetworkdetailsresponse.js";
 export * from "./getprimarynetworkblockresponse.js";
 export * from "./gettransactionresponse.js";
 export * from "./globalparamnetwork.js";
+export * from "./healthcheckresultdto.js";
+export * from "./healthindicatorresultdto.js";
 export * from "./historicalreward.js";
 export * from "./icmdestinationtransaction.js";
 export * from "./icmreceipt.js";

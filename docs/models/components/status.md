@@ -5,11 +5,11 @@
 ```typescript
 import { Status } from "@avalabs/avacloud-sdk/models/components";
 
-let value: Status = "pending";
+let value: Status = "ok";
 ```
 
 ## Values
 
 ```typescript
-"pending"
+"error" | "ok" | "shutting_down"
 ```

@@ -10,16 +10,14 @@ let value: ListCollectibleBalancesResponse = {
     collectibleBalances: [
       {
         address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-        name: "Wrapped AVAX",
-        symbol: "WAVAX",
-        ercType: "ERC-721",
+        ercType: "ERC-1155",
         tokenId: "<id>",
-        tokenUri: "https://agile-vicinity.name",
+        tokenUri: "https://imaginative-dead.net/",
         metadata: {
-          indexStatus: "METADATA_CONTENT_TOO_LARGE",
+          indexStatus: "MISSING_TOKEN",
         },
-        ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
         chainId: "43114",
+        balance: "2000000000000000000",
       },
     ],
   },

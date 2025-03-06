@@ -9,16 +9,16 @@ let value: CompositeQueryRequestDto = {
   queries: [
     {
       id: "<id>",
-      type: "AllTimeNftHolders",
+      type: "AnyTimeNativeBalance",
       params: {
         firstDate: "<value>",
         lastDate: "<value>",
+        minBalance: "<value>",
         evmChainId: "<id>",
-        contractAddress: "<value>",
       },
     },
   ],
-  operator: "AND",
+  operator: "OR",
 };
 ```
 

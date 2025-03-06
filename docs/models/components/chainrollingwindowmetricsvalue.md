@@ -6,11 +6,11 @@
 import { ChainRollingWindowMetricsValue } from "@avalabs/avacloud-sdk/models/components";
 
 let value: ChainRollingWindowMetricsValue = {
-  lastHour: 710.36,
-  lastDay: 871.29,
-  lastMonth: 202.18,
-  lastYear: 8326.2,
-  allTime: 7781.57,
+  lastHour: 202.18,
+  lastDay: 8326.2,
+  lastMonth: 7781.57,
+  lastYear: 8700.13,
+  allTime: 9786.19,
 };
 ```
 

@@ -14,9 +14,9 @@ let value: ListTokensResponse = {
         symbol: "WAVAX",
         ercType: "ERC-721",
         tokenId: "<id>",
-        tokenUri: "https://favorite-solvency.org",
+        tokenUri: "https://meaty-following.net/",
         metadata: {
-          indexStatus: "INVALID_METADATA_JSON",
+          indexStatus: "UNKNOWN",
         },
         ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
       },

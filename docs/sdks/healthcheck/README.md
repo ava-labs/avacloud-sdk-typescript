@@ -9,7 +9,7 @@
 
 ## metricsHealthCheck
 
-Get the health of the service
+Check the health of the service.
 
 ### Example Usage
 
@@ -75,11 +75,18 @@ run();
 
 ### Response
 
-**Promise\<[operations.MetricsHealthCheckResponseBody](../../models/operations/metricshealthcheckresponsebody.md)\>**
+**Promise\<[components.HealthCheckResultDto](../../models/components/healthcheckresultdto.md)\>**
 
 ### Errors
 
-| Error Type                            | Status Code                           | Content Type                          |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| errors.MetricsHealthCheckResponseBody | 503                                   | application/json                      |
-| errors.SDKError                       | 4XX, 5XX                              | \*/\*                                 |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.TooManyRequests     | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.BadGateway          | 502                        | application/json           |
+| errors.ServiceUnavailable  | 503                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |

@@ -5,7 +5,7 @@
 import { dataWebhooksAddAddressesToWebhook } from "../funcs/dataWebhooksAddAddressesToWebhook.js";
 import { dataWebhooksCreateWebhook } from "../funcs/dataWebhooksCreateWebhook.js";
 import { dataWebhooksDeactivateWebhook } from "../funcs/dataWebhooksDeactivateWebhook.js";
-import { dataWebhooksGenerateSharedSecret } from "../funcs/dataWebhooksGenerateSharedSecret.js";
+import { dataWebhooksGenerateOrRotateSharedSecret } from "../funcs/dataWebhooksGenerateOrRotateSharedSecret.js";
 import { dataWebhooksGetAddressesFromWebhook } from "../funcs/dataWebhooksGetAddressesFromWebhook.js";
 import { dataWebhooksGetSharedSecret } from "../funcs/dataWebhooksGetSharedSecret.js";
 import { dataWebhooksGetWebhook } from "../funcs/dataWebhooksGetWebhook.js";
@@ -107,15 +107,15 @@ export class Webhooks extends ClientSDK {
   }
 
   /**
-   * Generate a shared secret
+   * Generate or rotate a shared secret
    *
    * @remarks
-   * Generates a new shared secret.
+   * Generates a new shared secret or rotate an existing one.
    */
-  async generateSharedSecret(
+  async generateOrRotateSharedSecret(
     options?: RequestOptions,
   ): Promise<components.SharedSecretsResponse> {
-    return unwrapAsync(dataWebhooksGenerateSharedSecret(
+    return unwrapAsync(dataWebhooksGenerateOrRotateSharedSecret(
       this,
       options,
     ));

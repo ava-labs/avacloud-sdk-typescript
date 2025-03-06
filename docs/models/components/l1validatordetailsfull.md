@@ -9,21 +9,21 @@ let value: L1ValidatorDetailsFull = {
   validationId: "<id>",
   nodeId: "<id>",
   subnetId: "<id>",
-  weight: 632.07,
-  remainingBalance: 6072.49,
-  creationTimestamp: 4776.46,
+  weight: 9223.48,
+  remainingBalance: 5413.81,
+  creationTimestamp: 9233.06,
   blsCredentials: {},
   remainingBalanceOwner: {
     addresses: [
       "<value>",
     ],
-    threshold: 2840,
+    threshold: 8298.98,
   },
   deactivationOwner: {
     addresses: [
       "<value>",
     ],
-    threshold: 2384.13,
+    threshold: 9682.87,
   },
 };
 ```

@@ -8,8 +8,8 @@ import { MetricsApiResponse } from "@avalabs/avacloud-sdk/models/components";
 let value: MetricsApiResponse = {
   results: [
     {
-      value: 5448.83,
-      timestamp: 4236.55,
+      value: 6458.94,
+      timestamp: 4375.87,
     },
   ],
 };

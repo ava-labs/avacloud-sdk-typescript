@@ -12,18 +12,18 @@ let value: ListXChainVerticesResponse = {
       parentHashes: [
         "<value>",
       ],
-      vertexHeight: 2465.57,
-      vertexIndex: 5964.33,
-      vertexTimestamp: 1175.25,
-      txCount: 9758.84,
+      vertexHeight: 5207.61,
+      vertexIndex: 2672.07,
+      vertexTimestamp: 8773.99,
+      txCount: 3719.19,
       transactions: [
         "<value>",
       ],
-      vertexSizeBytes: 9325.62,
+      vertexSizeBytes: 13.83,
     },
   ],
   chainInfo: {
-    chainName: "x-chain",
+    chainName: "p-chain",
     network: "mainnet",
   },
 };

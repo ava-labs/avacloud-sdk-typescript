@@ -13,8 +13,12 @@ let value: GetNftHoldersByContractAddressResponse = {
         sortKey: "123",
       },
     ],
-    nftCollectionName: "NFT Project",
-    nftSymbol: "NFTPROJ",
+    nftCollectionName: [
+      "NFT Project",
+    ],
+    nftSymbol: [
+      "NFTPROJ",
+    ],
     totalHolders: 10,
     totalTokens: 10,
   },

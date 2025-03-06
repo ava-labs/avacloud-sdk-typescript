@@ -27,10 +27,11 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get usage metrics for the Subnet RPC
+ * **[Deprecated]**  Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
  *
- * @remarks
- * Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
+ * ⚠️ **This operation will be removed in a future release.  Please use /v1/subnetRpcUsageMetrics endpoint instead**.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export function dataUsageMetricsGetRpcUsageMetrics(
   client: AvaCloudSDKCore,

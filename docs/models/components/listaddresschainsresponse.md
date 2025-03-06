@@ -9,12 +9,11 @@ let value: ListAddressChainsResponse = {
   indexedChains: [
     {
       chainId: "<id>",
-      status: "UNAVAILABLE",
+      status: "OK",
       chainName: "<value>",
-      description:
-        "gadzooks yet athwart skateboard newsstand farm bourgeoisie ah how elliptical",
-      vmName: "ETHEREUM",
-      rpcUrl: "https://that-premeditation.biz/",
+      description: "hastily deeply opposite because furiously unless",
+      vmName: "BITCOIN",
+      rpcUrl: "https://moist-bourgeoisie.name/",
       isTestnet: false,
       networkToken: {
         name: "Wrapped AVAX",

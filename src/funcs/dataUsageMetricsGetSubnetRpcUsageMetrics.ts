@@ -3,8 +3,10 @@
  */
 
 import { AvaCloudSDKCore } from "../core.js";
+import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -19,22 +21,24 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import { GenerateSharedSecretServerList } from "../models/operations/generatesharedsecret.js";
+import { GetSubnetRpcUsageMetricsServerList } from "../models/operations/getsubnetrpcusagemetrics.js";
+import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Generate a shared secret
+ * Get usage metrics for the Subnet RPC
  *
  * @remarks
- * Generates a new shared secret.
+ * Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
  */
-export function dataWebhooksGenerateSharedSecret(
+export function dataUsageMetricsGetSubnetRpcUsageMetrics(
   client: AvaCloudSDKCore,
+  request: operations.GetSubnetRpcUsageMetricsRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.SharedSecretsResponse,
+    components.SubnetRpcUsageMetricsResponseDTO,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -54,17 +58,19 @@ export function dataWebhooksGenerateSharedSecret(
 > {
   return new APIPromise($do(
     client,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: AvaCloudSDKCore,
+  request: operations.GetSubnetRpcUsageMetricsRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      components.SharedSecretsResponse,
+      components.SubnetRpcUsageMetricsResponseDTO,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -84,12 +90,35 @@ async function $do(
     APICall,
   ]
 > {
+  const parsed = safeParse(
+    request,
+    (value) =>
+      operations.GetSubnetRpcUsageMetricsRequest$outboundSchema.parse(value),
+    "Input validation failed",
+  );
+  if (!parsed.ok) {
+    return [parsed, { status: "invalid" }];
+  }
+  const payload = parsed.value;
+  const body = null;
+
   const baseURL = options?.serverURL
-    || pathToFunc(GenerateSharedSecretServerList[0], {
+    || pathToFunc(GetSubnetRpcUsageMetricsServerList[0], {
       charEncoding: "percent",
     })();
 
-  const path = pathToFunc("/v1/webhooks:generateOrRotateSharedSecret")();
+  const path = pathToFunc("/v1/subnetRpcUsageMetrics")();
+
+  const query = encodeFormQuery({
+    "chainId": payload.chainId,
+    "endTimestamp": payload.endTimestamp,
+    "groupBy": payload.groupBy,
+    "responseCode": payload.responseCode,
+    "rlBypassApiToken": payload.rlBypassApiToken,
+    "rpcMethod": payload.rpcMethod,
+    "startTimestamp": payload.startTimestamp,
+    "timeInterval": payload.timeInterval,
+  });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -101,7 +130,7 @@ async function $do(
 
   const context = {
     baseURL: baseURL ?? "",
-    operationID: "generateSharedSecret",
+    operationID: "getSubnetRpcUsageMetrics",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -125,10 +154,12 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "POST",
+    method: "GET",
     baseURL: baseURL,
     path: path,
     headers: headers,
+    query: query,
+    body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
@@ -163,7 +194,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    components.SharedSecretsResponse,
+    components.SubnetRpcUsageMetricsResponseDTO,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -180,7 +211,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(201, components.SharedSecretsResponse$inboundSchema),
+    M.json(200, components.SubnetRpcUsageMetricsResponseDTO$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

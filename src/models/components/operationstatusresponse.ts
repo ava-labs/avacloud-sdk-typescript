@@ -30,7 +30,7 @@ export type OperationStatusResponse = {
   operationType: OperationType;
   operationStatus: OperationStatus;
   message?: string | undefined;
-  metadata: TransactionExportMetadata;
+  metadata?: TransactionExportMetadata | undefined;
   createdAtTimestamp: number;
   updatedAtTimestamp: number;
 };
@@ -89,7 +89,7 @@ export const OperationStatusResponse$inboundSchema: z.ZodType<
   operationType: OperationType$inboundSchema,
   operationStatus: OperationStatus$inboundSchema,
   message: z.string().optional(),
-  metadata: TransactionExportMetadata$inboundSchema,
+  metadata: TransactionExportMetadata$inboundSchema.optional(),
   createdAtTimestamp: z.number(),
   updatedAtTimestamp: z.number(),
 });
@@ -100,7 +100,7 @@ export type OperationStatusResponse$Outbound = {
   operationType: string;
   operationStatus: string;
   message?: string | undefined;
-  metadata: TransactionExportMetadata$Outbound;
+  metadata?: TransactionExportMetadata$Outbound | undefined;
   createdAtTimestamp: number;
   updatedAtTimestamp: number;
 };
@@ -115,7 +115,7 @@ export const OperationStatusResponse$outboundSchema: z.ZodType<
   operationType: OperationType$outboundSchema,
   operationStatus: OperationStatus$outboundSchema,
   message: z.string().optional(),
-  metadata: TransactionExportMetadata$outboundSchema,
+  metadata: TransactionExportMetadata$outboundSchema.optional(),
   createdAtTimestamp: z.number(),
   updatedAtTimestamp: z.number(),
 });
