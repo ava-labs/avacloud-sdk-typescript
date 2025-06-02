@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$dataEvmChainsGetAddressChains: ToolDefinition<typeof args> = {
-  name: "data-evm-chains_get-address-chains",
+  name: "data-evm-chains-get-address-chains",
   description:
     `**[Deprecated]** Gets a list of all chains where the address was either a sender or receiver in a transaction or ERC transfer. The list is currently updated every 15 minutes.
 

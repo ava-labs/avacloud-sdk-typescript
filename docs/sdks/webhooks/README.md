@@ -1,22 +1,19 @@
 # Webhooks
-(*data.webhooks*)
+(*webhooks*)
 
 ## Overview
 
 ### Available Operations
 
-* [listWebhooks](#listwebhooks) - List webhooks
-* [createWebhook](#createwebhook) - Create a webhook
-* [getWebhook](#getwebhook) - Get a webhook by ID
-* [deactivateWebhook](#deactivatewebhook) - Deactivate a webhook
-* [updateWebhook](#updatewebhook) - Update a webhook
+* [list](#list) - List webhooks
+* [create](#create) - Create a webhook
+* [get](#get) - Get a webhook by ID
+* [deactivate](#deactivate) - Deactivate a webhook
+* [update](#update) - Update a webhook
 * [generateOrRotateSharedSecret](#generateorrotatesharedsecret) - Generate or rotate a shared secret
 * [getSharedSecret](#getsharedsecret) - Get a shared secret
-* [getAddressesFromWebhook](#getaddressesfromwebhook) - List adresses by webhook
-* [removeAddressesFromWebhook](#removeaddressesfromwebhook) - Remove addresses from webhook
-* [addAddressesToWebhook](#addaddressestowebhook) - Add addresses to webhook
 
-## listWebhooks
+## list
 
 Lists webhooks for the user.
 
@@ -32,7 +29,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.webhooks.listWebhooks({
+  const result = await avaCloudSDK.webhooks.list({
     status: "active",
   });
 
@@ -51,7 +48,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataWebhooksListWebhooks } from "@avalabs/avacloud-sdk/funcs/dataWebhooksListWebhooks.js";
+import { webhooksList } from "@avalabs/avacloud-sdk/funcs/webhooksList.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -62,7 +59,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataWebhooksListWebhooks(avaCloudSDK, {
+  const res = await webhooksList(avaCloudSDK, {
     status: "active",
   });
 
@@ -109,7 +106,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## createWebhook
+## create
 
 Create a new webhook.
 
@@ -125,10 +122,10 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.webhooks.createWebhook({
-    url: "https://woeful-yin.biz",
-    chainId: "<id>",
+  const result = await avaCloudSDK.webhooks.create({
     eventType: "address_activity",
+    url: "https://sophisticated-exterior.org/",
+    chainId: "<id>",
     metadata: {
       addresses: [
         "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
@@ -152,7 +149,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataWebhooksCreateWebhook } from "@avalabs/avacloud-sdk/funcs/dataWebhooksCreateWebhook.js";
+import { webhooksCreate } from "@avalabs/avacloud-sdk/funcs/webhooksCreate.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -163,10 +160,10 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataWebhooksCreateWebhook(avaCloudSDK, {
-    url: "https://woeful-yin.biz",
-    chainId: "<id>",
+  const res = await webhooksCreate(avaCloudSDK, {
     eventType: "address_activity",
+    url: "https://sophisticated-exterior.org/",
+    chainId: "<id>",
     metadata: {
       addresses: [
         "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
@@ -194,7 +191,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.CreateWebhookRequest](../../models/components/createwebhookrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreateWebhookRequestBody](../../models/operations/createwebhookrequestbody.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -202,7 +199,7 @@ run();
 
 ### Response
 
-**Promise\<[components.WebhookResponse](../../models/components/webhookresponse.md)\>**
+**Promise\<[operations.CreateWebhookResponseBody](../../models/operations/createwebhookresponsebody.md)\>**
 
 ### Errors
 
@@ -218,7 +215,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## getWebhook
+## get
 
 Retrieves a webhook by ID.
 
@@ -234,7 +231,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.webhooks.getWebhook({
+  const result = await avaCloudSDK.webhooks.get({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 
@@ -251,7 +248,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataWebhooksGetWebhook } from "@avalabs/avacloud-sdk/funcs/dataWebhooksGetWebhook.js";
+import { webhooksGet } from "@avalabs/avacloud-sdk/funcs/webhooksGet.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -262,7 +259,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataWebhooksGetWebhook(avaCloudSDK, {
+  const res = await webhooksGet(avaCloudSDK, {
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 
@@ -291,7 +288,7 @@ run();
 
 ### Response
 
-**Promise\<[components.WebhookResponse](../../models/components/webhookresponse.md)\>**
+**Promise\<[operations.GetWebhookResponseBody](../../models/operations/getwebhookresponsebody.md)\>**
 
 ### Errors
 
@@ -307,7 +304,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## deactivateWebhook
+## deactivate
 
 Deactivates a webhook by ID.
 
@@ -323,7 +320,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.webhooks.deactivateWebhook({
+  const result = await avaCloudSDK.webhooks.deactivate({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 
@@ -340,7 +337,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataWebhooksDeactivateWebhook } from "@avalabs/avacloud-sdk/funcs/dataWebhooksDeactivateWebhook.js";
+import { webhooksDeactivate } from "@avalabs/avacloud-sdk/funcs/webhooksDeactivate.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -351,7 +348,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataWebhooksDeactivateWebhook(avaCloudSDK, {
+  const res = await webhooksDeactivate(avaCloudSDK, {
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
   });
 
@@ -380,7 +377,7 @@ run();
 
 ### Response
 
-**Promise\<[components.WebhookResponse](../../models/components/webhookresponse.md)\>**
+**Promise\<[operations.DeactivateWebhookResponseBody](../../models/operations/deactivatewebhookresponsebody.md)\>**
 
 ### Errors
 
@@ -396,7 +393,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## updateWebhook
+## update
 
 Updates an existing webhook.
 
@@ -412,7 +409,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.webhooks.updateWebhook({
+  const result = await avaCloudSDK.webhooks.update({
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     updateWebhookRequest: {},
   });
@@ -430,7 +427,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataWebhooksUpdateWebhook } from "@avalabs/avacloud-sdk/funcs/dataWebhooksUpdateWebhook.js";
+import { webhooksUpdate } from "@avalabs/avacloud-sdk/funcs/webhooksUpdate.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -441,7 +438,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataWebhooksUpdateWebhook(avaCloudSDK, {
+  const res = await webhooksUpdate(avaCloudSDK, {
     id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
     updateWebhookRequest: {},
   });
@@ -471,7 +468,7 @@ run();
 
 ### Response
 
-**Promise\<[components.WebhookResponse](../../models/components/webhookresponse.md)\>**
+**Promise\<[operations.UpdateWebhookResponseBody](../../models/operations/updatewebhookresponsebody.md)\>**
 
 ### Errors
 
@@ -503,7 +500,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.webhooks.generateOrRotateSharedSecret();
+  const result = await avaCloudSDK.webhooks.generateOrRotateSharedSecret();
 
   // Handle the result
   console.log(result);
@@ -518,7 +515,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataWebhooksGenerateOrRotateSharedSecret } from "@avalabs/avacloud-sdk/funcs/dataWebhooksGenerateOrRotateSharedSecret.js";
+import { webhooksGenerateOrRotateSharedSecret } from "@avalabs/avacloud-sdk/funcs/webhooksGenerateOrRotateSharedSecret.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -529,7 +526,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataWebhooksGenerateOrRotateSharedSecret(avaCloudSDK);
+  const res = await webhooksGenerateOrRotateSharedSecret(avaCloudSDK);
 
   if (!res.ok) {
     throw res.error;
@@ -587,7 +584,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.webhooks.getSharedSecret();
+  const result = await avaCloudSDK.webhooks.getSharedSecret();
 
   // Handle the result
   console.log(result);
@@ -602,7 +599,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataWebhooksGetSharedSecret } from "@avalabs/avacloud-sdk/funcs/dataWebhooksGetSharedSecret.js";
+import { webhooksGetSharedSecret } from "@avalabs/avacloud-sdk/funcs/webhooksGetSharedSecret.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -613,7 +610,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataWebhooksGetSharedSecret(avaCloudSDK);
+  const res = await webhooksGetSharedSecret(avaCloudSDK);
 
   if (!res.ok) {
     throw res.error;
@@ -640,297 +637,6 @@ run();
 ### Response
 
 **Promise\<[components.SharedSecretsResponse](../../models/components/sharedsecretsresponse.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.TooManyRequests     | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.BadGateway          | 502                        | application/json           |
-| errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## getAddressesFromWebhook
-
-List adresses by webhook.
-
-### Example Usage
-
-```typescript
-import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
-
-const avaCloudSDK = new AvaCloudSDK({
-  serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
-});
-
-async function run() {
-  const result = await avaCloudSDK.data.webhooks.getAddressesFromWebhook({
-    id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
-  });
-
-  for await (const page of result) {
-    // Handle the page
-    console.log(page);
-  }
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataWebhooksGetAddressesFromWebhook } from "@avalabs/avacloud-sdk/funcs/dataWebhooksGetAddressesFromWebhook.js";
-
-// Use `AvaCloudSDKCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const avaCloudSDK = new AvaCloudSDKCore({
-  serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
-});
-
-async function run() {
-  const res = await dataWebhooksGetAddressesFromWebhook(avaCloudSDK, {
-    id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
-    console.log(page);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetAddressesFromWebhookRequest](../../models/operations/getaddressesfromwebhookrequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
-
-### Response
-
-**Promise\<[operations.GetAddressesFromWebhookResponse](../../models/operations/getaddressesfromwebhookresponse.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.TooManyRequests     | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.BadGateway          | 502                        | application/json           |
-| errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## removeAddressesFromWebhook
-
-Remove addresses from webhook.
-
-### Example Usage
-
-```typescript
-import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
-
-const avaCloudSDK = new AvaCloudSDK({
-  serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
-});
-
-async function run() {
-  const result = await avaCloudSDK.data.webhooks.removeAddressesFromWebhook({
-    id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
-    addressesChangeRequest: {
-      addresses: [
-        "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
-      ],
-    },
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataWebhooksRemoveAddressesFromWebhook } from "@avalabs/avacloud-sdk/funcs/dataWebhooksRemoveAddressesFromWebhook.js";
-
-// Use `AvaCloudSDKCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const avaCloudSDK = new AvaCloudSDKCore({
-  serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
-});
-
-async function run() {
-  const res = await dataWebhooksRemoveAddressesFromWebhook(avaCloudSDK, {
-    id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
-    addressesChangeRequest: {
-      addresses: [
-        "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
-      ],
-    },
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.RemoveAddressesFromWebhookRequest](../../models/operations/removeaddressesfromwebhookrequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
-
-### Response
-
-**Promise\<[components.WebhookResponse](../../models/components/webhookresponse.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.BadRequest          | 400                        | application/json           |
-| errors.Unauthorized        | 401                        | application/json           |
-| errors.Forbidden           | 403                        | application/json           |
-| errors.NotFound            | 404                        | application/json           |
-| errors.TooManyRequests     | 429                        | application/json           |
-| errors.InternalServerError | 500                        | application/json           |
-| errors.BadGateway          | 502                        | application/json           |
-| errors.ServiceUnavailable  | 503                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## addAddressesToWebhook
-
-Add addresses to webhook.
-
-### Example Usage
-
-```typescript
-import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
-
-const avaCloudSDK = new AvaCloudSDK({
-  serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
-});
-
-async function run() {
-  const result = await avaCloudSDK.data.webhooks.addAddressesToWebhook({
-    id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
-    addressesChangeRequest: {
-      addresses: [
-        "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
-      ],
-    },
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataWebhooksAddAddressesToWebhook } from "@avalabs/avacloud-sdk/funcs/dataWebhooksAddAddressesToWebhook.js";
-
-// Use `AvaCloudSDKCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const avaCloudSDK = new AvaCloudSDKCore({
-  serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
-});
-
-async function run() {
-  const res = await dataWebhooksAddAddressesToWebhook(avaCloudSDK, {
-    id: "f33de69c-d13b-4691-908f-870d6e2e6b04",
-    addressesChangeRequest: {
-      addresses: [
-        "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
-      ],
-    },
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.AddAddressesToWebhookRequest](../../models/operations/addaddressestowebhookrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
-
-### Response
-
-**Promise\<[components.WebhookResponse](../../models/components/webhookresponse.md)\>**
 
 ### Errors
 

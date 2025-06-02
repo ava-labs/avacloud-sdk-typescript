@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$dataPrimaryNetworkListSubnets: ToolDefinition<typeof args> = {
-  name: "data-primary-network_list-subnets",
+  name: "data-primary-network-list-subnets",
   description: `List subnets
 
 Lists all subnets registered on the network.`,

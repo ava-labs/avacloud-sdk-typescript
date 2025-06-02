@@ -1,17 +1,17 @@
 # AvaCloudSDKBalances
-(*data.evm.balances*)
+(*data.evm.address.balances*)
 
 ## Overview
 
 ### Available Operations
 
-* [getNativeBalance](#getnativebalance) - Get native token balance
-* [listErc20Balances](#listerc20balances) - List ERC-20 balances
-* [listErc721Balances](#listerc721balances) - List ERC-721 balances
-* [listErc1155Balances](#listerc1155balances) - List ERC-1155 balances
-* [listCollectibleBalances](#listcollectiblebalances) - List collectible (ERC-721/ERC-1155) balances
+* [getNative](#getnative) - Get native token balance
+* [listErc20](#listerc20) - List ERC-20 balances
+* [listErc721](#listerc721) - List ERC-721 balances
+* [listErc1155](#listerc1155) - List ERC-1155 balances
+* [listCollectibles](#listcollectibles) - List collectible (ERC-721/ERC-1155) balances
 
-## getNativeBalance
+## getNative
 
 Gets native token balance of a wallet address.
 
@@ -29,7 +29,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.evm.balances.getNativeBalance({
+  const result = await avaCloudSDK.data.evm.address.balances.getNative({
     blockNumber: "6479329",
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
@@ -49,7 +49,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataEvmBalancesGetNativeBalance } from "@avalabs/avacloud-sdk/funcs/dataEvmBalancesGetNativeBalance.js";
+import { dataEvmAddressBalancesGetNative } from "@avalabs/avacloud-sdk/funcs/dataEvmAddressBalancesGetNative.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -60,7 +60,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataEvmBalancesGetNativeBalance(avaCloudSDK, {
+  const res = await dataEvmAddressBalancesGetNative(avaCloudSDK, {
     blockNumber: "6479329",
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
@@ -108,7 +108,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listErc20Balances
+## listErc20
 
 Lists ERC-20 token balances of a wallet address.
 
@@ -128,7 +128,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.evm.balances.listErc20Balances({
+  const result = await avaCloudSDK.data.evm.address.balances.listErc20({
     blockNumber: "6479329",
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
@@ -151,7 +151,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataEvmBalancesListErc20Balances } from "@avalabs/avacloud-sdk/funcs/dataEvmBalancesListErc20Balances.js";
+import { dataEvmAddressBalancesListErc20 } from "@avalabs/avacloud-sdk/funcs/dataEvmAddressBalancesListErc20.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -162,7 +162,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataEvmBalancesListErc20Balances(avaCloudSDK, {
+  const res = await dataEvmAddressBalancesListErc20(avaCloudSDK, {
     blockNumber: "6479329",
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
@@ -213,7 +213,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listErc721Balances
+## listErc721
 
 Lists ERC-721 token balances of a wallet address.
 
@@ -231,7 +231,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.evm.balances.listErc721Balances({
+  const result = await avaCloudSDK.data.evm.address.balances.listErc721({
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
@@ -252,7 +252,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataEvmBalancesListErc721Balances } from "@avalabs/avacloud-sdk/funcs/dataEvmBalancesListErc721Balances.js";
+import { dataEvmAddressBalancesListErc721 } from "@avalabs/avacloud-sdk/funcs/dataEvmAddressBalancesListErc721.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -263,7 +263,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataEvmBalancesListErc721Balances(avaCloudSDK, {
+  const res = await dataEvmAddressBalancesListErc721(avaCloudSDK, {
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
@@ -312,7 +312,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listErc1155Balances
+## listErc1155
 
 Lists ERC-1155 token balances of a wallet address.
 
@@ -332,7 +332,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.evm.balances.listErc1155Balances({
+  const result = await avaCloudSDK.data.evm.address.balances.listErc1155({
     blockNumber: "6479329",
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
@@ -354,7 +354,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataEvmBalancesListErc1155Balances } from "@avalabs/avacloud-sdk/funcs/dataEvmBalancesListErc1155Balances.js";
+import { dataEvmAddressBalancesListErc1155 } from "@avalabs/avacloud-sdk/funcs/dataEvmAddressBalancesListErc1155.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -365,7 +365,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataEvmBalancesListErc1155Balances(avaCloudSDK, {
+  const res = await dataEvmAddressBalancesListErc1155(avaCloudSDK, {
     blockNumber: "6479329",
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
@@ -415,7 +415,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listCollectibleBalances
+## listCollectibles
 
 Lists ERC-721 and ERC-1155 token balances of a wallet address.
 
@@ -433,7 +433,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.evm.balances.listCollectibleBalances({
+  const result = await avaCloudSDK.data.evm.address.balances.listCollectibles({
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
@@ -454,7 +454,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataEvmBalancesListCollectibleBalances } from "@avalabs/avacloud-sdk/funcs/dataEvmBalancesListCollectibleBalances.js";
+import { dataEvmAddressBalancesListCollectibles } from "@avalabs/avacloud-sdk/funcs/dataEvmAddressBalancesListCollectibles.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -465,7 +465,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataEvmBalancesListCollectibleBalances(avaCloudSDK, {
+  const res = await dataEvmAddressBalancesListCollectibles(avaCloudSDK, {
     chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     contractAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",

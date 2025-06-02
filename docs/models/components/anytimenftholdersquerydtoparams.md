@@ -9,8 +9,8 @@
 const value: components.TimestampRangeNftHoldersParam = {
   evmChainId: "<id>",
   contractAddress: "<value>",
-  startTs: 187.89,
-  endTs: 6176.36,
+  startTs: 5107.72,
+  endTs: 9922.36,
 };
 ```
 

@@ -36,7 +36,7 @@ import {
  * List validators
  *
  * @remarks
- * Lists details for validators. By default, returns details for all validators. Filterable by validator node ids and minimum delegation capacity.
+ * Lists details for validators. By default, returns details for all validators.  The nodeIds parameter supports substring matching. Filterable by validation status, delegation capacity, time remaining, fee percentage, uptime performance, and subnet id.
  */
 export function dataPrimaryNetworkListValidators(
   client: AvaCloudSDKCore,
@@ -153,6 +153,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    options: client._options,
     baseURL: baseURL ?? "",
     operationID: "listValidators",
     oAuth2Scopes: [],
@@ -184,6 +185,7 @@ async function $do(
     headers: headers,
     query: query,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {

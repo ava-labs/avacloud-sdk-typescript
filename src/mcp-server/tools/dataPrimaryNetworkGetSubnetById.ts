@@ -12,7 +12,7 @@ const args = {
 
 export const tool$dataPrimaryNetworkGetSubnetById: ToolDefinition<typeof args> =
   {
-    name: "data-primary-network_get-subnet-by-id",
+    name: "data-primary-network-get-subnet-by-id",
     description: `Get Subnet details by ID
 
 Get details of the Subnet registered on the network.`,

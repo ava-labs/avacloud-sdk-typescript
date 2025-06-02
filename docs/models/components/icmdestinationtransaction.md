@@ -7,7 +7,7 @@ import { IcmDestinationTransaction } from "@avalabs/avacloud-sdk/models/componen
 
 let value: IcmDestinationTransaction = {
   txHash: "<value>",
-  timestamp: 8442.35,
+  timestamp: 4661.9,
   gasSpent: "<value>",
   rewardRedeemer: "<value>",
   delivererAddress: "<value>",

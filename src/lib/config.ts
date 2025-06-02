@@ -38,6 +38,10 @@ export type SDKOptions = {
    */
   serverURL: string;
   /**
+   * Allows overriding the default user agent used by the SDK
+   */
+  userAgent?: string | undefined;
+  /**
    * Allows overriding the default retry config used by the SDK
    */
   retryConfig?: RetryConfig;
@@ -64,9 +68,9 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 
 export const SDK_METADATA = {
   language: "typescript",
-  openapiDocVersion: "Beta",
-  sdkVersion: "0.11.0",
-  genVersion: "2.541.0",
+  openapiDocVersion: "1.0.0",
+  sdkVersion: "0.12.0",
+  genVersion: "2.616.1",
   userAgent:
-    "speakeasy-sdk/typescript 0.11.0 2.541.0 Beta @avalabs/avacloud-sdk",
+    "speakeasy-sdk/typescript 0.12.0 2.616.1 1.0.0 @avalabs/avacloud-sdk",
 } as const;

@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [getBlockById](#getblockbyid) - Get block
-* [listPrimaryNetworkBlocksByNodeId](#listprimarynetworkblocksbynodeid) - List blocks proposed by node
-* [listLatestPrimaryNetworkBlocks](#listlatestprimarynetworkblocks) - List latest blocks
+* [get](#get) - Get block
+* [listByNodeId](#listbynodeid) - List blocks proposed by node
+* [listLatest](#listlatest) - List latest blocks
 
-## getBlockById
+## get
 
 Gets a block by block height or block hash on one of the Primary Network chains.
 
@@ -25,7 +25,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.blocks.getBlockById({
+  const result = await avaCloudSDK.data.primaryNetwork.blocks.get({
     blockchainId: "p-chain",
     network: "mainnet",
     blockId: "5615di9ytxujackzaXNrVuWQy5y8Yrt8chPCscMr5Ku9YxJ1S",
@@ -44,7 +44,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkBlocksGetBlockById } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksGetBlockById.js";
+import { dataPrimaryNetworkBlocksGet } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksGet.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -55,7 +55,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkBlocksGetBlockById(avaCloudSDK, {
+  const res = await dataPrimaryNetworkBlocksGet(avaCloudSDK, {
     blockchainId: "p-chain",
     network: "mainnet",
     blockId: "5615di9ytxujackzaXNrVuWQy5y8Yrt8chPCscMr5Ku9YxJ1S",
@@ -102,7 +102,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listPrimaryNetworkBlocksByNodeId
+## listByNodeId
 
 Lists the latest blocks proposed by a given NodeID on one of the Primary Network chains.
 
@@ -118,7 +118,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.blocks.listPrimaryNetworkBlocksByNodeId({
+  const result = await avaCloudSDK.data.primaryNetwork.blocks.listByNodeId({
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
@@ -141,7 +141,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId.js";
+import { dataPrimaryNetworkBlocksListByNodeId } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksListByNodeId.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -152,7 +152,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId(avaCloudSDK, {
+  const res = await dataPrimaryNetworkBlocksListByNodeId(avaCloudSDK, {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
@@ -203,7 +203,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listLatestPrimaryNetworkBlocks
+## listLatest
 
 Lists latest blocks on one of the Primary Network chains.
 
@@ -219,7 +219,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.blocks.listLatestPrimaryNetworkBlocks({
+  const result = await avaCloudSDK.data.primaryNetwork.blocks.listLatest({
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
@@ -241,7 +241,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks.js";
+import { dataPrimaryNetworkBlocksListLatest } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksListLatest.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -252,7 +252,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks(avaCloudSDK, {
+  const res = await dataPrimaryNetworkBlocksListLatest(avaCloudSDK, {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",

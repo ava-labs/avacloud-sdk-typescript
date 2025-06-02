@@ -41,7 +41,7 @@ let value: ListIcmMessagesResponse = {
       },
       sourceTransaction: {
         txHash: "<value>",
-        timestamp: 1563.83,
+        timestamp: 832.52,
         gasSpent: "<value>",
       },
       status: "pending",

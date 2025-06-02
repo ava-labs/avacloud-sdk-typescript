@@ -13,7 +13,7 @@ const args = {
 export const tool$dataUsageMetricsGetRpcUsageMetrics: ToolDefinition<
   typeof args
 > = {
-  name: "data-usage-metrics_get-rpc-usage-metrics",
+  name: "data-usage-metrics-get-rpc-usage-metrics",
   description:
     `**[Deprecated]**  Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
 

@@ -7,19 +7,79 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  WebhookResponse,
-  WebhookResponse$inboundSchema,
-  WebhookResponse$Outbound,
-  WebhookResponse$outboundSchema,
-} from "./webhookresponse.js";
+  EVMAddressActivityResponse,
+  EVMAddressActivityResponse$inboundSchema,
+  EVMAddressActivityResponse$Outbound,
+  EVMAddressActivityResponse$outboundSchema,
+} from "./evmaddressactivityresponse.js";
+import {
+  PlatformActivityResponse,
+  PlatformActivityResponse$inboundSchema,
+  PlatformActivityResponse$Outbound,
+  PlatformActivityResponse$outboundSchema,
+} from "./platformactivityresponse.js";
+
+export type Webhooks = PlatformActivityResponse | EVMAddressActivityResponse;
 
 export type ListWebhooksResponse = {
   /**
    * A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages.
    */
   nextPageToken?: string | undefined;
-  webhooks: Array<WebhookResponse>;
+  webhooks: Array<PlatformActivityResponse | EVMAddressActivityResponse>;
 };
+
+/** @internal */
+export const Webhooks$inboundSchema: z.ZodType<
+  Webhooks,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  PlatformActivityResponse$inboundSchema,
+  EVMAddressActivityResponse$inboundSchema,
+]);
+
+/** @internal */
+export type Webhooks$Outbound =
+  | PlatformActivityResponse$Outbound
+  | EVMAddressActivityResponse$Outbound;
+
+/** @internal */
+export const Webhooks$outboundSchema: z.ZodType<
+  Webhooks$Outbound,
+  z.ZodTypeDef,
+  Webhooks
+> = z.union([
+  PlatformActivityResponse$outboundSchema,
+  EVMAddressActivityResponse$outboundSchema,
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Webhooks$ {
+  /** @deprecated use `Webhooks$inboundSchema` instead. */
+  export const inboundSchema = Webhooks$inboundSchema;
+  /** @deprecated use `Webhooks$outboundSchema` instead. */
+  export const outboundSchema = Webhooks$outboundSchema;
+  /** @deprecated use `Webhooks$Outbound` instead. */
+  export type Outbound = Webhooks$Outbound;
+}
+
+export function webhooksToJSON(webhooks: Webhooks): string {
+  return JSON.stringify(Webhooks$outboundSchema.parse(webhooks));
+}
+
+export function webhooksFromJSON(
+  jsonString: string,
+): SafeParseResult<Webhooks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Webhooks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Webhooks' from JSON`,
+  );
+}
 
 /** @internal */
 export const ListWebhooksResponse$inboundSchema: z.ZodType<
@@ -28,13 +88,20 @@ export const ListWebhooksResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   nextPageToken: z.string().optional(),
-  webhooks: z.array(WebhookResponse$inboundSchema),
+  webhooks: z.array(
+    z.union([
+      PlatformActivityResponse$inboundSchema,
+      EVMAddressActivityResponse$inboundSchema,
+    ]),
+  ),
 });
 
 /** @internal */
 export type ListWebhooksResponse$Outbound = {
   nextPageToken?: string | undefined;
-  webhooks: Array<WebhookResponse$Outbound>;
+  webhooks: Array<
+    PlatformActivityResponse$Outbound | EVMAddressActivityResponse$Outbound
+  >;
 };
 
 /** @internal */
@@ -44,7 +111,12 @@ export const ListWebhooksResponse$outboundSchema: z.ZodType<
   ListWebhooksResponse
 > = z.object({
   nextPageToken: z.string().optional(),
-  webhooks: z.array(WebhookResponse$outboundSchema),
+  webhooks: z.array(
+    z.union([
+      PlatformActivityResponse$outboundSchema,
+      EVMAddressActivityResponse$outboundSchema,
+    ]),
+  ),
 });
 
 /**

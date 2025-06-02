@@ -10,14 +10,14 @@ let value: XChainVertex = {
   parentHashes: [
     "<value>",
   ],
-  vertexHeight: 3182.33,
-  vertexIndex: 8587.78,
-  vertexTimestamp: 4585.03,
-  txCount: 4445.87,
+  vertexHeight: 4766.24,
+  vertexIndex: 5902.46,
+  vertexTimestamp: 8444.73,
+  txCount: 489.21,
   transactions: [
     "<value>",
   ],
-  vertexSizeBytes: 3361.02,
+  vertexSizeBytes: 3285.61,
 };
 ```
 

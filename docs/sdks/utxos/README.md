@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [getUtxosByAddresses](#getutxosbyaddresses) - List UTXOs
+* [listByAddresses](#listbyaddresses) - List UTXOs
 
-## getUtxosByAddresses
+## listByAddresses
 
 Lists UTXOs on one of the Primary Network chains for the supplied addresses.
 
@@ -23,7 +23,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.utxos.getUtxosByAddresses({
+  const result = await avaCloudSDK.data.primaryNetwork.utxos.listByAddresses({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     blockchainId: "p-chain",
     network: "mainnet",
@@ -45,7 +45,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkUtxosGetUtxosByAddresses } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkUtxosGetUtxosByAddresses.js";
+import { dataPrimaryNetworkUtxosListByAddresses } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkUtxosListByAddresses.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -56,7 +56,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkUtxosGetUtxosByAddresses(avaCloudSDK, {
+  const res = await dataPrimaryNetworkUtxosListByAddresses(avaCloudSDK, {
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     blockchainId: "p-chain",
     network: "mainnet",

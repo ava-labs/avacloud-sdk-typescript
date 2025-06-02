@@ -14,7 +14,7 @@ export const GetIcmMessageServerList = [
 
 export type GetIcmMessageRequest = {
   /**
-   * The message ID of the ICM message.
+   * The teleporter message ID of the ICM message.
    */
   messageId: string;
 };

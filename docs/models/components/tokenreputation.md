@@ -7,7 +7,7 @@ Indicates the reputation of the token based on a security analysis. 'Benign' sug
 ```typescript
 import { TokenReputation } from "@avalabs/avacloud-sdk/models/components";
 
-let value: TokenReputation = null;
+let value: TokenReputation = "Malicious";
 ```
 
 ## Values
