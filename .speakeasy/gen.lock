@@ -3,10 +3,10 @@ id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
   docChecksum: 97bc1c616191060c5101cc3a0138680f
   docVersion: 1.0.0
-  speakeasyVersion: 1.554.1
-  generationVersion: 2.616.1
-  releaseVersion: 0.12.0
-  configChecksum: 59ccecf001152d03fe2d8d1b124d3f48
+  speakeasyVersion: 1.555.0
+  generationVersion: 2.618.0
+  releaseVersion: 0.12.1
+  configChecksum: ecf978761b18292e62225f063361851f
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.21.9
+    core: 3.21.10
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
