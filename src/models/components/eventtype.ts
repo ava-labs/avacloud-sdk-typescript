@@ -7,6 +7,8 @@ import { ClosedEnum } from "../../types/enums.js";
 
 export const EventType = {
   AddressActivity: "address_activity",
+  PlatformAddressActivity: "platform_address_activity",
+  ValidatorActivity: "validator_activity",
 } as const;
 export type EventType = ClosedEnum<typeof EventType>;
 

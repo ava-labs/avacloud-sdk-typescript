@@ -13,7 +13,7 @@ const args = {
 export const tool$dataPrimaryNetworkGetChainIdsForAddresses: ToolDefinition<
   typeof args
 > = {
-  name: "data-primary-network_get-chain-ids-for-addresses",
+  name: "data-primary-network-get-chain-ids-for-addresses",
   description: `Get chain interactions for addresses
 
 Returns Primary Network chains that each address has touched in the form of an address mapped array. If an address has had any on-chain interaction for a chain, that chain's chain id will be returned.`,

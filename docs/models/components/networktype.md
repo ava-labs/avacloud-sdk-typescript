@@ -7,7 +7,7 @@ Network on which this blockchain or subnet is created on.
 ```typescript
 import { NetworkType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: NetworkType = "mainnet";
+let value: NetworkType = "testnet";
 ```
 
 ## Values

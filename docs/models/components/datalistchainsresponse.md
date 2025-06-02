@@ -11,10 +11,9 @@ let value: DataListChainsResponse = {
       chainId: "<id>",
       status: "UNAVAILABLE",
       chainName: "<value>",
-      description:
-        "substitution psst upon er evenly backburn bathhouse reluctantly till",
+      description: "hydrolyse since even",
       vmName: "BITCOIN",
-      rpcUrl: "https://firsthand-section.biz",
+      rpcUrl: "https://bleak-birdbath.com",
       isTestnet: false,
       networkToken: {
         name: "Wrapped AVAX",

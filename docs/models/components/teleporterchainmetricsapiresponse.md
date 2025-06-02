@@ -7,7 +7,7 @@ import { TeleporterChainMetricsApiResponse } from "@avalabs/avacloud-sdk/models/
 
 let value: TeleporterChainMetricsApiResponse = {
   result: {
-    value: 3834.41,
+    value: 7509,
   },
 };
 ```

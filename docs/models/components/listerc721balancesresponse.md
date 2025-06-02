@@ -30,7 +30,7 @@ let value: ListErc721BalancesResponse = {
       symbol: "WAVAX",
       ercType: "ERC-721",
       tokenId: "<id>",
-      tokenUri: "https://troubled-illusion.biz",
+      tokenUri: "https://qualified-stranger.net/",
       metadata: {
         indexStatus: "INVALID_TOKEN_URI",
       },

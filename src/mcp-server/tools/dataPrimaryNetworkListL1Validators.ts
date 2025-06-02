@@ -13,7 +13,7 @@ const args = {
 export const tool$dataPrimaryNetworkListL1Validators: ToolDefinition<
   typeof args
 > = {
-  name: "data-primary-network_list-l1-validators",
+  name: "data-primary-network-list-l1-validators",
   description: `List L1 validators
 
 Lists details for L1 validators. By default, returns details for all active L1 validators. Filterable by validator node ids, subnet id, and validation id.`,

@@ -21,6 +21,13 @@ export type UpdateWebhookRequest = {
   updateWebhookRequest: components.UpdateWebhookRequest;
 };
 
+/**
+ * Successful response
+ */
+export type UpdateWebhookResponseBody =
+  | components.PlatformActivityResponse
+  | components.EVMAddressActivityResponse;
+
 /** @internal */
 export const UpdateWebhookRequest$inboundSchema: z.ZodType<
   UpdateWebhookRequest,
@@ -83,5 +90,61 @@ export function updateWebhookRequestFromJSON(
     jsonString,
     (x) => UpdateWebhookRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UpdateWebhookRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateWebhookResponseBody$inboundSchema: z.ZodType<
+  UpdateWebhookResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  components.PlatformActivityResponse$inboundSchema,
+  components.EVMAddressActivityResponse$inboundSchema,
+]);
+
+/** @internal */
+export type UpdateWebhookResponseBody$Outbound =
+  | components.PlatformActivityResponse$Outbound
+  | components.EVMAddressActivityResponse$Outbound;
+
+/** @internal */
+export const UpdateWebhookResponseBody$outboundSchema: z.ZodType<
+  UpdateWebhookResponseBody$Outbound,
+  z.ZodTypeDef,
+  UpdateWebhookResponseBody
+> = z.union([
+  components.PlatformActivityResponse$outboundSchema,
+  components.EVMAddressActivityResponse$outboundSchema,
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateWebhookResponseBody$ {
+  /** @deprecated use `UpdateWebhookResponseBody$inboundSchema` instead. */
+  export const inboundSchema = UpdateWebhookResponseBody$inboundSchema;
+  /** @deprecated use `UpdateWebhookResponseBody$outboundSchema` instead. */
+  export const outboundSchema = UpdateWebhookResponseBody$outboundSchema;
+  /** @deprecated use `UpdateWebhookResponseBody$Outbound` instead. */
+  export type Outbound = UpdateWebhookResponseBody$Outbound;
+}
+
+export function updateWebhookResponseBodyToJSON(
+  updateWebhookResponseBody: UpdateWebhookResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateWebhookResponseBody$outboundSchema.parse(updateWebhookResponseBody),
+  );
+}
+
+export function updateWebhookResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateWebhookResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateWebhookResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateWebhookResponseBody' from JSON`,
   );
 }

@@ -13,7 +13,7 @@ const args = {
 export const tool$dataTeleporterGetTeleporterMessage: ToolDefinition<
   typeof args
 > = {
-  name: "data-teleporter_get-teleporter-message",
+  name: "data-teleporter-get-teleporter-message",
   description: `**[Deprecated]** Gets a teleporter message by message ID.
 
 ⚠️ **This operation will be removed in a future release.  Please use /v1/icm/messages/:messageId endpoint instead** .`,

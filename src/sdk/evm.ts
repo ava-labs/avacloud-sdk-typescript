@@ -3,11 +3,35 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
-import { Chains } from "./chains.js";
+import { Address } from "./address.js";
+import { AvaCloudSDKChains } from "./avacloudsdkchains.js";
+import { Blocks } from "./blocks.js";
+import { Contracts } from "./contracts.js";
+import { Transactions } from "./transactions.js";
 
 export class Evm extends ClientSDK {
-  private _chains?: Chains;
-  get chains(): Chains {
-    return (this._chains ??= new Chains(this._options));
+  private _address?: Address;
+  get address(): Address {
+    return (this._address ??= new Address(this._options));
+  }
+
+  private _transactions?: Transactions;
+  get transactions(): Transactions {
+    return (this._transactions ??= new Transactions(this._options));
+  }
+
+  private _blocks?: Blocks;
+  get blocks(): Blocks {
+    return (this._blocks ??= new Blocks(this._options));
+  }
+
+  private _contracts?: Contracts;
+  get contracts(): Contracts {
+    return (this._contracts ??= new Contracts(this._options));
+  }
+
+  private _chains?: AvaCloudSDKChains;
+  get chains(): AvaCloudSDKChains {
+    return (this._chains ??= new AvaCloudSDKChains(this._options));
   }
 }

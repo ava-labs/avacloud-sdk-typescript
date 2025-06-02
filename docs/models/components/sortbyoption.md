@@ -5,7 +5,7 @@
 ```typescript
 import { SortByOption } from "@avalabs/avacloud-sdk/models/components";
 
-let value: SortByOption = "uptimePerformance";
+let value: SortByOption = "delegationCapacity";
 ```
 
 ## Values

@@ -10,26 +10,28 @@ let value: ListL1ValidatorsResponse = {
     validators: [
       {
         validationId: "<id>",
+        validationIdHex: "<value>",
         nodeId: "<id>",
         subnetId: "<id>",
-        weight: 3895.48,
-        remainingBalance: 2637.67,
-        creationTimestamp: 9446.26,
+        weight: 5601.59,
+        remainingBalance: 5368.44,
+        creationTimestamp: 7020.98,
         blsCredentials: {},
         remainingBalanceOwner: {
           addresses: [
             "<value>",
           ],
-          threshold: 1355.48,
+          threshold: 5485.65,
         },
         deactivationOwner: {
           addresses: [
             "<value>",
           ],
-          threshold: 7202.66,
+          threshold: 6691.95,
         },
       },
     ],
+    blockHeight: "<value>",
   },
 };
 ```

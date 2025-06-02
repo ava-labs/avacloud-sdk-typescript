@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [reindexNft](#reindexnft) - Reindex NFT metadata
-* [listTokens](#listtokens) - List tokens
-* [getTokenDetails](#gettokendetails) - Get token details
+* [reindex](#reindex) - Reindex NFT metadata
+* [list](#list) - List tokens
+* [get](#get) - Get token details
 
-## reindexNft
+## reindex
 
 Triggers reindexing of token metadata for an NFT token. Reindexing can only be called once per hour for each NFT token.
 
@@ -25,7 +25,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  await avaCloudSDK.data.nfts.reindexNft({
+  await avaCloudSDK.data.nfts.reindex({
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
@@ -43,7 +43,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataNftsReindexNft } from "@avalabs/avacloud-sdk/funcs/dataNftsReindexNft.js";
+import { dataNftsReindex } from "@avalabs/avacloud-sdk/funcs/dataNftsReindex.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -54,7 +54,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataNftsReindexNft(avaCloudSDK, {
+  const res = await dataNftsReindex(avaCloudSDK, {
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
@@ -100,7 +100,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listTokens
+## list
 
 Lists tokens for an NFT contract.
 
@@ -116,7 +116,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.nfts.listTokens({
+  const result = await avaCloudSDK.data.nfts.list({
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
@@ -136,7 +136,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataNftsListTokens } from "@avalabs/avacloud-sdk/funcs/dataNftsListTokens.js";
+import { dataNftsList } from "@avalabs/avacloud-sdk/funcs/dataNftsList.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -147,7 +147,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataNftsListTokens(avaCloudSDK, {
+  const res = await dataNftsList(avaCloudSDK, {
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
@@ -195,7 +195,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## getTokenDetails
+## get
 
 Gets token details for a specific token of an NFT contract.
 
@@ -211,7 +211,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.nfts.getTokenDetails({
+  const result = await avaCloudSDK.data.nfts.get({
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
@@ -230,7 +230,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataNftsGetTokenDetails } from "@avalabs/avacloud-sdk/funcs/dataNftsGetTokenDetails.js";
+import { dataNftsGet } from "@avalabs/avacloud-sdk/funcs/dataNftsGet.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -241,7 +241,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataNftsGetTokenDetails(avaCloudSDK, {
+  const res = await dataNftsGet(avaCloudSDK, {
     chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",

@@ -13,7 +13,7 @@ const args = {
 export const tool$dataTeleporterListTeleporterMessagesByAddress: ToolDefinition<
   typeof args
 > = {
-  name: "data-teleporter_list-teleporter-messages-by-address",
+  name: "data-teleporter-list-teleporter-messages-by-address",
   description:
     `**[Deprecated]** Lists teleporter messages by address. Ordered by  timestamp in descending order.
 

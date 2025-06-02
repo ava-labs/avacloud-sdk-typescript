@@ -13,7 +13,7 @@ const args = {
 export const tool$dataPrimaryNetworkGetNetworkDetails: ToolDefinition<
   typeof args
 > = {
-  name: "data-primary-network_get-network-details",
+  name: "data-primary-network-get-network-details",
   description: `Get network details
 
 Gets network details such as validator and delegator stats.`,

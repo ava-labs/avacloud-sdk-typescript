@@ -7,7 +7,7 @@ import { IcmSourceTransaction } from "@avalabs/avacloud-sdk/models/components";
 
 let value: IcmSourceTransaction = {
   txHash: "<value>",
-  timestamp: 4530.94,
+  timestamp: 761.62,
   gasSpent: "<value>",
 };
 ```

@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [getBalancesByAddresses](#getbalancesbyaddresses) - Get balances
+* [listByAddresses](#listbyaddresses) - Get balances
 
-## getBalancesByAddresses
+## listByAddresses
 
 Gets primary network balances for one of the Primary Network chains for the supplied addresses.
 
@@ -25,7 +25,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.balances.getBalancesByAddresses({
+  const result = await avaCloudSDK.data.primaryNetwork.balances.listByAddresses({
     blockTimestamp: 1599696000,
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     blockchainId: "p-chain",
@@ -45,7 +45,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkBalancesGetBalancesByAddresses } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBalancesGetBalancesByAddresses.js";
+import { dataPrimaryNetworkBalancesListByAddresses } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBalancesListByAddresses.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -56,7 +56,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkBalancesGetBalancesByAddresses(avaCloudSDK, {
+  const res = await dataPrimaryNetworkBalancesListByAddresses(avaCloudSDK, {
     blockTimestamp: 1599696000,
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     blockchainId: "p-chain",

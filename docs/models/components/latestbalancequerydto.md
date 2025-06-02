@@ -11,7 +11,7 @@ let value: LatestBalanceQueryDto = {
   params: {
     minBalance: "<value>",
     evmChainId: "<id>",
-    tokenType: "NATIVE",
+    tokenType: "ERC20",
   },
 };
 ```

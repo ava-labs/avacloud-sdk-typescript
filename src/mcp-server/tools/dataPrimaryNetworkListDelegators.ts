@@ -13,7 +13,7 @@ const args = {
 export const tool$dataPrimaryNetworkListDelegators: ToolDefinition<
   typeof args
 > = {
-  name: "data-primary-network_list-delegators",
+  name: "data-primary-network-list-delegators",
   description: `List delegators
 
 Lists details for delegators.`,

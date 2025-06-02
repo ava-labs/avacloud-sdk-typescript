@@ -58,7 +58,7 @@ let value: ListXChainTransactionsResponse = {
             name: "Avalanche",
             symbol: "AVAX",
             denomination: 9,
-            type: "secp256k1",
+            type: "nft",
             amount: "5001000",
           },
           consumedOnChainId:
@@ -110,7 +110,7 @@ let value: ListXChainTransactionsResponse = {
         name: "Avalanche",
         symbol: "AVAX",
         denomination: 9,
-        type: "nft",
+        type: "secp256k1",
         createdAtTimestamp: 1675444720,
         cap: "fixed",
       },

@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [listPendingPrimaryNetworkRewards](#listpendingprimarynetworkrewards) - List pending rewards
-* [listHistoricalPrimaryNetworkRewards](#listhistoricalprimarynetworkrewards) - List historical rewards
+* [listPendingRewards](#listpendingrewards) - List pending rewards
+* [listHistoricalRewards](#listhistoricalrewards) - List historical rewards
 
-## listPendingPrimaryNetworkRewards
+## listPendingRewards
 
 Lists pending rewards on the Primary Network for the supplied addresses.
 
@@ -24,7 +24,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.rewards.listPendingPrimaryNetworkRewards({
+  const result = await avaCloudSDK.data.primaryNetwork.rewards.listPendingRewards({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
@@ -46,7 +46,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards.js";
+import { dataPrimaryNetworkRewardsListPendingRewards } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkRewardsListPendingRewards.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -57,7 +57,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkRewardsListPendingPrimaryNetworkRewards(avaCloudSDK, {
+  const res = await dataPrimaryNetworkRewardsListPendingRewards(avaCloudSDK, {
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
@@ -107,7 +107,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listHistoricalPrimaryNetworkRewards
+## listHistoricalRewards
 
 Lists historical rewards on the Primary Network for the supplied addresses.
 
@@ -123,7 +123,7 @@ const avaCloudSDK = new AvaCloudSDK({
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.rewards.listHistoricalPrimaryNetworkRewards({
+  const result = await avaCloudSDK.data.primaryNetwork.rewards.listHistoricalRewards({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
@@ -146,7 +146,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards.js";
+import { dataPrimaryNetworkRewardsListHistoricalRewards } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkRewardsListHistoricalRewards.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -157,7 +157,7 @@ const avaCloudSDK = new AvaCloudSDKCore({
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkRewardsListHistoricalPrimaryNetworkRewards(avaCloudSDK, {
+  const res = await dataPrimaryNetworkRewardsListHistoricalRewards(avaCloudSDK, {
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     network: "mainnet",
     nodeIds: "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",

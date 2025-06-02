@@ -13,7 +13,7 @@ const args = {
 export const tool$dataPrimaryNetworkGetAssetDetails: ToolDefinition<
   typeof args
 > = {
-  name: "data-primary-network_get-asset-details",
+  name: "data-primary-network-get-asset-details",
   description: `Get asset details
 
 Gets asset details corresponding to the given asset id on the X-Chain.`,

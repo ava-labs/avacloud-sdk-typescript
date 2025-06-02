@@ -12,7 +12,7 @@ const args = {
 
 export const tool$dataPrimaryNetworkTransactionsListAssetTransactions:
   ToolDefinition<typeof args> = {
-    name: "data-primary-network-transactions_list-asset-transactions",
+    name: "data-primary-network-transactions-list-asset-transactions",
     description: `List asset transactions
 
 Lists asset transactions corresponding to the given asset id on the X-Chain.`,
