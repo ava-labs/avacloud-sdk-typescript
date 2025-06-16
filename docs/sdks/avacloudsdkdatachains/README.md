@@ -18,8 +18,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -27,7 +25,6 @@ async function run() {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -46,23 +43,18 @@ import { dataEvmAddressChainsList } from "@avalabs/avacloud-sdk/funcs/dataEvmAdd
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const res = await dataEvmAddressChainsList(avaCloudSDK, {
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataEvmAddressChainsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

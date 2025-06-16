@@ -21,18 +21,15 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.transactions.get({
     blockchainId: "p-chain",
-    network: "mainnet",
     txHash: "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -51,25 +48,20 @@ import { dataPrimaryNetworkTransactionsGet } from "@avalabs/avacloud-sdk/funcs/d
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
   const res = await dataPrimaryNetworkTransactionsGet(avaCloudSDK, {
     blockchainId: "p-chain",
-    network: "mainnet",
     txHash: "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataPrimaryNetworkTransactionsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -120,7 +112,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
@@ -133,12 +124,10 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -158,7 +147,6 @@ import { dataPrimaryNetworkTransactionsListLatest } from "@avalabs/avacloud-sdk/
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
@@ -171,19 +159,15 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataPrimaryNetworkTransactionsListLatest failed:", res.error);
   }
 }
 
@@ -229,7 +213,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
@@ -242,12 +225,10 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -267,7 +248,6 @@ import { dataPrimaryNetworkTransactionsListActiveStakingTransactions } from "@av
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
@@ -280,19 +260,15 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataPrimaryNetworkTransactionsListActiveStakingTransactions failed:", res.error);
   }
 }
 
@@ -338,7 +314,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
@@ -350,12 +325,10 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "x-chain",
-    network: "mainnet",
     assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -375,7 +348,6 @@ import { dataPrimaryNetworkTransactionsListAssetTransactions } from "@avalabs/av
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
@@ -387,19 +359,15 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "x-chain",
-    network: "mainnet",
     assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataPrimaryNetworkTransactionsListAssetTransactions failed:", res.error);
   }
 }
 

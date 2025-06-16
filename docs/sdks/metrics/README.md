@@ -18,14 +18,11 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const result = await avaCloudSDK.metrics.healthCheck();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -44,21 +41,16 @@ import { metricsHealthCheck } from "@avalabs/avacloud-sdk/funcs/metricsHealthChe
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const res = await metricsHealthCheck(avaCloudSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("metricsHealthCheck failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

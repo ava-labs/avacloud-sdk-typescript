@@ -21,8 +21,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -31,7 +29,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -51,24 +48,19 @@ import { dataEvmBlocksListLatestAllChains } from "@avalabs/avacloud-sdk/funcs/da
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const res = await dataEvmBlocksListLatestAllChains(avaCloudSDK, {
     network: "mainnet",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataEvmBlocksListLatestAllChains failed:", res.error);
   }
 }
 
@@ -115,16 +107,12 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.evm.blocks.listLatest({
-    chainId: "43114",
-  });
+  const result = await avaCloudSDK.data.evm.blocks.listLatest({});
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -145,23 +133,17 @@ import { dataEvmBlocksListLatest } from "@avalabs/avacloud-sdk/funcs/dataEvmBloc
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const res = await dataEvmBlocksListLatest(avaCloudSDK, {
-    chainId: "43114",
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  const res = await dataEvmBlocksListLatest(avaCloudSDK, {});
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataEvmBlocksListLatest failed:", res.error);
   }
 }
 
@@ -208,16 +190,13 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const result = await avaCloudSDK.data.evm.blocks.get({
-    chainId: "43114",
     blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -237,23 +216,18 @@ import { dataEvmBlocksGet } from "@avalabs/avacloud-sdk/funcs/dataEvmBlocksGet.j
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const res = await dataEvmBlocksGet(avaCloudSDK, {
-    chainId: "43114",
     blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataEvmBlocksGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -299,16 +273,14 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const result = await avaCloudSDK.data.evm.blocks.listTransactions({
-    chainId: "43114",
+    pageSize: 10,
     blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -328,23 +300,19 @@ import { dataEvmBlocksListTransactions } from "@avalabs/avacloud-sdk/funcs/dataE
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const res = await dataEvmBlocksListTransactions(avaCloudSDK, {
-    chainId: "43114",
+    pageSize: 10,
     blockId: "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataEvmBlocksListTransactions failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

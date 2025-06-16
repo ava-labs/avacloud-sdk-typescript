@@ -21,12 +21,10 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   await avaCloudSDK.data.nfts.reindex({
-    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
@@ -50,23 +48,19 @@ import { dataNftsReindex } from "@avalabs/avacloud-sdk/funcs/dataNftsReindex.js"
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const res = await dataNftsReindex(avaCloudSDK, {
-    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("dataNftsReindex failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -112,17 +106,14 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const result = await avaCloudSDK.data.nfts.list({
-    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -143,24 +134,19 @@ import { dataNftsList } from "@avalabs/avacloud-sdk/funcs/dataNftsList.js";
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const res = await dataNftsList(avaCloudSDK, {
-    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataNftsList failed:", res.error);
   }
 }
 
@@ -207,17 +193,14 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const result = await avaCloudSDK.data.nfts.get({
-    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -237,24 +220,19 @@ import { dataNftsGet } from "@avalabs/avacloud-sdk/funcs/dataNftsGet.js";
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const res = await dataNftsGet(avaCloudSDK, {
-    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataNftsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

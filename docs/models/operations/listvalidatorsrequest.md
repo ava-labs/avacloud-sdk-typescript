@@ -6,7 +6,6 @@
 import { ListValidatorsRequest } from "@avalabs/avacloud-sdk/models/operations";
 
 let value: ListValidatorsRequest = {
-  network: "mainnet",
   nodeIds:
     "NodeID-111111111111111111116DBWJs,NodeID-222222222222222222227DBWJs",
   sortOrder: "asc",

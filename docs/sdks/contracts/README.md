@@ -21,17 +21,14 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const result = await avaCloudSDK.data.evm.contracts.getDeploymentTransaction({
-    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     currency: "usd",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -51,24 +48,19 @@ import { dataEvmContractsGetDeploymentTransaction } from "@avalabs/avacloud-sdk/
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const res = await dataEvmContractsGetDeploymentTransaction(avaCloudSDK, {
-    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     currency: "usd",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataEvmContractsGetDeploymentTransaction failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -114,16 +106,13 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const result = await avaCloudSDK.data.evm.contracts.getMetadata({
-    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -143,23 +132,18 @@ import { dataEvmContractsGetMetadata } from "@avalabs/avacloud-sdk/funcs/dataEvm
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const res = await dataEvmContractsGetMetadata(avaCloudSDK, {
-    chainId: "43114",
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataEvmContractsGetMetadata failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -205,19 +189,16 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const result = await avaCloudSDK.data.evm.contracts.listTransfers({
     startBlock: 6479329,
     endBlock: 6479330,
-    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -238,26 +219,21 @@ import { dataEvmContractsListTransfers } from "@avalabs/avacloud-sdk/funcs/dataE
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const res = await dataEvmContractsListTransfers(avaCloudSDK, {
     startBlock: 6479329,
     endBlock: 6479330,
-    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataEvmContractsListTransfers failed:", res.error);
   }
 }
 

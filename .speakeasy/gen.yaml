@@ -20,7 +20,7 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 typescript:
-  version: 0.12.1
+  version: 0.12.2
   additionalDependencies:
     dependencies:
       json-canonicalize: ^1.0.6
@@ -31,6 +31,7 @@ typescript:
     homepage: https://developer.avacloud.io/avacloud-sdk/getting-started
     license: SEE LICENSE
   author: AvaCloud
+  baseErrorName: AvaCloudSDKError
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
   enableCustomCodeRegions: false

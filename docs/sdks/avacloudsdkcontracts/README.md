@@ -19,17 +19,14 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const result = await avaCloudSDK.data.evm.address.contracts.listDeployments({
-    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -50,24 +47,19 @@ import { dataEvmAddressContractsListDeployments } from "@avalabs/avacloud-sdk/fu
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const res = await dataEvmAddressContractsListDeployments(avaCloudSDK, {
-    chainId: "43114",
     address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataEvmAddressContractsListDeployments failed:", res.error);
   }
 }
 
