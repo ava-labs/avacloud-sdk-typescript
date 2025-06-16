@@ -7,9 +7,10 @@ import { BalanceOwner } from "@avalabs/avacloud-sdk/models/components";
 
 let value: BalanceOwner = {
   addresses: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
-  threshold: 5079.72,
+  threshold: 328.11,
 };
 ```
 

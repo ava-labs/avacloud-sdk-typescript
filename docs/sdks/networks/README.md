@@ -18,7 +18,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
@@ -27,11 +26,10 @@ async function run() {
     metric: "validatorCount",
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
-    network: "mainnet",
+    pageSize: 10,
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -51,7 +49,6 @@ import { metricsNetworksGetStakingMetrics } from "@avalabs/avacloud-sdk/funcs/me
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
@@ -60,18 +57,15 @@ async function run() {
     metric: "validatorCount",
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
-    network: "mainnet",
+    pageSize: 10,
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("metricsNetworksGetStakingMetrics failed:", res.error);
   }
 }
 

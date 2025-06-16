@@ -8,7 +8,6 @@ import { GetVertexByHeightRequest } from "@avalabs/avacloud-sdk/models/operation
 let value: GetVertexByHeightRequest = {
   vertexHeight: 123,
   blockchainId: "x-chain",
-  network: "mainnet",
   sortOrder: "asc",
 };
 ```

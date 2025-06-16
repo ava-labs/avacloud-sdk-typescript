@@ -20,8 +20,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -29,7 +27,6 @@ async function run() {
     messageId: "acf1c8b06f9aec48e9fcbefbbe576ae8a7ca3b327fcae111396e7cc99956674d",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -48,23 +45,18 @@ import { dataIcmGet } from "@avalabs/avacloud-sdk/funcs/dataIcmGet.js";
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
   const res = await dataIcmGet(avaCloudSDK, {
     messageId: "acf1c8b06f9aec48e9fcbefbbe576ae8a7ca3b327fcae111396e7cc99956674d",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataIcmGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -109,8 +101,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -123,7 +113,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -143,8 +132,6 @@ import { dataIcmList } from "@avalabs/avacloud-sdk/funcs/dataIcmList.js";
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -155,16 +142,13 @@ async function run() {
     from: "0x321eDA69247566D662178feE695C7026c604Cd94",
     network: "mainnet",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataIcmList failed:", res.error);
   }
 }
 
@@ -210,8 +194,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -220,7 +202,6 @@ async function run() {
     network: "mainnet",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -239,8 +220,6 @@ import { dataIcmListByAddress } from "@avalabs/avacloud-sdk/funcs/dataIcmListByA
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -248,15 +227,12 @@ async function run() {
     address: "0x8578AE7723751446B196bD5124e1bF57B40EB7Bc",
     network: "mainnet",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataIcmListByAddress failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

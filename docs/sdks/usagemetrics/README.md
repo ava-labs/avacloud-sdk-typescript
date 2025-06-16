@@ -23,8 +23,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -35,7 +33,6 @@ async function run() {
     groupBy: "requestPath",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -54,8 +51,6 @@ import { dataUsageMetricsGetUsage } from "@avalabs/avacloud-sdk/funcs/dataUsageM
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -65,15 +60,12 @@ async function run() {
     timeInterval: "daily",
     groupBy: "requestPath",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataUsageMetricsGetUsage failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -118,8 +110,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -129,7 +119,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -149,8 +138,6 @@ import { dataUsageMetricsGetLogs } from "@avalabs/avacloud-sdk/funcs/dataUsageMe
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -158,16 +145,13 @@ async function run() {
     startTimestamp: 1739507200,
     endTimestamp: 1739664000,
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataUsageMetricsGetLogs failed:", res.error);
   }
 }
 
@@ -213,8 +197,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -225,7 +207,6 @@ async function run() {
     groupBy: "rpcMethod",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -244,8 +225,6 @@ import { dataUsageMetricsGetSubnetRpcUsage } from "@avalabs/avacloud-sdk/funcs/d
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -255,15 +234,12 @@ async function run() {
     endTimestamp: 1739664000,
     groupBy: "rpcMethod",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataUsageMetricsGetSubnetRpcUsage failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -312,8 +288,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -324,7 +298,6 @@ async function run() {
     groupBy: "rpcMethod",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -343,8 +316,6 @@ import { dataUsageMetricsGetRpcUsageMetrics } from "@avalabs/avacloud-sdk/funcs/
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -354,15 +325,12 @@ async function run() {
     endTimestamp: 1739664000,
     groupBy: "rpcMethod",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataUsageMetricsGetRpcUsageMetrics failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -20,18 +20,15 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.vertices.listLatest({
     blockchainId: "x-chain",
-    network: "mainnet",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -51,25 +48,20 @@ import { dataPrimaryNetworkVerticesListLatest } from "@avalabs/avacloud-sdk/func
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
   const res = await dataPrimaryNetworkVerticesListLatest(avaCloudSDK, {
     blockchainId: "x-chain",
-    network: "mainnet",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataPrimaryNetworkVerticesListLatest failed:", res.error);
   }
 }
 
@@ -115,7 +107,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
@@ -123,10 +114,8 @@ async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.vertices.getByHash({
     vertexHash: "haP1CW56cspZY7aEuqHNrtpvhqCaMTxQaYe6j5u2Mbn4L2Gqr",
     blockchainId: "x-chain",
-    network: "mainnet",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -145,7 +134,6 @@ import { dataPrimaryNetworkVerticesGetByHash } from "@avalabs/avacloud-sdk/funcs
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
@@ -153,17 +141,13 @@ async function run() {
   const res = await dataPrimaryNetworkVerticesGetByHash(avaCloudSDK, {
     vertexHash: "haP1CW56cspZY7aEuqHNrtpvhqCaMTxQaYe6j5u2Mbn4L2Gqr",
     blockchainId: "x-chain",
-    network: "mainnet",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataPrimaryNetworkVerticesGetByHash failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -208,7 +192,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
@@ -216,12 +199,10 @@ async function run() {
   const result = await avaCloudSDK.data.primaryNetwork.vertices.listByHeight({
     vertexHeight: 123,
     blockchainId: "x-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -241,7 +222,6 @@ import { dataPrimaryNetworkVerticesListByHeight } from "@avalabs/avacloud-sdk/fu
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
@@ -249,19 +229,15 @@ async function run() {
   const res = await dataPrimaryNetworkVerticesListByHeight(avaCloudSDK, {
     vertexHeight: 123,
     blockchainId: "x-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataPrimaryNetworkVerticesListByHeight failed:", res.error);
   }
 }
 

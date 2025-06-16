@@ -8,6 +8,7 @@ export * from "./forbidden.js";
 export * from "./httpclienterrors.js";
 export * from "./internalservererror.js";
 export * from "./notfound.js";
+export * from "./responsevalidationerror.js";
 export * from "./sdkerror.js";
 export * from "./sdkvalidationerror.js";
 export * from "./serviceunavailable.js";
