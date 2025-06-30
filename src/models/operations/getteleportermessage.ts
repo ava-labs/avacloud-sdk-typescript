@@ -23,11 +23,11 @@ export type GetTeleporterMessageRequest = {
  * Successful response
  */
 export type GetTeleporterMessageResponseBody =
+  | (components.DeliveredTeleporterMessage & { status: "delivered" })
   | (components.PendingTeleporterMessage & { status: "pending" })
   | (components.DeliveredSourceNotIndexedTeleporterMessage & {
     status: "delivered_source_not_indexed";
-  })
-  | (components.DeliveredTeleporterMessage & { status: "delivered" });
+  });
 
 /** @internal */
 export const GetTeleporterMessageRequest$inboundSchema: z.ZodType<
@@ -91,6 +91,11 @@ export const GetTeleporterMessageResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  components.DeliveredTeleporterMessage$inboundSchema.and(
+    z.object({ status: z.literal("delivered") }).transform((v) => ({
+      status: v.status,
+    })),
+  ),
   components.PendingTeleporterMessage$inboundSchema.and(
     z.object({ status: z.literal("pending") }).transform((v) => ({
       status: v.status,
@@ -101,20 +106,15 @@ export const GetTeleporterMessageResponseBody$inboundSchema: z.ZodType<
       v,
     ) => ({ status: v.status })),
   ),
-  components.DeliveredTeleporterMessage$inboundSchema.and(
-    z.object({ status: z.literal("delivered") }).transform((v) => ({
-      status: v.status,
-    })),
-  ),
 ]);
 
 /** @internal */
 export type GetTeleporterMessageResponseBody$Outbound =
+  | (components.DeliveredTeleporterMessage$Outbound & { status: "delivered" })
   | (components.PendingTeleporterMessage$Outbound & { status: "pending" })
   | (components.DeliveredSourceNotIndexedTeleporterMessage$Outbound & {
     status: "delivered_source_not_indexed";
-  })
-  | (components.DeliveredTeleporterMessage$Outbound & { status: "delivered" });
+  });
 
 /** @internal */
 export const GetTeleporterMessageResponseBody$outboundSchema: z.ZodType<
@@ -122,6 +122,11 @@ export const GetTeleporterMessageResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetTeleporterMessageResponseBody
 > = z.union([
+  components.DeliveredTeleporterMessage$outboundSchema.and(
+    z.object({ status: z.literal("delivered") }).transform((v) => ({
+      status: v.status,
+    })),
+  ),
   components.PendingTeleporterMessage$outboundSchema.and(
     z.object({ status: z.literal("pending") }).transform((v) => ({
       status: v.status,
@@ -131,11 +136,6 @@ export const GetTeleporterMessageResponseBody$outboundSchema: z.ZodType<
     z.object({ status: z.literal("delivered_source_not_indexed") }).transform((
       v,
     ) => ({ status: v.status })),
-  ),
-  components.DeliveredTeleporterMessage$outboundSchema.and(
-    z.object({ status: z.literal("delivered") }).transform((v) => ({
-      status: v.status,
-    })),
   ),
 ]);
 

@@ -40,9 +40,9 @@ export type GetTxByHashRequest = {
 export type GetTxByHashResponseBody =
   | components.CChainExportTransaction
   | components.CChainImportTransaction
-  | components.XChainNonLinearTransaction
+  | components.PChainTransaction
   | components.XChainLinearTransaction
-  | components.PChainTransaction;
+  | components.XChainNonLinearTransaction;
 
 /** @internal */
 export const GetTxByHashGlobals$inboundSchema: z.ZodType<
@@ -166,18 +166,18 @@ export const GetTxByHashResponseBody$inboundSchema: z.ZodType<
 > = z.union([
   components.CChainExportTransaction$inboundSchema,
   components.CChainImportTransaction$inboundSchema,
-  components.XChainNonLinearTransaction$inboundSchema,
-  components.XChainLinearTransaction$inboundSchema,
   components.PChainTransaction$inboundSchema,
+  components.XChainLinearTransaction$inboundSchema,
+  components.XChainNonLinearTransaction$inboundSchema,
 ]);
 
 /** @internal */
 export type GetTxByHashResponseBody$Outbound =
   | components.CChainExportTransaction$Outbound
   | components.CChainImportTransaction$Outbound
-  | components.XChainNonLinearTransaction$Outbound
+  | components.PChainTransaction$Outbound
   | components.XChainLinearTransaction$Outbound
-  | components.PChainTransaction$Outbound;
+  | components.XChainNonLinearTransaction$Outbound;
 
 /** @internal */
 export const GetTxByHashResponseBody$outboundSchema: z.ZodType<
@@ -187,9 +187,9 @@ export const GetTxByHashResponseBody$outboundSchema: z.ZodType<
 > = z.union([
   components.CChainExportTransaction$outboundSchema,
   components.CChainImportTransaction$outboundSchema,
-  components.XChainNonLinearTransaction$outboundSchema,
-  components.XChainLinearTransaction$outboundSchema,
   components.PChainTransaction$outboundSchema,
+  components.XChainLinearTransaction$outboundSchema,
+  components.XChainNonLinearTransaction$outboundSchema,
 ]);
 
 /**

@@ -26,11 +26,11 @@ import {
 } from "./pendingteleportermessage.js";
 
 export type Messages =
+  | (DeliveredTeleporterMessage & { status: "delivered" })
   | (PendingTeleporterMessage & { status: "pending" })
   | (DeliveredSourceNotIndexedIcmMessage & {
     status: "delivered_source_not_indexed";
-  })
-  | (DeliveredTeleporterMessage & { status: "delivered" });
+  });
 
 export type ListTeleporterMessagesResponse = {
   /**
@@ -38,11 +38,11 @@ export type ListTeleporterMessagesResponse = {
    */
   nextPageToken?: string | undefined;
   messages: Array<
+    | (DeliveredTeleporterMessage & { status: "delivered" })
     | (PendingTeleporterMessage & { status: "pending" })
     | (DeliveredSourceNotIndexedIcmMessage & {
       status: "delivered_source_not_indexed";
     })
-    | (DeliveredTeleporterMessage & { status: "delivered" })
   >;
 };
 
@@ -52,6 +52,11 @@ export const Messages$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  DeliveredTeleporterMessage$inboundSchema.and(
+    z.object({ status: z.literal("delivered") }).transform((v) => ({
+      status: v.status,
+    })),
+  ),
   PendingTeleporterMessage$inboundSchema.and(
     z.object({ status: z.literal("pending") }).transform((v) => ({
       status: v.status,
@@ -62,20 +67,15 @@ export const Messages$inboundSchema: z.ZodType<
       v,
     ) => ({ status: v.status })),
   ),
-  DeliveredTeleporterMessage$inboundSchema.and(
-    z.object({ status: z.literal("delivered") }).transform((v) => ({
-      status: v.status,
-    })),
-  ),
 ]);
 
 /** @internal */
 export type Messages$Outbound =
+  | (DeliveredTeleporterMessage$Outbound & { status: "delivered" })
   | (PendingTeleporterMessage$Outbound & { status: "pending" })
   | (DeliveredSourceNotIndexedIcmMessage$Outbound & {
     status: "delivered_source_not_indexed";
-  })
-  | (DeliveredTeleporterMessage$Outbound & { status: "delivered" });
+  });
 
 /** @internal */
 export const Messages$outboundSchema: z.ZodType<
@@ -83,6 +83,11 @@ export const Messages$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Messages
 > = z.union([
+  DeliveredTeleporterMessage$outboundSchema.and(
+    z.object({ status: z.literal("delivered") }).transform((v) => ({
+      status: v.status,
+    })),
+  ),
   PendingTeleporterMessage$outboundSchema.and(
     z.object({ status: z.literal("pending") }).transform((v) => ({
       status: v.status,
@@ -92,11 +97,6 @@ export const Messages$outboundSchema: z.ZodType<
     z.object({ status: z.literal("delivered_source_not_indexed") }).transform((
       v,
     ) => ({ status: v.status })),
-  ),
-  DeliveredTeleporterMessage$outboundSchema.and(
-    z.object({ status: z.literal("delivered") }).transform((v) => ({
-      status: v.status,
-    })),
   ),
 ]);
 
@@ -136,6 +136,11 @@ export const ListTeleporterMessagesResponse$inboundSchema: z.ZodType<
   nextPageToken: z.string().optional(),
   messages: z.array(
     z.union([
+      DeliveredTeleporterMessage$inboundSchema.and(
+        z.object({ status: z.literal("delivered") }).transform((v) => ({
+          status: v.status,
+        })),
+      ),
       PendingTeleporterMessage$inboundSchema.and(
         z.object({ status: z.literal("pending") }).transform((v) => ({
           status: v.status,
@@ -145,11 +150,6 @@ export const ListTeleporterMessagesResponse$inboundSchema: z.ZodType<
         z.object({ status: z.literal("delivered_source_not_indexed") })
           .transform((v) => ({ status: v.status })),
       ),
-      DeliveredTeleporterMessage$inboundSchema.and(
-        z.object({ status: z.literal("delivered") }).transform((v) => ({
-          status: v.status,
-        })),
-      ),
     ]),
   ),
 });
@@ -158,11 +158,11 @@ export const ListTeleporterMessagesResponse$inboundSchema: z.ZodType<
 export type ListTeleporterMessagesResponse$Outbound = {
   nextPageToken?: string | undefined;
   messages: Array<
+    | (DeliveredTeleporterMessage$Outbound & { status: "delivered" })
     | (PendingTeleporterMessage$Outbound & { status: "pending" })
     | (DeliveredSourceNotIndexedIcmMessage$Outbound & {
       status: "delivered_source_not_indexed";
     })
-    | (DeliveredTeleporterMessage$Outbound & { status: "delivered" })
   >;
 };
 
@@ -175,6 +175,11 @@ export const ListTeleporterMessagesResponse$outboundSchema: z.ZodType<
   nextPageToken: z.string().optional(),
   messages: z.array(
     z.union([
+      DeliveredTeleporterMessage$outboundSchema.and(
+        z.object({ status: z.literal("delivered") }).transform((v) => ({
+          status: v.status,
+        })),
+      ),
       PendingTeleporterMessage$outboundSchema.and(
         z.object({ status: z.literal("pending") }).transform((v) => ({
           status: v.status,
@@ -183,11 +188,6 @@ export const ListTeleporterMessagesResponse$outboundSchema: z.ZodType<
       DeliveredSourceNotIndexedIcmMessage$outboundSchema.and(
         z.object({ status: z.literal("delivered_source_not_indexed") })
           .transform((v) => ({ status: v.status })),
-      ),
-      DeliveredTeleporterMessage$outboundSchema.and(
-        z.object({ status: z.literal("delivered") }).transform((v) => ({
-          status: v.status,
-        })),
       ),
     ]),
   ),
