@@ -19,8 +19,12 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 typescript:
-  version: 0.12.2
+  version: 0.12.3
   additionalDependencies:
     dependencies:
       json-canonicalize: ^1.0.6
@@ -33,6 +37,7 @@ typescript:
   author: AvaCloud
   baseErrorName: AvaCloudSDKError
   clientServerStatusCodesAsErrors: true
+  constFieldsAlwaysOptional: true
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
   enableMCPServer: true

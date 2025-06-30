@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 2b9c4bf6-4d87-4382-84d9-5fb3c84c7fad
 management:
-  docChecksum: 439b678edcb9e821acea7a14332d2d1a
+  docChecksum: 37fd88c233a790e0390e08611266ad0f
   docVersion: 1.0.0
-  speakeasyVersion: 1.563.1
-  generationVersion: 2.629.1
-  releaseVersion: 0.12.2
-  configChecksum: 386ac3ac1b3a571ce6798978723d65cc
+  speakeasyVersion: 1.571.2
+  generationVersion: 2.640.2
+  releaseVersion: 0.12.3
+  configChecksum: eb771ebace7283681e5cd3e1230965fc
   repoURL: https://github.com/ava-labs/avacloud-sdk-typescript.git
   installationURL: https://github.com/ava-labs/avacloud-sdk-typescript
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.11
+    constsAndDefaults: 0.1.12
     core: 3.21.11
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -36,7 +36,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0
-    unions: 2.85.9
+    unions: 2.85.11
     webhooks: 1.5.0
 generatedFiles:
   - .devcontainer/README.md
@@ -125,7 +125,6 @@ generatedFiles:
   - docs/models/components/deliveredsourcenotindexedteleportermessagestatus.md
   - docs/models/components/deliveredteleportermessage.md
   - docs/models/components/deliveredteleportermessagestatus.md
-  - docs/models/components/destinationchainid.md
   - docs/models/components/enabledfeatures.md
   - docs/models/components/erc1155contract.md
   - docs/models/components/erc1155contracterctype.md
@@ -330,7 +329,6 @@ generatedFiles:
   - docs/models/components/signatureaggregatorrequest.md
   - docs/models/components/sortbyoption.md
   - docs/models/components/sortorder.md
-  - docs/models/components/sourcechainid.md
   - docs/models/components/stakingdistribution.md
   - docs/models/components/status.md
   - docs/models/components/subnet.md

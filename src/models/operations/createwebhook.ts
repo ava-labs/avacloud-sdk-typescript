@@ -20,8 +20,8 @@ export type CreateWebhookRequestBody =
  * Successful response
  */
 export type CreateWebhookResponseBody =
-  | components.PlatformActivityResponse
-  | components.EVMAddressActivityResponse;
+  | components.EVMAddressActivityResponse
+  | components.PlatformActivityResponse;
 
 /** @internal */
 export const CreateWebhookRequestBody$inboundSchema: z.ZodType<
@@ -85,14 +85,14 @@ export const CreateWebhookResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  components.PlatformActivityResponse$inboundSchema,
   components.EVMAddressActivityResponse$inboundSchema,
+  components.PlatformActivityResponse$inboundSchema,
 ]);
 
 /** @internal */
 export type CreateWebhookResponseBody$Outbound =
-  | components.PlatformActivityResponse$Outbound
-  | components.EVMAddressActivityResponse$Outbound;
+  | components.EVMAddressActivityResponse$Outbound
+  | components.PlatformActivityResponse$Outbound;
 
 /** @internal */
 export const CreateWebhookResponseBody$outboundSchema: z.ZodType<
@@ -100,8 +100,8 @@ export const CreateWebhookResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateWebhookResponseBody
 > = z.union([
-  components.PlatformActivityResponse$outboundSchema,
   components.EVMAddressActivityResponse$outboundSchema,
+  components.PlatformActivityResponse$outboundSchema,
 ]);
 
 /**
