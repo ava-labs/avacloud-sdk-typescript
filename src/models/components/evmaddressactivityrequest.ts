@@ -13,28 +13,21 @@ import {
   AddressActivityMetadata$Outbound,
   AddressActivityMetadata$outboundSchema,
 } from "./addressactivitymetadata.js";
-import {
-  PrimaryNetworkType,
-  PrimaryNetworkType$inboundSchema,
-  PrimaryNetworkType$outboundSchema,
-} from "./primarynetworktype.js";
 
-export const EVMAddressActivityRequestEventType = {
+export const EventType = {
   AddressActivity: "address_activity",
 } as const;
-export type EVMAddressActivityRequestEventType = ClosedEnum<
-  typeof EVMAddressActivityRequestEventType
->;
+export type EventType = ClosedEnum<typeof EventType>;
 
 export type EVMAddressActivityRequestMetadata = AddressActivityMetadata;
 
 export type EVMAddressActivityRequest = {
-  eventType: EVMAddressActivityRequestEventType;
+  eventType: EventType;
   url: string;
-  chainId: string;
-  network?: PrimaryNetworkType | undefined;
   name?: string | undefined;
   description?: string | undefined;
+  chainId: string;
+  metadata: AddressActivityMetadata;
   /**
    * Whether to include traces in the webhook payload. Traces are only available for C-Chain on chainId 43113 and 43114.
    */
@@ -43,29 +36,25 @@ export type EVMAddressActivityRequest = {
    * Whether to include logs in the webhook payload.
    */
   includeLogs?: boolean | undefined;
-  metadata: AddressActivityMetadata;
 };
 
 /** @internal */
-export const EVMAddressActivityRequestEventType$inboundSchema: z.ZodNativeEnum<
-  typeof EVMAddressActivityRequestEventType
-> = z.nativeEnum(EVMAddressActivityRequestEventType);
+export const EventType$inboundSchema: z.ZodNativeEnum<typeof EventType> = z
+  .nativeEnum(EventType);
 
 /** @internal */
-export const EVMAddressActivityRequestEventType$outboundSchema: z.ZodNativeEnum<
-  typeof EVMAddressActivityRequestEventType
-> = EVMAddressActivityRequestEventType$inboundSchema;
+export const EventType$outboundSchema: z.ZodNativeEnum<typeof EventType> =
+  EventType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EVMAddressActivityRequestEventType$ {
-  /** @deprecated use `EVMAddressActivityRequestEventType$inboundSchema` instead. */
-  export const inboundSchema = EVMAddressActivityRequestEventType$inboundSchema;
-  /** @deprecated use `EVMAddressActivityRequestEventType$outboundSchema` instead. */
-  export const outboundSchema =
-    EVMAddressActivityRequestEventType$outboundSchema;
+export namespace EventType$ {
+  /** @deprecated use `EventType$inboundSchema` instead. */
+  export const inboundSchema = EventType$inboundSchema;
+  /** @deprecated use `EventType$outboundSchema` instead. */
+  export const outboundSchema = EventType$outboundSchema;
 }
 
 /** @internal */
@@ -126,28 +115,26 @@ export const EVMAddressActivityRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  eventType: EVMAddressActivityRequestEventType$inboundSchema,
+  eventType: EventType$inboundSchema,
   url: z.string(),
-  chainId: z.string(),
-  network: PrimaryNetworkType$inboundSchema.optional(),
   name: z.string().optional(),
   description: z.string().optional(),
+  chainId: z.string(),
+  metadata: AddressActivityMetadata$inboundSchema,
   includeInternalTxs: z.boolean().optional(),
   includeLogs: z.boolean().optional(),
-  metadata: AddressActivityMetadata$inboundSchema,
 });
 
 /** @internal */
 export type EVMAddressActivityRequest$Outbound = {
   eventType: string;
   url: string;
-  chainId: string;
-  network?: string | undefined;
   name?: string | undefined;
   description?: string | undefined;
+  chainId: string;
+  metadata: AddressActivityMetadata$Outbound;
   includeInternalTxs?: boolean | undefined;
   includeLogs?: boolean | undefined;
-  metadata: AddressActivityMetadata$Outbound;
 };
 
 /** @internal */
@@ -156,15 +143,14 @@ export const EVMAddressActivityRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EVMAddressActivityRequest
 > = z.object({
-  eventType: EVMAddressActivityRequestEventType$outboundSchema,
+  eventType: EventType$outboundSchema,
   url: z.string(),
-  chainId: z.string(),
-  network: PrimaryNetworkType$outboundSchema.optional(),
   name: z.string().optional(),
   description: z.string().optional(),
+  chainId: z.string(),
+  metadata: AddressActivityMetadata$outboundSchema,
   includeInternalTxs: z.boolean().optional(),
   includeLogs: z.boolean().optional(),
-  metadata: AddressActivityMetadata$outboundSchema,
 });
 
 /**

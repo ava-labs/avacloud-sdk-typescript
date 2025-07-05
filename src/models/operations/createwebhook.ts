@@ -13,15 +13,17 @@ export const CreateWebhookServerList = [
 ] as const;
 
 export type CreateWebhookRequestBody =
+  | components.PrimaryNetworkAddressActivityRequest
   | components.EVMAddressActivityRequest
-  | components.PlatformActivityRequest;
+  | components.ValidatorActivityRequest;
 
 /**
  * Successful response
  */
 export type CreateWebhookResponseBody =
   | components.EVMAddressActivityResponse
-  | components.PlatformActivityResponse;
+  | components.PrimaryNetworkAddressActivityResponse
+  | components.ValidatorActivityResponse;
 
 /** @internal */
 export const CreateWebhookRequestBody$inboundSchema: z.ZodType<
@@ -29,14 +31,16 @@ export const CreateWebhookRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  components.PrimaryNetworkAddressActivityRequest$inboundSchema,
   components.EVMAddressActivityRequest$inboundSchema,
-  components.PlatformActivityRequest$inboundSchema,
+  components.ValidatorActivityRequest$inboundSchema,
 ]);
 
 /** @internal */
 export type CreateWebhookRequestBody$Outbound =
+  | components.PrimaryNetworkAddressActivityRequest$Outbound
   | components.EVMAddressActivityRequest$Outbound
-  | components.PlatformActivityRequest$Outbound;
+  | components.ValidatorActivityRequest$Outbound;
 
 /** @internal */
 export const CreateWebhookRequestBody$outboundSchema: z.ZodType<
@@ -44,8 +48,9 @@ export const CreateWebhookRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateWebhookRequestBody
 > = z.union([
+  components.PrimaryNetworkAddressActivityRequest$outboundSchema,
   components.EVMAddressActivityRequest$outboundSchema,
-  components.PlatformActivityRequest$outboundSchema,
+  components.ValidatorActivityRequest$outboundSchema,
 ]);
 
 /**
@@ -86,13 +91,15 @@ export const CreateWebhookResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   components.EVMAddressActivityResponse$inboundSchema,
-  components.PlatformActivityResponse$inboundSchema,
+  components.PrimaryNetworkAddressActivityResponse$inboundSchema,
+  components.ValidatorActivityResponse$inboundSchema,
 ]);
 
 /** @internal */
 export type CreateWebhookResponseBody$Outbound =
   | components.EVMAddressActivityResponse$Outbound
-  | components.PlatformActivityResponse$Outbound;
+  | components.PrimaryNetworkAddressActivityResponse$Outbound
+  | components.ValidatorActivityResponse$Outbound;
 
 /** @internal */
 export const CreateWebhookResponseBody$outboundSchema: z.ZodType<
@@ -101,7 +108,8 @@ export const CreateWebhookResponseBody$outboundSchema: z.ZodType<
   CreateWebhookResponseBody
 > = z.union([
   components.EVMAddressActivityResponse$outboundSchema,
-  components.PlatformActivityResponse$outboundSchema,
+  components.PrimaryNetworkAddressActivityResponse$outboundSchema,
+  components.ValidatorActivityResponse$outboundSchema,
 ]);
 
 /**
