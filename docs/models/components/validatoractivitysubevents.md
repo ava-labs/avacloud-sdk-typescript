@@ -5,11 +5,13 @@
 ```typescript
 import { ValidatorActivitySubEvents } from "@avalabs/avacloud-sdk/models/components";
 
-let value: ValidatorActivitySubEvents = "validator_stake";
+let value: ValidatorActivitySubEvents = {
+  validatorActivitySubEvents: [],
+};
 ```
 
-## Values
+## Fields
 
-```typescript
-"validator_stake" | "delegator_stake" | "reward_distribution" | "l1_validator_balance_increased" | "l1_validator_disabled" | "l1_validator_removed" | "l1_validator_balance_threshold"
-```
+| Field                                                                                                                                                | Type                                                                                                                                                 | Required                                                                                                                                             | Description                                                                                                                                          |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `validatorActivitySubEvents`                                                                                                                         | [components.ValidatorActivitySubEventsValidatorActivitySubEvents](../../models/components/validatoractivitysubeventsvalidatoractivitysubevents.md)[] | :heavy_check_mark:                                                                                                                                   | Array of validator activity sub-event types                                                                                                          |

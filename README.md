@@ -907,14 +907,14 @@ run();
 ### Error Classes
 **Primary errors:**
 * [`AvaCloudSDKError`](./src/models/errors/avacloudsdkerror.ts): The base class for HTTP error responses.
-  * [`BadRequest`](docs/models/errors/badrequest.md): Bad requests generally mean the client has passed invalid      or malformed parameters. Error messages in the response could help in      evaluating the error. Status code `400`.
-  * [`Unauthorized`](docs/models/errors/unauthorized.md): When a client attempts to access resources that require      authorization credentials but the client lacks proper authentication      in the request, the server responds with 401. Status code `401`.
-  * [`Forbidden`](docs/models/errors/forbidden.md): When a client attempts to access resources with valid     credentials but doesn't have the privilege to perform that action,      the server responds with 403. Status code `403`.
-  * [`NotFound`](docs/models/errors/notfound.md): The error is mostly returned when the client requests     with either mistyped URL, or the passed resource is moved or deleted,      or the resource doesn't exist. Status code `404`.
-  * [`TooManyRequests`](docs/models/errors/toomanyrequests.md): This error is returned when the client has sent too many,     and has hit the rate limit. Status code `429`.
-  * [`InternalServerError`](docs/models/errors/internalservererror.md): The error is a generic server side error that is      returned for any uncaught and unexpected issues on the server side.      This should be very rare, and you may reach out to us if the problem      persists for a longer duration. Status code `500`.
-  * [`BadGateway`](docs/models/errors/badgateway.md): This is an internal error indicating invalid response        received by the client-facing proxy or gateway from the upstream server. Status code `502`.
-  * [`ServiceUnavailable`](docs/models/errors/serviceunavailable.md): The error is returned for certain routes on a particular     Subnet. This indicates an internal problem with our Subnet node, and may      not necessarily mean the Subnet is down or affected. Status code `503`.
+  * [`BadRequest`](./src/models/errors/badrequest.ts): Bad requests generally mean the client has passed invalid      or malformed parameters. Error messages in the response could help in      evaluating the error. Status code `400`.
+  * [`Unauthorized`](./src/models/errors/unauthorized.ts): When a client attempts to access resources that require      authorization credentials but the client lacks proper authentication      in the request, the server responds with 401. Status code `401`.
+  * [`Forbidden`](./src/models/errors/forbidden.ts): When a client attempts to access resources with valid     credentials but doesn't have the privilege to perform that action,      the server responds with 403. Status code `403`.
+  * [`NotFound`](./src/models/errors/notfound.ts): The error is mostly returned when the client requests     with either mistyped URL, or the passed resource is moved or deleted,      or the resource doesn't exist. Status code `404`.
+  * [`TooManyRequests`](./src/models/errors/toomanyrequests.ts): This error is returned when the client has sent too many,     and has hit the rate limit. Status code `429`.
+  * [`InternalServerError`](./src/models/errors/internalservererror.ts): The error is a generic server side error that is      returned for any uncaught and unexpected issues on the server side.      This should be very rare, and you may reach out to us if the problem      persists for a longer duration. Status code `500`.
+  * [`BadGateway`](./src/models/errors/badgateway.ts): This is an internal error indicating invalid response        received by the client-facing proxy or gateway from the upstream server. Status code `502`.
+  * [`ServiceUnavailable`](./src/models/errors/serviceunavailable.ts): The error is returned for certain routes on a particular     Subnet. This indicates an internal problem with our Subnet node, and may      not necessarily mean the Subnet is down or affected. Status code `503`.
 
 <details><summary>Less common errors (6)</summary>
 
