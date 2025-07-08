@@ -123,7 +123,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "AvaCloudSDK",
-    version: "0.12.3",
+    version: "0.13.0",
   });
 
   const client = new AvaCloudSDKCore({

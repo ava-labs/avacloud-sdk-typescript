@@ -24,7 +24,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.12.3
+  version: 0.13.0
   additionalDependencies:
     dependencies:
       json-canonicalize: ^1.0.6
@@ -45,6 +45,7 @@ typescript:
   enumFormat: union
   flattenGlobalSecurity: true
   flatteningOrder: body-first
+  generateExamples: true
   imports:
     option: openapi
     paths:
