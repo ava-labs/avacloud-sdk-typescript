@@ -5,7 +5,11 @@
 ```typescript
 import { ListInternalTransactionsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListInternalTransactionsResponse = {};
+let value: ListInternalTransactionsResponse = {
+  result: {
+    transactions: [],
+  },
+};
 ```
 
 ## Fields

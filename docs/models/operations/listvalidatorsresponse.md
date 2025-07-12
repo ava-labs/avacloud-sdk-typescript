@@ -5,7 +5,11 @@
 ```typescript
 import { ListValidatorsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListValidatorsResponse = {};
+let value: ListValidatorsResponse = {
+  result: {
+    validators: [],
+  },
+};
 ```
 
 ## Fields

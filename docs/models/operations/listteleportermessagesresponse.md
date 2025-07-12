@@ -5,7 +5,11 @@
 ```typescript
 import { ListTeleporterMessagesResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListTeleporterMessagesResponse = {};
+let value: ListTeleporterMessagesResponse = {
+  result: {
+    messages: [],
+  },
+};
 ```
 
 ## Fields
