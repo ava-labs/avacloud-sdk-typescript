@@ -5,7 +5,11 @@
 ```typescript
 import { ListIcmMessagesResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListIcmMessagesResponse = {};
+let value: ListIcmMessagesResponse = {
+  result: {
+    messages: [],
+  },
+};
 ```
 
 ## Fields

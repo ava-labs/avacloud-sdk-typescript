@@ -5,7 +5,11 @@
 ```typescript
 import { ListTransactionsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListTransactionsResponse = {};
+let value: ListTransactionsResponse = {
+  result: {
+    transactions: [],
+  },
+};
 ```
 
 ## Fields

@@ -5,7 +5,11 @@
 ```typescript
 import { ListSubnetsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListSubnetsResponse = {};
+let value: ListSubnetsResponse = {
+  result: {
+    subnets: [],
+  },
+};
 ```
 
 ## Fields

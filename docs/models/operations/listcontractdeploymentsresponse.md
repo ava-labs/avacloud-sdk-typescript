@@ -5,7 +5,11 @@
 ```typescript
 import { ListContractDeploymentsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListContractDeploymentsResponse = {};
+let value: ListContractDeploymentsResponse = {
+  result: {
+    contracts: [],
+  },
+};
 ```
 
 ## Fields

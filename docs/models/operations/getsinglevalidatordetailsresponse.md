@@ -5,7 +5,11 @@
 ```typescript
 import { GetSingleValidatorDetailsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetSingleValidatorDetailsResponse = {};
+let value: GetSingleValidatorDetailsResponse = {
+  result: {
+    validators: [],
+  },
+};
 ```
 
 ## Fields

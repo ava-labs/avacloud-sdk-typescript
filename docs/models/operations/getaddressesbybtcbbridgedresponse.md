@@ -5,7 +5,11 @@
 ```typescript
 import { GetAddressesByBtcbBridgedResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetAddressesByBtcbBridgedResponse = {};
+let value: GetAddressesByBtcbBridgedResponse = {
+  result: {
+    addresses: [],
+  },
+};
 ```
 
 ## Fields

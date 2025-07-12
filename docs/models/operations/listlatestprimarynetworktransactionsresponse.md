@@ -5,7 +5,15 @@
 ```typescript
 import { ListLatestPrimaryNetworkTransactionsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListLatestPrimaryNetworkTransactionsResponse = {};
+let value: ListLatestPrimaryNetworkTransactionsResponse = {
+  result: {
+    transactions: [],
+    chainInfo: {
+      chainName: "c-chain",
+      network: "mainnet",
+    },
+  },
+};
 ```
 
 ## Fields
