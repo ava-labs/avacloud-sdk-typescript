@@ -5,7 +5,15 @@
 ```typescript
 import { GetVertexByHeightResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetVertexByHeightResponse = {};
+let value: GetVertexByHeightResponse = {
+  result: {
+    vertices: [],
+    chainInfo: {
+      chainName: "c-chain",
+      network: "mainnet",
+    },
+  },
+};
 ```
 
 ## Fields

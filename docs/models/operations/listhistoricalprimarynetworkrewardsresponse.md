@@ -5,7 +5,11 @@
 ```typescript
 import { ListHistoricalPrimaryNetworkRewardsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListHistoricalPrimaryNetworkRewardsResponse = {};
+let value: ListHistoricalPrimaryNetworkRewardsResponse = {
+  result: {
+    historicalRewards: [],
+  },
+};
 ```
 
 ## Fields
