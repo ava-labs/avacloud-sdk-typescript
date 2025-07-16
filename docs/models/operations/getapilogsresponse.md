@@ -5,7 +5,12 @@
 ```typescript
 import { GetApiLogsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: GetApiLogsResponse = {};
+let value: GetApiLogsResponse = {
+  result: {
+    orgId: "<id>",
+    logs: [],
+  },
+};
 ```
 
 ## Fields

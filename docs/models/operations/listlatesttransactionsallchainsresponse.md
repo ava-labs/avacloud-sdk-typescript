@@ -5,7 +5,11 @@
 ```typescript
 import { ListLatestTransactionsAllChainsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListLatestTransactionsAllChainsResponse = {};
+let value: ListLatestTransactionsAllChainsResponse = {
+  result: {
+    transactions: [],
+  },
+};
 ```
 
 ## Fields

@@ -5,7 +5,11 @@
 ```typescript
 import { ListCollectibleBalancesResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListCollectibleBalancesResponse = {};
+let value: ListCollectibleBalancesResponse = {
+  result: {
+    collectibleBalances: [],
+  },
+};
 ```
 
 ## Fields

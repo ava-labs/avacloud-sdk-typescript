@@ -5,7 +5,11 @@
 ```typescript
 import { ListWebhooksResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListWebhooksResponse = {};
+let value: ListWebhooksResponse = {
+  result: {
+    webhooks: [],
+  },
+};
 ```
 
 ## Fields

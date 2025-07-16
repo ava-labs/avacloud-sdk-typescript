@@ -5,7 +5,15 @@
 ```typescript
 import { ListAssetTransactionsResponse } from "@avalabs/avacloud-sdk/models/operations";
 
-let value: ListAssetTransactionsResponse = {};
+let value: ListAssetTransactionsResponse = {
+  result: {
+    transactions: [],
+    chainInfo: {
+      chainName: "c-chain",
+      network: "mainnet",
+    },
+  },
+};
 ```
 
 ## Fields
