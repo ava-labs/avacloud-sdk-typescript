@@ -3,6 +3,8 @@
  */
 
 import { metricsChainsGet } from "../funcs/metricsChainsGet.js";
+import { metricsChainsGetICMMetrics } from "../funcs/metricsChainsGetICMMetrics.js";
+import { metricsChainsGetICMRollingWindowMetrics } from "../funcs/metricsChainsGetICMRollingWindowMetrics.js";
 import { metricsChainsGetMetrics } from "../funcs/metricsChainsGetMetrics.js";
 import { metricsChainsGetRollingWindowMetrics } from "../funcs/metricsChainsGetRollingWindowMetrics.js";
 import { metricsChainsGetTeleporterMetrics } from "../funcs/metricsChainsGetTeleporterMetrics.js";
@@ -73,6 +75,10 @@ export class Chains extends ClientSDK {
    *
    * <ins>cumulativeDeployers</ins>: The cumulative count of unique contract deployers from genesis up until 24 hours after the timestamp. Deployers counted are those that appear in the “from” field of transaction traces with the CREATE, CREATE2, and CREATE3 call types. Only `timeInterval=day` supported.
    *
+   * <ins>contracts</ins>: The count of contracts created within the requested timeInterval starting at the timestamp. Contracts are counted by looking for the CREATE, CREATE2, and CREATE3 call types in all transaction traces (aka internal transactions). Only `timeInterval=day` supported.
+   *
+   * <ins>deployers</ins>: The count of unique deployers within the requested timeInterval starting at the timestamp. Deployers counted are those that appear in the “from” field of transaction traces with the CREATE, CREATE2, and CREATE3 call types. Only `timeInterval=day` supported.
+   *
    * <ins>gasUsed</ins>: The amount of gas used by transactions within the requested timeInterval starting at the timestamp.
    *
    * <ins>txCount</ins>: The amount of transactions within the requested timeInterval starting at the timestamp.
@@ -105,10 +111,26 @@ export class Chains extends ClientSDK {
   }
 
   /**
-   * Get teleporter metrics for EVM chains
+   * Get rolling window metrics for EVM chains
    *
    * @remarks
+   * Gets the rolling window metrics for an EVM chain for the last hour, day, month, year, and all time.
+   */
+  async getRollingWindowMetrics(
+    request: operations.GetEvmChainRollingWindowMetricsRequest,
+    options?: RequestOptions,
+  ): Promise<components.RollingWindowMetricsApiResponse> {
+    return unwrapAsync(metricsChainsGetRollingWindowMetrics(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Gets teleporter metrics for an EVM chain.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getTeleporterMetrics(
     request: operations.GetTeleporterMetricsByChainRequest,
@@ -122,16 +144,65 @@ export class Chains extends ClientSDK {
   }
 
   /**
-   * Get rolling window metrics for EVM chains
+   * Get Interchain Message (ICM) metrics
    *
    * @remarks
-   * Gets the rolling window metrics for an EVM chain for the last hour, day, month, year, and all time.
+   * Interchain Message (ICM) metrics are available for all Avalanche L1s on _Mainnet_ and _Fuji_ (testnet). You can request metrics by source and/or destination blockchainId. Metrics are available on an hourly, daily, weekly, monthly, and yearly basis. See the `/chains` endpoint for all  supported chains. You can also request metrics grouped by mainnet or testnet.
+   *
+   * ### Metrics
+   *
+   * <ins>ICMSrcDestMsgCount</ins>: The number of ICM messages sent from the source blockchain to the destination blockchain within the requested timeInterval starting at the timestamp.
+   *
+   * <ins>ICMSrcMsgCount</ins>: The number of ICM messages sent from the source blockchain to each destination blockchain within the requested timeInterval starting at the timestamp.
+   *
+   * <ins>ICMSrcAggMsgCount</ins>: The number of ICM messages sent from the source blockchain to all destination blockchain within the requested timeInterval starting at the timestamp.
+   *
+   * <ins>ICMDestMsgCount</ins>: The number of ICM messages received from each blockchain to the destination blockchain within the requested timeInterval starting at the timestamp.
+   *
+   * <ins>ICMDestAggMsgCount</ins>: The number of ICM messages received from any blockchain to all destination blockchain within the requested timeInterval starting at the timestamp.
+   *
+   * <ins>ICMNetworkMsgCount</ins>: The number of ICM messages sent from any blockchain on the provided network.
+   *
+   * <ins>ICMNetworkAggMsgCount</ins>: The number of ICM messages sent on the  provided network.
    */
-  async getRollingWindowMetrics(
-    request: operations.GetEvmChainRollingWindowMetricsRequest,
+  async getICMMetrics(
+    request: operations.GetICMMetricsByChainRequest,
+    options?: RequestOptions,
+  ): Promise<components.ICMMetricsApiResponse> {
+    return unwrapAsync(metricsChainsGetICMMetrics(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Interchain Message (ICM) rolling window metrics
+   *
+   * @remarks
+   * Interchain Message (ICM) rolling window metrics are available for all  Avalanche L1s on _Mainnet_ and _Fuji_ (testnet). You can request metrics  by source and/or destination blockchainId or by network. Rolling window metrics are available for the last hour, day, month,  90 days,year, and all time.
+   *
+   * ### Metrics
+   *
+   * <ins>ICMSrcDestRollingWindowMsgCount</ins>: The number of ICM  messages sent from the source blockchain to the destination blockchain within the last hour, day, month, year, and all time.
+   *
+   * <ins>ICMSrcRollingWindowMsgCount</ins>: The number of ICM  messages sent from the source blockchain to each destination blockchain within the last hour, day, month, 90 days, year, and all time.
+   *
+   * <ins>ICMSrcRollingWindowAggMsgCount</ins>: The number of ICM  messages sent from the source blockchain to all destination blockchain within the last hour, day, month, 90 days, year, and all time.
+   *
+   * <ins>ICMDestRollingWindowMsgCount</ins>: The number of ICM  messages received from any blockchain to each destination blockchain within the last hour, day, month, 90 days, year, and all time.
+   *
+   * <ins>ICMDestRollingWindowAggMsgCount</ins>: The number of ICM  messages received from any blockchain to all destination blockchain within the last hour, day, month, 90 days, year, and all time.
+   *
+   * <ins>ICMNetworkRollingWindowMsgCount</ins>: The number of ICM  messages sent from any blockchain to each destination blockchain within the last hour, day, month, 90 days, year, and all time.
+   *
+   * <ins>ICMNetworkRollingWindowAggMsgCount</ins>: The number of ICM  messages sent from any blockchain to all destination blockchain within the last hour, day, month, 90 days, year, and all time.
+   */
+  async getICMRollingWindowMetrics(
+    request: operations.GetICMRollingWindowMetricsByChainRequest,
     options?: RequestOptions,
   ): Promise<components.RollingWindowMetricsApiResponse> {
-    return unwrapAsync(metricsChainsGetRollingWindowMetrics(
+    return unwrapAsync(metricsChainsGetICMRollingWindowMetrics(
       this,
       request,
       options,

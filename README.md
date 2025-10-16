@@ -384,6 +384,10 @@ run();
 <summary>Available methods</summary>
 
 
+### [avaxSupply](docs/sdks/avaxsupply/README.md)
+
+* [getAvaxSupply](docs/sdks/avaxsupply/README.md#getavaxsupply) - Get AVAX supply information
+
 ### [data](docs/sdks/data/README.md)
 
 * [healthCheck](docs/sdks/data/README.md#healthcheck) - Get the health of the service
@@ -548,8 +552,10 @@ run();
 * [list](docs/sdks/chains/README.md#list) - Get a list of supported blockchains
 * [get](docs/sdks/chains/README.md#get) - Get chain information for supported blockchain
 * [getMetrics](docs/sdks/chains/README.md#getmetrics) - Get metrics for EVM chains
-* [getTeleporterMetrics](docs/sdks/chains/README.md#getteleportermetrics) - Get teleporter metrics for EVM chains
 * [getRollingWindowMetrics](docs/sdks/chains/README.md#getrollingwindowmetrics) - Get rolling window metrics for EVM chains
+* [~~getTeleporterMetrics~~](docs/sdks/chains/README.md#getteleportermetrics) - Gets teleporter metrics for an EVM chain. :warning: **Deprecated**
+* [getICMMetrics](docs/sdks/chains/README.md#geticmmetrics) - Get Interchain Message (ICM) metrics
+* [getICMRollingWindowMetrics](docs/sdks/chains/README.md#geticmrollingwindowmetrics) - Get Interchain Message (ICM) rolling window metrics
 * [listNftHolders](docs/sdks/chains/README.md#listnftholders) - Get NFT holders by contract address
 * [listTokenHoldersAboveThreshold](docs/sdks/chains/README.md#listtokenholdersabovethreshold) - Get addresses by balance over time
 * [listBTCbBridgersAboveThreshold](docs/sdks/chains/README.md#listbtcbbridgersabovethreshold) - Get addresses by BTCb bridged balance
@@ -557,9 +563,9 @@ run();
 #### [metrics.l1Validators](docs/sdks/l1validators/README.md)
 
 * [listMetrics](docs/sdks/l1validators/README.md#listmetrics) - Get given metric for all validators
-* [getMetricsByValidationId](docs/sdks/l1validators/README.md#getmetricsbyvalidationid) - Get metric values with given validation id and timestamp range
-* [getMetricsByNodeId](docs/sdks/l1validators/README.md#getmetricsbynodeid) - Get metric values with given node id and timestamp range
-* [getMetricsBySubnetId](docs/sdks/l1validators/README.md#getmetricsbysubnetid) - Get metric values with given subnet ID and timestamp range
+* [getMetricsByValidationId](docs/sdks/l1validators/README.md#getmetricsbyvalidationid) - Get metric values with given validationId and timestamp range
+* [getMetricsByNodeId](docs/sdks/l1validators/README.md#getmetricsbynodeid) - Get metric values with given nodeId and timestamp range
+* [getMetricsBySubnetId](docs/sdks/l1validators/README.md#getmetricsbysubnetid) - Get metric values with given subnetId and timestamp range
 
 #### [metrics.networks](docs/sdks/networks/README.md)
 
@@ -603,6 +609,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
+- [`avaxSupplyGetAVAXSupply`](docs/sdks/avaxsupply/README.md#getavaxsupply) - Get AVAX supply information
 - [`dataEvmAddressBalancesGetNative`](docs/sdks/avacloudsdkbalances/README.md#getnative) - Get native token balance
 - [`dataEvmAddressBalancesListCollectibles`](docs/sdks/avacloudsdkbalances/README.md#listcollectibles) - List collectible (ERC-721/ERC-1155) balances
 - [`dataEvmAddressBalancesListErc1155`](docs/sdks/avacloudsdkbalances/README.md#listerc1155) - List ERC-1155 balances
@@ -669,17 +676,18 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataUsageMetricsGetUsage`](docs/sdks/usagemetrics/README.md#getusage) - Get usage metrics for the Data API
 - [`lookingGlassCompositeQuery`](docs/sdks/lookingglass/README.md#compositequery) - Composite query
 - [`metricsChainsGet`](docs/sdks/chains/README.md#get) - Get chain information for supported blockchain
+- [`metricsChainsGetICMMetrics`](docs/sdks/chains/README.md#geticmmetrics) - Get Interchain Message (ICM) metrics
+- [`metricsChainsGetICMRollingWindowMetrics`](docs/sdks/chains/README.md#geticmrollingwindowmetrics) - Get Interchain Message (ICM) rolling window metrics
 - [`metricsChainsGetMetrics`](docs/sdks/chains/README.md#getmetrics) - Get metrics for EVM chains
 - [`metricsChainsGetRollingWindowMetrics`](docs/sdks/chains/README.md#getrollingwindowmetrics) - Get rolling window metrics for EVM chains
-- [`metricsChainsGetTeleporterMetrics`](docs/sdks/chains/README.md#getteleportermetrics) - Get teleporter metrics for EVM chains
 - [`metricsChainsList`](docs/sdks/chains/README.md#list) - Get a list of supported blockchains
 - [`metricsChainsListBTCbBridgersAboveThreshold`](docs/sdks/chains/README.md#listbtcbbridgersabovethreshold) - Get addresses by BTCb bridged balance
 - [`metricsChainsListNftHolders`](docs/sdks/chains/README.md#listnftholders) - Get NFT holders by contract address
 - [`metricsChainsListTokenHoldersAboveThreshold`](docs/sdks/chains/README.md#listtokenholdersabovethreshold) - Get addresses by balance over time
 - [`metricsHealthCheck`](docs/sdks/metrics/README.md#healthcheck) - Get the health of the service
-- [`metricsL1ValidatorsGetMetricsByNodeId`](docs/sdks/l1validators/README.md#getmetricsbynodeid) - Get metric values with given node id and timestamp range
-- [`metricsL1ValidatorsGetMetricsBySubnetId`](docs/sdks/l1validators/README.md#getmetricsbysubnetid) - Get metric values with given subnet ID and timestamp range
-- [`metricsL1ValidatorsGetMetricsByValidationId`](docs/sdks/l1validators/README.md#getmetricsbyvalidationid) - Get metric values with given validation id and timestamp range
+- [`metricsL1ValidatorsGetMetricsByNodeId`](docs/sdks/l1validators/README.md#getmetricsbynodeid) - Get metric values with given nodeId and timestamp range
+- [`metricsL1ValidatorsGetMetricsBySubnetId`](docs/sdks/l1validators/README.md#getmetricsbysubnetid) - Get metric values with given subnetId and timestamp range
+- [`metricsL1ValidatorsGetMetricsByValidationId`](docs/sdks/l1validators/README.md#getmetricsbyvalidationid) - Get metric values with given validationId and timestamp range
 - [`metricsL1ValidatorsListMetrics`](docs/sdks/l1validators/README.md#listmetrics) - Get given metric for all validators
 - [`metricsNetworksGetStakingMetrics`](docs/sdks/networks/README.md#getstakingmetrics) - Get staking metrics for a given subnet
 - [`metricsSubnetsGetValidators`](docs/sdks/subnets/README.md#getvalidators) - Get addresses running validators during a given time frame
@@ -714,6 +722,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - ~~[`dataUsageMetricsGetRpcUsageMetrics`](docs/sdks/usagemetrics/README.md#getrpcusagemetrics)~~ - **[Deprecated]**  Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
 
 ⚠️ **This operation will be removed in a future release.  Please use /v1/subnetRpcUsageMetrics endpoint instead**. :warning: **Deprecated**
+- ~~[`metricsChainsGetTeleporterMetrics`](docs/sdks/chains/README.md#getteleportermetrics)~~ - Gets teleporter metrics for an EVM chain. :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

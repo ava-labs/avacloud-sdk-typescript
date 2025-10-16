@@ -14,9 +14,7 @@ export const tool$metricsChainsGetTeleporterMetrics: ToolDefinition<
   typeof args
 > = {
   name: "metrics-chains-get-teleporter-metrics",
-  description: `Get teleporter metrics for EVM chains
-
-Gets teleporter metrics for an EVM chain.`,
+  description: `Gets teleporter metrics for an EVM chain.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await metricsChainsGetTeleporterMetrics(

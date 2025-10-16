@@ -22,24 +22,40 @@ import {
 import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import { GetMetricsByNodeIdServerList } from "../models/operations/getmetricsbynodeid.js";
+import { GetICMMetricsByChainServerList } from "../models/operations/geticmmetricsbychain.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get metric values with given nodeId and timestamp range
+ * Get Interchain Message (ICM) metrics
  *
  * @remarks
- * Get given metric values for a given nodeId with or without a timestamp range.
+ * Interchain Message (ICM) metrics are available for all Avalanche L1s on _Mainnet_ and _Fuji_ (testnet). You can request metrics by source and/or destination blockchainId. Metrics are available on an hourly, daily, weekly, monthly, and yearly basis. See the `/chains` endpoint for all  supported chains. You can also request metrics grouped by mainnet or testnet.
+ *
+ * ### Metrics
+ *
+ * <ins>ICMSrcDestMsgCount</ins>: The number of ICM messages sent from the source blockchain to the destination blockchain within the requested timeInterval starting at the timestamp.
+ *
+ * <ins>ICMSrcMsgCount</ins>: The number of ICM messages sent from the source blockchain to each destination blockchain within the requested timeInterval starting at the timestamp.
+ *
+ * <ins>ICMSrcAggMsgCount</ins>: The number of ICM messages sent from the source blockchain to all destination blockchain within the requested timeInterval starting at the timestamp.
+ *
+ * <ins>ICMDestMsgCount</ins>: The number of ICM messages received from each blockchain to the destination blockchain within the requested timeInterval starting at the timestamp.
+ *
+ * <ins>ICMDestAggMsgCount</ins>: The number of ICM messages received from any blockchain to all destination blockchain within the requested timeInterval starting at the timestamp.
+ *
+ * <ins>ICMNetworkMsgCount</ins>: The number of ICM messages sent from any blockchain on the provided network.
+ *
+ * <ins>ICMNetworkAggMsgCount</ins>: The number of ICM messages sent on the  provided network.
  */
-export function metricsL1ValidatorsGetMetricsByNodeId(
+export function metricsChainsGetICMMetrics(
   client: AvaCloudSDKCore,
-  request: operations.GetMetricsByNodeIdRequest,
+  request: operations.GetICMMetricsByChainRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.MetricsApiResponse,
+    components.ICMMetricsApiResponse,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -67,12 +83,12 @@ export function metricsL1ValidatorsGetMetricsByNodeId(
 
 async function $do(
   client: AvaCloudSDKCore,
-  request: operations.GetMetricsByNodeIdRequest,
+  request: operations.GetICMMetricsByChainRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      components.MetricsApiResponse,
+      components.ICMMetricsApiResponse,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -95,7 +111,8 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.GetMetricsByNodeIdRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.GetICMMetricsByChainRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -105,7 +122,7 @@ async function $do(
   const body = null;
 
   const baseURL = options?.serverURL
-    || pathToFunc(GetMetricsByNodeIdServerList[0], {
+    || pathToFunc(GetICMMetricsByChainServerList[0], {
       charEncoding: "percent",
     })();
 
@@ -114,19 +131,19 @@ async function $do(
       explode: false,
       charEncoding: "percent",
     }),
-    nodeId: encodeSimple("nodeId", payload.nodeId, {
-      explode: false,
-      charEncoding: "percent",
-    }),
   };
 
-  const path = pathToFunc("/v2/validator/{nodeId}/metrics/{metric}")(
-    pathParams,
-  );
+  const path = pathToFunc("/v2/icm/metrics/{metric}")(pathParams);
 
   const query = encodeFormQuery({
+    "destBlockchainId": payload.destBlockchainId,
     "endTimestamp": payload.endTimestamp,
+    "network": payload.network,
+    "pageSize": payload.pageSize,
+    "pageToken": payload.pageToken,
+    "srcBlockchainId": payload.srcBlockchainId,
     "startTimestamp": payload.startTimestamp,
+    "timeInterval": payload.timeInterval,
   });
 
   const headers = new Headers(compactMap({
@@ -140,7 +157,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: baseURL ?? "",
-    operationID: "getMetricsByNodeId",
+    operationID: "getICMMetricsByChain",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -205,7 +222,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    components.MetricsApiResponse,
+    components.ICMMetricsApiResponse,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -223,7 +240,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, components.MetricsApiResponse$inboundSchema),
+    M.json(200, components.ICMMetricsApiResponse$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),

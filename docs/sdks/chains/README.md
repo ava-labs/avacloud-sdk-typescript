@@ -8,8 +8,10 @@
 * [list](#list) - Get a list of supported blockchains
 * [get](#get) - Get chain information for supported blockchain
 * [getMetrics](#getmetrics) - Get metrics for EVM chains
-* [getTeleporterMetrics](#getteleportermetrics) - Get teleporter metrics for EVM chains
 * [getRollingWindowMetrics](#getrollingwindowmetrics) - Get rolling window metrics for EVM chains
+* [~~getTeleporterMetrics~~](#getteleportermetrics) - Gets teleporter metrics for an EVM chain. :warning: **Deprecated**
+* [getICMMetrics](#geticmmetrics) - Get Interchain Message (ICM) metrics
+* [getICMRollingWindowMetrics](#geticmrollingwindowmetrics) - Get Interchain Message (ICM) rolling window metrics
 * [listNftHolders](#listnftholders) - Get NFT holders by contract address
 * [listTokenHoldersAboveThreshold](#listtokenholdersabovethreshold) - Get addresses by balance over time
 * [listBTCbBridgersAboveThreshold](#listbtcbbridgersabovethreshold) - Get addresses by BTCb bridged balance
@@ -198,6 +200,10 @@ All metrics are updated several times every hour. Each metric data point has a `
 
 <ins>cumulativeDeployers</ins>: The cumulative count of unique contract deployers from genesis up until 24 hours after the timestamp. Deployers counted are those that appear in the “from” field of transaction traces with the CREATE, CREATE2, and CREATE3 call types. Only `timeInterval=day` supported.
 
+<ins>contracts</ins>: The count of contracts created within the requested timeInterval starting at the timestamp. Contracts are counted by looking for the CREATE, CREATE2, and CREATE3 call types in all transaction traces (aka internal transactions). Only `timeInterval=day` supported.
+
+<ins>deployers</ins>: The count of unique deployers within the requested timeInterval starting at the timestamp. Deployers counted are those that appear in the “from” field of transaction traces with the CREATE, CREATE2, and CREATE3 call types. Only `timeInterval=day` supported.
+
 <ins>gasUsed</ins>: The amount of gas used by transactions within the requested timeInterval starting at the timestamp.
 
 <ins>txCount</ins>: The amount of transactions within the requested timeInterval starting at the timestamp.
@@ -307,9 +313,94 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## getTeleporterMetrics
+## getRollingWindowMetrics
+
+Gets the rolling window metrics for an EVM chain for the last hour, day, month, year, and all time.
+
+### Example Usage
+
+```typescript
+import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
+
+const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
+  chainId: "43114",
+});
+
+async function run() {
+  const result = await avaCloudSDK.metrics.chains.getRollingWindowMetrics({
+    metric: "txCount",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
+import { metricsChainsGetRollingWindowMetrics } from "@avalabs/avacloud-sdk/funcs/metricsChainsGetRollingWindowMetrics.js";
+
+// Use `AvaCloudSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
+  chainId: "43114",
+});
+
+async function run() {
+  const res = await metricsChainsGetRollingWindowMetrics(avaCloudSDK, {
+    metric: "txCount",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("metricsChainsGetRollingWindowMetrics failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetEvmChainRollingWindowMetricsRequest](../../models/operations/getevmchainrollingwindowmetricsrequest.md)                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
+
+### Response
+
+**Promise\<[components.RollingWindowMetricsApiResponse](../../models/components/rollingwindowmetricsapiresponse.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.TooManyRequests     | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.BadGateway          | 502                        | application/json           |
+| errors.ServiceUnavailable  | 503                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## ~~getTeleporterMetrics~~
 
 Gets teleporter metrics for an EVM chain.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -390,9 +481,25 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## getRollingWindowMetrics
+## getICMMetrics
 
-Gets the rolling window metrics for an EVM chain for the last hour, day, month, year, and all time.
+Interchain Message (ICM) metrics are available for all Avalanche L1s on _Mainnet_ and _Fuji_ (testnet). You can request metrics by source and/or destination blockchainId. Metrics are available on an hourly, daily, weekly, monthly, and yearly basis. See the `/chains` endpoint for all  supported chains. You can also request metrics grouped by mainnet or testnet.
+
+### Metrics
+
+<ins>ICMSrcDestMsgCount</ins>: The number of ICM messages sent from the source blockchain to the destination blockchain within the requested timeInterval starting at the timestamp.
+
+<ins>ICMSrcMsgCount</ins>: The number of ICM messages sent from the source blockchain to each destination blockchain within the requested timeInterval starting at the timestamp.
+
+<ins>ICMSrcAggMsgCount</ins>: The number of ICM messages sent from the source blockchain to all destination blockchain within the requested timeInterval starting at the timestamp.
+
+<ins>ICMDestMsgCount</ins>: The number of ICM messages received from each blockchain to the destination blockchain within the requested timeInterval starting at the timestamp.
+
+<ins>ICMDestAggMsgCount</ins>: The number of ICM messages received from any blockchain to all destination blockchain within the requested timeInterval starting at the timestamp.
+
+<ins>ICMNetworkMsgCount</ins>: The number of ICM messages sent from any blockchain on the provided network.
+
+<ins>ICMNetworkAggMsgCount</ins>: The number of ICM messages sent on the  provided network.
 
 ### Example Usage
 
@@ -401,12 +508,16 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
 });
 
 async function run() {
-  const result = await avaCloudSDK.metrics.chains.getRollingWindowMetrics({
-    metric: "txCount",
+  const result = await avaCloudSDK.metrics.chains.getICMMetrics({
+    metric: "ICMSrcDestMsgCount",
+    startTimestamp: 1689541049,
+    endTimestamp: 1689800249,
+    timeInterval: "day",
+    pageSize: 10,
+    network: "mainnet",
   });
 
   console.log(result);
@@ -421,24 +532,28 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { metricsChainsGetRollingWindowMetrics } from "@avalabs/avacloud-sdk/funcs/metricsChainsGetRollingWindowMetrics.js";
+import { metricsChainsGetICMMetrics } from "@avalabs/avacloud-sdk/funcs/metricsChainsGetICMMetrics.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
 });
 
 async function run() {
-  const res = await metricsChainsGetRollingWindowMetrics(avaCloudSDK, {
-    metric: "txCount",
+  const res = await metricsChainsGetICMMetrics(avaCloudSDK, {
+    metric: "ICMSrcDestMsgCount",
+    startTimestamp: 1689541049,
+    endTimestamp: 1689800249,
+    timeInterval: "day",
+    pageSize: 10,
+    network: "mainnet",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("metricsChainsGetRollingWindowMetrics failed:", res.error);
+    console.log("metricsChainsGetICMMetrics failed:", res.error);
   }
 }
 
@@ -449,7 +564,106 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetEvmChainRollingWindowMetricsRequest](../../models/operations/getevmchainrollingwindowmetricsrequest.md)                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetICMMetricsByChainRequest](../../models/operations/geticmmetricsbychainrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
+
+### Response
+
+**Promise\<[components.ICMMetricsApiResponse](../../models/components/icmmetricsapiresponse.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.BadRequest          | 400                        | application/json           |
+| errors.Unauthorized        | 401                        | application/json           |
+| errors.Forbidden           | 403                        | application/json           |
+| errors.NotFound            | 404                        | application/json           |
+| errors.TooManyRequests     | 429                        | application/json           |
+| errors.InternalServerError | 500                        | application/json           |
+| errors.BadGateway          | 502                        | application/json           |
+| errors.ServiceUnavailable  | 503                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## getICMRollingWindowMetrics
+
+Interchain Message (ICM) rolling window metrics are available for all  Avalanche L1s on _Mainnet_ and _Fuji_ (testnet). You can request metrics  by source and/or destination blockchainId or by network. Rolling window metrics are available for the last hour, day, month,  90 days,year, and all time.
+
+### Metrics
+
+<ins>ICMSrcDestRollingWindowMsgCount</ins>: The number of ICM  messages sent from the source blockchain to the destination blockchain within the last hour, day, month, year, and all time.
+
+<ins>ICMSrcRollingWindowMsgCount</ins>: The number of ICM  messages sent from the source blockchain to each destination blockchain within the last hour, day, month, 90 days, year, and all time.
+
+<ins>ICMSrcRollingWindowAggMsgCount</ins>: The number of ICM  messages sent from the source blockchain to all destination blockchain within the last hour, day, month, 90 days, year, and all time.
+
+<ins>ICMDestRollingWindowMsgCount</ins>: The number of ICM  messages received from any blockchain to each destination blockchain within the last hour, day, month, 90 days, year, and all time.
+
+<ins>ICMDestRollingWindowAggMsgCount</ins>: The number of ICM  messages received from any blockchain to all destination blockchain within the last hour, day, month, 90 days, year, and all time.
+
+<ins>ICMNetworkRollingWindowMsgCount</ins>: The number of ICM  messages sent from any blockchain to each destination blockchain within the last hour, day, month, 90 days, year, and all time.
+
+<ins>ICMNetworkRollingWindowAggMsgCount</ins>: The number of ICM  messages sent from any blockchain to all destination blockchain within the last hour, day, month, 90 days, year, and all time.
+
+### Example Usage
+
+```typescript
+import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
+
+const avaCloudSDK = new AvaCloudSDK({
+  serverURL: "https://api.example.com",
+});
+
+async function run() {
+  const result = await avaCloudSDK.metrics.chains.getICMRollingWindowMetrics({
+    metric: "ICMSrcRollingWindowMsgCount",
+    network: "mainnet",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
+import { metricsChainsGetICMRollingWindowMetrics } from "@avalabs/avacloud-sdk/funcs/metricsChainsGetICMRollingWindowMetrics.js";
+
+// Use `AvaCloudSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const avaCloudSDK = new AvaCloudSDKCore({
+  serverURL: "https://api.example.com",
+});
+
+async function run() {
+  const res = await metricsChainsGetICMRollingWindowMetrics(avaCloudSDK, {
+    metric: "ICMSrcRollingWindowMsgCount",
+    network: "mainnet",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("metricsChainsGetICMRollingWindowMetrics failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetICMRollingWindowMetricsByChainRequest](../../models/operations/geticmrollingwindowmetricsbychainrequest.md)                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

@@ -22,24 +22,40 @@ import {
 import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import { GetMetricsByNodeIdServerList } from "../models/operations/getmetricsbynodeid.js";
+import { GetICMRollingWindowMetricsByChainServerList } from "../models/operations/geticmrollingwindowmetricsbychain.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get metric values with given nodeId and timestamp range
+ * Get Interchain Message (ICM) rolling window metrics
  *
  * @remarks
- * Get given metric values for a given nodeId with or without a timestamp range.
+ * Interchain Message (ICM) rolling window metrics are available for all  Avalanche L1s on _Mainnet_ and _Fuji_ (testnet). You can request metrics  by source and/or destination blockchainId or by network. Rolling window metrics are available for the last hour, day, month,  90 days,year, and all time.
+ *
+ * ### Metrics
+ *
+ * <ins>ICMSrcDestRollingWindowMsgCount</ins>: The number of ICM  messages sent from the source blockchain to the destination blockchain within the last hour, day, month, year, and all time.
+ *
+ * <ins>ICMSrcRollingWindowMsgCount</ins>: The number of ICM  messages sent from the source blockchain to each destination blockchain within the last hour, day, month, 90 days, year, and all time.
+ *
+ * <ins>ICMSrcRollingWindowAggMsgCount</ins>: The number of ICM  messages sent from the source blockchain to all destination blockchain within the last hour, day, month, 90 days, year, and all time.
+ *
+ * <ins>ICMDestRollingWindowMsgCount</ins>: The number of ICM  messages received from any blockchain to each destination blockchain within the last hour, day, month, 90 days, year, and all time.
+ *
+ * <ins>ICMDestRollingWindowAggMsgCount</ins>: The number of ICM  messages received from any blockchain to all destination blockchain within the last hour, day, month, 90 days, year, and all time.
+ *
+ * <ins>ICMNetworkRollingWindowMsgCount</ins>: The number of ICM  messages sent from any blockchain to each destination blockchain within the last hour, day, month, 90 days, year, and all time.
+ *
+ * <ins>ICMNetworkRollingWindowAggMsgCount</ins>: The number of ICM  messages sent from any blockchain to all destination blockchain within the last hour, day, month, 90 days, year, and all time.
  */
-export function metricsL1ValidatorsGetMetricsByNodeId(
+export function metricsChainsGetICMRollingWindowMetrics(
   client: AvaCloudSDKCore,
-  request: operations.GetMetricsByNodeIdRequest,
+  request: operations.GetICMRollingWindowMetricsByChainRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.MetricsApiResponse,
+    components.RollingWindowMetricsApiResponse,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -67,12 +83,12 @@ export function metricsL1ValidatorsGetMetricsByNodeId(
 
 async function $do(
   client: AvaCloudSDKCore,
-  request: operations.GetMetricsByNodeIdRequest,
+  request: operations.GetICMRollingWindowMetricsByChainRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      components.MetricsApiResponse,
+      components.RollingWindowMetricsApiResponse,
       | errors.BadRequest
       | errors.Unauthorized
       | errors.Forbidden
@@ -95,7 +111,10 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.GetMetricsByNodeIdRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.GetICMRollingWindowMetricsByChainRequest$outboundSchema.parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -105,7 +124,7 @@ async function $do(
   const body = null;
 
   const baseURL = options?.serverURL
-    || pathToFunc(GetMetricsByNodeIdServerList[0], {
+    || pathToFunc(GetICMRollingWindowMetricsByChainServerList[0], {
       charEncoding: "percent",
     })();
 
@@ -114,19 +133,14 @@ async function $do(
       explode: false,
       charEncoding: "percent",
     }),
-    nodeId: encodeSimple("nodeId", payload.nodeId, {
-      explode: false,
-      charEncoding: "percent",
-    }),
   };
 
-  const path = pathToFunc("/v2/validator/{nodeId}/metrics/{metric}")(
-    pathParams,
-  );
+  const path = pathToFunc("/v2/icm/rollingWindowMetrics/{metric}")(pathParams);
 
   const query = encodeFormQuery({
-    "endTimestamp": payload.endTimestamp,
-    "startTimestamp": payload.startTimestamp,
+    "destBlockchainId": payload.destBlockchainId,
+    "network": payload.network,
+    "srcBlockchainId": payload.srcBlockchainId,
   });
 
   const headers = new Headers(compactMap({
@@ -140,7 +154,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: baseURL ?? "",
-    operationID: "getMetricsByNodeId",
+    operationID: "getICMRollingWindowMetricsByChain",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -205,7 +219,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    components.MetricsApiResponse,
+    components.RollingWindowMetricsApiResponse,
     | errors.BadRequest
     | errors.Unauthorized
     | errors.Forbidden
@@ -223,7 +237,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, components.MetricsApiResponse$inboundSchema),
+    M.json(200, components.RollingWindowMetricsApiResponse$inboundSchema),
     M.jsonErr(400, errors.BadRequest$inboundSchema),
     M.jsonErr(401, errors.Unauthorized$inboundSchema),
     M.jsonErr(403, errors.Forbidden$inboundSchema),
