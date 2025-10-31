@@ -7,24 +7,9 @@ import { ListLatestXChainVerticesResponse } from "@avalabs/avacloud-sdk/models/o
 
 let value: ListLatestXChainVerticesResponse = {
   result: {
-    vertices: [
-      {
-        vertexHash: "<value>",
-        parentHashes: [
-          "<value>",
-        ],
-        vertexHeight: 6658.72,
-        vertexIndex: 4008.79,
-        vertexTimestamp: 7681.95,
-        txCount: 5277.15,
-        transactions: [
-          "<value>",
-        ],
-        vertexSizeBytes: 2375.23,
-      },
-    ],
+    vertices: [],
     chainInfo: {
-      chainName: "p-chain",
+      chainName: "c-chain",
       network: "mainnet",
     },
   },

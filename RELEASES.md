@@ -270,3 +270,73 @@ Based on:
 - [typescript v0.11.0] .
 ### Releases
 - [NPM v0.11.0] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.11.0 - .
+
+## 2025-06-02 00:12:30
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.554.1 (2.616.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.12.0] .
+### Releases
+- [NPM v0.12.0] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.12.0 - .
+
+## 2025-06-02 21:40:28
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.555.0 (2.618.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.12.1] .
+### Releases
+- [NPM v0.12.1] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.12.1 - .
+
+## 2025-06-16 00:12:35
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.563.1 (2.629.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.12.2] .
+### Releases
+- [NPM v0.12.2] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.12.2 - .
+
+## 2025-06-30 00:13:07
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.571.2 (2.640.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.12.3] .
+### Releases
+- [NPM v0.12.3] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.12.3 - .
+
+## 2025-07-08 00:12:20
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.576.1 (2.651.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.13.0] .
+### Releases
+- [NPM v0.13.0] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.13.0 - .
+
+## 2025-07-16 00:12:41
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.582.0 (2.657.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.13.1] .
+### Releases
+- [NPM v0.13.1] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.13.1 - .
+
+## 2025-07-23 00:12:58
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.586.0 (2.661.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.13.2] .
+### Releases
+- [NPM v0.13.2] https://www.npmjs.com/package/@avalabs/avacloud-sdk/v/0.13.2 - .

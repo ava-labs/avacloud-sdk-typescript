@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [listLatestXChainVertices](#listlatestxchainvertices) - List vertices
-* [getVertexByHash](#getvertexbyhash) - Get vertex
-* [getVertexByHeight](#getvertexbyheight) - List vertices by height
+* [listLatest](#listlatest) - List vertices
+* [getByHash](#getbyhash) - Get vertex
+* [listByHeight](#listbyheight) - List vertices by height
 
-## listLatestXChainVertices
+## listLatest
 
 Lists latest vertices on the X-Chain.
 
@@ -20,18 +20,15 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.vertices.listLatestXChainVertices({
+  const result = await avaCloudSDK.data.primaryNetwork.vertices.listLatest({
     blockchainId: "x-chain",
-    network: "mainnet",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -45,31 +42,26 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkVerticesListLatestXChainVertices } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkVerticesListLatestXChainVertices.js";
+import { dataPrimaryNetworkVerticesListLatest } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkVerticesListLatest.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkVerticesListLatestXChainVertices(avaCloudSDK, {
+  const res = await dataPrimaryNetworkVerticesListLatest(avaCloudSDK, {
     blockchainId: "x-chain",
-    network: "mainnet",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataPrimaryNetworkVerticesListLatest failed:", res.error);
   }
 }
 
@@ -104,7 +96,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## getVertexByHash
+## getByHash
 
 Gets a single vertex on the X-Chain.
 
@@ -115,18 +107,15 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.vertices.getVertexByHash({
+  const result = await avaCloudSDK.data.primaryNetwork.vertices.getByHash({
     vertexHash: "haP1CW56cspZY7aEuqHNrtpvhqCaMTxQaYe6j5u2Mbn4L2Gqr",
     blockchainId: "x-chain",
-    network: "mainnet",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -139,31 +128,26 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkVerticesGetVertexByHash } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkVerticesGetVertexByHash.js";
+import { dataPrimaryNetworkVerticesGetByHash } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkVerticesGetByHash.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkVerticesGetVertexByHash(avaCloudSDK, {
+  const res = await dataPrimaryNetworkVerticesGetByHash(avaCloudSDK, {
     vertexHash: "haP1CW56cspZY7aEuqHNrtpvhqCaMTxQaYe6j5u2Mbn4L2Gqr",
     blockchainId: "x-chain",
-    network: "mainnet",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataPrimaryNetworkVerticesGetByHash failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -197,7 +181,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## getVertexByHeight
+## listByHeight
 
 Lists vertices at the given vertex height on the X-Chain.
 
@@ -208,20 +192,17 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.vertices.getVertexByHeight({
+  const result = await avaCloudSDK.data.primaryNetwork.vertices.listByHeight({
     vertexHeight: 123,
     blockchainId: "x-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -235,33 +216,28 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkVerticesGetVertexByHeight } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkVerticesGetVertexByHeight.js";
+import { dataPrimaryNetworkVerticesListByHeight } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkVerticesListByHeight.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkVerticesGetVertexByHeight(avaCloudSDK, {
+  const res = await dataPrimaryNetworkVerticesListByHeight(avaCloudSDK, {
     vertexHeight: 123,
     blockchainId: "x-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataPrimaryNetworkVerticesListByHeight failed:", res.error);
   }
 }
 

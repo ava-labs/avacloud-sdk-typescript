@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [getUtxosByAddresses](#getutxosbyaddresses) - List UTXOs
+* [listByAddresses](#listbyaddresses) - List UTXOs
 
-## getUtxosByAddresses
+## listByAddresses
 
 Lists UTXOs on one of the Primary Network chains for the supplied addresses.
 
@@ -18,20 +18,17 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.utxos.getUtxosByAddresses({
+  const result = await avaCloudSDK.data.primaryNetwork.utxos.listByAddresses({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     blockchainId: "p-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -45,33 +42,28 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkUtxosGetUtxosByAddresses } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkUtxosGetUtxosByAddresses.js";
+import { dataPrimaryNetworkUtxosListByAddresses } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkUtxosListByAddresses.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkUtxosGetUtxosByAddresses(avaCloudSDK, {
+  const res = await dataPrimaryNetworkUtxosListByAddresses(avaCloudSDK, {
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     blockchainId: "p-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataPrimaryNetworkUtxosListByAddresses failed:", res.error);
   }
 }
 

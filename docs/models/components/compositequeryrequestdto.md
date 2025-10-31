@@ -9,12 +9,13 @@ let value: CompositeQueryRequestDto = {
   queries: [
     {
       id: "<id>",
-      type: "AnyTimeNativeBalance",
+      type: "AnyTimeErc20Balance",
       params: {
         firstDate: "<value>",
         lastDate: "<value>",
         minBalance: "<value>",
         evmChainId: "<id>",
+        contractAddress: "<value>",
       },
     },
   ],

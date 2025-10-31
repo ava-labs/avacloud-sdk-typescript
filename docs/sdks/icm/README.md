@@ -5,13 +5,13 @@
 
 ### Available Operations
 
-* [getIcmMessage](#geticmmessage) - Get an ICM message
-* [listIcmMessages](#listicmmessages) - List ICM messages
-* [listIcmMessagesByAddress](#listicmmessagesbyaddress) - List ICM messages by address
+* [get](#get) - Get an ICM message
+* [list](#list) - List ICM messages
+* [listByAddress](#listbyaddress) - List ICM messages by address
 
-## getIcmMessage
+## get
 
-Gets an ICM message by message ID.
+Gets an ICM message by teleporter message ID.
 
 ### Example Usage
 
@@ -20,16 +20,13 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.icm.getIcmMessage({
+  const result = await avaCloudSDK.data.icm.get({
     messageId: "acf1c8b06f9aec48e9fcbefbbe576ae8a7ca3b327fcae111396e7cc99956674d",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -42,29 +39,24 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataIcmGetIcmMessage } from "@avalabs/avacloud-sdk/funcs/dataIcmGetIcmMessage.js";
+import { dataIcmGet } from "@avalabs/avacloud-sdk/funcs/dataIcmGet.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const res = await dataIcmGetIcmMessage(avaCloudSDK, {
+  const res = await dataIcmGet(avaCloudSDK, {
     messageId: "acf1c8b06f9aec48e9fcbefbbe576ae8a7ca3b327fcae111396e7cc99956674d",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataIcmGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -98,7 +90,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listIcmMessages
+## list
 
 Lists ICM messages. Ordered by timestamp in descending order.
 
@@ -109,12 +101,10 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.icm.listIcmMessages({
+  const result = await avaCloudSDK.data.icm.list({
     sourceBlockchainId: "2D8RG4UpSXbPbvPCAWppNJyqTG2i2CAXSkTgmTBBvs7GKNZjsY",
     destinationBlockchainId: "yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp",
     to: "0x664A4Be5Af2cFc824F9C0914CbAc4703396Da2DC",
@@ -123,7 +113,6 @@ async function run() {
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -137,34 +126,29 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataIcmListIcmMessages } from "@avalabs/avacloud-sdk/funcs/dataIcmListIcmMessages.js";
+import { dataIcmList } from "@avalabs/avacloud-sdk/funcs/dataIcmList.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const res = await dataIcmListIcmMessages(avaCloudSDK, {
+  const res = await dataIcmList(avaCloudSDK, {
     sourceBlockchainId: "2D8RG4UpSXbPbvPCAWppNJyqTG2i2CAXSkTgmTBBvs7GKNZjsY",
     destinationBlockchainId: "yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp",
     to: "0x664A4Be5Af2cFc824F9C0914CbAc4703396Da2DC",
     from: "0x321eDA69247566D662178feE695C7026c604Cd94",
     network: "mainnet",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataIcmList failed:", res.error);
   }
 }
 
@@ -199,7 +183,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listIcmMessagesByAddress
+## listByAddress
 
 Lists ICM messages by address. Ordered by timestamp in descending order.
 
@@ -210,17 +194,14 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.icm.listIcmMessagesByAddress({
+  const result = await avaCloudSDK.data.icm.listByAddress({
     address: "0x8578AE7723751446B196bD5124e1bF57B40EB7Bc",
     network: "mainnet",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -233,30 +214,25 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataIcmListIcmMessagesByAddress } from "@avalabs/avacloud-sdk/funcs/dataIcmListIcmMessagesByAddress.js";
+import { dataIcmListByAddress } from "@avalabs/avacloud-sdk/funcs/dataIcmListByAddress.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const res = await dataIcmListIcmMessagesByAddress(avaCloudSDK, {
+  const res = await dataIcmListByAddress(avaCloudSDK, {
     address: "0x8578AE7723751446B196bD5124e1bF57B40EB7Bc",
     network: "mainnet",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataIcmListByAddress failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

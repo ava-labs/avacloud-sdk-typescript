@@ -5,6 +5,7 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const DeactivateWebhookServerList = [
@@ -17,6 +18,14 @@ export type DeactivateWebhookRequest = {
    */
   id: string;
 };
+
+/**
+ * Successful response
+ */
+export type DeactivateWebhookResponseBody =
+  | components.EVMAddressActivityResponse
+  | components.PrimaryNetworkAddressActivityResponse
+  | components.ValidatorActivityResponse;
 
 /** @internal */
 export const DeactivateWebhookRequest$inboundSchema: z.ZodType<
@@ -69,5 +78,66 @@ export function deactivateWebhookRequestFromJSON(
     jsonString,
     (x) => DeactivateWebhookRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'DeactivateWebhookRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const DeactivateWebhookResponseBody$inboundSchema: z.ZodType<
+  DeactivateWebhookResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  components.EVMAddressActivityResponse$inboundSchema,
+  components.PrimaryNetworkAddressActivityResponse$inboundSchema,
+  components.ValidatorActivityResponse$inboundSchema,
+]);
+
+/** @internal */
+export type DeactivateWebhookResponseBody$Outbound =
+  | components.EVMAddressActivityResponse$Outbound
+  | components.PrimaryNetworkAddressActivityResponse$Outbound
+  | components.ValidatorActivityResponse$Outbound;
+
+/** @internal */
+export const DeactivateWebhookResponseBody$outboundSchema: z.ZodType<
+  DeactivateWebhookResponseBody$Outbound,
+  z.ZodTypeDef,
+  DeactivateWebhookResponseBody
+> = z.union([
+  components.EVMAddressActivityResponse$outboundSchema,
+  components.PrimaryNetworkAddressActivityResponse$outboundSchema,
+  components.ValidatorActivityResponse$outboundSchema,
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DeactivateWebhookResponseBody$ {
+  /** @deprecated use `DeactivateWebhookResponseBody$inboundSchema` instead. */
+  export const inboundSchema = DeactivateWebhookResponseBody$inboundSchema;
+  /** @deprecated use `DeactivateWebhookResponseBody$outboundSchema` instead. */
+  export const outboundSchema = DeactivateWebhookResponseBody$outboundSchema;
+  /** @deprecated use `DeactivateWebhookResponseBody$Outbound` instead. */
+  export type Outbound = DeactivateWebhookResponseBody$Outbound;
+}
+
+export function deactivateWebhookResponseBodyToJSON(
+  deactivateWebhookResponseBody: DeactivateWebhookResponseBody,
+): string {
+  return JSON.stringify(
+    DeactivateWebhookResponseBody$outboundSchema.parse(
+      deactivateWebhookResponseBody,
+    ),
+  );
+}
+
+export function deactivateWebhookResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<DeactivateWebhookResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeactivateWebhookResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeactivateWebhookResponseBody' from JSON`,
   );
 }

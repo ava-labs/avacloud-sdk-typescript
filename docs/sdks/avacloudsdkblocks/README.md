@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [getBlockById](#getblockbyid) - Get block
-* [listPrimaryNetworkBlocksByNodeId](#listprimarynetworkblocksbynodeid) - List blocks proposed by node
-* [listLatestPrimaryNetworkBlocks](#listlatestprimarynetworkblocks) - List latest blocks
+* [get](#get) - Get block
+* [listByNodeId](#listbynodeid) - List blocks proposed by node
+* [listLatest](#listlatest) - List latest blocks
 
-## getBlockById
+## get
 
 Gets a block by block height or block hash on one of the Primary Network chains.
 
@@ -20,18 +20,15 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.blocks.getBlockById({
+  const result = await avaCloudSDK.data.primaryNetwork.blocks.get({
     blockchainId: "p-chain",
-    network: "mainnet",
     blockId: "5615di9ytxujackzaXNrVuWQy5y8Yrt8chPCscMr5Ku9YxJ1S",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -44,31 +41,26 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkBlocksGetBlockById } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksGetBlockById.js";
+import { dataPrimaryNetworkBlocksGet } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksGet.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkBlocksGetBlockById(avaCloudSDK, {
+  const res = await dataPrimaryNetworkBlocksGet(avaCloudSDK, {
     blockchainId: "p-chain",
-    network: "mainnet",
     blockId: "5615di9ytxujackzaXNrVuWQy5y8Yrt8chPCscMr5Ku9YxJ1S",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataPrimaryNetworkBlocksGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -102,7 +94,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listPrimaryNetworkBlocksByNodeId
+## listByNodeId
 
 Lists the latest blocks proposed by a given NodeID on one of the Primary Network chains.
 
@@ -113,21 +105,18 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.blocks.listPrimaryNetworkBlocksByNodeId({
+  const result = await avaCloudSDK.data.primaryNetwork.blocks.listByNodeId({
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
-    network: "mainnet",
     nodeId: "NodeID-111111111111111111116DBWJs",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -141,34 +130,29 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId.js";
+import { dataPrimaryNetworkBlocksListByNodeId } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksListByNodeId.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkBlocksListPrimaryNetworkBlocksByNodeId(avaCloudSDK, {
+  const res = await dataPrimaryNetworkBlocksListByNodeId(avaCloudSDK, {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
-    network: "mainnet",
     nodeId: "NodeID-111111111111111111116DBWJs",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataPrimaryNetworkBlocksListByNodeId failed:", res.error);
   }
 }
 
@@ -203,7 +187,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listLatestPrimaryNetworkBlocks
+## listLatest
 
 Lists latest blocks on one of the Primary Network chains.
 
@@ -214,20 +198,17 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.blocks.listLatestPrimaryNetworkBlocks({
+  const result = await avaCloudSDK.data.primaryNetwork.blocks.listLatest({
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
-    network: "mainnet",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -241,33 +222,28 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks.js";
+import { dataPrimaryNetworkBlocksListLatest } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkBlocksListLatest.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkBlocksListLatestPrimaryNetworkBlocks(avaCloudSDK, {
+  const res = await dataPrimaryNetworkBlocksListLatest(avaCloudSDK, {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
-    network: "mainnet",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataPrimaryNetworkBlocksListLatest failed:", res.error);
   }
 }
 

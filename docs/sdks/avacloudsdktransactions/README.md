@@ -5,12 +5,12 @@
 
 ### Available Operations
 
-* [getTxByHash](#gettxbyhash) - Get transaction
-* [listLatestPrimaryNetworkTransactions](#listlatestprimarynetworktransactions) - List latest transactions
-* [listActivePrimaryNetworkStakingTransactions](#listactiveprimarynetworkstakingtransactions) - List staking transactions
+* [get](#get) - Get transaction
+* [listLatest](#listlatest) - List latest transactions
+* [listActiveStakingTransactions](#listactivestakingtransactions) - List staking transactions
 * [listAssetTransactions](#listassettransactions) - List asset transactions
 
-## getTxByHash
+## get
 
 Gets the details of a single transaction on one of the Primary Network chains.
 
@@ -21,18 +21,15 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.transactions.getTxByHash({
+  const result = await avaCloudSDK.data.primaryNetwork.transactions.get({
     blockchainId: "p-chain",
-    network: "mainnet",
     txHash: "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -45,31 +42,26 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkTransactionsGetTxByHash } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkTransactionsGetTxByHash.js";
+import { dataPrimaryNetworkTransactionsGet } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkTransactionsGet.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkTransactionsGetTxByHash(avaCloudSDK, {
+  const res = await dataPrimaryNetworkTransactionsGet(avaCloudSDK, {
     blockchainId: "p-chain",
-    network: "mainnet",
     txHash: "3P91K6nuDFvDodcRuJTsgdf9SvYe5pMiKk38HppsoeAiEztCP",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataPrimaryNetworkTransactionsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -103,7 +95,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listLatestPrimaryNetworkTransactions
+## listLatest
 
 Lists the latest transactions on one of the Primary Network chains.
 
@@ -120,12 +112,11 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.transactions.listLatestPrimaryNetworkTransactions({
+  const result = await avaCloudSDK.data.primaryNetwork.transactions.listLatest({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     txTypes: [
       "AddValidatorTx",
@@ -133,12 +124,10 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -152,18 +141,17 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions.js";
+import { dataPrimaryNetworkTransactionsListLatest } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkTransactionsListLatest.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkTransactionsListLatestPrimaryNetworkTransactions(avaCloudSDK, {
+  const res = await dataPrimaryNetworkTransactionsListLatest(avaCloudSDK, {
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     txTypes: [
       "AddValidatorTx",
@@ -171,19 +159,15 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataPrimaryNetworkTransactionsListLatest failed:", res.error);
   }
 }
 
@@ -218,7 +202,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listActivePrimaryNetworkStakingTransactions
+## listActiveStakingTransactions
 
 Lists active staking transactions on the P-Chain for the supplied addresses.
 
@@ -229,12 +213,11 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.primaryNetwork.transactions.listActivePrimaryNetworkStakingTransactions({
+  const result = await avaCloudSDK.data.primaryNetwork.transactions.listActiveStakingTransactions({
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     txTypes: [
       "AddValidatorTx",
@@ -242,12 +225,10 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -261,18 +242,17 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions.js";
+import { dataPrimaryNetworkTransactionsListActiveStakingTransactions } from "@avalabs/avacloud-sdk/funcs/dataPrimaryNetworkTransactionsListActiveStakingTransactions.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const res = await dataPrimaryNetworkTransactionsListActivePrimaryNetworkStakingTransactions(avaCloudSDK, {
+  const res = await dataPrimaryNetworkTransactionsListActiveStakingTransactions(avaCloudSDK, {
     addresses: "avax1h2ccj9f5ay5acl6tyn9mwmw32p8wref8vl8ctg",
     txTypes: [
       "AddValidatorTx",
@@ -280,19 +260,15 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "p-chain",
-    network: "mainnet",
     sortOrder: "asc",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataPrimaryNetworkTransactionsListActiveStakingTransactions failed:", res.error);
   }
 }
 
@@ -338,7 +314,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
@@ -350,12 +325,10 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "x-chain",
-    network: "mainnet",
     assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -375,7 +348,6 @@ import { dataPrimaryNetworkTransactionsListAssetTransactions } from "@avalabs/av
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
   network: "mainnet",
 });
 
@@ -387,19 +359,15 @@ async function run() {
     startTimestamp: 1689541049,
     endTimestamp: 1689800249,
     blockchainId: "x-chain",
-    network: "mainnet",
     assetId: "th5aLdWLi32yS9ED6uLGoMMubqHjzMsXhKWwzP6yZTYQKYzof",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataPrimaryNetworkTransactionsListAssetTransactions failed:", res.error);
   }
 }
 

@@ -10,15 +10,12 @@ let value: ListTokensResponse = {
     tokens: [
       {
         address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-        name: "Wrapped AVAX",
-        symbol: "WAVAX",
-        ercType: "ERC-721",
+        ercType: "ERC-1155",
         tokenId: "<id>",
-        tokenUri: "https://meaty-following.net/",
+        tokenUri: "https://babyish-volleyball.info",
         metadata: {
-          indexStatus: "UNKNOWN",
+          indexStatus: "INVALID_METADATA",
         },
-        ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
       },
     ],
   },

@@ -13,7 +13,7 @@ const args = {
 export const tool$dataEvmChainsListAllLatestTransactions: ToolDefinition<
   typeof args
 > = {
-  name: "data-evm-chains_list-all-latest-transactions",
+  name: "data-evm-chains-list-all-latest-transactions",
   description:
     `**[Deprecated]** Lists the latest transactions for all supported EVM chains. Filterable by status.
 

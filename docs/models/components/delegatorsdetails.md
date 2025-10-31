@@ -6,7 +6,7 @@
 import { DelegatorsDetails } from "@avalabs/avacloud-sdk/models/components";
 
 let value: DelegatorsDetails = {
-  delegatorCount: 2748.23,
+  delegatorCount: 7517.48,
   totalAmountStaked: "<value>",
 };
 ```

@@ -7,20 +7,14 @@ import { GetNetworkDetailsResponse } from "@avalabs/avacloud-sdk/models/componen
 
 let value: GetNetworkDetailsResponse = {
   validatorDetails: {
-    validatorCount: 8953.86,
+    validatorCount: 5215.83,
     totalAmountStaked: "<value>",
     estimatedAnnualStakingReward: "<value>",
-    stakingDistributionByVersion: [
-      {
-        version: "<value>",
-        amountStaked: "<value>",
-        validatorCount: 9677.95,
-      },
-    ],
+    stakingDistributionByVersion: [],
     stakingRatio: "<value>",
   },
   delegatorDetails: {
-    delegatorCount: 5468.85,
+    delegatorCount: 4840.59,
     totalAmountStaked: "<value>",
   },
 };

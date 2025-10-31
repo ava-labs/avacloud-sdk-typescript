@@ -15,13 +15,7 @@ let value: EVMInput = {
     type: "nft",
     amount: "5001000",
   },
-  credentials: [
-    {
-      signature:
-        "bWWoZUu0Z3STjuk/+2az7M4vP0oqc9NtiA7kOdqINCIE/2+5va5R1KNCWwEX5jE1xVHLvAxU2LHTN5gK8m84HwA",
-      publicKey: "AdMQOtubgBFFJu++0faHPIIA6KmdZ2ERErMRGzyy6juI",
-    },
-  ],
+  credentials: [],
 };
 ```
 

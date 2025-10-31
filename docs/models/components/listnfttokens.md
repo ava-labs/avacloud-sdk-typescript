@@ -9,12 +9,15 @@ let value: ListNftTokens = {
   tokens: [
     {
       address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-      ercType: "ERC-1155",
+      name: "Wrapped AVAX",
+      symbol: "WAVAX",
+      ercType: "ERC-721",
       tokenId: "<id>",
-      tokenUri: "https://yellow-digit.com/",
+      tokenUri: "https://gracious-reservation.biz/",
       metadata: {
-        indexStatus: "UNINDEXED",
+        indexStatus: "THROTTLED_TOKEN_URI",
       },
+      ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
     },
   ],
 };

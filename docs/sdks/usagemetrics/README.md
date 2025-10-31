@@ -5,14 +5,14 @@
 
 ### Available Operations
 
-* [getApiUsageMetrics](#getapiusagemetrics) - Get usage metrics for the Data API
-* [getApiLogs](#getapilogs) - Get logs for requests made by client
-* [getSubnetRpcUsageMetrics](#getsubnetrpcusagemetrics) - Get usage metrics for the Subnet RPC
+* [getUsage](#getusage) - Get usage metrics for the Data API
+* [getLogs](#getlogs) - Get logs for requests made by client
+* [getSubnetRpcUsage](#getsubnetrpcusage) - Get usage metrics for the Subnet RPC
 * [~~getRpcUsageMetrics~~](#getrpcusagemetrics) - **[Deprecated]**  Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
 
 ⚠️ **This operation will be removed in a future release.  Please use /v1/subnetRpcUsageMetrics endpoint instead**. :warning: **Deprecated**
 
-## getApiUsageMetrics
+## getUsage
 
 Gets metrics for Data API usage over a specified time interval aggregated at the specified time-duration granularity.
 
@@ -23,19 +23,16 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.usageMetrics.getApiUsageMetrics({
+  const result = await avaCloudSDK.data.usageMetrics.getUsage({
     startTimestamp: 1739507200,
     endTimestamp: 1739664000,
     timeInterval: "daily",
     groupBy: "requestPath",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -48,32 +45,27 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataUsageMetricsGetApiUsageMetrics } from "@avalabs/avacloud-sdk/funcs/dataUsageMetricsGetApiUsageMetrics.js";
+import { dataUsageMetricsGetUsage } from "@avalabs/avacloud-sdk/funcs/dataUsageMetricsGetUsage.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const res = await dataUsageMetricsGetApiUsageMetrics(avaCloudSDK, {
+  const res = await dataUsageMetricsGetUsage(avaCloudSDK, {
     startTimestamp: 1739507200,
     endTimestamp: 1739664000,
     timeInterval: "daily",
     groupBy: "requestPath",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataUsageMetricsGetUsage failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -107,7 +99,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## getApiLogs
+## getLogs
 
 Gets logs for requests made by client over a specified time interval for a specific organization.
 
@@ -118,18 +110,15 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.usageMetrics.getApiLogs({
+  const result = await avaCloudSDK.data.usageMetrics.getLogs({
     startTimestamp: 1739507200,
     endTimestamp: 1739664000,
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -143,31 +132,26 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataUsageMetricsGetApiLogs } from "@avalabs/avacloud-sdk/funcs/dataUsageMetricsGetApiLogs.js";
+import { dataUsageMetricsGetLogs } from "@avalabs/avacloud-sdk/funcs/dataUsageMetricsGetLogs.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const res = await dataUsageMetricsGetApiLogs(avaCloudSDK, {
+  const res = await dataUsageMetricsGetLogs(avaCloudSDK, {
     startTimestamp: 1739507200,
     endTimestamp: 1739664000,
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataUsageMetricsGetLogs failed:", res.error);
   }
 }
 
@@ -202,7 +186,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## getSubnetRpcUsageMetrics
+## getSubnetRpcUsage
 
 Gets metrics for public Subnet RPC usage over a specified time interval aggregated at the specified time-duration granularity.
 
@@ -213,19 +197,16 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.usageMetrics.getSubnetRpcUsageMetrics({
+  const result = await avaCloudSDK.data.usageMetrics.getSubnetRpcUsage({
     timeInterval: "daily",
     startTimestamp: 1739507200,
     endTimestamp: 1739664000,
     groupBy: "rpcMethod",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -238,32 +219,27 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataUsageMetricsGetSubnetRpcUsageMetrics } from "@avalabs/avacloud-sdk/funcs/dataUsageMetricsGetSubnetRpcUsageMetrics.js";
+import { dataUsageMetricsGetSubnetRpcUsage } from "@avalabs/avacloud-sdk/funcs/dataUsageMetricsGetSubnetRpcUsage.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const res = await dataUsageMetricsGetSubnetRpcUsageMetrics(avaCloudSDK, {
+  const res = await dataUsageMetricsGetSubnetRpcUsage(avaCloudSDK, {
     timeInterval: "daily",
     startTimestamp: 1739507200,
     endTimestamp: 1739664000,
     groupBy: "rpcMethod",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataUsageMetricsGetSubnetRpcUsage failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -312,8 +288,6 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -324,7 +298,6 @@ async function run() {
     groupBy: "rpcMethod",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -343,8 +316,6 @@ import { dataUsageMetricsGetRpcUsageMetrics } from "@avalabs/avacloud-sdk/funcs/
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
@@ -354,15 +325,12 @@ async function run() {
     endTimestamp: 1739664000,
     groupBy: "rpcMethod",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataUsageMetricsGetRpcUsageMetrics failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

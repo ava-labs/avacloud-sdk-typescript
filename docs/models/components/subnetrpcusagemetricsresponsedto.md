@@ -9,17 +9,17 @@ let value: SubnetRpcUsageMetricsResponseDTO = {
   aggregateDuration: "<value>",
   metrics: [
     {
-      timestamp: 997.33,
+      timestamp: 9703.82,
       values: [
         {
-          totalRequests: 4755.89,
-          apiCreditsUsed: 8200.23,
-          requestsPerSecond: 2981.87,
-          successRatePercent: 1509.35,
-          medianResponseTimeMsecs: 3302.67,
-          invalidRequests: 8138.8,
-          apiCreditsWasted: 1403.84,
-          groupedBy: "responseCode",
+          totalRequests: 3314.38,
+          apiCreditsUsed: 1605.69,
+          requestsPerSecond: 666.46,
+          successRatePercent: 8157.7,
+          medianResponseTimeMsecs: 5283.35,
+          invalidRequests: 2407.59,
+          apiCreditsWasted: 6937.55,
+          groupedBy: "continent",
         },
       ],
     },

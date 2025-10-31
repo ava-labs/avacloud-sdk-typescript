@@ -7,26 +7,7 @@ import { LogsResponseDTO } from "@avalabs/avacloud-sdk/models/components";
 
 let value: LogsResponseDTO = {
   orgId: "<id>",
-  logs: [
-    {
-      orgId: "<id>",
-      logId: "<id>",
-      eventTimestamp: 1124.27,
-      apiKeyId: "<id>",
-      apiKeyAlias: "<value>",
-      hostRegion: "<value>",
-      requestType: "data",
-      requestPath: "<value>",
-      apiCreditsConsumed: 1830.33,
-      requestDurationMsecs: 4030.26,
-      responseCode: 7452.33,
-      metadata: {
-        ipAddress: "a091:4e4c:b3d2:aeba:e16f:932b:ada9:8bda",
-        host: "accurate-populist.org",
-        userAgent: "<value>",
-      },
-    },
-  ],
+  logs: [],
 };
 ```
 

@@ -5,7 +5,8 @@
 ```typescript
 import { PrimaryNetworkOperationType } from "@avalabs/avacloud-sdk/models/components";
 
-let value: PrimaryNetworkOperationType = "TRANSACTION_EXPORT_PRIMARY_NETWORK";
+let value: PrimaryNetworkOperationType =
+  "TRANSACTION_EXPORT_PRIMARY_NETWORK_SIMPLE";
 ```
 
 ## Values

@@ -6,9 +6,7 @@
 import { EvmNetworkOptions } from "@avalabs/avacloud-sdk/models/components";
 
 let value: EvmNetworkOptions = {
-  addresses: [
-    "<value>",
-  ],
+  addresses: [],
   includeChains: [
     "43114",
   ],

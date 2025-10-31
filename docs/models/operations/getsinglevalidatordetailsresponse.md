@@ -7,17 +7,7 @@ import { GetSingleValidatorDetailsResponse } from "@avalabs/avacloud-sdk/models/
 
 let value: GetSingleValidatorDetailsResponse = {
   result: {
-    validators: [
-      {
-        txHash: "<value>",
-        nodeId: "<id>",
-        subnetId: "<id>",
-        amountStaked: "<value>",
-        startTimestamp: 3884.04,
-        endTimestamp: 4862.72,
-        validationStatus: "pending",
-      },
-    ],
+    validators: [],
   },
 };
 ```

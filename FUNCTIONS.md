@@ -20,41 +20,22 @@ specific category of applications.
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { metricsHealthCheckMetricsHealthCheck } from "@avalabs/avacloud-sdk/funcs/metricsHealthCheckMetricsHealthCheck.js";
-import { SDKValidationError } from "@avalabs/avacloud-sdk/models/errors/sdkvalidationerror.js";
+import { metricsHealthCheck } from "@avalabs/avacloud-sdk/funcs/metricsHealthCheck.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const res = await metricsHealthCheckMetricsHealthCheck(avaCloudSDK);
-
-  switch (true) {
-    case res.ok:
-      // The success case will be handled outside of the switch block
-      break;
-    case res.error instanceof SDKValidationError:
-      // Pretty-print validation errors.
-      return console.log(res.error.pretty());
-    case res.error instanceof Error:
-      return console.log(res.error);
-    default:
-      // TypeScript's type checking will fail on the following line if the above
-      // cases were not exhaustive.
-      res.error satisfies never;
-      throw new Error("Assertion failed: expected error checks to be exhaustive: " + res.error);
+  const res = await metricsHealthCheck(avaCloudSDK);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("metricsHealthCheck failed:", res.error);
   }
-
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

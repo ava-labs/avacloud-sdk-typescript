@@ -3,16 +3,24 @@
 
 ## Supported Types
 
+### `components.Erc20Contract`
+
+```typescript
+const value: components.Erc20Contract = {
+  name: "Wrapped AVAX",
+  address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+  ercType: "ERC-20",
+  symbol: "WAVAX",
+  decimals: 18,
+};
+```
+
 ### `components.Erc721Contract`
 
 ```typescript
 const value: components.Erc721Contract = {
   name: "Wrapped AVAX",
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-  deploymentDetails: {
-    txHash: "<value>",
-    deployerAddress: "<value>",
-  },
   ercType: "ERC-721",
   symbol: "WAVAX",
 };
@@ -24,28 +32,8 @@ const value: components.Erc721Contract = {
 const value: components.Erc1155Contract = {
   name: "Wrapped AVAX",
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-  deploymentDetails: {
-    txHash: "<value>",
-    deployerAddress: "<value>",
-  },
   ercType: "ERC-1155",
   symbol: "WAVAX",
-};
-```
-
-### `components.Erc20Contract`
-
-```typescript
-const value: components.Erc20Contract = {
-  name: "Wrapped AVAX",
-  address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-  deploymentDetails: {
-    txHash: "<value>",
-    deployerAddress: "<value>",
-  },
-  ercType: "ERC-20",
-  symbol: "WAVAX",
-  decimals: 18,
 };
 ```
 
@@ -55,10 +43,6 @@ const value: components.Erc20Contract = {
 const value: components.UnknownContract = {
   name: "Wrapped AVAX",
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-  deploymentDetails: {
-    txHash: "<value>",
-    deployerAddress: "<value>",
-  },
   ercType: "UNKNOWN",
 };
 ```

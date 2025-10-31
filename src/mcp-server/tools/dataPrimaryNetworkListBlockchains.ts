@@ -13,7 +13,7 @@ const args = {
 export const tool$dataPrimaryNetworkListBlockchains: ToolDefinition<
   typeof args
 > = {
-  name: "data-primary-network_list-blockchains",
+  name: "data-primary-network-list-blockchains",
   description: `List blockchains
 
 Lists all blockchains registered on the network.`,

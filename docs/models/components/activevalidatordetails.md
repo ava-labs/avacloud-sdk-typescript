@@ -10,22 +10,23 @@ let value: ActiveValidatorDetails = {
   nodeId: "<id>",
   subnetId: "<id>",
   amountStaked: "<value>",
-  startTimestamp: 5305.37,
-  endTimestamp: 9221.12,
-  stakePercentage: 894.94,
-  delegatorCount: 4059.42,
-  uptimePerformance: 243.13,
+  startTimestamp: 9332.67,
+  endTimestamp: 6572.88,
+  stakePercentage: 6001.77,
+  delegatorCount: 5325.15,
+  uptimePerformance: 1851.65,
   potentialRewards: {
     validationRewardAmount: "<value>",
     delegationRewardAmount: "<value>",
   },
   validationStatus: "active",
   validatorHealth: {
-    reachabilityPercent: 3426.11,
-    benchedPChainRequestsPercent: 6222.31,
-    benchedXChainRequestsPercent: 2790.68,
-    benchedCChainRequestsPercent: 2097.5,
+    reachabilityPercent: 566.69,
+    benchedPChainRequestsPercent: 5374.7,
+    benchedXChainRequestsPercent: 3074.95,
+    benchedCChainRequestsPercent: 4408.25,
   },
+  geolocation: null,
 };
 ```
 
@@ -50,3 +51,4 @@ let value: ActiveValidatorDetails = {
 | `potentialRewards`                                                                                                     | [components.Rewards](../../models/components/rewards.md)                                                               | :heavy_check_mark:                                                                                                     | Estimated rewards for the validator if the validation is successful.                                                   |
 | `validationStatus`                                                                                                     | [components.ActiveValidatorDetailsValidationStatus](../../models/components/activevalidatordetailsvalidationstatus.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
 | `validatorHealth`                                                                                                      | [components.ValidatorHealthDetails](../../models/components/validatorhealthdetails.md)                                 | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `geolocation`                                                                                                          | [components.Geolocation](../../models/components/geolocation.md)                                                       | :heavy_check_mark:                                                                                                     | The geographical location of the validator node, if available.                                                         |

@@ -7,9 +7,63 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * The genesis data of the blockchain.  Present for CreateChainTx. EVM based chains will return the genesis data as an object. Non-EVM based chains will return the genesis data as an encoded string. The encoding depends on the VM
+ */
+export type GenesisData = {};
+
 export type BlockchainInfo = {
-  blockchainId: string;
+  chainName: string;
+  vmId: string;
+  /**
+   * The genesis data of the blockchain.  Present for CreateChainTx. EVM based chains will return the genesis data as an object. Non-EVM based chains will return the genesis data as an encoded string. The encoding depends on the VM
+   */
+  genesisData?: GenesisData | undefined;
 };
+
+/** @internal */
+export const GenesisData$inboundSchema: z.ZodType<
+  GenesisData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type GenesisData$Outbound = {};
+
+/** @internal */
+export const GenesisData$outboundSchema: z.ZodType<
+  GenesisData$Outbound,
+  z.ZodTypeDef,
+  GenesisData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GenesisData$ {
+  /** @deprecated use `GenesisData$inboundSchema` instead. */
+  export const inboundSchema = GenesisData$inboundSchema;
+  /** @deprecated use `GenesisData$outboundSchema` instead. */
+  export const outboundSchema = GenesisData$outboundSchema;
+  /** @deprecated use `GenesisData$Outbound` instead. */
+  export type Outbound = GenesisData$Outbound;
+}
+
+export function genesisDataToJSON(genesisData: GenesisData): string {
+  return JSON.stringify(GenesisData$outboundSchema.parse(genesisData));
+}
+
+export function genesisDataFromJSON(
+  jsonString: string,
+): SafeParseResult<GenesisData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GenesisData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GenesisData' from JSON`,
+  );
+}
 
 /** @internal */
 export const BlockchainInfo$inboundSchema: z.ZodType<
@@ -17,12 +71,16 @@ export const BlockchainInfo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  blockchainId: z.string(),
+  chainName: z.string(),
+  vmId: z.string(),
+  genesisData: z.lazy(() => GenesisData$inboundSchema).optional(),
 });
 
 /** @internal */
 export type BlockchainInfo$Outbound = {
-  blockchainId: string;
+  chainName: string;
+  vmId: string;
+  genesisData?: GenesisData$Outbound | undefined;
 };
 
 /** @internal */
@@ -31,7 +89,9 @@ export const BlockchainInfo$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BlockchainInfo
 > = z.object({
-  blockchainId: z.string(),
+  chainName: z.string(),
+  vmId: z.string(),
+  genesisData: z.lazy(() => GenesisData$outboundSchema).optional(),
 });
 
 /**

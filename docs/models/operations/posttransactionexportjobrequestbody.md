@@ -12,7 +12,9 @@ const value: components.CreateEvmTransactionExportRequest = {
   lastDate: "2023-05-02",
   options: {
     addresses: [
-      "<value>",
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
     ],
     includeChains: [
       "43114",
@@ -25,7 +27,7 @@ const value: components.CreateEvmTransactionExportRequest = {
 
 ```typescript
 const value: components.CreatePrimaryNetworkTransactionExportRequest = {
-  type: "TRANSACTION_EXPORT_PRIMARY_NETWORK",
+  type: "TRANSACTION_EXPORT_PRIMARY_NETWORK_SIMPLE",
   firstDate: "2023-05-01",
   lastDate: "2023-05-02",
   options: {

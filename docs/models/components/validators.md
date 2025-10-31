@@ -11,36 +11,23 @@ const value: components.ActiveValidatorDetails = {
   nodeId: "<id>",
   subnetId: "<id>",
   amountStaked: "<value>",
-  startTimestamp: 5249.7,
-  endTimestamp: 7505.95,
-  stakePercentage: 3335.07,
-  delegatorCount: 9241.59,
-  uptimePerformance: 8623.19,
+  startTimestamp: 9332.67,
+  endTimestamp: 6572.88,
+  stakePercentage: 6001.77,
+  delegatorCount: 5325.15,
+  uptimePerformance: 1851.65,
   potentialRewards: {
     validationRewardAmount: "<value>",
     delegationRewardAmount: "<value>",
   },
   validationStatus: "active",
   validatorHealth: {
-    reachabilityPercent: 486.9,
-    benchedPChainRequestsPercent: 2536.42,
-    benchedXChainRequestsPercent: 4461.35,
-    benchedCChainRequestsPercent: 1046.27,
+    reachabilityPercent: 566.69,
+    benchedPChainRequestsPercent: 5374.7,
+    benchedXChainRequestsPercent: 3074.95,
+    benchedCChainRequestsPercent: 4408.25,
   },
-};
-```
-
-### `components.PendingValidatorDetails`
-
-```typescript
-const value: components.PendingValidatorDetails = {
-  txHash: "<value>",
-  nodeId: "<id>",
-  subnetId: "<id>",
-  amountStaked: "<value>",
-  startTimestamp: 3484.76,
-  endTimestamp: 7400.98,
-  validationStatus: "pending",
+  geolocation: null,
 };
 ```
 
@@ -52,9 +39,9 @@ const value: components.CompletedValidatorDetails = {
   nodeId: "<id>",
   subnetId: "<id>",
   amountStaked: "<value>",
-  startTimestamp: 6805.15,
-  endTimestamp: 6223.85,
-  delegatorCount: 7105.29,
+  startTimestamp: 5378.27,
+  endTimestamp: 6683.55,
+  delegatorCount: 7443.98,
   rewards: {
     validationRewardAmount: "<value>",
     delegationRewardAmount: "<value>",
@@ -71,11 +58,25 @@ const value: components.RemovedValidatorDetails = {
   nodeId: "<id>",
   subnetId: "<id>",
   amountStaked: "<value>",
-  startTimestamp: 2049.23,
-  endTimestamp: 3416.98,
+  startTimestamp: 1722.34,
+  endTimestamp: 1657.27,
   removeTxHash: "<value>",
-  removeTimestamp: 6762.43,
+  removeTimestamp: 3786.23,
   validationStatus: "removed",
+};
+```
+
+### `components.PendingValidatorDetails`
+
+```typescript
+const value: components.PendingValidatorDetails = {
+  txHash: "<value>",
+  nodeId: "<id>",
+  subnetId: "<id>",
+  amountStaked: "<value>",
+  startTimestamp: 9843.29,
+  endTimestamp: 5112.58,
+  validationStatus: "pending",
 };
 ```
 

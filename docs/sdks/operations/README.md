@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [getOperationResult](#getoperationresult) - Get operation
-* [postTransactionExportJob](#posttransactionexportjob) - Create transaction export operation
+* [getResult](#getresult) - Get operation
+* [exportTransactions](#exporttransactions) - Create transaction export operation
 
-## getOperationResult
+## getResult
 
 Gets operation details for the given operation id.
 
@@ -19,16 +19,13 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.operations.getOperationResult({
+  const result = await avaCloudSDK.data.operations.getResult({
     operationId: "aa22054a-cb7c-4a4e-9b83-59f2ede74138",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -41,29 +38,24 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataOperationsGetOperationResult } from "@avalabs/avacloud-sdk/funcs/dataOperationsGetOperationResult.js";
+import { dataOperationsGetResult } from "@avalabs/avacloud-sdk/funcs/dataOperationsGetResult.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const res = await dataOperationsGetOperationResult(avaCloudSDK, {
+  const res = await dataOperationsGetResult(avaCloudSDK, {
     operationId: "aa22054a-cb7c-4a4e-9b83-59f2ede74138",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataOperationsGetResult failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -97,7 +89,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## postTransactionExportJob
+## exportTransactions
 
 Trigger a transaction export operation with given parameters.
 
@@ -110,12 +102,10 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.operations.postTransactionExportJob({
+  const result = await avaCloudSDK.data.operations.exportTransactions({
     type: "TRANSACTION_EXPORT_PRIMARY_NETWORK_STAKING",
     firstDate: "2023-05-01",
     lastDate: "2023-05-02",
@@ -126,7 +116,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -139,18 +128,16 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataOperationsPostTransactionExportJob } from "@avalabs/avacloud-sdk/funcs/dataOperationsPostTransactionExportJob.js";
+import { dataOperationsExportTransactions } from "@avalabs/avacloud-sdk/funcs/dataOperationsExportTransactions.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
-  chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const res = await dataOperationsPostTransactionExportJob(avaCloudSDK, {
+  const res = await dataOperationsExportTransactions(avaCloudSDK, {
     type: "TRANSACTION_EXPORT_PRIMARY_NETWORK_STAKING",
     firstDate: "2023-05-01",
     lastDate: "2023-05-02",
@@ -160,15 +147,12 @@ async function run() {
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataOperationsExportTransactions failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

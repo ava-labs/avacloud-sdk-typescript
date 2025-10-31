@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [reindexNft](#reindexnft) - Reindex NFT metadata
-* [listTokens](#listtokens) - List tokens
-* [getTokenDetails](#gettokendetails) - Get token details
+* [reindex](#reindex) - Reindex NFT metadata
+* [list](#list) - List tokens
+* [get](#get) - Get token details
 
-## reindexNft
+## reindex
 
 Triggers reindexing of token metadata for an NFT token. Reindexing can only be called once per hour for each NFT token.
 
@@ -21,12 +21,10 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  await avaCloudSDK.data.nfts.reindexNft({
-    chainId: "43114",
+  await avaCloudSDK.data.nfts.reindex({
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
@@ -43,30 +41,26 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataNftsReindexNft } from "@avalabs/avacloud-sdk/funcs/dataNftsReindexNft.js";
+import { dataNftsReindex } from "@avalabs/avacloud-sdk/funcs/dataNftsReindex.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const res = await dataNftsReindexNft(avaCloudSDK, {
-    chainId: "43114",
+  const res = await dataNftsReindex(avaCloudSDK, {
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("dataNftsReindex failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -100,7 +94,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## listTokens
+## list
 
 Lists tokens for an NFT contract.
 
@@ -112,17 +106,14 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.nfts.listTokens({
-    chainId: "43114",
+  const result = await avaCloudSDK.data.nfts.list({
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
 
   for await (const page of result) {
-    // Handle the page
     console.log(page);
   }
 }
@@ -136,31 +127,26 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataNftsListTokens } from "@avalabs/avacloud-sdk/funcs/dataNftsListTokens.js";
+import { dataNftsList } from "@avalabs/avacloud-sdk/funcs/dataNftsList.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const res = await dataNftsListTokens(avaCloudSDK, {
-    chainId: "43114",
+  const res = await dataNftsList(avaCloudSDK, {
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
   });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  for await (const page of result) {
-    // Handle the page
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
     console.log(page);
+  }
+  } else {
+    console.log("dataNftsList failed:", res.error);
   }
 }
 
@@ -195,7 +181,7 @@ run();
 | errors.ServiceUnavailable  | 503                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## getTokenDetails
+## get
 
 Gets token details for a specific token of an NFT contract.
 
@@ -207,17 +193,14 @@ import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const avaCloudSDK = new AvaCloudSDK({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const result = await avaCloudSDK.data.nfts.getTokenDetails({
-    chainId: "43114",
+  const result = await avaCloudSDK.data.nfts.get({
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -230,31 +213,26 @@ The standalone function version of this method:
 
 ```typescript
 import { AvaCloudSDKCore } from "@avalabs/avacloud-sdk/core.js";
-import { dataNftsGetTokenDetails } from "@avalabs/avacloud-sdk/funcs/dataNftsGetTokenDetails.js";
+import { dataNftsGet } from "@avalabs/avacloud-sdk/funcs/dataNftsGet.js";
 
 // Use `AvaCloudSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const avaCloudSDK = new AvaCloudSDKCore({
   serverURL: "https://api.example.com",
   chainId: "43114",
-  network: "mainnet",
 });
 
 async function run() {
-  const res = await dataNftsGetTokenDetails(avaCloudSDK, {
-    chainId: "43114",
+  const res = await dataNftsGet(avaCloudSDK, {
     address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
     tokenId: "145",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataNftsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

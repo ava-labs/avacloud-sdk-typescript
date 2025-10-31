@@ -12,9 +12,9 @@ const value: components.Erc721Token = {
   symbol: "WAVAX",
   ercType: "ERC-721",
   tokenId: "<id>",
-  tokenUri: "https://haunting-solvency.org/",
+  tokenUri: "https://whopping-role.name/",
   metadata: {
-    indexStatus: "UNKNOWN",
+    indexStatus: "THROTTLED_TOKEN_URI",
   },
   ownerAddress: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
 };
@@ -27,9 +27,9 @@ const value: components.Erc1155Token = {
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   ercType: "ERC-1155",
   tokenId: "<id>",
-  tokenUri: "https://guilty-simple.org/",
+  tokenUri: "https://babyish-adult.name",
   metadata: {
-    indexStatus: "UNINDEXED",
+    indexStatus: "INVALID_METADATA",
   },
 };
 ```

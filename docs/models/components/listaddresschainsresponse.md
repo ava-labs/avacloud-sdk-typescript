@@ -11,9 +11,9 @@ let value: ListAddressChainsResponse = {
       chainId: "<id>",
       status: "OK",
       chainName: "<value>",
-      description: "hastily deeply opposite because furiously unless",
+      description: "pro needy lavish energetic excepting serpentine",
       vmName: "BITCOIN",
-      rpcUrl: "https://moist-bourgeoisie.name/",
+      rpcUrl: "https://true-newsprint.biz",
       isTestnet: false,
       networkToken: {
         name: "Wrapped AVAX",

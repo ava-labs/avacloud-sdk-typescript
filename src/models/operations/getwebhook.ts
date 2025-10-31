@@ -5,6 +5,7 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const GetWebhookServerList = [
@@ -17,6 +18,14 @@ export type GetWebhookRequest = {
    */
   id: string;
 };
+
+/**
+ * Successful response
+ */
+export type GetWebhookResponseBody =
+  | components.EVMAddressActivityResponse
+  | components.PrimaryNetworkAddressActivityResponse
+  | components.ValidatorActivityResponse;
 
 /** @internal */
 export const GetWebhookRequest$inboundSchema: z.ZodType<
@@ -69,5 +78,64 @@ export function getWebhookRequestFromJSON(
     jsonString,
     (x) => GetWebhookRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetWebhookRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetWebhookResponseBody$inboundSchema: z.ZodType<
+  GetWebhookResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  components.EVMAddressActivityResponse$inboundSchema,
+  components.PrimaryNetworkAddressActivityResponse$inboundSchema,
+  components.ValidatorActivityResponse$inboundSchema,
+]);
+
+/** @internal */
+export type GetWebhookResponseBody$Outbound =
+  | components.EVMAddressActivityResponse$Outbound
+  | components.PrimaryNetworkAddressActivityResponse$Outbound
+  | components.ValidatorActivityResponse$Outbound;
+
+/** @internal */
+export const GetWebhookResponseBody$outboundSchema: z.ZodType<
+  GetWebhookResponseBody$Outbound,
+  z.ZodTypeDef,
+  GetWebhookResponseBody
+> = z.union([
+  components.EVMAddressActivityResponse$outboundSchema,
+  components.PrimaryNetworkAddressActivityResponse$outboundSchema,
+  components.ValidatorActivityResponse$outboundSchema,
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetWebhookResponseBody$ {
+  /** @deprecated use `GetWebhookResponseBody$inboundSchema` instead. */
+  export const inboundSchema = GetWebhookResponseBody$inboundSchema;
+  /** @deprecated use `GetWebhookResponseBody$outboundSchema` instead. */
+  export const outboundSchema = GetWebhookResponseBody$outboundSchema;
+  /** @deprecated use `GetWebhookResponseBody$Outbound` instead. */
+  export type Outbound = GetWebhookResponseBody$Outbound;
+}
+
+export function getWebhookResponseBodyToJSON(
+  getWebhookResponseBody: GetWebhookResponseBody,
+): string {
+  return JSON.stringify(
+    GetWebhookResponseBody$outboundSchema.parse(getWebhookResponseBody),
+  );
+}
+
+export function getWebhookResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetWebhookResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetWebhookResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetWebhookResponseBody' from JSON`,
   );
 }

@@ -13,7 +13,7 @@ const args = {
 export const tool$dataEvmChainsListAllLatestBlocks: ToolDefinition<
   typeof args
 > = {
-  name: "data-evm-chains_list-all-latest-blocks",
+  name: "data-evm-chains-list-all-latest-blocks",
   description:
     `**[Deprecated]** Lists the latest blocks for all supported EVM chains. Filterable by network.
 
