@@ -1,3 +1,7 @@
+> ⚠️ **DEPRECATED**: This SDK is deprecated. Please use the new [ChainKit SDK](https://github.com/ava-labs/avalanche-sdk-typescript/tree/main/chainkit) instead.
+> 
+> **New Repository**: [https://github.com/ava-labs/avalanche-sdk-typescript/tree/main/chainkit](https://github.com/ava-labs/avalanche-sdk-typescript/tree/main/chainkit)  
+> **New Package**: [@avalanche-sdk/chainkit](https://www.npmjs.com/package/@avalanche-sdk/chainkit)
 
 <div align="center">
     <h1> AvaCloud SDK TypeScript </h1>
