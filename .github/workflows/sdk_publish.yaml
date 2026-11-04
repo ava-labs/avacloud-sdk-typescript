@@ -1,9 +1,5 @@
 name: Publish
-permissions:
-  checks: write
-  contents: write
-  pull-requests: write
-  statuses: write
+permissions: {}
 "on":
   push:
     branches:
@@ -13,6 +9,11 @@ permissions:
       - '*/RELEASES.md'
 jobs:
   publish:
+    permissions:
+      checks: write
+      contents: write
+      pull-requests: write
+      statuses: write
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
